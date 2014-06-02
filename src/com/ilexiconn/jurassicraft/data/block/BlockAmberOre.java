@@ -23,7 +23,7 @@ public class BlockAmberOre extends Block
         setResistance(5.0F);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 1);
-        this.setCreativeTab(Data.getCreativeTab(0));
+        setCreativeTab(Data.getCreativeTab(0));
     }
 
     public Item getItemDropped(int value, Random random, int thing)
