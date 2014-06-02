@@ -36,7 +36,7 @@ public final class Data extends Util
             addBlockWithTileEntity(3, new BlockAnalyzer(false), TileAnalyzer.class, false);
             addBlock(4, new BlockAmberOre());
             addBlock(5, new BlockFossilOre());
-            addBlock(6, new GhostBlock("cultivate_top", new int[] {-1}, 0.1f, -0.99f, 0.1f, 0.9f, 0.99f, 0.9f));
+            addBlock(6, new GhostBlock("cultivate_top", new int[] {-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
         }
         { /** Items */
             addItem(1, new ItemAmber());
@@ -57,6 +57,9 @@ public final class Data extends Util
         }
         { /** Other stuff */
             addGuiHandler(new GuiHandler());
+        }
+        { /** Tests */
+            proxy.renderTestItem();
         }
     }
 }

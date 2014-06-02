@@ -11,4 +11,9 @@ public class ServerProxy
     {
 
     }
+
+    public void renderTestItem()
+    {
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.ilexiconn.jurassicraft.data.block;
 
+import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import net.minecraft.block.Block;
@@ -23,7 +24,7 @@ public class BlockCultivate extends BlockContainer
         setBlockTextureName(Util.getModId() + "cultivate");
         setCreativeTab(active ? null : Util.getCreativeTab(0));
         setHardness(1.0f);
-        setBlockBounds(0.1f, 0.01f, 0.1f, 0.9f, 1.99f, 0.9f);
+        setBlockBounds(0f, 0f, 0f, 1f, 2f, 1f);
     }
 
     public TileEntity createNewTileEntity(World var1, int var2)
@@ -51,7 +52,6 @@ public class BlockCultivate extends BlockContainer
                 worldObj.setBlock(xCoord, yCoord + 1, zCoord, Util.getBlock(6));
             }
 
-
             worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, metadata, 2);
             analyzerTileEntity.validate();
             worldObj.setTileEntity(xCoord, yCoord, zCoord, analyzerTileEntity);
@@ -70,7 +70,7 @@ public class BlockCultivate extends BlockContainer
 
     public int getRenderType()
     {
-        return 0;
+        return -1;
     }
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack itemStack)
@@ -85,7 +85,7 @@ public class BlockCultivate extends BlockContainer
 
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float i, float d, float k)
     {
-        updateCultivateBlockState(!active, world, x, y, z);
+        player.openGui(JurassiCraft.instance, 2, world, x, y, z);
         return true;
     }
 }
