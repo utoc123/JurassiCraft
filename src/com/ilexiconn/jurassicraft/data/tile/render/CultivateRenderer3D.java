@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
-public class RenderCultivate3D implements IItemRenderer
+public class CultivateRenderer3D implements IItemRenderer
 {
     public ModelCultivate model = new ModelCultivate();
 
@@ -46,14 +46,14 @@ public class RenderCultivate3D implements IItemRenderer
             }
             case INVENTORY:
             {
-                if(renderType == 0)
+                if (renderType == 0)
                 {
                     renderType = 1;
                 }
             }
             case EQUIPPED_FIRST_PERSON:
             {
-                if(renderType == 0)
+                if (renderType == 0)
                 {
                     isFirstPerson = true;
                 }
@@ -71,7 +71,7 @@ public class RenderCultivate3D implements IItemRenderer
 
                 float scale = (renderType == 1 ? 6.2F : renderType == 2 ? 0.3F : 0.55F) * 0.5F;
 
-                if(renderType == 0)
+                if (renderType == 0)
                 {
                     GL11.glScalef(scale, scale, scale);
 
@@ -79,7 +79,7 @@ public class RenderCultivate3D implements IItemRenderer
 
                     GL11.glTranslatef(-3.0F, 1.0F, 0.0F);
 
-                    if(!isFirstPerson)
+                    if (!isFirstPerson)
                     {
                         float scale1 = 2F;
                         GL11.glTranslatef(1.0F, -2.0F, 0.0F);
@@ -90,8 +90,13 @@ public class RenderCultivate3D implements IItemRenderer
                         GL11.glRotatef(90F, 0.0F, 0.0F, 1.0F);
                         GL11.glRotatef(10F, 1.0F, 0.0F, 1.0F);
                     }
+                    else
+                    {
+                        GL11.glScalef(4f, 4f, 4f);
+                        GL11.glTranslatef(0f, -0.5f, 0f);
+                    }
                 }
-                else if(renderType == 1)
+                else if (renderType == 1)
                 {
                     GL11.glScalef(-scale * 2, -scale * 2, -scale * 2);
 
@@ -101,7 +106,7 @@ public class RenderCultivate3D implements IItemRenderer
 
                     GL11.glTranslatef(3.08F, 3.1f, 0.9F);
                 }
-                else if(renderType == 2)
+                else if (renderType == 2)
                 {
                     GL11.glTranslatef(0.0F, -0.8F, 0.0F);
                     GL11.glScalef(scale * 4, scale * 4, scale * 4);
@@ -115,7 +120,6 @@ public class RenderCultivate3D implements IItemRenderer
 
                 GL11.glPopMatrix();
             }
-            default:{}
         }
     }
 }

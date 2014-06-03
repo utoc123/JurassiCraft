@@ -1,7 +1,7 @@
 package com.ilexiconn.jurassicraft.proxy;
 
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.tile.render.RenderCultivate3D;
+import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.item.Item;
@@ -22,6 +22,6 @@ public class ClientProxy extends ServerProxy
 
     public void renderTestItem()
     {
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Util.getBlock(1)), (IItemRenderer) new RenderCultivate3D());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Util.getBlock(1)), (IItemRenderer) new CultivateRenderer3D());
     }
 }
