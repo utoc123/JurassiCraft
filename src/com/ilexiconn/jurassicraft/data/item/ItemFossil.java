@@ -9,7 +9,7 @@ public class ItemFossil extends Item
     {
         super();
         setUnlocalizedName("fossil");
-        setTextureName(Util.getModId() + "Fossil");
+        setTextureName(Util.getModId() + "fossil");
         setCreativeTab(Util.getCreativeTab(0));
     }
 }

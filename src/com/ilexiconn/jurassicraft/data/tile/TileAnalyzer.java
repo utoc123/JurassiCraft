@@ -55,7 +55,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public boolean canInsertItem(int var1, ItemStack var2, int var3)
     {
-        return this.isItemValidForSlot(var1, var2);
+        return isItemValidForSlot(var1, var2);
     }
 
     public boolean canExtractItem(int var1, ItemStack var2, int var3)
@@ -65,30 +65,30 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public int getSizeInventory()
     {
-        return this.analyzerItemStacks.length;
+        return analyzerItemStacks.length;
     }
 
     public ItemStack getStackInSlot(int var1)
     {
-        return this.analyzerItemStacks[var1];
+        return analyzerItemStacks[var1];
     }
 
     public ItemStack decrStackSize(int slot, int decrAmount)
     {
-        if (this.analyzerItemStacks[slot] != null)
+        if (analyzerItemStacks[slot] != null)
         {
             ItemStack var3;
-            if (this.analyzerItemStacks[slot].stackSize <= decrAmount)
+            if (analyzerItemStacks[slot].stackSize <= decrAmount)
             {
-                var3 = this.analyzerItemStacks[slot];
-                this.analyzerItemStacks[slot] = null;
+                var3 = analyzerItemStacks[slot];
+                analyzerItemStacks[slot] = null;
                 return var3;
             }
             else
             {
-                var3 = this.analyzerItemStacks[slot].splitStack(decrAmount);
-                if (this.analyzerItemStacks[slot].stackSize == 0)
-                    this.analyzerItemStacks[slot] = null;
+                var3 = analyzerItemStacks[slot].splitStack(decrAmount);
+                if (analyzerItemStacks[slot].stackSize == 0)
+                    analyzerItemStacks[slot] = null;
                 return var3;
             }
         }
@@ -98,10 +98,10 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public ItemStack getStackInSlotOnClosing(int var1)
     {
-        if (this.analyzerItemStacks[var1] != null)
+        if (analyzerItemStacks[var1] != null)
         {
-            ItemStack itemstack = this.analyzerItemStacks[var1];
-            this.analyzerItemStacks[var1] = null;
+            ItemStack itemstack = analyzerItemStacks[var1];
+            analyzerItemStacks[var1] = null;
             return itemstack;
         }
         else
@@ -110,10 +110,10 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public void setInventorySlotContents(int var1, ItemStack var2)
     {
-        this.analyzerItemStacks[var1] = var2;
+        analyzerItemStacks[var1] = var2;
 
-        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
-            var2.stackSize = this.getInventoryStackLimit();
+        if (var2 != null && var2.stackSize > getInventoryStackLimit())
+            var2.stackSize = getInventoryStackLimit();
     }
 
     public String getInventoryName() {
@@ -131,7 +131,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public boolean isUseableByPlayer(EntityPlayer var1)
     {
-        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && var1.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
+        return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && var1.getDistanceSq((double) xCoord + 0.5D, (double) yCoord + 0.5D, (double) zCoord + 0.5D) <= 64.0D;
     }
 
     public void openInventory() { }
@@ -147,36 +147,36 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
     {
         super.readFromNBT(compound);
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
-        this.analyzerItemStacks = new ItemStack[this.getSizeInventory()];
+        analyzerItemStacks = new ItemStack[getSizeInventory()];
 
         for (int i = 0; i <  nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound var4 = nbttaglist.getCompoundTagAt(i);
             byte var5 = var4.getByte("Slot");
 
-            if (var5 >= 0 && var5 < this.analyzerItemStacks.length)
-                this.analyzerItemStacks[var5] = ItemStack.loadItemStackFromNBT(var4);
+            if (var5 >= 0 && var5 < analyzerItemStacks.length)
+                analyzerItemStacks[var5] = ItemStack.loadItemStackFromNBT(var4);
         }
 
-        this.analyzerBurnTime = compound.getShort("BurnTime");
-        this.analyzerCookTime = compound.getShort("CookTime");
-        this.currentItemBurnTime = 100;
+        analyzerBurnTime = compound.getShort("BurnTime");
+        analyzerCookTime = compound.getShort("CookTime");
+        currentItemBurnTime = 100;
     }
 
     public void writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setShort("BurnTime", (short) this.analyzerBurnTime);
-        compound.setShort("CookTime", (short) this.analyzerCookTime);
+        compound.setShort("BurnTime", (short) analyzerBurnTime);
+        compound.setShort("CookTime", (short) analyzerCookTime);
         NBTTagList tagList = new NBTTagList();
 
-        for (int i = 0; i < this.analyzerItemStacks.length; i++)
+        for (int i = 0; i < analyzerItemStacks.length; i++)
         {
-            if (this.analyzerItemStacks[i] != null)
+            if (analyzerItemStacks[i] != null)
             {
                 NBTTagCompound slotCompound = new NBTTagCompound();
                 slotCompound.setByte("Slot", (byte) i);
-                this.analyzerItemStacks[i].writeToNBT(slotCompound);
+                analyzerItemStacks[i].writeToNBT(slotCompound);
                 tagList.appendTag(slotCompound);
             }
         }
@@ -186,107 +186,107 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
 
     public int getCookPrograssScaled(int par1)
     {
-        return this.analyzerCookTime * par1 / 200;
+        return analyzerCookTime * par1 / 200;
     }
 
     public boolean isBurning()
     {
-        return this.analyzerBurnTime > 0;
+        return analyzerBurnTime > 0;
     }
 
     public void updateEntity()
     {
-        boolean var1 = this.analyzerBurnTime > 0;
+        boolean var1 = analyzerBurnTime > 0;
         boolean var2 = false;
 
-        if (this.analyzerBurnTime > 0)
-            --this.analyzerBurnTime;
+        if (analyzerBurnTime > 0)
+            --analyzerBurnTime;
 
-        if (!this.worldObj.isRemote)
+        if (!worldObj.isRemote)
         {
-            if (this.analyzerBurnTime == 0 && this.canSmelt())
+            if (analyzerBurnTime == 0 && canSmelt())
             {
-                this.currentItemBurnTime = this.analyzerBurnTime = 100;
+                currentItemBurnTime = analyzerBurnTime = 100;
 
-                if (this.analyzerBurnTime > 0)
+                if (analyzerBurnTime > 0)
                     var2 = true;
             }
 
-            if (this.isBurning() && this.canSmelt())
+            if (isBurning() && canSmelt())
             {
-                ++this.analyzerCookTime;
+                ++analyzerCookTime;
 
-                if (this.analyzerCookTime == 200)
+                if (analyzerCookTime == 200)
                 {
-                    this.analyzerCookTime = 0;
-                    this.smeltItem();
+                    analyzerCookTime = 0;
+                    smeltItem();
                     var2 = true;
                 }
             }
             else
-                this.analyzerCookTime = 0;
+                analyzerCookTime = 0;
 
-            if (var1 != this.analyzerBurnTime > 0)
+            if (var1 != analyzerBurnTime > 0)
             {
                 var2 = true;
-                BlockAnalyzer.updateAnalyzerBlockState(this.analyzerBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                BlockAnalyzer.updateAnalyzerBlockState(analyzerBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
             }
         }
 
         if (var2)
-            this.updateEntity();
+            updateEntity();
     }
 
     private boolean canSmelt()
     {
-        this.SpaceIndex = -1;
-        this.RawIndex = -1;
+        SpaceIndex = -1;
+        RawIndex = -1;
 
         int var1;
 
         for (var1 = 0; var1 < 9; ++var1)
         {
-            if (this.analyzerItemStacks[var1] != null)
+            if (analyzerItemStacks[var1] != null)
             {
-                Item var2 = this.analyzerItemStacks[var1].getItem();
+                Item var2 = analyzerItemStacks[var1].getItem();
 
                 if (var2 == Util.getItem(2) || var2 == Util.getItem(1))
                 {
-                    this.RawIndex = var1;
+                    RawIndex = var1;
                     break;
                 }
             }
         }
 
-        if (this.RawIndex == -1)
+        if (RawIndex == -1)
             return false;
         else
         {
             for (var1 = 12; var1 > 8; --var1)
             {
-                if (this.analyzerItemStacks[var1] == null)
+                if (analyzerItemStacks[var1] == null)
                 {
-                    this.SpaceIndex = var1;
+                    SpaceIndex = var1;
                     break;
                 }
             }
 
-            return this.SpaceIndex != -1 && this.RawIndex != -1;
+            return SpaceIndex != -1 && RawIndex != -1;
         }
     }
 
     public void smeltItem()
     {
-        if (this.canSmelt())
+        if (canSmelt())
         {
             ItemStack var1 = null;
 
-            if (this.analyzerItemStacks[this.RawIndex].getItem() == Util.getItem(2))
+            if (analyzerItemStacks[RawIndex].getItem() == Util.getItem(2))
             {
                 int dnaResult = (new Random()).nextInt(99);
 
                 if (dnaResult > 74)
-                    var1 = new ItemStack(this.getRandomDNA(new Random()));
+                    var1 = new ItemStack(getRandomDNA(new Random()));
                 else
                 {
                     int output = (new Random()).nextInt(3);
@@ -300,18 +300,18 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
                 }
             }
 
-            if (this.analyzerItemStacks[this.RawIndex].getItem() == Util.getItem(1))
-                var1 = new ItemStack(this.getRandomDNA(new Random()));
+            if (analyzerItemStacks[RawIndex].getItem() == Util.getItem(1))
+                var1 = new ItemStack(getRandomDNA(new Random()));
 
             if (var1 != null)
             {
-                if (var1.stackSize != 0 && this.analyzerItemStacks[this.SpaceIndex] == null)
-                    this.analyzerItemStacks[this.SpaceIndex] = var1.copy();
+                if (var1.stackSize != 0 && analyzerItemStacks[SpaceIndex] == null)
+                    analyzerItemStacks[SpaceIndex] = var1.copy();
 
-                -- this.analyzerItemStacks[this.RawIndex].stackSize;
+                -- analyzerItemStacks[RawIndex].stackSize;
 
-                if (this.analyzerItemStacks[this.RawIndex].stackSize == 0)
-                    this.analyzerItemStacks[this.RawIndex] = null;
+                if (analyzerItemStacks[RawIndex].stackSize == 0)
+                    analyzerItemStacks[RawIndex] = null;
             }
         }
     }

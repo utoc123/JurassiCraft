@@ -25,6 +25,7 @@ public class BlockCultivate extends BlockContainer
         setCreativeTab(active ? null : Util.getCreativeTab(0));
         setHardness(1.0f);
         setBlockBounds(0f, 0f, 0f, 1f, 2f, 1f);
+        if (active) setLightLevel(1f);
     }
 
     public TileEntity createNewTileEntity(World var1, int var2)
