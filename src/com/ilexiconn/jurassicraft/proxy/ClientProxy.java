@@ -5,7 +5,6 @@ import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends ServerProxy
@@ -20,8 +19,8 @@ public class ClientProxy extends ServerProxy
         ClientRegistry.bindTileEntitySpecialRenderer(Util.getTileEntityToRender(), Util.getTileEntityRenderer());
     }
 
-    public void renderTestItem()
+    public void renderItems()
     {
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Util.getBlock(1)), (IItemRenderer) new CultivateRenderer3D());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Util.getBlock(1)), new CultivateRenderer3D());
     }
 }

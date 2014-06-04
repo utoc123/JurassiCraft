@@ -12,7 +12,7 @@ public class ServerProxy
 
     }
 
-    public void renderTestItem()
+    public void renderItems()
     {
 
     }

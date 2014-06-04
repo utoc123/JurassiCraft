@@ -12,6 +12,8 @@ import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -53,13 +55,12 @@ public final class Data extends Util
             addWorldGenerator(new WorldGenAmberOre(), 2);
         }
         { /** Renderers */
+
             addTileEntityRenderer(TileCultivate.class, new CultivateRenderer());
+            proxy.renderItems();
         }
         { /** Other stuff */
             addGuiHandler(new GuiHandler());
-        }
-        { /** Tests */
-            proxy.renderTestItem();
         }
     }
 }

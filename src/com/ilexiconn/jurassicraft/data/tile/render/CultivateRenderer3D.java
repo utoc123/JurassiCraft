@@ -2,7 +2,11 @@ package com.ilexiconn.jurassicraft.data.tile.render;
 
 import assets.jurassicraft.textures.models.blocks.ModelCultivate;
 import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.logger.LogType;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -14,14 +18,7 @@ public class CultivateRenderer3D implements IItemRenderer
 
     public boolean handleRenderType(ItemStack item, ItemRenderType type)
     {
-        switch(type)
-        {
-            case ENTITY:
-            case EQUIPPED_FIRST_PERSON:
-            case EQUIPPED:
-            case INVENTORY: return true;
-            default: return false;
-        }
+        return true;
     }
 
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
@@ -81,13 +78,13 @@ public class CultivateRenderer3D implements IItemRenderer
 
                     if (!isFirstPerson)
                     {
-                        float scale1 = 2F;
-                        GL11.glTranslatef(1.0F, -2.0F, 0.0F);
+                        float scale1 = 3f;
+                        GL11.glTranslatef(1.0F, -3.0F, 0.0F);
                         GL11.glRotatef(-135F, 1.0F, -1.0F, -0.3F);
 
                         GL11.glScalef(scale1, scale1, scale1);
                         GL11.glRotatef(-7.5F, 0.0F, 1.0F, 0.0F);
-                        GL11.glRotatef(90F, 0.0F, 0.0F, 1.0F);
+                        GL11.glRotatef(80F, 0.0F, 0.0F, 1.0F);
                         GL11.glRotatef(10F, 1.0F, 0.0F, 1.0F);
                     }
                     else
