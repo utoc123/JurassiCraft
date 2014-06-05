@@ -1,0 +1,149 @@
+List of mobs that need to be added (in mixed stuff)
+Liopleurodon
+Crylophosaur
+Velociraptor
+Troodon
+Dryosaur
+Stegosaur
+Leaellynasaura
+Gallimimus
+Procompsognathus(use the egg, meat for compsognathus-but rename them)
+meganeura
+coelacanth
+Maiasaura
+Styracosaur
+dilophosaur
+ankylosaur
+pachycephalosaur
+Triceratops
+Diplodocus
+Basilosaurus
+Parasauropholus
+Coelocanth
+Tyrannosaurus
+Segisaurus
+Cereadactyl
+
+Speeds and sizes:
+Liopleurodon- large aquatic carnivore
+Adult: 3.5 blocks tall
+Infant 1.2 block tall
+Speed: Squidx1.5
+
+Crylophosaur- large carnivore
+Adult: 4 blocks tall
+Infant: 1.5 block tall
+Speed: Wolfx1.2- when running, normal: wolf
+
+Troodon- medium carnivore
+Adult: 1.5 blocks tall
+Infant: 1 block tall
+speed: wolfx1.5
+
+
+Velociraptor- medium carnivore
+Adult: 2 blocks tall
+Infant: 0.5 block tall
+Speed: wolfx1.5 running and walking
+
+Dryosaur- medium herbivore
+Adult: 1.7 blocks tall
+Infant:0.5 block tall
+Speed: Wolfx1.5
+
+Stegosaur-large herbivore
+Adult: 4 blocks tall
+Infant: 1 block tall
+Speed: Cow
+
+Leaellynasaura- small herbivore
+Adult: 1 block tall
+Infant: 0.5 block tall
+Speed: chicken
+
+Gallimimus- medium herbivore
+Adult: 1.6 blocks tall
+Infant: 1 block tall
+Speed: Wolfx2.5 when running, wolf normal
+
+Procompsognathus-small carnivore
+Adult: 0.7 block tall
+infant: 0.5 block tall
+speed: chicken
+
+Meganeura- flying insect, have it flying constantly pretty much, landing occasionally
+Adult: 1.2 block high
+Speed:Wolfx2
+
+Coelocanth-aquatic also eats fish
+3 blocks long
+Speed: squid
+
+Maiasaura- Large Herbivore
+Adult: 3 blocks tall
+Infant: 1 block tall
+Speed: cow
+
+Styracosaur- large herbivore
+Adult: 3 blocks tall
+Infant: 1 block tall
+Speed: cow
+
+Dilophosaur- medium carnivore
+Adult: 3 blocks tall
+infant: 1 block tall
+Speed: wolf
+
+Segisaurus- small carnivore
+Adult: 1 blocks tall
+Infant: 1/2 block tall
+Speed: Wolf
+
+Ankylosaur- large herbivore
+Adult: 3 blocks tall
+Infant: 1 block tall
+Speed: cow
+
+Pachycephalosaur-large herbivore
+Adult: 3 blocks tall
+Infant: 1 block tall
+Speed: Wolf
+
+Triceratops- large herbivore
+Adult: 4 blocks tall
+Infant: 1 block tall- there's an infant model in the dropbox
+Speed: cow
+
+Diplodocus- Large herbivore
+Adult: 7 blocks tall
+infant: 1.5 blocks tall
+speed: cow
+
+Basilosaurus- large aquatic carnivore
+Adult: 3 blocks tall
+Infant: 1 block tall
+Speed: Squidx1.5
+
+Parasauropholus- large herbivore
+Adult: 3 blocks tall
+infant: 1 block tall
+Speed: cow
+
+Tyrannosaurus Rex- large carnivore
+Adult: 7 blocks tall
+infant: 1 block tall
+Speed: wolf
+ 
+Cereadactyl- Flying reptile
+Adult: 2 blocks tall
+infant: 0.7 block tall
+Speed: wolf
+
+Herrarasaurus- medium carnivore
+Adult: 2 1/2 blocks tall
+Infant: 1/2 block tall
+
+
+
+
+

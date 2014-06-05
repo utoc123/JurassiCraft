@@ -9,7 +9,7 @@ public class ItemAmber extends Item
     {
         super();
         setUnlocalizedName("amber");
-        setTextureName(Util.getModId() + "Amber");
+        setTextureName(Util.getModId() + "amber");
         setCreativeTab(Util.getCreativeTab(0));
     }
 }

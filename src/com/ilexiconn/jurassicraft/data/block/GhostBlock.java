@@ -5,41 +5,52 @@ import com.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class GhostBlock extends Block
 {
     public int[] blocksToBreak;
     public int guiToOpen, guiId;
     public boolean openGui;
+    public Block block;
 
-    public GhostBlock(String name, int[] blocks)
+    public GhostBlock(String name, Block block, float hardness, int[] blocks)
     {
         super(Material.cloth);
+        this.block = block;
         setBlockName(name);
         setBlockTextureName(Util.getModId() + name);
         blocksToBreak = blocks;
         setCreativeTab(null);
+        setHardness(hardness);
     }
 
-    public GhostBlock(String name, int[] blocks, int guiBlock, int guiID)
+    public GhostBlock(String name, Block block, float hardness, int[] blocks, int guiBlock, int guiID)
     {
-        this(name, blocks);
+        this(name, block, hardness, blocks);
         guiToOpen = guiBlock;
         guiId = guiID;
         openGui = true;
     }
 
-    public GhostBlock(String name, int[] blocks, float x, float y, float z, float x1, float y1, float z1)
+    public GhostBlock(String name, Block block, float hardness, int[] blocks, float x, float y, float z, float x1, float y1, float z1)
     {
-        this(name, blocks);
+        this(name, block, hardness, blocks);
         setBlockBounds(x, y, z, x1, y1, z1);
     }
 
-    public GhostBlock(String name, int[] blocks, int guiBlock, int guiID, float x, float y, float z, float x1, float y1, float z1)
+    public GhostBlock(String name, Block block, float hardness, int[] blocks, int guiBlock, int guiID, float x, float y, float z, float x1, float y1, float z1)
     {
-        this(name, blocks, guiBlock, guiID);
+        this(name, block, hardness, blocks, guiBlock, guiID);
         setBlockBounds(x, y, z, x1, y1, z1);
+    }
+
+    public Item getItemDropped(int x, Random random, int z)
+    {
+        return Item.getItemFromBlock(block);
     }
 
     public boolean isOpaqueCube()

@@ -9,7 +9,7 @@ public class ItemDNA extends Item
     {
         super();
         setUnlocalizedName("dna_" + name);
-        setTextureName(Util.getModId() + "DNA_" + name);
+        setTextureName(Util.getModId() + "dna_" + name);
         setCreativeTab(Util.getCreativeTab(0));
     }
 }

@@ -6,14 +6,13 @@ import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import com.ilexiconn.jurassicraft.data.item.ItemAmber;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
 import com.ilexiconn.jurassicraft.data.item.ItemFossil;
+import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -38,14 +37,18 @@ public final class Data extends Util
             addBlockWithTileEntity(3, new BlockAnalyzer(false), TileAnalyzer.class, false);
             addBlock(4, new BlockAmberOre());
             addBlock(5, new BlockFossilOre());
-            addBlock(6, new GhostBlock("cultivate_top", new int[] {-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
+            addBlock(6, new GhostBlock("cultivate_top", getBlock(1), 1f, new int[] {-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
         }
         { /** Items */
             addItem(1, new ItemAmber());
             addItem(2, new ItemFossil());
         }
-        { /** DNAs */
-            addDNA(new ItemDNA("base"));
+        { /** DNAs & Meat */
+            for (String name : getDinos())
+            {
+                addDNA(new ItemDNA(name));
+                addMeat(new ItemMeat(name));
+            }
         }
         { /** Entities */
 
@@ -55,7 +58,6 @@ public final class Data extends Util
             addWorldGenerator(new WorldGenAmberOre(), 2);
         }
         { /** Renderers */
-
             addTileEntityRenderer(TileCultivate.class, new CultivateRenderer());
             proxy.renderItems();
         }
