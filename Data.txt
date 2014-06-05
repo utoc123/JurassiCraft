@@ -1,4 +1,3 @@
-List of mobs that need to be added (in mixed stuff)
 Liopleurodon
 Crylophosaur
 Velociraptor
@@ -7,14 +6,14 @@ Dryosaur
 Stegosaur
 Leaellynasaura
 Gallimimus
-Procompsognathus(use the egg, meat for compsognathus-but rename them)
-meganeura
-coelacanth
+Procompsognathus
+Meganeura
+Coelacanth
 Maiasaura
 Styracosaur
-dilophosaur
-ankylosaur
-pachycephalosaur
+Dilophosaur
+Ankylosaur
+Pachycephalosaur
 Triceratops
 Diplodocus
 Basilosaurus
@@ -24,7 +23,6 @@ Tyrannosaurus
 Segisaurus
 Cereadactyl
 
-Speeds and sizes:
 Liopleurodon- large aquatic carnivore
 Adult: 3.5 blocks tall
 Infant 1.2 block tall
@@ -39,7 +37,6 @@ Troodon- medium carnivore
 Adult: 1.5 blocks tall
 Infant: 1 block tall
 speed: wolfx1.5
-
 
 Velociraptor- medium carnivore
 Adult: 2 blocks tall
@@ -142,8 +139,3 @@ Speed: wolf
 Herrarasaurus- medium carnivore
 Adult: 2 1/2 blocks tall
 Infant: 1/2 block tall
-
-
-
-
-

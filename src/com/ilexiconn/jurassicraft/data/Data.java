@@ -40,18 +40,11 @@ public final class Data extends Util
             addBlockWithTileEntity(3, new BlockAnalyzer(false), TileAnalyzer.class, false);
             addBlock(4, new BlockAmberOre());
             addBlock(5, new BlockFossilOre());
-            addBlock(6, new GhostBlock("cultivate_top", getBlock(1), 1f, new int[] {-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
+            addBlock(6, new GhostBlock("cultivate_top", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
         }
         { /** Items */
             addItem(1, new ItemAmber());
             addItem(2, new ItemFossil());
-        }
-        { /** DNAs & Meat */
-            for (String name : getDinos())
-            {
-                addDNA(new ItemDNA(name));
-                addMeat(new ItemMeat(name));
-            }
         }
         { /** Entities */
             for (String name : getDinos())
@@ -61,11 +54,16 @@ public final class Data extends Util
                     Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
                     RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
-                    addEntity(entity, name, renderer, 0xfffff, 0xffffff);
+                    addEntity(entity, name, renderer, 0xffffff, 0xffffff);
                 }
                 catch (Exception e)
                 {
                     getLogger().print(LogType.ERROR, "Can't load the " + name + " entity classes!");
+                }
+                finally
+                {
+                    addDNA(new ItemDNA(name));
+                    addMeat(new ItemMeat(name));
                 }
             }
         }
