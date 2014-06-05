@@ -12,8 +12,11 @@ import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
+import com.ilexiconn.jurassicraft.logger.LogType;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
@@ -51,7 +54,20 @@ public final class Data extends Util
             }
         }
         { /** Entities */
+            for (String name : getDinos())
+            {
+                try
+                {
+                    Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+                    RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
+                    addEntity(entity, name, renderer, 0xfffff, 0xffffff);
+                }
+                catch (Exception e)
+                {
+                    getLogger().print(LogType.ERROR, "Can't load the " + name + " entity classes!");
+                }
+            }
         }
         { /** World Gens */
             addWorldGenerator(new WorldGenFossilOre(), 1);

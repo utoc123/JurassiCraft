@@ -13,7 +13,7 @@ public class JurassiCraft extends Util
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
     {
-        getLogger().print(LogType.INFO, "LOADING MOD...");
+        getLogger().print(LogType.INFO, "Initializing mod...");
         getData().init(event);
     }
 }
