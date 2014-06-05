@@ -3,3 +3,7 @@
 *.ipr
 *.iws
 *.txt
+.gradle/
+build/
+minecraft/
+out/
