@@ -58,8 +58,7 @@ public final class Data extends Util
 
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
-                }
-                catch (Exception e)
+                } catch (Exception e)
                 {
                     getLogger().print(LogType.ERROR, "Can't load the " + name + " entity classes!");
                 }

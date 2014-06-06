@@ -9,7 +9,7 @@ import net.minecraft.inventory.SlotFurnace;
 
 public class ContainerCultivate extends Container
 {
-    public TileCultivate tileCultivate;
+    public TileCultivate   tileCultivate;
     public InventoryPlayer inventoryPlayer;
 
     public ContainerCultivate(InventoryPlayer inventory, TileCultivate tileEntity)

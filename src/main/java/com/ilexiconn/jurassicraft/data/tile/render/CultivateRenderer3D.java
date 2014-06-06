@@ -1,7 +1,7 @@
 package com.ilexiconn.jurassicraft.data.tile.render;
 
-import com.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -19,11 +19,13 @@ public class CultivateRenderer3D implements IItemRenderer
 
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
     {
-        switch(helper)
+        switch (helper)
         {
             case ENTITY_ROTATION:
-            case ENTITY_BOBBING: return true;
-            default: return false;
+            case ENTITY_BOBBING:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -31,7 +33,7 @@ public class CultivateRenderer3D implements IItemRenderer
     {
         boolean firstPerson = false;
         int renderType = 0;
-        switch(type)
+        switch (type)
         {
             case ENTITY:
             {

@@ -18,18 +18,16 @@ import java.util.Random;
 
 public class TileAnalyzer extends TileEntity implements ISidedInventory
 {
+    private static final int[] slots_top    = new int[]{}; // input
+    private static final int[] slots_bottom = new int[]{10, 11, 12}; // output
+    private static final int[] slots_sides  = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8}; // fuel
     public static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
-
-    private static final int[] slots_top = new int[] {}; // input
-    private static final int[] slots_bottom = new int[] {10, 11, 12}; // output
-    private static final int[] slots_sides = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8}; // fuel
-
+    public  int analyzerBurnTime    = 0;
+    public  int currentItemBurnTime = 100;
+    public  int analyzerCookTime    = 0;
     private ItemStack[] analyzerItemStacks;
-    public int analyzerBurnTime = 0;
-    public int currentItemBurnTime = 100;
-    public int analyzerCookTime = 0;
-    private int RawIndex = -1;
-    private int SpaceIndex = -1;
+    private int RawIndex            = -1;
+    private int SpaceIndex          = -1;
 
     public TileAnalyzer()
     {
@@ -116,11 +114,13 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
             var2.stackSize = getInventoryStackLimit();
     }
 
-    public String getInventoryName() {
+    public String getInventoryName()
+    {
         return "Analyzer";
     }
 
-    public boolean hasCustomInventoryName() {
+    public boolean hasCustomInventoryName()
+    {
         return false;
     }
 
@@ -149,7 +149,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
         analyzerItemStacks = new ItemStack[getSizeInventory()];
 
-        for (int i = 0; i <  nbttaglist.tagCount(); ++i)
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound var4 = nbttaglist.getCompoundTagAt(i);
             byte var5 = var4.getByte("Slot");
@@ -308,7 +308,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
                 if (var1.stackSize != 0 && analyzerItemStacks[SpaceIndex] == null)
                     analyzerItemStacks[SpaceIndex] = var1.copy();
 
-                -- analyzerItemStacks[RawIndex].stackSize;
+                --analyzerItemStacks[RawIndex].stackSize;
 
                 if (analyzerItemStacks[RawIndex].stackSize == 0)
                     analyzerItemStacks[RawIndex] = null;

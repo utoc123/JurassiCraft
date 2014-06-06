@@ -13,9 +13,9 @@ import java.util.Random;
 public class GhostBlock extends Block
 {
     public int[] blocksToBreak;
-    public int guiToOpen, guiId;
+    public int   guiToOpen, guiId;
     public boolean openGui;
-    public Block block;
+    public Block   block;
 
     public GhostBlock(String name, Block block, float hardness, int[] blocks)
     {

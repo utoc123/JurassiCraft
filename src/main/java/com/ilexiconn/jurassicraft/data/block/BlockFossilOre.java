@@ -43,7 +43,7 @@ public class BlockFossilOre extends Block
         if (!world.isRemote)
         {
             ItemStack equippedByPlayer = player.getCurrentEquippedItem();
-            if (equippedByPlayer != null && equippedByPlayer.getItem() instanceof ItemPickaxe && Enum.valueOf(Item.ToolMaterial.class, ((ItemPickaxe)equippedByPlayer.getItem()).getToolMaterialName()).getHarvestLevel() >= 2)
+            if (equippedByPlayer != null && equippedByPlayer.getItem() instanceof ItemPickaxe && Enum.valueOf(Item.ToolMaterial.class, ((ItemPickaxe) equippedByPlayer.getItem()).getToolMaterialName()).getHarvestLevel() >= 2)
                 super.harvestBlock(world, player, x, y, z, h);
         }
     }

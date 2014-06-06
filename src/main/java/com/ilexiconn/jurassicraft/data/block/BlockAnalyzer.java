@@ -33,6 +33,24 @@ public class BlockAnalyzer extends BlockContainer
         setHardness(3.0f);
     }
 
+    public static void updateAnalyzerBlockState(boolean isActive, World worldObj, int xCoord, int yCoord, int zCoord)
+    {
+        int metadata = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+        TileEntity analyzerTileEntity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+
+        if (analyzerTileEntity != null)
+        {
+            if (isActive)
+                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(2));
+            else
+                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(3));
+
+            worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, metadata, 2);
+            analyzerTileEntity.validate();
+            worldObj.setTileEntity(xCoord, yCoord, zCoord, analyzerTileEntity);
+        }
+    }
+
     public TileEntity createNewTileEntity(World var1, int var2)
     {
         return new TileAnalyzer();
@@ -72,24 +90,6 @@ public class BlockAnalyzer extends BlockContainer
         else if (l == 3)
         {
             world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-        }
-    }
-
-    public static void updateAnalyzerBlockState(boolean isActive, World worldObj, int xCoord, int yCoord, int zCoord)
-    {
-        int metadata = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-        TileEntity analyzerTileEntity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
-
-        if (analyzerTileEntity != null)
-        {
-            if (isActive)
-                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(2));
-            else
-                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(3));
-
-            worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, metadata, 2);
-            analyzerTileEntity.validate();
-            worldObj.setTileEntity(xCoord, yCoord, zCoord, analyzerTileEntity);
         }
     }
 

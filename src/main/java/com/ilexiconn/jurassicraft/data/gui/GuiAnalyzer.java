@@ -1,8 +1,8 @@
 package com.ilexiconn.jurassicraft.data.gui;
 
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.gui.container.ContainerAnalyzer;
+import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

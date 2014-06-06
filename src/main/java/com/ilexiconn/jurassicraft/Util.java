@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 public class Util
 {
-    @SidedProxy(clientSide = "com.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "com.ilexiconn.jurassicraft.proxy.ServerProxy")
-    public static ServerProxy proxy;
-
-    /** Stuff */
+    /**
+     * Stuff
+     */
     private static final Logger logger = new Logger();
     private static final Data   data   = new Data();
     private static final Dinos  dinos  = new Dinos();
-
+    @SidedProxy(clientSide = "com.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "com.ilexiconn.jurassicraft.proxy.ServerProxy")
+    public static ServerProxy proxy;
     private static CreativeTabs[]                           tabs               = new CreativeTabs[512];
     private static Block[]                                  blocks             = new Block[512];
     private static Item[]                                   items              = new Item[512];
@@ -41,31 +41,98 @@ public class Util
     private static ArrayList<Class<? extends EntityLiving>> entityToRender     = new ArrayList<Class<? extends EntityLiving>>();
     private static ArrayList<RenderLiving>                  entityRenderer     = new ArrayList<RenderLiving>();
 
-    /** Adders */
+    /**
+     * Getters
+     */
+    public static CreativeTabs getCreativeTab(int id)
+    {
+        return tabs[id];
+    }
+
+    public static Block getBlock(int id)
+    {
+        return blocks[id];
+    }
+
+    public static Item getItem(int id)
+    {
+        return items[id];
+    }
+
+    public static ArrayList<ItemDNA> getDNAArray() { return dnas; }
+
+    public static Class<? extends TileEntity> getTileEntityToRender()
+    {
+        return tileEntityToRender.get(0);
+    }
+
+    public static TileEntitySpecialRenderer getTileEntityRenderer()
+    {
+        return tileEntityRenderer.get(0);
+    }
+
+    public static Class<? extends EntityLiving> getEntityToRender()
+    {
+        return entityToRender.get(0);
+    }
+
+    public static RenderLiving getEntityRenderer()
+    {
+        return entityRenderer.get(0);
+    }
+
+    public static String getModId()
+    {
+        return "jurassicraft:";
+    }
+
+    public static Logger getLogger()
+    {
+        return logger;
+    }
+
+    public static Data getData()
+    {
+        return data;
+    }
+
+    public static String[] getDinos()
+    {
+        return dinos.dinos;
+    }
+
+    /**
+     * Adders
+     */
     public void addCreativeTab(int id, CreativeTabs tab)
     {
         if (id != -1) tabs[id] = tab;
     }
+
     public void addBlock(int id, Block block)
     {
         if (id != -1) blocks[id] = block;
         GameRegistry.registerBlock(block, block.getUnlocalizedName());
     }
+
     public void addItem(int id, Item item)
     {
         if (id != -1) items[id] = item;
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
+
     public void addDNA(ItemDNA item)
     {
         dnas.add(item);
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
+
     public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
     {
         addBlock(id, block);
         if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
     }
+
     public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
     {
         tileEntityToRender.clear();
@@ -75,6 +142,7 @@ public class Util
 
         proxy.renderTileEntity();
     }
+
     public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer, int color1, int color2)
     {
         int entityId = EntityRegistry.findGlobalUniqueEntityId();
@@ -87,59 +155,14 @@ public class Util
 
         proxy.renderEntity();
     }
+
     public void addGuiHandler(IGuiHandler handler)
     {
         NetworkRegistry.INSTANCE.registerGuiHandler(JurassiCraft.instance, handler);
     }
+
     public void addWorldGenerator(IWorldGenerator generator, int weight)
     {
         GameRegistry.registerWorldGenerator(generator, weight);
-    }
-
-    /** Getters */
-    public static CreativeTabs getCreativeTab(int id)
-    {
-        return tabs[id];
-    }
-    public static Block getBlock(int id)
-    {
-        return blocks[id];
-    }
-    public static Item getItem(int id)
-    {
-        return items[id];
-    }
-    public static ArrayList<ItemDNA> getDNAArray() { return dnas; }
-    public static Class<? extends TileEntity> getTileEntityToRender()
-    {
-        return tileEntityToRender.get(0);
-    }
-    public static TileEntitySpecialRenderer getTileEntityRenderer()
-    {
-        return tileEntityRenderer.get(0);
-    }
-    public static Class<? extends EntityLiving> getEntityToRender()
-    {
-        return entityToRender.get(0);
-    }
-    public static RenderLiving getEntityRenderer()
-    {
-        return entityRenderer.get(0);
-    }
-    public static String getModId()
-    {
-        return "jurassicraft:";
-    }
-    public static Logger getLogger()
-    {
-        return logger;
-    }
-    public static Data getData()
-    {
-        return data;
-    }
-    public static String[] getDinos()
-    {
-        return dinos.dinos;
     }
 }

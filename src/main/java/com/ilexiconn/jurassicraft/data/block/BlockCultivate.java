@@ -28,11 +28,6 @@ public class BlockCultivate extends BlockContainer
         if (active) setLightLevel(1f);
     }
 
-    public TileEntity createNewTileEntity(World var1, int var2)
-    {
-        return new TileCultivate();
-    }
-
     public static void updateCultivateBlockState(boolean isActive, World worldObj, int xCoord, int yCoord, int zCoord)
     {
         int metadata = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
@@ -57,6 +52,11 @@ public class BlockCultivate extends BlockContainer
             analyzerTileEntity.validate();
             worldObj.setTileEntity(xCoord, yCoord, zCoord, analyzerTileEntity);
         }
+    }
+
+    public TileEntity createNewTileEntity(World var1, int var2)
+    {
+        return new TileCultivate();
     }
 
     public boolean isOpaqueCube()

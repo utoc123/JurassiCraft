@@ -10,9 +10,9 @@ import net.minecraft.inventory.SlotFurnace;
 
 public class ContainerAnalyzer extends Container
 {
-    public TileAnalyzer tileAnalyzer;
+    public TileAnalyzer    tileAnalyzer;
     public InventoryPlayer inventoryPlayer;
-    public int cookTime, burnTime, itemBurnTime;
+    public int             cookTime, burnTime, itemBurnTime;
 
     public ContainerAnalyzer(InventoryPlayer inventory, TileAnalyzer tileEntity)
     {
