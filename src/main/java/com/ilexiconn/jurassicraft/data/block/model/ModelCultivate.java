@@ -1,4 +1,4 @@
-package assets.jurassicraft.textures.models.blocks;
+package com.ilexiconn.jurassicraft.data.block.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

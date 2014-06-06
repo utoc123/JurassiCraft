@@ -30,8 +30,8 @@ public class ContainerCultivate extends Container
             addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
         }
 
-        addSlotToContainer(new Slot(tileEntity, 0, 44, 30));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 123, 30));
+        addSlotToContainer(new Slot(tileEntity, 0, 45, 38));
+        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
     }
 
     public boolean canInteractWith(EntityPlayer var1)

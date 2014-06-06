@@ -19,7 +19,7 @@ public class Dinos
             "Styracosaur",
             "Dilophosaur",
             "Ankylosaur",
-            "pachycephalosaur",
+            "Pachycephalosaur",
             "Triceratops",
             "Diplodocus",
             "Basilosaurus",

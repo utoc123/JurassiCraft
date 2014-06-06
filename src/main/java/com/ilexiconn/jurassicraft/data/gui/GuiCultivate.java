@@ -18,8 +18,8 @@ public class GuiCultivate extends GuiContainer
 
     public void drawGuiContainerForegroundLayer(int i, int d)
     {
-        fontRendererObj.drawString(StatCollector.translateToLocal("container.cultivate"), 8, 6, 4210752);
-        fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("Cultivate"), 8, 8, 0x4bc2fc);
+        fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 95, 0x4bc2fc);
     }
 
     public void drawGuiContainerBackgroundLayer(float i, int d, int k)

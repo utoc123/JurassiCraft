@@ -1,6 +1,6 @@
 package com.ilexiconn.jurassicraft.data.tile.render;
 
-import assets.jurassicraft.textures.models.blocks.ModelCultivate;
+import com.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
