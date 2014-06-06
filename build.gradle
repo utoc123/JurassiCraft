@@ -28,7 +28,7 @@ archivesBaseName = "fossilcraft"
 
 minecraft
         {
-            version = "1.7.2-10.12.1.1110"
+            version = "1.7.2-10.12.1.1112"
             assetDir = "minecraft/assets"
         }
 
