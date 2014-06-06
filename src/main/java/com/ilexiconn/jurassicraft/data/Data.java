@@ -60,7 +60,7 @@ public final class Data extends Util
                     addItem(-1, new ItemMeat(name));
                 } catch (Exception e)
                 {
-                    getLogger().print(LogType.ERROR, "Can't load the " + name + " entity classes!");
+                    getLogger().print(LogType.ERROR, e + "");
                 }
             }
         }

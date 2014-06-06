@@ -121,7 +121,6 @@ public class ModelLiopleurodon extends ModelBase
         upperjawfront.setTextureSize(512, 256);
         upperjawfront.mirror = true;
         setRotation(upperjawfront, 0.0015491F, 0F, 0F);
-        upperleftfin.mirror = true;
         upperleftfin = new ModelRenderer(this, 189, 174);
         upperleftfin.addBox(-4.5F, 0F, 0F, 10, 2, 43);
         upperleftfin.setRotationPoint(8.8F, 20F, 46F);
@@ -135,7 +134,6 @@ public class ModelLiopleurodon extends ModelBase
         upperrightfin.setTextureSize(512, 256);
         upperrightfin.mirror = true;
         setRotation(upperrightfin, 0F, -1F, -1F);
-        lowerleftfin.mirror = true;
         lowerleftfin = new ModelRenderer(this, 189, 174);
         lowerleftfin.addBox(-5F, 0F, 0F, 10, 2, 43);
         lowerleftfin.setRotationPoint(8F, 21F, 110F);

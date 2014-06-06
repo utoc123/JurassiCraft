@@ -4,7 +4,7 @@ import com.ilexiconn.jurassicraft.logger.LogType;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "jurassicraft", name = "Fossils and Archaeology mod", version = "1.1.2")
+@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.1.2")
 public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")

@@ -8,5 +8,6 @@ public class EntityLiopleurodon extends EntityLiving
     public EntityLiopleurodon(World par1World)
     {
         super(par1World);
+        setSize(20, 1);
     }
 }
