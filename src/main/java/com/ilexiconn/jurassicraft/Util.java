@@ -3,7 +3,6 @@ package com.ilexiconn.jurassicraft;
 import com.ilexiconn.jurassicraft.data.Data;
 import com.ilexiconn.jurassicraft.data.Dinos;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
-import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.logger.Logger;
 import com.ilexiconn.jurassicraft.proxy.ServerProxy;
 import cpw.mods.fml.common.IWorldGenerator;
@@ -37,7 +36,6 @@ public class Util
     private static Block[]                                  blocks             = new Block[512];
     private static Item[]                                   items              = new Item[512];
     private static ArrayList<ItemDNA>                       dnas               = new ArrayList<ItemDNA>();
-    private static ArrayList<ItemMeat>                      meat               = new ArrayList<ItemMeat>();
     private static ArrayList<Class<? extends TileEntity>>   tileEntityToRender = new ArrayList<Class<? extends TileEntity>>();
     private static ArrayList<TileEntitySpecialRenderer>     tileEntityRenderer = new ArrayList<TileEntitySpecialRenderer>();
     private static ArrayList<Class<? extends EntityLiving>> entityToRender     = new ArrayList<Class<? extends EntityLiving>>();
@@ -48,37 +46,26 @@ public class Util
     {
         if (id != -1) tabs[id] = tab;
     }
-
     public void addBlock(int id, Block block)
     {
         if (id != -1) blocks[id] = block;
         GameRegistry.registerBlock(block, block.getUnlocalizedName());
     }
-
     public void addItem(int id, Item item)
     {
         if (id != -1) items[id] = item;
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
-
-    public void addMeat(ItemMeat item)
-    {
-        meat.add(item);
-        GameRegistry.registerItem(item, item.getUnlocalizedName());
-    }
-
     public void addDNA(ItemDNA item)
     {
         dnas.add(item);
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
-
     public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
     {
         addBlock(id, block);
         if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
     }
-
     public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
     {
         tileEntityToRender.clear();

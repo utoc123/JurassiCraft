@@ -57,7 +57,7 @@ public final class Data extends Util
                     addEntity(entity, name, renderer, 0xffffff, 0xffffff);
 
                     addDNA(new ItemDNA(name));
-                    addMeat(new ItemMeat(name));
+                    addItem(-1, new ItemMeat(name));
                 }
                 catch (Exception e)
                 {
