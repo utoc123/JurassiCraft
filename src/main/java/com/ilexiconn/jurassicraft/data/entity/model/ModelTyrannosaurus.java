@@ -12,7 +12,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 
-public class ModelTRex extends ModelBase
+public class ModelTyrannosaurus extends ModelBase
 {
     //fields
     ModelRenderer Left_Calf_1;
@@ -43,7 +43,7 @@ public class ModelTRex extends ModelBase
     ModelRenderer Foot_Left;
     ModelRenderer Foot_Right;
 
-    public ModelTRex()
+    public ModelTyrannosaurus()
     {
         textureWidth = 256;
         textureHeight = 256;

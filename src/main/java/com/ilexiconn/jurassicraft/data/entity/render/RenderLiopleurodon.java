@@ -1,9 +1,9 @@
 package com.ilexiconn.jurassicraft.data.entity.render;
 
 import com.ilexiconn.jurassicraft.data.entity.EntityLiopleurodon;
+import com.ilexiconn.jurassicraft.data.entity.model.ModelLiopleurodon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -14,9 +14,9 @@ public class RenderLiopleurodon extends RenderLiving
 {
     private static final ResourceLocation Liopleurodontexture = new ResourceLocation("jurassicraft:Liopleurodon.png");
 
-    public RenderLiopleurodon(ModelBase modelbase, float f)
+    public RenderLiopleurodon()
     {
-        super(modelbase, f);
+        super(new ModelLiopleurodon(), 1f);
     }
 
     protected ResourceLocation func_110872_a(EntityLiopleurodon par1Entity)

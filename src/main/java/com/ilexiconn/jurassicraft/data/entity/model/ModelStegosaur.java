@@ -12,7 +12,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 
-public class ModelStegosaurus extends ModelBase
+public class ModelStegosaur extends ModelBase
 {
     //fields
     ModelRenderer body_1;
@@ -54,7 +54,7 @@ public class ModelStegosaurus extends ModelBase
     ModelRenderer plate_11;
     ModelRenderer upper_jaw_2;
 
-    public ModelStegosaurus()
+    public ModelStegosaur()
     {
         textureWidth = 256;
         textureHeight = 128;

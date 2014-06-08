@@ -2,15 +2,14 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.EntityStegosaur;
+import com.ilexiconn.jurassicraft.data.entity.model.ModelStegosaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-
 
 @SideOnly(Side.CLIENT)
 public class RenderStegosaur extends RenderLiving
@@ -18,9 +17,9 @@ public class RenderStegosaur extends RenderLiving
     private static final ResourceLocation Stegosaurustexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Stegosaurus1.png");
     private static final ResourceLocation Stegosaurustexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Stegosaurus2.png");
 
-    public RenderStegosaur(ModelBase modelbase, float f)
+    public RenderStegosaur()
     {
-        super(modelbase, f);
+        super(new ModelStegosaur(), 1f);
     }
 
     protected ResourceLocation func_110872_a(EntityStegosaur par1Entity)

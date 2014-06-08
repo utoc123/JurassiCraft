@@ -2,9 +2,9 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
+import com.ilexiconn.jurassicraft.data.entity.model.ModelTyrannosaurus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,9 +18,9 @@ public class RenderTyrannosaurus extends RenderLiving
     private static final ResourceLocation TRextexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/TRex1.png");
     private static final ResourceLocation TRextexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/TRex2.png");
 
-    public RenderTyrannosaurus(ModelBase modelbase, float f)
+    public RenderTyrannosaurus()
     {
-        super(modelbase, f);
+        super(new ModelTyrannosaurus(), 1f);
     }
 
     protected ResourceLocation func_110872_a(EntityTyrannosaurus par1Entity)
