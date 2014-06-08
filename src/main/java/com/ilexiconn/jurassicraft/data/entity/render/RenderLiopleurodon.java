@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
+import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.EntityLiopleurodon;
 
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderLiopleurodon extends RenderLiving
 {
-	private static final ResourceLocation Liopleurodontexture = new ResourceLocation("jurassicraft:Liopleurodon.png");
+	private static final ResourceLocation Liopleurodontexture = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Liopleurodon.png");
 	 protected ResourceLocation func_110872_a(EntityLiopleurodon par1Entity)
 	    {
 	        return Liopleurodontexture;
