@@ -64,42 +64,36 @@ public class ModelHerrerasaurus extends ModelBase
       Left_Upper_Foot.setTextureSize(256, 256);
       Left_Upper_Foot.mirror = true;
       setRotation(Left_Upper_Foot, 0F, 1.581233F, 0.9666439F);
-      Right_Upper_Foot.mirror = true;
       Right_Upper_Foot = new ModelRenderer(this, 81, 0);
       Right_Upper_Foot.addBox(0F, 0F, -1F, 7, 2, 2);
       Right_Upper_Foot.setRotationPoint(-6.1F, 17F, 9.1F);
       Right_Upper_Foot.setTextureSize(256, 256);
       Right_Upper_Foot.mirror = true;
       setRotation(Right_Upper_Foot, 0F, 1.581233F, 0.9666439F);
-      Right_Upper_Foot.mirror = false;
       Left_Calf_1 = new ModelRenderer(this, 65, 0);
       Left_Calf_1.addBox(-1.5F, 0F, 0F, 3, 10, 3);
       Left_Calf_1.setRotationPoint(6F, 12.5F, 2F);
       Left_Calf_1.setTextureSize(256, 256);
       Left_Calf_1.mirror = true;
       setRotation(Left_Calf_1, 0.7063936F, 0F, 0F);
-      Right_Calf_1.mirror = true;
       Right_Calf_1 = new ModelRenderer(this, 65, 0);
       Right_Calf_1.addBox(-1.5F, 0F, 0F, 3, 10, 3);
       Right_Calf_1.setRotationPoint(-6F, 12.5F, 2F);
       Right_Calf_1.setTextureSize(256, 256);
       Right_Calf_1.mirror = true;
       setRotation(Right_Calf_1, 0.7238469F, 0F, 0.0174533F);
-      Right_Calf_1.mirror = false;
       Left_Thigh = new ModelRenderer(this, 27, 57);
       Left_Thigh.addBox(0F, 0F, -12F, 5, 5, 12);
       Left_Thigh.setRotationPoint(3.5F, 3F, 8.9F);
       Left_Thigh.setTextureSize(256, 256);
       Left_Thigh.mirror = true;
       setRotation(Left_Thigh, 0.8231159F, 0F, 0F);
-      Right_Thigh.mirror = true;
       Right_Thigh = new ModelRenderer(this, 27, 57);
       Right_Thigh.addBox(-5F, 0F, -12F, 5, 5, 12);
       Right_Thigh.setRotationPoint(-3.5F, 3F, 8.9F);
       Right_Thigh.setTextureSize(256, 256);
       Right_Thigh.mirror = true;
       setRotation(Right_Thigh, 0.8231159F, 0F, 0F);
-      Right_Thigh.mirror = false;
       Body_1 = new ModelRenderer(this, 118, 0);
       Body_1.addBox(-4.5F, 0F, 0F, 9, 10, 21);
       Body_1.setRotationPoint(0F, 0.5F, -7F);
@@ -250,14 +244,12 @@ public class ModelHerrerasaurus extends ModelBase
       Foot_Left.setTextureSize(256, 256);
       Foot_Left.mirror = true;
       setRotation(Foot_Left, 0F, 0F, 0F);
-      Foot_Right.mirror = true;
       Foot_Right = new ModelRenderer(this, 0, 0);
       Foot_Right.addBox(-1.5F, 0F, -4F, 3, 2, 6);
       Foot_Right.setRotationPoint(-6F, 22F, 6.5F);
       Foot_Right.setTextureSize(256, 256);
       Foot_Right.mirror = true;
       setRotation(Foot_Right, 0F, 0F, 0F);
-      Foot_Right.mirror = false;
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)

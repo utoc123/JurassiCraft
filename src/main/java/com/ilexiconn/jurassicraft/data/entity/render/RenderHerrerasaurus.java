@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.EntityStegosaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityHerrerasaurus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelHerrerasaurus;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,7 +25,7 @@ public class RenderHerrerasaurus extends RenderLiving
         super(new ModelHerrerasaurus(), 1f);
     }
 
-    protected ResourceLocation func_110872_a(EntityStegosaur par1Entity)
+    protected ResourceLocation func_110872_a(EntityHerrerasaurus par1Entity)
     {
         int i = par1Entity.textureID;
         switch (i)
@@ -45,20 +45,20 @@ public class RenderHerrerasaurus extends RenderLiving
 
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.func_110872_a((EntityStegosaur) par1Entity);
+        return this.func_110872_a((EntityHerrerasaurus) par1Entity);
     }
 
-    public void func_177_a(EntityStegosaur entityHerrerasaurus, double d, double d1, double d2, float f, float f1)
+    public void func_177_a(EntityHerrerasaurus entityHerrerasaurus, double d, double d1, double d2, float f, float f1)
     {
         super.doRender(entityHerrerasaurus, d, d1, d2, f, f1);
     }
 
     public void doRender(Entity entity, double d, double d1, double d2, float f, float f1)
     {
-        func_177_a((EntityStegosaur) entity, d, d1, d2, f, f1);
+        func_177_a((EntityHerrerasaurus) entity, d, d1, d2, f, f1);
     }
 
-    protected void scaleSpider(EntityStegosaur par1EntityHerrerasaurus, float par2)
+    protected void scaleSpider(EntityHerrerasaurus par1EntityHerrerasaurus, float par2)
     {
         float f = par1EntityHerrerasaurus.spiderScaleAmount();
         GL11.glScalef(f, f, f);
@@ -67,6 +67,6 @@ public class RenderHerrerasaurus extends RenderLiving
 
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        this.scaleSpider((EntityStegosaur) par1EntityLivingBase, par2);
+        this.scaleSpider((EntityHerrerasaurus) par1EntityLivingBase, par2);
     }
 }
