@@ -18,16 +18,16 @@ import java.util.Random;
 
 public class TileAnalyzer extends TileEntity implements ISidedInventory
 {
-    private static final int[] slots_top    = new int[]{}; // input
-    private static final int[] slots_bottom = new int[]{10, 11, 12}; // output
-    private static final int[] slots_sides  = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8}; // fuel
-    public static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
-    public  int analyzerBurnTime    = 0;
-    public  int currentItemBurnTime = 100;
-    public  int analyzerCookTime    = 0;
+    private static final int[]              slots_top           = new int[]{}; // input
+    private static final int[]              slots_bottom        = new int[]{10, 11, 12}; // output
+    private static final int[]              slots_sides         = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8}; // fuel
+    public static        ArrayList<ItemDNA> dnas                = new ArrayList<ItemDNA>();
+    public               int                analyzerBurnTime    = 0;
+    public               int                currentItemBurnTime = 100;
+    public               int                analyzerCookTime    = 0;
     private ItemStack[] analyzerItemStacks;
-    private int RawIndex            = -1;
-    private int SpaceIndex          = -1;
+    private int RawIndex   = -1;
+    private int SpaceIndex = -1;
 
     public TileAnalyzer()
     {

@@ -23,8 +23,8 @@ buildscript
 apply plugin: 'forge'
 
 version = "1.1.0"
-group = "com.ilexiconn.fossilcraft"
-archivesBaseName = "fossilcraft"
+group = "com.ilexiconn.jurassicraft"
+archivesBaseName = "jurassicraft"
 
 minecraft
         {

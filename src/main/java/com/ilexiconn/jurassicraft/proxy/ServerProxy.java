@@ -16,7 +16,7 @@ public class ServerProxy
     {
 
     }
-    
+
     public void registerRenderInformation()
     {
 

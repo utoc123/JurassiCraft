@@ -15,17 +15,13 @@ import net.minecraft.world.World;
 
 public class EntityAgeableMob extends EntityAnimal implements IMob
 {
-
-	public EntityAgeableMob(World par1World) {
+    public EntityAgeableMob(World par1World)
+    {
 
         super(par1World);
         this.experienceValue = 5;
     }
 
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
     public void onLivingUpdate()
     {
         this.updateArmSwingProgress();
@@ -39,20 +35,13 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
         super.onLivingUpdate();
     }
 
-    /**
-     * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking
-     * (Animals, Spiders at day, peaceful PigZombies).
-     */
     protected Entity findPlayerToAttack()
     {
         EntityPlayer entityplayer = this.worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
         return entityplayer != null && this.canEntityBeSeen(entityplayer) ? entityplayer : null;
     }
 
-    /**
-     * Called when the entity is attacked.
-     */
-    public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
         if (this.isEntityInvulnerable())
         {
@@ -100,8 +89,8 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
 
         if (par1Entity instanceof EntityLiving)
         {
-            i += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLiving)par1Entity);
-            j += EnchantmentHelper.getKnockbackModifier(this, (EntityLiving)par1Entity);
+            i += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLiving) par1Entity);
+            j += EnchantmentHelper.getKnockbackModifier(this, (EntityLiving) par1Entity);
         }
 
         boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), i);
@@ -110,7 +99,7 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
         {
             if (j > 0)
             {
-                par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F));
+                par1Entity.addVelocity((double) (-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * (float) j * 0.5F), 0.1D, (double) (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * (float) j * 0.5F));
                 this.motionX *= 0.6D;
                 this.motionZ *= 0.6D;
             }
@@ -126,9 +115,6 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
         return flag;
     }
 
-    /**
-     * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
-     */
     protected void attackEntity(Entity par1Entity, float par2)
     {
         if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
@@ -138,18 +124,11 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
         }
     }
 
-    /**
-     * Takes a coordinate in and returns a weight to determine how likely this creature will try to path to the block.
-     * Args: x, y, z
-     */
     public float getBlockPathWeight(int par1, int par2, int par3)
     {
         return 0.5F - this.worldObj.getLightBrightness(par1, par2, par3);
     }
 
-    /**
-     * Checks to make sure the light is not too bright where the mob is spawning
-     */
     protected boolean isValidLightLevel()
     {
         int i = MathHelper.floor_double(this.posX);
@@ -176,26 +155,18 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
         }
     }
 
-    /**
-     * Checks if the entity's current position is a valid location to spawn this entity.
-     */
     public boolean getCanSpawnHere()
     {
         return this.isValidLightLevel() && super.getCanSpawnHere();
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity par1Entity)
     {
         return 2;
     }
 
-	@Override
-	public EntityAgeable createChild(EntityAgeable entityageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    public EntityAgeable createChild(EntityAgeable entityageable)
+    {
+        return null;
+    }
 }
