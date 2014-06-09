@@ -1,7 +1,5 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -14,7 +12,6 @@ import net.minecraft.world.World;
 public class EntityHerrerasaur extends EntityAgeableMob
 {
     public  int   textureID;
-    private int   conversionTime = 0;
 
     public EntityHerrerasaur(World par1World)
     {
@@ -39,13 +36,11 @@ public class EntityHerrerasaur extends EntityAgeableMob
         textureID = rand.nextInt(3) + 1;
     }
 
-    @SideOnly(Side.CLIENT)
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
-        //this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(5.0D);
     }
 
 
@@ -104,9 +99,4 @@ public class EntityHerrerasaur extends EntityAgeableMob
     {
         return this.spawnBabyAnimal(par1EntityAgeable);
     }
-
-	public float spiderScaleAmount() {
-		// TODO Auto-generated method stub
-		return 1.0F;
-	}
 }

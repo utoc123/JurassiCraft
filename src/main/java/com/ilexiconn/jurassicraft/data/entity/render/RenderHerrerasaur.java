@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderHerrerasaur extends RenderLiving
 {
-    private static final ResourceLocation Herrerasaurustexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Herrerasaurus1.png");
-    private static final ResourceLocation Herrerasaurustexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Herrerasaurus2.png");
+    private static final ResourceLocation Herrerasaurustexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Herrerasaur1.png");
+    private static final ResourceLocation Herrerasaurustexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Herrerasaur2.png");
 
     public RenderHerrerasaur()
     {
@@ -60,10 +60,8 @@ public class RenderHerrerasaur extends RenderLiving
 
     protected void scaleSpider(EntityHerrerasaur par1EntityHerrerasaurus, float par2)
     {
-        float f = par1EntityHerrerasaurus.spiderScaleAmount();
-        GL11.glScalef(f, f, f);
+        GL11.glScalef(1f, 1f, 1f);
     }
-
 
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
