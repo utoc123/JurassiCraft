@@ -11,12 +11,12 @@ import net.minecraft.init.Items;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityHerrerasaurus extends EntityAgeableMob
+public class EntityHerrerasaur extends EntityAgeableMob
 {
     public  int   textureID;
     private int   conversionTime = 0;
 
-    public EntityHerrerasaurus(World par1World)
+    public EntityHerrerasaur(World par1World)
     {
         super(par1World);
         float moveSpeed = 0.7F;
@@ -95,9 +95,9 @@ public class EntityHerrerasaurus extends EntityAgeableMob
 
     }
 
-    public EntityHerrerasaurus spawnBabyAnimal(EntityAgeable par1EntityAgeable)
+    public EntityHerrerasaur spawnBabyAnimal(EntityAgeable par1EntityAgeable)
     {
-        return new EntityHerrerasaurus(this.worldObj);
+        return new EntityHerrerasaur(this.worldObj);
     }
 
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)

@@ -59,10 +59,10 @@ public final class Data extends Util
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
 
-                    addEntity(null, name + "_egg", null, 0, 0);
+                    getLogger().print(LogType.INFO, "Added the " + name + "!");
                 } catch (Exception e)
                 {
-                    getLogger().print(LogType.ERROR, e + "");
+                    getLogger().print(LogType.ERROR, "Can't add the " + name + ", " + e);
                 }
             }
         }

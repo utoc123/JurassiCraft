@@ -27,7 +27,8 @@ public class Dinos
                     "Coelocanth",
                     "Tyrannosaurus",
                     "Segisaurus",
-                    "Cereadactyl"
+                    "Cereadactyl",
+                    "Herrerasaur"
             };
 
 }

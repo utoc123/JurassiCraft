@@ -17,7 +17,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelHerrerasaurus extends ModelBase
+public class ModelHerrerasaur extends ModelBase
 {
   //fields
     ModelRenderer Left_Upper_Foot;
@@ -53,7 +53,7 @@ public class ModelHerrerasaurus extends ModelBase
     ModelRenderer Foot_Left;
     ModelRenderer Foot_Right;
   
-  public ModelHerrerasaurus()
+  public ModelHerrerasaur()
   {
     textureWidth = 256;
     textureHeight = 256;
