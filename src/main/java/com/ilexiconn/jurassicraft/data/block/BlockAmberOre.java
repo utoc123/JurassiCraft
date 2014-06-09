@@ -1,7 +1,6 @@
 package com.ilexiconn.jurassicraft.data.block;
 
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.Data;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +22,7 @@ public class BlockAmberOre extends Block
         setResistance(5.0F);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 1);
-        setCreativeTab(Data.getCreativeTab(0));
+        setCreativeTab(Util.getCreativeTab(0));
     }
 
     public Item getItemDropped(int value, Random random, int thing)
