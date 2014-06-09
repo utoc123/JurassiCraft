@@ -54,10 +54,15 @@ public final class Data extends Util
                     Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
                     RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
-                    addEntity(entity, name, renderer, 0xffffff, 0xffffff);
+                    addEntity(entity, name, renderer);
 
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
+
+                    Class<? extends EntityLiving> entityEgg = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.egg.Entity" + name + "Egg");
+                    RenderLiving rendererEgg = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.egg.render.Render" + name + "Egg").newInstance();
+
+                    addEntity(entityEgg, name + "_egg", rendererEgg, 0, 0);
 
                     getLogger().print(LogType.INFO, "Added the " + name + "!");
                 } catch (Exception e)

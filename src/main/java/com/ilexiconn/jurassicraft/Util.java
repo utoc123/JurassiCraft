@@ -42,6 +42,84 @@ public class Util
     private static ArrayList<RenderLiving>                  entityRenderer     = new ArrayList<RenderLiving>();
 
     /**
+     * Adders
+     */
+    public void addCreativeTab(int id, CreativeTabs tab)
+    {
+        if (id != -1) tabs[id] = tab;
+    }
+
+    public void addBlock(int id, Block block)
+    {
+        if (id != -1) blocks[id] = block;
+        GameRegistry.registerBlock(block, block.getUnlocalizedName());
+    }
+
+    public void addItem(int id, Item item)
+    {
+        if (id != -1) items[id] = item;
+        GameRegistry.registerItem(item, item.getUnlocalizedName());
+    }
+
+    public void addDNA(ItemDNA item)
+    {
+        dnas.add(item);
+        GameRegistry.registerItem(item, item.getUnlocalizedName());
+    }
+
+    public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
+    {
+        addBlock(id, block);
+        if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
+    }
+
+    public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
+    {
+        tileEntityToRender.clear();
+        tileEntityToRender.add(tileEntity);
+        tileEntityRenderer.clear();
+        tileEntityRenderer.add(renderer);
+
+        proxy.renderTileEntity();
+    }
+
+    public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer, int color1, int color2)
+    {
+        int entityId = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
+        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+        entityToRender.clear();
+        entityToRender.add(entity);
+        entityRenderer.clear();
+        entityRenderer.add(renderer);
+
+        proxy.renderEntity();
+    }
+
+    public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer)
+    {
+        int entityId = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entity, name, entityId);
+        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+        entityToRender.clear();
+        entityToRender.add(entity);
+        entityRenderer.clear();
+        entityRenderer.add(renderer);
+
+        proxy.renderEntity();
+    }
+
+    public void addGuiHandler(IGuiHandler handler)
+    {
+        NetworkRegistry.INSTANCE.registerGuiHandler(JurassiCraft.instance, handler);
+    }
+
+    public void addWorldGenerator(IWorldGenerator generator, int weight)
+    {
+        GameRegistry.registerWorldGenerator(generator, weight);
+    }
+
+    /**
      * Getters
      */
     public static CreativeTabs getCreativeTab(int id)
@@ -99,70 +177,5 @@ public class Util
     public static String[] getDinos()
     {
         return dinos.dinos;
-    }
-
-    /**
-     * Adders
-     */
-    public void addCreativeTab(int id, CreativeTabs tab)
-    {
-        if (id != -1) tabs[id] = tab;
-    }
-
-    public void addBlock(int id, Block block)
-    {
-        if (id != -1) blocks[id] = block;
-        GameRegistry.registerBlock(block, block.getUnlocalizedName());
-    }
-
-    public void addItem(int id, Item item)
-    {
-        if (id != -1) items[id] = item;
-        GameRegistry.registerItem(item, item.getUnlocalizedName());
-    }
-
-    public void addDNA(ItemDNA item)
-    {
-        dnas.add(item);
-        GameRegistry.registerItem(item, item.getUnlocalizedName());
-    }
-
-    public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
-    {
-        addBlock(id, block);
-        if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
-    }
-
-    public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
-    {
-        tileEntityToRender.clear();
-        tileEntityToRender.add(tileEntity);
-        tileEntityRenderer.clear();
-        tileEntityRenderer.add(renderer);
-
-        proxy.renderTileEntity();
-    }
-
-    public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer, int color1, int color2)
-    {
-        int entityId = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
-        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
-        entityToRender.clear();
-        entityToRender.add(entity);
-        entityRenderer.clear();
-        entityRenderer.add(renderer);
-
-        proxy.renderEntity();
-    }
-
-    public void addGuiHandler(IGuiHandler handler)
-    {
-        NetworkRegistry.INSTANCE.registerGuiHandler(JurassiCraft.instance, handler);
-    }
-
-    public void addWorldGenerator(IWorldGenerator generator, int weight)
-    {
-        GameRegistry.registerWorldGenerator(generator, weight);
     }
 }

@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderLiopleurodon extends RenderLiving
 {
-    public ResourceLocation liopleurodonTexture = new ResourceLocation(Util.getModId() + "liopleurodon.png");
+    public ResourceLocation liopleurodonTexture = new ResourceLocation(Util.getModId() + "textures/entity/liopleurodon.png");
 
     public RenderLiopleurodon()
     {

@@ -17,7 +17,6 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
 {
     public EntityAgeableMob(World par1World)
     {
-
         super(par1World);
         this.experienceValue = 5;
     }
