@@ -104,4 +104,9 @@ public class EntityHerrerasaurus extends EntityAgeableMob
     {
         return this.spawnBabyAnimal(par1EntityAgeable);
     }
+
+	public float spiderScaleAmount() {
+		// TODO Auto-generated method stub
+		return 1.0F;
+	}
 }
