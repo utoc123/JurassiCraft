@@ -11,3 +11,6 @@ build/
 minecraft/
 out/
 /bin
+/config/
+logs/
+saves/
