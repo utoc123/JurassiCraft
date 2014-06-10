@@ -10,10 +10,10 @@ public class RenderHerrerasaurEgg extends RenderLiving
 {
     public RenderHerrerasaurEgg()
     {
-        super(new ModelEgg(), 0.7f);
+        super(new ModelEgg(), 0.4f);
     }
 
-    protected ResourceLocation getEntityTexture(Entity var1)
+    public ResourceLocation getEntityTexture(Entity var1)
     {
         return new ResourceLocation(Util.getModId() + "textures/eggs/herrerasaurEgg.png");
     }
