@@ -3,8 +3,8 @@
 *.ipr
 *.iws
 *.txt
-.classpath/
-.project/
+.project
+.classpath
 .settings/
 .gradle/
 build/
@@ -14,5 +14,3 @@ bin
 config/
 logs/
 saves/
-.project
-.classpath
