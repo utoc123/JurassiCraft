@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class ModelLiopleurodon extends ModelBase
@@ -219,34 +220,77 @@ public class ModelLiopleurodon extends ModelBase
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
         setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-        midbody.render(f5);
-        neck.render(f5);
-        tail.render(f5);
-        tailmiddle.render(f5);
-        lowerjawback.render(f5);
-        tailtip.render(f5);
-        upperbody.render(f5);
-        lowerbody.render(f5);
-        lowerjawfront.render(f5);
-        lowerjawmid.render(f5);
-        upperjawback.render(f5);
-        upperjawmid.render(f5);
-        upperjawfront.render(f5);
-        upperleftfin.render(f5);
-        upperrightfin.render(f5);
-        lowerleftfin.render(f5);
-        lowerrightfin.render(f5);
-        teeth_top.render(f5);
-        lowerbodytop.render(f5);
-        midbodytop.render(f5);
-        upperbodytop.render(f5);
-        upperbody1.render(f5);
-        midbodybottom.render(f5);
-        lowerbodybottom.render(f5);
-        neckbottom.render(f5);
-        upperjawmid2.render(f5);
-        lowerjawmid2.render(f5);
-        teeth_bottom.render(f5);
+
+        if (isChild)
+        {
+            float var8 = 2.0F;
+            GL11.glPushMatrix();
+            GL11.glTranslatef(0.0F, 5.0F * f5, 2.0F * f5);
+            GL11.glPopMatrix();
+            GL11.glPushMatrix();
+            GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
+            GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
+            midbody.render(f5);
+            neck.render(f5);
+            tail.render(f5);
+            tailmiddle.render(f5);
+            lowerjawback.render(f5);
+            tailtip.render(f5);
+            upperbody.render(f5);
+            lowerbody.render(f5);
+            lowerjawfront.render(f5);
+            lowerjawmid.render(f5);
+            upperjawback.render(f5);
+            upperjawmid.render(f5);
+            upperjawfront.render(f5);
+            upperleftfin.render(f5);
+            upperrightfin.render(f5);
+            lowerleftfin.render(f5);
+            lowerrightfin.render(f5);
+            teeth_top.render(f5);
+            lowerbodytop.render(f5);
+            midbodytop.render(f5);
+            upperbodytop.render(f5);
+            upperbody1.render(f5);
+            midbodybottom.render(f5);
+            lowerbodybottom.render(f5);
+            neckbottom.render(f5);
+            upperjawmid2.render(f5);
+            lowerjawmid2.render(f5);
+            teeth_bottom.render(f5);
+            GL11.glPopMatrix();
+        }
+        else
+        {
+            midbody.render(f5);
+            neck.render(f5);
+            tail.render(f5);
+            tailmiddle.render(f5);
+            lowerjawback.render(f5);
+            tailtip.render(f5);
+            upperbody.render(f5);
+            lowerbody.render(f5);
+            lowerjawfront.render(f5);
+            lowerjawmid.render(f5);
+            upperjawback.render(f5);
+            upperjawmid.render(f5);
+            upperjawfront.render(f5);
+            upperleftfin.render(f5);
+            upperrightfin.render(f5);
+            lowerleftfin.render(f5);
+            lowerrightfin.render(f5);
+            teeth_top.render(f5);
+            lowerbodytop.render(f5);
+            midbodytop.render(f5);
+            upperbodytop.render(f5);
+            upperbody1.render(f5);
+            midbodybottom.render(f5);
+            lowerbodybottom.render(f5);
+            neckbottom.render(f5);
+            upperjawmid2.render(f5);
+            lowerjawmid2.render(f5);
+            teeth_bottom.render(f5);
+        }
     }
 
     public void setRotation(ModelRenderer model, float x, float y, float z)
