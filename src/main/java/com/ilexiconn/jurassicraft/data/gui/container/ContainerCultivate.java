@@ -1,7 +1,6 @@
 package com.ilexiconn.jurassicraft.data.gui.container;
 
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,14 +12,14 @@ import net.minecraft.tileentity.TileEntityFurnace;
 
 public class ContainerCultivate extends Container
 {
-    public TileCultivate   tileCultivate;
+    public TileCultivate tileCultivate;
     public InventoryPlayer inventoryPlayer;
-    
+
     public ContainerCultivate(InventoryPlayer inventory, TileCultivate tileEntity)
     {
         tileCultivate = tileEntity;
         inventoryPlayer = inventory;
-        
+
         for (int i = 0; i < 3; ++i)
         {
             for (int j = 0; j < 9; ++j)
@@ -28,38 +27,38 @@ public class ContainerCultivate extends Container
                 addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
-        
+
         for (int i = 0; i < 9; ++i)
         {
             addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
         }
-        
+
         addSlotToContainer(new Slot(tileEntity, 0, 45, 38));
         addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
     }
-    
+
     public boolean canInteractWith(EntityPlayer var1)
     {
         return true;
     }
-    
+
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
     {
         ItemStack itemstack = null;
         Slot slot = (Slot) this.inventorySlots.get(par2);
-        
+
         if (slot != null && slot.getHasStack())
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-            
+
             if (par2 == 2)
             {
                 if (!this.mergeItemStack(itemstack1, 3, 39, true))
                 {
                     return null;
                 }
-                
+
                 slot.onSlotChange(itemstack1, itemstack);
             }
             else if (par2 != 1 && par2 != 0)
@@ -94,7 +93,7 @@ public class ContainerCultivate extends Container
             {
                 return null;
             }
-            
+
             if (itemstack1.stackSize == 0)
             {
                 slot.putStack((ItemStack) null);
@@ -103,15 +102,15 @@ public class ContainerCultivate extends Container
             {
                 slot.onSlotChanged();
             }
-            
+
             if (itemstack1.stackSize == itemstack.stackSize)
             {
                 return null;
             }
-            
+
             slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
         }
-        
+
         return itemstack;
     }
 }

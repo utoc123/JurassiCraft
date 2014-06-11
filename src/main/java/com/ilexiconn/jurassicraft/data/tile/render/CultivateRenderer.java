@@ -10,9 +10,9 @@ import org.lwjgl.opengl.GL11;
 
 public class CultivateRenderer extends TileEntitySpecialRenderer
 {
-    private ModelCultivate   model  = new ModelCultivate();
+    private ModelCultivate model = new ModelCultivate();
     private ResourceLocation active = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_active.png");
-    private ResourceLocation idle   = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_idle.png");
+    private ResourceLocation idle = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_idle.png");
 
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float h)
     {

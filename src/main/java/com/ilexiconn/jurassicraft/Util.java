@@ -28,18 +28,81 @@ public class Util
      * Stuff
      */
     private static final Logger logger = new Logger();
-    private static final Data   data   = new Data();
-    private static final Dinos  dinos  = new Dinos();
+    private static final Data data = new Data();
+    private static final Dinos dinos = new Dinos();
     @SidedProxy(clientSide = "com.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "com.ilexiconn.jurassicraft.proxy.ServerProxy")
     public static ServerProxy proxy;
-    private static CreativeTabs[]                           tabs               = new CreativeTabs[512];
-    private static Block[]                                  blocks             = new Block[512];
-    private static Item[]                                   items              = new Item[512];
-    private static ArrayList<ItemDNA>                       dnas               = new ArrayList<ItemDNA>();
-    private static ArrayList<Class<? extends TileEntity>>   tileEntityToRender = new ArrayList<Class<? extends TileEntity>>();
-    private static ArrayList<TileEntitySpecialRenderer>     tileEntityRenderer = new ArrayList<TileEntitySpecialRenderer>();
-    private static ArrayList<Class<? extends EntityLiving>> entityToRender     = new ArrayList<Class<? extends EntityLiving>>();
-    private static ArrayList<RenderLiving>                  entityRenderer     = new ArrayList<RenderLiving>();
+    private static CreativeTabs[] tabs = new CreativeTabs[512];
+    private static Block[] blocks = new Block[512];
+    private static Item[] items = new Item[512];
+    private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
+    private static ArrayList<Class<? extends TileEntity>> tileEntityToRender = new ArrayList<Class<? extends TileEntity>>();
+    private static ArrayList<TileEntitySpecialRenderer> tileEntityRenderer = new ArrayList<TileEntitySpecialRenderer>();
+    private static ArrayList<Class<? extends EntityLiving>> entityToRender = new ArrayList<Class<? extends EntityLiving>>();
+    private static ArrayList<RenderLiving> entityRenderer = new ArrayList<RenderLiving>();
+
+    /**
+     * Getters
+     */
+    public static CreativeTabs getCreativeTab(int id)
+    {
+        return tabs[id];
+    }
+
+    public static Block getBlock(int id)
+    {
+        return blocks[id];
+    }
+
+    public static Item getItem(int id)
+    {
+        return items[id];
+    }
+
+    public static ArrayList<ItemDNA> getDNAArray()
+    {
+        return dnas;
+    }
+
+    public static Class<? extends TileEntity> getTileEntityToRender()
+    {
+        return tileEntityToRender.get(0);
+    }
+
+    public static TileEntitySpecialRenderer getTileEntityRenderer()
+    {
+        return tileEntityRenderer.get(0);
+    }
+
+    public static Class<? extends EntityLiving> getEntityToRender()
+    {
+        return entityToRender.get(0);
+    }
+
+    public static RenderLiving getEntityRenderer()
+    {
+        return entityRenderer.get(0);
+    }
+
+    public static String getModId()
+    {
+        return "jurassicraft:";
+    }
+
+    public static Logger getLogger()
+    {
+        return logger;
+    }
+
+    public static Data getData()
+    {
+        return data;
+    }
+
+    public static String[] getDinos()
+    {
+        return dinos.dinos;
+    }
 
     /**
      * Adders
@@ -117,65 +180,5 @@ public class Util
     public void addWorldGenerator(IWorldGenerator generator, int weight)
     {
         GameRegistry.registerWorldGenerator(generator, weight);
-    }
-
-    /**
-     * Getters
-     */
-    public static CreativeTabs getCreativeTab(int id)
-    {
-        return tabs[id];
-    }
-
-    public static Block getBlock(int id)
-    {
-        return blocks[id];
-    }
-
-    public static Item getItem(int id)
-    {
-        return items[id];
-    }
-
-    public static ArrayList<ItemDNA> getDNAArray() { return dnas; }
-
-    public static Class<? extends TileEntity> getTileEntityToRender()
-    {
-        return tileEntityToRender.get(0);
-    }
-
-    public static TileEntitySpecialRenderer getTileEntityRenderer()
-    {
-        return tileEntityRenderer.get(0);
-    }
-
-    public static Class<? extends EntityLiving> getEntityToRender()
-    {
-        return entityToRender.get(0);
-    }
-
-    public static RenderLiving getEntityRenderer()
-    {
-        return entityRenderer.get(0);
-    }
-
-    public static String getModId()
-    {
-        return "jurassicraft:";
-    }
-
-    public static Logger getLogger()
-    {
-        return logger;
-    }
-
-    public static Data getData()
-    {
-        return data;
-    }
-
-    public static String[] getDinos()
-    {
-        return dinos.dinos;
     }
 }

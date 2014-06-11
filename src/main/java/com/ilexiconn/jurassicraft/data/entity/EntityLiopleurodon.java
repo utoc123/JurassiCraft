@@ -9,14 +9,14 @@ import net.minecraft.world.World;
 
 public class EntityLiopleurodon extends EntityWaterMob
 {
-    public  float LiopleurodonPitch;
-    public  float prevLiopleurodonPitch;
-    public  float LiopleurodonYaw;
-    public  float prevLiopleurodonYaw;
-    public  float LiopleurodonRotation;
-    public  float prevLiopleurodonRotation;
-    public  float tentacleAngle;
-    public  float lastTentacleAngle;
+    public float LiopleurodonPitch;
+    public float prevLiopleurodonPitch;
+    public float LiopleurodonYaw;
+    public float prevLiopleurodonYaw;
+    public float LiopleurodonRotation;
+    public float prevLiopleurodonRotation;
+    public float tentacleAngle;
+    public float lastTentacleAngle;
     private float randomMotionSpeed;
     private float rotationVelocity;
     private float field_70871_bB;

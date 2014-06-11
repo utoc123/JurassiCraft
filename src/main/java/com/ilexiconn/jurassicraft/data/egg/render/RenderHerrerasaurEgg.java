@@ -8,15 +8,13 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderHerrerasaurEgg extends RenderLiving
 {
-    public ResourceLocation eggTexture = new ResourceLocation(Util.getModId() + "textures/eggs/herrerasaurEgg.png");
-
     public RenderHerrerasaurEgg()
     {
-        super(new ModelEgg(), 0.2f);
+        super(new ModelEgg(), 0.4f);
     }
 
-    public ResourceLocation getEntityTexture(Entity entity)
+    public ResourceLocation getEntityTexture(Entity var1)
     {
-        return eggTexture;
+        return new ResourceLocation(Util.getModId() + "textures/eggs/herrerasaurEgg.png");
     }
 }
