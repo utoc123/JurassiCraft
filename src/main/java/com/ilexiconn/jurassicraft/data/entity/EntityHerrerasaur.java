@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class EntityHerrerasaur extends EntityAgeableMob
 {
-    public  int   textureID;
+    public int textureID;
 
     public EntityHerrerasaur(World par1World)
     {

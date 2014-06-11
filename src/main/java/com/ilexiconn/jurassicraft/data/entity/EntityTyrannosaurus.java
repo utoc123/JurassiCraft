@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 
 public class EntityTyrannosaurus extends EntityAgeableMob
 {
-    public  int   textureID;
-    private int   conversionTime = 0;
+    public int textureID;
+    private int conversionTime = 0;
 
     public EntityTyrannosaurus(World par1World)
     {

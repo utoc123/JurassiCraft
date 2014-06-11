@@ -2,7 +2,6 @@ package com.ilexiconn.jurassicraft.data;
 
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.block.*;
-import com.ilexiconn.jurassicraft.data.egg.item.ItemEgg;
 import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import com.ilexiconn.jurassicraft.data.item.ItemAmber;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
@@ -55,7 +54,7 @@ public final class Data extends Util
                     Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
                     RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
-                    addEntity(entity, name, renderer);
+                    addEntity(entity, name, renderer, 0, 0);
 
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
@@ -65,9 +64,7 @@ public final class Data extends Util
                         Class<? extends EntityLiving> entityEgg = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.egg.Entity" + name + "Egg");
                         RenderLiving rendererEgg = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.egg.render.Render" + name + "Egg").newInstance();
 
-                        addEntity(entityEgg, name + "_egg", rendererEgg);
-
-                        addItem(-1, new ItemEgg(name));
+                        //addEntity(entityEgg, name + "_egg", rendererEgg);
 
                         getLogger().print(LogType.INFO, "Added the " + name + "!");
                     }

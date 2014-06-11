@@ -28,12 +28,12 @@ archivesBaseName = "jurassicraft"
 
 minecraft
         {
-            version = "1.7.2-10.12.1.1112"
+            version = "1.7.2-10.12.1.1117"
             if (file('../run').exists()) {
                 assetDir = "../run/assets"
-             } else {
+            } else {
                 assetDir = "minecraft/assets"
-             }
+            }
         }
 
 dependencies
