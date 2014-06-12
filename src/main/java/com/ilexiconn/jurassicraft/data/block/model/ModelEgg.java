@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.data.egg.model;
+package com.ilexiconn.jurassicraft.data.block.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

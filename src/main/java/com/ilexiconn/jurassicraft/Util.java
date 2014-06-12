@@ -136,6 +136,11 @@ public class Util
         if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
     }
 
+    public void addTileEntity(Class<? extends TileEntity> tile)
+    {
+        GameRegistry.registerTileEntity(tile, tile.getSimpleName());
+    }
+
     public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
     {
         tileEntityToRender.clear();

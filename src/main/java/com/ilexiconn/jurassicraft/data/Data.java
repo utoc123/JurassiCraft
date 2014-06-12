@@ -9,11 +9,15 @@ import com.ilexiconn.jurassicraft.data.item.ItemFossil;
 import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
+import com.ilexiconn.jurassicraft.data.tile.TileEgg;
 import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
+import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
@@ -47,6 +51,7 @@ public final class Data extends Util
             addItem(2, new ItemFossil());
         }
         { /** Entities */
+            addTileEntity(TileEgg.class);
             for (String name : getDinos())
             {
                 try
@@ -61,10 +66,9 @@ public final class Data extends Util
 
                     try
                     {
-                        Class<? extends EntityLiving> entityEgg = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.egg.Entity" + name + "Egg");
-                        RenderLiving rendererEgg = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.egg.render.Render" + name + "Egg").newInstance();
+                        BlockContainer block = (BlockContainer) Class.forName("com.ilexiconn.jurassicraft.data.egg.Block" + name + "Egg").newInstance();
 
-                        //addEntity(entityEgg, name + "_egg", rendererEgg);
+                        addBlockWithTileEntity(-1, block, TileEgg.class, false);
 
                         getLogger().print(LogType.INFO, "Added the " + name + "!");
                     }
@@ -85,6 +89,7 @@ public final class Data extends Util
         }
         { /** Renderers */
             addTileEntityRenderer(TileCultivate.class, new CultivateRenderer());
+            addTileEntityRenderer(TileEgg.class, new EggRenderer());
             proxy.renderItems();
         }
         { /** Other stuff */
