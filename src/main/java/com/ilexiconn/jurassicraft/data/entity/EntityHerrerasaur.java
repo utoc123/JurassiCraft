@@ -99,4 +99,8 @@ public class EntityHerrerasaur extends EntityAgeableMob
     {
         return this.spawnBabyAnimal(par1EntityAgeable);
     }
+
+	public float spiderScaleAmount() {
+		return 1.4F;
+	}
 }

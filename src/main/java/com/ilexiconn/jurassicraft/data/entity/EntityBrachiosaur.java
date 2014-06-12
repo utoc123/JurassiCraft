@@ -3,18 +3,25 @@ package com.ilexiconn.jurassicraft.data.entity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class EntityStegosaur extends EntityAnimal
+public class EntityBrachiosaur extends EntityAnimal
 {
     public int textureID;
 
-    public EntityStegosaur(World par1World)
+    public EntityBrachiosaur(World par1World)
     {
         super(par1World);
         this.setSize(4F, 4F);
@@ -47,22 +54,22 @@ public class EntityStegosaur extends EntityAnimal
     	int I = rand.nextInt(1)+1;
     	if(I == 1)
     	{
-    		return "jurassicraft:stego1";
+    		return "jurassicraft:brac1";
     	}
     	else
     	{
-            return "jurassicraft:stego2";
+            return "jurassicraft:brac3";
     	}
     }
 
     protected String getHurtSound()
     {
-		return "jurassicraft:stego1";
+		return "jurassicraft:brac2";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:stego2";
+        return "jurassicraft:brac4";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
@@ -105,13 +112,13 @@ public class EntityStegosaur extends EntityAnimal
         }
     }
 
-    public EntityStegosaur createChild(EntityAgeable par1EntityAgeable)
+    public EntityBrachiosaur createChild(EntityAgeable par1EntityAgeable)
     {
-        return new EntityStegosaur(this.worldObj);
+        return new EntityBrachiosaur(this.worldObj);
     }
 
     public float spiderScaleAmount()
     {
-        return 2.1F;
+        return 1.9F;
     }
 }

@@ -4,6 +4,13 @@
        "trex3": {"category": "master","sounds": [{"name": "trex3","stream": false}]},
        "ankylo1": {"category": "master","sounds": [{"name": "ankylo1","stream": false}]},
        "ankylo2": {"category": "master","sounds": [{"name": "ankylo2","stream": false}]},
+       "tric1": {"category": "master","sounds": [{"name": "tric1","stream": false}]},
+       "tric2": {"category": "master","sounds": [{"name": "tric2","stream": false}]},
+       "tric3": {"category": "master","sounds": [{"name": "tric3","stream": false}]},
+	   "brac1": {"category": "master","sounds": [{"name": "brac1","stream": false}]},
+       "brac2": {"category": "master","sounds": [{"name": "brac2","stream": false}]},
+       "brac3": {"category": "master","sounds": [{"name": "brac3","stream": false}]},
+       "brac4": {"category": "master","sounds": [{"name": "brac4","stream": false}]},
        "stego1": {"category": "master","sounds": [{"name": "stego1","stream": false}]},
        "stego2": {"category": "master","sounds": [{"name": "stego2","stream": false}]}
 }

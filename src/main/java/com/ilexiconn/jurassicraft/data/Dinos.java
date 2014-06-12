@@ -28,7 +28,8 @@ public class Dinos
                     "Tyrannosaurus",
                     "Segisaurus",
                     "Cereadactyl",
-                    "Herrerasaur"
+                    "Herrerasaur",
+                    "Brachiosaur"
             };
 
 }

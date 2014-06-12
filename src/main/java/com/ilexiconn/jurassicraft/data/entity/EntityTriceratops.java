@@ -34,7 +34,7 @@ public class EntityTriceratops extends EntityAnimal
     public EntityTriceratops(World par1World)
     {
         super(par1World);
-        this.setSize(0.9F, 0.9F);
+        this.setSize(3.5F, 3.5F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
@@ -99,7 +99,7 @@ public class EntityTriceratops extends EntityAnimal
      */
     protected String getLivingSound()
     {
-        return "mob.Triceratops.say";
+        return "jurassicraft:tric1";
     }
 
     /**
@@ -107,7 +107,7 @@ public class EntityTriceratops extends EntityAnimal
      */
     protected String getHurtSound()
     {
-        return "mob.Triceratops.say";
+        return "jurassicraft:tric2";
     }
 
     /**
@@ -115,7 +115,7 @@ public class EntityTriceratops extends EntityAnimal
      */
     protected String getDeathSound()
     {
-        return "mob.Triceratops.death";
+        return "jurassicraft:tric3";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
@@ -193,6 +193,6 @@ public class EntityTriceratops extends EntityAnimal
 
 	public float spiderScaleAmount() 
 	{
-		return 1.5F;
+		return 2.0F;
 	}
 }

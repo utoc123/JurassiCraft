@@ -17,7 +17,7 @@ public class EntityAnkylosaur extends EntityAnimal
     public EntityAnkylosaur(World par1World)
     {
         super(par1World);
-        setSize(4F, 4F);
+        setSize(2F, 2F);
         getNavigator().setAvoidsWater(true);
         tasks.addTask(0, new EntityAISwimming(this));
         tasks.addTask(1, new EntityAIPanic(this, 2.0D));
@@ -109,4 +109,8 @@ public class EntityAnkylosaur extends EntityAnimal
     {
         return new EntityAnkylosaur(worldObj);
     }
+
+	public float spiderScaleAmount() {
+		return 1.5F;
+	}
 }
