@@ -14,8 +14,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderAnkylosaur extends RenderLiving
 {
-    public ResourceLocation AnkylosaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Ankylosaur1.png");
-    public ResourceLocation AnkylosaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Ankylosaur2.png");
+    public ResourceLocation AnkylosaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/ankylosaur1.png");
+    public ResourceLocation AnkylosaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/ankylosaur2.png");
 
     public RenderAnkylosaur()
     {
