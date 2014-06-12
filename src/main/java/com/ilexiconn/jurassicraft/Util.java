@@ -2,6 +2,7 @@ package com.ilexiconn.jurassicraft;
 
 import com.ilexiconn.jurassicraft.data.Data;
 import com.ilexiconn.jurassicraft.data.Dinos;
+import com.ilexiconn.jurassicraft.data.block.BlockEgg;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
 import com.ilexiconn.jurassicraft.logger.Logger;
 import com.ilexiconn.jurassicraft.proxy.ServerProxy;
@@ -36,6 +37,7 @@ public class Util
     private static Block[] blocks = new Block[512];
     private static Item[] items = new Item[512];
     private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
+    private static ArrayList<BlockEgg> eggs = new ArrayList<BlockEgg>();
     private static ArrayList<Class<? extends TileEntity>> tileEntityToRender = new ArrayList<Class<? extends TileEntity>>();
     private static ArrayList<TileEntitySpecialRenderer> tileEntityRenderer = new ArrayList<TileEntitySpecialRenderer>();
     private static ArrayList<Class<? extends EntityLiving>> entityToRender = new ArrayList<Class<? extends EntityLiving>>();
@@ -62,6 +64,11 @@ public class Util
     public static ArrayList<ItemDNA> getDNAArray()
     {
         return dnas;
+    }
+
+    public static ArrayList<BlockEgg> getEggArray()
+    {
+        return eggs;
     }
 
     public static Class<? extends TileEntity> getTileEntityToRender()
@@ -185,5 +192,11 @@ public class Util
     public void addWorldGenerator(IWorldGenerator generator, int weight)
     {
         GameRegistry.registerWorldGenerator(generator, weight);
+    }
+
+    public void addEgg(BlockEgg egg)
+    {
+        eggs.add(egg);
+        addBlock(-1, egg);
     }
 }

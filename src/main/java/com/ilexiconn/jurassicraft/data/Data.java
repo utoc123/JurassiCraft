@@ -23,6 +23,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public final class Data extends Util
 {
@@ -56,26 +58,23 @@ public final class Data extends Util
             {
                 try
                 {
-                    Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
-                    RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
+                    final Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+                    final RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
                     addEntity(entity, name, renderer, 0, 0);
 
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
 
-                    try
+                    addEgg(new BlockEgg(name)
                     {
-                        BlockContainer block = (BlockContainer) Class.forName("com.ilexiconn.jurassicraft.data.egg.Block" + name + "Egg").newInstance();
+                        public TileEntity createNewTileEntity(World var1, int var2)
+                        {
+                            return new TileEgg(entity);
+                        }
+                    });
 
-                        addBlockWithTileEntity(-1, block, TileEgg.class, false);
-
-                        getLogger().print(LogType.INFO, "Added the " + name + "!");
-                    }
-                    catch (Exception e)
-                    {
-                        getLogger().print(LogType.ERROR, "Can't add the " + name + " egg, " + e);
-                    }
+                    getLogger().print(LogType.INFO, "Added the " + name + "!");
                 }
                 catch (Exception e)
                 {
