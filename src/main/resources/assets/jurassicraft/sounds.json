@@ -1,0 +1,4 @@
+{
+       "trexdie": {"category": "master","sounds": [{"name": "trexdie","stream": false}]},
+       "trexlive": {"category": "master","sounds": [{"name": "trexlive","stream": false}]}
+}

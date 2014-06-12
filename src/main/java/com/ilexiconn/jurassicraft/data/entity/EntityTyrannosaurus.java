@@ -77,17 +77,17 @@ public class EntityTyrannosaurus extends EntityAgeableMob
 
     protected String getLivingSound()
     {
-        return "";
+        return "jurassicraft:trexlive";
     }
 
     protected String getHurtSound()
     {
-        return "";
+        return "jurassicraft:trexdie";
     }
 
     protected String getDeathSound()
     {
-        return "";
+        return "jurassicraft:trexdie";
     }
 
     protected void dropFewItems(boolean par1, int par2)
