@@ -11,4 +11,10 @@ public class TileEgg extends TileEntity
     {
         this.entity = entity;
     }
+
+    public String getDino()
+    {
+        TileEgg egg = (TileEgg) worldObj.getTileEntity(xCoord, yCoord, zCoord);
+        return egg.entity.getSimpleName();
+    }
 }
