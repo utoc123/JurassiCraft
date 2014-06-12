@@ -1,4 +1,9 @@
 {
-       "trexdie": {"category": "master","sounds": [{"name": "trexdie","stream": false}]},
-       "trexlive": {"category": "master","sounds": [{"name": "trexlive","stream": false}]}
+       "trex1": {"category": "master","sounds": [{"name": "trex1","stream": false}]},
+       "trex2": {"category": "master","sounds": [{"name": "trex2","stream": false}]},
+       "trex3": {"category": "master","sounds": [{"name": "trex3","stream": false}]},
+       "ankylo1": {"category": "master","sounds": [{"name": "ankylo1","stream": false}]},
+       "ankylo2": {"category": "master","sounds": [{"name": "ankylo2","stream": false}]},
+       "stego1": {"category": "master","sounds": [{"name": "stego1","stream": false}]},
+       "stego2": {"category": "master","sounds": [{"name": "stego2","stream": false}]}
 }

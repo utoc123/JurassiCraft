@@ -44,17 +44,25 @@ public class EntityStegosaur extends EntityAnimal
 
     protected String getLivingSound()
     {
-        return "";
+    	int I = rand.nextInt(1)+1;
+    	if(I == 1)
+    	{
+    		return "jurassicraft:stego1";
+    	}
+    	else
+    	{
+            return "jurassicraft:stego2";
+    	}
     }
 
     protected String getHurtSound()
     {
-        return "";
+		return "jurassicraft:stego1";
     }
 
     protected String getDeathSound()
     {
-        return "";
+        return "jurassicraft:stego2";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)

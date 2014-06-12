@@ -77,17 +77,25 @@ public class EntityTyrannosaurus extends EntityAgeableMob
 
     protected String getLivingSound()
     {
-        return "jurassicraft:trexlive";
+    	int I = rand.nextInt(1)+1;
+    	if(I == 1)
+    	{
+        return "jurassicraft:trex1";
+    	}
+    	else
+    	{
+            return "jurassicraft:trex2";
+    	}
     }
 
     protected String getHurtSound()
     {
-        return "jurassicraft:trexdie";
+        return "jurassicraft:trex3";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:trexdie";
+        return "jurassicraft:trex3";
     }
 
     protected void dropFewItems(boolean par1, int par2)
@@ -104,4 +112,8 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     {
         return this.spawnBabyAnimal(par1EntityAgeable);
     }
+
+	public float spiderScaleAmount() {
+		return 4F;
+	}
 }

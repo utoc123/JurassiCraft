@@ -44,17 +44,25 @@ public class EntityAnkylosaur extends EntityAnimal
 
     public String getLivingSound()
     {
-        return "";
+    	int I = rand.nextInt(1)+1;
+    	if(I == 1)
+    	{
+    		return "jurassicraft:ankylo1";
+    	}
+    	else
+    	{
+            return "jurassicraft:ankylo2";
+    	}
     }
 
     public String getHurtSound()
     {
-        return "";
+		return "jurassicraft:ankylo1";
     }
 
     public String getDeathSound()
     {
-        return "";
+        return "jurassicraft:ankylo2";
     }
 
     public void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)

@@ -1,13 +1,18 @@
 package com.ilexiconn.jurassicraft.data.entity.render;
 
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelTyrannosaurus;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
 public class RenderTyrannosaurus extends RenderLiving
@@ -37,4 +42,21 @@ public class RenderTyrannosaurus extends RenderLiving
                 return null;
         }
     }
+    
+    /**
+     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
+     * entityLiving, partialTickTime
+     */
+    protected void scaleSpider(EntityTyrannosaurus par1EntityTyrannosaurus, float par2)
+    {
+    	float f = par1EntityTyrannosaurus.spiderScaleAmount();
+        GL11.glScalef(f, f, f);
+    }
+    
+    
+    protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
+    {
+        this.scaleSpider((EntityTyrannosaurus)par1EntityLivingBase, par2);
+    }
+    
 }
