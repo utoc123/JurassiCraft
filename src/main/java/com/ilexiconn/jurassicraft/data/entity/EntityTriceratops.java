@@ -38,7 +38,7 @@ public class EntityTriceratops extends EntityAnimal
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
-        this.tasks.addTask(2, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.3F));
+        this.tasks.addTask(2, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 1.2F));
         this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(4, new EntityAITempt(this, 1.2D, Items.rotten_flesh, false));
         this.tasks.addTask(4, new EntityAITempt(this, 1.2D, Items.carrot, false));
@@ -58,18 +58,6 @@ public class EntityTriceratops extends EntityAnimal
         }
     }
     
-    public boolean isSprinting()
-    {
-    	if(this.riddenByEntity instanceof EntityPlayer)
-    	{
-        return true;
-    	}
-    	else
-    	{
-    		return this.getFlag(3);
-    	}
-    }
-    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -82,7 +70,7 @@ public class EntityTriceratops extends EntityAnimal
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(180.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23D);
     }
 
     protected void updateAITasks()
@@ -92,7 +80,7 @@ public class EntityTriceratops extends EntityAnimal
 
     /**
      * returns true if all the conditions for steering the entity are met. For Triceratopss, this is true if it is being ridden
-     * by a player and the player is holding a carrot-on-a-stick
+     * by a player and the player is holding a rotten flesh
      */
     public boolean canBeSteered()
     {
