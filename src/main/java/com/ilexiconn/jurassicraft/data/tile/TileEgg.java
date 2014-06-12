@@ -17,4 +17,9 @@ public class TileEgg extends TileEntity
         TileEgg egg = (TileEgg) worldObj.getTileEntity(xCoord, yCoord, zCoord);
         return egg.entity.getSimpleName();
     }
+
+    public void updateEntity()
+    {
+        
+    }
 }
