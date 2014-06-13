@@ -1,0 +1,15 @@
+
+//Mobs
+entity.Ankylosaur.name=Ankylosaur
+entity.Brachiosaur.name=Brachiosaur
+entity.Coelacanth.name=Coelacanth
+entity.Gallimimus.name=Gallimimus
+entity.Herrerasaur.name=Herrerasaur
+entity.Hypsilophodon.name=Hypsilophodon
+entity.Leaellynasaur.name=Leaellynasaur
+entity.Liopleurodon.name=Liopleurodon
+entity.Meganeura.name=Meganeura
+entity.Parasaurolophus.name=Parasaurolophus
+entity.Stegosaur.name=Stegosaur
+entity.Triceratops.name=Triceratops
+entity.Tyrannosaurus.name=Tyrannosaurus Rex

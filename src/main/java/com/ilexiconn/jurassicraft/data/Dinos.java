@@ -30,7 +30,8 @@ public class Dinos
                     "Cereadactyl",
                     "Herrerasaur",
                     "Brachiosaur",
-                    "Hypsilophodon"
+                    "Hypsilophodon",
+                    "Parasaurolophus"
             };
 
 }
