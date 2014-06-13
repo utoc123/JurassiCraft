@@ -10,7 +10,7 @@ public class Dinos
                     "Troodon",
                     "Dryosaur",
                     "Stegosaur",
-                    "Leaellynasaura",
+                    "Leaellynasaur",
                     "Gallimimus",
                     "Procompsognathus",
                     "Meganeura",
@@ -24,12 +24,13 @@ public class Dinos
                     "Diplodocus",
                     "Basilosaurus",
                     "Parasauropholus",
-                    "Coelocanth",
+                    "Coelacanth",
                     "Tyrannosaurus",
                     "Segisaurus",
                     "Cereadactyl",
                     "Herrerasaur",
-                    "Brachiosaur"
+                    "Brachiosaur",
+                    "Hypsilophodon"
             };
 
 }
