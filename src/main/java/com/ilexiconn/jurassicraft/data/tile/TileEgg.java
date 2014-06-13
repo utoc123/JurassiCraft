@@ -32,6 +32,7 @@ public class TileEgg extends TileEntity
         if (hatchTime <= 0)
         {
             worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+            worldObj.removeTileEntity(xCoord, yCoord, zCoord);
             try
             {
                 EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
