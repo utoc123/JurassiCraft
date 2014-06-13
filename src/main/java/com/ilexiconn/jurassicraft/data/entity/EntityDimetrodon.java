@@ -600,7 +600,7 @@ public class EntityDimetrodon extends EntityTameable
      */
     protected boolean canDespawn()
     {
-        return !this.isTamed() && this.ticksExisted > 2400;
+        return false;
     }
 
     public boolean func_142018_a(EntityLivingBase par1EntityLivingBase, EntityLivingBase par2EntityLivingBase)
