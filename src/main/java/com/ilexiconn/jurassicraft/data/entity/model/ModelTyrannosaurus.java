@@ -8,35 +8,35 @@ import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class ModelTyrannosaurus extends ModelBase
+public class ModelTyrannosaurus extends MowzieModelBase
 {
-    ModelRenderer Left_Calf_1;
-    ModelRenderer Right_Calf_1;
-    ModelRenderer Left_Thigh;
-    ModelRenderer Right_Thigh;
-    ModelRenderer Body_1;
-    ModelRenderer Body_2;
-    ModelRenderer Neck;
-    ModelRenderer Head;
-    ModelRenderer Upper_Jaw;
-    ModelRenderer Lower_Jaw;
-    ModelRenderer Tail_1;
-    ModelRenderer Tail_2;
-    ModelRenderer Tail_3;
-    ModelRenderer Tail_4;
-    ModelRenderer Tail_5;
-    ModelRenderer Lower_Arm_Left;
-    ModelRenderer Lower_Arm_Right;
-    ModelRenderer Hand_Left;
-    ModelRenderer Hand_Right;
-    ModelRenderer Hand_Left_Claw_Left;
-    ModelRenderer Hand_Left_Claw_Right;
-    ModelRenderer Hand_Right_Claw_Right;
-    ModelRenderer Hand_Right_Claw_Left;
-    ModelRenderer Left_Calf_2;
-    ModelRenderer Right_Calf_2;
-    ModelRenderer Foot_Left;
-    ModelRenderer Foot_Right;
+    MowzieModelRenderer Left_Calf_1;
+    MowzieModelRenderer Right_Calf_1;
+    MowzieModelRenderer Left_Thigh;
+    MowzieModelRenderer Right_Thigh;
+    MowzieModelRenderer Body_1;
+    MowzieModelRenderer Body_2;
+    MowzieModelRenderer Neck;
+    MowzieModelRenderer Head;
+    MowzieModelRenderer Upper_Jaw;
+    MowzieModelRenderer Lower_Jaw;
+    MowzieModelRenderer Tail_1;
+    MowzieModelRenderer Tail_2;
+    MowzieModelRenderer Tail_3;
+    MowzieModelRenderer Tail_4;
+    MowzieModelRenderer Tail_5;
+    MowzieModelRenderer Lower_Arm_Left;
+    MowzieModelRenderer Lower_Arm_Right;
+    MowzieModelRenderer Hand_Left;
+    MowzieModelRenderer Hand_Right;
+    MowzieModelRenderer Hand_Left_Claw_Left;
+    MowzieModelRenderer Hand_Left_Claw_Right;
+    MowzieModelRenderer Hand_Right_Claw_Right;
+    MowzieModelRenderer Hand_Right_Claw_Left;
+    MowzieModelRenderer Left_Calf_2;
+    MowzieModelRenderer Right_Calf_2;
+    MowzieModelRenderer Foot_Left;
+    MowzieModelRenderer Foot_Right;
 
     public ModelTyrannosaurus()
     {
@@ -205,6 +205,34 @@ public class ModelTyrannosaurus extends ModelBase
         Foot_Right.setTextureSize(256, 256);
         Foot_Right.mirror = true;
         setRotation(Foot_Right, 0F, 0F, 0F);
+        
+        Left_Calf_1.setInitValuesToCurrentPose();
+        Right_Calf_1.setInitValuesToCurrentPose();
+        Left_Thigh.setInitValuesToCurrentPose();
+        Right_Thigh.setInitValuesToCurrentPose();
+        Body_1.setInitValuesToCurrentPose();
+        Body_2.setInitValuesToCurrentPose();
+        Neck.setInitValuesToCurrentPose();
+        Head.setInitValuesToCurrentPose();
+        Upper_Jaw.setInitValuesToCurrentPose();
+        Lower_Jaw.setInitValuesToCurrentPose();
+        Tail_1.setInitValuesToCurrentPose();
+        Tail_2.setInitValuesToCurrentPose();
+        Tail_3.setInitValuesToCurrentPose();
+        Tail_4.setInitValuesToCurrentPose();
+        Tail_5.setInitValuesToCurrentPose();
+        Lower_Arm_Left.setInitValuesToCurrentPose();
+        Lower_Arm_Right.setInitValuesToCurrentPose();
+        Hand_Left.setInitValuesToCurrentPose();
+        Hand_Right.setInitValuesToCurrentPose();
+        Hand_Left_Claw_Left.setInitValuesToCurrentPose();
+        Hand_Left_Claw_Right.setInitValuesToCurrentPose();
+        Hand_Right_Claw_Right.setInitValuesToCurrentPose();
+        Hand_Right_Claw_Left.setInitValuesToCurrentPose();
+        Left_Calf_2.setInitValuesToCurrentPose();
+        Right_Calf_2.setInitValuesToCurrentPose();
+        Foot_Left.setInitValuesToCurrentPose();
+        Foot_Right.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -227,10 +255,6 @@ public class ModelTyrannosaurus extends ModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
-            Neck.render(f5);
-            Head.render(f5);
-            Upper_Jaw.render(f5);
-            Lower_Jaw.render(f5);
             Tail_1.render(f5);
             Tail_2.render(f5);
             Tail_3.render(f5);
@@ -258,10 +282,6 @@ public class ModelTyrannosaurus extends ModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
-            Neck.render(f5);
-            Head.render(f5);
-            Upper_Jaw.render(f5);
-            Lower_Jaw.render(f5);
             Tail_1.render(f5);
             Tail_2.render(f5);
             Tail_3.render(f5);
@@ -292,5 +312,7 @@ public class ModelTyrannosaurus extends ModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        faceTarget(Head, 2, f3, f4);
+        faceTarget(Neck, 2, f3, f4);
     }
 }
