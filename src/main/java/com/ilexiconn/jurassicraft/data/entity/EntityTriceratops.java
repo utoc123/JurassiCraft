@@ -57,7 +57,13 @@ public class EntityTriceratops extends EntityAnimal
             this.riddenByEntity.setPosition(this.posX, this.posY + this.SitLevel + this.riddenByEntity.getYOffset(), this.posZ);
         }
     }
-    
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     /**
      * Returns true if the newer Entity AI code should be run
      */

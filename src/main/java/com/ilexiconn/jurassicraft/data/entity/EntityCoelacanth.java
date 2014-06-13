@@ -30,7 +30,13 @@ public class EntityCoelacanth extends EntityWaterMob
         this.setSize(0.95F, 0.95F);
         this.rotationVelocity = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
     }
-
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

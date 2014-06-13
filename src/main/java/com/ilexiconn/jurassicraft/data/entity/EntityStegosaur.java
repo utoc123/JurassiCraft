@@ -41,7 +41,13 @@ public class EntityStegosaur extends EntityAnimal
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }
-
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     protected String getLivingSound()
     {
     	int I = rand.nextInt(1)+1;

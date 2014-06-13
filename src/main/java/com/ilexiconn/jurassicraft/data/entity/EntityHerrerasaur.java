@@ -35,7 +35,13 @@ public class EntityHerrerasaur extends EntityAgeableMob
         this.experienceValue = 1000;
         textureID = rand.nextInt(3) + 1;
     }
-
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

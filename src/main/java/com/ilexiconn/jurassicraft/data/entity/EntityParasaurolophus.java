@@ -44,7 +44,13 @@ public class EntityParasaurolophus extends EntityAnimal
         return true;
     }
 
-
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

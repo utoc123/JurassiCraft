@@ -36,7 +36,13 @@ public class EntityLiopleurodon extends EntityWaterMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
     }
-
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
+    }
     protected String getLivingSound()
     {
         return null;
