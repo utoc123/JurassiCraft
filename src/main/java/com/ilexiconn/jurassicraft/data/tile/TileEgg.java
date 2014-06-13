@@ -27,8 +27,9 @@ public class TileEgg extends TileEntity
 
     public void updateEntity()
     {
-        hatchTime = (hatchTime - (getFurnacesNearby() + 1));
-        if (!worldObj.isRemote) Util.getLogger().print(LogType.INFO, hatchTime + "");
+        //todo - for testing
+        //hatchTime = (hatchTime - (getFurnacesNearby() + 1));
+        //if (!worldObj.isRemote) Util.getLogger().print(LogType.INFO, hatchTime + "");
         if (hatchTime <= 0)
         {
             worldObj.setBlockToAir(xCoord, yCoord, zCoord);
