@@ -2,8 +2,8 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.model.MowzieModelBase;
+import net.minecraft.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 
