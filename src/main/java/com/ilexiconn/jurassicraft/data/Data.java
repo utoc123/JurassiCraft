@@ -1,10 +1,24 @@
 package com.ilexiconn.jurassicraft.data;
 
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.block.*;
+import com.ilexiconn.jurassicraft.data.block.BlockAmberOre;
+import com.ilexiconn.jurassicraft.data.block.BlockAnalyzer;
+import com.ilexiconn.jurassicraft.data.block.BlockCultivate;
+import com.ilexiconn.jurassicraft.data.block.BlockEgg;
+import com.ilexiconn.jurassicraft.data.block.BlockFossilOre;
+import com.ilexiconn.jurassicraft.data.block.GhostBlock;
 import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import com.ilexiconn.jurassicraft.data.item.ItemAmber;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
+import com.ilexiconn.jurassicraft.data.item.ItemDinoBone;
 import com.ilexiconn.jurassicraft.data.item.ItemFossil;
 import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
@@ -15,16 +29,8 @@ import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public final class Data extends Util
 {
@@ -51,6 +57,7 @@ public final class Data extends Util
         { /** Items */
             addItem(1, new ItemAmber());
             addItem(2, new ItemFossil());
+            addItem(3, new ItemDinoBone());
         }
         { /** Entities */
             addTileEntity(TileEgg.class);

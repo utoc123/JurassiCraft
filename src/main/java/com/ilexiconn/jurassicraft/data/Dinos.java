@@ -31,7 +31,8 @@ public class Dinos
                     "Herrerasaur",
                     "Brachiosaur",
                     "Hypsilophodon",
-                    "Parasaurolophus"
+                    "Parasaurolophus",
+                    "Dimetrodon"
             };
 
 }
