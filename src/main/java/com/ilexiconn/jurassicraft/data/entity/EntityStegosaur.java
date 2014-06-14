@@ -8,6 +8,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityStegosaur extends EntityAnimal
@@ -40,6 +41,24 @@ public class EntityStegosaur extends EntityAnimal
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
+    }
+    
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound nbttag)
+    {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound nbttag)
+    {
+        super.readEntityFromNBT(nbttag);
+        nbttag.getInteger("texture");
     }
     /**
      * Determines if an entity can be despawned, used on idle far away entities

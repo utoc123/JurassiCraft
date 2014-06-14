@@ -57,6 +57,24 @@ public class EntityTriceratops extends EntityAnimal
             this.riddenByEntity.setPosition(this.posX, this.posY + this.SitLevel + this.riddenByEntity.getYOffset(), this.posZ);
         }
     }
+    
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound nbttag)
+    {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound nbttag)
+    {
+        super.readEntityFromNBT(nbttag);
+        nbttag.getInteger("texture");
+    }
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */

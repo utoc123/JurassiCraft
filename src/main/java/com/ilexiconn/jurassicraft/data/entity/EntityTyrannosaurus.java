@@ -8,6 +8,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -44,6 +45,24 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     protected boolean canDespawn()
     {
         return false;
+    }
+    
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound nbttag)
+    {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound nbttag)
+    {
+        super.readEntityFromNBT(nbttag);
+        nbttag.getInteger("texture");
     }
     @SideOnly(Side.CLIENT)
     protected void applyEntityAttributes()

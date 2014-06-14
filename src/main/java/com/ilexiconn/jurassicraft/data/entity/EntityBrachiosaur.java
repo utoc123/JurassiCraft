@@ -15,6 +15,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityBrachiosaur extends EntityAnimal
@@ -24,7 +25,7 @@ public class EntityBrachiosaur extends EntityAnimal
     public EntityBrachiosaur(World par1World)
     {
         super(par1World);
-        this.setSize(4F, 4F);
+        this.setSize(12F, 12F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
@@ -42,6 +43,24 @@ public class EntityBrachiosaur extends EntityAnimal
         return true;
     }
 
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound nbttag)
+    {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound nbttag)
+    {
+        super.readEntityFromNBT(nbttag);
+        nbttag.getInteger("texture");
+    }
+    
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -125,6 +144,6 @@ public class EntityBrachiosaur extends EntityAnimal
 
     public float spiderScaleAmount()
     {
-        return 1.9F;
+        return 4F;
     }
 }

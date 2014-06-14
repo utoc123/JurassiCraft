@@ -15,6 +15,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.ilexiconn.jurassicraft.data.entity.model.ModelParasaurolophus;
@@ -50,6 +51,23 @@ public class EntityParasaurolophus extends EntityAnimal
     protected boolean canDespawn()
     {
         return false;
+    }
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound nbttag)
+    {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound nbttag)
+    {
+        super.readEntityFromNBT(nbttag);
+        nbttag.getInteger("texture");
     }
     protected void applyEntityAttributes()
     {
