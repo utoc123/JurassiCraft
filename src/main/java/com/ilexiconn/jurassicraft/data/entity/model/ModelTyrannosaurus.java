@@ -244,6 +244,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
+            Neck.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
@@ -260,6 +261,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
+            Neck.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
