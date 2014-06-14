@@ -11,7 +11,7 @@ pterosaurs and mosasaurs, neither of which are dinosaurian. And remember, we spa
 
 How to build
 ============
-Install gradle
+Setup workspace
 
 Run in console:
 ```
@@ -26,4 +26,13 @@ gradle eclipse
 or for IntelliJ IDEA:
 ```
 gradle idea
+```
+
+
+
+Build mod
+
+Run in console:
+```
+gradle build
 ```
