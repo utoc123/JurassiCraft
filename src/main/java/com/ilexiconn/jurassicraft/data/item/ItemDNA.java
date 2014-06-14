@@ -8,8 +8,8 @@ public class ItemDNA extends Item
     public ItemDNA(String name)
     {
         super();
-        setUnlocalizedName("dna_" + name);
-        setTextureName(Util.getModId() + "dna_" + name);
+        setUnlocalizedName(name + "_DNA");
+        setTextureName(Util.getModId() + name + "_DNA");
         setCreativeTab(Util.getCreativeTab(0));
     }
 }
