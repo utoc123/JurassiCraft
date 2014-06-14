@@ -30,4 +30,11 @@ public class MowzieModelBase extends ModelBase {
 		box.rotateAngleY = (f3 / (180F / (float)Math.PI))/divider + box.initRotateAngleY;
 		box.rotateAngleX = (f4 / (180F / (float)Math.PI))/divider + box.initRotateAngleX;
 	}
+	
+	//Swings the specified box back and forth while the mob is moving. Degree is the length of the arc that the box will follow. Invert will make the box swing the other way first, used for alternating leg movements. Leave "f" and "f1" as "f" and "f1".
+	public void walk(MowzieModelRenderer box, float speed, float degree, boolean invert, float f, float f1) {
+		int intinvert = 1;
+		if (invert) intinvert = -1;
+    		box.rotateAngleX = MathHelper.cos(f * speed) * degree * intinvert * f1 + box.initRotateAngleX;
+	}
 }
