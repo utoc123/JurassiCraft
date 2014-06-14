@@ -86,6 +86,7 @@ public final class Data extends Util
                 catch (Exception e)
                 {
                     getLogger().print(LogType.ERROR, "Can't add the " + name + ", " + e);
+                    if (name.equals("Tyrannosaurus")) e.printStackTrace();
                 }
             }
         }
