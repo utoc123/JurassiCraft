@@ -71,22 +71,22 @@ public class EntityGallimimus extends EntityAnimal
     	int I = rand.nextInt(1)+1;
     	if(I == 1)
     	{
-    		return "jurassicraft:stego1";
+    		return "jurassicraft:gali1";
     	}
     	else
     	{
-            return "jurassicraft:stego2";
+            return "jurassicraft:gali2";
     	}
     }
 
     protected String getHurtSound()
     {
-		return "jurassicraft:stego1";
+		return "jurassicraft:gali3";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:stego2";
+        return "jurassicraft:gali3";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)

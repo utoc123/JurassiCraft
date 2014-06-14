@@ -22,7 +22,8 @@ import com.ilexiconn.jurassicraft.data.entity.model.ModelParasaurolophus;
 
 public class EntityParasaurolophus extends EntityAnimal
 {
-    public int textureID;
+    public int textureID = rand.nextInt(3) + 1;
+    public boolean booleanThinger;
 
     public EntityParasaurolophus(World world)
     {
@@ -37,7 +38,19 @@ public class EntityParasaurolophus extends EntityAnimal
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        textureID = rand.nextInt(3) + 1;
+        if (booleanThinger != true)
+        {
+        textureID = rand.nextInt(3)+1;
+        booleanThinger = true;
+        }
+    }
+    /**
+     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
+     */
+    public boolean interact(EntityPlayer par1EntityPlayer)
+    {
+    	System.out.println(this.booleanThinger);
+    	return true;
     }
     
     public boolean isAIEnabled()
@@ -59,6 +72,7 @@ public class EntityParasaurolophus extends EntityAnimal
     {
         super.writeEntityToNBT(nbttag);
         nbttag.setInteger("texture", textureID);
+        nbttag.setBoolean("bool", booleanThinger);
     }
 
     /**
@@ -68,6 +82,7 @@ public class EntityParasaurolophus extends EntityAnimal
     {
         super.readEntityFromNBT(nbttag);
         nbttag.getInteger("texture");
+        nbttag.getBoolean("bool");
     }
     protected void applyEntityAttributes()
     {
@@ -81,22 +96,22 @@ public class EntityParasaurolophus extends EntityAnimal
     	int I = rand.nextInt(1)+1;
     	if(I == 1)
     	{
-    		return "jurassicraft:stego1";
+    		return "jurassicraft:para1";
     	}
     	else
     	{
-            return "jurassicraft:stego2";
+            return "jurassicraft:para2";
     	}
     }
 
     protected String getHurtSound()
     {
-		return "jurassicraft:stego1";
+		return "jurassicraft:para1";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:stego2";
+        return "jurassicraft:para2";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
