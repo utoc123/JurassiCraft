@@ -78,8 +78,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Body_2.mirror = true;
         setRotation(Body_2, -0.1858931F, 0F, 0F);
         Neck = new MowzieModelRenderer(this, 218, 1);
-        Neck.addBox(-3.5F, 0.5F, 0F, 7, 9, 11);
-        Neck.setRotationPoint(0F, -5F, -14F);
+        Neck.addBox(-3.5F, 2F, -3F, 7, 9, 11);
+        Neck.setRotationPoint(0F, -5F, -10.5F);
         Neck.setTextureSize(256, 256);
         setRotation(Neck, -0.5576792F, 0F, 0F);
         Head = new MowzieModelRenderer(this, 0, 92);
@@ -305,7 +305,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
 		tailSwing(tailParts, 0.05F, 0.2F, 1, frame);
-		//test
+		
         frame += 1;
     }
 }
