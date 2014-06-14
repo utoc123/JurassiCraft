@@ -22,8 +22,8 @@ import com.ilexiconn.jurassicraft.data.entity.model.ModelParasaurolophus;
 
 public class EntityParasaurolophus extends EntityAnimal
 {
-    public int textureID = rand.nextInt(3) + 1;
-    public boolean booleanThinger;
+    public int textureID;
+    public boolean booleanThinger = false;
 
     public EntityParasaurolophus(World world)
     {
@@ -38,11 +38,6 @@ public class EntityParasaurolophus extends EntityAnimal
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        if (booleanThinger != true)
-        {
-        textureID = rand.nextInt(3)+1;
-        booleanThinger = true;
-        }
     }
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
@@ -81,8 +76,10 @@ public class EntityParasaurolophus extends EntityAnimal
     public void readEntityFromNBT(NBTTagCompound nbttag)
     {
         super.readEntityFromNBT(nbttag);
-        nbttag.getInteger("texture");
-        nbttag.getBoolean("bool");
+        textureID = nbttag.getInteger("texture");
+        booleanThinger = nbttag.getBoolean("bool");
+    	System.out.println("Im getting called too :P");
+
     }
     protected void applyEntityAttributes()
     {
@@ -161,6 +158,12 @@ public class EntityParasaurolophus extends EntityAnimal
 
     public float spiderScaleAmount()
     {
+        if (booleanThinger != true)
+        {
+        textureID = rand.nextInt(3)+1;
+        System.out.println("Im getting called :P");
+        booleanThinger = true;
+        }
         return 2.1F;
     }
 }
