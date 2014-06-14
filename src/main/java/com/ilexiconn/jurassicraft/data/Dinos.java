@@ -15,7 +15,6 @@ public class Dinos
                     "Procompsognathus",
                     "Meganeura",
                     "Tyrannosaurus",
-                    "Coelacanth",
                     "Maiasaura",
                     "Styracosaur",
                     "Dilophosaur",
@@ -25,14 +24,14 @@ public class Dinos
                     "Diplodocus",
                     "Basilosaurus",
                     "Parasauropholus",
-                    "Coelacanth",
                     "Segisaurus",
                     "Cereadactyl",
                     "Herrerasaur",
                     "Brachiosaur",
                     "Hypsilophodon",
                     "Parasaurolophus",
-                    "Dimetrodon"
+                    "Dimetrodon",
+                    "Coelacanth"
             };
 
 }
