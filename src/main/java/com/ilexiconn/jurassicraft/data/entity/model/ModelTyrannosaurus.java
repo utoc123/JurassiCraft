@@ -206,6 +206,18 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Foot_Right.mirror = true;
         setRotation(Foot_Right, 0F, 0F, 0F);
         
+        addChildTo(Upper_Jaw, Head);
+        addChildTo(Lower_Jaw, Head);
+        addChildTo(Head, Neck);
+        
+        addChildTo(this.Foot_Left, this.Left_Calf_2);        
+        addChildTo(this.Left_Calf_2, this.Left_Calf_1);        
+        addChildTo(this.Left_Calf_1, this.Left_Thigh);        
+
+        addChildTo(this.Foot_Right, this.Right_Calf_2);        
+        addChildTo(this.Right_Calf_2, this.Right_Calf_1);        
+        addChildTo(this.Right_Calf_1, this.Right_Thigh);
+        
         //Lex, can you make a method in MowzieModelBase to automate this or something?
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
@@ -250,8 +262,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
             GL11.glPushMatrix();
             GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
             GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
-            Left_Calf_1.render(f5);
-            Right_Calf_1.render(f5);
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
@@ -269,16 +279,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Hand_Left_Claw_Right.render(f5);
             Hand_Right_Claw_Right.render(f5);
             Hand_Right_Claw_Left.render(f5);
-            Left_Calf_2.render(f5);
-            Right_Calf_2.render(f5);
-            Foot_Left.render(f5);
-            Foot_Right.render(f5);
             GL11.glPopMatrix();
         }
         else
         {
-            Left_Calf_1.render(f5);
-            Right_Calf_1.render(f5);
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
@@ -296,10 +300,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Hand_Left_Claw_Right.render(f5);
             Hand_Right_Claw_Right.render(f5);
             Hand_Right_Claw_Left.render(f5);
-            Left_Calf_2.render(f5);
-            Right_Calf_2.render(f5);
-            Foot_Left.render(f5);
-            Foot_Right.render(f5);
         }
     }
 
@@ -315,5 +315,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
+        walk(this.Left_Thigh, 0.25F, 1, false, f, f1);
+        walk(this.Right_Thigh, 0.25F, 1, true, f, f1);
     }
 }
