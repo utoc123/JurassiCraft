@@ -218,6 +218,12 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(this.Right_Calf_2, this.Right_Calf_1);        
         addChildTo(this.Right_Calf_1, this.Right_Thigh);
         
+        addChildTo(this.Tail_5, this.Tail_4);
+        addChildTo(this.Tail_4, this.Tail_3);
+        addChildTo(this.Tail_3, this.Tail_2);
+        addChildTo(this.Tail_2, this.Tail_1);
+        addChildTo(this.Tail_1, this.Body_2);
+        
         //Lex, can you make a method in MowzieModelBase to automate this or something?
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
@@ -266,11 +272,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
-            Tail_1.render(f5);
-            Tail_2.render(f5);
-            Tail_3.render(f5);
-            Tail_4.render(f5);
-            Tail_5.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
@@ -287,11 +288,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Right_Thigh.render(f5);
             Body_1.render(f5);
             Body_2.render(f5);
-            Tail_1.render(f5);
-            Tail_2.render(f5);
-            Tail_3.render(f5);
-            Tail_4.render(f5);
-            Tail_5.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
@@ -315,7 +311,12 @@ public class ModelTyrannosaurus extends MowzieModelBase
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
-        walk(this.Left_Thigh, 0.25F, 1, false, f, f1);
-        walk(this.Right_Thigh, 0.25F, 1, true, f, f1);
+        walk(this.Left_Thigh, 0.25F, .5, false, f, f1);
+        walk(this.Right_Thigh, 0.25F, .5, true, f, f1);
+        
+        MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
+		tailSwing(tailParts, 0.03F, 0.4F, frame);
+		
+        frame += 1;
     }
 }
