@@ -304,7 +304,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         walk(this.Right_Thigh, 0.25F, 0.5f, true, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-		tailSwing(tailParts, 0.03F, 0.4F, 1, frame);
+		tailSwing(tailParts, 0.05F, 0.2F, 1, frame);
 		
         frame += 1;
     }
