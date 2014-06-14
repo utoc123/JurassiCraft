@@ -206,6 +206,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Foot_Right.mirror = true;
         setRotation(Foot_Right, 0F, 0F, 0F);
         
+        //Lex, can you make a method in MowzieModelBase to automate this or something?
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
         Left_Thigh.setInitValuesToCurrentPose();
