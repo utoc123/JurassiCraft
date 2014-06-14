@@ -260,7 +260,7 @@ public class ModelDimetrodon extends MowzieModelBase
 }
 else
 {
-	
+	//Lol
 }
   }
   
