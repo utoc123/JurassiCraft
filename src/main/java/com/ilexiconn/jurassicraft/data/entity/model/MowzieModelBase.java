@@ -8,6 +8,8 @@ import net.minecraft.util.MathHelper;
 
 public class MowzieModelBase extends ModelBase {
 	
+	int frame = 1;
+	
 	//Attach child to parent boxes to make the child move to match parent rotation and translation. Use this on the ends of parenting chains first. (I.E. Attach snout to head before attaching head to neck.)
 	protected void addChildTo(ModelRenderer child, ModelRenderer parent) {
 		float distance = (float)Math.sqrt(Math.pow((child.rotationPointZ - parent.rotationPointZ), 2) + Math.pow((child.rotationPointY - parent.rotationPointY), 2));
@@ -36,5 +38,14 @@ public class MowzieModelBase extends ModelBase {
 		int intinvert = 1;
 		if (invert) intinvert = -1;
     		box.rotateAngleX = MathHelper.cos(f * speed) * degree * intinvert * f1 + box.initRotateAngleX;
+	}
+	
+	//Makes all boxes in the array do a snake-like motion at the specified speed and to the specified degree. Leave "frame" as "frame".
+	public void tailSwing(MowzieModelRenderer[] boxes, float speed, float degree, float frame) {
+		int numberOfSegments = boxes.length;
+		float offset = (float) ((3*Math.PI)/(2*numberOfSegments));
+		for (int i = 0; i < numberOfSegments; i++) {
+			boxes[i].rotateAngleY = MathHelper.cos(frame * speed + offset*i) * degree + boxes[i].initRotateAngleY;
+		}
 	}
 }
