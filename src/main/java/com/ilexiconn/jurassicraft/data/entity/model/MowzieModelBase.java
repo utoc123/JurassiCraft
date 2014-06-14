@@ -41,9 +41,9 @@ public class MowzieModelBase extends ModelBase {
 	}
 	
 	//Makes all boxes in the array do a snake-like motion at the specified speed and to the specified degree. Leave "frame" as "frame".
-	public void tailSwing(MowzieModelRenderer[] boxes, float speed, float degree, float frame) {
+	public void tailSwing(MowzieModelRenderer[] boxes, float speed, float degree, double rootOffset, float frame) {
 		int numberOfSegments = boxes.length;
-		float offset = (float) ((3*Math.PI)/(2*numberOfSegments));
+		float offset = (float) ((rootOffset*Math.PI)/(2*numberOfSegments));
 		for (int i = 0; i < numberOfSegments; i++) {
 			boxes[i].rotateAngleY = MathHelper.cos(frame * speed + offset*i) * degree + boxes[i].initRotateAngleY;
 		}
