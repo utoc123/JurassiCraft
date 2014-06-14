@@ -1,10 +1,8 @@
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-<<<<<<< HEAD
-=======
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
->>>>>>> origin/master
+
 import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
@@ -247,15 +245,9 @@ public class ModelTyrannosaurus extends MowzieModelBase
             GL11.glPushMatrix();
             GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
             GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
-<<<<<<< HEAD
-            Upper_Jaw.render(f5);
-            Lower_Jaw.render(f5);
         	Neck.render(f5);
-        	Head.render(f5);
             Left_Calf_1.render(f5);
             Right_Calf_1.render(f5);
-=======
->>>>>>> origin/master
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
@@ -273,13 +265,9 @@ public class ModelTyrannosaurus extends MowzieModelBase
         }
         else
         {
-<<<<<<< HEAD
         	Neck.render(f5);
-        	Head.render(f5);
             Left_Calf_1.render(f5);
             Right_Calf_1.render(f5);
-=======
->>>>>>> origin/master
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
@@ -293,15 +281,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Hand_Left_Claw_Right.render(f5);
             Hand_Right_Claw_Right.render(f5);
             Hand_Right_Claw_Left.render(f5);
-<<<<<<< HEAD
             Left_Calf_2.render(f5);
             Right_Calf_2.render(f5);
             Foot_Left.render(f5);
             Foot_Right.render(f5);
-            Upper_Jaw.render(f5);
-            Lower_Jaw.render(f5);
-=======
->>>>>>> origin/master
         }
     }
 
@@ -317,10 +300,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
-<<<<<<< HEAD
-        //faceTarget(Upper_Jaw, 2, f3, f4);
-        //faceTarget(Lower_Jaw, 2, f3, f4);
-=======
         walk(this.Left_Thigh, 0.25F, 0.5f, false, f, f1);
         walk(this.Right_Thigh, 0.25F, 0.5f, true, f, f1);
         
@@ -328,6 +307,5 @@ public class ModelTyrannosaurus extends MowzieModelBase
 		tailSwing(tailParts, 0.03F, 0.4F, frame);
 		
         frame += 1;
->>>>>>> origin/master
     }
 }
