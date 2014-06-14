@@ -10,7 +10,7 @@ public class MowzieModelBase extends ModelBase {
 	
 	int frame = 1;
 	
-	//Attach child to parent boxes to make the child move to match parent rotation and translation. Use this on the ends of parenting chains first. (I.E. Attach snout to head before attaching head to neck.)
+	//Attach child to parent boxes to make the child move to match parent rotation and translation. Use this on the ends of parenting chains first. (I.E. Attach snout to head before attaching head to neck.) Make sure you delete that part from the render method!
 	protected void addChildTo(ModelRenderer child, ModelRenderer parent) {
 		float distance = (float)Math.sqrt(Math.pow((child.rotationPointZ - parent.rotationPointZ), 2) + Math.pow((child.rotationPointY - parent.rotationPointY), 2));
 		float oldRotateAngleX = parent.rotateAngleX;
