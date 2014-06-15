@@ -76,7 +76,7 @@ public class EntityDimetrodon extends EntityTameable
         this.setTamed(false);
     }
 
-    protected void applyEntityAttributes()
+	protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
