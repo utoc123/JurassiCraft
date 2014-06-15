@@ -11,13 +11,12 @@ public class TileEgg extends TileEntity
 {
     public final Class<? extends EntityLiving> entity;
 
-    public int hatchTime = 10000;
+    public int hatchTime;
 
     public TileEgg(Class<? extends EntityLiving> entity)
     {
-        hatchTime = worldObj.getBlockMetadata(xCoord, yCoord, zCoord) + 1;
-        if (hatchTime <= 0) hatchTime = 10000;
         this.entity = entity;
+        hatchTime = 2000; //2000 ticks == 100 sec
     }
 
     public String getDino()
@@ -28,10 +27,9 @@ public class TileEgg extends TileEntity
 
     public void updateEntity()
     {
-        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, hatchTime, 2);
-        Util.getLogger().print(LogType.INFO, hatchTime + "");
-        hatchTime = (hatchTime - (getFurnacesNearby() * 10 + 1));
-        if (!worldObj.isRemote) Util.getLogger().print(LogType.INFO, hatchTime + "");
+        //todo - for testing
+        //hatchTime = (hatchTime - (getFurnacesNearby() + 1));
+        //if (!worldObj.isRemote) Util.getLogger().print(LogType.INFO, hatchTime + "");
         if (hatchTime <= 0)
         {
             worldObj.setBlockToAir(xCoord, yCoord, zCoord);
