@@ -6,6 +6,8 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
+import org.lwjgl.opengl.GL11;
+
 import com.ilexiconn.jurassicraft.data.entity.EntityDimetrodon;
 
 import net.minecraft.client.model.ModelBase;
@@ -399,6 +401,15 @@ public class ModelDimetrodon extends MowzieModelBase {
 		EntityDimetrodon dimetrodon = (EntityDimetrodon) entity;
 		if (dimetrodon.isSitting() == true)
 		{
+			if(this.isChild == true)
+			{
+            float var8 = 2.0F;
+            GL11.glPushMatrix();
+            GL11.glTranslatef(0.0F, 5.0F * f5, 2.0F * f5);
+            GL11.glPopMatrix();
+            GL11.glPushMatrix();
+            GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
+            GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
 			Head1.render(f5);
 			BackHead1.render(f5);
 			Jaw1.render(f5);
@@ -422,6 +433,70 @@ public class ModelDimetrodon extends MowzieModelBase {
 			Sail41.render(f5);
 			MiniSail21.render(f5);
 			Teeth.render(f5);
+            GL11.glPopMatrix();
+		}
+		else
+		{
+			Head1.render(f5);
+			BackHead1.render(f5);
+			Jaw1.render(f5);
+			Neck1.render(f5);
+			Torso1.render(f5);
+			Lower_Body1.render(f5);
+			Tail11.render(f5);
+			Tail21.render(f5);
+			Thigh11.render(f5);
+			Thigh21.render(f5);
+			Thigh31.render(f5);
+			Thigh41.render(f5);
+			Leg11.render(f5);
+			Leg21.render(f5);
+			Leg31.render(f5);
+			Leg41.render(f5);
+			MiniSail11.render(f5);
+			Sail11.render(f5);
+			Sail21.render(f5);
+			Sail31.render(f5);
+			Sail41.render(f5);
+			MiniSail21.render(f5);
+			Teeth.render(f5);
+		}
+		}
+		else
+		{
+			if(this.isChild == true)
+			{
+            float var8 = 2.0F;
+            GL11.glPushMatrix();
+            GL11.glTranslatef(0.0F, 5.0F * f5, 2.0F * f5);
+            GL11.glPopMatrix();
+            GL11.glPushMatrix();
+            GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
+            GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
+			Head.render(f5);
+			BackHead.render(f5);
+			Jaw.render(f5);
+			Neck.render(f5);
+			Torso.render(f5);
+			Lower_Body.render(f5);
+			Tail1.render(f5);
+			Tail2.render(f5);
+			Thigh1.render(f5);
+			Thigh2.render(f5);
+			Thigh3.render(f5);
+			Thigh4.render(f5);
+			Leg1.render(f5);
+			Leg2.render(f5);
+			Leg3.render(f5);
+			Leg4.render(f5);
+			MiniSail1.render(f5);
+			Sail1.render(f5);
+			Sail2.render(f5);
+			Sail3.render(f5);
+			Sail4.render(f5);
+			MiniSail2.render(f5);
+			Teeth.render(f5);
+            GL11.glPopMatrix();
 		}
 		else
 		{
@@ -448,6 +523,7 @@ public class ModelDimetrodon extends MowzieModelBase {
 			Sail4.render(f5);
 			MiniSail2.render(f5);
 			Teeth.render(f5);
+		}
 		}
 	}
 
