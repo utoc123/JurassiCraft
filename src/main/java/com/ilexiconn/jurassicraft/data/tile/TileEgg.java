@@ -1,22 +1,17 @@
 package com.ilexiconn.jurassicraft.data.tile;
 
-import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.logger.LogType;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public class TileEgg extends TileEntity
 {
     public final Class<? extends EntityLiving> entity;
 
-    public int hatchTime = 10000;
+    public int hatchTime;
 
     public TileEgg(Class<? extends EntityLiving> entity)
     {
-        hatchTime = worldObj.getBlockMetadata(xCoord, yCoord, zCoord) + 1;
-        if (hatchTime <= 0) hatchTime = 10000;
         this.entity = entity;
     }
 
@@ -24,29 +19,6 @@ public class TileEgg extends TileEntity
     {
         TileEgg egg = (TileEgg) worldObj.getTileEntity(xCoord, yCoord, zCoord);
         return egg.entity.getSimpleName();
-    }
-
-    public void updateEntity()
-    {
-        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, hatchTime, 2);
-        Util.getLogger().print(LogType.INFO, hatchTime + "");
-        hatchTime = (hatchTime - (getFurnacesNearby() * 10 + 1));
-        if (!worldObj.isRemote) Util.getLogger().print(LogType.INFO, hatchTime + "");
-        if (hatchTime <= 0)
-        {
-            worldObj.setBlockToAir(xCoord, yCoord, zCoord);
-            worldObj.removeTileEntity(xCoord, yCoord, zCoord);
-            try
-            {
-                EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
-                entity.setPosition(xCoord, yCoord, zCoord);
-                worldObj.spawnEntityInWorld(entity);
-            }
-            catch (Exception e)
-            {
-                Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
-            }
-        }
     }
 
     public int getFurnacesNearby()
