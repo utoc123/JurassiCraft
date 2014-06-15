@@ -48,4 +48,12 @@ public class MowzieModelBase extends ModelBase {
 			boxes[i].rotateAngleY = MathHelper.cos(frame * speed + offset*i) * degree + boxes[i].initRotateAngleY;
 		}
 	}
+	
+	public void transitionBox(MowzieModelRenderer box, float desiredrotateAngleX, float desiredrotateAngleY, float desiredrotateAngleZ, float animationSpeed, int animationCounter) {
+		if (animationCounter == 0) {
+			box.initRotateAngleY = box.rotateAngleY;
+		}
+		box.rotateAngleY = box.initRotateAngleY-((box.initRotateAngleY-desiredrotateAngleY)/2) + ((box.initRotateAngleY-desiredrotateAngleY)/2)*(MathHelper.cos((float) ((animationCounter * Math.PI)/animationSpeed)));
+		animationCounter++;
+	}
 }
