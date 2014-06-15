@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEgg extends TileEntity
 {
-    public final Class<? extends EntityLiving> entity;
+	public final Class<? extends EntityLiving> entity;
 
     public int hatchTime;
 
