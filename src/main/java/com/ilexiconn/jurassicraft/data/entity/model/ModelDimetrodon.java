@@ -462,9 +462,9 @@ public class ModelDimetrodon extends MowzieModelBase {
 			float f4, float f5) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
         walk(this.Leg1, 0.25F, 0.5f, true, f, f1);
-        walk(this.Leg2, 0.25F, 0.5f, true, f, f1);
+        walk(this.Leg4, 0.25F, 0.5f, true, f, f1);
         walk(this.Leg3, 0.25F, 0.5f, false, f, f1);
-        walk(this.Leg4, 0.25F, 0.5f, false, f, f1);
+        walk(this.Leg2, 0.25F, 0.5f, false, f, f1);
 	}
 
 }
