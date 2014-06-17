@@ -19,7 +19,18 @@ import java.util.Random;
 public class BlockFossilOre extends Block
 {
     @SideOnly(Side.CLIENT)
-    public IIcon[] icons = new IIcon[6];
+    public IIcon icon_0;
+    @SideOnly(Side.CLIENT)
+    public IIcon icon_1;
+    @SideOnly(Side.CLIENT)
+    public IIcon icon_2;
+    @SideOnly(Side.CLIENT)
+    public IIcon icon_3;
+    @SideOnly(Side.CLIENT)
+    public IIcon icon_4;
+    @SideOnly(Side.CLIENT)
+    public IIcon icon_5;
+
 
     public BlockFossilOre()
     {
@@ -50,21 +61,39 @@ public class BlockFossilOre extends Block
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack)
     {
-        world.setBlockMetadataWithNotify(x, y, z, new Random().nextInt(icons.length), 2);
+        world.setBlockMetadataWithNotify(x, y, z, new Random().nextInt(6), 2);
     }
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        for (int i = 0; i < icons.length; i++)
-        {
-            icons[i] = iconRegister.registerIcon(Util.getModId() + "fossil_side_" + i);
-        }
+        icon_0 = iconRegister.registerIcon(Util.getModId() + "fossil_side_0");
+        icon_1 = iconRegister.registerIcon(Util.getModId() + "fossil_side_1");
+        icon_2 = iconRegister.registerIcon(Util.getModId() + "fossil_side_2");
+        icon_3 = iconRegister.registerIcon(Util.getModId() + "fossil_side_3");
+        icon_4 = iconRegister.registerIcon(Util.getModId() + "fossil_side_4");
+        icon_5 = iconRegister.registerIcon(Util.getModId() + "fossil_side_5");
     }
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        return icons[metadata];
+        switch (metadata)
+        {
+            case 0:
+                return icon_0;
+            case 1:
+                return icon_1;
+            case 2:
+                return icon_2;
+            case 3:
+                return icon_3;
+            case 4:
+                return icon_4;
+            case 5:
+                return icon_5;
+            default:
+                return icon_0;
+        }
     }
 }
