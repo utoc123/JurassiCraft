@@ -1,6 +1,13 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailSlam;
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailWhip;
+
+import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationExample.AIHeadBang;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -11,10 +18,13 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityAnkylosaur extends EntityAnimal
+public class EntityAnkylosaur extends EntityAnimal implements IAnimatedEntity
 {
     public final int textureID;
 
+    private int animID;
+	private int animTick;
+    
     public EntityAnkylosaur(World par1World)
     {
         super(par1World);
@@ -22,6 +32,8 @@ public class EntityAnkylosaur extends EntityAnimal
         getNavigator().setAvoidsWater(true);
         tasks.addTask(0, new EntityAISwimming(this));
         tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+    	tasks.addTask(2, new AIAnkylosaurTailWhip(this));
+    	tasks.addTask(2, new AIAnkylosaurTailSlam(this));
         tasks.addTask(2, new EntityAIMate(this, 1.0D));
         tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
         tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
@@ -135,5 +147,37 @@ public class EntityAnkylosaur extends EntityAnimal
 
 	public float spiderScaleAmount() {
 		return 1.5F;
+	}
+	
+	//Animation API methods
+	//Set the animID field to the id in the parameter.
+	public void setAnimID(int id) {
+		animID = id;
+	}
+	
+	//Set the animTick field to the tick in the parameter.
+	public void setAnimTick(int tick) {
+		animTick = tick;
+	}
+	
+	//Return the animID.
+	public int getAnimID() {
+		return animID;
+	}
+
+	//Return the animTick.
+	public int getAnimTick() {
+		return animTick;
+	}
+	
+	public void onUpdate() {
+		super.onUpdate();
+		//increment the animTick if there is an animation playing
+		if(animID != 0) animTick++;
+	}
+	
+	public boolean attackEntityAsMob(Entity entity) {
+		if(animID == 0) AnimationAPI.sendAnimPacket(this, 1);
+		return true;
 	}
 }

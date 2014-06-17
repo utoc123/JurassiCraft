@@ -19,7 +19,13 @@ import net.minecraft.world.World;
 public class BlockAnalyzer extends BlockContainer
 {
     @SideOnly(Side.CLIENT)
-    public IIcon[] icons = new IIcon[3];
+    public IIcon topIcon;
+    @SideOnly(Side.CLIENT)
+    public IIcon frontIconIdle;
+    @SideOnly(Side.CLIENT)
+    public IIcon frontIconActive;
+    @SideOnly(Side.CLIENT)
+    public IIcon sideIcon;
 
     public boolean active;
 
@@ -59,16 +65,17 @@ public class BlockAnalyzer extends BlockContainer
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        if (metadata == 0 && side == 3) return icons[2];
-        else return side == 1 ? icons[0] : (side == 0 ? icons[0] : (side != metadata ? icons[1] : icons[2]));
+        if (metadata == 0 && side == 3) return frontIconIdle;
+        else return side == 1 ? topIcon : (side == 0 ? topIcon : (side != metadata ? sideIcon : (active ? frontIconActive : frontIconIdle)));
     }
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        icons[0] = iconRegister.registerIcon(Util.getModId() + "analyzer_top");
-        icons[1] = iconRegister.registerIcon(Util.getModId() + "analyzer_side");
-        icons[2] = iconRegister.registerIcon(Util.getModId() + "analyzer_front_" + (active ? "active" : "idle"));
+        topIcon = iconRegister.registerIcon(Util.getModId() + "analyzer_top");
+        sideIcon = iconRegister.registerIcon(Util.getModId() + "analyzer_side");
+        frontIconIdle = iconRegister.registerIcon(Util.getModId() + "analyzer_front_idle");
+        frontIconActive = iconRegister.registerIcon(Util.getModId() + "analyzer_front_active");
     }
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack)
