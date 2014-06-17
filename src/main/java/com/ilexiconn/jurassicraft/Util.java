@@ -137,16 +137,15 @@ public class Util
         int entityId = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
         EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
-
-        addEntityRenderer(entity, name); //todo
     }
 
     @SideOnly(Side.CLIENT)
-    private void addEntityRenderer(Class<? extends EntityLiving> entity, String name)
+    public void addEntityRenderer(String name)
     {
         try
         {
             RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
+            Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)

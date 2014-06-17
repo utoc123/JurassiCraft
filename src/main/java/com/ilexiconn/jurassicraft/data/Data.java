@@ -98,5 +98,11 @@ public final class Data extends Util
         { /** Item Renderers */
             proxy.renderItems();
         }
+        { /** Entities */
+            for (String name : getDinos())
+            {
+                addEntityRenderer(name);
+            }
+        }
     }
 }
