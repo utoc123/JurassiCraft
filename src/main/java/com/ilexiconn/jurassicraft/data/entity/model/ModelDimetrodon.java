@@ -48,19 +48,19 @@ public class ModelDimetrodon extends MowzieModelBase
     textureHeight = 64;
     
       Head = new MowzieModelRenderer(this, 0, 0);
-      Head.addBox(0F, 0F, 0F, 5, 5, 7);
+      Head.addBox(0F, -2.8F, -9.5F, 5, 5, 7);
       Head.setRotationPoint(-2F, 9F, -24F);
       Head.setTextureSize(64, 64);
       Head.mirror = true;
       setRotation(Head, 0.1396263F, 0F, 0F);
       BackHead = new MowzieModelRenderer(this, 31, 0);
-      BackHead.addBox(0F, 0F, 0F, 6, 6, 5);
+      BackHead.addBox(0F, -2F, -9F, 6, 6, 5);
       BackHead.setRotationPoint(-2.5F, 8F, -18F);
       BackHead.setTextureSize(64, 64);
       BackHead.mirror = true;
       setRotation(BackHead, 0F, 0F, 0F);
       Jaw = new MowzieModelRenderer(this, 18, 5);
-      Jaw.addBox(0F, 0F, 0F, 3, 1, 7);
+      Jaw.addBox(0F, -2F, -9F, 3, 1, 7);
       Jaw.setRotationPoint(-1F, 13F, -23F);
       Jaw.setTextureSize(64, 64);
       Jaw.mirror = true;
@@ -180,17 +180,17 @@ public class ModelDimetrodon extends MowzieModelBase
       MiniSail2.mirror = true;
       setRotation(MiniSail2, 0F, 0F, 0F);
       Teeth = new MowzieModelRenderer(this, 0, 50);
-      Teeth.addBox(0F, 0F, 0F, 5, 1, 7);
+      Teeth.addBox(0F, -2.8F, -9.5F, 5, 1, 7);
       Teeth.setRotationPoint(-2F, 13.9F, -23.3F);
       Teeth.setTextureSize(64, 64);
       Teeth.mirror = true;
       setRotation(Teeth, 0.1396263F, 0F, 0F);
       
+      addChildTo(Teeth, Head);
       addChildTo(Head, BackHead);
       addChildTo(Jaw, BackHead);
-      addChildTo(Teeth, BackHead);
       addChildTo(BackHead, Neck);
-
+/*
       addChildTo(Sail1, MiniSail1);
       addChildTo(Sail2, Sail1);
       addChildTo(Sail3, Sail2);
@@ -203,7 +203,7 @@ public class ModelDimetrodon extends MowzieModelBase
       addChildTo(Leg1, Thigh1);
       addChildTo(Leg2, Thigh2);
       addChildTo(Leg3, Thigh3);
-      addChildTo(Leg4, Thigh4);
+      addChildTo(Leg4, Thigh4);*/
       
       Head.setInitValuesToCurrentPose();
       BackHead.setInitValuesToCurrentPose();
@@ -260,7 +260,29 @@ public class ModelDimetrodon extends MowzieModelBase
 }
 else
 {
-	//Lol
+//    Head.render(f5);
+//    BackHead.render(f5);
+//    Jaw.render(f5);
+    Neck.render(f5);
+    Torso.render(f5);
+    Lower_Body.render(f5);
+    Tail1.render(f5);
+    Tail2.render(f5);
+    Thigh1.render(f5);
+    Thigh2.render(f5);
+    Thigh3.render(f5);
+    Thigh4.render(f5);
+    Leg1.render(f5);
+    Leg2.render(f5);
+    Leg3.render(f5);
+    Leg4.render(f5);
+    MiniSail1.render(f5);
+    Sail1.render(f5);
+    Sail2.render(f5);
+    Sail3.render(f5);
+    Sail4.render(f5);
+    MiniSail2.render(f5);
+//    Teeth.render(f5);
 }
   }
   
@@ -274,6 +296,7 @@ else
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    faceTarget(BackHead, 1, f3, f4);
   }
 
 }
