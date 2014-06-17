@@ -12,6 +12,8 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -38,10 +40,6 @@ public class Util
     private static Item[] items = new Item[512];
     private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
     private static ArrayList<BlockEgg> eggs = new ArrayList<BlockEgg>();
-    private static ArrayList<Class<? extends TileEntity>> tileEntityToRender = new ArrayList<Class<? extends TileEntity>>();
-    private static ArrayList<TileEntitySpecialRenderer> tileEntityRenderer = new ArrayList<TileEntitySpecialRenderer>();
-    private static ArrayList<Class<? extends EntityLiving>> entityToRender = new ArrayList<Class<? extends EntityLiving>>();
-    private static ArrayList<RenderLiving> entityRenderer = new ArrayList<RenderLiving>();
 
     /**
      * Getters
@@ -69,26 +67,6 @@ public class Util
     public static ArrayList<BlockEgg> getEggArray()
     {
         return eggs;
-    }
-
-    public static Class<? extends TileEntity> getTileEntityToRender()
-    {
-        return tileEntityToRender.get(0);
-    }
-
-    public static TileEntitySpecialRenderer getTileEntityRenderer()
-    {
-        return tileEntityRenderer.get(0);
-    }
-
-    public static Class<? extends EntityLiving> getEntityToRender()
-    {
-        return entityToRender.get(0);
-    }
-
-    public static RenderLiving getEntityRenderer()
-    {
-        return entityRenderer.get(0);
     }
 
     public static String getModId()
@@ -148,40 +126,33 @@ public class Util
         GameRegistry.registerTileEntity(tile, tile.getSimpleName());
     }
 
+    @SideOnly(Side.CLIENT)
     public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
     {
-        tileEntityToRender.clear();
-        tileEntityToRender.add(tileEntity);
-        tileEntityRenderer.clear();
-        tileEntityRenderer.add(renderer);
-
-        proxy.renderTileEntity();
+        proxy.renderTileEntity(tileEntity, renderer);
     }
 
-    public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer, int color1, int color2)
+    public void addEntity(Class<? extends EntityLiving> entity, String name, int color1, int color2)
     {
         int entityId = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
         EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
-        entityToRender.clear();
-        entityToRender.add(entity);
-        entityRenderer.clear();
-        entityRenderer.add(renderer);
 
-        proxy.renderEntity();
+        addEntityRenderer(entity, name); //todo
     }
 
-    public void addEntity(Class<? extends EntityLiving> entity, String name, RenderLiving renderer)
+    @SideOnly(Side.CLIENT)
+    private void addEntityRenderer(Class<? extends EntityLiving> entity, String name)
     {
-        int entityId = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(entity, name, entityId);
-        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
-        entityToRender.clear();
-        entityToRender.add(entity);
-        entityRenderer.clear();
-        entityRenderer.add(renderer);
-
-        proxy.renderEntity();
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void addGuiHandler(IGuiHandler handler)
