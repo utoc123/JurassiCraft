@@ -33,4 +33,14 @@ public class MowzieModelRenderer extends ModelRenderer{
 		initRotationPointY = this.rotationPointY;
 		initRotationPointZ = this.rotationPointZ;
 	}
+	
+	public void setCurrentPoseToInitValues() {
+		this.rotateAngleX = initRotateAngleX;
+		this.rotateAngleY = initRotateAngleY;		
+		this.rotateAngleZ = initRotateAngleZ;
+		
+		this.rotationPointX = initRotationPointX;
+		this.rotationPointY = initRotationPointY;
+		this.rotationPointZ = initRotationPointZ;
+	}
 }
