@@ -172,6 +172,11 @@ public class ModelAnkylosaur extends MowzieModelBase
         
         addChildTo(Mouth, Head);
         
+        addChildTo(Leg1, Thigh1);
+        addChildTo(Leg2, Thigh2);
+        addChildTo(Leg3, Thigh3);
+        addChildTo(Leg4, Thigh4);
+        
       Head.setInitValuesToCurrentPose();
       Mouth.setInitValuesToCurrentPose();
       Head_Block.setInitValuesToCurrentPose();
@@ -217,10 +222,10 @@ public class ModelAnkylosaur extends MowzieModelBase
         Thigh2.render(f5);
         Thigh3.render(f5);
         Thigh4.render(f5);
-        Leg1.render(f5);
+ /*       Leg1.render(f5);
         Leg2.render(f5);
         Leg3.render(f5);
-        Leg4.render(f5);
+        Leg4.render(f5);*/
     }
 
     private void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -268,5 +273,10 @@ public class ModelAnkylosaur extends MowzieModelBase
         faceTarget(HeadHorn2, 1, f3, f4);
         faceTarget(HeadHorn3, 1, f3, f4);
         faceTarget(HeadHorn4, 1, f3, f4);
+        
+        walk(Thigh1, 0.5F, 1F, true, 0F, f, f1);
+        walk(Thigh2, 0.5F, 1F, true, 0F, f, f1);
+        walk(Thigh3, 0.5F, 1F, false, 0F, f, f1);
+        walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
     }
 }
