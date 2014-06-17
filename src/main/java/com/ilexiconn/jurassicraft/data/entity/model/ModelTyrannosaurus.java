@@ -2,11 +2,10 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
-
-import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,8 +13,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
 {
-	int mouthCounter = 0;
-	
     MowzieModelRenderer Left_Calf_1;
     MowzieModelRenderer Right_Calf_1;
     MowzieModelRenderer Left_Thigh;
@@ -99,7 +96,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Lower_Jaw.addBox(-2.5F, 0F, 0F, 5, 2, 8);
         Lower_Jaw.setRotationPoint(0F, 3.5F, -20F);
         Lower_Jaw.setTextureSize(256, 256);
-        setRotation(Lower_Jaw, -3F/*-2.881342F*/, 0F, 0F);
+        setRotation(Lower_Jaw, -2.881342F, 0F, 0F);
         Tail_1 = new MowzieModelRenderer(this, 118, 39);
         Tail_1.addBox(-4.5F, 0F, 0F, 9, 9, 10);
         Tail_1.setRotationPoint(0F, -0.2F, 11F);
@@ -300,23 +297,15 @@ public class ModelTyrannosaurus extends MowzieModelBase
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-    	EntityTyrannosaurus trex= (EntityTyrannosaurus) entity;
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
-        walk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, f, f1);
-        walk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, f, f1);
+        walk(this.Left_Thigh, 0.25F, 0.5f, false, f, f1);
+        walk(this.Right_Thigh, 0.25F, 0.5f, true, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
 		tailSwing(tailParts, 0.05F, 0.2F, 1, frame);
-
+		
         frame += 1;
-    }
-    
-    public boolean openCloseMouth(int mouthCounter) {
-    	transitionBox(Lower_Jaw, -2.5F, Lower_Jaw.rotateAngleY, Lower_Jaw.rotateAngleZ, 30, mouthCounter);
-    	mouthCounter += 1;
-    	if (Lower_Jaw.rotateAngleX == -2.5F) return true;
-    	return false;
     }
 }

@@ -6,23 +6,19 @@ import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
 import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer3D;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends ServerProxy
 {
-    public void renderEntity(Class<? extends EntityLiving> entity, RenderLiving renderLiving)
+    public void renderEntity()
     {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderLiving);
+        RenderingRegistry.registerEntityRenderingHandler(Util.getEntityToRender(), Util.getEntityRenderer());
     }
 
-    public void renderTileEntity(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
+    public void renderTileEntity()
     {
-        ClientRegistry.bindTileEntitySpecialRenderer(tileEntity, renderer);
+        ClientRegistry.bindTileEntitySpecialRenderer(Util.getTileEntityToRender(), Util.getTileEntityRenderer());
     }
 
     public void renderItems()

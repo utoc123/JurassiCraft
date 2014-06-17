@@ -33,11 +33,11 @@ public class MowzieModelBase extends ModelBase {
 		box.rotateAngleX = (f4 / (180F / (float)Math.PI))/divider + box.initRotateAngleX;
 	}
 	
-	//Swings the specified box back and forth while the mob is moving. Degree is the length of the arc that the box will follow. Invert will make the box swing the other way first, used for alternating leg movements. Offset will offset it from other part's rotations by the given amount. Leave "f" and "f1" as "f" and "f1".
-	public void walk(MowzieModelRenderer box, float speed, float degree, boolean invert, float offset, float f, float f1) {
+	//Swings the specified box back and forth while the mob is moving. Degree is the length of the arc that the box will follow. Invert will make the box swing the other way first, used for alternating leg movements. Leave "f" and "f1" as "f" and "f1".
+	public void walk(MowzieModelRenderer box, float speed, float degree, boolean invert, float f, float f1) {
 		int intinvert = 1;
 		if (invert) intinvert = -1;
-    		box.rotateAngleX = MathHelper.cos(f * speed + offset) * degree * intinvert * f1 + box.initRotateAngleX;
+    		box.rotateAngleX = MathHelper.cos(f * speed) * degree * intinvert * f1 + box.initRotateAngleX;
 	}
 	
 	//Makes all boxes in the array do a snake-like motion at the specified speed and to the specified degree. rootOffset is basically the type of movment (3 gives a snake-like movement, 0 wags it back and forth, etc. This can be any value, though higher than 4 give some strange effects. Experiment!) Leave "frame" as "frame".
@@ -56,17 +56,6 @@ public class MowzieModelBase extends ModelBase {
 		}
 		box.rotateAngleY = box.initRotateAngleY-((box.initRotateAngleY-desiredrotateAngleY)/2) + ((box.initRotateAngleY-desiredrotateAngleY)/2)*(MathHelper.cos((float) ((animationCounter * Math.PI)/animationSpeed)));
 		box.rotateAngleY = box.initRotateAngleX-((box.initRotateAngleX-desiredrotateAngleX)/2) + ((box.initRotateAngleX-desiredrotateAngleX)/2)*(MathHelper.cos((float) ((animationCounter * Math.PI)/animationSpeed)));
-	}
-	
-	public void simpleParent(ModelRenderer child, ModelRenderer parent) {
-		float offsetX = parent.rotationPointX - child.rotationPointX;
-		float offsetY = parent.rotationPointY - child.rotationPointY;
-		float offsetZ = parent.rotationPointZ - child.rotationPointZ;
-
-		child.setRotationPoint(parent.rotationPointX, parent.rotationPointY, parent.rotationPointZ);
-		
-		child.offsetX -= offsetX;
-		child.offsetY -= offsetY;
-		child.offsetZ -= offsetZ;
+		animationCounter++;
 	}
 }

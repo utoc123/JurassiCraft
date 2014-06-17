@@ -1,9 +1,26 @@
 package com.ilexiconn.jurassicraft.data;
 
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.block.*;
+import com.ilexiconn.jurassicraft.data.block.BlockAmberOre;
+import com.ilexiconn.jurassicraft.data.block.BlockAnalyzer;
+import com.ilexiconn.jurassicraft.data.block.BlockCultivate;
+import com.ilexiconn.jurassicraft.data.block.BlockEgg;
+import com.ilexiconn.jurassicraft.data.block.BlockFossilOre;
+import com.ilexiconn.jurassicraft.data.block.GhostBlock;
 import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
-import com.ilexiconn.jurassicraft.data.item.*;
+import com.ilexiconn.jurassicraft.data.item.ItemAmber;
+import com.ilexiconn.jurassicraft.data.item.ItemDNA;
+import com.ilexiconn.jurassicraft.data.item.ItemDinoBone;
+import com.ilexiconn.jurassicraft.data.item.ItemFossil;
+import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import com.ilexiconn.jurassicraft.data.tile.TileEgg;
@@ -12,14 +29,8 @@ import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public final class Data extends Util
 {
@@ -30,7 +41,7 @@ public final class Data extends Util
             {
                 public Item getTabIconItem()
                 {
-                    return Item.getItemFromBlock(getBlock(1));
+                    return Items.arrow;
                 }
             });
         }
@@ -55,8 +66,9 @@ public final class Data extends Util
                 try
                 {
                     final Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+                    final RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
 
-                    addEntity(entity, name, 0, 0);
+                    addEntity(entity, name, renderer, 0, 0);
 
                     addDNA(new ItemDNA(name));
                     addItem(-1, new ItemMeat(name));
@@ -82,26 +94,13 @@ public final class Data extends Util
             addWorldGenerator(new WorldGenFossilOre(), 1);
             addWorldGenerator(new WorldGenAmberOre(), 2);
         }
-        { /** Other stuff */
-            addGuiHandler(new GuiHandler());
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initClient(FMLPreInitializationEvent event)
-    {
-        { /** Block Renderers */
+        { /** Renderers */
             addTileEntityRenderer(TileCultivate.class, new CultivateRenderer());
             addTileEntityRenderer(TileEgg.class, new EggRenderer());
-        }
-        { /** Item Renderers */
             proxy.renderItems();
         }
-        { /** Entities */
-            for (String name : getDinos())
-            {
-                addEntityRenderer(name);
-            }
+        { /** Other stuff */
+            addGuiHandler(new GuiHandler());
         }
     }
 }
