@@ -2,7 +2,6 @@ package com.ilexiconn.jurassicraft.data.entity;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -13,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class EntityAgeableMob extends EntityAnimal implements IMob
+public abstract class EntityAgeableMob extends EntityAnimal implements IMob
 {
     public EntityAgeableMob(World par1World)
     {
@@ -162,10 +161,5 @@ public class EntityAgeableMob extends EntityAnimal implements IMob
     public int getAttackStrength(Entity par1Entity)
     {
         return 2;
-    }
-
-    public EntityAgeable createChild(EntityAgeable entityageable)
-    {
-        return null;
     }
 }
