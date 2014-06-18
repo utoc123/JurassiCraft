@@ -111,7 +111,7 @@ public class ModelAnkylosaur extends MowzieModelBase
         setRotation(Tail, -0.2617994F, 0F, 0F);
         TailClub = new MowzieModelRenderer(this, 80, 46);
         TailClub.addBox(-3F, 0F, 0F, 6, 6, 6);
-        TailClub.setRotationPoint(0F, 11.5F, 17F);
+        TailClub.setRotationPoint(0F, 11.5F, 17F - 13F);
         TailClub.setTextureSize(128, 64);
         TailClub.mirror = true;
         setRotation(TailClub, 0F, 0F, 0F);
@@ -177,6 +177,12 @@ public class ModelAnkylosaur extends MowzieModelBase
         addChildTo(Leg3, Thigh3);
         addChildTo(Leg4, Thigh4);
         
+        addChildTo(TailClub, Tail2);
+        addChildTo(Tail2, Tail);
+        
+        //Compensation
+        TailClub.rotationPointY -= 2F;
+
       Head.setInitValuesToCurrentPose();
       Mouth.setInitValuesToCurrentPose();
       Head_Block.setInitValuesToCurrentPose();
@@ -216,8 +222,8 @@ public class ModelAnkylosaur extends MowzieModelBase
         BodySpikes.render(f5);
         Neck.render(f5);
         Tail.render(f5);
-        TailClub.render(f5);
-        Tail2.render(f5);
+//        TailClub.render(f5);
+//        Tail2.render(f5);
         Thigh1.render(f5);
         Thigh2.render(f5);
         Thigh3.render(f5);
@@ -278,5 +284,9 @@ public class ModelAnkylosaur extends MowzieModelBase
         walk(Thigh2, 0.5F, 1F, true, 0F, f, f1);
         walk(Thigh3, 0.5F, 1F, true, 0F, f, f1);
         walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
+        
+        MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
+        tailSwing(tailParts, 0.07F, 0.4F, 0, frame);
+        frame += 1;
     }
 }

@@ -210,7 +210,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(this.Tail_2, this.Tail_1);
         addChildTo(this.Tail_1, this.Body_2);
         
-        //Lex, can you make a method in MowzieModelBase to automate this or something?
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
         Left_Thigh.setInitValuesToCurrentPose();
