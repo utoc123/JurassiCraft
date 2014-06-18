@@ -1,7 +1,7 @@
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-import thehippomaster.AnimationAPI.IAnimatedEntity;
-import thehippomaster.AnimationAPI.client.Animator;
+//import thehippomaster.AnimationAPI.IAnimatedEntity;
+//import thehippomaster.AnimationAPI.client.Animator;
 
 import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 
@@ -34,11 +34,11 @@ public class ModelAnkylosaur extends MowzieModelBase
     MowzieModelRenderer Leg4;
     
 	public static final float PI = (float)Math.PI;
-	private Animator animator;
+//	private Animator animator;
 
     public ModelAnkylosaur()
     {
-    	animator = new Animator(this);
+//    	animator = new Animator(this);
     	
         textureWidth = 128;
         textureHeight = 64;
@@ -228,11 +228,11 @@ public class ModelAnkylosaur extends MowzieModelBase
         Leg4.render(f5);*/
     }
 
-    private void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-    	animator.update(entity);
+/*    private void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+ //   	animator.update(entity);
     	setAngles();
         setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
-	}
+	}*/
 
 	public void setRotation(ModelRenderer model, float x, float y, float z)
     {
@@ -274,9 +274,9 @@ public class ModelAnkylosaur extends MowzieModelBase
         faceTarget(HeadHorn3, 1, f3, f4);
         faceTarget(HeadHorn4, 1, f3, f4);
         
-        walk(Thigh1, 0.5F, 1F, true, 0F, f, f1);
+        walk(Thigh1, 0.5F, 1F, false, 0F, f, f1);
         walk(Thigh2, 0.5F, 1F, true, 0F, f, f1);
-        walk(Thigh3, 0.5F, 1F, false, 0F, f, f1);
+        walk(Thigh3, 0.5F, 1F, true, 0F, f, f1);
         walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
     }
 }
