@@ -16,7 +16,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -54,7 +53,7 @@ public final class Data extends Util
             {
                 try
                 {
-                    final Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+                    final Class entity = Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
 
                     addEntity(entity, name, 0, 0);
 

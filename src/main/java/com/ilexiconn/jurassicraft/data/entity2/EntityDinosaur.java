@@ -2,7 +2,10 @@ package com.ilexiconn.jurassicraft.data.entity2;
 
 import com.ilexiconn.jurassicraft.data.entity.EntityAgeableMob;
 import com.ilexiconn.jurassicraft.data.entity2.gender.Gender;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public abstract class EntityDinosaur extends EntityAgeableMob
 {
@@ -11,6 +14,7 @@ public abstract class EntityDinosaur extends EntityAgeableMob
     public EntityDinosaur(World par1World)
     {
         super(par1World);
+        setGender(new Random().nextInt(2) == 0 ? Gender.MALE : Gender.FEMALE);
     }
 
     public Gender getGender()
@@ -21,5 +25,17 @@ public abstract class EntityDinosaur extends EntityAgeableMob
     public void setGender(Gender gender)
     {
         this.gender = gender;
+    }
+
+    public void writeEntityToNBT(NBTTagCompound nbt)
+    {
+        super.writeEntityToNBT(nbt);
+        nbt.setInteger("gender", getGender() == Gender.MALE ? 0 : 1);
+    }
+
+    public void readEntityFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        setGender(nbt.getInteger("gender") == 0 ? Gender.MALE : Gender.FEMALE);
     }
 }

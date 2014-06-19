@@ -1,14 +1,20 @@
 package com.ilexiconn.jurassicraft.data.tile;
 
+import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.logger.LogType;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEgg extends TileEntity
 {
-	public final Class<? extends EntityLiving> entity;
-
-    public int hatchTime;
+	public Class<? extends EntityLiving> entity;
+    public int hatchTime = 10000;
 
     public TileEgg(Class<? extends EntityLiving> entity)
     {
@@ -32,5 +38,47 @@ public class TileEgg extends TileEntity
             }
         }
         return amount;
+    }
+
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        hatchTime = nbt.getInteger("time");
+        Util.getLogger().print(LogType.ERROR, hatchTime + ", NBT:" + nbt.getInteger("time"));
+    }
+
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setInteger("time", hatchTime);
+        Util.getLogger().print(LogType.ERROR, "H:" + hatchTime);
+    }
+
+    public void hatchEgg()
+    {
+        worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+        worldObj.removeTileEntity(xCoord, yCoord, zCoord);
+        try
+        {
+            EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
+            entity.setPosition(xCoord, yCoord, zCoord);
+            worldObj.spawnEntityInWorld(entity);
+        }
+        catch (Exception e)
+        {
+            Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
+        }
+    }
+
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        writeToNBT(tag);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tag);
+    }
+
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
+    {
+        readFromNBT(packet.func_148857_g());
     }
 }

@@ -6,12 +6,8 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-import org.lwjgl.opengl.GL11;
-
-import com.ilexiconn.jurassicraft.data.entity.EntityDimetrodon;
-
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.Entity;
+import org.lwjgl.opengl.GL11;
 
 public class ModelDimetrodon extends MowzieModelBase {
 	// fields
@@ -228,7 +224,7 @@ else
 //    Head.render(f5);
 //    BackHead.render(f5);
 //    Jaw.render(f5);
-    Neck.render(f5);
+    Neck1.render(f5);
     Torso.render(f5);
     Lower_Body.render(f5);
     Tail1.render(f5);
