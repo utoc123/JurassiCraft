@@ -3,11 +3,14 @@ package com.ilexiconn.jurassicraft.data.entity2.render;
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.entity2.EntityDinosaur;
 import com.ilexiconn.jurassicraft.data.entity2.gender.Gender;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
+@SideOnly(Side.CLIENT)
 public class RenderDinosaur extends RenderLiving
 {
     public ResourceLocation maleTexture;

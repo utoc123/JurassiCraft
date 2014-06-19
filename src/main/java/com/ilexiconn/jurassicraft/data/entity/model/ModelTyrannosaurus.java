@@ -3,13 +3,7 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
-import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
@@ -299,8 +293,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-    	EntityTyrannosaurus trex= (EntityTyrannosaurus) entity;
-        super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
         walk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, f, f1);

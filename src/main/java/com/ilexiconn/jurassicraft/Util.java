@@ -3,6 +3,7 @@ package com.ilexiconn.jurassicraft;
 import com.ilexiconn.jurassicraft.data.Data;
 import com.ilexiconn.jurassicraft.data.Dinos;
 import com.ilexiconn.jurassicraft.data.block.BlockEgg;
+import com.ilexiconn.jurassicraft.data.entity2.render.RenderDinosaur;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
 import com.ilexiconn.jurassicraft.logger.Logger;
 import com.ilexiconn.jurassicraft.proxy.ServerProxy;
@@ -152,6 +153,12 @@ public class Util
         {
             e.printStackTrace();
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addEntity2Renderer(Class entity, RenderDinosaur render)
+    {
+        proxy.renderEntity(entity, render);
     }
 
     public void addGuiHandler(IGuiHandler handler)

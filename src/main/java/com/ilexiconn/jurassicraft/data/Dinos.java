@@ -14,7 +14,7 @@ public class Dinos
                     "Gallimimus",
                     "Procompsognathus",
                     "Meganeura",
-                    "Tyrannosaurus",
+ //                 "Tyrannosaurus",
                     "Maiasaura",
                     "Styracosaur",
                     "Dilophosaur",
@@ -30,7 +30,7 @@ public class Dinos
                     "Brachiosaur",
                     "Hypsilophodon",
                     "Parasaurolophus",
- //                  "Dimetrodon",
+ //                 "Dimetrodon",
                     "Coelacanth"
             };
 
