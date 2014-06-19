@@ -41,7 +41,7 @@ public class MowzieAIWander extends EntityAIBase
         else
         {
             Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity, xzRange, yRange);
-
+            System.out.println("Destination coord is " + vec3.xCoord + ", " + vec3.yCoord + ", " + vec3.zCoord + ".");
             if (vec3 == null)
             {
                 return false;
@@ -51,6 +51,7 @@ public class MowzieAIWander extends EntityAIBase
                 this.xPosition = vec3.xCoord;
                 this.yPosition = vec3.yCoord;
                 this.zPosition = vec3.zCoord;
+                this.xPosition = entity.posX + 50;
                 return true;
             }
         }
