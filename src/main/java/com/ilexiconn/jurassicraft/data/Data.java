@@ -50,7 +50,6 @@ public final class Data extends Util
             addItem(3, new ItemDinoBone());
         }
         { /** Entities */
-            /**
             addTileEntity(TileEgg.class);
             for (String name : getDinos())
             {
@@ -79,7 +78,6 @@ public final class Data extends Util
                     if (name.equals("Tyrannosaurus")) e.printStackTrace();
                 }
             }
-            */
         }
         { /** World Gens */
             addWorldGenerator(new WorldGenFossilOre(), 1);
@@ -104,12 +102,10 @@ public final class Data extends Util
             proxy.renderItems();
         }
         { /** Entities */
-            /**
             for (String name : getDinos())
             {
                 addEntityRenderer(name);
             }
-            */
 
             addEntity2Renderer(Entity2Trex.class, new RenderDinosaur(new ModelTyrannosaurus(), 1f, "Tyrannosaurus1", "Tyrannosaurus2"));
         }
