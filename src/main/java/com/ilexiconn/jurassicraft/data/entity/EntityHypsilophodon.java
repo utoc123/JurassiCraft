@@ -67,8 +67,8 @@ public class EntityHypsilophodon extends EntityAnimal
     }
     protected String getLivingSound()
     {
-    	int I = rand.nextInt(1)+1;
-    	if(I == 1)
+    	int i = rand.nextInt(1)+1;
+    	if(i == 1)
     	{
     		return "jurassicraft:stego1";
     	}
