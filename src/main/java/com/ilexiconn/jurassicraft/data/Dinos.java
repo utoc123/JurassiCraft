@@ -14,7 +14,7 @@ public class Dinos
                     "Gallimimus",
                     "Procompsognathus",
                     "Meganeura",
- //                 "Tyrannosaurus",
+   //                 "Tyrannosaurus",
                     "Maiasaura",
                     "Styracosaur",
                     "Dilophosaur",
