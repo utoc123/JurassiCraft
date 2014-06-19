@@ -40,7 +40,11 @@ public class TileCultivate extends TileEntity implements IInventory
 
 	public boolean canCultivate()
 	{
-		ItemStack result = new ItemStack(((ItemDNA) stacks[0].getItem()).getCorrespondingEgg());
+	    Item i = stacks[0].getItem();
+	    if(i == null || !(i instanceof ItemDNA)) return false;
+	    Block b = ((ItemDNA) i).getCorrespondingEgg();
+	    if(b == null) return false;
+		ItemStack result = new ItemStack(b);
 		return stacks[1] == null || stacks[1].isItemEqual(result);
 	}
 

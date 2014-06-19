@@ -1,9 +1,9 @@
 package com.ilexiconn.jurassicraft.data.block;
 
-import com.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.IBlockAccess;
+
+import com.ilexiconn.jurassicraft.Util;
 
 public abstract class BlockEgg extends BlockContainer
 {
@@ -16,7 +16,7 @@ public abstract class BlockEgg extends BlockContainer
         setBlockName("egg" + name);
         setBlockTextureName(Util.getModId() + "egg" + name);
         setCreativeTab(Util.getCreativeTab(0));
-        setBlockBounds(0.28f, 0f, 0.28f, 0.72f, 0.67f, 0.72f);
+        setBlockBounds(0.28f, 0f, 0.28f, 0.72f, 0.5f, 0.72f);
     }
 
     public boolean isOpaqueCube()

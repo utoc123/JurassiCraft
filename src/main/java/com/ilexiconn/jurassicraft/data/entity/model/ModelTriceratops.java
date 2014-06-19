@@ -227,6 +227,60 @@ public class ModelTriceratops extends MowzieModelBase
         Shield_thingy10.setRotationPoint(0F, -5.9F, -7F);
         Shield_thingy10.setTextureSize(256, 256);
         setRotation(Shield_thingy10, -0.3171542F, 0F, 0.0174533F);
+        
+        addChildTo(Mouth, Head);
+        
+        addChildTo(BackLeg1, BackLeg3);
+        addChildTo(BackLeg2, BackLeg4);
+        addChildTo(Right_Back_Foot, BackLeg4);
+        addChildTo(Left_Back_Foot, BackLeg3);
+        addChildTo(FrontLeg1, FrontLeg3);
+        addChildTo(FrontLeg2, FrontLeg4);
+        
+        //Corrections
+        BackLeg1.setRotationPoint(0, 0, 0);
+        BackLeg2.setRotationPoint(0, 0, 0);
+        Right_Back_Foot.setRotationPoint(0, 0, 0);
+        Left_Back_Foot.setRotationPoint(0, 0, 0);
+        FrontLeg1.setRotationPoint(0, 0, 0);
+        FrontLeg2.setRotationPoint(0, 0, 0);
+        
+        BackLeg1.setInitValuesToCurrentPose();
+        BackLeg2.setInitValuesToCurrentPose();
+        BackLeg3.setInitValuesToCurrentPose();
+        BackLeg4.setInitValuesToCurrentPose();
+        FrontLeg1.setInitValuesToCurrentPose();
+        FrontLeg2.setInitValuesToCurrentPose();
+        FrontLeg3.setInitValuesToCurrentPose();
+        FrontLeg4.setInitValuesToCurrentPose();
+        Tail1.setInitValuesToCurrentPose();
+        Tail2.setInitValuesToCurrentPose();
+        Tail3.setInitValuesToCurrentPose();
+        Tail5.setInitValuesToCurrentPose();
+        Tail6.setInitValuesToCurrentPose();
+        Torso_1.setInitValuesToCurrentPose();
+        Neck.setInitValuesToCurrentPose();
+        Head.setInitValuesToCurrentPose();
+        Mouth.setInitValuesToCurrentPose();
+        Shield_thingy1.setInitValuesToCurrentPose();
+        Shield_thingy2.setInitValuesToCurrentPose();
+        Shield_thingy3.setInitValuesToCurrentPose();
+        Middle_Horn.setInitValuesToCurrentPose();
+        Left_Horn.setInitValuesToCurrentPose();
+        Right_Back_Foot.setInitValuesToCurrentPose();
+        Left_Back_Foot.setInitValuesToCurrentPose();
+        Torso_2.setInitValuesToCurrentPose();
+        Right_Horn.setInitValuesToCurrentPose();
+        Shield_thingy11.setInitValuesToCurrentPose();
+        Shield_thingy12.setInitValuesToCurrentPose();
+        Shield_thingy13.setInitValuesToCurrentPose();
+        Shield_thingy14.setInitValuesToCurrentPose();
+        Shield_thingy15.setInitValuesToCurrentPose();
+        Shield_thingy16.setInitValuesToCurrentPose();
+        Shield_thingy17.setInitValuesToCurrentPose();
+        Shield_thingy18.setInitValuesToCurrentPose();
+        Shield_thingy19.setInitValuesToCurrentPose();
+        Shield_thingy10.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -234,12 +288,12 @@ public class ModelTriceratops extends MowzieModelBase
         super.render(entity, f, f1, f2, f3, f4, f5);
         setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         
-        BackLeg1.render(f5);
-        BackLeg2.render(f5);
+//        BackLeg1.render(f5);
+//        BackLeg2.render(f5);
         BackLeg3.render(f5);
         BackLeg4.render(f5);
-        FrontLeg1.render(f5);
-        FrontLeg2.render(f5);
+//        FrontLeg1.render(f5);
+//        FrontLeg2.render(f5);
         FrontLeg3.render(f5);
         FrontLeg4.render(f5);
         Tail1.render(f5);
@@ -250,14 +304,14 @@ public class ModelTriceratops extends MowzieModelBase
         Torso_1.render(f5);
         Neck.render(f5);
         Head.render(f5);
-        Mouth.render(f5);
+//        Mouth.render(f5);
         Shield_thingy1.render(f5);
         Shield_thingy2.render(f5);
         Shield_thingy3.render(f5);
         Middle_Horn.render(f5);
         Left_Horn.render(f5);
-        Right_Back_Foot.render(f5);
-        Left_Back_Foot.render(f5);
+//        Right_Back_Foot.render(f5);
+//        Left_Back_Foot.render(f5);
         Torso_2.render(f5);
         Right_Horn.render(f5);
         Shield_thingy11.render(f5);
@@ -282,5 +336,9 @@ public class ModelTriceratops extends MowzieModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        walk(BackLeg3, 0.5F, 0.5F, true, 0F, f, f1);
+        walk(BackLeg4, 0.5F, 0.5F, false, 0F, f, f1);
+        walk(FrontLeg3, 0.5F, 0.5F, false, 0F, f, f1);
+        walk(FrontLeg4, 0.5F, 0.5F, true, 0F, f, f1);
     }
 }

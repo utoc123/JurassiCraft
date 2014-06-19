@@ -1,8 +1,9 @@
 package com.ilexiconn.jurassicraft.data.item;
 
-import com.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+
+import com.ilexiconn.jurassicraft.Util;
 
 public class ItemDNA extends Item
 {

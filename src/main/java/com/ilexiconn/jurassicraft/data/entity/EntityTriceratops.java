@@ -12,21 +12,19 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.world.World;
 
 public class EntityTriceratops extends EntityAnimal
 {
     /** AI task for player control. */
     private final EntityAIControlledByPlayer aiControlledByPlayer;
-    private static final String __OBFID = "CL_00001647";
+    //private static final String __OBFID = "CL_00001647";
     
     public int textureID;
     public float SitLevel;
