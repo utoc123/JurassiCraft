@@ -343,9 +343,9 @@ public class ModelBrachiosaur extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-    walk(top_leg_right, 0.2F, 0.5F, false, 0F, f, f1);
-    walk(top_leg_left, 0.2F, 0.5F, true, 0F, f, f1);
+    walk(top_leg_right, 0.2F, 0.5F, true, 0F, f, f1);
+    walk(top_leg_left, 0.2F, 0.5F, false, 0F, f, f1);
     walk(front_left_top_leg, 0.2F, 0.5F, true, 0F, f, f1);
-    walk(front_right_top_leg, 0.1F, 0.5F, false, 0F, f, f1);
+    walk(front_right_top_leg, 0.2F, 0.5F, false, 0F, f, f1);
   }
 }
