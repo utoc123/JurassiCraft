@@ -1,32 +1,34 @@
 package com.ilexiconn.jurassicraft.data.gui;
 
-import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.gui.container.ContainerAnalyzer;
-import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import org.lwjgl.opengl.GL11;
+
+import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.data.gui.container.ContainerAnalyzer;
+import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 
 public class GuiAnalyzer extends GuiContainer
 {
     private TileAnalyzer tileEntityAnalyzer;
-
+    
     public GuiAnalyzer(InventoryPlayer inventory, TileAnalyzer tileEntity)
     {
         super(new ContainerAnalyzer(inventory, tileEntity));
         this.tileEntityAnalyzer = tileEntity;
-
+        
     }
-
+    
     @Override
     public void drawGuiContainerForegroundLayer(int i, int d)
     {
         fontRendererObj.drawString(StatCollector.translateToLocal("container.analyzer"), 8, 6, 4210752);
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96, 4210752);
     }
-
+    
     @Override
     public void drawGuiContainerBackgroundLayer(float i, int d, int k)
     {
