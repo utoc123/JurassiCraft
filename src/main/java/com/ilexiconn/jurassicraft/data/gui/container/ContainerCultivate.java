@@ -1,116 +1,96 @@
 package com.ilexiconn.jurassicraft.data.gui.container;
 
-import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
+
+import com.ilexiconn.jurassicraft.data.item.ItemDNA;
+import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 public class ContainerCultivate extends Container
 {
-    public TileCultivate tileCultivate;
+    public TileCultivate   tileCultivate;
     public InventoryPlayer inventoryPlayer;
-
+    
     public ContainerCultivate(InventoryPlayer inventory, TileCultivate tileEntity)
     {
         tileCultivate = tileEntity;
         inventoryPlayer = inventory;
-
-        for (int i = 0; i < 3; ++i)
+        
+        addSlotToContainer(new Slot(tileEntity, 0, 45, 38));
+        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
+        
+        bindPlayerInventory(inventoryPlayer);
+    }
+    
+    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
+    {
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 9; ++j)
+            for (int j = 0; j < 9; j++)
             {
                 addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
-
-        for (int i = 0; i < 9; ++i)
+        
+        for (int i = 0; i < 9; i++)
         {
             addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
         }
-
-        addSlotToContainer(new Slot(tileEntity, 0, 45, 38));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
     }
-
-    public boolean canInteractWith(EntityPlayer var1)
+    
+    public boolean canInteractWith(EntityPlayer player)
     {
         return true;
     }
-
-    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+    
+    public boolean canCultivate(ItemStack stack)
     {
-        ItemStack itemstack = null;
-        Slot slot = (Slot) this.inventorySlots.get(par2);
+        Item i = stack.getItem();
+        if (i == null || !(i instanceof ItemDNA)) return false;
+        Block b = ((ItemDNA) i).getCorrespondingEgg();
+        if (b == null) return false;
+        return true;
+    }
+    
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+    {
+        ItemStack stack = null;
+        Slot slotObject = (Slot) inventorySlots.get(slot);
 
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+        //null checks and checks if the item can be stacked (maxStackSize > 1)
+        if (slotObject != null && slotObject.getHasStack()) {
+                ItemStack stackInSlot = slotObject.getStack();
+                stack = stackInSlot.copy();
 
-            if (par2 == 2)
-            {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true))
-                {
-                    return null;
+                //merges the item into player inventory since its in the tileEntity
+                if (slot < 2) {
+                        if (!this.mergeItemStack(stackInSlot, 2, 38, false)) {
+                                return null;
+                        }
                 }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            }
-            else if (par2 != 1 && par2 != 0)
-            {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-                {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
-                    {
+                //places it into the tileEntity is possible since its in the player inventory
+                else if (canCultivate(stackInSlot)) {
+                    if(!this.mergeItemStack(stackInSlot, 0, 1, false))
                         return null;
-                    }
                 }
-                else if (TileEntityFurnace.isItemFuel(itemstack1))
-                {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
-                    {
+
+                if (stackInSlot.stackSize == 0) {
+                        slotObject.putStack(null);
+                } else {
+                        slotObject.onSlotChanged();
+                }
+
+                if (stackInSlot.stackSize == stack.stackSize) {
                         return null;
-                    }
                 }
-                else if (par2 >= 3 && par2 < 30)
-                {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
-                {
-                    return null;
-                }
-            }
-            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
-            {
-                return null;
-            }
-
-            if (itemstack1.stackSize == 0)
-            {
-                slot.putStack((ItemStack) null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-
-            if (itemstack1.stackSize == itemstack.stackSize)
-            {
-                return null;
-            }
-
-            slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+                slotObject.onPickupFromSlot(player, stackInSlot);
         }
-
-        return itemstack;
+        return stack;
     }
 }
