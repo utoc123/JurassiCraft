@@ -1,7 +1,5 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
-import com.ilexiconn.jurassicraft.JurassiCraft;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
 import net.minecraft.entity.Entity;
@@ -9,7 +7,6 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIBeg;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -38,6 +35,9 @@ import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.ilexiconn.jurassicraft.JurassiCraft;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -53,7 +53,7 @@ public class EntityDimetrodon extends EntityTameable
      */
     private float timeDimetrodonIsShaking;
     private float prevTimeDimetrodonIsShaking;
-    private static final String __OBFID = "CL_00001654";
+    //private static final String __OBFID = "CL_00001654";
 
     public EntityDimetrodon(World par1World)
     {

@@ -18,8 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import com.ilexiconn.jurassicraft.data.entity.model.ModelParasaurolophus;
-
 public class EntityParasaurolophus extends EntityAnimal
 {
     public int textureID;
