@@ -66,6 +66,7 @@ public final class Data extends Util
                     addEntity(entity, name, 0, 0);
 
                     addDNA(new ItemDNA(name));
+                    if(!name.equals("Meganeura"))
                     addItem(-1, new ItemMeat(name));
 
                     addEgg(new BlockEgg(name)
@@ -92,9 +93,9 @@ public final class Data extends Util
         { /** Other stuff */
             addGuiHandler(new GuiHandler());
         }
-        { /** entity2 */
+       /* { /** entity2 
             addEntity(Entity2Trex.class, "trex", 0, 0);
-        }
+        }*/
     }
 
     @SideOnly(Side.CLIENT)

@@ -51,9 +51,6 @@ public class MowzieAIWander extends EntityAIBase
                 this.xPosition = vec3.xCoord;
                 this.yPosition = vec3.yCoord;
                 this.zPosition = vec3.zCoord;
-                this.xPosition = entity.posX + 5;
-                this.yPosition = entity.posY + 5;
-                this.zPosition = entity.posZ + 5;
 
                 return true;
             }
