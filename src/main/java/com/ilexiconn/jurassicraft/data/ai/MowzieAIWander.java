@@ -51,6 +51,10 @@ public class MowzieAIWander extends EntityAIBase
                 this.xPosition = vec3.xCoord;
                 this.yPosition = vec3.yCoord;
                 this.zPosition = vec3.zCoord;
+                this.xPosition = entity.posX + 5;
+                this.yPosition = entity.posY + 5;
+                this.zPosition = entity.posZ + 5;
+
                 return true;
             }
         }
@@ -69,7 +73,7 @@ public class MowzieAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
-        boolean debug = this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
-        System.out.println("Did the navigator find a path? " + debug);
+        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        System.out.println("Did the navigator find a path? " + !this.entity.getNavigator().noPath());
     }
 }
