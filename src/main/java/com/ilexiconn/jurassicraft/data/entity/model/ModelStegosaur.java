@@ -446,8 +446,8 @@ public class ModelStegosaur extends MowzieModelBase
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(head_, 1, f3, f4);
-        walk(leg_left_1, 0.5F, 0.5F, false, 0F, f, f1);
-        walk(leg_right_1, 0.5F, 0.5F, true, 0F, f, f1);
+        walk(leg_left_1, 0.5F, 0.3F, false, 0F, f, f1);
+        walk(leg_right_1, 0.5F, 0.3F, true, 0F, f, f1);
         walk(arm_left_2, 0.5F, 0.5F, true, 0F, f, f1);
         walk(arm_right_2, 0.5F, 0.5F, false, 0F, f, f1);
 

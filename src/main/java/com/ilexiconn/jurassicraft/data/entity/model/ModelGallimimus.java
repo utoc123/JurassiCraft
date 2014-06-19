@@ -151,6 +151,11 @@ public class ModelGallimimus extends MowzieModelBase
       Lower_Arm2.mirror = true;
       setRotation(Lower_Arm2, -0.2617994F, 0F, 0F);
       
+      addChildTo(Foot, Calf);
+      addChildTo(Calf, Thigh2);
+      addChildTo(Foot2, Calf2);
+      addChildTo(Calf2, Thigh);
+      
       Body.setInitValuesToCurrentPose();
       Upper__Body.setInitValuesToCurrentPose();
       Tail.setInitValuesToCurrentPose();
@@ -185,10 +190,10 @@ public class ModelGallimimus extends MowzieModelBase
     Lower_Beak.render(f5);
     Thigh.render(f5);
     Thigh2.render(f5);
-    Calf.render(f5);
-    Calf2.render(f5);
-    Foot.render(f5);
-    Foot2.render(f5);
+//    Calf.render(f5);
+//    Calf2.render(f5);
+//    Foot.render(f5);
+//    Foot2.render(f5);
     Upper_Arm.render(f5);
     Upper_Arm2.render(f5);
     Lower_Arm.render(f5);
@@ -205,6 +210,7 @@ public class ModelGallimimus extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
+    walk(Thigh, 0.7F, 0.4F, false, 0F, f, f1);
+    walk(Thigh2, 0.7F, 0.4F, true, 0F, f, f1);
   }
-
 }
