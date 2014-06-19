@@ -42,7 +42,6 @@ public class TileCultivate extends TileEntity implements IInventory
 	{
 	    Item i = stacks[0].getItem();
 	    if(i == null || !(i instanceof ItemDNA)) return false;
-	    System.out.println(i.getClass().getName());
 	    Block b = ((ItemDNA) i).getCorrespondingEgg();
 	    if(b == null) return false;
 		ItemStack result = new ItemStack(b);
