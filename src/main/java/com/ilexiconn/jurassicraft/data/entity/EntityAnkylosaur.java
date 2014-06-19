@@ -30,7 +30,7 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
 
     private int animID;
 	private int animTick;
-    
+	
     public EntityAnkylosaur(World par1World)
     {
         super(par1World);
@@ -65,6 +65,7 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
         super.readEntityFromNBT(nbttag);
         nbttag.getInteger("texture");
     }
+    
     public boolean isAIEnabled()
     {
         return true;
