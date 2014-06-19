@@ -280,12 +280,26 @@ public class ModelStegosaur extends MowzieModelBase
         addChildTo(upper_jaw_1, head_);
         addChildTo(head_, head_back);
         
+        addChildTo(leg_left_3, leg_left_2);
+        addChildTo(leg_right_3, leg_right_2);
+        addChildTo(leg_left_2, leg_left_1);
+        addChildTo(leg_right_2, leg_right_1);
+        addChildTo(arm_left_1, arm_left_2);
+        addChildTo(arm_right_1, arm_right_2);
+        
         //Corrections
         upper_jaw_1.rotationPointY -= 5.5F;
         upper_jaw_1.rotationPointZ -= 2F;
         
         lower_jaw.rotationPointY -= 5.2F;
         lower_jaw.rotationPointZ -= 2F;
+        
+        leg_left_3.setRotationPoint(0,0,0);
+        leg_left_2.setRotationPoint(0,0,0);
+        leg_right_3.setRotationPoint(0,0,0);
+        leg_right_2.setRotationPoint(0,0,0);
+        arm_right_1.setRotationPoint(0,0,0);
+        arm_left_1.setRotationPoint(0,0,0);
         
         body_1.setInitValuesToCurrentPose();
         leg_left_1.setInitValuesToCurrentPose();
@@ -348,13 +362,13 @@ public class ModelStegosaur extends MowzieModelBase
             tail_2.render(f5);
             tail_3.render(f5);
             tail_4.render(f5);
-            leg_left_2.render(f5);
-            leg_right_2.render(f5);
-            leg_right_3.render(f5);
-            leg_left_3.render(f5);
-            foot_left.render(f5);
-            arm_right_1.render(f5);
-            arm_left_1.render(f5);
+ //           leg_left_2.render(f5);
+//            leg_right_2.render(f5);
+//            leg_right_3.render(f5);
+//            leg_left_3.render(f5);
+//            foot_left.render(f5);
+//            arm_right_1.render(f5);
+//            arm_left_1.render(f5);
             arm_left_2.render(f5);
             arm_right_2.render(f5);
             head_back.render(f5);
@@ -389,13 +403,13 @@ public class ModelStegosaur extends MowzieModelBase
             tail_2.render(f5);
             tail_3.render(f5);
             tail_4.render(f5);
-            leg_left_2.render(f5);
-            leg_right_2.render(f5);
-            leg_right_3.render(f5);
-            leg_left_3.render(f5);
+//            leg_left_2.render(f5);
+//            leg_right_2.render(f5);
+//            leg_right_3.render(f5);
+//            leg_left_3.render(f5);
             foot_left.render(f5);
-            arm_right_1.render(f5);
-            arm_left_1.render(f5);
+//            arm_right_1.render(f5);
+//            arm_left_1.render(f5);
             arm_left_2.render(f5);
             arm_right_2.render(f5);
             head_back.render(f5);
@@ -432,5 +446,10 @@ public class ModelStegosaur extends MowzieModelBase
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(head_, 1, f3, f4);
+        walk(leg_left_1, 0.5F, 0.5F, false, 0F, f, f1);
+        walk(leg_right_1, 0.5F, 0.5F, true, 0F, f, f1);
+        walk(arm_left_2, 0.5F, 0.5F, true, 0F, f, f1);
+        walk(arm_right_2, 0.5F, 0.5F, false, 0F, f, f1);
+
     }
 }
