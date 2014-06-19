@@ -111,7 +111,7 @@ public class ContainerAnalyzer extends Container
 
                 //merges the item into player inventory since its in the tileEntity
                 if (slot < 13) {
-                        if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
+                        if (!this.mergeItemStack(stackInSlot, 13, 49, false)) {
                                 return null;
                         }
                 }
