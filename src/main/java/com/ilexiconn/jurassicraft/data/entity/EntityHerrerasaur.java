@@ -48,8 +48,8 @@ public class EntityHerrerasaur extends EntityAgeableMob
      */
     public void writeEntityToNBT(NBTTagCompound nbttag)
     {
-        nbttag.setInteger("texture", textureID);
         super.writeEntityToNBT(nbttag);
+        nbttag.setInteger("texture", textureID);
     }
 
     /**
@@ -58,7 +58,7 @@ public class EntityHerrerasaur extends EntityAgeableMob
     public void readEntityFromNBT(NBTTagCompound nbttag)
     {
         super.readEntityFromNBT(nbttag);
-        textureID = nbttag.getInteger("texture");
+        nbttag.getInteger("texture");
     }
     protected void applyEntityAttributes()
     {
