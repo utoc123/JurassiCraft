@@ -2,6 +2,7 @@ package com.ilexiconn.jurassicraft.data.tile;
 
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.logger.LogType;
+
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 public class TileEgg extends TileEntity
 {
 	public Class<? extends EntityLiving> entity;
-    public int hatchTime = 10000;
+    public int hatchTime = 200;
 
     public TileEgg(Class<? extends EntityLiving> entity)
     {
@@ -68,6 +69,15 @@ public class TileEgg extends TileEntity
         {
             Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
         }
+    }
+    
+    public void updateEntity() {
+    	if (hatchTime == 0) {
+    		hatchEgg();
+    	}
+    	else {
+    		hatchTime -= 1;
+    	}
     }
 
     public Packet getDescriptionPacket()

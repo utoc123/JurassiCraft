@@ -1,5 +1,7 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -40,7 +42,7 @@ public class EntityTyrannosaurus extends EntityAgeableMob
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(0, new EntityAIWander(this, 1.3D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));

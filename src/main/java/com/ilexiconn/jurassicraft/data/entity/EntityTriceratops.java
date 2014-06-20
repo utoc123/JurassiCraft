@@ -45,7 +45,7 @@ public class EntityTriceratops extends EntityAnimal
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         textureID = rand.nextInt(3)+1;
-        this.SitLevel = 2.7F;
+        this.SitLevel = 4F;
         }
     
     public void updateRiderPosition()
@@ -55,6 +55,8 @@ public class EntityTriceratops extends EntityAnimal
             this.riddenByEntity.setPosition(this.posX, this.posY + this.SitLevel + this.riddenByEntity.getYOffset(), this.posZ);
         }
     }
+ 
+    
     
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
