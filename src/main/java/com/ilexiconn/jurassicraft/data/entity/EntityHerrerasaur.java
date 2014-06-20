@@ -17,7 +17,7 @@ public class EntityHerrerasaur extends EntityAgeableMob
     public EntityHerrerasaur(World par1World)
     {
         super(par1World);
-        float moveSpeed = 0.1F;
+        float moveSpeed = 1.0F;
         this.setSize(2F, 2F);
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.2F, false));
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.2F, true));
@@ -27,7 +27,7 @@ public class EntityHerrerasaur extends EntityAgeableMob
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(0, new EntityAIWander(this, 0.2D));
+        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
@@ -64,7 +64,7 @@ public class EntityHerrerasaur extends EntityAgeableMob
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(/*2.0D*/ 0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(2.0D);
     }
 
 
