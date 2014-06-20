@@ -30,7 +30,7 @@ public class Dinos
                     "Brachiosaur",
                     "Hypsilophodon",
                     "Parasaurolophus",
- //                 "Dimetrodon",
+                    "Dimetrodon",
                     "Coelacanth"
             };
 

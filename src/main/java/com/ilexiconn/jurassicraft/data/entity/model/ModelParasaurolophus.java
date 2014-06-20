@@ -62,29 +62,29 @@ public class ModelParasaurolophus extends MowzieModelBase
     textureHeight = 256;
     
     Left_Lower_Foot = new MowzieModelRenderer(this, 98, 0);
-    Left_Lower_Foot.addBox(0F, 0F, -2F, 3, 2, 4);
+    Left_Lower_Foot.addBox(-2F, 0F, 0F, 4, 3, 2);
     Left_Lower_Foot.setRotationPoint(7F, 20.8F, 7.7F);
     Left_Lower_Foot.setTextureSize(256, 256);
     Left_Lower_Foot.mirror = true;
-    setRotation(Left_Lower_Foot, 0F, 1.581227F, 0.9128382F);
+    setRotation(Left_Lower_Foot, -0.9075712F, 0F, 0F);
     Left_Upper_Foot = new MowzieModelRenderer(this, 81, 0);
-    Left_Upper_Foot.addBox(0F, 0F, -2F, 4, 2, 3);
+    Left_Upper_Foot.addBox(-2F, 0F, 0F, 3, 4, 2);
     Left_Upper_Foot.setRotationPoint(7.5F, 18F, 8.3F);
     Left_Upper_Foot.setTextureSize(256, 256);
     Left_Upper_Foot.mirror = true;
-    setRotation(Left_Upper_Foot, 0F, 1.581233F, 1.301251F);
+    setRotation(Left_Upper_Foot, -0.3490659F, 0F, 0F);
     Right_Lower_Foot = new MowzieModelRenderer(this, 98, 0);
-    Right_Lower_Foot.addBox(0F, 0F, -2F, 3, 2, 4);
+    Right_Lower_Foot.addBox(-2F, 0F, 0F, 4, 3, 2);
     Right_Lower_Foot.setRotationPoint(-7.1F, 20.8F, 7.7F);
     Right_Lower_Foot.setTextureSize(256, 256);
     Right_Lower_Foot.mirror = true;
-    setRotation(Right_Lower_Foot, 0F, 1.581227F, 0.9075712F);
+    setRotation(Right_Lower_Foot, -0.9075712F, 0F, 0F);
     Right_Upper_Foot = new MowzieModelRenderer(this, 81, 0);
-    Right_Upper_Foot.addBox(0F, 0F, -1.5F, 4, 2, 3);
+    Right_Upper_Foot.addBox(-1.5F, 0F, 0F, 3, 4, 2);
     Right_Upper_Foot.setRotationPoint(-7.1F, 18F, 8.3F);
     Right_Upper_Foot.setTextureSize(256, 256);
     Right_Upper_Foot.mirror = true;
-    setRotation(Right_Upper_Foot, 0F, 1.581233F, 1.301248F);
+    setRotation(Right_Upper_Foot, -0.3490659F, 0F, 0F);
     Left_Calf_1 = new MowzieModelRenderer(this, 65, 0);
     Left_Calf_1.addBox(-1.5F, 0F, 0F, 3, 12, 4);
     Left_Calf_1.setRotationPoint(7F, 11.5F, 1F);
@@ -259,15 +259,61 @@ public class ModelParasaurolophus extends MowzieModelBase
     Foot_Right.setTextureSize(256, 256);
     Foot_Right.mirror = true;
     setRotation(Foot_Right, 3.141593F, 0F, 0F);
-      
- /*     addChildTo(Snout_1, Head);
+        
+      addChildTo(Snout_1, Head);
       addChildTo(Snout_2, Head);
       addChildTo(Jaw, Head);
       addChildTo(Crest_1, Head);
-      addChildTo(Crest_2, Crest_1);
-      addChildTo(Crest_3, Head);*/
-  //    addChildTo(Head, Neck);
-    	
+      addChildTo(Crest_2, Head);
+      addChildTo(Crest_3, Head);
+      
+      addChildTo(Foot_Right, Right_Lower_Foot);
+      addChildTo(Right_Lower_Foot, Right_Upper_Foot);
+      addChildTo(Right_Upper_Foot, Right_Calf_1);
+      addChildTo(Right_Calf_1, Right_Thigh);
+      
+      addChildTo(Foot_Left, Left_Lower_Foot);
+      addChildTo(Left_Lower_Foot, Left_Upper_Foot);
+      addChildTo(Left_Upper_Foot, Left_Calf_1);
+      addChildTo(Left_Calf_1, Left_Thigh);
+      
+      //Corrections
+      Crest_3.setRotationPoint(0, Crest_3.rotationPointY, 6);
+      Crest_3.offsetY -= 0.17F;
+      
+      Left_Lower_Foot.setInitValuesToCurrentPose();
+      Left_Upper_Foot.setInitValuesToCurrentPose();
+      Right_Lower_Foot.setInitValuesToCurrentPose();
+      Right_Upper_Foot.setInitValuesToCurrentPose();
+      Left_Calf_1.setInitValuesToCurrentPose();
+      Right_Calf_1.setInitValuesToCurrentPose();
+      Left_Thigh.setInitValuesToCurrentPose();
+      Right_Thigh.setInitValuesToCurrentPose();
+      Body_1.setInitValuesToCurrentPose();
+      Body_2.setInitValuesToCurrentPose();
+      Neck.setInitValuesToCurrentPose();
+      Tail_1.setInitValuesToCurrentPose();
+      Tail_2.setInitValuesToCurrentPose();
+      Tail_3.setInitValuesToCurrentPose();
+      Tail_4.setInitValuesToCurrentPose();
+      Tail_5.setInitValuesToCurrentPose();
+      Upper_Arm_Right.setInitValuesToCurrentPose();
+      Upper_Arm_Left.setInitValuesToCurrentPose();
+      Lower_Arm_Left.setInitValuesToCurrentPose();
+      Lower_Arm_Right.setInitValuesToCurrentPose();
+      Left_Hand.setInitValuesToCurrentPose();
+      Right_Hand.setInitValuesToCurrentPose();
+      Tail_6.setInitValuesToCurrentPose();
+      Head.setInitValuesToCurrentPose();
+      Snout_1.setInitValuesToCurrentPose();
+      Snout_2.setInitValuesToCurrentPose();
+      Jaw.setInitValuesToCurrentPose();
+      Crest_1.setInitValuesToCurrentPose();
+      Crest_2.setInitValuesToCurrentPose();
+      Crest_3.setInitValuesToCurrentPose();
+      Body_3.setInitValuesToCurrentPose();
+      Foot_Left.setInitValuesToCurrentPose();
+      Foot_Right.setInitValuesToCurrentPose();
   }
   
   public boolean setAlarmed(boolean setAlarm)
@@ -279,12 +325,12 @@ public class ModelParasaurolophus extends MowzieModelBase
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5);
-    Left_Lower_Foot.render(f5);
-    Left_Upper_Foot.render(f5);
-    Right_Lower_Foot.render(f5);
-    Right_Upper_Foot.render(f5);
-    Left_Calf_1.render(f5);
-    Right_Calf_1.render(f5);
+//    Left_Lower_Foot.render(f5);
+//    Left_Upper_Foot.render(f5);
+//    Right_Lower_Foot.render(f5);
+//    Right_Upper_Foot.render(f5);
+//    Left_Calf_1.render(f5);
+//    Right_Calf_1.render(f5);
     Left_Thigh.render(f5);
     Right_Thigh.render(f5);
     Body_1.render(f5);
@@ -303,12 +349,12 @@ public class ModelParasaurolophus extends MowzieModelBase
     Right_Hand.render(f5);
     Tail_6.render(f5);
     Head.render(f5);
-    Snout_1.render(f5);
-    Snout_2.render(f5);
-    Jaw.render(f5);
-    Crest_1.render(f5);
-    Crest_2.render(f5);
-    Crest_3.render(f5);
+//    Snout_1.render(f5);
+//    Snout_2.render(f5);
+//    Jaw.render(f5);
+//    Crest_1.render(f5);
+//    Crest_2.render(f5);
+//    Crest_3.render(f5);
     Body_3.render(f5);
     Foot_Left.render(f5);
     Foot_Right.render(f5);
@@ -324,7 +370,9 @@ public class ModelParasaurolophus extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
- //   faceTarget(Head, 1, f3, f4);
+//    faceTarget(Head, 1, f3, f4);
+    walk(Right_Thigh, 0.5F, 0.5F, false, 0F, f, f1);
+    walk(Left_Thigh, 0.5F, 0.5F, true, 0F, f, f1);
   }
 
 }
