@@ -8,6 +8,7 @@
 .settings/
 .gradle/
 minecraft/
+build/
 out/
 bin
 config/
