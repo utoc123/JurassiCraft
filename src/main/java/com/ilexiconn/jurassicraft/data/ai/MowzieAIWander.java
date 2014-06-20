@@ -12,7 +12,6 @@ public class MowzieAIWander extends EntityAIBase
     private double yPosition;
     private double zPosition;
     private double speed;
-    private static final String __OBFID = "CL_00001608";
     private int xzRange;
     private int yRange;
 
@@ -42,18 +41,11 @@ public class MowzieAIWander extends EntityAIBase
         {
             Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity, xzRange, yRange);
             System.out.println("Destination coord is " + vec3.xCoord + ", " + vec3.yCoord + ", " + vec3.zCoord + ".");
-            if (vec3 == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.xPosition = vec3.xCoord;
-                this.yPosition = vec3.yCoord;
-                this.zPosition = vec3.zCoord;
+            this.xPosition = vec3.xCoord;
+            this.yPosition = vec3.yCoord;
+            this.zPosition = vec3.zCoord;
 //                this.xPosition = entity.posX + 50;
-                return true;
-            }
+            return true;
         }
     }
 

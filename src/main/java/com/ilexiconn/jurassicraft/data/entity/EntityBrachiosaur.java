@@ -1,18 +1,10 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
 import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFollowParent;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -66,13 +58,15 @@ public class EntityBrachiosaur extends EntityAnimal
         super.readEntityFromNBT(nbttag);
         nbttag.getInteger("texture");
     }
-    
+
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
+
+        getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0d);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23d);
     }
+
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */

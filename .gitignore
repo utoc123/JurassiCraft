@@ -7,7 +7,12 @@
 .classpath
 .settings/
 .gradle/
-build/
+build/classes/
+build/dependency-cache/
+build/natives/
+build/resources/
+build/sources/
+build/tmp/
 minecraft/
 out/
 bin

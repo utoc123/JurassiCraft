@@ -11,6 +11,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -31,6 +32,7 @@ public class Util
     /**
      * Stuff
      */
+    private static SimpleNetworkWrapper genderWrapper = new SimpleNetworkWrapper("genderChannel");
     private static final Logger logger = new Logger();
     private static final Data data = new Data();
     private static final Dinos dinos = new Dinos();
@@ -88,6 +90,11 @@ public class Util
     public static String[] getDinos()
     {
         return dinos.dinos;
+    }
+
+    public static SimpleNetworkWrapper getGenderWrapper()
+    {
+        return genderWrapper;
     }
 
     /**

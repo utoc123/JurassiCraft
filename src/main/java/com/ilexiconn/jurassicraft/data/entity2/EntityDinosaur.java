@@ -1,7 +1,9 @@
 package com.ilexiconn.jurassicraft.data.entity2;
 
+import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.entity.EntityAgeableMob;
 import com.ilexiconn.jurassicraft.data.entity2.gender.Gender;
+import com.ilexiconn.jurassicraft.data.entity2.packet.PacketGender;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -33,6 +35,7 @@ public class EntityDinosaur extends EntityAgeableMob
     {
         super.writeEntityToNBT(nbt);
         nbt.setInteger("gender", gender == Gender.MALE ? 0 : 1);
+        Util.getGenderWrapper().sendToAll(new PacketGender(gender == Gender.MALE ? "MALE" : "FEMALE"));
     }
 
     public void readEntityFromNBT(NBTTagCompound nbt)

@@ -2,15 +2,8 @@ package com.ilexiconn.jurassicraft.data;
 
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.block.*;
-import com.ilexiconn.jurassicraft.data.entity.model.ModelTyrannosaurus;
-import com.ilexiconn.jurassicraft.data.entity2.render.RenderDinosaur;
-import com.ilexiconn.jurassicraft.data.entity2.tests.Entity2Trex;
 import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
-import com.ilexiconn.jurassicraft.data.item.ItemAmber;
-import com.ilexiconn.jurassicraft.data.item.ItemDNA;
-import com.ilexiconn.jurassicraft.data.item.ItemDinoBone;
-import com.ilexiconn.jurassicraft.data.item.ItemFossil;
-import com.ilexiconn.jurassicraft.data.item.ItemMeat;
+import com.ilexiconn.jurassicraft.data.item.*;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import com.ilexiconn.jurassicraft.data.tile.TileEgg;
@@ -19,7 +12,6 @@ import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
-
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -81,7 +73,6 @@ public final class Data extends Util
                 catch (Exception e)
                 {
                     getLogger().print(LogType.ERROR, "Can't add the " + name + ", " + e);
-                    if (name.equals("Tyrannosaurus")) e.printStackTrace();
                 }
             }
         }
@@ -93,7 +84,7 @@ public final class Data extends Util
             addGuiHandler(new GuiHandler());
         }
         { /** entity2 */
-            addEntity(Entity2Trex.class, "trex", 0, 0);
+            //addEntity(Entity2Trex.class, "trex", 0, 0);
         }
     }
 
@@ -113,7 +104,7 @@ public final class Data extends Util
                 addEntityRenderer(name);
             }
 
-            addEntity2Renderer(Entity2Trex.class, new RenderDinosaur(new ModelTyrannosaurus(), 1f, "Tyrannosaurus1", "Tyrannosaurus2"));
+            //addEntity2Renderer(Entity2Trex.class, new RenderDinosaur(new ModelTyrannosaurus(), 1f, "Tyrannosaurus1", "Tyrannosaurus2"));
         }
     }
 }
