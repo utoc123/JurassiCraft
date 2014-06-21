@@ -27,12 +27,3 @@ or for IntelliJ IDEA:
 ```
 gradle idea
 ```
-
-
-
-Build mod
-
-Run in console:
-```
-gradle build
-```

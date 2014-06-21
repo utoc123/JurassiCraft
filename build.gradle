@@ -1,21 +1,21 @@
 buildscript
 {
     repositories
-    {
+	{
         mavenCentral()
         maven
-        {
+		{
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
         maven
-        {
+		{
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
     dependencies
-    {
+	{
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
@@ -23,26 +23,13 @@ buildscript
 apply plugin: 'forge'
 
 version = "1.1.0_SNAPSHOT"
-group = "com.ilexiconn.jurassicraft"
-archivesBaseName = "jurassicraft"
-libsDirName = '../target'
+group= "com.ilexiconn.jerassicraft"
+archivesBaseName = "JurassiCraft"
 
 minecraft
 {
-    version = "1.7.2-10.12.1.1117"
-    if (file('../run').exists())
-	{
-		assetDir = "../run/assets"
-	}
-    else
-	{
-		assetDir = "minecraft/assets"
-	}
-}
-
-dependencies
-{
-
+    version = "1.7.2-10.12.2.1128"
+    assetDir = "minecraft/assets"
 }
 
 processResources
@@ -51,14 +38,14 @@ processResources
     inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs)
-    {
+	{
         include 'mcmod.info'
-
-        expand 'version': project.version, 'mcversion': project.minecraft.version
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-
+        
     from(sourceSets.main.resources.srcDirs)
-    {
+	{
         exclude 'mcmod.info'
     }
 }
