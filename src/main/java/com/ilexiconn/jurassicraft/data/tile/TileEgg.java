@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class TileEgg extends TileEntity
 {
 	public Class<? extends EntityLiving> entity;
-    public int hatchTime = 200;
+    public int hatchTime = 10000;
 
     public TileEgg(Class<? extends EntityLiving> entity)
     {
@@ -45,14 +45,12 @@ public class TileEgg extends TileEntity
     {
         super.readFromNBT(nbt);
         hatchTime = nbt.getInteger("time");
-        Util.getLogger().print(LogType.ERROR, hatchTime + ", NBT:" + nbt.getInteger("time"));
     }
 
     public void writeToNBT(NBTTagCompound nbt)
     {
         super.writeToNBT(nbt);
         nbt.setInteger("time", hatchTime);
-        Util.getLogger().print(LogType.ERROR, "H:" + hatchTime);
     }
 
     public void hatchEgg()
@@ -61,9 +59,12 @@ public class TileEgg extends TileEntity
         worldObj.removeTileEntity(xCoord, yCoord, zCoord);
         try
         {
-            EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
-            entity.setPosition(xCoord, yCoord, zCoord);
-            worldObj.spawnEntityInWorld(entity);
+            if (!worldObj.isRemote)
+            {
+                EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
+                entity.setPosition(xCoord, yCoord, zCoord);
+                worldObj.spawnEntityInWorld(entity);
+            }
         }
         catch (Exception e)
         {
@@ -71,12 +72,15 @@ public class TileEgg extends TileEntity
         }
     }
     
-    public void updateEntity() {
-    	if (hatchTime == 0) {
+    public void updateEntity()
+    {
+    	if (hatchTime == 0)
+        {
     		hatchEgg();
     	}
-    	else {
-    		hatchTime -= 1;
+    	else
+        {
+    		hatchTime--;
     	}
     }
 
