@@ -116,8 +116,8 @@ public class EntityTyrannosaurus extends EntityAgeableMob
 
     protected String getLivingSound()
     {
-    	if(isRoaring == false){
-    		isRoaring = true;
+//    	if(isRoaring == false){
+ //   		isRoaring = true;
     		int I = rand.nextInt(1)+1;
     		if(I == 1)
     		{
@@ -127,19 +127,17 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     		{
     			return "jurassicraft:trex2";
     		}
-    	}
-    	return null;
+//    	}
+//    	return null;
     }
 
     protected String getHurtSound()
     {
-    	isRoaring = true;
         return "jurassicraft:trex3";
     }
 
     protected String getDeathSound()
     {
-    	isRoaring = true;
         return "jurassicraft:trex3";
     }
 
