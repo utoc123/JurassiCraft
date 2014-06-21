@@ -40,6 +40,12 @@ public class MowzieModelBase extends ModelBase {
     		box.rotateAngleX = MathHelper.cos(f * speed + offset) * degree * intinvert * f1 + box.initRotateAngleX;
 	}
 	
+	public void flap(MowzieModelRenderer box, float speed, float degree, boolean invert, float offset, float f, float f1) {
+		int intinvert = 1;
+		if (invert) intinvert = -1;
+    		box.rotateAngleZ = MathHelper.cos(f * speed + offset) * degree * intinvert * f1 + box.initRotateAngleZ;
+	}
+	
 	//Makes all boxes in the array do a snake-like motion at the specified speed and to the specified degree. rootOffset is basically the type of movment (3 gives a snake-like movement, 0 wags it back and forth, etc. This can be any value, though higher than 4 give some strange effects. Experiment!) Leave "frame" as "frame".
 	public void tailSwing(MowzieModelRenderer[] boxes, float speed, float degree, double rootOffset, float frame) {
 		int numberOfSegments = boxes.length;

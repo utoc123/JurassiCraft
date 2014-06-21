@@ -28,7 +28,7 @@ public class EntityLiopleurodon extends EntityWaterMob
     public EntityLiopleurodon(World par1World)
     {
         super(par1World);
-        this.setSize(0.95F, 0.95F);
+        this.setSize(3F, 1.5F);
         this.rotationVelocity = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
         TextureID = rand.nextInt(3)+1;
     }

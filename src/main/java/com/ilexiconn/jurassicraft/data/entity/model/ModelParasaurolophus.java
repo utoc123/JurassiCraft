@@ -200,8 +200,8 @@ public class ModelParasaurolophus extends MowzieModelBase
     Tail_6.mirror = true;
     setRotation(Tail_6, -0.2974289F, 0F, 0F);
     Head = new MowzieModelRenderer(this, 217, 40);
-    Head.addBox(-3F, 0F, 0F, 6, 6, 6);
-    Head.setRotationPoint(0F, 2F, -24F);
+    Head.addBox(-3F, 0F, -6F, 6, 6, 6);
+    Head.setRotationPoint(0F, 2F, -18F);
     Head.setTextureSize(256, 256);
     Head.mirror = true;
     setRotation(Head, 0F, 0F, 0F);
@@ -279,7 +279,8 @@ public class ModelParasaurolophus extends MowzieModelBase
       
       //Corrections
       Crest_3.setRotationPoint(0, Crest_3.rotationPointY, 6);
-      Crest_3.offsetY -= 0.17F;
+      Crest_3.offsetY -= 0.19F;
+      Crest_3.offsetZ -= 0.35F;
       
       Left_Lower_Foot.setInitValuesToCurrentPose();
       Left_Upper_Foot.setInitValuesToCurrentPose();
@@ -370,7 +371,7 @@ public class ModelParasaurolophus extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-//    faceTarget(Head, 1, f3, f4);
+    faceTarget(Head, 1, f3, f4);
     walk(Right_Thigh, 0.5F, 0.5F, false, 0F, f, f1);
     walk(Left_Thigh, 0.5F, 0.5F, true, 0F, f, f1);
   }
