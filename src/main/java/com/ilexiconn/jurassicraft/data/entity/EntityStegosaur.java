@@ -18,7 +18,7 @@ public class EntityStegosaur extends EntityAnimal
     public EntityStegosaur(World par1World)
     {
         super(par1World);
-        this.setSize(4F, 4F);
+        this.setSize(3F, 3F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));

@@ -19,7 +19,7 @@ public class EntityBrachiosaur extends EntityAnimal
     public EntityBrachiosaur(World par1World)
     {
         super(par1World);
-        this.setSize(5F, 5F);
+        this.setSize(6F, 12F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));

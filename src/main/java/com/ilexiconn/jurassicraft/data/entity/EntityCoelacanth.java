@@ -27,7 +27,7 @@ public class EntityCoelacanth extends EntityWaterMob
     public EntityCoelacanth(World par1World)
     {
         super(par1World);
-        this.setSize(0.95F, 0.95F);
+        this.setSize(0.5F, 0.5F);
         this.rotationVelocity = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
     }
     /**
