@@ -8,12 +8,7 @@
 .settings/
 .gradle/
 minecraft/
-build/classes/
-build/dependency-cache/
-build/natives/
-build/resources/
-build/sources/
-build/tmp/
+build/
 out/
 bin
 config/
