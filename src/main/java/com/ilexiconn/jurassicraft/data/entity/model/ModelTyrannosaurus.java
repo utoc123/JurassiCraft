@@ -3,7 +3,10 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
+
 import org.lwjgl.opengl.GL11;
+
+import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
@@ -294,15 +297,14 @@ public class ModelTyrannosaurus extends MowzieModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
         walk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, f, f1);
         walk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-		tailSwing(tailParts, 0.05F, 0.2F, 1, frame);
-
-        frame += 1;
+		tailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
     }
     
     public boolean openCloseMouth(int mouthCounter) {

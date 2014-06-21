@@ -31,6 +31,8 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
     private int animID;
 	private int animTick;
 	
+	public int frame;
+	
     public EntityAnkylosaur(World par1World)
     {
         super(par1World);
@@ -82,6 +84,11 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
         super.applyEntityAttributes();
         getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
         getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
+    }
+    
+    public void onLivingUpdate() {
+    	frame++;
+    	super.onLivingUpdate();
     }
 
     public String getLivingSound()

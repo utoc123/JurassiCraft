@@ -3,6 +3,7 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
+import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
 import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 
 import net.minecraft.client.model.ModelBase;
@@ -35,6 +36,7 @@ public class ModelAnkylosaur extends MowzieModelBase
     
 	public static final float PI = (float)Math.PI;
 //	private Animator animator;
+	public int frame;
 
     public ModelAnkylosaur()
     {
@@ -274,6 +276,7 @@ public class ModelAnkylosaur extends MowzieModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        EntityAnkylosaur ankylosaur = (EntityAnkylosaur) entity;
         faceTarget(Head, 1, f3, f4);
         faceTarget(HeadHorn1, 1, f3, f4);
         faceTarget(HeadHorn2, 1, f3, f4);
@@ -286,7 +289,6 @@ public class ModelAnkylosaur extends MowzieModelBase
         walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
-        tailSwing(tailParts, 0.05F, 0.4F, 0, frame);
-        frame += 1;
+        tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.frame);
     }
 }
