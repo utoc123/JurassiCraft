@@ -31,7 +31,7 @@ if (!root.hasProperty("startTime"))
 version = "1.1.0" + getDate()
 group = "com.ilexiconn.jurassicraft"
 archivesBaseName = "jurassicraft"
-libsDirName = '../artifacts'
+libsDirName = '../target'
 
 def getDate() 
 {
