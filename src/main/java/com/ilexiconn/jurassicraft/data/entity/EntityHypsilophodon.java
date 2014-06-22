@@ -18,7 +18,7 @@ public class EntityHypsilophodon extends EntityAnimal
     public EntityHypsilophodon(World par1World)
     {
         super(par1World);
-        this.setSize(1F, 1F);
+        this.setSize(1.7F, 1.7F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
@@ -135,6 +135,6 @@ public class EntityHypsilophodon extends EntityAnimal
 
     public float spiderScaleAmount()
     {
-        return 1F;
+        return 1.7F;
     }
 }

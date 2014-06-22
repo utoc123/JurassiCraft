@@ -18,7 +18,7 @@ public class EntityGallimimus extends EntityAnimal
     public EntityGallimimus(World par1World)
     {
         super(par1World);
-        this.setSize(1F, 1.1F);
+        this.setSize(1.4F, 1.1F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));

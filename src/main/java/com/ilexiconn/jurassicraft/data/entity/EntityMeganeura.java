@@ -167,4 +167,8 @@ public class EntityMeganeura extends EntityFlying implements IMob
     {
         return this.rand.nextInt(20) == 0 && super.getCanSpawnHere();
     }
+    
+	public float spiderScaleAmount() {
+		return 1.5F;
+	}
 }
