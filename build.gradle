@@ -25,6 +25,7 @@ apply plugin: 'forge'
 version = "1.1.0_SNAPSHOT"
 group= "com.ilexiconn.jerassicraft"
 archivesBaseName = "JurassiCraft"
+libsDirName = '../target'
 
 minecraft
 {
