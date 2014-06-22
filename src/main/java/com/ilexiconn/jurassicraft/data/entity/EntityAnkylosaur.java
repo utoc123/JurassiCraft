@@ -1,5 +1,6 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+//
 //import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailSlam;
 //import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailWhip;
 
