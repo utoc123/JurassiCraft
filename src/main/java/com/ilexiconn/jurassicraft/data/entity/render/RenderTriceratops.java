@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderTriceratops extends RenderLiving
 {
-    public ResourceLocation TriceratopsTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Triceratops1.png");
-    public ResourceLocation TriceratopsTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Triceratops2.png");
+    public ResourceLocation TriceratopsTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops1.png");
+    public ResourceLocation TriceratopsTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops2.png");
 
     public RenderTriceratops()
     {

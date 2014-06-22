@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBrachiosaur extends RenderLiving
 {
-    public ResourceLocation BrachiosaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Brachiosaur1.png");
-    public ResourceLocation BrachiosaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Brachiosaur2.png");
+    public ResourceLocation BrachiosaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/brachiosaur1.png");
+    public ResourceLocation BrachiosaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/brachiosaur2.png");
 
     public RenderBrachiosaur()
     {

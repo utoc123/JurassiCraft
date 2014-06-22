@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderParasaurolophus extends RenderLiving
 {
-    public ResourceLocation ParasaurolophusTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Parasaurolophus1.png");
-    public ResourceLocation ParasaurolophusTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Parasaurolophus2.png");
+    public ResourceLocation ParasaurolophusTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/parasaurolophus1.png");
+    public ResourceLocation ParasaurolophusTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/parasaurolophus2.png");
 
     public RenderParasaurolophus()
     {

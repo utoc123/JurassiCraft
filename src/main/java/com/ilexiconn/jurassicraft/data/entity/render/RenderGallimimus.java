@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderGallimimus extends RenderLiving
 {
-    public ResourceLocation GallimimusTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Gallimimus1.png");
-    public ResourceLocation GallimimusTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Gallimimus2.png");
+    public ResourceLocation GallimimusTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/gallimimus1.png");
+    public ResourceLocation GallimimusTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/gallimimus2.png");
 
     public RenderGallimimus()
     {

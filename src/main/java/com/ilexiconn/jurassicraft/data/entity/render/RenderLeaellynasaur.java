@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderLeaellynasaur extends RenderLiving
 {
-    public ResourceLocation LeaellynasaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Leaellynasaur1.png");
-    public ResourceLocation LeaellynasaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Leaellynasaur2.png");
+    public ResourceLocation LeaellynasaurTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/leaellynasaur1.png");
+    public ResourceLocation LeaellynasaurTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/leaellynasaur2.png");
 
     public RenderLeaellynasaur()
     {

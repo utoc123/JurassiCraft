@@ -17,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderHypsilophodon extends RenderLiving
 {
-    public ResourceLocation HypsilophodonTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Hypsilophodon1.png");
-    public ResourceLocation HypsilophodonTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Hypsilophodon2.png");
+    public ResourceLocation HypsilophodonTexture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon1.png");
+    public ResourceLocation HypsilophodonTexture2 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon2.png");
 
     public RenderHypsilophodon()
     {
