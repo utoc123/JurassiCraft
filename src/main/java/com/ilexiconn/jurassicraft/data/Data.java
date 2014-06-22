@@ -2,6 +2,7 @@ package com.ilexiconn.jurassicraft.data;
 
 import com.ilexiconn.jurassicraft.Util;
 import com.ilexiconn.jurassicraft.data.block.*;
+import com.ilexiconn.jurassicraft.data.entity.EntityHitbox;
 import com.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import com.ilexiconn.jurassicraft.data.item.*;
 import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
@@ -12,10 +13,12 @@ import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

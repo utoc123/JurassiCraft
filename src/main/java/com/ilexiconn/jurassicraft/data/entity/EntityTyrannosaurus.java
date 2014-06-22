@@ -31,6 +31,7 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     private int conversionTime = 0;
     public boolean isRoaring = false;
     public int frame = 0;
+    private EntityHitbox headBox;
     
     public EntityTyrannosaurus(World par1World)
     {
@@ -53,6 +54,7 @@ public class EntityTyrannosaurus extends EntityAgeableMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;
         textureID = rand.nextInt(3) + 1;
+        headBox = new EntityHitbox(worldObj, this, 5, 5, 0, 10, 10);
     }
     /**
      * Determines if an entity can be despawned, used on idle far away entities
