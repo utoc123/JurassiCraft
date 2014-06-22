@@ -1,18 +1,25 @@
 //creativeTab
 itemGroup.fossilTab=JurassiCraft
 
-//Mobs
-entity.Ankylosaur.name=Ankylosaur
-entity.Brachiosaur.name=Brachiosaur
+//entities
+entity.Ankylosaur.name=Ankylosaurus
+entity.Brachiosaur.name=Brachiosaurus
 entity.Coelacanth.name=Coelacanth
 entity.Gallimimus.name=Gallimimus
-entity.Herrerasaur.name=Herrerasaur
+entity.Herrerasaur.name=Herrerasaurus
 entity.Hypsilophodon.name=Hypsilophodon
-entity.Leaellynasaur.name=Leaellynasaur
+entity.Leaellynasaur.name=Leaellynasaurus
 entity.Liopleurodon.name=Liopleurodon
 entity.Meganeura.name=Meganeura
 entity.Parasaurolophus.name=Parasaurolophus
-entity.Stegosaur.name=Stegosaur
+entity.Stegosaur.name=Stegosaurus
 entity.Triceratops.name=Triceratops
 entity.Tyrannosaurus.name=Tyrannosaurus Rex
 entity.Dimetrodon.name=Dimetrodon
+
+//items
+item.dinoBone.name=Dinosaur Bone
+
+/blocks
+tile.cultivate_idle.name=Cultivate
+tile.analyzer_idle.name=Analyzer

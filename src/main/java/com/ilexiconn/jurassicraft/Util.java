@@ -23,6 +23,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 import java.util.ArrayList;
@@ -153,7 +154,7 @@ public class Util
         try
         {
             RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
-            Class<? extends EntityLiving> entity = (Class<? extends EntityLiving>) Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+            Class entity =Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
@@ -182,5 +183,15 @@ public class Util
     {
         eggs.add(egg);
         addBlock(-1, egg);
+    }
+
+    public void addShapedRecipe(ItemStack output, Object... obj)
+    {
+        GameRegistry.addRecipe(output, obj);
+    }
+
+    public void addShapelessRecipe(ItemStack output, Object... obj)
+    {
+        GameRegistry.addShapelessRecipe(output, obj);
     }
 }

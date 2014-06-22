@@ -8,8 +8,8 @@ public class ItemDinoBone extends Item
     public ItemDinoBone()
     {
         super();
-        setUnlocalizedName("dinobone");
-        setTextureName(Util.getModId() + "dinobone");
+        setUnlocalizedName("dinoBone");
+        setTextureName(Util.getModId() + "dinoBone");
         setCreativeTab(Util.getCreativeTab(0));
     }
 }
