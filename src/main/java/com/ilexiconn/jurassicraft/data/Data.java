@@ -15,6 +15,7 @@ import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import com.ilexiconn.jurassicraft.logger.LogType;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -55,6 +56,7 @@ public final class Data extends Util
         }
         { /** Entities */
             addTileEntity(TileEgg.class);
+            EntityRegistry.registerGlobalEntityID(EntityHitbox.class, "Hit box", EntityRegistry.findGlobalUniqueEntityId(), 0, 0);
             for (String name : getDinos())
             {
                 try

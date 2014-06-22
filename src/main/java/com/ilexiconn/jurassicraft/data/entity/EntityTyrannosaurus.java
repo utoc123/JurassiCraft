@@ -4,6 +4,7 @@ import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -54,7 +55,9 @@ public class EntityTyrannosaurus extends EntityAgeableMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;
         textureID = rand.nextInt(3) + 1;
-        headBox = new EntityHitbox(worldObj, this, 5, 5, 0, 10, 10);
+        headBox = new EntityHitbox(worldObj, this, 3F, 2.5F, 0F, 5F, 5F);
+        worldObj.spawnEntityInWorld(headBox);
+        
     }
     /**
      * Determines if an entity can be despawned, used on idle far away entities
