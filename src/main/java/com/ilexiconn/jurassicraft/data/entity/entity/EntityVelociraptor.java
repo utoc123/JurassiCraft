@@ -1,7 +1,5 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
-import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
-
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -45,12 +43,11 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, new AIVelociraptorTwitchHead(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-        this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(0, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
@@ -144,12 +141,12 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 
     protected String getHurtSound()
     {
-        return "jurassicraft:RapAttack01";
+        return "jurassicraft:trex3";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:RapAttack02";
+        return "jurassicraft:trex3";
     }
 
     protected void dropFewItems(boolean par1, int par2)
