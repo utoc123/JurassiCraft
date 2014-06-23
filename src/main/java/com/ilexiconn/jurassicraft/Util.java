@@ -174,7 +174,7 @@ public class Util
         try
         {
             RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
-            Class entity =Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+            Class entity =Class.forName("com.ilexiconn.jurassicraft.data.entity.entity.Entity" + name);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception ignored)
