@@ -396,10 +396,10 @@ public class ModelVelociraptor extends MowzieModelBase
       Tail_6.setRotationPoint(0, 1, 11);
       
       Tail_1.rotateAngleX = 0.3F;
-      Tail_2.rotateAngleX = -0.05F;
-      Tail_3.rotateAngleX = -0.1F;
-      Tail_4.rotateAngleX = -0.15F;
-      Tail_5.rotateAngleX = -0.2F;
+      Tail_2.rotateAngleX = 0F;
+      Tail_3.rotateAngleX = -0.05F;
+      Tail_4.rotateAngleX = -0.1F;
+      Tail_5.rotateAngleX = -0.15F;
       Tail_6.rotateAngleX = -0.25F;
       
       Head.setRotationPoint(0, 0, 0);
@@ -612,9 +612,9 @@ public class ModelVelociraptor extends MowzieModelBase
 		
 		animator.setAnim(1);
 		animator.startPhase(3);
-			animator.rotate(Head, 0, 0, 0.3F);
+			animator.rotate(Head, 0, 0, 0.2F);
 		animator.endPhase();
-		animator.setStationaryPhase(14);
+		animator.setStationaryPhase(24);
 		animator.resetPhase(3);
 	}
 }

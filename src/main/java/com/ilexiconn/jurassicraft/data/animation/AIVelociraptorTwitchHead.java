@@ -22,12 +22,12 @@ public class AIVelociraptorTwitchHead extends AIAnimation {
 	}
 	
 	public int getDuration() {
-		return 20;
+		return 30;
 	}
 	
 	public boolean shouldAnimate() {
 		EntityLiving living = getEntity();
 		IAnimatedEntity entity = (IAnimatedEntity)living;
-		return entity.getAnimID() == 0 && living.getRNG().nextInt(35) == 0;
+		return entity.getAnimID() == 0 && living.getRNG().nextInt(45) == 0;
 	}
 }
