@@ -397,10 +397,10 @@ public class ModelVelociraptor extends MowzieModelBase
       
       Tail_1.rotateAngleX = 0.3F;
       Tail_2.rotateAngleX = 0F;
-      Tail_3.rotateAngleX = -0.05F;
-      Tail_4.rotateAngleX = -0.1F;
-      Tail_5.rotateAngleX = -0.15F;
-      Tail_6.rotateAngleX = -0.25F;
+      Tail_3.rotateAngleX = -0.03F;
+      Tail_4.rotateAngleX = -0.06F;
+      Tail_5.rotateAngleX = -0.09F;
+      Tail_6.rotateAngleX = -0.12F;
       
       Head.setRotationPoint(0, 0, 0);
       Body_2.setRotationPoint(0, -1, -3);
@@ -595,7 +595,7 @@ public class ModelVelociraptor extends MowzieModelBase
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
     newtailSwing(tailParts, 1F * scaleFactor, 0.1F * f1, 2, f);
     newchainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
-    newchainWave(tailParts, 1.5F, -0.07F, 2, raptor.frame, 1F);
+    newchainWave(tailParts, 1.5F, -0.05F, 2, raptor.frame, 1F);
     newchainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     newchainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     //Idling
