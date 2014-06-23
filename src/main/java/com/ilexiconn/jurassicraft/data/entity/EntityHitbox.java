@@ -44,7 +44,7 @@ public class EntityHitbox extends EntityLiving {
 		this.posX = parent.posX + offsetX;
 		this.posY = parent.posY + offsetY;
 		this.posZ = parent.posZ + offsetZ;
-		System.out.println("Hitbox is at " + this.posX + ", " + this.posY + ", " + this.posZ);
+//		System.out.println("Hitbox is at " + this.posX + ", " + this.posY + ", " + this.posZ);
 	}
 	
 	@Override

@@ -30,7 +30,7 @@ public class EntityVelociraptor extends EntityAgeableMob
     public int textureID;
     private int conversionTime = 0;
     public boolean isRoaring = false;
-    public int frame = 0;
+    public float frame = 0;
     
     public EntityVelociraptor(World par1World)
     {
@@ -105,7 +105,7 @@ public class EntityVelociraptor extends EntityAgeableMob
                 this.setFire(-99);
             }
         }
-        frame++;
+        frame += 0.1;
         super.onLivingUpdate();
     }
 

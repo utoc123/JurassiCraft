@@ -11,6 +11,9 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
+import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
+import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -61,6 +64,7 @@ public class ModelVelociraptor extends MowzieModelBase
 	MowzieModelRenderer Quill_5;
 	MowzieModelRenderer Quill_6;
 	MowzieModelRenderer Quill_7;
+	MowzieModelRenderer HeadJoint;
   
   public ModelVelociraptor()
   {
@@ -116,8 +120,8 @@ public class ModelVelociraptor extends MowzieModelBase
       Body_2.mirror = true;
       setRotation(Body_2, -0.1858931F, 0F, 0F);
       Neck = new MowzieModelRenderer(this, 217, 0);
-      Neck.addBox(-2.5F, 0F, 0F, 5, 5, 13);
-      Neck.setRotationPoint(0F, -6F, -15F);
+      Neck.addBox(-2.5F, 0F, -13F, 5, 5, 13);
+      Neck.setRotationPoint(0F, 3.1F, -5.8F);
       Neck.setTextureSize(256, 256);
       Neck.mirror = true;
       setRotation(Neck, -0.7820786F, 0F, 0F);
@@ -325,31 +329,143 @@ public class ModelVelociraptor extends MowzieModelBase
       Quill_7.setTextureSize(256, 256);
       Quill_7.mirror = true;
       setRotation(Quill_7, 2.393595F, 0F, 0F);
+      HeadJoint = new MowzieModelRenderer(this, 0, 0);
+      HeadJoint.addBox(0F, 0F, 0F, 0, 0, 0);
+      HeadJoint.setRotationPoint(0F, -6F, -15F);
+      HeadJoint.setTextureSize(256, 256);
+      HeadJoint.mirror = true;
+      setRotation(HeadJoint, 0F, 0F, 0F);
+      
+      addChildTo(Left_Claw_2, Left_Claw_1);
+      addChildTo(Left_Claw_1, Foot_Left);
+      addChildTo(Foot_Left, Left_Upper_Foot);
+      addChildTo(Left_Upper_Foot, Left_Calf_1);
+      addChildTo(Left_Calf_1, Left_Thigh);
+
+      addChildTo(Right_Claw_2, Right_Claw_1);
+      addChildTo(Right_Claw_1, Foot_Right);
+      addChildTo(Foot_Right, Right_Upper_Foot);
+      addChildTo(Right_Upper_Foot, Right_Calf_1);
+      addChildTo(Right_Calf_1, Right_Thigh);
+      
+      addChildTo(Lower_Jaw, Head);
+      addChildTo(Upper_Jaw, Head);
+      addChildTo(Quill_1, Head);
+      addChildTo(Quill_6, Head);
+      addChildTo(Quill_7, Head);
+      addChildTo(Head, HeadJoint);
+      addChildTo(HeadJoint, Neck);
+   /*   addChildTo(Quill_2, Head);
+      addChildTo(Quill_3, Head);
+      addChildTo(Quill_4, Head);
+      addChildTo(Quill_5, Head);*/
+      addChildTo(Neck, Body_2);
+      addChildTo(Body_2, Body_1);
+      
+      addChildTo(Hand_Left_Claw_Left, Hand_Left);
+      addChildTo(Hand_Left_Claw_Middle, Hand_Left);
+      addChildTo(Hand_Left_Claw_Right, Hand_Left);
+      addChildTo(Hand_Left, Lower_Arm_Left);
+      addChildTo(Lower_Arm_Left, Upper_Arm_Left);
+      addChildTo(Upper_Arm_Left, Body_1);
+      
+      addChildTo(Hand_Right_Claw_Left, Hand_Right);
+      addChildTo(Hand_Right_Claw_Middle, Hand_Right);
+      addChildTo(Hand_Right_Claw_Right, Hand_Right);
+      addChildTo(Hand_Right, Lower_Arm_Right);
+      addChildTo(Lower_Arm_Right, Upper_Arm_Right);
+      addChildTo(Upper_Arm_Right, Body_1);
+      
+      addChildTo(Tail_6, Tail_5);
+      addChildTo(Tail_5, Tail_4);
+      addChildTo(Tail_4, Tail_3);
+      addChildTo(Tail_3, Tail_2);
+      addChildTo(Tail_2, Tail_1);
+      addChildTo(Tail_1, Body_1);
+      
+      //Corrections
+      Left_Claw_2.setRotationPoint(0, -3, 1);
+      Right_Claw_2.setRotationPoint(0, -3, 1);
+      HeadJoint.setRotationPoint(0, 0, -13);
+      
+      Head.setRotationPoint(0, 0, 0);
+      Body_2.setRotationPoint(0, -1, -3);
+      Hand_Left_Claw_Left.setRotationPoint(0.2F, -0.2F, -0.1F);
+      Hand_Left_Claw_Middle.setRotationPoint(0F, -0.2F, -0.1F);
+      Hand_Left_Claw_Right.setRotationPoint(-0.2F, -0.2F, -0.1F);
+      Hand_Right_Claw_Left.setRotationPoint(0.2F, -0.2F, -0.1F);
+      Hand_Right_Claw_Middle.setRotationPoint(0F, -0.2F, -0.1F);
+      Hand_Right_Claw_Right.setRotationPoint(-0.2F, -0.2F, -0.1F);
+      
+      Left_Upper_Foot.setInitValuesToCurrentPose();
+      Right_Upper_Foot.setInitValuesToCurrentPose();
+      Left_Calf_1.setInitValuesToCurrentPose();
+      Right_Calf_1.setInitValuesToCurrentPose();
+      Left_Thigh.setInitValuesToCurrentPose();
+      Right_Thigh.setInitValuesToCurrentPose();
+      Body_1.setInitValuesToCurrentPose();
+      Body_2.setInitValuesToCurrentPose();
+      Neck.setInitValuesToCurrentPose();
+      Head.setInitValuesToCurrentPose();
+      Upper_Jaw.setInitValuesToCurrentPose();
+      Lower_Jaw.setInitValuesToCurrentPose();
+      Tail_1.setInitValuesToCurrentPose();
+      Tail_2.setInitValuesToCurrentPose();
+      Tail_3.setInitValuesToCurrentPose();
+      Tail_4.setInitValuesToCurrentPose();
+      Tail_5.setInitValuesToCurrentPose();
+      Tail_6.setInitValuesToCurrentPose();
+      Upper_Arm_Right.setInitValuesToCurrentPose();
+      Upper_Arm_Left.setInitValuesToCurrentPose();
+      Lower_Arm_Left.setInitValuesToCurrentPose();
+      Lower_Arm_Right.setInitValuesToCurrentPose();
+      Hand_Left.setInitValuesToCurrentPose();
+      Hand_Right.setInitValuesToCurrentPose();
+      Hand_Left_Claw_Left.setInitValuesToCurrentPose();
+      Hand_Left_Claw_Right.setInitValuesToCurrentPose();
+      Hand_Left_Claw_Middle.setInitValuesToCurrentPose();
+      Hand_Right_Claw_Right.setInitValuesToCurrentPose();
+      Hand_Right_Claw_Left.setInitValuesToCurrentPose();
+      Hand_Right_Claw_Middle.setInitValuesToCurrentPose();
+      Foot_Left.setInitValuesToCurrentPose();
+      Foot_Right.setInitValuesToCurrentPose();
+      Left_Claw_1.setInitValuesToCurrentPose();
+      Left_Claw_2.setInitValuesToCurrentPose();
+      Right_Claw_1.setInitValuesToCurrentPose();
+      Right_Claw_2.setInitValuesToCurrentPose();
+      Quill_1.setInitValuesToCurrentPose();
+      Quill_2.setInitValuesToCurrentPose();
+      Quill_3.setInitValuesToCurrentPose();
+      Quill_4.setInitValuesToCurrentPose();
+      Quill_5.setInitValuesToCurrentPose();
+      Quill_6.setInitValuesToCurrentPose();
+      Quill_7.setInitValuesToCurrentPose();
+      HeadJoint.setInitValuesToCurrentPose();
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5);
-    Left_Upper_Foot.render(f5);
+    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+/*    Left_Upper_Foot.render(f5);
     Right_Upper_Foot.render(f5);
     Left_Calf_1.render(f5);
-    Right_Calf_1.render(f5);
+    Right_Calf_1.render(f5);*/
     Left_Thigh.render(f5);
     Right_Thigh.render(f5);
     Body_1.render(f5);
-    Body_2.render(f5);
-    Neck.render(f5);
-    Head.render(f5);
-    Upper_Jaw.render(f5);
-    Lower_Jaw.render(f5);
-    Tail_1.render(f5);
+//    Body_2.render(f5);
+//    Neck.render(f5);
+//    Head.render(f5);
+//    Upper_Jaw.render(f5);
+//    Lower_Jaw.render(f5);
+/*    Tail_1.render(f5);
     Tail_2.render(f5);
     Tail_3.render(f5);
     Tail_4.render(f5);
     Tail_5.render(f5);
-    Tail_6.render(f5);
-    Upper_Arm_Right.render(f5);
+    Tail_6.render(f5);*/
+/*    Upper_Arm_Right.render(f5);
     Upper_Arm_Left.render(f5);
     Lower_Arm_Left.render(f5);
     Lower_Arm_Right.render(f5);
@@ -360,20 +476,20 @@ public class ModelVelociraptor extends MowzieModelBase
     Hand_Left_Claw_Middle.render(f5);
     Hand_Right_Claw_Right.render(f5);
     Hand_Right_Claw_Left.render(f5);
-    Hand_Right_Claw_Middle.render(f5);
-    Foot_Left.render(f5);
-    Foot_Right.render(f5);
-    Left_Claw_1.render(f5);
-    Left_Claw_2.render(f5);
-    Right_Claw_1.render(f5);
-    Right_Claw_2.render(f5);
-    Quill_1.render(f5);
+    Hand_Right_Claw_Middle.render(f5);*/
+//    Foot_Left.render(f5);
+//    Foot_Right.render(f5);
+//    Left_Claw_1.render(f5);
+//    Left_Claw_2.render(f5);
+//    Right_Claw_1.render(f5);
+//    Right_Claw_2.render(f5);
+/*    Quill_1.render(f5);
     Quill_2.render(f5);
     Quill_3.render(f5);
     Quill_4.render(f5);
     Quill_5.render(f5);
     Quill_6.render(f5);
-    Quill_7.render(f5);
+    Quill_7.render(f5);*/
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -383,9 +499,89 @@ public class ModelVelociraptor extends MowzieModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  private void resetPose() {
+	  Left_Upper_Foot.setCurrentPoseToInitValues();
+      Right_Upper_Foot.setCurrentPoseToInitValues();
+      Left_Calf_1.setCurrentPoseToInitValues();
+      Right_Calf_1.setCurrentPoseToInitValues();
+      Left_Thigh.setCurrentPoseToInitValues();
+      Right_Thigh.setCurrentPoseToInitValues();
+      Body_1.setCurrentPoseToInitValues();
+      Body_2.setCurrentPoseToInitValues();
+      Neck.setCurrentPoseToInitValues();
+      Head.setCurrentPoseToInitValues();
+      Upper_Jaw.setCurrentPoseToInitValues();
+      Lower_Jaw.setCurrentPoseToInitValues();
+      Tail_1.setCurrentPoseToInitValues();
+      Tail_2.setCurrentPoseToInitValues();
+      Tail_3.setCurrentPoseToInitValues();
+      Tail_4.setCurrentPoseToInitValues();
+      Tail_5.setCurrentPoseToInitValues();
+      Tail_6.setCurrentPoseToInitValues();
+      Upper_Arm_Right.setCurrentPoseToInitValues();
+      Upper_Arm_Left.setCurrentPoseToInitValues();
+      Lower_Arm_Left.setCurrentPoseToInitValues();
+      Lower_Arm_Right.setCurrentPoseToInitValues();
+      Hand_Left.setCurrentPoseToInitValues();
+      Hand_Right.setCurrentPoseToInitValues();
+      Hand_Left_Claw_Left.setCurrentPoseToInitValues();
+      Hand_Left_Claw_Right.setCurrentPoseToInitValues();
+      Hand_Left_Claw_Middle.setCurrentPoseToInitValues();
+      Hand_Right_Claw_Right.setCurrentPoseToInitValues();
+      Hand_Right_Claw_Left.setCurrentPoseToInitValues();
+      Hand_Right_Claw_Middle.setCurrentPoseToInitValues();
+      Foot_Left.setCurrentPoseToInitValues();
+      Foot_Right.setCurrentPoseToInitValues();
+      Left_Claw_1.setCurrentPoseToInitValues();
+      Left_Claw_2.setCurrentPoseToInitValues();
+      Right_Claw_1.setCurrentPoseToInitValues();
+      Right_Claw_2.setCurrentPoseToInitValues();
+      Quill_1.setCurrentPoseToInitValues();
+      Quill_2.setCurrentPoseToInitValues();
+      Quill_3.setCurrentPoseToInitValues();
+      Quill_4.setCurrentPoseToInitValues();
+      Quill_5.setCurrentPoseToInitValues();
+      Quill_6.setCurrentPoseToInitValues();
+      Quill_7.setCurrentPoseToInitValues();
+      HeadJoint.setCurrentPoseToInitValues();
+  }
+  
+  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-  }
+	EntityVelociraptor raptor = (EntityVelociraptor) entity; 
+    resetPose();
+/*    f = raptor.frame;
+    f1 = 1F;*/
+    float scaleFactor = 0.5F;
+    float height = 2F * f1;
+    newbob(Body_1, 1F, height, false, f, f1);
+    newbob(Left_Thigh, 1F, height, false, f, f1);
+    newbob(Right_Thigh, 1F, height, false, f, f1);
+    newbob(Neck, 1F, height/2, false, f, f1);
+    
+    newwalk(Neck, 1F, 0.25F, false, 1F, 0.2F, f, f1);
+    newwalk(Head, 1F, 0.25F, true, 1F, -0.2F, f, f1);
+    
+    newwalk(Left_Thigh, 0.5F, 0.8F, false, 0F, 0.4F, f, f1);
+    newwalk(Left_Calf_1, 0.5F, 0.5F, true, 1F, 0F, f, f1);
+    newwalk(Left_Upper_Foot, 0.5F, 0.5F, false, 0F, 0F, f, f1);
+    newwalk(Foot_Left, 0.5F, 1.5F, true, 0.5F, 1F, f, f1);
+    
+    newwalk(Right_Thigh, 0.5F, 0.8F, true, 0F, 0.4F, f, f1);
+    newwalk(Right_Calf_1, 0.5F, 0.5F, false, 1F , 0F, f, f1);
+    newwalk(Right_Upper_Foot, 0.5F, 0.5F, true, 0F, 0F, f, f1);
+    newwalk(Foot_Right, 0.5F, 1.5F, false, 0.5F, 1F, f, f1);
 
+    newfaceTarget(Head, 2, f3, f4);
+    newfaceTarget(Neck, 2, f3, f4);
+    
+    MowzieModelRenderer[] rightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
+    MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
+    MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
+    newtailSwing(tailParts, 2F, 0.3F, 3, raptor.frame);
+    newchainWave(tailParts, 1F, -0.1F, 2, f, f1);
+    newchainWave(rightArmParts, 1F, -0.3F, 4, f, f1);
+    newchainWave(leftArmParts, 1F, -0.3F, 4, f, f1);
+  }
 }

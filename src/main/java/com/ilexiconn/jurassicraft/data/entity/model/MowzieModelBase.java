@@ -73,4 +73,46 @@ public class MowzieModelBase extends ModelBase {
 		child.offsetY -= offsetY;
 		child.offsetZ -= offsetZ;
 	}
+
+//Updated methods. They add to the rotations instead of resetting them so that I can layer animations. setCurrentPoseToInitValues() needs to be called for each box every render before using these.
+//Makes the specified box face the mob's target. Leave "f3" and "f4" as "f3" and "f4". Divider specifies the number of parts that the box is rotating with. (I.E. Set to 3 for 3-segmented necks, 2 for 2, etc.)
+public void newfaceTarget(MowzieModelRenderer box, int divider, float f3, float f4) {
+	box.rotateAngleY += (f3 / (180F / (float)Math.PI))/divider;
+	box.rotateAngleX += (f4 / (180F / (float)Math.PI))/divider;
+}
+
+//Swings the specified box back and forth while the mob is moving. Degree is the length of the arc that the box will follow. Invert will make the box swing the other way first, used for alternating leg movements. Offset will offset it from other part's rotations by the given amount. Weight will make the animation favor one direction. Leave "f" and "f1" as "f" and "f1".
+public void newwalk(MowzieModelRenderer box, float speed, float degree, boolean invert, float offset, float weight, float f, float f1) {
+	int intinvert = 1;
+	if (invert) intinvert = -1;
+		box.rotateAngleX += MathHelper.cos(f * speed + offset) * degree * intinvert * f1 + weight*f1;
+}
+
+public void newflap(MowzieModelRenderer box, float speed, float degree, boolean invert, float offset, float f, float f1) {
+	int intinvert = 1;
+	if (invert) intinvert = -1;
+		box.rotateAngleZ += MathHelper.cos(f * speed + offset) * degree * intinvert * f1;
+}
+
+public void newbob(MowzieModelRenderer box, float speed, float degree, boolean bounce, float f, float f1) {
+	float bob = (float) (Math.sin(f*speed)*f1*degree - f1*degree);
+	box.rotationPointY += bob;
+}
+
+//Makes all boxes in the array do a snake-like motion at the specified speed and to the specified degree. rootOffset is basically the type of movment (3 gives a snake-like movement, 0 wags it back and forth, etc. This can be any value, though higher than 4 give some strange effects. Experiment!) Leave "frame" as "frame".
+public void newtailSwing(MowzieModelRenderer[] boxes, float speed, float degree, double rootOffset, float frame) {
+	int numberOfSegments = boxes.length;
+	float offset = (float) ((rootOffset*Math.PI)/(2*numberOfSegments));
+	for (int i = 0; i < numberOfSegments; i++) {
+		boxes[i].rotateAngleY += MathHelper.cos(frame * speed + offset*i) * degree;
+	}
+}
+	
+public void newchainWave(MowzieModelRenderer[] boxes, float speed, float degree, double rootOffset, float f, float f1) {
+	int numberOfSegments = boxes.length;
+	float offset = (float) ((rootOffset*Math.PI)/(2*numberOfSegments));
+	for (int i = 0; i < numberOfSegments; i++) {
+		boxes[i].rotateAngleX += MathHelper.cos(f * speed + offset*i) * f1 * degree;
+	}	
+}
 }
