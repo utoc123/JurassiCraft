@@ -1,6 +1,11 @@
-package com.ilexiconn.jurassicraft.data.entity.entity;
+package com.ilexiconn.jurassicraft.data.entity;
 
+
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailSlam;
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailWhip;
 import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationExample.AIHeadBang;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 
 import net.minecraft.block.Block;

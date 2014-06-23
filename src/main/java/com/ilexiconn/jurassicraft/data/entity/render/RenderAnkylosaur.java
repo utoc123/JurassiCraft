@@ -8,7 +8,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelAnkylosaur;
 
 import cpw.mods.fml.relauncher.Side;

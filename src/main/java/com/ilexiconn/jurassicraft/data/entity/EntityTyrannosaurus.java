@@ -1,7 +1,10 @@
-package com.ilexiconn.jurassicraft.data.entity.entity;
+package com.ilexiconn.jurassicraft.data.entity;
+
+import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowParent;

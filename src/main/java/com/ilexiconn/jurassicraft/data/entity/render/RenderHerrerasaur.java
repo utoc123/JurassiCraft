@@ -3,7 +3,8 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityHerrerasaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityHerrerasaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityHerrerasaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelHerrerasaur;
 
 import cpw.mods.fml.relauncher.Side;

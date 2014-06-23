@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityGallimimus;
+import com.ilexiconn.jurassicraft.data.entity.EntityGallimimus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelGallimimus;
 
 import cpw.mods.fml.relauncher.Side;
