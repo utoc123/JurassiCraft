@@ -1,5 +1,7 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
+
 import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
 
 import net.minecraft.entity.Entity;
@@ -25,7 +27,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityVelociraptor extends EntityAgeableMob
+public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEntity
 {
     public int textureID;
     private int conversionTime = 0;
@@ -37,7 +39,7 @@ public class EntityVelociraptor extends EntityAgeableMob
         super(par1World);
         float moveSpeed = 1.3F;
         this.setSize(1.9F, 1.5F);
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -159,5 +161,25 @@ public class EntityVelociraptor extends EntityAgeableMob
 
 	public float spiderScaleAmount() {
 		return 1.2F;
+	}
+	@Override
+	public void setAnimID(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setAnimTick(int tick) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int getAnimID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getAnimTick() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
