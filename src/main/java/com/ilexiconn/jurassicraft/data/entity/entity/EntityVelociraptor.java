@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/main/java/com/ilexiconn/jurassicraft/data/entity/entity/EntityVelociraptor.java
 package com.ilexiconn.jurassicraft.data.entity.entity;
+=======
+package com.ilexiconn.jurassicraft.data.entity;
+>>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner:src/main/java/com/ilexiconn/jurassicraft/data/entity/EntityVelociraptor.java
 
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;

@@ -328,6 +328,7 @@ public class ModelVelociraptor extends MowzieModelBase
         setRotation(HeadJoint, 0F, 0F, 0F);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         addChildTo(Left_Claw_2, Left_Claw_1);
         addChildTo(Left_Claw_1, Foot_Left);
         addChildTo(Foot_Left, Left_Upper_Foot);
@@ -340,6 +341,8 @@ public class ModelVelociraptor extends MowzieModelBase
         addChildTo(Right_Upper_Foot, Right_Calf_1);
         addChildTo(Right_Calf_1, Right_Thigh);
 =======
+=======
+>>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner
 import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
 
@@ -877,6 +880,9 @@ public class ModelVelociraptor extends MowzieModelBase
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+<<<<<<< HEAD
+>>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner
+=======
 >>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner
 /*    Left_Upper_Foot.render(f5);
     Right_Upper_Foot.render(f5);
@@ -1055,5 +1061,8 @@ public class ModelVelociraptor extends MowzieModelBase
     newchainWave(rightArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
     newchainWave(leftArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
   }
+<<<<<<< HEAD
+>>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner
+=======
 >>>>>>> parent of 42cef4e... Raptors twitch their heads in a birdlike manner
 }
