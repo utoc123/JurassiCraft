@@ -553,25 +553,25 @@ public class ModelVelociraptor extends MowzieModelBase
     resetPose();
 /*    f = raptor.frame;
     f1 = 1F;*/
-    float scaleFactor = 0.5F;
+    float scaleFactor = 0.75F;
     float height = 2F * f1;
-    newbob(Body_1, 1F, height, false, f, f1);
-    newbob(Left_Thigh, 1F, height, false, f, f1);
-    newbob(Right_Thigh, 1F, height, false, f, f1);
-    newbob(Neck, 1F, height/2, false, f, f1);
+    newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
+    newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+    newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+    newbob(Neck, 1F * scaleFactor, height/2, false, f, f1);
     
-    newwalk(Neck, 1F, 0.25F, false, 1F, 0.2F, f, f1);
-    newwalk(Head, 1F, 0.25F, true, 1F, -0.2F, f, f1);
+    newwalk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.2F, f, f1);
+    newwalk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.2F, f, f1);
     
-    newwalk(Left_Thigh, 0.5F, 0.8F, false, 0F, 0.4F, f, f1);
-    newwalk(Left_Calf_1, 0.5F, 0.5F, true, 1F, 0F, f, f1);
-    newwalk(Left_Upper_Foot, 0.5F, 0.5F, false, 0F, 0F, f, f1);
-    newwalk(Foot_Left, 0.5F, 1.5F, true, 0.5F, 1F, f, f1);
+    newwalk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
+    newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
+    newwalk(Left_Upper_Foot, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
+    newwalk(Foot_Left, 0.5F * scaleFactor, 1.5F, true, 0.5F, 1F, f, f1);
     
-    newwalk(Right_Thigh, 0.5F, 0.8F, true, 0F, 0.4F, f, f1);
-    newwalk(Right_Calf_1, 0.5F, 0.5F, false, 1F , 0F, f, f1);
-    newwalk(Right_Upper_Foot, 0.5F, 0.5F, true, 0F, 0F, f, f1);
-    newwalk(Foot_Right, 0.5F, 1.5F, false, 0.5F, 1F, f, f1);
+    newwalk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
+    newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F , 0F, f, f1);
+    newwalk(Right_Upper_Foot, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
+    newwalk(Foot_Right, 0.5F * scaleFactor, 1.5F, false, 0.5F, 1F, f, f1);
 
     newfaceTarget(Head, 2, f3, f4);
     newfaceTarget(Neck, 2, f3, f4);
@@ -579,9 +579,9 @@ public class ModelVelociraptor extends MowzieModelBase
     MowzieModelRenderer[] rightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
     MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-    newtailSwing(tailParts, 2F, 0.3F, 3, raptor.frame);
-    newchainWave(tailParts, 1F, -0.05F, 2, f, f1);
-    newchainWave(rightArmParts, 1F, -0.3F, 4, f, f1);
-    newchainWave(leftArmParts, 1F, -0.3F, 4, f, f1);
+    newtailSwing(tailParts, 2F * scaleFactor, 0.3F, 3, raptor.frame);
+    newchainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
+    newchainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+    newchainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
   }
 }
