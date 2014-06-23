@@ -121,7 +121,7 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-/*    		int I = rand.nextInt(4)+4;
+    		int I = rand.nextInt(4)+1;
     		if(I == 1) {
     			return "jurassicraft:RapHiss01";
     		}
@@ -134,9 +134,9 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     		else
     		{
     			return "jurassicraft:RapBark03";
-    		}*/
+    		}
 //    	}
-    	return null;
+//    	return null;
     }
 
     protected String getHurtSound()
