@@ -1,6 +1,6 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample;
+package thehippomaster.AnimationExample;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.AIAnimation;
+import thehippomaster.AnimationAPI.AIAnimation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 

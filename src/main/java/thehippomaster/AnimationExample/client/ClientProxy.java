@@ -1,7 +1,7 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.client;
+package thehippomaster.AnimationExample.client;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.CommonProxy;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.EntityTest;
+import thehippomaster.AnimationExample.CommonProxy;
+import thehippomaster.AnimationExample.EntityTest;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

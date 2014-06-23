@@ -1,7 +1,7 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample;
+package thehippomaster.AnimationExample;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.AnimationAPI;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;

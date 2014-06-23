@@ -1,9 +1,6 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
-
-import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
-
+import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -33,6 +30,9 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     private int conversionTime = 0;
     public boolean isRoaring = false;
     public float frame = 0;
+    
+    private int animID;
+    private int animTick;
     
     public EntityVelociraptor(World par1World)
     {
@@ -121,17 +121,22 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    		int I = rand.nextInt(1)+1;
-    		if(I == 1)
-    		{
-    			return "jurassicraft:trex1";
+/*    		int I = rand.nextInt(4)+4;
+    		if(I == 1) {
+    			return "jurassicraft:RapHiss01";
+    		}
+    		if(I == 2) {
+    			return "jurassicraft:RapHiss02";
+    		}
+    		if(I == 3) {
+    			return "jurassicraft:RapHiss02";
     		}
     		else
     		{
-    			return "jurassicraft:trex2";
-    		}
+    			return "jurassicraft:RapBark03";
+    		}*/
 //    	}
-//    	return null;
+    	return null;
     }
 
     protected String getHurtSound()
@@ -162,24 +167,27 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 	public float spiderScaleAmount() {
 		return 1.2F;
 	}
+	
+	//Animation API Methods
 	@Override
 	public void setAnimID(int id) {
-		// TODO Auto-generated method stub
-		
+		animID = id;		
 	}
 	@Override
 	public void setAnimTick(int tick) {
-		// TODO Auto-generated method stub
-		
+		animTick = tick;
 	}
 	@Override
 	public int getAnimID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return animID;
 	}
 	@Override
 	public int getAnimTick() {
-		// TODO Auto-generated method stub
-		return 0;
+		return animTick;
+	}
+	public void onUpdate() {
+		super.onUpdate();
+		//increment the animTick if there is an animation playing
+		if(animID != 0) animTick++;
 	}
 }

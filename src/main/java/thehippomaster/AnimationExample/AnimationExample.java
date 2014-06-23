@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample;
+package thehippomaster.AnimationExample;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

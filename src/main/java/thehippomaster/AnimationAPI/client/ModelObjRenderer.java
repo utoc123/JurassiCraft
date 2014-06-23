@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.client;
+package thehippomaster.AnimationAPI.client;
 
 import org.lwjgl.opengl.GL11;
 

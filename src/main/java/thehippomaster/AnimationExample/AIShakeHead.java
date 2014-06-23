@@ -1,7 +1,7 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample;
+package thehippomaster.AnimationExample;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.AIAnimation;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.AIAnimation;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.EntityLiving;
 
 public class AIShakeHead extends AIAnimation {

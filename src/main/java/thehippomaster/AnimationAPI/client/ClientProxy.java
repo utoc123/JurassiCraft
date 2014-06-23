@@ -1,9 +1,9 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.client;
+package thehippomaster.AnimationAPI.client;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.AnimationAPI;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.CommonProxy;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.EntityTest;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.client.ModelTest;
+import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.CommonProxy;
+import thehippomaster.AnimationExample.EntityTest;
+import thehippomaster.AnimationExample.client.ModelTest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.util.Timer;

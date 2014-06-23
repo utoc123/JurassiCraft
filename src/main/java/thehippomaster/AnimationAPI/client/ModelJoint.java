@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.client;
+package thehippomaster.AnimationAPI.client;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

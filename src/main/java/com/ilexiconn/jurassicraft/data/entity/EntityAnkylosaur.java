@@ -1,13 +1,15 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
-//
-//import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailSlam;
-//import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailWhip;
 
-//import thehippomaster.AnimationAPI.AnimationAPI;
-//import thehippomaster.AnimationAPI.IAnimatedEntity;
-//import thehippomaster.AnimationExample.AIHeadBang;
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailSlam;
+import com.ilexiconn.jurassicraft.data.animation.AIAnkylosaurTailWhip;
+import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationExample.AIHeadBang;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -25,7 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*/
+public class EntityAnkylosaur extends EntityAnimal implements IAnimatedEntity
 {
     public final int textureID;
 
@@ -163,7 +165,7 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
 	public float spiderScaleAmount() {
 		return 4F;
 	}
-	/*
+	
 	//Animation API methods
 	//Set the animID field to the id in the parameter.
 	public void setAnimID(int id) {
@@ -194,5 +196,5 @@ public class EntityAnkylosaur extends EntityAnimal /*implements IAnimatedEntity*
 	public boolean attackEntityAsMob(Entity entity) {
 		if(animID == 0) AnimationAPI.sendAnimPacket(this, 1);
 		return true;
-	}*/
+	}
 }

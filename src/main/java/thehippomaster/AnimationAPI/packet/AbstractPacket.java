@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.packet;
+package thehippomaster.AnimationAPI.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

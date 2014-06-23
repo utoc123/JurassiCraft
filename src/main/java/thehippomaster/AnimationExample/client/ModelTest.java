@@ -1,7 +1,7 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationExample.client;
+package thehippomaster.AnimationExample.client;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.client.Animator;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.client.Animator;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

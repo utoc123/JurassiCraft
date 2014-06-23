@@ -1,8 +1,8 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI;
+package thehippomaster.AnimationAPI;
 
 import net.minecraft.entity.Entity;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.packet.PacketAnim;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.packet.PacketPipeline;
+import thehippomaster.AnimationAPI.packet.PacketAnim;
+import thehippomaster.AnimationAPI.packet.PacketPipeline;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

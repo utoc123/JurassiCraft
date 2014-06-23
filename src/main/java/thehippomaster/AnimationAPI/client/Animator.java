@@ -1,10 +1,10 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.client;
+package thehippomaster.AnimationAPI.client;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.AnimationAPI;
-import com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.AnimationAPI;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

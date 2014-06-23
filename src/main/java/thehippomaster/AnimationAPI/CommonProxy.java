@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.thehippomaster.AnimationAPI;
+package thehippomaster.AnimationAPI;
 
 public class CommonProxy {
 	
