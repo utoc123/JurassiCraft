@@ -387,6 +387,14 @@ public class ModelVelociraptor extends MowzieModelBase
       Left_Claw_2.setRotationPoint(0, -3, 1);
       Right_Claw_2.setRotationPoint(0, -3, 1);
       HeadJoint.setRotationPoint(0, 0, -13);
+      Tail_6.setRotationPoint(0, 1, 11);
+      
+      Tail_1.rotateAngleX = 0.3F;
+      Tail_2.rotateAngleX = -0.05F;
+      Tail_3.rotateAngleX = -0.1F;
+      Tail_4.rotateAngleX = -0.15F;
+      Tail_5.rotateAngleX = -0.2F;
+      Tail_6.rotateAngleX = -0.25F;
       
       Head.setRotationPoint(0, 0, 0);
       Body_2.setRotationPoint(0, -1, -3);
@@ -560,8 +568,8 @@ public class ModelVelociraptor extends MowzieModelBase
     newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
     newbob(Neck, 1F * scaleFactor, height/2, false, f, f1);
     
-    newwalk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.2F, f, f1);
-    newwalk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.2F, f, f1);
+    newwalk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.4F, f, f1);
+    newwalk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.4F, f, f1);
     
     newwalk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
     newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
@@ -579,9 +587,15 @@ public class ModelVelociraptor extends MowzieModelBase
     MowzieModelRenderer[] rightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
     MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-    newtailSwing(tailParts, 2F * scaleFactor, 0.3F, 3, raptor.frame);
+    newtailSwing(tailParts, 1F * scaleFactor, 0.1F * f1, 2, f);
     newchainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
+    newchainWave(tailParts, 1.5F, -0.07F, 2, raptor.frame, 1F);
     newchainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     newchainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+    //Idling
+    newwalk(Neck, 1F, 0.07F, false, 0F, 0F, raptor.frame, 1F);
+    newwalk(Head, 1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
+    newchainWave(rightArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
+    newchainWave(leftArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
   }
 }
