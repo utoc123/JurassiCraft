@@ -12,7 +12,6 @@ public class MowzieAIWander extends EntityAIBase
     private double yPosition;
     private double zPosition;
     private double speed;
-    private static final String __OBFID = "CL_00001608";
     private int xzRange;
     private int yRange;
 
@@ -25,51 +24,34 @@ public class MowzieAIWander extends EntityAIBase
         this.yRange = yRange;
     }
 
-    /**
-     * Returns whether the EntityAIBase should begin execution.
-     */
     public boolean shouldExecute()
     {
-        if (this.entity.getAge() >= 100)
+        if (entity.getAge() >= 100)
         {
             return false;
         }
-        else if (this.entity.getRNG().nextInt(120) != 0)
+        else if (entity.getRNG().nextInt(120) != 0)
         {
             return false;
         }
         else
         {
-            Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity, xzRange, yRange);
+            Vec3 vec3 = RandomPositionGenerator.findRandomTarget(entity, xzRange, yRange);
             System.out.println("Destination coord is " + vec3.xCoord + ", " + vec3.yCoord + ", " + vec3.zCoord + ".");
-            if (vec3 == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.xPosition = vec3.xCoord;
-                this.yPosition = vec3.yCoord;
-                this.zPosition = vec3.zCoord;
-//                this.xPosition = entity.posX + 50;
-                return true;
-            }
+            xPosition = vec3.xCoord;
+            yPosition = vec3.yCoord;
+            zPosition = vec3.zCoord;
+            return true;
         }
     }
 
-    /**
-     * Returns whether an in-progress EntityAIBase should continue executing
-     */
     public boolean continueExecuting()
     {
-        return !this.entity.getNavigator().noPath();
+        return !entity.getNavigator().noPath();
     }
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        entity.getNavigator().tryMoveToXYZ(xPosition, yPosition, zPosition, speed);
     }
 }

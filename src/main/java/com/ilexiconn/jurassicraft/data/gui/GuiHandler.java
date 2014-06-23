@@ -24,8 +24,10 @@ public class GuiHandler implements IGuiHandler
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof TileAnalyzer) return new GuiAnalyzer(player.inventory, (TileAnalyzer) tileEntity);
-        if (tileEntity instanceof TileCultivate) return new GuiCultivate(player.inventory, (TileCultivate) tileEntity);
+        if (tileEntity instanceof TileAnalyzer)
+            return new GuiAnalyzer(player.inventory, (TileAnalyzer) tileEntity);
+        if (tileEntity instanceof TileCultivate)
+            return new GuiCultivate(player.inventory, (TileCultivate) tileEntity);
         return null;
     }
 }

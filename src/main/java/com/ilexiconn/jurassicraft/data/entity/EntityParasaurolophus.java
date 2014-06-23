@@ -76,7 +76,6 @@ public class EntityParasaurolophus extends EntityAnimal
         super.readEntityFromNBT(nbttag);
         textureID = nbttag.getInteger("texture");
         booleanThinger = nbttag.getBoolean("bool");
-    	System.out.println("Im getting called too :P");
 
     }
     protected void applyEntityAttributes()
@@ -159,7 +158,6 @@ public class EntityParasaurolophus extends EntityAnimal
         if (booleanThinger != true)
         {
         textureID = rand.nextInt(3)+1;
-        System.out.println("Im getting called :P");
         booleanThinger = true;
         }
         return 2.1F;
