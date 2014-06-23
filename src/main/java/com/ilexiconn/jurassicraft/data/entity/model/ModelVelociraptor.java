@@ -11,6 +11,9 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.client.Animator;
+
 import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
 
@@ -20,7 +23,8 @@ import net.minecraft.entity.Entity;
 
 public class ModelVelociraptor extends MowzieModelBase
 {
-  //fields
+	private Animator animator;
+	
 	MowzieModelRenderer Left_Upper_Foot;
 	MowzieModelRenderer Right_Upper_Foot;
 	MowzieModelRenderer Left_Calf_1;
@@ -70,6 +74,8 @@ public class ModelVelociraptor extends MowzieModelBase
   {
     textureWidth = 256;
     textureHeight = 256;
+    
+    animator = new Animator(this);
     
       Left_Upper_Foot = new MowzieModelRenderer(this, 81, 0);
       Left_Upper_Foot.addBox(-1F, 0F, 0F, 2, 7, 2);
@@ -454,7 +460,7 @@ public class ModelVelociraptor extends MowzieModelBase
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 /*    Left_Upper_Foot.render(f5);
     Right_Upper_Foot.render(f5);
     Left_Calf_1.render(f5);
@@ -598,4 +604,17 @@ public class ModelVelociraptor extends MowzieModelBase
     newchainWave(rightArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
     newchainWave(leftArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
   }
+  
+  public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		animator.update(entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		EntityVelociraptor raptor = (EntityVelociraptor) entity;
+		
+		animator.setAnim(1);
+		animator.startPhase(3);
+			animator.rotate(Head, 0, 0, 0.3F);
+		animator.endPhase();
+		animator.setStationaryPhase(14);
+		animator.resetPhase(3);
+	}
 }
