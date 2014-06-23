@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.EntityLeaellynasaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityLeaellynasaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelLeaellynasaur;
 
 import cpw.mods.fml.relauncher.Side;

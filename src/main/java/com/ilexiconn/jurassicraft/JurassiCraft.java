@@ -15,6 +15,8 @@ public class JurassiCraft extends Util
     public void init(FMLPreInitializationEvent event)
     {
         getData().init(event);
+
+        getEntityParser().parseServerEntities(event);
     }
 
     @SideOnly(Side.CLIENT)
@@ -22,5 +24,7 @@ public class JurassiCraft extends Util
     public void initClient(FMLPreInitializationEvent event)
     {
         getData().initClient(event);
+
+        getEntityParser().parseClientEntities();
     }
 }

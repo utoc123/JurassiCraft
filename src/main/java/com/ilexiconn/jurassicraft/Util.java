@@ -2,6 +2,7 @@ package com.ilexiconn.jurassicraft;
 
 import com.ilexiconn.jurassicraft.data.Data;
 import com.ilexiconn.jurassicraft.data.block.BlockEgg;
+import com.ilexiconn.jurassicraft.data.entity.EntityJsonParser;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
 import com.ilexiconn.jurassicraft.data.item.ItemMeat;
 import com.ilexiconn.jurassicraft.proxy.ServerProxy;
@@ -30,6 +31,7 @@ public class Util
 {
     /** Stuff */
     private static final Data data = new Data();
+    private static final EntityJsonParser entityParser = new EntityJsonParser();
     @SidedProxy(clientSide = "com.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "com.ilexiconn.jurassicraft.proxy.ServerProxy")
     public static ServerProxy proxy;
     private static CreativeTabs[] tabs = new CreativeTabs[512];
@@ -78,6 +80,11 @@ public class Util
     public static ArrayList<ItemMeat> getMeatArray()
     {
         return meat;
+    }
+
+    public static EntityJsonParser getEntityParser()
+    {
+        return entityParser;
     }
 
     /** Adders */

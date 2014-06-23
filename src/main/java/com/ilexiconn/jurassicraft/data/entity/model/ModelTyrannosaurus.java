@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityTyrannosaurus;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase

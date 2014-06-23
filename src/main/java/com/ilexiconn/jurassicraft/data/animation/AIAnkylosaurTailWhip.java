@@ -1,6 +1,6 @@
 package com.ilexiconn.jurassicraft.data.animation;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.DamageSource;
 import thehippomaster.AnimationAPI.AIAnimation;

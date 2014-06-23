@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.data.entity;
+package com.ilexiconn.jurassicraft.data.entity.entity;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.EntityLiving;

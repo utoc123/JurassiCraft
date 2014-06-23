@@ -5,7 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.entity.EntityLiopleurodon;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityLiopleurodon;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelLiopleurodon;
 
 import cpw.mods.fml.relauncher.Side;

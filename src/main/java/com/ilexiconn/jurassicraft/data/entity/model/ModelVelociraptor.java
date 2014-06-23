@@ -1,6 +1,6 @@
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
