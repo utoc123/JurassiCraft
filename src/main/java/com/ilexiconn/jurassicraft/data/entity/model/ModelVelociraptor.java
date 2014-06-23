@@ -610,11 +610,20 @@ public class ModelVelociraptor extends MowzieModelBase
 		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 		EntityVelociraptor raptor = (EntityVelociraptor) entity;
 		
+		//Head twitch
 		animator.setAnim(1);
 		animator.startPhase(3);
 			animator.rotate(Head, 0, 0, 0.2F);
 		animator.endPhase();
 		animator.setStationaryPhase(24);
 		animator.resetPhase(3);
+		
+		//Roar
+		animator.setAnim(2);
+		animator.startPhase(5);
+			animator.rotate(Lower_Jaw, 0.3F, 0, 0);
+		animator.endPhase();
+		animator.setStationaryPhase(10);
+		animator.resetPhase(5);
 	}
 }

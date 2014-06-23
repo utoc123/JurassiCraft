@@ -1,7 +1,9 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
 import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
 
+import thehippomaster.AnimationAPI.AnimationAPI;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -45,7 +47,10 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
+        
         this.tasks.addTask(2, new AIVelociraptorTwitchHead(this));
+        this.tasks.addTask(2, new AIVelociraptorRoar(this));
+        
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
@@ -124,6 +129,7 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
+    		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
     		int I = rand.nextInt(4)+1;
     		if(I == 1) {
     			return "jurassicraft:RapHiss01";
@@ -144,11 +150,13 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 
     protected String getHurtSound()
     {
+		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
         return "jurassicraft:RapAttack01";
     }
 
     protected String getDeathSound()
     {
+		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
         return "jurassicraft:RapAttack02";
     }
 
