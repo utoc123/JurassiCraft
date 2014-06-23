@@ -3,10 +3,8 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
-import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 

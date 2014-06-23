@@ -1,5 +1,6 @@
-package com.ilexiconn.jurassicraft.data.entity;
+package com.ilexiconn.jurassicraft.data.entity.entity;
 
+import com.ilexiconn.jurassicraft.data.ai.MowzieAIWander;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -11,30 +12,35 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityGallimimus extends EntityAnimal
+public class EntityBrachiosaur extends EntityAnimal
 {
     public int textureID;
 
-    public EntityGallimimus(World par1World)
+    public EntityBrachiosaur(World par1World)
     {
         super(par1World);
-        this.setSize(1.4F, 1.1F);
+        this.setSize(6F, 12F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.5D));
+        this.tasks.addTask(0, new MowzieAIWander(this, 1.0D, 20, 7));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         textureID = rand.nextInt(3) + 1;
+    }
+    
+    public boolean canBePushed() {
+    	return false;
     }
 
     public boolean isAIEnabled()
     {
         return true;
     }
+
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -52,6 +58,15 @@ public class EntityGallimimus extends EntityAnimal
         super.readEntityFromNBT(nbttag);
         nbttag.getInteger("texture");
     }
+
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+
+        getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0d);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23d);
+    }
+
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */
@@ -59,34 +74,27 @@ public class EntityGallimimus extends EntityAnimal
     {
         return false;
     }
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
-    }
-
     protected String getLivingSound()
     {
     	int I = rand.nextInt(1)+1;
     	if(I == 1)
     	{
-    		return "jurassicraft:gali1";
+    		return "jurassicraft:brac1";
     	}
     	else
     	{
-            return "jurassicraft:gali2";
+            return "jurassicraft:brac3";
     	}
     }
 
     protected String getHurtSound()
     {
-		return "jurassicraft:gali3";
+		return "jurassicraft:brac2";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:gali3";
+        return "jurassicraft:brac4";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
@@ -129,13 +137,13 @@ public class EntityGallimimus extends EntityAnimal
         }
     }
 
-    public EntityGallimimus createChild(EntityAgeable par1EntityAgeable)
+    public EntityBrachiosaur createChild(EntityAgeable par1EntityAgeable)
     {
-        return new EntityGallimimus(this.worldObj);
+        return new EntityBrachiosaur(this.worldObj);
     }
 
     public float spiderScaleAmount()
     {
-        return 1F;
+        return 4F;
     }
 }

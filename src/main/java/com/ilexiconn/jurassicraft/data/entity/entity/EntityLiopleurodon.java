@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.data.entity;
+package com.ilexiconn.jurassicraft.data.entity.entity;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;

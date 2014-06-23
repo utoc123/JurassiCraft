@@ -3,8 +3,7 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.data.entity.EntityMeganeura;
-import com.ilexiconn.jurassicraft.data.entity.EntityMeganeura;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityMeganeura;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelMeganeura;
 
 import cpw.mods.fml.relauncher.Side;

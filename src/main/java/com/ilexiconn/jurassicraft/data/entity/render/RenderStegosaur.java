@@ -3,8 +3,7 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.EntityStegosaur;
-import com.ilexiconn.jurassicraft.data.entity.EntityStegosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityStegosaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelStegosaur;
 
 import cpw.mods.fml.relauncher.Side;

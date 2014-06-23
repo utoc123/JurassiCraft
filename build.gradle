@@ -22,7 +22,7 @@ buildscript
 
 apply plugin: 'forge'
 
-version = "1.1.0_SNAPSHOT"
+version = "1.1.0_SNAPSHOT_Build-" + "&build"
 group= "com.ilexiconn.jerassicraft"
 archivesBaseName = "JurassiCraft"
 libsDirName = '../target'

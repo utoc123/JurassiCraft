@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.EntityHypsilophodon;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityHypsilophodon;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelHypsilophodon;
 
 import cpw.mods.fml.relauncher.Side;

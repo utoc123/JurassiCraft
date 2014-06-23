@@ -11,9 +11,8 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityMeganeura;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityMeganeura;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 

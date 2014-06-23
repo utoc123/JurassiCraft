@@ -3,7 +3,9 @@ package com.ilexiconn.jurassicraft.proxy;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.client.IItemRenderer;
 
 public class ServerProxy
 {
@@ -17,7 +19,7 @@ public class ServerProxy
 
     }
 
-    public void renderItems()
+    public void renderItem(Item item, IItemRenderer renderer)
     {
 
     }
