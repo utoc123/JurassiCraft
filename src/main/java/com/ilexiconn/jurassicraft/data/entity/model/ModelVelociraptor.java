@@ -580,7 +580,7 @@ public class ModelVelociraptor extends MowzieModelBase
     MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
     newtailSwing(tailParts, 2F, 0.3F, 3, raptor.frame);
-    newchainWave(tailParts, 1F, -0.1F, 2, f, f1);
+    newchainWave(tailParts, 1F, -0.05F, 2, f, f1);
     newchainWave(rightArmParts, 1F, -0.3F, 4, f, f1);
     newchainWave(leftArmParts, 1F, -0.3F, 4, f, f1);
   }
