@@ -25,6 +25,8 @@ public class ModelVelociraptor extends MowzieModelBase
 {
 	private Animator animator;
 	
+	private float TwitchAngle = 0.5F;
+	
 	MowzieModelRenderer Left_Upper_Foot;
 	MowzieModelRenderer Right_Upper_Foot;
 	MowzieModelRenderer Left_Calf_1;
@@ -613,7 +615,8 @@ public class ModelVelociraptor extends MowzieModelBase
 		//Head twitch
 		animator.setAnim(1);
 		animator.startPhase(3);
-			animator.rotate(Head, 0, 0, 0.2F);
+			if(raptor.getAnimTick() == 1 && raptor.getAnimID() == 1) TwitchAngle = (float) (Math.random() -0.5);
+			animator.rotate(Head, 0, 0, TwitchAngle);
 		animator.endPhase();
 		animator.setStationaryPhase(24);
 		animator.resetPhase(3);
