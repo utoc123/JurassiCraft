@@ -1,5 +1,8 @@
-package com.ilexiconn.jurassicraft.data.entity.entity;
+package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
+
+import thehippomaster.AnimationAPI.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -23,28 +26,31 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityTyrannosaurus extends EntityAgeableMob
+public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEntity
 {
     public int textureID;
     private int conversionTime = 0;
     public boolean isRoaring = false;
-    public int frame = 0;
-    private EntityHitbox headBox;
+    public float frame = 0;
     
-    public EntityTyrannosaurus(World par1World)
+    private int animID;
+    private int animTick;
+    
+    public EntityVelociraptor(World par1World)
     {
         super(par1World);
         float moveSpeed = 1.3F;
-        this.setSize(5F, 6F);
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.2F, false));
-        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed, true));
+        this.setSize(1.9F, 1.5F);
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(2, new AIVelociraptorTwitchHead(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(0, new EntityAIWander(this, 1.3D));
+        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
@@ -52,9 +58,6 @@ public class EntityTyrannosaurus extends EntityAgeableMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;
         textureID = rand.nextInt(3) + 1;
-        headBox = new EntityHitbox(worldObj, this, 3F, 2.5F, 0F, 5F, 5F);
-        worldObj.spawnEntityInWorld(headBox);
-        
     }
     /**
      * Determines if an entity can be despawned, used on idle far away entities
@@ -86,7 +89,7 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25000000298023224D);
         //this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(5.0D);
     }
 
@@ -107,7 +110,7 @@ public class EntityTyrannosaurus extends EntityAgeableMob
                 this.setFire(-99);
             }
         }
-        frame++;
+        frame += 0.1;
         super.onLivingUpdate();
     }
 
@@ -121,14 +124,19 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    		int I = rand.nextInt(1)+1;
-    		if(I == 1)
-    		{
-    			return "jurassicraft:trex1";
+    		int I = rand.nextInt(4)+1;
+    		if(I == 1) {
+    			return "jurassicraft:RapHiss01";
+    		}
+    		if(I == 2) {
+    			return "jurassicraft:RapHiss02";
+    		}
+    		if(I == 3) {
+    			return "jurassicraft:RapHiss02";
     		}
     		else
     		{
-    			return "jurassicraft:trex2";
+    			return "jurassicraft:RapBark03";
     		}
 //    	}
 //    	return null;
@@ -136,12 +144,12 @@ public class EntityTyrannosaurus extends EntityAgeableMob
 
     protected String getHurtSound()
     {
-        return "jurassicraft:trex3";
+        return "jurassicraft:RapAttack01";
     }
 
     protected String getDeathSound()
     {
-        return "jurassicraft:trex3";
+        return "jurassicraft:RapAttack02";
     }
 
     protected void dropFewItems(boolean par1, int par2)
@@ -149,9 +157,9 @@ public class EntityTyrannosaurus extends EntityAgeableMob
 
     }
 
-    public EntityTyrannosaurus spawnBabyAnimal(EntityAgeable par1EntityAgeable)
+    public EntityVelociraptor spawnBabyAnimal(EntityAgeable par1EntityAgeable)
     {
-        return new EntityTyrannosaurus(this.worldObj);
+        return new EntityVelociraptor(this.worldObj);
     }
 
     public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
@@ -160,6 +168,29 @@ public class EntityTyrannosaurus extends EntityAgeableMob
     }
 
 	public float spiderScaleAmount() {
-		return 4F;
+		return 1.2F;
+	}
+	
+	//Animation API Methods
+	@Override
+	public void setAnimID(int id) {
+		animID = id;		
+	}
+	@Override
+	public void setAnimTick(int tick) {
+		animTick = tick;
+	}
+	@Override
+	public int getAnimID() {
+		return animID;
+	}
+	@Override
+	public int getAnimTick() {
+		return animTick;
+	}
+	public void onUpdate() {
+		super.onUpdate();
+		//increment the animTick if there is an animation playing
+		if(animID != 0) animTick++;
 	}
 }

@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.data.entity.entity;
+package com.ilexiconn.jurassicraft.data.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;

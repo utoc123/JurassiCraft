@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityParasaurolophus;
+import com.ilexiconn.jurassicraft.data.entity.EntityParasaurolophus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelParasaurolophus;
 
 import cpw.mods.fml.relauncher.Side;

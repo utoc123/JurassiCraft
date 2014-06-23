@@ -7,9 +7,12 @@ import com.ilexiconn.jurassicraft.Util;
 
 public abstract class BlockEgg extends BlockContainer
 {
+    private String dinoName;
+
     public BlockEgg(String name)
     {
         super(Material.dragonEgg);
+        dinoName = name;
         setBlockName("egg" + name);
         setBlockTextureName(Util.getModId() + "egg" + name);
         setCreativeTab(Util.getCreativeTab(0));
@@ -29,5 +32,10 @@ public abstract class BlockEgg extends BlockContainer
     public int getRenderType()
     {
         return -1;
+    }
+
+    public String getDinoName()
+    {
+        return dinoName;
     }
 }

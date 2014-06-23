@@ -1,5 +1,8 @@
 package com.ilexiconn.jurassicraft.data.tile;
 
+import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.logger.LogType;
+
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -63,9 +66,9 @@ public class TileEgg extends TileEntity
                 worldObj.spawnEntityInWorld(entity);
             }
         }
-        catch (Exception ignored)
+        catch (Exception e)
         {
-
+            Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
         }
     }
     
@@ -77,7 +80,7 @@ public class TileEgg extends TileEntity
     	}
     	else
         {
-    		hatchTime = hatchTime - (getFurnacesNearby() * 5 + 1);
+    		hatchTime--;
     	}
     }
 

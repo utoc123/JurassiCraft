@@ -1,4 +1,4 @@
-package com.ilexiconn.jurassicraft.data.entity.entity;
+package com.ilexiconn.jurassicraft.data.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
@@ -11,14 +11,14 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityLeaellynasaur extends EntityAnimal
+public class EntityStegosaur extends EntityAnimal
 {
     public int textureID;
 
-    public EntityLeaellynasaur(World par1World)
+    public EntityStegosaur(World par1World)
     {
         super(par1World);
-        this.setSize(1F, 1F);
+        this.setSize(3F, 3F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
@@ -35,19 +35,14 @@ public class EntityLeaellynasaur extends EntityAnimal
     {
         return true;
     }
-    /**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
-    protected boolean canDespawn()
-    {
-        return false;
-    }
+
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(160.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
@@ -64,6 +59,13 @@ public class EntityLeaellynasaur extends EntityAnimal
     {
         super.readEntityFromNBT(nbttag);
         nbttag.getInteger("texture");
+    }
+    /**
+     * Determines if an entity can be despawned, used on idle far away entities
+     */
+    protected boolean canDespawn()
+    {
+        return false;
     }
     protected String getLivingSound()
     {
@@ -128,13 +130,13 @@ public class EntityLeaellynasaur extends EntityAnimal
         }
     }
 
-    public EntityLeaellynasaur createChild(EntityAgeable par1EntityAgeable)
+    public EntityStegosaur createChild(EntityAgeable par1EntityAgeable)
     {
-        return new EntityLeaellynasaur(this.worldObj);
+        return new EntityStegosaur(this.worldObj);
     }
 
     public float spiderScaleAmount()
     {
-        return 1F;
+        return 2.1F;
     }
 }

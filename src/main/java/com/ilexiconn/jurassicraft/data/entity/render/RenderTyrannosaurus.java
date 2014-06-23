@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.JurassiCraft;
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityTyrannosaurus;
+import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelTyrannosaurus;
 
 import cpw.mods.fml.relauncher.Side;

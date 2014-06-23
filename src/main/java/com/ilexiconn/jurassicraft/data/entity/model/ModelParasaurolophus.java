@@ -11,8 +11,11 @@
 
 package com.ilexiconn.jurassicraft.data.entity.model;
 
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+
+import com.ilexiconn.jurassicraft.data.entity.EntityParasaurolophus;
 
 public class ModelParasaurolophus extends MowzieModelBase
 {
