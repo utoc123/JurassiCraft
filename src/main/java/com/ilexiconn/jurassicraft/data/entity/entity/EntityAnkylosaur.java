@@ -1,6 +1,5 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
-
 import thehippomaster.AnimationAPI.AnimationAPI;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 

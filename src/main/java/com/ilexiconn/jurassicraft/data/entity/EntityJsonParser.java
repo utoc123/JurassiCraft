@@ -2,7 +2,10 @@ package com.ilexiconn.jurassicraft.data.entity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
@@ -12,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
-public class EntityJsonParser
+public class EntityJsonParser extends Util
 {
     public Collection<Dino> dinos;
     private static Dino currentDino;
@@ -36,17 +39,18 @@ public class EntityJsonParser
         loadConfig(event.getSuggestedConfigurationFile());
         for (Dino dino : dinos)
         {
-            currentDino = dino;
-            //add the dino
+            setCurrentDino(dino);
+            addEntity(dino.dinoName);
         }
     }
 
+    @SideOnly(Side.CLIENT)
     public void parseClientEntities()
     {
         for (Dino dino : dinos)
         {
-            currentDino = dino;
-            //render the dino
+            setCurrentDino(dino);
+            addEntityRenderer(dino.dinoName);
         }
     }
 

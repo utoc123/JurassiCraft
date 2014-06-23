@@ -19,7 +19,6 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -122,11 +121,19 @@ public class Util
         GameRegistry.registerTileEntity(tile, tile.getSimpleName());
     }
 
-    public void addEntity(Class<? extends EntityLiving> entity, String name, int color1, int color2)
+    public void addEntity(String name)
     {
-        int entityId = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
-        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+        try
+        {
+            Class entity = Class.forName("com.ilexiconn.jurassicraft.data.entity.entity.Entity" + name);
+            int entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, name, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception ignored)
+        {
+
+        }
     }
 
     public void addMeat(ItemMeat item)
