@@ -12,6 +12,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
     public int animID;
     public int animTick;
     public float scaleAmount;
+    public int frame;
 
     public EntityDinosaurMonster(World world)
     {
@@ -100,5 +101,6 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
     {
         super.onUpdate();
         if(animID != 0) animTick++;
+        frame++;
     }
 }

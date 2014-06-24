@@ -12,6 +12,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implemen
     public int animID;
     public int animTick;
     public float scaleAmount;
+    public int frame;
 
     public EntityDinosaurWaterMonster(World par1World)
     {
@@ -99,5 +100,6 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implemen
     {
         super.onUpdate();
         if(animID != 0) animTick++;
+        frame++;
     }
 }
