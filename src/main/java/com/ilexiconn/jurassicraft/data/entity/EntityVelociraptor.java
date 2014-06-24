@@ -1,5 +1,6 @@
 package com.ilexiconn.jurassicraft.data.entity;
 
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
 import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
 import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
 
@@ -38,6 +39,10 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
     private int animID;
     private int animTick;
     
+    private float distanceFromTarget;
+    public boolean leaping;
+    public int timeSinceLeap;
+    
     public EntityVelociraptor(World par1World)
     {
         super(par1World);
@@ -50,8 +55,9 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
         
         this.tasks.addTask(2, new AIVelociraptorTwitchHead(this));
         this.tasks.addTask(2, new AIVelociraptorRoar(this));
+        this.tasks.addTask(2, new AIVelociraptorLeap(this));
         
-        this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+//       this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
@@ -59,8 +65,8 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;
         textureID = rand.nextInt(3) + 1;
     }
@@ -106,30 +112,37 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 
     public void onLivingUpdate()
     {
-        if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
-        {
-            float var1 = this.getBrightness(100.0F);
-
-            if (var1 > 0.5F && this.rand.nextFloat() * 30.0F < (var1 - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
-            {
-                this.setFire(-99);
-            }
+        if (this.getAttackTarget() != null) {
+        	distanceFromTarget = (float)Math.sqrt(Math.pow((this.posX - this.getAttackTarget().posX), 2) + Math.pow((this.posZ - this.getAttackTarget().posZ), 2));
         }
+        else {
+        	distanceFromTarget = -1;
+        }
+        if (distanceFromTarget >= 6 && distanceFromTarget <=7  && this.animID == 0 && onGround && timeSinceLeap == 0) AnimationAPI.sendAnimPacket(this, 3);
+        if (onGround) leaping = false;
+        if (timeSinceLeap != 0) timeSinceLeap--;
+        System.out.println(timeSinceLeap);
+        System.out.println(leaping);
         frame += 0.1;
         super.onLivingUpdate();
     }
-
+    
+    public float getRenderYawOffsetChange() {
+    	float change = this.prevRenderYawOffset - this.renderYawOffset;
+//    	System.out.println(change);
+    	return change;
+    }
 
     public int getAttackStrength(Entity par1Entity)
     {
-        return 40;
+        return 10;
     }
 
     protected String getLivingSound()
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
+    		if(animID == 0)AnimationAPI.sendAnimPacket(this, 2);
     		int I = rand.nextInt(4)+1;
     		if(I == 1) {
     			return "jurassicraft:RapHiss01";
@@ -150,13 +163,13 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 
     protected String getHurtSound()
     {
-		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
+		if(animID == 0)AnimationAPI.sendAnimPacket(this, 2);
         return "jurassicraft:RapAttack01";
     }
 
     protected String getDeathSound()
     {
-		if(animID != 2)AnimationAPI.sendAnimPacket(this, 2);
+		if(animID == 0)AnimationAPI.sendAnimPacket(this, 2);
         return "jurassicraft:RapAttack02";
     }
 

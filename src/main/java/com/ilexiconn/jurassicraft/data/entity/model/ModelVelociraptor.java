@@ -8,7 +8,6 @@
 
 
 
-
 package com.ilexiconn.jurassicraft.data.entity.model;
 
 import thehippomaster.AnimationAPI.IAnimatedEntity;
@@ -115,9 +114,15 @@ public class ModelVelociraptor extends MowzieModelBase
       Right_Thigh.setTextureSize(256, 256);
       Right_Thigh.mirror = true;
       setRotation(Right_Thigh, 0.6252203F, 0F, 0F);
-      Body_1 = new MowzieModelRenderer(this, 118, 0);
+  /*    Body_1 = new MowzieModelRenderer(this, 118, 0);
       Body_1.addBox(-4.5F, 0F, 0F, 9, 9, 21);
       Body_1.setRotationPoint(0F, -0.5F, -7F);
+      Body_1.setTextureSize(256, 256);
+      Body_1.mirror = true;
+      setRotation(Body_1, -0.0743572F, 0F, 0F);*/
+      Body_1 = new MowzieModelRenderer(this, 118, 0);
+      Body_1.addBox(-4.5F, 0F, -17F, 9, 9, 21);
+      Body_1.setRotationPoint(0F, 0.5F, 10F);
       Body_1.setTextureSize(256, 256);
       Body_1.mirror = true;
       setRotation(Body_1, -0.0743572F, 0F, 0F);
@@ -405,7 +410,7 @@ public class ModelVelociraptor extends MowzieModelBase
       Tail_6.rotateAngleX = -0.12F;
       
       Head.setRotationPoint(0, 0, 0);
-      Body_2.setRotationPoint(0, -1, -3);
+      Body_2.setRotationPoint(0, -1, -20);
       Hand_Left_Claw_Left.setRotationPoint(0.2F, -0.2F, -0.1F);
       Hand_Left_Claw_Middle.setRotationPoint(0F, -0.2F, -0.1F);
       Hand_Left_Claw_Right.setRotationPoint(-0.2F, -0.2F, -0.1F);
@@ -569,6 +574,7 @@ public class ModelVelociraptor extends MowzieModelBase
     resetPose();
 /*    f = raptor.frame;
     f1 = 1F;*/
+    if(raptor.getAnimID() == 3 || raptor.leaping) f1 = 0;
     float scaleFactor = 0.75F;
     float height = 2F * f1;
     newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
@@ -605,6 +611,13 @@ public class ModelVelociraptor extends MowzieModelBase
     newwalk(Head, 1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
     newchainWave(rightArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
     newchainWave(leftArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
+    
+/*    newfaceTarget(Tail_1, 6, raptor.getRenderYawOffsetChange(), 0);
+    newfaceTarget(Tail_2, 6, raptor.getRenderYawOffsetChange(), 0);
+    newfaceTarget(Tail_3, 6, raptor.getRenderYawOffsetChange(), 0);
+    newfaceTarget(Tail_4, 6, raptor.getRenderYawOffsetChange(), 0);
+    newfaceTarget(Tail_5, 6, raptor.getRenderYawOffsetChange(), 0);
+    newfaceTarget(Tail_6, 6, raptor.getRenderYawOffsetChange(), 0);*/
   }
   
   public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -628,5 +641,13 @@ public class ModelVelociraptor extends MowzieModelBase
 		animator.endPhase();
 		animator.setStationaryPhase(10);
 		animator.resetPhase(5);
+		
+		//Leap
+		animator.setAnim(3);
+		animator.startPhase(3);
+			animator.rotate(Lower_Jaw, 0.3F, 0, 0);
+		animator.endPhase();
+		animator.setStationaryPhase(6);
+		animator.resetPhase(3);
 	}
 }
