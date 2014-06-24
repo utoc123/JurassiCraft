@@ -13,6 +13,8 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implemen
     public int animTick;
     public float scaleAmount;
     public int frame;
+    
+    public double speed = Util.getEntityParser().getCurrentDino().dinoSpeed;
 
     public EntityDinosaurWaterMonster(World par1World)
     {

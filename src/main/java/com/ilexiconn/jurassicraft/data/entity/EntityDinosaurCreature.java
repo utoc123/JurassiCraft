@@ -13,6 +13,8 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
     public int animTick;
     public float scaleAmount;
     public int frame;
+    
+    public double speed = Util.getEntityParser().getCurrentDino().dinoSpeed;
 
     public EntityDinosaurCreature(World world)
     {

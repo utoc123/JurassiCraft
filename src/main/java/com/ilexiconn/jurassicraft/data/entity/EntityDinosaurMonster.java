@@ -14,6 +14,8 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
     public float scaleAmount;
     public int frame;
 
+    public double speed = Util.getEntityParser().getCurrentDino().dinoSpeed;
+    
     public EntityDinosaurMonster(World world)
     {
         super(world);
