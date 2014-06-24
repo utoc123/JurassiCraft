@@ -10,6 +10,7 @@ import com.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import com.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import com.ilexiconn.jurassicraft.data.tile.TileEgg;
 import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
+import com.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
 import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import com.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
@@ -42,7 +43,7 @@ public final class Data extends Util
             addBlockWithTileEntity(3, new BlockAnalyzer(false), TileAnalyzer.class, false);
             addBlock(4, new BlockAmberOre());
             addBlock(5, new BlockFossilOre());
-            addBlock(6, new GhostBlock("cultivate_top", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f));
+            addBlock(6, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
         }
         { /** Items */
             addItem(1, new ItemAmber());
@@ -66,11 +67,11 @@ public final class Data extends Util
     public void initClient(FMLPreInitializationEvent event)
     {
         { /** Block Renderers */
-            addTileEntityRenderer(TileCultivate.class, new CultivateRenderer());
-            addTileEntityRenderer(TileEgg.class, new EggRenderer());
+            addBlockRenderer(TileCultivate.class, new CultivateRenderer());
+            addBlockRenderer(TileEgg.class, new EggRenderer());
         }
         { /** Item Renderers */
-
+            addItemRenderer(Item.getItemFromBlock(getBlock(1)), new CultivateRenderer3D());
         }
     }
 }
