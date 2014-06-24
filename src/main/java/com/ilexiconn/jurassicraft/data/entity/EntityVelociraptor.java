@@ -112,17 +112,18 @@ public class EntityVelociraptor extends EntityAgeableMob implements IAnimatedEnt
 
     public void onLivingUpdate()
     {
+    	//Leap AI
         if (this.getAttackTarget() != null) {
         	distanceFromTarget = (float)Math.sqrt(Math.pow((this.posX - this.getAttackTarget().posX), 2) + Math.pow((this.posZ - this.getAttackTarget().posZ), 2));
         }
         else {
         	distanceFromTarget = -1;
         }
-        if (distanceFromTarget >= 6 && distanceFromTarget <=7  && this.animID == 0 && onGround && timeSinceLeap == 0) AnimationAPI.sendAnimPacket(this, 3);
+        if (distanceFromTarget >= 5 && distanceFromTarget <=6  && onGround && timeSinceLeap == 0) AnimationAPI.sendAnimPacket(this, 3);
         if (onGround) leaping = false;
         if (timeSinceLeap != 0) timeSinceLeap--;
-        System.out.println(timeSinceLeap);
-        System.out.println(leaping);
+        
+        //Misc
         frame += 0.1;
         super.onLivingUpdate();
     }
