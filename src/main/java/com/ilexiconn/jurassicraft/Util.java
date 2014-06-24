@@ -1,15 +1,17 @@
 package com.ilexiconn.jurassicraft;
 
 import com.ilexiconn.jurassicraft.data.Data;
+import com.ilexiconn.jurassicraft.data.Dinos;
 import com.ilexiconn.jurassicraft.data.block.BlockEgg;
-import com.ilexiconn.jurassicraft.data.entity.JsonEntityParser;
+import com.ilexiconn.jurassicraft.data.entity2.render.RenderDinosaur;
 import com.ilexiconn.jurassicraft.data.item.ItemDNA;
-import com.ilexiconn.jurassicraft.data.item.ItemMeat;
+import com.ilexiconn.jurassicraft.logger.Logger;
 import com.ilexiconn.jurassicraft.proxy.ServerProxy;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -19,18 +21,22 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
 public class Util
 {
-    /** Stuff */
+    /**
+     * Stuff
+     */
+    private static SimpleNetworkWrapper genderWrapper = new SimpleNetworkWrapper("genderChannel");
+    private static final Logger logger = new Logger();
     private static final Data data = new Data();
-    private static final JsonEntityParser entityParser = new JsonEntityParser();
+    private static final Dinos dinos = new Dinos();
     @SidedProxy(clientSide = "com.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "com.ilexiconn.jurassicraft.proxy.ServerProxy")
     public static ServerProxy proxy;
     private static CreativeTabs[] tabs = new CreativeTabs[512];
@@ -39,7 +45,9 @@ public class Util
     private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
     private static ArrayList<BlockEgg> eggs = new ArrayList<BlockEgg>();
 
-    /** Getters */
+    /**
+     * Getters
+     */
     public static CreativeTabs getCreativeTab(int id)
     {
         return tabs[id];
@@ -70,17 +78,29 @@ public class Util
         return "jurassicraft:";
     }
 
+    public static Logger getLogger()
+    {
+        return logger;
+    }
+
     public static Data getData()
     {
         return data;
     }
 
-    public static JsonEntityParser getEntityParser()
+    public static String[] getDinos()
     {
-        return entityParser;
+        return dinos.dinos;
     }
 
-    /** Adders */
+    public static SimpleNetworkWrapper getGenderWrapper()
+    {
+        return genderWrapper;
+    }
+
+    /**
+     * Adders
+     */
     public void addCreativeTab(int id, CreativeTabs tab)
     {
         if (id != -1) tabs[id] = tab;
@@ -98,18 +118,10 @@ public class Util
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
 
-    public void addDNA(String dinoName)
+    public void addDNA(ItemDNA item)
     {
-        ItemDNA item = new ItemDNA(dinoName);
         dnas.add(item);
         GameRegistry.registerItem(item, item.getUnlocalizedName());
-    }
-
-    public ItemMeat addMeat(String dinoName)
-    {
-        ItemMeat item = new ItemMeat(dinoName);
-        addItem(-1, item);
-        return item;
     }
 
     public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
@@ -123,19 +135,38 @@ public class Util
         GameRegistry.registerTileEntity(tile, tile.getSimpleName());
     }
 
-    public void addEntity(String name)
+    @SideOnly(Side.CLIENT)
+    public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
+    {
+        proxy.renderTileEntity(tileEntity, renderer);
+    }
+
+    public void addEntity(Class<? extends EntityLiving> entity, String name, int color1, int color2)
+    {
+        int entityId = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entity, name, entityId, color1, color2);
+        EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addEntityRenderer(String name)
     {
         try
         {
-            Class entity = Class.forName("com.ilexiconn.jurassicraft.data.entity.entity.Entity" + name);
-            int entityId = EntityRegistry.findGlobalUniqueEntityId();
-            EntityRegistry.registerGlobalEntityID(entity, name, entityId, 0, 0);
-            EntityRegistry.registerModEntity(entity, name, entityId, JurassiCraft.instance, 64, 1, true);
+            RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
+            Class entity =Class.forName("com.ilexiconn.jurassicraft.data.entity.Entity" + name);
+            proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
         {
-
+            e.printStackTrace();
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addEntity2Renderer(Class entity, RenderDinosaur render)
+    {
+        proxy.renderEntity(entity, render);
     }
 
     public void addGuiHandler(IGuiHandler handler)
@@ -148,16 +179,8 @@ public class Util
         GameRegistry.registerWorldGenerator(generator, weight);
     }
 
-    public void addEgg(String dinoName, final TileEntity tileEntity)
+    public void addEgg(BlockEgg egg)
     {
-        BlockEgg egg = new BlockEgg(dinoName)
-        {
-            @Override
-            public TileEntity createNewTileEntity(World var1, int var2)
-            {
-                return tileEntity;
-            }
-        };
         eggs.add(egg);
         addBlock(-1, egg);
     }
@@ -170,26 +193,5 @@ public class Util
     public void addShapelessRecipe(ItemStack output, Object... obj)
     {
         GameRegistry.addShapelessRecipe(output, obj);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
-    {
-        proxy.renderTileEntity(tileEntity, renderer);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void addEntityRenderer(String name)
-    {
-        try
-        {
-            RenderLiving renderer = (RenderLiving) Class.forName("com.ilexiconn.jurassicraft.data.entity.render.Render" + name).newInstance();
-            Class entity = Class.forName("com.ilexiconn.jurassicraft.data.entity.entity.Entity" + name);
-            proxy.renderEntity(entity, renderer);
-        }
-        catch (Exception e)
-        {
-
-        }
     }
 }

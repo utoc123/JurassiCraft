@@ -3,8 +3,10 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -287,6 +289,6 @@ public class ModelAnkylosaur extends MowzieModelBase
         walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
-        tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.animTick);
+        tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.frame);
     }
 }

@@ -13,6 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCoelacanth extends RenderLiving
 {
+    public ResourceLocation CoelacanthTexture = new ResourceLocation(Util.getModId() + "textures/entity/coelacanth.png");
+
     public RenderCoelacanth()
     {
         super(new ModelCoelacanth(), 1f);
@@ -20,6 +22,6 @@ public class RenderCoelacanth extends RenderLiving
 
     public ResourceLocation getEntityTexture(Entity entity)
     {
-        return new ResourceLocation(Util.getModId() + "textures/entity/coelacanth.png");
+        return CoelacanthTexture;
     }
 }
