@@ -23,7 +23,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+<<<<<<< HEAD
 import net.minecraftforge.client.IItemRenderer;
+=======
+>>>>>>> d156f54a50dc904b476a381e193d167e94ffe914
 
 import java.util.ArrayList;
 
@@ -174,7 +177,11 @@ public class Util
     }
 
     @SideOnly(Side.CLIENT)
+<<<<<<< HEAD
     public void addBlockRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
+=======
+    public void addTileEntityRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
+>>>>>>> d156f54a50dc904b476a381e193d167e94ffe914
     {
         proxy.renderTileEntity(tileEntity, renderer);
     }
@@ -193,10 +200,13 @@ public class Util
 
         }
     }
+<<<<<<< HEAD
 
     @SideOnly(Side.CLIENT)
     public void addItemRenderer(Item item, IItemRenderer render)
     {
         proxy.renderItem(item, render);
     }
+=======
+>>>>>>> d156f54a50dc904b476a381e193d167e94ffe914
 }
