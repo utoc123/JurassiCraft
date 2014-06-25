@@ -44,7 +44,7 @@ private EntityLivingBase attackTarget;
             entityRaptor.motionZ = 1.5*(d1 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionZ * 0.20000000298023224D);
             entityRaptor.motionY = 0.75D;
 		}
-         if(entityRaptor.getAnimTick() == 20) {
+         if(entityRaptor.getAnimTick() == 19) {
 //     		entityRaptor.setLeaping(true);
     		entityRaptor.timeSinceLeap = 150;
     		System.out.println("Called " + entityRaptor.leaping);

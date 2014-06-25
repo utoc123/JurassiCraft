@@ -620,6 +620,7 @@ public class ModelVelociraptor extends MowzieModelBase
     newfaceTarget(Tail_6, 6, raptor.getRenderYawOffsetChange(), 0);*/
 //    System.out.println(raptor.onGround + " " + raptor.leaping);
     
+	if(raptor.getAnimTick() == 20 && raptor.getAnimID() == 3) raptor.setLeaping(true);
     if (raptor.leaping == true) {
     	Body_1.rotateAngleX -= 0.8;
     	Neck.rotateAngleX += 0.8;
@@ -632,8 +633,8 @@ public class ModelVelociraptor extends MowzieModelBase
     	
     	Right_Thigh.rotateAngleX -= 1.2;
     	Left_Thigh.rotateAngleX -= 1.2;
-    	Right_Thigh.rotateAngleY += 0.4F;
-    	Left_Thigh.rotateAngleY -= 0.4;
+ //   	Right_Thigh.rotateAngleY += 0.4F;
+ //   	Left_Thigh.rotateAngleY -= 0.4;
     	Right_Calf_1.rotateAngleX -= 0.3;
     	Left_Calf_1.rotateAngleX -= 0.3;
     	Right_Upper_Foot.rotateAngleX += 0.3;
@@ -743,8 +744,6 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Lower_Arm_Left, 0.5F, -1.5F, 0);
 			animator.rotate(Hand_Right, -1, 0, 0);
 			animator.rotate(Hand_Left, -1, 0, 0);
-			if(raptor.getAnimTick() == 20 && raptor.getAnimID() == 3) raptor.setLeaping(true);
 		animator.endPhase();
-		animator.setStationaryPhase(2);
 	}
 }
