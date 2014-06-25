@@ -13,7 +13,7 @@ import thehippomaster.AnimationAPI.AnimationAPI;
 
 public class EntityVelociraptor extends EntityDinosaurCreature
 {
-    public boolean leaping;
+    public boolean leaping = false;
     public int timeSinceLeap;
 
     public EntityVelociraptor(World par1World)
@@ -52,14 +52,17 @@ public class EntityVelociraptor extends EntityDinosaurCreature
             distanceFromTarget = -1;
         if (distanceFromTarget >= 5 && distanceFromTarget <= 6 && onGround && timeSinceLeap == 0)
             AnimationAPI.sendAnimPacket(this, 3);
-        if (onGround) leaping = false;
+        if (onGround == true) setLeaping(false);
         if (timeSinceLeap != 0) timeSinceLeap--;
 
         //Misc
-        frame += 0.1;
         super.onLivingUpdate();
     }
 
+    
+    public void setLeaping(boolean l) {
+    	this.leaping = l;
+    }
     public EntityAgeable createChild(EntityAgeable entity)
     {
         return new EntityVelociraptor(worldObj);
