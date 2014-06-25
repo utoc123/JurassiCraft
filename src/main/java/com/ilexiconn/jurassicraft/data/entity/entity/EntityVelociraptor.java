@@ -16,9 +16,9 @@ public class EntityVelociraptor extends EntityDinosaurCreature
     public boolean leaping;
     public int timeSinceLeap;
 
-    public EntityVelociraptor(World par1World, int dinoID)
+    public EntityVelociraptor(World par1World)
     {
-        super(par1World, dinoID);
+        super(par1World, 2);
         float moveSpeed = 1.3F;
         setSize(1.9F, 1.5F);
         tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
@@ -62,7 +62,7 @@ public class EntityVelociraptor extends EntityDinosaurCreature
 
     public EntityAgeable createChild(EntityAgeable entity)
     {
-        return new EntityVelociraptor(worldObj, dinoID);
+        return new EntityVelociraptor(worldObj);
     }
 
     public String getLivingSound()
