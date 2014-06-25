@@ -745,5 +745,6 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Hand_Right, -1, 0, 0);
 			animator.rotate(Hand_Left, -1, 0, 0);
 		animator.endPhase();
+		animator.resetPhase(1);
 	}
 }
