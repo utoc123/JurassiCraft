@@ -14,7 +14,7 @@ public class RenderBrachiosaur extends RenderDinosaur
 {
     public RenderBrachiosaur(Dinosaur dino)
     {
-        super(new ModelBrachiosaur(), dino,2f);
+        super(new ModelBrachiosaur(), dino, 2f);
     }
 
     public ResourceLocation getEntityTexture(Entity entity)

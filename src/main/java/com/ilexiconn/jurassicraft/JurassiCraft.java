@@ -1,5 +1,6 @@
 package com.ilexiconn.jurassicraft;
 
+import com.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -17,6 +18,8 @@ public class JurassiCraft extends Util
         getData().init();
 
         getEntityParser().parseServerEntities(event);
+
+        for (Dinosaur dino : getDinos()) System.out.println("Added dino " + dino.dinoName + " with ID " + dino.id);
     }
 
     @SideOnly(Side.CLIENT)
