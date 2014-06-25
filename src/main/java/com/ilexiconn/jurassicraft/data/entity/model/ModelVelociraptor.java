@@ -650,7 +650,7 @@ public class ModelVelociraptor extends MowzieModelBase
 		
 		//Leap
 		animator.setAnim(3);
-		animator.startPhase(5);
+		animator.startPhase(15);
 			animator.move(Body_1, 0, 3, 0);
 			animator.rotate(Body_1, 0.5F, 0, 0);
 			animator.rotate(Tail_1, 0.4F, 0, 0);
@@ -668,6 +668,24 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Foot_Right, 0.2F, 0, 0);
 			animator.rotate(Foot_Left, 0.2F, 0, 0);
 			
+		animator.endPhase();
+		animator.setStationaryPhase(9);
+		animator.startPhase(10);
+			animator.move(Body_1, 0, -3, 0);
+			animator.move(Tail_1, 0, 0, 2);
+			animator.rotate(Tail_1, -0.4F, 0, 0);
+			
+			animator.move(Right_Thigh, 0, -3, 0);
+			animator.move(Left_Thigh, 0, -3, 0);
+			animator.rotate(Right_Thigh, 1F, 0, 0);
+			animator.rotate(Left_Thigh, 1F, 0, 0);
+			animator.rotate(Right_Calf_1, -1F, 0, 0);
+			animator.rotate(Left_Calf_1, -1F, 0, 0);
+			animator.rotate(Right_Upper_Foot, 1F, 0, 0);
+			animator.rotate(Left_Upper_Foot, 1F, 0, 0);
+			animator.rotate(Foot_Right, -1F, 0, 0);
+			animator.rotate(Foot_Left, -1F, 0, 0);
+			
 			animator.rotate(Upper_Arm_Right, -0.5F, 0, 1);
 			animator.rotate(Upper_Arm_Left, -0.5F, 0, -1);
 			animator.rotate(Lower_Arm_Right, -1.5F, 1.5F, 0);
@@ -675,8 +693,6 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Hand_Right, -1, 0, 0);
 			animator.rotate(Hand_Left, -1, 0, 0);
 		animator.endPhase();
-		animator.setStationaryPhase(3);
-//		animator.startPhase(2);
-		animator.resetPhase(3);
+		animator.setStationaryPhase(6);
 	}
 }
