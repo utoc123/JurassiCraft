@@ -12,9 +12,7 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
-
-import com.ilexiconn.jurassicraft.data.entity.EntityTyrannosaurus;
-import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

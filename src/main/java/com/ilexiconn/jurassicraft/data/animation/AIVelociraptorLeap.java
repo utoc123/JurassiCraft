@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import thehippomaster.AnimationAPI.AIAnimation;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 public class AIVelociraptorLeap extends AIAnimation {
 private EntityVelociraptor entityRaptor;

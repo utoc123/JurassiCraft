@@ -1,6 +1,6 @@
 package com.ilexiconn.jurassicraft.data.animation;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityVelociraptor;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 import net.minecraft.entity.EntityLiving;
 import thehippomaster.AnimationAPI.AIAnimation;

@@ -12,6 +12,8 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
     public int animID;
     public int animTick;
     public int dinoID;
+    
+    public int frame;
 
     public EntityDinosaurCreature(World world, int id)
     {
@@ -89,6 +91,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
     public void onUpdate()
     {
         super.onUpdate();
-        animTick++;
+        if(animID != 0) animTick++;
+        frame++;
     }
 }

@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.DamageSource;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityAnkylosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
 
 import thehippomaster.AnimationAPI.AIAnimation;
 import thehippomaster.AnimationAPI.AnimationAPI;
