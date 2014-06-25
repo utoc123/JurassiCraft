@@ -1,90 +1,43 @@
 package com.ilexiconn.jurassicraft.data.tile;
 
-import com.ilexiconn.jurassicraft.Util;
-import com.ilexiconn.jurassicraft.logger.LogType;
-
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public class TileEgg extends TileEntity
 {
-	public Class<? extends EntityLiving> entity;
-    public int hatchTime = 10000;
+    private String dinoName;
+    private int hatchTime;
 
-    public TileEgg(Class<? extends EntityLiving> entity)
+    public TileEgg(String dinoName)
     {
-        this.entity = entity;
+        setDinoName(dinoName);
+        setHatchTime(100);
     }
 
-    public String getDino()
+    public void setDinoName(String dinoName)
     {
-        TileEgg egg = (TileEgg) worldObj.getTileEntity(xCoord, yCoord, zCoord);
-        return egg.entity.getSimpleName();
+        this.dinoName = dinoName;
     }
 
-    public int getFurnacesNearby()
+    public String getDinoName()
     {
-        int amount = 0;
-        for (int i = -1; i < 2; i++)
-        {
-            for (int j = -1; j < 2; j++)
-            {
-                if (worldObj.getBlock(xCoord + i, yCoord, zCoord + j) == Blocks.lit_furnace) amount++;
-            }
-        }
-        return amount;
+        return dinoName;
     }
 
-    public void readFromNBT(NBTTagCompound nbt)
+    public void setHatchTime(int hatchTime)
     {
-        super.readFromNBT(nbt);
-        hatchTime = nbt.getInteger("time");
+        this.hatchTime = hatchTime;
     }
 
-    public void writeToNBT(NBTTagCompound nbt)
+    public int getHatchTime()
     {
-        super.writeToNBT(nbt);
-        nbt.setInteger("time", hatchTime);
+        return hatchTime;
     }
 
-    public void hatchEgg()
-    {
-        worldObj.setBlockToAir(xCoord, yCoord, zCoord);
-        worldObj.removeTileEntity(xCoord, yCoord, zCoord);
-        try
-        {
-            if (!worldObj.isRemote)
-            {
-                EntityLiving entity = this.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
-                entity.setPosition(xCoord, yCoord, zCoord);
-                worldObj.spawnEntityInWorld(entity);
-            }
-        }
-        catch (Exception e)
-        {
-            Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
-        }
-    }
-    
-    public void updateEntity()
-    {
-    	if (hatchTime == 0)
-        {
-    		hatchEgg();
-    	}
-    	else
-        {
-    		hatchTime--;
-    	}
-    }
-
-    public Packet getDescriptionPacket()
+	public Packet getDescriptionPacket()
     {
         NBTTagCompound tag = new NBTTagCompound();
         writeToNBT(tag);
@@ -94,5 +47,25 @@ public class TileEgg extends TileEntity
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
     {
         readFromNBT(packet.func_148857_g());
+    }
+
+    public void writeToNBT(NBTTagCompound tag)
+    {
+        super.writeToNBT(tag);
+        tag.setString("dinoName", dinoName);
+        tag.setInteger("hatchTime", hatchTime);
+    }
+
+    public void readFromNBT(NBTTagCompound tag)
+    {
+        super.readFromNBT(tag);
+        dinoName = tag.getString("dinoName");
+        hatchTime = tag.getInteger("hatchTime");
+    }
+
+    public void updateEntity()
+    {
+        hatchTime++;
+        System.out.println(hatchTime);
     }
 }
