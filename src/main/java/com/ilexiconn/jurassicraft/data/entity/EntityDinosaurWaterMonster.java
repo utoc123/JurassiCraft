@@ -28,7 +28,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implemen
     public void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(Util.getDinos().get(dinoID).dinoHealth);
+        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(Util.getDinos().get(dinoID).dinoHealth * 2);
         getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(Util.getDinos().get(dinoID).dinoSpeed);
     }
 
