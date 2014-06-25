@@ -28,6 +28,6 @@ public class JurassiCraft extends Util
     {
         getData().initClient();
 
-        getEntityParser().parseClientEntities();
+        getEntityParser().parseClientEntities(event);
     }
 }
