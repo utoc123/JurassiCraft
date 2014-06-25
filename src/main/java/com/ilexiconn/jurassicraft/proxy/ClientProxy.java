@@ -22,7 +22,7 @@ public class ClientProxy extends ServerProxy
         ClientRegistry.bindTileEntitySpecialRenderer(tileEntity, renderer);
     }
 
-    public void renderItems(Item item, IItemRenderer render)
+    public void renderItem(Item item, IItemRenderer render)
     {
         MinecraftForgeClient.registerItemRenderer(item, render);
     }

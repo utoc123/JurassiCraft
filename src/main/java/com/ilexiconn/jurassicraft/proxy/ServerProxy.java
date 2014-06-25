@@ -19,7 +19,7 @@ public class ServerProxy
 
     }
 
-    public void renderItems(Item item, IItemRenderer render)
+    public void renderItem(Item item, IItemRenderer render)
     {
 
     }
