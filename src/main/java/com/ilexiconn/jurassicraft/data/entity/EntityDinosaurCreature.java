@@ -62,11 +62,8 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
     {
         return 0.4F;
     }
-    
-    /**
-     * Determines if an entityOLD can be despawned, used on idle far away entities
-     */
-    protected boolean canDespawn()
+
+    public boolean canDespawn()
     {
         return false;
     }
