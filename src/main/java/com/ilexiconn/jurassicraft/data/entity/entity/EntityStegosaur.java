@@ -11,7 +11,7 @@ public class EntityStegosaur extends EntityDinosaurCreature
 {
     public EntityStegosaur(World world)
     {
-        super(world, 0);
+        super(world, 3);
         tasks.addTask(0, new EntityAISwimming(this));
         tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         tasks.addTask(2, new EntityAIMate(this, 1.0D));

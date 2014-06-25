@@ -61,6 +61,11 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
         return 0.4F;
     }
 
+    public boolean canDespawn()
+    {
+        return false;
+    }
+
     public int getAnimTick()
     {
         return animTick;

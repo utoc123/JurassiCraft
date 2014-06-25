@@ -6,8 +6,11 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
+<<<<<<< HEAD
 //import com.ilexiconn.jurassicraft.data.entityOLD.EntityTyrannosaurus;
 
+=======
+>>>>>>> FETCH_HEAD
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
 {
@@ -297,14 +300,21 @@ public class ModelTyrannosaurus extends MowzieModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+<<<<<<< HEAD
 //    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
+=======
+>>>>>>> FETCH_HEAD
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
         walk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, f, f1);
         walk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
+<<<<<<< HEAD
 //		tailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
+=======
+		//tailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
+>>>>>>> FETCH_HEAD
     }
     
     public boolean openCloseMouth(int mouthCounter) {

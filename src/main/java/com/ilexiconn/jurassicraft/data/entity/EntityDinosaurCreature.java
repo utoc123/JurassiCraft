@@ -63,6 +63,11 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
         return 0.4F;
     }
 
+    public boolean canDespawn()
+    {
+        return false;
+    }
+
     public int getAnimTick()
     {
         return animTick;
