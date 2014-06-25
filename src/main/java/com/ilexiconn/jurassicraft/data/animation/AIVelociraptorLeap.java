@@ -25,7 +25,7 @@ private EntityLivingBase attackTarget;
 	}
 	
 	public int getDuration() {
-		return 21;
+		return 20;
 	}
 	
 	public void startExecuting() {
@@ -40,14 +40,13 @@ private EntityLivingBase attackTarget;
             double d0 = attackTarget.posX - entityRaptor.posX;
             double d1 = attackTarget.posZ - entityRaptor.posZ;
             float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
-            entityRaptor.motionX = 1.5*(d0 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionX * 0.20000000298023224D);
-            entityRaptor.motionZ = 1.5*(d1 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionZ * 0.20000000298023224D);
-            entityRaptor.motionY = 0.75D;
+            entityRaptor.motionX = 1.6*(d0 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionX * 0.20000000298023224D);
+            entityRaptor.motionZ = 1.6*(d1 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionZ * 0.20000000298023224D);
+            entityRaptor.motionY = 0.6D;
 		}
          if(entityRaptor.getAnimTick() == 19) {
 //     		entityRaptor.setLeaping(true);
     		entityRaptor.timeSinceLeap = 150;
-    		System.out.println("Called " + entityRaptor.leaping);
 		}
 	}
 }
