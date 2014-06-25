@@ -574,7 +574,8 @@ public class ModelVelociraptor extends MowzieModelBase
     resetPose();
 /*    f = raptor.frame;
     f1 = 1F;*/
-    if(raptor.getAnimID() == 3 || raptor.leaping) f1 = 0;
+    if(raptor.leaping) f1 = 0;
+    if(raptor.getAnimID() == 3 && raptor.getAnimTick() >= 6) f1 = 0;
     float scaleFactor = 0.75F;
     float height = 2F * f1;
     newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
@@ -618,6 +619,34 @@ public class ModelVelociraptor extends MowzieModelBase
     newfaceTarget(Tail_4, 6, raptor.getRenderYawOffsetChange(), 0);
     newfaceTarget(Tail_5, 6, raptor.getRenderYawOffsetChange(), 0);
     newfaceTarget(Tail_6, 6, raptor.getRenderYawOffsetChange(), 0);*/
+    
+    Body_1.rotationPointY += 3;
+    Body_1.rotateAngleX += 0.5;
+    Tail_1.rotateAngleX += 0.4;
+    Tail_1.rotationPointZ -= 2;
+    Neck.rotateAngleX -= 0.5;
+    Right_Thigh.rotationPointY += 3;
+    Left_Thigh.rotationPointY += 3;
+    Right_Thigh.rotateAngleY += 0.4;
+    Left_Thigh.rotateAngleY -= 0.4;
+    Right_Thigh.rotateAngleX -= 0.2;
+    Left_Thigh.rotateAngleX -= 0.2;
+    Right_Calf_1.rotateAngleX += 0.2;
+    Left_Calf_1.rotateAngleX += 0.2;
+    Right_Upper_Foot.rotateAngleX -= 0.2;
+    Left_Upper_Foot.rotateAngleX -= 0.2;
+    Foot_Right.rotateAngleX += 0.2;
+    Foot_Left.rotateAngleX += 0.2;
+    Upper_Arm_Right.rotateAngleZ += 1;
+    Upper_Arm_Left.rotateAngleZ -= 1;
+    Upper_Arm_Right.rotateAngleX -= 0.5;
+    Upper_Arm_Left.rotateAngleX -= 0.5;
+    Lower_Arm_Right.rotateAngleX -= 1.5;
+    Lower_Arm_Left.rotateAngleX -= 1.5;
+    Lower_Arm_Right.rotateAngleY += 1.5F;
+    Lower_Arm_Left.rotateAngleY -= 1.5F;
+    Hand_Right.rotateAngleX -= 1;
+    Hand_Left.rotateAngleX -= 1;
   }
   
   public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -636,18 +665,28 @@ public class ModelVelociraptor extends MowzieModelBase
 		
 		//Roar
 		animator.setAnim(2);
-		animator.startPhase(5);
+		animator.startPhase(3);
+			animator.rotate(Neck, -0.1F, 0, 0);
+			animator.rotate(Head, 0.1F, 0, 0);
+		animator.endPhase();
+		animator.startPhase(3);
+			animator.rotate(Neck, 0.4F, 0, 0);
+			animator.rotate(Head, -0.4F, 0, 0);
 			animator.rotate(Lower_Jaw, 0.3F, 0, 0);
 		animator.endPhase();
-		animator.setStationaryPhase(10);
+		animator.setStationaryPhase(9);
 		animator.resetPhase(5);
 		
 		//Leap
 		animator.setAnim(3);
-		animator.startPhase(3);
-			animator.rotate(Lower_Jaw, 0.3F, 0, 0);
+		animator.startPhase(4);
+			animator.move(Body_1, 0, 3, 0);
+			animator.rotate(Body_1, 0.5F, 0, 0);
+			animator.rotate(Tail_1, 0.6F, 0, 0);
+			animator.rotate(Neck, -0.3F, 0, 0);
+			animator.rotate(HeadJoint, -0.3F, 0, 0);
 		animator.endPhase();
-		animator.setStationaryPhase(6);
+		animator.setStationaryPhase(2);
 		animator.resetPhase(3);
 	}
 }
