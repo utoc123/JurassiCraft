@@ -21,7 +21,7 @@ public class BlockCultivate extends BlockContainer
         super(Material.glass);
         this.active = active;
         setBlockName("cultivate_" + (active ? "active" : "idle"));
-        setBlockTextureName(Util.getModId() + "cultivate_" + (active ? "active" : "idle"));
+        setBlockTextureName(Util.getModId() + "cultivate");
         setCreativeTab(active ? null : Util.getCreativeTab(0));
         setHardness(1.0f);
         setBlockBounds(0f, 0f, 0f, 1f, 2f, 1f);

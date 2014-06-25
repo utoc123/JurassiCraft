@@ -1,5 +1,8 @@
 package com.ilexiconn.jurassicraft.data.tile;
 
+import com.ilexiconn.jurassicraft.Util;
+import com.ilexiconn.jurassicraft.logger.LogType;
+
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -65,7 +68,7 @@ public class TileEgg extends TileEntity
         }
         catch (Exception e)
         {
-
+            Util.getLogger().print(LogType.ERROR, "Can't spawn the " + entity.getSimpleName() + ", " + e);
         }
     }
     
