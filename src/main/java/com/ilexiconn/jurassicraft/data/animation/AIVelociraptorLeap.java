@@ -45,7 +45,6 @@ private EntityLivingBase attackTarget;
             entityRaptor.motionY = 0.6D;
 		}
          if(entityRaptor.getAnimTick() == 19) {
-//     		entityRaptor.setLeaping(true);
     		entityRaptor.timeSinceLeap = 150;
 		}
 	}
