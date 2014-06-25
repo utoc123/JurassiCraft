@@ -85,7 +85,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 
     public Item getDropItem()
     {
-        return null;
+        return Util.getMeat(dinoID);
     }
 
     public void onUpdate()

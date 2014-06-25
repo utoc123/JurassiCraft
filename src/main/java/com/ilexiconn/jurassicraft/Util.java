@@ -42,6 +42,7 @@ public class Util
     private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
     private static ArrayList<BlockEgg> eggs = new ArrayList<BlockEgg>();
     private static ArrayList<Dinosaur> dinos = new ArrayList<Dinosaur>();
+    private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
     /** Getters */
     public static CreativeTabs getCreativeTab(int id)
@@ -89,6 +90,11 @@ public class Util
         return dinos;
     }
 
+    public static ItemMeat getMeat(int id)
+    {
+        return meat.get(id);
+    }
+
     /** Adders */
     public void addCreativeTab(int id, CreativeTabs tab)
     {
@@ -114,11 +120,11 @@ public class Util
         GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
 
-    public ItemMeat addMeat(String dinoName)
+    public void addMeat(String dinoName)
     {
         ItemMeat item = new ItemMeat(dinoName);
+        meat.add(item);
         addItem(-1, item);
-        return item;
     }
 
     public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
@@ -158,7 +164,7 @@ public class Util
         GameRegistry.registerWorldGenerator(generator, weight);
     }
 
-    public BlockEgg addEgg(final String dinoName)
+    public void addEgg(final String dinoName)
     {
         BlockEgg egg = new BlockEgg(dinoName)
         {
@@ -169,7 +175,6 @@ public class Util
         };
         eggs.add(egg);
         addBlock(-1, egg);
-        return egg;
     }
 
     public void addShapedRecipe(ItemStack output, Object... obj)

@@ -13,28 +13,27 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class JsonEntityParser extends Util
 {
     private Collection<Dinosaur> dinos;
-    private ArrayList<Dinosaur> dArray = new ArrayList<Dinosaur>();
 
     public void parseServerEntities(FMLPreInitializationEvent event)
     {
         loadConfig(event.getSuggestedConfigurationFile());
-        for (Dinosaur dino : dinos) if (!dArray.contains(dino)) dArray.add(dino);
-        for (Dinosaur dino : dArray) addEntity(dino);
+        for (Dinosaur dino : dinos)
+        {
+            addMeat(dino.dinoName);
+            addDNA(dino.dinoName);
+            addEntity(dino);
+        }
     }
 
     @SideOnly(Side.CLIENT)
     public void parseClientEntities()
     {
-        for (Dinosaur dino : dinos)
-        {
-            addEntityRenderer(dino);
-        }
+        for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 
     public void loadConfig(File configFile)

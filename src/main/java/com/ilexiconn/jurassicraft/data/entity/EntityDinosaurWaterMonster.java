@@ -82,7 +82,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implemen
 
     public Item getDropItem()
     {
-        return null;
+        return Util.getMeat(dinoID);
     }
 
     public void onUpdate()

@@ -83,7 +83,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 
     public Item getDropItem()
     {
-        return null;
+        return Util.getMeat(dinoID);
     }
 
     public void onUpdate()
