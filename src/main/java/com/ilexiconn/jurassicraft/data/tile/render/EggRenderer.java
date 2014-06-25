@@ -22,8 +22,7 @@ public class EggRenderer extends TileEntitySpecialRenderer
         GL11.glTranslatef((float) x + 0.5f, (float) y + translation, (float) z + 0.5f);
         GL11.glScalef(scale, scale, scale);
 
-        String[] dino = egg.getDino().split("Entity");
-        texture = new ResourceLocation(Util.getModId() + "textures/eggs/egg" + dino[1] + ".png");
+        texture = new ResourceLocation(Util.getModId() + "textures/eggs/egg" + egg.getDinoName() + ".png");
         bindTexture(texture);
         GL11.glRotatef(180f, 0f, 0f, 1f);
         model.render();
