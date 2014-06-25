@@ -50,7 +50,7 @@ public class EntityVelociraptor extends EntityDinosaurCreature
             distanceFromTarget = (float) Math.sqrt(Math.pow((posX - getAttackTarget().posX), 2) + Math.pow((posZ - getAttackTarget().posZ), 2));
         else
             distanceFromTarget = -1;
-        if (distanceFromTarget >= 7 && distanceFromTarget <= 8 && onGround && timeSinceLeap == 0)
+        if (distanceFromTarget >= 5 && distanceFromTarget <= 6 && onGround && timeSinceLeap == 0)
             AnimationAPI.sendAnimPacket(this, 3);
         if (onGround == true) setLeaping(false);
         if (timeSinceLeap != 0) timeSinceLeap--;
