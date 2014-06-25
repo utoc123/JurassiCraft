@@ -602,14 +602,15 @@ public class ModelVelociraptor extends MowzieModelBase
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
     newtailSwing(tailParts, 1F * scaleFactor, 0.1F * f1, 2, f);
     newchainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
-    newchainWave(tailParts, 1.5F, -0.05F, 2, raptor.frame, 1F);
     newchainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     newchainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     //Idling
-    newwalk(Neck, 1F, 0.07F, false, 0F, 0F, raptor.frame, 1F);
-    newwalk(Head, 1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
-    newchainWave(rightArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
-    newchainWave(leftArmParts, 1F, -0.1F, 4, raptor.frame, 1F);
+    newchainWave(tailParts, 0.1F, -0.05F, 2, raptor.frame, 1F);
+    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, raptor.frame, 1F);
+    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
+    newwalk(Body_1, 0.1F, 0.05F, false, 0F, 0F, raptor.frame, 1F);
+    newchainWave(rightArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
+    newchainWave(leftArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
     
 /*    newfaceTarget(Tail_1, 6, raptor.getRenderYawOffsetChange(), 0);
     newfaceTarget(Tail_2, 6, raptor.getRenderYawOffsetChange(), 0);
