@@ -22,7 +22,7 @@ public class EntityVelociraptor extends EntityDinosaurCreature
         float moveSpeed = 1.3F;
         setSize(1.9F, 1.5F);
         tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
-      tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
+        tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
         tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         tasks.addTask(0, new EntityAISwimming(this));
 
