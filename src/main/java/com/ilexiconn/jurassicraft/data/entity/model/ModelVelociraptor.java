@@ -706,7 +706,7 @@ public class ModelVelociraptor extends MowzieModelBase
 		animator.setStationaryPhase(7);
 		animator.startPhase(4);
 			animator.move(Body_1, 0, -3, 0);
-			animator.move(Tail_1, 0, 0, 2);
+			animator.move(Tail_1, 0, 0, 0);
 			animator.rotate(Tail_1, -0.4F, 0, 0);
 			
 			animator.move(Right_Thigh, 0, -3, 0);
@@ -721,7 +721,7 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Foot_Left, -1F, 0, 0);
 		animator.endPhase();
 		animator.startPhase(4);
-			animator.rotate(Body_1, -1.3F, 0, 0);
+/*			animator.rotate(Body_1, -1.3F, 0, 0);
 			animator.rotate(Neck, 1.3F, 0, 0);
 			animator.rotate(Head, 0.5F, 0, 0);
 			animator.rotate(Lower_Jaw, 0.7F, 0, 0);
@@ -742,8 +742,32 @@ public class ModelVelociraptor extends MowzieModelBase
 			animator.rotate(Upper_Arm_Left, -0.5F, 0, -1);
 			animator.rotate(Lower_Arm_Right, 0.5F, 1.5F, 0);
 			animator.rotate(Lower_Arm_Left, 0.5F, -1.5F, 0);
+			animator.rotate(Hand_Right, -1, 0, 0);*/
+		
+			animator.rotate(Body_1, -0.8F, 0, 0);
+			animator.rotate(Neck, 0.8F, 0, 0);
+			animator.rotate(Head, 0.5F, 0, 0);
+			animator.rotate(Lower_Jaw, 0.7F, 0, 0);
+			animator.move(Tail_1, 0, 0, -2);
+			animator.rotate(Tail_1, 0.7F, 0, 0);
+			animator.move(Neck, 0, -2, -3);
+		
+			animator.rotate(Right_Thigh, -1.2F, 0, 0);
+			animator.rotate(Left_Thigh, -1.2F, 0, 0);
+			animator.rotate(Right_Calf_1, -0.3F, 0, 0);
+			animator.rotate(Left_Calf_1, -0.3F, 0, 0);
+			animator.rotate(Right_Upper_Foot, 0.3F, 0, 0);
+			animator.rotate(Left_Upper_Foot, 0.3F, 0, 0);
+			animator.rotate(Foot_Right, -0.3F, 0, 0);
+			animator.rotate(Foot_Left, -0.3F, 0, 0);
+		
+			animator.rotate(Upper_Arm_Right, -0.5F, 0, 1);
+			animator.rotate(Upper_Arm_Left, -0.5F, 0, -1);
+			animator.rotate(Lower_Arm_Right, 0.5F, 1.5F, 0);
+			animator.rotate(Lower_Arm_Left, 0.5F, -1.5F, 0);
 			animator.rotate(Hand_Right, -1, 0, 0);
 			animator.rotate(Hand_Left, -1, 0, 0);
-		animator.endPhase();
+			animator.endPhase();
+			animator.resetPhase(0);
 	}
 }
