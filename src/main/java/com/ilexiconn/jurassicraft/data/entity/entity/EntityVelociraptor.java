@@ -4,6 +4,8 @@ import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
 import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
 import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
 import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -63,6 +65,12 @@ public class EntityVelociraptor extends EntityDinosaurCreature
     public void setLeaping(boolean l) {
     	this.leaping = l;
     }
+    
+    public int getAttackStrength(Entity par1Entity)
+    {
+        return 10;
+    }
+    
     public EntityAgeable createChild(EntityAgeable entity)
     {
         return new EntityVelociraptor(worldObj);
