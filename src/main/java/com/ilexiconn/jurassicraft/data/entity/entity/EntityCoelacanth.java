@@ -1,11 +1,7 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
 import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurWaterMonster;
-
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.passive.EntityWaterMob;
-import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -26,24 +22,16 @@ public class EntityCoelacanth extends EntityDinosaurWaterMonster
     private float randomMotionVecY;
     private float randomMotionVecZ;
 
-    public EntityCoelacanth(World par1World, int dinoID)
+    public EntityCoelacanth(World par1World)
     {
-        super(par1World, dinoID);
+        super(par1World, 5);
         this.setSize(0.5F, 0.5F);
         this.rotationVelocity = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
     }
-    /**
-     * Determines if an entityOLD can be despawned, used on idle far away entities
-     */
 
     protected boolean canTriggerWalking()
     {
         return false;
-    }
-
-    protected void dropFewItems(boolean par1, int par2)
-    {
-
     }
 
     public boolean isInWater()
