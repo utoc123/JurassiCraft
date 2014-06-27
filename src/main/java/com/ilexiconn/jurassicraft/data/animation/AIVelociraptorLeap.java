@@ -25,7 +25,7 @@ private EntityLivingBase attackTarget;
 	}
 	
 	public int getDuration() {
-		return 100;
+		return 20;
 	}
 	
 	public void startExecuting() {
