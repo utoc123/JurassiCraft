@@ -11,7 +11,7 @@ public class RenderCoelacanth extends RenderDinosaur
 {
     public RenderCoelacanth(Dinosaur dino)
     {
-        super(new ModelCoelacanth(), dino, 1f);
+        super(new ModelCoelacanth(), dino, 0.2f);
     }
 
     protected ResourceLocation getEntityTexture(Entity entity)
