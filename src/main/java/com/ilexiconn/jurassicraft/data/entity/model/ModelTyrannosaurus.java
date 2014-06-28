@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
-//import com.ilexiconn.jurassicraft.data.entityOLD.EntityTyrannosaurus;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityTyrannosaurus;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
@@ -192,6 +192,16 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(Upper_Jaw, Head);
         addChildTo(Lower_Jaw, Head);
         addChildTo(Head, Neck);
+        addChildTo(Neck, Body_2);
+        addChildTo(Body_2, Body_1);
+        
+/*        addChildTo(Hand_Left_Claw_Left, Hand_Left);
+        addChildTo(Hand_Left_Claw_Right, Hand_Left);
+        addChildTo(Hand_Left, Lower_Arm_Left);
+        
+        addChildTo(Hand_Right_Claw_Left, Hand_Right);
+        addChildTo(Hand_Right_Claw_Right, Hand_Right);
+        addChildTo(Hand_Right, Lower_Arm_Right);*/
         
         addChildTo(this.Foot_Left, this.Left_Calf_2);        
         addChildTo(this.Left_Calf_2, this.Left_Calf_1);        
@@ -205,7 +215,12 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(this.Tail_4, this.Tail_3);
         addChildTo(this.Tail_3, this.Tail_2);
         addChildTo(this.Tail_2, this.Tail_1);
-        addChildTo(this.Tail_1, this.Body_2);
+        addChildTo(this.Tail_1, this.Body_1);
+        
+        //Corrections
+        Neck.setRotationPoint(0, -3, -3);
+        Body_2.rotationPointY -= 2;
+        Body_2.rotationPointZ -= 4;
         
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
@@ -250,14 +265,13 @@ public class ModelTyrannosaurus extends MowzieModelBase
             GL11.glPushMatrix();
             GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
             GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
-        	Neck.render(f5);
             Left_Calf_1.render(f5);
             Right_Calf_1.render(f5);
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
-            Body_2.render(f5);
-            Neck.render(f5);
+ //           Body_2.render(f5);
+ //           Neck.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
@@ -270,12 +284,11 @@ public class ModelTyrannosaurus extends MowzieModelBase
         }
         else
         {
-        	Neck.render(f5);
             Left_Thigh.render(f5);
             Right_Thigh.render(f5);
             Body_1.render(f5);
-            Body_2.render(f5);
-            Neck.render(f5);
+//            Body_2.render(f5);
+//            Neck.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
             Hand_Left.render(f5);
@@ -293,24 +306,48 @@ public class ModelTyrannosaurus extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
+    
+    private void resetPose() {
+        Left_Calf_1.setCurrentPoseToInitValues();
+        Right_Calf_1.setCurrentPoseToInitValues();
+        Left_Thigh.setCurrentPoseToInitValues();
+        Right_Thigh.setCurrentPoseToInitValues();
+        Body_1.setCurrentPoseToInitValues();
+        Body_2.setCurrentPoseToInitValues();
+        Neck.setCurrentPoseToInitValues();
+        Head.setCurrentPoseToInitValues();
+        Upper_Jaw.setCurrentPoseToInitValues();
+        Lower_Jaw.setCurrentPoseToInitValues();
+        Tail_1.setCurrentPoseToInitValues();
+        Tail_2.setCurrentPoseToInitValues();
+        Tail_3.setCurrentPoseToInitValues();
+        Tail_4.setCurrentPoseToInitValues();
+        Tail_5.setCurrentPoseToInitValues();
+        Lower_Arm_Left.setCurrentPoseToInitValues();
+        Lower_Arm_Right.setCurrentPoseToInitValues();
+        Hand_Left.setCurrentPoseToInitValues();
+        Hand_Right.setCurrentPoseToInitValues();
+        Hand_Left_Claw_Left.setCurrentPoseToInitValues();
+        Hand_Left_Claw_Right.setCurrentPoseToInitValues();
+        Hand_Right_Claw_Right.setCurrentPoseToInitValues();
+        Hand_Right_Claw_Left.setCurrentPoseToInitValues();
+        Left_Calf_2.setCurrentPoseToInitValues();
+        Right_Calf_2.setCurrentPoseToInitValues();
+        Foot_Left.setCurrentPoseToInitValues();
+        Foot_Right.setCurrentPoseToInitValues();
+    }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-//    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
+    	resetPose();
+    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
-        walk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, f, f1);
-        walk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, f, f1);
+        newwalk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, 0F, f, f1);
+        newwalk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-//		tailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
-    }
-    
-    public boolean openCloseMouth(int mouthCounter) {
-    	transitionBox(Lower_Jaw, -2.5F, Lower_Jaw.rotateAngleY, Lower_Jaw.rotateAngleZ, 30, mouthCounter);
-    	mouthCounter += 1;
-    	if (Lower_Jaw.rotateAngleX == -2.5F) return true;
-    	return false;
+		newtailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
     }
 }
