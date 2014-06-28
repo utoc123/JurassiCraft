@@ -27,5 +27,8 @@
        "RapCall02": {"category": "master","sounds": [{"name": "RapCall02","stream": false}]},
        "RapHiss01": {"category": "master","sounds": [{"name": "RapHiss01","stream": false}]},
        "RapHiss02": {"category": "master","sounds": [{"name": "RapHiss02","stream": false}]},
-       "RapHiss03": {"category": "master","sounds": [{"name": "RapHiss03","stream": false}]}
+       "RapHiss03": {"category": "master","sounds": [{"name": "RapHiss03","stream": false}]},
+	   "leae1": {"category": "master","sounds": [{"name": "leae1","stream": false}]},
+       "herr1": {"category": "master","sounds": [{"name": "herr1","stream": false}]},
+       "herr2": {"category": "master","sounds": [{"name": "herr2","stream": false}]}
 }
