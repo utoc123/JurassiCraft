@@ -33,7 +33,6 @@ public class JsonEntityParser extends Util
     @SideOnly(Side.CLIENT)
     public void parseClientEntities(FMLPreInitializationEvent event)
     {
-        loadConfig(event.getSuggestedConfigurationFile());
         for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 

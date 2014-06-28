@@ -11,6 +11,7 @@ public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
     public static JurassiCraft instance;
+    public boolean isServerInitialized;
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
@@ -20,12 +21,16 @@ public class JurassiCraft extends Util
         getEntityParser().parseServerEntities(event);
 
         for (Dinosaur dino : getDinos()) System.out.println("Added dino " + dino.dinoName + " with ID " + dino.id);
+
+        isServerInitialized = true;
     }
 
     @SideOnly(Side.CLIENT)
     @Mod.EventHandler
     public void initClient(FMLPreInitializationEvent event)
     {
+        while (!isServerInitialized);
+
         getData().initClient();
 
         getEntityParser().parseClientEntities(event);
