@@ -12,7 +12,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "AnimationAPI", name = "AnimationAPI", version = "1.2.1")
 public class AnimationAPI {
 	
 	@EventHandler
