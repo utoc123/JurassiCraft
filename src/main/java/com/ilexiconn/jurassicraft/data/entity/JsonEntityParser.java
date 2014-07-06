@@ -7,9 +7,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
@@ -20,7 +18,7 @@ public class JsonEntityParser extends Util
 
     public void parseServerEntities()
     {
-        loadConfig(getConfigFile(getClass().getResourceAsStream("dinos.json")));
+        loadConfig(getConfigFile());
         configLoaded = true;
         for (Dinosaur dino : dinos)
         {
@@ -51,17 +49,11 @@ public class JsonEntityParser extends Util
         }
     }
 
-    private File getConfigFile(InputStream in)
+    private File getConfigFile()
     {
         try
         {
-            File tempFile = File.createTempFile("dinos", ".json");
-            tempFile.deleteOnExit();
-            try (FileOutputStream out = new FileOutputStream(tempFile))
-            {
-                org.apache.commons.io.IOUtils.copy(in, out);
-            }
-            return  tempFile;
+            return new File(getClass().getResource("dinos.json").toURI());
         }
         catch (Exception e)
         {
