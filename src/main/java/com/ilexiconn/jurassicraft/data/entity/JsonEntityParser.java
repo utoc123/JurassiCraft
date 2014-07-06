@@ -7,7 +7,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
@@ -53,7 +55,12 @@ public class JsonEntityParser extends Util
     {
         try
         {
-            return new File(getClass().getResource("dinos.json").toURI());
+            File tempFile = File.createTempFile("dinos", ".json");
+            tempFile.deleteOnExit();
+            InputStream in = getClass().getResourceAsStream("dinos.json");
+            FileOutputStream out = new FileOutputStream(tempFile);
+            org.apache.commons.io.IOUtils.copy(in, out);
+            return  tempFile;
         }
         catch (Exception e)
         {
