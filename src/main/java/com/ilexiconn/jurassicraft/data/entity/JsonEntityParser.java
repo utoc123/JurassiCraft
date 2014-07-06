@@ -55,7 +55,9 @@ public class JsonEntityParser extends Util
         try
         {
             if (configFile.exists()) configFile.delete();
-            IOUtils.copy(JsonEntityParser.class.getResource("jurassicraft.cfg").openStream(), new FileOutputStream(configFile));
+            System.out.println(JsonEntityParser.class.getResourceAsStream("jurassicraft.cfg"));
+            System.out.println(configFile);
+            IOUtils.copy(JsonEntityParser.class.getResourceAsStream("jurassicraft.cfg"), new FileOutputStream(configFile));
         }
         catch (IOException e)
         {
