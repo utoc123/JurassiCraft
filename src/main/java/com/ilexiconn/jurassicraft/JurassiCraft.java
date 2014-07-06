@@ -18,7 +18,7 @@ public class JurassiCraft extends Util
     {
         getData().init();
 
-        getEntityParser().parseServerEntities(event);
+        getEntityParser().parseServerEntities();
 
         for (Dinosaur dino : getDinos()) System.out.println("Added dino " + dino.dinoName + " with ID " + dino.id);
 
@@ -33,6 +33,6 @@ public class JurassiCraft extends Util
 
         getData().initClient();
 
-        getEntityParser().parseClientEntities(event);
+        getEntityParser().parseClientEntities();
     }
 }

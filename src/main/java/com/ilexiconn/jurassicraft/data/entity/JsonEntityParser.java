@@ -3,25 +3,25 @@ package com.ilexiconn.jurassicraft.data.entity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ilexiconn.jurassicraft.Util;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
 public class JsonEntityParser extends Util
 {
     private Collection<Dinosaur> dinos;
+    private boolean configLoaded;
 
-    public void parseServerEntities(FMLPreInitializationEvent event)
+    public void parseServerEntities()
     {
-        loadConfig(event.getSuggestedConfigurationFile());
+        loadConfig(getConfigFile(getClass().getResourceAsStream("dinos.json")));
+        configLoaded = true;
         for (Dinosaur dino : dinos)
         {
             addMeat(dino.dinoName);
@@ -31,18 +31,19 @@ public class JsonEntityParser extends Util
     }
 
     @SideOnly(Side.CLIENT)
-    public void parseClientEntities(FMLPreInitializationEvent event)
+    public void parseClientEntities()
     {
+        while (!configLoaded);
         for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 
-    public void loadConfig(File configFile)
+    public void loadConfig(File config)
     {
         try
         {
-            makeConfig(configFile);
             Type collectionType = new TypeToken<Collection<Dinosaur>>(){}.getType();
-            dinos =  new Gson().fromJson(new FileReader(configFile), collectionType);
+
+            dinos = new Gson().fromJson(new FileReader(config), collectionType);
         }
         catch (Exception e)
         {
@@ -50,18 +51,21 @@ public class JsonEntityParser extends Util
         }
     }
 
-    public void makeConfig(File configFile)
+    private File getConfigFile(InputStream in)
     {
         try
         {
-            if (configFile.exists()) configFile.delete();
-            System.out.println(JsonEntityParser.class.getResourceAsStream("jurassicraft.cfg"));
-            System.out.println(configFile);
-            IOUtils.copy(JsonEntityParser.class.getResourceAsStream("jurassicraft.cfg"), new FileOutputStream(configFile));
+            File tempFile = File.createTempFile("dinos", ".json");
+            tempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(tempFile))
+            {
+                org.apache.commons.io.IOUtils.copy(in, out);
+            }
+            return  tempFile;
         }
-        catch (IOException e)
+        catch (Exception e)
         {
-            e.printStackTrace();
+            return null;
         }
     }
 }
