@@ -5,6 +5,8 @@ import com.google.gson.reflect.TypeToken;
 import com.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -57,7 +59,7 @@ public class JsonEntityParser extends Util
         {
             File tempFile = File.createTempFile("dinos", ".json");
             tempFile.deleteOnExit();
-            InputStream in = getClass().getResourceAsStream("dinos.json");
+            InputStream in = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation(Util.getModId() + "dinos.json")).getInputStream();
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return  tempFile;
