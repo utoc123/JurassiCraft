@@ -37,7 +37,7 @@ public class JsonEntityParser extends Util
         for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 
-    public void loadConfig(File config)
+    private void loadConfig(File config)
     {
         try
         {
