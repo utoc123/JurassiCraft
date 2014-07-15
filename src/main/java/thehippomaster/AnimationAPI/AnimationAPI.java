@@ -12,19 +12,20 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+@Mod(modid = "animationapi", name = "AnimationAPI", version = "0.0.0")
 public class AnimationAPI {
 	
-	@EventHandler
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 	}
 	
-	@EventHandler
+	@Mod.EventHandler
 	public void init(FMLInitializationEvent e) {
 		packetPipeline.initialize();
 		packetPipeline.registerPacket(PacketAnim.class);
 	}
 	
-	@EventHandler
+	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
 		proxy.initTimer();
 		packetPipeline.postInitialize();
@@ -45,7 +46,7 @@ public class AnimationAPI {
 		packetPipeline.sendToAll(new PacketAnim((byte)animID, e.getEntityId()));
 	}
 	
-	@Instance("AnimationAPI")
+	@Mod.Instance("AnimationAPI")
 	public static AnimationAPI instance;
 	@SidedProxy(clientSide="thehippomaster.AnimationAPI.client.ClientProxy", serverSide="thehippomaster.AnimationAPI.CommonProxy")
 	public static CommonProxy proxy;
