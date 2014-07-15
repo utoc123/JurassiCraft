@@ -287,6 +287,6 @@ public class ModelAnkylosaur extends MowzieModelBase
         walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
-        tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.animTick);
+        tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.frame);
     }
 }
