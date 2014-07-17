@@ -7,11 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
-
-import com.ilexiconn.jurassicraft.data.entity.entity.EntityDilophosaurus;
-import com.ilexiconn.jurassicraft.data.entity.model.ModelDilophosaurus;
-import com.ilexiconn.jurassicraft.data.entity.render.RenderDilophosaurus;
-
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
