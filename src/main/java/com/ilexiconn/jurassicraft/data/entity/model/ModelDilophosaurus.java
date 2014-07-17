@@ -1,6 +1,5 @@
 package com.ilexiconn.jurassicraft.data.entity.model;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -8,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.ilexiconn.jurassicraft.data.entity.entity.EntityDilophosaurus;
 
-public class ModelDilophosaurus extends ModelBase
+public class ModelDilophosaurus extends MowzieModelBase
 {
   //fields
     ModelRenderer Left_Upper_Foot;
