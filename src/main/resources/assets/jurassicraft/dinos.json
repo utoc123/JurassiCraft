@@ -167,5 +167,18 @@
         "livingSound2":"jurassicraft:para1",
         "hurtSound":"jurassicraft:para2",
         "deathSound":"jurassicraft:para2"
+    },
+	{
+        "id":13,
+        "dinoName":"Dilophosaurus",
+        "dinoSpeed":0.200020,
+        "dinoHealth":70,
+        "dinoScale":1.5,
+        "hitboxSizeXZ":3,
+        "hitboxSizeY":3,
+        "livingSound1":"jurassicraft:para1",
+        "livingSound2":"jurassicraft:para1",
+        "hurtSound":"jurassicraft:para2",
+        "deathSound":"jurassicraft:para2"
     }
 ]
