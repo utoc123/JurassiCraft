@@ -6,9 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurWaterMonster;
+import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurWaterMonster1;
 
-public class EntityCoelacanth extends EntityDinosaurWaterMonster
+public class EntityCoelacanth extends EntityDinosaurWaterMonster1
 {
     public float LiopleurodonPitch;
     public float prevLiopleurodonPitch;

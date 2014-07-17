@@ -7,13 +7,13 @@ import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 
-public abstract class EntityDinosaurWaterMonster extends EntityWaterMob implements IAnimatedEntity
+public abstract class EntityDinosaurWaterMonster1 extends EntityWaterMob implements IAnimatedEntity
 {
     public int animID;
     public int animTick;
     public int dinoID;
 
-    public EntityDinosaurWaterMonster(World par1World, int id)
+    public EntityDinosaurWaterMonster1(World par1World, int id)
     {
         super(par1World);
         dinoID = id;

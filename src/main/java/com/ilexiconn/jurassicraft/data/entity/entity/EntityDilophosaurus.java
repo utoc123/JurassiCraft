@@ -1,70 +1,49 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockColored;
+import java.util.List;
+import java.util.UUID;
+
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIFollowOwner;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILeapAtTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
-import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
+import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-public class EntityDilophosaurus extends EntityDinosaurCreature
+public class EntityDilophosaurus extends EntityDinosaurMonster
 {
-    private float field_70926_e;
-    private float field_70924_f;
-    /** true is the wolf is wet else false */
-    private boolean isShaking;
-    private boolean field_70928_h;
-    /**
-     * This time increases while wolf is shaking and emitting water particles.
-     */
-    private float timeWolfIsShaking;
-    private float prevTimeWolfIsShaking;
-    private static final String __OBFID = "CL_00001654";
+    private static final UUID field_110189_bq = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
+    private static final AttributeModifier field_110190_br = (new AttributeModifier(field_110189_bq, "Attacking speed boost", 0.45D, 0)).setSaved(false);
+    /** Above zero if this Dilophosaur is Angry. */
+    public int angerLevel;
+    /** A random delay until this Dilophosaur next makes a sound. */
+    private int randomSoundDelay;
+    private Entity field_110191_bu;
+    private static final String __OBFID = "CL_00001693";
 
-    public EntityDilophosaurus(World world)
+    public EntityDilophosaurus(World par1World)
     {
-        super(world, 13);
-        this.setSize(0.6F, 0.8F);
-        this.getNavigator().setAvoidsWater(true);
-        this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
-        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, true));
-        this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(9, new EntityAILookIdle(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        super(par1World, 13);
+        this.isImmuneToFire = true;
+    }
+
+    public void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        if(this.angerLevel != 0)
+        {
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.6D);
+        }
+        else
+        {
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
+        }
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
     }
 
     /**
@@ -72,69 +51,74 @@ public class EntityDilophosaurus extends EntityDinosaurCreature
      */
     public boolean isAIEnabled()
     {
-        return true;
+        return false;
     }
 
     /**
-     * Sets the active target the Task system uses for tracking
+     * Called to update the entity's position/logic.
      */
-    public void setAttackTarget(EntityLivingBase p_70624_1_)
+    public void onUpdate()
     {
-        super.setAttackTarget(p_70624_1_);
-
-        if (p_70624_1_ == null)
+        if (this.field_110191_bu != this.entityToAttack && !this.worldObj.isRemote)
         {
-            this.setAngry(false);
+            IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            iattributeinstance.removeModifier(field_110190_br);
+
+            if (this.entityToAttack != null)
+            {
+                iattributeinstance.applyModifier(field_110190_br);
+            }
         }
+
+        this.field_110191_bu = this.entityToAttack;
+
+        if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0)
+        {
+            this.playSound("mob.zombiepig.zpigangry", this.getSoundVolume() * 2.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 1.8F);
+        }
+
+        super.onUpdate();
     }
 
     /**
-     * main AI tick function, replaces updateEntityActionState
+     * Checks if the entity's current position is a valid location to spawn this entity.
      */
-    protected void updateAITick()
+    public boolean getCanSpawnHere()
     {
-        this.dataWatcher.updateObject(18, Float.valueOf(this.getHealth()));
-    }
-
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.dataWatcher.addObject(18, new Float(this.getHealth()));
-        this.dataWatcher.addObject(19, new Byte((byte)0));
-    }
-
-    protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
-    {
-        this.playSound("mob.wolf.step", 0.15F, 1.0F);
+        return this.worldObj.difficultySetting != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
-    public void writeEntityToNBT(NBTTagCompound p_70014_1_)
+    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
-        super.writeEntityToNBT(p_70014_1_);
-        p_70014_1_.setBoolean("Angry", this.isAngry());
+        super.writeEntityToNBT(par1NBTTagCompound);
+        par1NBTTagCompound.setShort("Anger", (short)this.angerLevel);
     }
 
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
-    public void readEntityFromNBT(NBTTagCompound p_70037_1_)
+    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
-        super.readEntityFromNBT(p_70037_1_);
-        this.setAngry(p_70037_1_.getBoolean("Angry"));
+        super.readEntityFromNBT(par1NBTTagCompound);
+        this.angerLevel = par1NBTTagCompound.getShort("Anger");
+    }
 
-        if (p_70037_1_.hasKey("CollarColor", 99))
-        {
-            this.setCollarColor(p_70037_1_.getByte("CollarColor"));
-        }
+    /**
+     * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking
+     * (Animals, Spiders at day, peaceful Dilophosaurs).
+     */
+    protected Entity findPlayerToAttack()
+    {
+        return this.angerLevel == 0 ? null : super.findPlayerToAttack();
     }
 
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_)
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
         if (this.isEntityInvulnerable())
         {
@@ -142,116 +126,45 @@ public class EntityDilophosaurus extends EntityDinosaurCreature
         }
         else
         {
-            Entity entity = p_70097_1_.getEntity();
+            Entity entity = par1DamageSource.getEntity();
 
-            if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow))
+            if (entity instanceof EntityPlayer)
             {
-                p_70097_2_ = (p_70097_2_ + 1.0F) / 2.0F;
+                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
+
+                for (int i = 0; i < list.size(); ++i)
+                {
+                    Entity entity1 = (Entity)list.get(i);
+
+                    if (entity1 instanceof EntityDilophosaurus)
+                    {
+                        EntityDilophosaurus entitypigzombie = (EntityDilophosaurus)entity1;
+                        entitypigzombie.becomeAngryAt(entity);
+                    }
+                }
+
+                this.becomeAngryAt(entity);
             }
 
-            return super.attackEntityFrom(p_70097_1_, p_70097_2_);
-        }
-    }
-
-    public boolean attackEntityAsMob(Entity p_70652_1_)
-    {
-        int i = 20;
-        return p_70652_1_.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte p_70103_1_)
-    {
-        if (p_70103_1_ == 8)
-        {
-            this.field_70928_h = true;
-            this.timeWolfIsShaking = 0.0F;
-            this.prevTimeWolfIsShaking = 0.0F;
-        }
-        else
-        {
-            super.handleHealthUpdate(p_70103_1_);
+            return super.attackEntityFrom(par1DamageSource, par2);
         }
     }
 
     /**
-     * Will return how many at most can spawn in a chunk at once.
+     * Causes this Dilophosaur to become angry at the supplied Entity (which will be a player).
      */
-    public int getMaxSpawnedInChunk()
+    private void becomeAngryAt(Entity par1Entity)
     {
-        return 8;
+        this.entityToAttack = par1Entity;
+        this.angerLevel = 400 + this.rand.nextInt(400);
+        this.randomSoundDelay = this.rand.nextInt(40);
     }
 
     /**
-     * Determines whether this wolf is angry or not.
+     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
-    public boolean isAngry()
+    public boolean interact(EntityPlayer par1EntityPlayer)
     {
-        return (this.dataWatcher.getWatchableObjectByte(16) & 2) != 0;
-    }
-
-    /**
-     * Sets whether this wolf is angry or not.
-     */
-    public void setAngry(boolean p_70916_1_)
-    {
-        byte b0 = this.dataWatcher.getWatchableObjectByte(16);
-
-        if (p_70916_1_)
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 2)));
-        }
-        else
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -3)));
-        }
-    }
-
-    /**
-     * Return this wolf's collar color.
-     */
-    public int getCollarColor()
-    {
-        return this.dataWatcher.getWatchableObjectByte(20) & 15;
-    }
-
-    /**
-     * Set this wolf's collar color.
-     */
-    public void setCollarColor(int p_82185_1_)
-    {
-        this.dataWatcher.updateObject(20, Byte.valueOf((byte)(p_82185_1_ & 15)));
-    }
-
-    public EntityDilophosaurus createChild(EntityAgeable p_90011_1_)
-    {
-        EntityDilophosaurus entitywolf = new EntityDilophosaurus(this.worldObj);
-
-        return entitywolf;
-    }
-
-    public void func_70918_i(boolean p_70918_1_)
-    {
-        if (p_70918_1_)
-        {
-            this.dataWatcher.updateObject(19, Byte.valueOf((byte)1));
-        }
-        else
-        {
-            this.dataWatcher.updateObject(19, Byte.valueOf((byte)0));
-        }
-    }
-
-    /**
-     * Returns true if the mob is currently able to mate with the specified mob.
-     */
-    public boolean canMateWith(EntityAnimal p_70878_1_)
-    {
-    	return false;
-    }
-
-    public boolean func_70922_bv()
-    {
-        return this.dataWatcher.getWatchableObjectByte(19) == 1;
+        return false;
     }
 }

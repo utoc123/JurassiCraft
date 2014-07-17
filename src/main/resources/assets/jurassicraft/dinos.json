@@ -168,7 +168,7 @@
         "hurtSound":"jurassicraft:para2",
         "deathSound":"jurassicraft:para2"
     },
-	{
+    {
         "id":13,
         "dinoName":"Dilophosaurus",
         "dinoSpeed":0.200020,
@@ -180,5 +180,18 @@
         "livingSound2":"jurassicraft:para1",
         "hurtSound":"jurassicraft:para2",
         "deathSound":"jurassicraft:para2"
+    },
+    {
+        "id":14,
+        "dinoName":"Tylosaurus",
+        "dinoSpeed":0.200020,
+        "dinoHealth":70,
+        "dinoScale":1,
+        "hitboxSizeXZ":3,
+        "hitboxSizeY":1.5,
+        "livingSound1":"",
+        "livingSound2":"",
+        "hurtSound":"",
+        "deathSound":""
     }
 ]
