@@ -6,6 +6,7 @@ public class Dinosaur
     public String dinoName;
     public double dinoSpeed;
     public double dinoHealth;
+    public double dinoStrenght;
     public float dinoScale;
     public float hitboxSizeXZ;
     public float hitboxSizeY;

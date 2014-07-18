@@ -4,13 +4,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurWaterCreature;
+import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurWaterMonster;
 
-public class EntityTylosaurus extends EntityDinosaurWaterCreature {
+public class EntityTylosaurus extends EntityDinosaurWaterMonster {
 
    public EntityTylosaurus(World var1) {
       super(var1, 14);
@@ -23,7 +22,7 @@ public class EntityTylosaurus extends EntityDinosaurWaterCreature {
 
    protected boolean canAttackEntity(Entity entity) 
    {
-	   if(!(entity instanceof EntityDinosaurWaterCreature))
+	   if(!(entity instanceof EntityDinosaurWaterMonster))
 	   {
 		   return entity instanceof EntityLiving || super.canAttackEntity(entity) || entity instanceof EntityPlayer;
 	   }
@@ -33,7 +32,4 @@ public class EntityTylosaurus extends EntityDinosaurWaterCreature {
 	   }
    }
 
-   protected int getAttackStrength() {
-      return 12;
-   }
 }

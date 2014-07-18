@@ -1,19 +1,29 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
-import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
-import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
-import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
-import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 
-public class EntityVelociraptor extends EntityDinosaurCreature
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
+import com.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
+import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
+
+public class EntityVelociraptor extends EntityDinosaurMonster
 {
     public boolean leaping = false;
     public int timeSinceLeap;
@@ -33,9 +43,7 @@ public class EntityVelociraptor extends EntityDinosaurCreature
         tasks.addTask(2, new AIVelociraptorLeap(this));
         
 //      tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-        tasks.addTask(3, new EntityAIMate(this, 1.0D));
         tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
-        tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         tasks.addTask(5, new EntityAIWander(this, 1.0D));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
@@ -64,16 +72,6 @@ public class EntityVelociraptor extends EntityDinosaurCreature
     
     public void setLeaping(boolean l) {
     	this.leaping = l;
-    }
-    
-    public int getAttackStrength(Entity par1Entity)
-    {
-        return 10;
-    }
-    
-    public EntityAgeable createChild(EntityAgeable entity)
-    {
-        return new EntityVelociraptor(worldObj);
     }
 
     public String getLivingSound()

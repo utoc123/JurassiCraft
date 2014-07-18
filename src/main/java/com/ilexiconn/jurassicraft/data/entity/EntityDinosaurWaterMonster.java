@@ -18,7 +18,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public abstract class EntityDinosaurWaterCreature extends EntityWaterMob {
+public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
 
    private float factor1 = 0.0F;
    private float factor2 = 0.0F;
@@ -33,7 +33,7 @@ public abstract class EntityDinosaurWaterCreature extends EntityWaterMob {
    public int animTick;
    public int dinoID;
 
-   public EntityDinosaurWaterCreature(World var1, int id) {
+   public EntityDinosaurWaterMonster(World var1, int id) {
       super(var1);
       dinoID = id;
       setSize(Util.getDinos().get(dinoID).hitboxSizeXZ, Util.getDinos().get(dinoID).hitboxSizeY);

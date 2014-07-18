@@ -1,6 +1,7 @@
 package com.ilexiconn.jurassicraft.data.entity.entity;
 
 import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
+import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -25,7 +26,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityTyrannosaurus extends EntityDinosaurCreature
+public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   
     public EntityTyrannosaurus(World par1World)
     {
@@ -37,9 +38,7 @@ public class EntityTyrannosaurus extends EntityDinosaurCreature
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
-        this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(0, new EntityAIWander(this, 1.3D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
@@ -52,12 +51,6 @@ public class EntityTyrannosaurus extends EntityDinosaurCreature
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-    }
-
-
-    public int getAttackStrength(Entity par1Entity)
-    {
-        return 40;
     }
 
     public String getLivingSound()
@@ -90,10 +83,5 @@ public class EntityTyrannosaurus extends EntityDinosaurCreature
     public EntityTyrannosaurus spawnBabyAnimal(EntityAgeable par1EntityAgeable)
     {
         return new EntityTyrannosaurus(this.worldObj);
-    }
-
-    public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
-    {
-        return this.spawnBabyAnimal(par1EntityAgeable);
     }
 }
