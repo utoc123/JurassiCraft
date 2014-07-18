@@ -30,5 +30,8 @@
        "RapHiss03": {"category": "master","sounds": [{"name": "RapHiss03","stream": false}]},
 	   "leae1": {"category": "master","sounds": [{"name": "leae1","stream": false}]},
        "herr1": {"category": "master","sounds": [{"name": "herr1","stream": false}]},
-       "herr2": {"category": "master","sounds": [{"name": "herr2","stream": false}]}
+       "herr2": {"category": "master","sounds": [{"name": "herr2","stream": false}]},
+       "ovi1": {"category": "master","sounds": [{"name": "ovi1","stream": false}]},
+       "ovi2": {"category": "master","sounds": [{"name": "ovi2","stream": false}]},
+       "ovi3": {"category": "master","sounds": [{"name": "ovi3","stream": false}]}
 }

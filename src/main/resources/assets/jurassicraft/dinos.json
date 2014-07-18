@@ -208,5 +208,19 @@
         "livingSound2":"",
         "hurtSound":"",
         "deathSound":""
+    },
+    {
+        "id":15,
+        "dinoName":"Oviraptor",
+        "dinoSpeed":0.200020,
+        "dinoHealth":40,
+        "dinoStrenght":0,
+        "dinoScale":0.8,
+        "hitboxSizeXZ":2,
+        "hitboxSizeY":1,
+        "livingSound1":"jurassicraft:ovi2",
+        "livingSound2":"jurassicraft:ovi1",
+        "hurtSound":"jurassicraft:ovi2",
+        "deathSound":"jurassicraft:ovi3"
     }
 ]
