@@ -19,6 +19,6 @@ public class RenderCoelacanth extends RenderDinosaur
 
     public ResourceLocation getEntityTexture(Entity var1)
     {
-        return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/coelacanth1.png");
+        return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/coelacanth.png");
     }
 }
