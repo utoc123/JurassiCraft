@@ -131,7 +131,7 @@
         "dinoSpeed":0.3,
         "dinoHealth":25,
         "dinoStrenght":0,
-        "dinoScale":2.5,
+        "dinoScale":1.2,
         "hitboxSizeXZ":2,
         "hitboxSizeY":2,
         "livingSound1":"jurassicraft:leae1",
