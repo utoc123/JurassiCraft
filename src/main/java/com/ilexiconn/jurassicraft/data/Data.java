@@ -43,6 +43,14 @@ public final class Data extends Util
             addBlock(4, new BlockAmberOre());
             addBlock(5, new BlockFossilOre());
             addBlock(6, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
+            addBlock(7, new BlockFossilSandstoneOre());
+            addBlock(8, new BlockFossilClayOre(""));
+            addBlock(9, new BlockFossilClayOre("_stained_brown"));
+            addBlock(10, new BlockFossilClayOre("_stained_orange"));
+            addBlock(11, new BlockFossilClayOre("_stained_red"));
+            addBlock(12, new BlockFossilClayOre("_stained_silver"));
+            addBlock(13, new BlockFossilClayOre("_stained_white"));
+            addBlock(14, new BlockFossilClayOre("_stained_yellow"));
         }
         { /** Items */
             addItem(1, new ItemAmber());
