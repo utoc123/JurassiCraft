@@ -14,6 +14,8 @@ package com.ilexiconn.jurassicraft.data.entity.model;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityMeganeura;
+
 public class ModelMeganeura extends MowzieModelBase
 {
   //fields
@@ -185,11 +187,11 @@ public class ModelMeganeura extends MowzieModelBase
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
-	//EntityMeganeura meg = (EntityMeganeura) entity;
+	EntityMeganeura meg = (EntityMeganeura) entity;
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
-   /* if(!meg.isChild()){
+    if(!meg.isChild()){
     Body.render(f5);
     Tail.render(f5);
     WingRightFront.render(f5);
@@ -215,7 +217,7 @@ public class ModelMeganeura extends MowzieModelBase
     babyLegRightFront.render(f5);
     babyLegRightMid.render(f5);
     babyLegRightBack.render(f5);
-    }*/
+    }
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
