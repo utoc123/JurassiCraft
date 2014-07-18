@@ -3,6 +3,7 @@ package com.ilexiconn.jurassicraft.data.entity.render;
 import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import com.ilexiconn.jurassicraft.data.entity.RenderDinosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityHerrerasaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelAnkylosaur;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelGallimimus;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelHerrerasaur;
@@ -22,6 +23,14 @@ public class RenderHerrerasaur extends RenderDinosaur
 
     public ResourceLocation getEntityTexture(Entity var1)
     {
+    	EntityHerrerasaur ank = (EntityHerrerasaur)var1;
+    	switch(ank.texid)
+    	{
+    	case 1:
+    		default:
         return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/herrerasaur1.png");
+    	case 0:
+        return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/herrerasaur2.png");
+    	}
     }
 }

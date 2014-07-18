@@ -8,7 +8,9 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 public class EntityGallimimus extends EntityDinosaurCreature
-{
+{	
+	public int texid;
+
     public EntityGallimimus(World world)
     {
         super(world, 7);
@@ -20,10 +22,17 @@ public class EntityGallimimus extends EntityDinosaurCreature
         tasks.addTask(5, new EntityAIWander(this, 1.0D));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
+        texid = rand.nextInt(2);
     }
 
     public EntityGallimimus createChild(EntityAgeable entity)
     {
         return new EntityGallimimus(worldObj);
+    }
+    
+    public boolean interact(EntityPlayer par1EntityPlayer)
+    {
+    	System.out.println(texid);
+    	return true;
     }
 }

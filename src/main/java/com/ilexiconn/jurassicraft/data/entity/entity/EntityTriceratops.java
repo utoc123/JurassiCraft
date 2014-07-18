@@ -14,7 +14,9 @@ public class EntityTriceratops extends EntityDinosaurCreature
     /** AI task for player control. */
     private final EntityAIControlledByPlayer aiControlledByPlayer;
     public float SitLevel;
-	
+	public int texid;
+
+    
     public EntityTriceratops(World world)
     {
         super(world, 4);
@@ -29,6 +31,8 @@ public class EntityTriceratops extends EntityDinosaurCreature
         tasks.addTask(7, new EntityAILookIdle(this));
         tasks.addTask(0, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 1.2F));
         this.SitLevel = 4.3F;
+        texid = rand.nextInt(2);
+
     }
     
     public void updateRiderPosition()

@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 
 public class EntityMeganeura extends EntityDinosaurCreature implements IMob
 {
+	public int texid;
+
     public int courseChangeCooldown = 0;
     public double waypointX;
     public double waypointY;
@@ -25,6 +27,8 @@ public class EntityMeganeura extends EntityDinosaurCreature implements IMob
         super(par1World, 12);
         this.isImmuneToFire = false;
         this.experienceValue = 5;
+        texid = rand.nextInt(2);
+
     }
 
     protected void entityInit()

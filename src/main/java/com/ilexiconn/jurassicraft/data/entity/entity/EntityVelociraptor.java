@@ -27,6 +27,7 @@ public class EntityVelociraptor extends EntityDinosaurMonster
 {
     public boolean leaping = false;
     public int timeSinceLeap;
+	public int texid;
 
     public EntityVelociraptor(World par1World)
     {
@@ -50,6 +51,8 @@ public class EntityVelociraptor extends EntityDinosaurMonster
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
+        texid = rand.nextInt(2);
+
     }
 
     public void onLivingUpdate()

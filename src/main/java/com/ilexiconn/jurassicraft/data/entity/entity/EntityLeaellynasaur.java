@@ -9,6 +9,8 @@ import net.minecraft.world.World;
 
 public class EntityLeaellynasaur extends EntityDinosaurCreature
 {
+	public int texid;
+
     public EntityLeaellynasaur(World world)
     {
         super(world, 9);
@@ -20,6 +22,8 @@ public class EntityLeaellynasaur extends EntityDinosaurCreature
         tasks.addTask(5, new EntityAIWander(this, 1.0D));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
+        texid = rand.nextInt(2);
+
     }
 
     public EntityLeaellynasaur createChild(EntityAgeable entity)

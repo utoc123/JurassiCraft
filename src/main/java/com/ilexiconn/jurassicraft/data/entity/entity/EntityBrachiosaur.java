@@ -9,7 +9,9 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 public class EntityBrachiosaur extends EntityDinosaurCreature
-{
+{	
+	public int texid;
+
     public EntityBrachiosaur(World world)
     {
         super(world, 1);
@@ -21,6 +23,8 @@ public class EntityBrachiosaur extends EntityDinosaurCreature
         tasks.addTask(5, new EntityAIWander(this, 1.0D));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
+        texid = rand.nextInt(2);
+
     }
 
     public EntityBrachiosaur createChild(EntityAgeable entity)

@@ -6,6 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import com.ilexiconn.jurassicraft.JurassiCraft;
 import com.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import com.ilexiconn.jurassicraft.data.entity.RenderDinosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityTriceratops;
 import com.ilexiconn.jurassicraft.data.entity.model.ModelTriceratops;
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,6 +22,14 @@ public class RenderTriceratops extends RenderDinosaur
 
     public ResourceLocation getEntityTexture(Entity var1)
     {
+    	EntityTriceratops ank = (EntityTriceratops)var1;
+    	switch(ank.texid)
+    	{
+    	case 1:
+    		default:
         return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops1.png");
+    	case 0:
+        return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops2.png");
+    	}
     }
 }

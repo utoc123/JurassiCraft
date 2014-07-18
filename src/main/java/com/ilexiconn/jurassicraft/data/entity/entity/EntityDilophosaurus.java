@@ -25,11 +25,14 @@ public class EntityDilophosaurus extends EntityDinosaurMonster
     private int randomSoundDelay;
     private Entity field_110191_bu;
     private static final String __OBFID = "CL_00001693";
+	public int texid;
 
     public EntityDilophosaurus(World par1World)
     {
         super(par1World, 13);
         this.isImmuneToFire = true;
+        texid = rand.nextInt(2);
+
     }
 
     public void applyEntityAttributes()
@@ -43,7 +46,7 @@ public class EntityDilophosaurus extends EntityDinosaurMonster
         {
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
         }
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(50.0D);
     }
 
     /**

@@ -29,6 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   
+	public int texid;
+
     public EntityTyrannosaurus(World par1World)
     {
         super(par1World, 6);
@@ -46,7 +48,9 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
-        this.experienceValue = 1000;        
+        this.experienceValue = 1000;   
+        texid = rand.nextInt(2);
+    
     }
 
     public void onLivingUpdate()

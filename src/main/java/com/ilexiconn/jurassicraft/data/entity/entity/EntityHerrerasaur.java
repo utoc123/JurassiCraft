@@ -22,6 +22,8 @@ import com.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 
 public class EntityHerrerasaur extends EntityDinosaurMonster
 {   
+	public int texid;
+
     public EntityHerrerasaur(World par1World)
     {
         super(par1World, 10);
@@ -41,7 +43,9 @@ public class EntityHerrerasaur extends EntityDinosaurMonster
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityHypsilophodon.class, 0, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLeaellynasaur.class, 0, false));
-        this.experienceValue = 300;        
+        this.experienceValue = 300;       
+        texid = rand.nextInt(2);
+
     }
 
     public void onLivingUpdate()
