@@ -1,8 +1,15 @@
 package com.ilexiconn.jurassicraft;
 
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.biome.BiomeGenBase;
+
 import com.ilexiconn.jurassicraft.data.entity.Dinosaur;
+import com.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
+
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,5 +41,11 @@ public class JurassiCraft extends Util
         getData().initClient();
 
         getEntityParser().parseClientEntities();
+    }
+    
+    @Mod.EventHandler
+    public void load(FMLInitializationEvent event)
+    {
+        EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.deepOcean, BiomeGenBase.ocean});
     }
 }
