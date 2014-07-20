@@ -89,7 +89,7 @@
         "dinoSpeed":0.13,
         "dinoHealth":100,
         "dinoStrenght":2,
-        "dinoScale":7,
+        "dinoScale":2.5,
         "hitboxSizeXZ":5,
         "hitboxSizeY":6,
         "livingSound1":null,
