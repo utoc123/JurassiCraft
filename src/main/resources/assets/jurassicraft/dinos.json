@@ -61,7 +61,7 @@
         "dinoSpeed":0.23,
         "dinoHealth":92,
         "dinoStrenght":0,
-        "dinoScale":2,
+        "dinoScale":3,
         "hitboxSizeXZ":3.5,
         "hitboxSizeY":3.5,
         "livingSound1":"jurassicraft:tric1",
