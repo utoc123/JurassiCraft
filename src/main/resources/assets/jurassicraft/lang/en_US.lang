@@ -5,9 +5,35 @@ itemGroup.fossilTab=JurassiCraft
 entity.Ankylosaur.name=Ankylosaurus
 entity.Brachiosaur.name=Brachiosaurus
 entity.Velociraptor.name=Velociraptor
+entity.Leaellynasaur.name=Leaellynasaura
+entity.Herrerasaur.name=Herrerasaurus
+entity.Parasaurolophus.name=Parasaurolophus
+entity.Meganeura.name=Meganeura
+entity.Dilophosaurus=Dilophosaurus
+entity.Tylosaurus.name=Tylosaurus
+entity.Oviraptor.name=Oviraptor
+entity.Tyrannosaurus.name=Tyrannosaurus Rex
+entity.Gallimimus.name=Gallimimus
+entity.Hypsilophodon.name=Hyspilophodon
+entity.Coelacanth.name=Coelacanth
+entity.Triceratops.name=Triceratops
+entity.Stegosaur.name=Stegosaurus
 
 //items
 item.dinoBone.name=Dinosaur Bone
+item.Ankylosaur_Meat.name=Ankylosaurus Meat
+item.Ankylosaur_DNA.name=Ankylosaurus DNA
+item.Brachiosaur_Meat.name=Brachiosaurus Meat
+item.Brachiosaur_DNA.name=Brachiosaurus DNA
+item.Velociraptor_Meat.name=Velociraptor Meat
+item.Velociraptor_DNA.name=Velociraptor DNA
+item.Stegosaur_Meat.name=Stegosaurus Meat
+item.Stegosaur_DNA.name=Stegosaurus DNA
+item.Triceratops_Meat.name=Triceratops Meat
+item.Triceratops-DNA.name=Triceratops DNA
+item.Coelacanth_Meat.name=Dead Coelacanth
+item.Coelacanth_DNA.name=Coelacanth DNA
+item.Tyrannosaurus_DNA.name=Tyrannosaurus Rex DNA
 
 /blocks
 tile.cultivate_idle.name=Cultivate
