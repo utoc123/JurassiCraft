@@ -5,7 +5,7 @@
         "dinoSpeed":0.2,
         "dinoHealth":80,
         "dinoStrenght":105,
-        "dinoScale":2.5,
+        "dinoScale":3,
         "hitboxSizeXZ":2.3,
         "hitboxSizeY":2.4,
         "livingSound1":"jurassicraft:ankylo1",
