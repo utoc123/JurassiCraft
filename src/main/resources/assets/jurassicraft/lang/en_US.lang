@@ -18,6 +18,7 @@ entity.Hypsilophodon.name=Hyspilophodon
 entity.Coelacanth.name=Coelacanth
 entity.Triceratops.name=Triceratops
 entity.Stegosaur.name=Stegosaurus
+entity.Dilophosaurus.name=Dilophosaurus
 
 //items
 item.dinoBone.name=Dinosaur Bone
