@@ -220,7 +220,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(this.Tail_1, this.Body_1);
         
         //Corrections
-        Neck.setRotationPoint(0, -3, -3);
+        Neck.setRotationPoint(0, -2, -3);
         Body_2.rotationPointY -= 1;
         Body_2.rotationPointZ -= 34;
         Hand_Right_Claw_Right.setRotationPoint(0, 0, 0);
@@ -344,8 +344,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     	resetPose();
     	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
-    	/*f = trex.frame;
-        f1 = 0.5F;*/
+/*    	f = trex.frame;
+        f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
         float scaleFactor = 0.4F;
         float height = 1.5F * f1;
         
@@ -354,10 +354,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
         newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
         newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
         newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
-        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0.2F, f, f1);
-        newwalk(Body_2, 1F * scaleFactor, height/15, true, -0.5F, 0F, f, f1);
-        newwalk(Neck, 1F * scaleFactor, height/15, true, -1F, 0.5F, f, f1);
-        newwalk(Head, 1F * scaleFactor, height/7.5F, false, 0.5F, -0.2F, f, f1);
+        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0.15F, f, f1);
+        newwalk(Body_2, 1F * scaleFactor, height/20, true, -0.5F, 0F, f, f1);
+        newwalk(Neck, 1F * scaleFactor, height/20, true, -1F, 0.5F, f, f1);
+        newwalk(Head, 1F * scaleFactor, height/10F, false, 0.5F, -0.2F, f, f1);
         
         newwalk(Lower_Arm_Right, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
         newwalk(Lower_Arm_Left, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
@@ -373,7 +373,9 @@ public class ModelTyrannosaurus extends MowzieModelBase
         newwalk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 0.5F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-		newtailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
-	    newchainWave(tailParts, 1F * scaleFactor, -0.15F, 2, f, f1);
+	    newchainWave(tailParts, 1F * scaleFactor, 0.07F, 2, f, f1);
+	    
+	    //Idling
+		newtailSwing(tailParts, 0.1F, 0.08F, 1, trex.frame);
     }
 }
