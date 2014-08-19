@@ -342,8 +342,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     	resetPose();
     	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
-        faceTarget(Head, 2, f3, f4);
-        faceTarget(Neck, 2, f3, f4);
+        newfaceTarget(Head, 2, f3, f4);
+        newfaceTarget(Neck, 2, f3, f4);
         newwalk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, 0F, f, f1);
         newwalk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, 0F, f, f1);
         
