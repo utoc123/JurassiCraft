@@ -346,27 +346,30 @@ public class ModelTyrannosaurus extends MowzieModelBase
     	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
     	/*f = trex.frame;
         f1 = 0.5F;*/
-        float scaleFactor = 0.5F;
-        float height = 2.5F * f1;
+        float scaleFactor = 0.4F;
+        float height = 1.5F * f1;
         
         newfaceTarget(Head, 2, f3, f4);
         newfaceTarget(Neck, 2, f3, f4);
         newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
         newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
         newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
-        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0F, f, f1);
-        newwalk(Body_2, 1F * scaleFactor, height/10, true, -0.5F, 0F, f, f1);
-        newwalk(Neck, 1F * scaleFactor, height/10, true, -1F, 0F, f, f1);
- //       newwalk(Head, 1F * scaleFactor, height/2, false, -1.5F, 0F, f, f1);
+        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0.2F, f, f1);
+        newwalk(Body_2, 1F * scaleFactor, height/15, true, -0.5F, 0F, f, f1);
+        newwalk(Neck, 1F * scaleFactor, height/15, true, -1F, 0.5F, f, f1);
+        newwalk(Head, 1F * scaleFactor, height/7.5F, false, 0.5F, -0.2F, f, f1);
         
-        newwalk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
-        newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
-        newwalk(Left_Calf_2, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
+        newwalk(Lower_Arm_Right, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
+        newwalk(Lower_Arm_Left, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
+        
+        newwalk(Left_Thigh, 0.5F * scaleFactor, 0.5F, false, 0F, 0.7F, f, f1);
+        newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.3F, true, 1.5F, 0F, f, f1);
+        newwalk(Left_Calf_2, 0.5F * scaleFactor, 0.7F, false, 0.5F, -0.4F, f, f1);
         newwalk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 0.5F, f, f1);
         
-        newwalk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
-        newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F , 0F, f, f1);
-        newwalk(Right_Calf_2, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
+        newwalk(Right_Thigh, 0.5F * scaleFactor, 0.5F, true, 0F, 0.7F, f, f1);
+        newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.3F, false, 1.5F , 0F, f, f1);
+        newwalk(Right_Calf_2, 0.5F * scaleFactor, 0.7F, true, 0.5F, -0.4F, f, f1);
         newwalk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 0.5F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
