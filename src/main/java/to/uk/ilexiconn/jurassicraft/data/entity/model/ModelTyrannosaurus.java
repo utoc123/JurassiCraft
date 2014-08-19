@@ -344,7 +344,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     	resetPose();
     	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
-/*    	f = trex.frame;
+ /*   	f = trex.frame;
         f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
         float scaleFactor = 0.4F;
         float height = 1.5F * f1;
@@ -376,6 +376,13 @@ public class ModelTyrannosaurus extends MowzieModelBase
 	    newchainWave(tailParts, 1F * scaleFactor, 0.07F, 2, f, f1);
 	    
 	    //Idling
-		newtailSwing(tailParts, 0.1F, 0.08F, 1, trex.frame);
+	    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
+	    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, trex.frame, 1F);
+	    newwalk(Body_1, 0.1F, 0.05F, false, 0F, 0F, trex.frame, 1F);
+	    newwalk(Lower_Arm_Right, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
+	    newwalk(Lower_Arm_Left, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);  
+	    
+		newtailSwing(tailParts, 0.1F, 0.05F, 1, trex.frame);
+	    newchainWave(tailParts, 0.1F, -0.05F, 2, trex.frame, 1F);
     }
 }
