@@ -67,8 +67,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Right_Thigh.setTextureSize(256, 256);
         setRotation(Right_Thigh, 0.8179294F, 0F, 0F);
         Body_1 = new MowzieModelRenderer(this, 118, 0);
-        Body_1.addBox(-5F, 0F, 0F, 10, 12, 21);
-        Body_1.setRotationPoint(0F, -1F, -7F);
+        Body_1.addBox(-5F, 0F, -15F, 10, 12, 21);
+        Body_1.setRotationPoint(0F, -1F, 8F);
         Body_1.setTextureSize(256, 256);
         setRotation(Body_1, -0.0371786F, 0F, 0F);
         Body_2 = new MowzieModelRenderer(this, 183, 1);
@@ -195,13 +195,15 @@ public class ModelTyrannosaurus extends MowzieModelBase
         addChildTo(Neck, Body_2);
         addChildTo(Body_2, Body_1);
         
-/*        addChildTo(Hand_Left_Claw_Left, Hand_Left);
+        addChildTo(Hand_Left_Claw_Left, Hand_Left);
         addChildTo(Hand_Left_Claw_Right, Hand_Left);
         addChildTo(Hand_Left, Lower_Arm_Left);
+        addChildTo(Lower_Arm_Left, Body_1);
         
         addChildTo(Hand_Right_Claw_Left, Hand_Right);
         addChildTo(Hand_Right_Claw_Right, Hand_Right);
-        addChildTo(Hand_Right, Lower_Arm_Right);*/
+        addChildTo(Hand_Right, Lower_Arm_Right);
+        addChildTo(Lower_Arm_Right, Body_1);
         
         addChildTo(this.Foot_Left, this.Left_Calf_2);        
         addChildTo(this.Left_Calf_2, this.Left_Calf_1);        
@@ -219,8 +221,14 @@ public class ModelTyrannosaurus extends MowzieModelBase
         
         //Corrections
         Neck.setRotationPoint(0, -3, -3);
-        Body_2.rotationPointY -= 2;
-        Body_2.rotationPointZ -= 4;
+        Body_2.rotationPointY -= 1;
+        Body_2.rotationPointZ -= 34;
+        Hand_Right_Claw_Right.setRotationPoint(0, 0, 0);
+        Hand_Left_Claw_Right.setRotationPoint(0, 0, 0);
+        Hand_Right_Claw_Left.setRotationPoint(0, 0, 0);
+        Hand_Left_Claw_Left.setRotationPoint(0, 0, 0);
+        Hand_Left.rotateAngleZ += 0.5;
+        Hand_Right.rotateAngleZ -= 0.5;
         
         Left_Calf_1.setInitValuesToCurrentPose();
         Right_Calf_1.setInitValuesToCurrentPose();
@@ -274,12 +282,6 @@ public class ModelTyrannosaurus extends MowzieModelBase
  //           Neck.render(f5);
             Lower_Arm_Left.render(f5);
             Lower_Arm_Right.render(f5);
-            Hand_Left.render(f5);
-            Hand_Right.render(f5);
-            Hand_Left_Claw_Left.render(f5);
-            Hand_Left_Claw_Right.render(f5);
-            Hand_Right_Claw_Right.render(f5);
-            Hand_Right_Claw_Left.render(f5);
             GL11.glPopMatrix();
         }
         else
@@ -289,14 +291,14 @@ public class ModelTyrannosaurus extends MowzieModelBase
             Body_1.render(f5);
 //            Body_2.render(f5);
 //            Neck.render(f5);
-            Lower_Arm_Left.render(f5);
-            Lower_Arm_Right.render(f5);
-            Hand_Left.render(f5);
-            Hand_Right.render(f5);
-            Hand_Left_Claw_Left.render(f5);
-            Hand_Left_Claw_Right.render(f5);
-            Hand_Right_Claw_Right.render(f5);
-            Hand_Right_Claw_Left.render(f5);
+//            Lower_Arm_Left.render(f5);
+//            Lower_Arm_Right.render(f5);
+//            Hand_Left.render(f5);
+//            Hand_Right.render(f5);
+//            Hand_Left_Claw_Left.render(f5);
+//            Hand_Left_Claw_Right.render(f5);
+//            Hand_Right_Claw_Right.render(f5);
+//            Hand_Right_Claw_Left.render(f5);
         }
     }
 
@@ -341,13 +343,34 @@ public class ModelTyrannosaurus extends MowzieModelBase
     {
     	super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     	resetPose();
-    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity; 
+    	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
+    	/*f = trex.frame;
+        f1 = 0.5F;*/
+        float scaleFactor = 0.5F;
+        float height = 2.5F * f1;
+        
         newfaceTarget(Head, 2, f3, f4);
         newfaceTarget(Neck, 2, f3, f4);
-        newwalk(this.Left_Thigh, 0.25F, 0.5f, false, 0F, 0F, f, f1);
-        newwalk(this.Right_Thigh, 0.25F, 0.5f, true, 0F, 0F, f, f1);
+        newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
+        newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+        newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0F, f, f1);
+        newwalk(Body_2, 1F * scaleFactor, height/10, true, -0.5F, 0F, f, f1);
+        newwalk(Neck, 1F * scaleFactor, height/10, true, -1F, 0F, f, f1);
+ //       newwalk(Head, 1F * scaleFactor, height/2, false, -1.5F, 0F, f, f1);
+        
+        newwalk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
+        newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
+        newwalk(Left_Calf_2, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
+        newwalk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 0.5F, f, f1);
+        
+        newwalk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
+        newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F , 0F, f, f1);
+        newwalk(Right_Calf_2, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
+        newwalk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 0.5F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
 		newtailSwing(tailParts, 0.1F, 0.2F, 1, trex.frame);
+	    newchainWave(tailParts, 1F * scaleFactor, -0.15F, 2, f, f1);
     }
 }
