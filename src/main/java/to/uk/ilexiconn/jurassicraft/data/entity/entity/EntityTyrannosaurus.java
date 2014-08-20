@@ -1,7 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
-
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -20,6 +19,7 @@ import net.minecraft.world.World;
 public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   
 	public int texid;
+	private int stepCount = 0;
 
     public EntityTyrannosaurus(World par1World)
     {
@@ -40,14 +40,21 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;   
         texid = rand.nextInt(2);
-    
     }
 
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
+        if (this.moveForward != 0 && stepCount == 0) {
+    		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
+    		System.out.println("Stomp!");
+    		stepCount = 25;
+        }
+        else {
+        	if(stepCount > 0) stepCount -= 1;
+        }
     }
-
+    
     public String getLivingSound()
     {
 //    	if(isRoaring == false){
@@ -74,7 +81,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
         return "jurassicraft:trex3";
     }
-
+    
     public EntityTyrannosaurus spawnBabyAnimal(EntityAgeable par1EntityAgeable)
     {
         return new EntityTyrannosaurus(this.worldObj);

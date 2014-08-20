@@ -1,4 +1,4 @@
-{
+{       "footstep": {"category": "master","sounds": [{"name": "footstep","stream": false}]},
        "trex1": {"category": "master","sounds": [{"name": "trex1","stream": false}]},
        "trex2": {"category": "master","sounds": [{"name": "trex2","stream": false}]},
        "trex3": {"category": "master","sounds": [{"name": "trex3","stream": false}]},

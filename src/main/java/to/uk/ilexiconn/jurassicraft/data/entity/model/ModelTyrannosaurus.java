@@ -3,6 +3,8 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
+import net.minecraft.world.World;
+import net.minecraftforge.event.world.WorldEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -346,7 +348,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
     	EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
  /*   	f = trex.frame;
         f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
-        float scaleFactor = 0.4F;
+        float scaleFactor = 0.5F;
         float height = 1.5F * f1;
         
         newfaceTarget(Head, 2, f3, f4);
