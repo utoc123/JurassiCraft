@@ -47,8 +47,10 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         super.onLivingUpdate();
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
-    		System.out.println("Stomp!");
-    		stepCount = 25;
+ //LEX PLEASE HELP
+ //   		EntityPlayer player = (EntityPlayer) this.getEntityToAttack();
+ //   		player.cameraPitch += 10;
+    		stepCount = 15;
         }
         else {
         	if(stepCount > 0) stepCount -= 1;
