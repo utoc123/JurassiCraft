@@ -48,6 +48,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
  //LEX PLEASE HELP
+  //no ;p
  //   		EntityPlayer player = (EntityPlayer) this.getEntityToAttack();
  //   		player.cameraPitch += 10;
     		stepCount = 15;
