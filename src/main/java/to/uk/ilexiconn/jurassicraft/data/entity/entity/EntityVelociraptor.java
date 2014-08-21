@@ -75,17 +75,17 @@ public class EntityVelociraptor extends EntityDinosaurMonster
 
     public String getLivingSound()
     {
-        if(animID == 0) AnimationAPI.sendAnimPacket(this, 2);
+        if(animID == 0 && this.getAttackTarget() == null) AnimationAPI.sendAnimPacket(this, 2);
         int I = rand.nextInt(4)+1;
         if(I == 1) return "jurassicraft:RapHiss01";
         if(I == 2) return "jurassicraft:RapHiss02";
-        if(I == 3) return "jurassicraft:RapHiss02";
+        if(I == 3) return "jurassicraft:RapHiss03";
         else return "jurassicraft:RapBark03";
     }
 
     public String getHurtSound()
     {
-        if(animID == 0)AnimationAPI.sendAnimPacket(this, 2);
+//        if(animID == 0)AnimationAPI.sendAnimPacket(this, 2);
         return super.getHurtSound();
     }
 

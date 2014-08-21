@@ -1,9 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.data.animation;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import thehippomaster.AnimationAPI.AIAnimation;
-
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 public class AIVelociraptorLeap extends AIAnimation {
@@ -42,9 +42,16 @@ private EntityLivingBase attackTarget;
             entityRaptor.motionX = 1.6*(d0 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionX * 0.20000000298023224D);
             entityRaptor.motionZ = 1.6*(d1 / (double)f2 * 0.5D * 0.800000011920929D + entityRaptor.motionZ * 0.20000000298023224D);
             entityRaptor.motionY = 0.6D;
-		}
-         if(entityRaptor.getAnimTick() == 19) {
     		entityRaptor.timeSinceLeap = 150;
-		}
+            double I = Math.random();
+    		if(I >= 0.5D)
+    		{
+    			entityRaptor.playSound("jurassicraft:RapCall01", 1.0F, 1.0F);
+    		}
+    		else
+    		{
+    			entityRaptor.playSound("jurassicraft:RapCall02", 1.0F, 1.0F);
+    		}
+	}
 	}
 }
