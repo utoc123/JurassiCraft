@@ -111,6 +111,7 @@ public class MowzieModelBase extends ModelBase
     public void newbob(MowzieModelRenderer box, float speed, float degree, boolean bounce, float f, float f1)
     {
         float bob = (float) (Math.sin(f * speed) * f1 * degree - f1 * degree);
+        if (bounce) bob = (float) -Math.abs((Math.sin(f * speed) * f1 * degree));
         box.rotationPointY += bob;
     }
 

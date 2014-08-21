@@ -1,6 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
+import java.util.List;
+
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
+import to.uk.ilexiconn.jurassicraft.data.entity.model.MowzieModelRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -14,12 +18,14 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   
 	public int texid;
 	private int stepCount = 0;
+	private float shakeCount = 0;
 
     public EntityTyrannosaurus(World par1World)
     {
@@ -47,13 +53,22 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         super.onLivingUpdate();
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
- //LEX PLEASE HELP
- //   		EntityPlayer player = (EntityPlayer) this.getEntityToAttack();
- //   		player.cameraPitch += 10;
+    		Entity target = this.getAttackTarget();
+    		if (target instanceof EntityPlayer) {
+    			((EntityPlayer) target).addVelocity(0, -5, 0); //How come this doesn't do anything??
+//    			System.out.println("Boom");//The print works! Why doesn't THAT^^?
+    		}
+/*    		double radius = 3D;
+    		List<EntityPlayer> near = location.getWorld().getEntities();
+    		for(Entity e : near) {
+    		    if(e.getLocation().distance(location) <= radius) 
+    		        e.damage(9001);
+    		}*/
     		stepCount = 15;
         }
         else {
-        	if(stepCount > 0) stepCount -= 1;
+        	if(stepCount > 0) stepCount -= this.moveForward;
+        	if(stepCount < 0) stepCount = 0;
         }
     }
     
