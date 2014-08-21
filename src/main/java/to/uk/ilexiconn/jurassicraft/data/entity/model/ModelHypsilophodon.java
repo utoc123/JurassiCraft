@@ -194,7 +194,7 @@ public class ModelHypsilophodon extends MowzieModelBase
       HeadJoint.rotationPointZ -= 7.5;
       HeadJoint.rotationPointY -= 1.5;
       head.setRotationPoint(0, 0, 0);
- //     body1.rotationPointZ += 0.5;
+      body1.rotationPointZ += 0.3;
       tail1.rotationPointZ += 5.5;
       tail1.rotationPointY -= 4;
       
@@ -284,7 +284,7 @@ public class ModelHypsilophodon extends MowzieModelBase
     EntityHypsilophodon hypster = (EntityHypsilophodon) entity; 
     resetPose();
 /*    f = hypster.frame;
-    f1 = 1F;*/
+    f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
     resetPose();
     float scaleFactor = 0.6F;
     float height = 12F * f1;
