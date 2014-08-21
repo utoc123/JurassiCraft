@@ -33,7 +33,7 @@
         "dinoSpeed":0.25,
         "dinoHealth":60,
         "dinoStrenght":25,
-        "dinoScale":1.07,
+        "dinoScale":1.04,
         "hitboxSizeXZ:":1.9,
         "hitboxSizeY":1.5,
         "livingSound1":"jurassicraft:RapHiss01",
