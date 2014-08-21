@@ -53,7 +53,6 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         super.onLivingUpdate();
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
-<<<<<<< HEAD
     		Entity target = this.getAttackTarget();
     		if (target instanceof EntityPlayer) {
     			((EntityPlayer) target).addVelocity(0, -5, 0); //How come this doesn't do anything??
@@ -65,12 +64,6 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     		    if(e.getLocation().distance(location) <= radius) 
     		        e.damage(9001);
     		}*/
-=======
- //LEX PLEASE HELP
-  //no ;p
- //   		EntityPlayer player = (EntityPlayer) this.getEntityToAttack();
- //   		player.cameraPitch += 10;
->>>>>>> FETCH_HEAD
     		stepCount = 15;
         }
         else {
