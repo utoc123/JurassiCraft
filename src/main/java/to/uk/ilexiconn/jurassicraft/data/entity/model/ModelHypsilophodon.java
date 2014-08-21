@@ -194,7 +194,7 @@ public class ModelHypsilophodon extends MowzieModelBase
       HeadJoint.rotationPointZ -= 7.5;
       HeadJoint.rotationPointY -= 1.5;
       head.setRotationPoint(0, 0, 0);
-      body1.rotationPointZ += 0.5;
+ //     body1.rotationPointZ += 0.5;
       tail1.rotationPointZ += 5.5;
       tail1.rotationPointY -= 4;
       
@@ -288,6 +288,8 @@ public class ModelHypsilophodon extends MowzieModelBase
     resetPose();
     float scaleFactor = 0.6F;
     float height = 12F * f1;
+    MowzieModelRenderer[] tailParts = {this.tail3, this.tail2, this.tail1};
+
     newfaceTarget(head, 1, f3, f4);
     
     newbob(body2, 0.5F * scaleFactor, height, true, f, f1);
@@ -313,7 +315,16 @@ public class ModelHypsilophodon extends MowzieModelBase
     newwalk(armright, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
     newwalk(armleft, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
     
-    MowzieModelRenderer[] tailParts = {this.tail3, this.tail2, this.tail1};
+    newchainWave(tailParts, 0.2F, -0.05F, 2, hypster.frame, 1F);
+    newwalk(neck, 0.2F, 0.1F, false, -1F, 0F, hypster.frame, 1F);
+    newwalk(head, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    newwalk(body1, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    newwalk(body2, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    newwalk(shoulderright, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    newwalk(shoulderleft, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    newwalk(armright, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    newwalk(armleft, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    
     newchainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
 
   }
