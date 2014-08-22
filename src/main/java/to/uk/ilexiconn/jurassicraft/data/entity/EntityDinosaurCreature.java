@@ -9,94 +9,99 @@ import thehippomaster.AnimationAPI.IAnimatedEntity;
 
 public abstract class EntityDinosaurCreature extends EntityAnimal implements IAnimatedEntity
 {
-    public int animID;
-    public int animTick;
-    public int dinoID;
-    
-    public int frame;
+	public int animID;
+	public int animTick;
+	public int dinoID;
 
-    public EntityDinosaurCreature(World world, int id)
-    {
-        super(world);
-        dinoID = id;
-        setSize(Util.getDinos().get(dinoID).hitboxSizeXZ, Util.getDinos().get(dinoID).hitboxSizeY);
-        getNavigator().setAvoidsWater(true);
-    }
+	public int frame;
 
-    public boolean isAIEnabled()
-    {
-        return true;
-    }
+	public EntityDinosaurCreature(World world, int id)
+	{
+		super(world);
+		dinoID = id;
+		Dinosaur dinoByID = Util.getDinoByID(id);
+		setSize(dinoByID.hitboxSizeXZ, dinoByID.hitboxSizeY);
+		getNavigator().setAvoidsWater(true);
+	}
 
-    public void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(Util.getDinos().get(dinoID).dinoHealth * 2);
-        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(Util.getDinos().get(dinoID).dinoSpeed);
-    }
+	public boolean isAIEnabled()
+	{
+		return true;
+	}
 
-    public String getLivingSound()
-    {
-        int I = rand.nextInt(1)+1;
-        if(I == 1)
-        {
-            return Util.getDinos().get(dinoID).livingSound1;
-        }
-        else
-        {
-            return Util.getDinos().get(dinoID).livingSound2;
-        }
-    }
+	public void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.dinoHealth * 2);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.dinoSpeed);
+	}
 
-    public String getHurtSound()
-    {
-        return Util.getDinos().get(dinoID).hurtSound;
-    }
+	public String getLivingSound()
+	{
+		int I = rand.nextInt(1)+1;
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		if(I == 1)
+		{
+			return dinoByID.livingSound1;
+		}
+		else
+		{
+			return dinoByID.livingSound2;
+		}
+	}
 
-    public String getDeathSound()
-    {
-        return Util.getDinos().get(dinoID).deathSound;
-    }
+	public String getHurtSound()
+	{
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		return dinoByID.hurtSound;
+	}
 
-    public float getSoundVolume()
-    {
-        return 0.4F;
-    }
+	public String getDeathSound()
+	{
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		return dinoByID.deathSound;
+	}
 
-    public boolean canDespawn()
-    {
-        return false;
-    }
+	public float getSoundVolume()
+	{
+		return 0.4F;
+	}
 
-    public int getAnimTick()
-    {
-        return animTick;
-    }
+	public boolean canDespawn()
+	{
+		return false;
+	}
 
-    public int getAnimID()
-    {
-        return animID;
-    }
+	public int getAnimTick()
+	{
+		return animTick;
+	}
 
-    public void setAnimID(int id)
-    {
-        animID = id;
-    }
+	public int getAnimID()
+	{
+		return animID;
+	}
 
-    public void setAnimTick(int tick)
-    {
-        animTick = tick;
-    }
+	public void setAnimID(int id)
+	{
+		animID = id;
+	}
 
-    public Item getDropItem()
-    {
-        return Util.getMeat(dinoID);
-    }
+	public void setAnimTick(int tick)
+	{
+		animTick = tick;
+	}
 
-    public void onUpdate()
-    {
-        super.onUpdate();
-        if(animID != 0) animTick++;
-        frame++;
-    }
+	public Item getDropItem()
+	{
+		return Util.getMeat(dinoID);
+	}
+
+	public void onUpdate()
+	{
+		super.onUpdate();
+		if(animID != 0) animTick++;
+		frame++;
+	}
 }

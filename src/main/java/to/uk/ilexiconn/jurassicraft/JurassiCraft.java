@@ -1,11 +1,11 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import java.util.Map.Entry;
+
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -27,7 +27,7 @@ public class JurassiCraft extends Util
 
         getEntityParser().parseServerEntities();
 
-        for (Dinosaur dino : getDinos()) System.out.println("Added dino " + dino.dinoName + " with ID " + dino.id);
+        for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet()) System.out.println("Added dino " + dino.getKey().dinoName + " with ID " + dino.getKey().id);
 
         isServerInitialized = true;
     }

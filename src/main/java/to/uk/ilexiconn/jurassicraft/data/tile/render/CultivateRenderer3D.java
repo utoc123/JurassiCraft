@@ -115,6 +115,11 @@ public class CultivateRenderer3D implements IItemRenderer
 
                 GL11.glPopMatrix();
             }
+		default:
+            if (renderType == 0)
+            {
+                firstPerson = true;
+            }
         }
     }
 }

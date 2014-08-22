@@ -1,20 +1,27 @@
 package to.uk.ilexiconn.jurassicraft.data.tile;
 
+import java.lang.reflect.InvocationTargetException;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class TileEgg extends TileEntity
 {
     private String dinoName;
     private int hatchTime;
-
+    private int totalHatchTime;
+    
     public TileEgg(String dinoName)
     {
         setDinoName(dinoName);
-        setHatchTime(100);
+        setHatchTime(0);
+        totalHatchTime = 1024;
     }
 
     public void setDinoName(String dinoName)
@@ -66,6 +73,43 @@ public class TileEgg extends TileEntity
     public void updateEntity()
     {
         hatchTime++;
+        
         System.out.println(hatchTime);
+        
+        if(hatchTime >= totalHatchTime)
+        {
+        	Class dinoToSpawnClass = Util.getDinoClass(dinoName);
+        	try 
+        	{
+				Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
+				dinoToSpawn.setPosition(xCoord, yCoord, zCoord);
+				worldObj.spawnEntityInWorld(dinoToSpawn);
+				worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+			} 
+        	catch (InstantiationException e)
+        	{
+				e.printStackTrace();
+			}
+        	catch (IllegalAccessException e) 
+        	{
+				e.printStackTrace();
+			}
+        	catch (IllegalArgumentException e) 
+        	{
+				e.printStackTrace();
+			}
+        	catch (InvocationTargetException e) 
+			{
+				e.printStackTrace();
+			}
+        	catch (NoSuchMethodException e) 
+			{
+				e.printStackTrace();
+			} 
+        	catch (SecurityException e) 
+			{
+				e.printStackTrace();
+			}
+        }
     }
 }

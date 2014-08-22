@@ -1,7 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
 import to.uk.ilexiconn.jurassicraft.Util;
-
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,143 +14,149 @@ import thehippomaster.AnimationAPI.IAnimatedEntity;
 
 public abstract class EntityDinosaurMonster extends EntityMob implements IAnimatedEntity
 {
-    public int animID;
-    public int animTick;
-    public int dinoID;
-    
-    public int frame;
+	public int animID;
+	public int animTick;
+	public int dinoID;
 
-    public EntityDinosaurMonster(World world, int id)
-    {
-        super(world);
-        dinoID = id;
-        setSize(Util.getDinos().get(dinoID).hitboxSizeXZ, Util.getDinos().get(dinoID).hitboxSizeY);
-        getNavigator().setAvoidsWater(true);
-    }
+	public int frame;
 
-    public boolean isAIEnabled()
-    {
-        return true;
-    }
+	public EntityDinosaurMonster(World world, int id)
+	{
+		super(world);
+		dinoID = id;
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		setSize(dinoByID.hitboxSizeXZ, dinoByID.hitboxSizeY);
+		getNavigator().setAvoidsWater(true);
+	}
 
-    public void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(Util.getDinos().get(dinoID).dinoHealth * 2);
-        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(Util.getDinos().get(dinoID).dinoSpeed);
-        //getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(Util.getDinos().get(dinoID).dinoStrenght);
-    }
-    
-    public boolean attackEntityAsMob(Entity p_70652_1_)
-    {
-        float f = (float)this.getAttackStrength(this);
-        int i = 0;
+	public boolean isAIEnabled()
+	{
+		return true;
+	}
 
-        if (p_70652_1_ instanceof EntityLivingBase)
-        {
-            f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase)p_70652_1_);
-            i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase)p_70652_1_);
-        }
+	public void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.dinoHealth * 2);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.dinoSpeed);
+		//getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(Util.getDinos().get(dinoID).dinoStrenght);
+	}
 
-        boolean flag = p_70652_1_.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+	public boolean attackEntityAsMob(Entity p_70652_1_)
+	{
+		float f = (float)this.getAttackStrength(this);
+		int i = 0;
 
-        if (flag)
-        {
-            if (i > 0)
-            {
-                p_70652_1_.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
-                this.motionX *= 0.6D;
-                this.motionZ *= 0.6D;
-            }
+		if (p_70652_1_ instanceof EntityLivingBase)
+		{
+			f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase)p_70652_1_);
+			i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase)p_70652_1_);
+		}
 
-            int j = EnchantmentHelper.getFireAspectModifier(this);
+		boolean flag = p_70652_1_.attackEntityFrom(DamageSource.causeMobDamage(this), f);
 
-            if (j > 0)
-            {
-                p_70652_1_.setFire(j * 4);
-            }
+		if (flag)
+		{
+			if (i > 0)
+			{
+				p_70652_1_.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
+				this.motionX *= 0.6D;
+				this.motionZ *= 0.6D;
+			}
 
-            if (p_70652_1_ instanceof EntityLivingBase)
-            {
-                EnchantmentHelper.func_151384_a((EntityLivingBase)p_70652_1_, this);
-            }
+			int j = EnchantmentHelper.getFireAspectModifier(this);
 
-            EnchantmentHelper.func_151385_b(this, p_70652_1_);
-        }
+			if (j > 0)
+			{
+				p_70652_1_.setFire(j * 4);
+			}
 
-        return flag;
-    }
+			if (p_70652_1_ instanceof EntityLivingBase)
+			{
+				EnchantmentHelper.func_151384_a((EntityLivingBase)p_70652_1_, this);
+			}
 
-    /**
-    * Returns the amount of damage a mob should deal.
-    */
-   public int getAttackStrength(Entity par1Entity)
-   {
-       return (int)Util.getDinos().get(dinoID).dinoStrenght;
-   }
-    
-    public String getLivingSound()
-    {
-        int I = rand.nextInt(1)+1;
-        if(I == 1)
-        {
-            return Util.getDinos().get(dinoID).livingSound1;
-        }
-        else
-        {
-            return Util.getDinos().get(dinoID).livingSound2;
-        }
-    }
+			EnchantmentHelper.func_151385_b(this, p_70652_1_);
+		}
 
-    public String getHurtSound()
-    {
-        return Util.getDinos().get(dinoID).hurtSound;
-    }
+		return flag;
+	}
 
-    public String getDeathSound()
-    {
-        return Util.getDinos().get(dinoID).deathSound;
-    }
+	/**
+	 * Returns the amount of damage a mob should deal.
+	 */
+	public int getAttackStrength(Entity par1Entity)
+	{
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		return (int) dinoByID.dinoStrength;
+	}
 
-    public float getSoundVolume()
-    {
-        return 0.4F;
-    }
+	public String getLivingSound()
+	{
+		int I = rand.nextInt(1)+1;
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		if(I == 1)
+		{
+			return dinoByID.livingSound1;
+		}
+		else
+		{
+			return dinoByID.livingSound2;
+		}
+	}
 
-    public boolean canDespawn()
-    {
-        return false;
-    }
-    
-    public int getAnimTick()
-    {
-        return animTick;
-    }
+	public String getHurtSound()
+	{
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		return dinoByID.hurtSound;
+	}
 
-    public int getAnimID()
-    {
-        return animID;
-    }
+	public String getDeathSound()
+	{
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
+		return dinoByID.deathSound;
+	}
 
-    public void setAnimID(int id)
-    {
-        animID = id;
-    }
+	public float getSoundVolume()
+	{
+		return 0.4F;
+	}
 
-    public void setAnimTick(int tick)
-    {
-        animTick = tick;
-    }
+	public boolean canDespawn()
+	{
+		return false;
+	}
 
-    public Item getDropItem()
-    {
-        return Util.getMeat(dinoID);
-    }
+	public int getAnimTick()
+	{
+		return animTick;
+	}
 
-    public void onUpdate()
-    {
-        super.onUpdate();
-        if(animID != 0) animTick++;
-        frame++;
-    }
+	public int getAnimID()
+	{
+		return animID;
+	}
+
+	public void setAnimID(int id)
+	{
+		animID = id;
+	}
+
+	public void setAnimTick(int tick)
+	{
+		animTick = tick;
+	}
+
+	public Item getDropItem()
+	{
+		return Util.getMeat(dinoID);
+	}
+
+	public void onUpdate()
+	{
+		super.onUpdate();
+		if(animID != 0) animTick++;
+		frame++;
+	}
 }

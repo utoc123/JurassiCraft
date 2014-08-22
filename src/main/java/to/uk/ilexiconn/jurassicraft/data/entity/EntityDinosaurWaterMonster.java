@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import to.uk.ilexiconn.jurassicraft.Util;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -33,18 +32,21 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    public int animTick;
    public int dinoID;
 
-   public EntityDinosaurWaterMonster(World var1, int id) {
-      super(var1);
+   public EntityDinosaurWaterMonster(World world, int id) 
+   {
+      super(world);
       dinoID = id;
-      setSize(Util.getDinos().get(dinoID).hitboxSizeXZ, Util.getDinos().get(dinoID).hitboxSizeY);
+      Dinosaur dinoByID = Util.getDinoByID(dinoID);
+      setSize(dinoByID.hitboxSizeXZ, dinoByID.hitboxSizeY);
       this.factor2 = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
    }
 
    public void applyEntityAttributes()
    {
        super.applyEntityAttributes();
-       getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(Util.getDinos().get(dinoID).dinoHealth * 2);
-       getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(Util.getDinos().get(dinoID).dinoSpeed);
+       Dinosaur dinoByID = Util.getDinoByID(dinoID);
+       getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.dinoHealth * 2);
+       getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.dinoSpeed);
    }
    
    public boolean canDespawn()
@@ -86,32 +88,40 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    public String getLivingSound()
    {
        int I = rand.nextInt(1)+1;
+       
+       Dinosaur dinoByID = Util.getDinoByID(dinoID);
+       
        if(I == 1)
        {
-           return Util.getDinos().get(dinoID).livingSound1;
+           return dinoByID.livingSound1;
        }
        else
        {
-           return Util.getDinos().get(dinoID).livingSound2;
+           return dinoByID.livingSound2;
        }
    }
 
    public String getHurtSound()
    {
-       return Util.getDinos().get(dinoID).hurtSound;
+	   Dinosaur dinoByID = Util.getDinoByID(dinoID);
+       return dinoByID.hurtSound;
    }
 
    public String getDeathSound()
    {
-       return Util.getDinos().get(dinoID).deathSound;
+	   Dinosaur dinoByID = Util.getDinoByID(dinoID);
+       return dinoByID.deathSound;
    }
    
-   protected int getAttackStrength() {
-      return (int)Util.getDinos().get(dinoID).dinoStrenght;
+   protected int getAttackStrength()
+   {
+	  Dinosaur dinoByID = Util.getDinoByID(dinoID);
+      return (int)dinoByID.dinoStrength;
    }
 
-   protected boolean canAttackEntity(Entity var1) {
-      return var1 instanceof EntityLiving && this.width > var1.width && this.height >= var1.height;
+   protected boolean canAttackEntity(Entity entity) 
+   {
+      return entity instanceof EntityLiving && this.width > entity.width && this.height >= entity.height;
    }
 
    protected Entity findEntityToAttack() {
