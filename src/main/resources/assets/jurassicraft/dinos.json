@@ -92,10 +92,10 @@
         "dinoScale":4.9,
         "hitboxSizeXZ":5,
         "hitboxSizeY":6,
-        "livingSound1":null,
-        "livingSound2":null,
-        "hurtSound": null,
-        "deathSound": null
+        "livingSound1":trex1,
+        "livingSound2":trex2,
+        "hurtSound": trex3,
+        "deathSound": trex3
     },
     {
         "id":7,
@@ -120,10 +120,10 @@
         "dinoScale":1.7,
         "hitboxSizeXZ":1.7,
         "hitboxSizeY":1.7,
-        "livingSound1":null,
-        "livingSound2":null,
-        "hurtSound":null,
-        "deathSound":null
+        "livingSound1":"jurassicraft:hypsi1",
+        "livingSound2":"jurassicraft:hypsi2",
+        "hurtSound":"jurassicraft:hypsi3",
+        "deathSound":"jurassicraft:hypsi4"
     },
     {
         "id":9,
@@ -176,10 +176,10 @@
         "dinoScale":1.5,
         "hitboxSizeXZ":1,
         "hitboxSizeY":1,
-        "livingSound1":"jurassicraft:para1",
-        "livingSound2":"jurassicraft:para1",
-        "hurtSound":"jurassicraft:para2",
-        "deathSound":"jurassicraft:para2"
+        "livingSound1":null,
+        "livingSound2":null,
+        "hurtSound":null,
+        "deathSound":null
     },
     {
         "id":13,
@@ -190,10 +190,10 @@
         "dinoScale":1.5,
         "hitboxSizeXZ":1.9,
         "hitboxSizeY":1.5,
-        "livingSound1":"jurassicraft:para1",
-        "livingSound2":"jurassicraft:para1",
-        "hurtSound":"jurassicraft:para2",
-        "deathSound":"jurassicraft:para2"
+        "livingSound1":"jurassicraft:dilo3",
+        "livingSound2":"jurassicraft:dilo2",
+        "hurtSound":"jurassicraft:dilo3",
+        "deathSound":"jurassicraft:dilo1"
     },
     {
         "id":14,
@@ -204,10 +204,10 @@
         "dinoScale":4.85,
         "hitboxSizeXZ":14,
         "hitboxSizeY":3.5,
-        "livingSound1":"",
-        "livingSound2":"",
-        "hurtSound":"",
-        "deathSound":""
+        "livingSound1":"jurassicraft:tylo1",
+        "livingSound2":"jurassicraft:tylo2",
+        "hurtSound":"jurassicraft:tylo3",
+        "deathSound":"jurassicraft:tylo4"
     },
     {
         "id":15,

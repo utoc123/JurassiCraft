@@ -32,6 +32,8 @@ public class EntityVelociraptor extends EntityDinosaurMonster
         setSize(1.9F, 1.5F);
         tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.4F, false));
         tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed + 0.4F, true));
+        tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityHypsilophodon.class, moveSpeed + 0.4F, true));
+        tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityLeaellynasaur.class, moveSpeed + 0.4F, true));
         tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         tasks.addTask(0, new EntityAISwimming(this));
 
@@ -47,6 +49,8 @@ public class EntityVelociraptor extends EntityDinosaurMonster
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
+        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityHypsilophodon.class, 0, false));
+        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityLeaellynasaur.class, 0, false));
         texid = rand.nextInt(2);
 
     }
