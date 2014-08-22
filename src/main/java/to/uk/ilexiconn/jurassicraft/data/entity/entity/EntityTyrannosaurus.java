@@ -4,6 +4,7 @@ import java.util.List;
 
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 import to.uk.ilexiconn.jurassicraft.data.entity.model.MowzieModelRenderer;
+import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -26,6 +27,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
 	public int texid;
 	private int stepCount = 0;
 	private float shakeCount = 0;
+	public ControlledParam roarCount = new ControlledParam(0F, 0F, 0.5F, 0F);
 
     public EntityTyrannosaurus(World par1World)
     {
@@ -51,6 +53,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
+        roarCount.update();
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
     		Entity target = this.getAttackTarget();
@@ -76,14 +79,22 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    		int I = rand.nextInt(1)+1;
+    		roarCount.thereAndBack(0F, 0.1F, 1, 40);
+    		int I = rand.nextInt(3)+1;
     		if(I == 1)
     		{
-    			return "jurassicraft:trex1";
+    	        this.playSound("jurassicraft:trex1", 5.0F, 1.0F);
+    	        System.out.println("What");
+    	        return null;
+    		}
+    		else if(I == 2)
+    		{
+    	        this.playSound("jurassicraft:trex2", 5.0F, 1.0F);
+    	        return null;
     		}
     		else
     		{
-    			return "jurassicraft:trex2";
+    			return null;
     		}
 //    	}
 //    	return null;
@@ -91,12 +102,14 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
 
     public String getHurtSound()
     {
-        return "jurassicraft:trex3";
+        this.playSound("jurassicraft:trex3", 5.0F, 1.0F);
+        return null;
     }
 
     public String getDeathSound()
     {
-        return "jurassicraft:trex3";
+        this.playSound("jurassicraft:trex3", 5.0F, 1.0F);
+        return null;
     }
     
     public EntityTyrannosaurus spawnBabyAnimal(EntityAgeable par1EntityAgeable)

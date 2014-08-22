@@ -2,10 +2,12 @@ package to.uk.ilexiconn.jurassicraft.data.utility;
 
 public class ControlledParam {
 
-	float value;
-	float change;
-	float max;
-	float min;
+	public float value;
+	public float change;
+	public float max;
+	public float min;
+	public int pause;
+	public int mode;
 	
 	public ControlledParam(float value, float change, float max, float min) {
 		this.value = value;
@@ -14,12 +16,25 @@ public class ControlledParam {
 		this.min = min;
 	}
 	
-	public float getValue() {
-		return value;
+	public void thereAndBack(float start, float change, float destination, int pause) {
+//		System.out.println("There and back");
+		mode = 1;
+		this.value = start;
+		this.change = change;
+		this.max = destination;
+		this.min = start;
+		this.pause = pause;
 	}
 	
 	public void update() {
-		value += change;
+		if (mode == 1) {
+			if (value == max && pause != 0) pause -= 1;
+			if (pause != 0) value += change;
+			if (pause == 0) value -= change;
+		}
+		else {
+			value += change;
+		}
 		if (value < min) value = min;
 		if (value > max) value = max;
 	}

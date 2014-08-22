@@ -44,7 +44,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
     MowzieModelRenderer Foot_Right;
     MowzieModelRenderer headJoint;
     MowzieModelRenderer NeckJoint;
-
+    MowzieModelRenderer Teeth;
+    
     public ModelTyrannosaurus()
     {
         textureWidth = 256;
@@ -82,9 +83,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Body_2.mirror = true;
         setRotation(Body_2, -0.1858931F, 0F, 0F);
         Neck = new MowzieModelRenderer(this, 218, 1);
-        Neck.addBox(-3.5F, 2F, -3F, 7, 9, 11);
-        Neck.setRotationPoint(0F, -5F, -10.5F);
+        Neck.addBox(-3.5F, 0.5F, -9F, 7, 9, 11);
+        Neck.setRotationPoint(0F, -0.7F, -10.6F);
         Neck.setTextureSize(256, 256);
+        Neck.mirror = true;
         setRotation(Neck, -0.5576792F, 0F, 0F);
         Head = new MowzieModelRenderer(this, 0, 92);
         Head.addBox(-4F, 0F, -8F, 8, 9, 8);
@@ -202,7 +204,14 @@ public class ModelTyrannosaurus extends MowzieModelBase
         NeckJoint.setRotationPoint(0F, -5F, -10.5F);
         NeckJoint.setTextureSize(256, 256);
         setRotation(NeckJoint, 0F, 0F, 0F);
+        Teeth = new MowzieModelRenderer(this, 53, 120);
+        Teeth.addBox(-3.5F, -1F, 0F, 7, 1, 9);
+        Teeth.setRotationPoint(0F, 1.8F, -25F);
+        Teeth.setTextureSize(256, 256);
+        Teeth.mirror = true;
+        setRotation(Teeth, -3.141593F, 0F, 0F);
         
+  //      addChildTo(Teeth, Upper_Jaw);
         addChildTo(Upper_Jaw, Head);
         addChildTo(Lower_Jaw, Head);
  /*       addChildTo(Head, headJoint);
@@ -241,7 +250,9 @@ public class ModelTyrannosaurus extends MowzieModelBase
 //        Head.setRotationPoint(0, 0, 0);
 //        NeckJoint.setRotationPoint(0, -2, -3);
 //        Neck.setRotationPoint(0, 0, 0);
-        Neck.setRotationPoint(0, -2, -3);
+        Neck.setRotationPoint(0, 1F, 2);
+        Head.rotationPointZ -= 13;
+        Head.rotationPointY -= 2;
         Body_2.rotationPointY -= 1;
         Body_2.rotationPointZ -= 34;
         Hand_Right_Claw_Right.setRotationPoint(0, 0, 0);
@@ -280,6 +291,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Foot_Right.setInitValuesToCurrentPose();
         headJoint.setInitValuesToCurrentPose();
         NeckJoint.setInitValuesToCurrentPose();
+        Teeth.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -362,6 +374,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Foot_Right.setCurrentPoseToInitValues();
         headJoint.setCurrentPoseToInitValues();
         NeckJoint.setCurrentPoseToInitValues();
+        Teeth.setCurrentPoseToInitValues();
     }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
@@ -409,5 +422,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
 	    
 		newtailSwing(tailParts, 0.1F, 0.05F, 1, trex.frame);
 	    newchainWave(tailParts, 0.1F, -0.05F, 2, trex.frame, 1F);
+	    
+	    Neck.rotateAngleX += trex.roarCount.value*0.4;
+	    Head.rotateAngleX -= trex.roarCount.value*0.7;
+	    Head.rotationPointZ += trex.roarCount.value*0.7;
+	    Lower_Jaw.rotateAngleX += trex.roarCount.value*0.5;
     }
 }
