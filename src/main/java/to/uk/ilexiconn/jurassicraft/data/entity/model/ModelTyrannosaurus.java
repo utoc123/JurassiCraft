@@ -211,7 +211,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Teeth.mirror = true;
         setRotation(Teeth, -3.141593F, 0F, 0F);
         
-  //      addChildTo(Teeth, Upper_Jaw);
+        addChildTo(Teeth, Upper_Jaw);
         addChildTo(Upper_Jaw, Head);
         addChildTo(Lower_Jaw, Head);
  /*       addChildTo(Head, headJoint);
@@ -253,6 +253,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
         Neck.setRotationPoint(0, 1F, 2);
         Head.rotationPointZ -= 13;
         Head.rotationPointY -= 2;
+        Teeth.rotationPointZ -= 5;
         Body_2.rotationPointY -= 1;
         Body_2.rotationPointZ -= 34;
         Hand_Right_Claw_Right.setRotationPoint(0, 0, 0);

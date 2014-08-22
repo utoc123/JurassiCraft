@@ -79,12 +79,11 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    		roarCount.thereAndBack(0F, 0.1F, 1, 40);
     		int I = rand.nextInt(3)+1;
     		if(I == 1)
     		{
     	        this.playSound("jurassicraft:trex1", 5.0F, 1.0F);
-    	        System.out.println("What");
+        		roarCount.thereAndBack(0F, 0.1F, 1, 40);
     	        return null;
     		}
     		else if(I == 2)
