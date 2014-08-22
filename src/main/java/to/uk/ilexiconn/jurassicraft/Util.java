@@ -13,15 +13,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.client.IItemRenderer;
 import to.uk.ilexiconn.jurassicraft.data.Data;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.JsonEntityParser;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
+import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemMeat;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileEgg;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
@@ -43,7 +41,7 @@ public class Util
 	private static Block[] blocks = new Block[512];
 	private static Item[] items = new Item[512];
 	private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
-	private static ArrayList<BlockEgg> eggs = new ArrayList<BlockEgg>();
+	private static ArrayList<ItemDinoEgg> eggs = new ArrayList<ItemDinoEgg>();
 	private static Map<Dinosaur, Class<?>> dinos = new HashMap<Dinosaur, Class<?>>();
 	private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
@@ -81,7 +79,7 @@ public class Util
 		return dnas;
 	}
 
-	public static ArrayList<BlockEgg> getEggArray()
+	public static ArrayList<ItemDinoEgg> getEggArray()
 	{
 		return eggs;
 	}
@@ -184,15 +182,11 @@ public class Util
 
 	public void addEgg(final String dinoName)
 	{
-		BlockEgg egg = new BlockEgg(dinoName)
-		{
-			public TileEntity createNewTileEntity(World world, int meta)
-			{
-				return new TileEgg(dinoName);
-			}
-		};
+		ItemDinoEgg egg = new ItemDinoEgg(dinoName);
+		
 		eggs.add(egg);
-		addBlock(-1, egg);
+		
+		addItem(-1, egg);
 	}
 
 	public void addShapedRecipe(ItemStack output, Object... obj)

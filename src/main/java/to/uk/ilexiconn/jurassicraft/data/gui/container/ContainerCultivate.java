@@ -51,10 +51,14 @@ public class ContainerCultivate extends Container
     
     public boolean canCultivate(ItemStack stack)
     {
-        Item i = stack.getItem();
-        if (i == null || !(i instanceof ItemDNA)) return false;
-        Block b = ((ItemDNA) i).getCorrespondingEgg();
-        if (b == null) return false;
+        Item stackItem = stack.getItem();
+        
+        if (stackItem == null || !(stackItem instanceof ItemDNA)) return false;
+        
+        Item eggItem = ((ItemDNA) stackItem).getCorrespondingEgg();
+        
+        if (eggItem == null) return false;
+        
         return true;
     }
     

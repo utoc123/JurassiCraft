@@ -15,7 +15,7 @@ public class ItemDNA extends Item
         setCreativeTab(Util.getCreativeTab(0));
     }
 
-	public Block getCorrespondingEgg()
+	public Item getCorrespondingEgg()
 	{
 		int id = Util.getDNAArray().lastIndexOf(this);
 

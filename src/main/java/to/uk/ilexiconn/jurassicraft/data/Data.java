@@ -1,32 +1,40 @@
 package to.uk.ilexiconn.jurassicraft.data;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.block.*;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockAmberOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockAnalyzer;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilClayOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilSandstoneOre;
+import to.uk.ilexiconn.jurassicraft.data.block.GhostBlock;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoBone;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemFossil;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileEgg;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
-import to.uk.ilexiconn.jurassicraft.data.tile.render.EggRenderer;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public final class Data extends Util
 {
     public void init()
     {
-        { /** Creativetabs */
+    	/** Creativetabs */
+        { 
             addCreativeTab(0, new CreativeTabs("fossilTab")
             {
                 public Item getTabIconItem()
@@ -35,7 +43,9 @@ public final class Data extends Util
                 }
             });
         }
-        { /** Blocks */
+        
+    	/** Blocks */
+        { 
             addBlockWithTileEntity(0, new BlockCultivate(true), TileCultivate.class, true);
             addBlockWithTileEntity(1, new BlockCultivate(false), TileCultivate.class, false);
             addBlockWithTileEntity(2, new BlockAnalyzer(true), TileAnalyzer.class, true);
@@ -52,24 +62,40 @@ public final class Data extends Util
             addBlock(13, new BlockFossilClayOre("_stained_white"));
             addBlock(14, new BlockFossilClayOre("_stained_yellow"));
         }
-        { /** Items */
+        
+    	/** Items */
+        { 
             addItem(1, new ItemAmber());
             addItem(2, new ItemFossil());
             addItem(3, new ItemDinoBone());
         }
-        { /** Tile entities */
-            addTileEntity(TileEgg.class);
+        
+    	/** Tile entities */
+        { 
         }
-        { /** World Gens */
+        
+    	/** World Generators */
+        { 
             addWorldGenerator(new WorldGenFossilOre(), 1);
             addWorldGenerator(new WorldGenAmberOre(), 2);
         }
-        { /** Other stuff */
+        
+    	/** Other stuff */
+        {
             addGuiHandler(new GuiHandler());
         }
-        { /** Recipes */
+        
+       	/** Recipes */
+        {
             addShapedRecipe(new ItemStack(getBlock(1)), "GGG", "GCG", "III", 'G', Blocks.glass, 'C', new ItemStack(Items.dye, 1, 2), 'I', Items.iron_ingot);
             addShapedRecipe(new ItemStack(getBlock(3)), "IFI", "IFI", 'I', Items.iron_ingot, 'F', getItem(2));
+        }
+        
+        /** Entities */
+        {
+        	int entityId = EntityRegistry.findGlobalUniqueEntityId();
+			EntityRegistry.registerGlobalEntityID(EntityDinoEgg.class, "dino_egg", entityId, 0, 0);
+			EntityRegistry.registerModEntity(EntityDinoEgg.class, "dino_egg", entityId, JurassiCraft.instance, 64, 1, true);
         }
     }
 
@@ -78,7 +104,6 @@ public final class Data extends Util
     {
         { /** Block Renderers */
             addBlockRenderer(TileCultivate.class, new CultivateRenderer());
-            addBlockRenderer(TileEgg.class, new EggRenderer());
         }
         { /** Item Renderers */
             addItemRenderer(Item.getItemFromBlock(getBlock(1)), new CultivateRenderer3D());
