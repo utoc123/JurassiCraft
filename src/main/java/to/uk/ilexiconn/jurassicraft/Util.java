@@ -20,6 +20,7 @@ import to.uk.ilexiconn.jurassicraft.data.entity.JsonEntityParser;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemMeat;
+import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
@@ -165,7 +166,7 @@ public class Util
 		}
 		catch (Exception e)
 		{
-			System.err.println("Failed to register dino!");
+            LogHelper.warn("Failed to register dino!");
 			e.printStackTrace();
 		}
 	}

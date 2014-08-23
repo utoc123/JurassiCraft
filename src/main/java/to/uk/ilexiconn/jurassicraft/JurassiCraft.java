@@ -12,6 +12,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 
 @Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.1.2")
 public class JurassiCraft extends Util
@@ -27,9 +28,11 @@ public class JurassiCraft extends Util
 
         getEntityParser().parseServerEntities();
 
-        for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet()) System.out.println("Added dino " + dino.getKey().dinoName + " with ID " + dino.getKey().id);
+        for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet())
+            LogHelper.info("Added dino " + dino.getKey().dinoName + " with ID " + dino.getKey().id);
 
         isServerInitialized = true;
+        LogHelper.info("PreInitialization complete");
     }
 
     @SideOnly(Side.CLIENT)
