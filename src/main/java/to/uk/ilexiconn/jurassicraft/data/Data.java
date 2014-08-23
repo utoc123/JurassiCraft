@@ -26,6 +26,7 @@ import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -115,7 +116,7 @@ public final class Data extends Util
         
         /** Entity Renderers */
         {
-        	addEntityRenderer(EntityDinoEgg.class, new RenderDinoEgg());
+        	RenderingRegistry.registerEntityRenderingHandler(EntityDinoEgg.class, new RenderDinoEgg());
         }
     }
 }
