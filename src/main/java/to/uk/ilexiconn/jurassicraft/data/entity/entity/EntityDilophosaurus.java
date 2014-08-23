@@ -75,11 +75,6 @@ public class EntityDilophosaurus extends EntityDinosaurMonster
 
         this.field_110191_bu = this.entityToAttack;
 
-        if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0)
-        {
-            this.playSound("mob.zombiepig.zpigangry", this.getSoundVolume() * 2.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 1.8F);
-        }
-
         super.onUpdate();
     }
 
