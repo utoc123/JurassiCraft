@@ -2,9 +2,12 @@ package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
 import java.lang.reflect.InvocationTargetException;
 
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class EntityDinoEgg extends Entity
@@ -12,13 +15,13 @@ public class EntityDinoEgg extends Entity
 	public String dino;
 	public int spawnTime;
 	public int currentSpawnTime;
-	
+
 	public EntityDinoEgg(World world) 
 	{
 		super(world);
 		this.setSize(0.5F, 0.5F);
 	}
-	
+
 	public EntityDinoEgg(World world, String dino, int spawnTime)
 	{
 		this(world);
@@ -31,68 +34,70 @@ public class EntityDinoEgg extends Entity
 		this(world, dino, spawnTime);
 		this.setPosition(x, y, z);
 	}
-	
+
 	public boolean canBePushed()
 	{
 		return true;
 	}
-	
+
 	public boolean canBeCollidedWith()
 	{
-		return true;
+		return false;
 	}
-	
+
 	public void onUpdate()
 	{
 		super.onUpdate();
-		
+
 		currentSpawnTime++;
-		
-		if(!worldObj.isRemote)
+
+		if(currentSpawnTime >= spawnTime)
 		{
-			if(currentSpawnTime >= spawnTime)
+			Class dinoToSpawnClass = Util.getDinoClass(dino);
+
+			try 
 			{
-				Class dinoToSpawnClass = Util.getDinoClass(dino);
-				
-				try 
+				if(!worldObj.isRemote)
 				{
 					Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
 					dinoToSpawn.setPosition(posX, posY, posZ);
+
 					worldObj.spawnEntityInWorld(dinoToSpawn);
-					this.setDead();
-				} 
-				catch (InstantiationException e)
-				{
-					e.printStackTrace();
 				}
-				catch (IllegalAccessException e) 
-				{
-					e.printStackTrace();
-				}
-				catch (IllegalArgumentException e) 
-				{
-					e.printStackTrace();
-				}
-				catch (InvocationTargetException e) 
-				{
-					e.printStackTrace();
-				}
-				catch (NoSuchMethodException e) 
-				{
-					e.printStackTrace();
-				} 
-				catch (SecurityException e) 
-				{
-					e.printStackTrace();
-				}	
+
+				this.setDead();
+			} 
+			catch (InstantiationException e)
+			{
+				e.printStackTrace();
 			}
+			catch (IllegalAccessException e) 
+			{
+				e.printStackTrace();
+			}
+			catch (IllegalArgumentException e) 
+			{
+				e.printStackTrace();
+			}
+			catch (InvocationTargetException e) 
+			{
+				e.printStackTrace();
+			}
+			catch (NoSuchMethodException e) 
+			{
+				e.printStackTrace();
+			} 
+			catch (SecurityException e) 
+			{
+				e.printStackTrace();
+			}	
 		}
 	}
-	
+
 	@Override
 	protected void entityInit()
 	{
-		
+
 	}
 
 	@Override
@@ -109,5 +114,10 @@ public class EntityDinoEgg extends Entity
 		nbt.setInteger("SpawnTime", spawnTime);
 		nbt.setInteger("CurrentSpawnTime", currentSpawnTime);
 		nbt.setString("Dino", dino);
+	}
+
+	public ResourceLocation getTexture() 
+	{
+		return new ResourceLocation(JurassiCraft.getModId() + "textures\\eggs\\egg" + dino + ".png");
 	}
 }

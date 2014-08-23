@@ -14,6 +14,7 @@ import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilClayOre;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilOre;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilSandstoneOre;
 import to.uk.ilexiconn.jurassicraft.data.block.GhostBlock;
+import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemAmber;
@@ -102,11 +103,19 @@ public final class Data extends Util
     @SideOnly(Side.CLIENT)
     public void initClient()
     {
-        { /** Block Renderers */
+    	/** Block Renderers */
+        { 
             addBlockRenderer(TileCultivate.class, new CultivateRenderer());
         }
-        { /** Item Renderers */
+        
+        /** Item Renderers */
+        {
             addItemRenderer(Item.getItemFromBlock(getBlock(1)), new CultivateRenderer3D());
+        }
+        
+        /** Entity Renderers */
+        {
+        	addEntityRenderer(EntityDinoEgg.class, new RenderDinoEgg());
         }
     }
 }
