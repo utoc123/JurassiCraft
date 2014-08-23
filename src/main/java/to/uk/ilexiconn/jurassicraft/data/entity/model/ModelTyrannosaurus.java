@@ -387,9 +387,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
         f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
         float scaleFactor = 0.5F;
         float height = 1.5F * f1;
-        
-        newfaceTarget(Head, 2, f3, f4);
-        newfaceTarget(Neck, 2, f3, f4);
+        faceTarget(Head, 2, f3, f4);
+        faceTarget(Neck, 2, f3, f4);
         newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
         newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
         newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
