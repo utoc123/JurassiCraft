@@ -29,9 +29,13 @@ public class RenderDinoEgg extends Render
 		if(!entity.isDead)
 		{
 			GL11.glPushMatrix();
-			GL11.glTranslatef((float)x, (float)y + 1.5F, (float)z);
+			
+			GL11.glTranslatef((float)x, ((float)y + 1.5F), (float)z);
+			
 			GL11.glRotatef(180.0F - rotationYaw, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(entity.rotationPitch, 1, 0, 0);
 			float f4 = 0.75F;
+			
 			GL11.glScalef(f4, f4, f4);
 			GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 			this.bindEntityTexture(entity);
@@ -40,6 +44,11 @@ public class RenderDinoEgg extends Render
 			if(entity.froze)
 			{
 				GL11.glColor3f(1F, 1F, 2F);
+			}
+			
+			if(entity.dried)
+			{
+				GL11.glColor3f(1.5F, 1.1F, 1F);
 			}
 			
 			this.eggModel.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);

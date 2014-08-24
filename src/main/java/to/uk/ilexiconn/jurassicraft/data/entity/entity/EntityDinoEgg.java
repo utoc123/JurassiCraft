@@ -19,15 +19,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.minecart.MinecartCollisionEvent;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 
 public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 {
 	public String dino;
 	public int spawnTime;
 	public int currentSpawnTime;
-	public boolean isWarm;
 	public boolean froze;
+	public boolean dried;
 
+	public int rockAmount;
+	
 	/**
 	 * Gegy's TODO: CLIENT - SERVER STUFF
 	 * Spawning in wrong place
@@ -130,6 +133,17 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			{
 				froze = true;
 			}
+			
+			if(this.dataWatcher.getWatchableObjectInt(26) == 0)
+			{
+				dried = false;
+			}
+			else
+			{
+				dried = true;
+			}
+			
+			this.currentSpawnTime = this.dataWatcher.getWatchableObjectInt(27);
 		}
 
 		if(!this.onGround)
@@ -157,29 +171,47 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		{
 			int amountToIncrease = 0;
 
-			boolean lightValue = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
+			boolean warm = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
+			boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
 			
-			isWarm = !this.isWet() && lightValue;
-
-			if(isWarm)
+			Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
+			
+			if(dinosaur.isWaterCreature)
 			{
-				if(!froze)
+				if(!isWet())
 				{
-					amountToIncrease = 1;
+					if(overheat)
+					{
+						amountToIncrease = -2;
+					}
+					else
+					{
+						amountToIncrease = -1;
+					}
 				}
 			}
 			else
 			{
-				amountToIncrease = -1;
+				if(warm && !this.isWet())
+				{
+					amountToIncrease = 1;
+				}
 			}
 
 			currentSpawnTime += amountToIncrease;
 
-			if(currentSpawnTime < -10)
+			if(currentSpawnTime < -500)
 			{
-				froze = true;
+				if(dinosaur.isWaterCreature)
+				{
+					dried = true;
+				}
+				else
+				{
+					froze = true;
+				}
 			}
-
+			
 			if(currentSpawnTime >= spawnTime)
 			{
 				Class dinoToSpawnClass = Util.getDinoClass(dino);
@@ -221,9 +253,28 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			}			
 		}
 
+		if(currentSpawnTime < (spawnTime - 100))
+		{
+			if(!this.dried && !this.froze)
+			{
+				if(this.rotationPitch >= 5)
+				{
+					rockAmount = -1;
+				}
+				else if(this.rotationPitch <= -5)
+				{
+					rockAmount = 1;
+				}
+				
+				this.rotationPitch += (rockAmount / 2.0F);
+			}
+		}
+		
 		if(!worldObj.isRemote)
 		{
 			this.dataWatcher.updateObject(25, froze ? 1 : 0);
+			this.dataWatcher.updateObject(26, dried ? 1 : 0);
+			this.dataWatcher.updateObject(27, currentSpawnTime);
 		}
 
 		this.moveEntity(this.motionX, this.motionY, this.motionZ);
@@ -243,6 +294,8 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	protected void entityInit()
 	{
 		this.dataWatcher.addObject(25, 0);
+		this.dataWatcher.addObject(26, 0);
+		this.dataWatcher.addObject(27, rockAmount);
 	}
 
 	@Override
@@ -252,6 +305,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		this.currentSpawnTime = nbt.getInteger("CurrentSpawnTime");
 		this.dino = nbt.getString("Dino");
 		this.froze = nbt.getBoolean("Froze");
+		this.dried = nbt.getBoolean("Dried");
 	}
 
 	@Override
@@ -261,6 +315,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		nbt.setInteger("CurrentSpawnTime", currentSpawnTime);
 		nbt.setString("Dino", dino);
 		nbt.setBoolean("Froze", froze);
+		nbt.setBoolean("Dried", dried);
 	}
 
 	public ResourceLocation getTexture() 

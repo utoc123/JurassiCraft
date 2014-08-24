@@ -14,4 +14,5 @@ public class Dinosaur
     public String livingSound2;
     public String hurtSound;
     public String deathSound;
+    public boolean isWaterCreature;
 }

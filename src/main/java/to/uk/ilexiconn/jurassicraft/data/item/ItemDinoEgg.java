@@ -29,7 +29,7 @@ public class ItemDinoEgg extends Item
     {
     	if(!world.isRemote)
     	{
-        	world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, 1024, x, y+1, z));
+        	world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, 2048, x, y+1, z));
     	}
     	
         return true;
