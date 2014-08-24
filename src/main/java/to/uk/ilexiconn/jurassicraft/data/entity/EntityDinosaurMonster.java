@@ -86,6 +86,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 	/**
 	 * Returns the amount of damage a mob should deal.
 	 */
+
 	public int getAttackStrength(Entity par1Entity)
 	{
 		Dinosaur dinoByID = Util.getDinoByID(dinoID);

@@ -49,6 +49,11 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.experienceValue = 1000;   
         texid = rand.nextInt(2);
     }
+    
+	public int getAttackStrength(Entity par1Entity)
+	{
+		return 90;
+	}
 
     public void onLivingUpdate()
     {
