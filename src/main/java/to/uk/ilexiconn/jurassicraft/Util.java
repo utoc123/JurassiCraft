@@ -239,4 +239,17 @@ public class Util
 		
 		return null;
 	}
+	
+	public static int getDinoIDByName(String name) 
+	{
+		for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
+		{
+			if(dino.getKey().dinoName.equals(name))
+			{
+				return dino.getKey().id;
+			}
+		}
+		
+		return -1;
+	}
 }

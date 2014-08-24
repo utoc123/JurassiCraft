@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 
@@ -16,6 +17,7 @@ public class ItemDinoEgg extends Item
 		super();
 		this.setUnlocalizedName("egg_" + dinoName);
 		this.setTextureName(Util.getModId() + ":egg_" + dinoName);
+		this.setCreativeTab(JurassiCraft.getCreativeTab(0));
 		this.dinoName = dinoName;
 	}
 	
@@ -25,7 +27,10 @@ public class ItemDinoEgg extends Item
      */
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ)
     {
-    	world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, 1024, x, y+1, z));
+    	if(!world.isRemote)
+    	{
+        	world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, 1024, x, y+1, z));
+    	}
     	
         return true;
     }

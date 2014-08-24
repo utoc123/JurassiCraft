@@ -37,6 +37,11 @@ public class RenderDinoEgg extends Render
 			this.bindEntityTexture(entity);
 			GL11.glScalef(-1.0F, -1.0F, 1.0F);
 			
+			if(entity.froze)
+			{
+				GL11.glColor3f(1F, 1F, 2F);
+			}
+			
 			this.eggModel.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
 		}
