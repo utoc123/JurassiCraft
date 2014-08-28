@@ -2,6 +2,8 @@ package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
 import java.util.List;
 
+import thehippomaster.AnimationAPI.AnimationAPI;
+import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 import to.uk.ilexiconn.jurassicraft.data.entity.model.MowzieModelRenderer;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
@@ -34,7 +36,8 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         super(par1World, 6);
         float moveSpeed = 1.3F;
         this.setSize(5F, 6F);
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.2F, false));
+        tasks.addTask(2, new AITyrannosaurusRoar(this));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.2F, false));
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -84,11 +87,12 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
+    	if(animID == 0) AnimationAPI.sendAnimPacket(this, 1);
     		int I = rand.nextInt(3)+1;
     		if(I == 1)
     		{
     	        this.playSound("jurassicraft:trex1", 5.0F, 1.0F);
-        		roarCount.thereAndBack(0F, 0.1F, 1, 40);
+//        		roarCount.thereAndBack(0F, 0.1F, 1, 40);
     	        return null;
     		}
     		else if(I == 2)

@@ -8,7 +8,10 @@ import net.minecraftforge.event.world.WorldEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityTyrannosaurus;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
@@ -50,6 +53,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
     
     public ModelTyrannosaurus()
     {
+    	animator = new Animator(this);
+    	
         textureWidth = 256;
         textureHeight = 256;
 
@@ -300,8 +305,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-
+        animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
         if (isChild)
         {
             float var8 = 2.0F;
@@ -429,5 +433,48 @@ public class ModelTyrannosaurus extends MowzieModelBase
 	    Head.rotateAngleX -= trex.roarCount.value*0.7;
 	    Head.rotationPointZ += trex.roarCount.value*0.7;
 	    Lower_Jaw.rotateAngleX += trex.roarCount.value*0.5;
+    }
+    
+    public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		animator.update(entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		EntityTyrannosaurus trex = (EntityTyrannosaurus) entity;
+		
+		animator.setAnim(1);
+		animator.startPhase(15);
+			animator.move(Body_1, 0, -3, -5);
+			animator.move(Right_Thigh, 0, -3, -5);
+			animator.move(Left_Thigh, 0, -3, -5);
+			animator.rotate(Body_1, -0.3F, 0, 0);
+			animator.rotate(Head, 0.3F, 0, 0);
+			animator.rotate(Right_Thigh, 0.3F, 0, 0);
+			animator.rotate(Right_Calf_1, -0.4F, 0, 0);
+			animator.rotate(Right_Calf_2, 0.4F, 0, 0);
+			animator.rotate(Foot_Right, -0.3F, 0, 0);
+			animator.rotate(Left_Thigh, -0.7F, 0, 0);
+			animator.rotate(Left_Calf_1, 0.7F, 0, 0);
+			animator.rotate(Left_Calf_2, -0.5F, 0, 0);
+			animator.rotate(Foot_Left, 0.7F, 0, 0);
+		animator.endPhase();
+		animator.startPhase(10);
+			animator.move(Body_1, 0, 3, -10);
+			animator.move(Right_Thigh, 0, 3, -10);
+			animator.move(Left_Thigh, 0, 3, -10);
+			animator.move(Head, 0, 1, 2);
+			animator.rotate(Body_1, 0.2F, 0, 0);
+			animator.rotate(Neck, 0.5F, 0, 0);
+			animator.rotate(Head, -0.9F, 0, 0);
+			animator.rotate(Lower_Jaw, 0.9F, 0, 0);
+			animator.rotate(Right_Thigh, 0.6F, 0, 0);
+			animator.rotate(Right_Calf_1, 0.2F, 0, 0);
+			animator.rotate(Right_Calf_2, -0.4F, 0, 0);
+			animator.rotate(Foot_Right, -0.4F, 0, 0);
+			animator.rotate(Left_Thigh, -0.3F, 0, 0);
+			animator.rotate(Left_Calf_1, 0.2F, 0, 0);
+			animator.rotate(Left_Calf_2, -0.2F, 0, 0);
+			animator.rotate(Foot_Left, 0.3F, 0, 0);
+		animator.endPhase();
+		animator.setStationaryPhase(35);
+		animator.resetPhase(15);
     }
 }

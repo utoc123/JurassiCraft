@@ -13,7 +13,7 @@ private EntityTyrannosaurus entityTrex;
 	}
 	
 	public int getAnimID() {
-		return 2;
+		return 1;
 	}
 	
 	public boolean isAutomatic() {
@@ -21,6 +21,6 @@ private EntityTyrannosaurus entityTrex;
 	}
 	
 	public int getDuration() {
-		return 40;
+		return 80;
 	}
 }
