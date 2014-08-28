@@ -429,6 +429,10 @@ public class ModelTyrannosaurus extends MowzieModelBase
 		newtailSwing(tailParts, 0.1F, 0.05F, 1, trex.frame);
 	    newchainWave(tailParts, 0.1F, -0.05F, 2, trex.frame, 1F);
 	    
+	    //Specialized animations
+	    Head.rotateAngleZ += Math.cos(trex.frame/3)*trex.roarTiltDegree.value/3;
+	    Lower_Jaw.rotateAngleX += Math.cos(trex.frame)*trex.roarTiltDegree.value/7;
+	    
 	    Neck.rotateAngleX += trex.roarCount.value*0.4;
 	    Head.rotateAngleX -= trex.roarCount.value*0.7;
 	    Head.rotationPointZ += trex.roarCount.value*0.7;
@@ -461,6 +465,7 @@ public class ModelTyrannosaurus extends MowzieModelBase
 			animator.move(Right_Thigh, 0, 3, -10);
 			animator.move(Left_Thigh, 0, 3, -10);
 			animator.move(Head, 0, 1, 2);
+			animator.move(Lower_Jaw, 0, 0, 1);
 			animator.rotate(Body_1, 0.2F, 0, 0);
 			animator.rotate(Neck, 0.5F, 0, 0);
 			animator.rotate(Head, -0.9F, 0, 0);

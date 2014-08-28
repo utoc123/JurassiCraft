@@ -30,6 +30,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
 	private int stepCount = 0;
 	private float shakeCount = 0;
 	public ControlledParam roarCount = new ControlledParam(0F, 0F, 0.5F, 0F);
+	public ControlledParam roarTiltDegree = new ControlledParam(0F, 0F, 1F, 0F);
 
     public EntityTyrannosaurus(World par1World)
     {
@@ -47,8 +48,8 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
         this.experienceValue = 1000;   
         texid = rand.nextInt(2);
     }
@@ -61,7 +62,6 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        roarCount.update();
         if (this.moveForward != 0 && stepCount == 0) {
     		this.playSound("jurassicraft:footstep", 5.0F, 1.0F);
     		Entity target = this.getAttackTarget();
@@ -87,12 +87,17 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
 //    	if(isRoaring == false){
  //   		isRoaring = true;
-    	if(animID == 0) AnimationAPI.sendAnimPacket(this, 1);
     		int I = rand.nextInt(3)+1;
     		if(I == 1)
     		{
     	        this.playSound("jurassicraft:trex1", 5.0F, 1.0F);
-//        		roarCount.thereAndBack(0F, 0.1F, 1, 40);
+    	        if(animID == 0 && this.getAttackTarget() == null) {
+    	        	AnimationAPI.sendAnimPacket(this, 1);
+    	        }
+ /*   	        else if(this.getAttackTarget() != null) {
+            		roarCount.thereAndBack(0F, 0.1F, 1, 40);
+            		System.out.println("Called");
+    	        }*/
     	        return null;
     		}
     		else if(I == 2)
@@ -124,4 +129,12 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     {
         return new EntityTyrannosaurus(this.worldObj);
     }
+    
+	public void onUpdate()
+	{
+		super.onUpdate();
+        roarCount.update();
+        roarTiltDegree.update();
+		if(animID == 1 && animTick == 22) this.roarTiltDegree.thereAndBack(0F, 0.1F, 1F, 20);
+	}
 }
