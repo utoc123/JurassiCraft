@@ -15,6 +15,8 @@ public class ModelTyrannosaurus extends MowzieModelBase
 {
 	int mouthCounter = 0;
 	
+	private Animator animator;
+	
     MowzieModelRenderer Left_Calf_1;
     MowzieModelRenderer Right_Calf_1;
     MowzieModelRenderer Left_Thigh;
