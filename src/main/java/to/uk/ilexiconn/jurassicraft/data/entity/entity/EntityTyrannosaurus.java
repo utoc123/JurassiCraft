@@ -94,9 +94,9 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
     	        if(animID == 0 && this.getAttackTarget() == null) {
     	        	AnimationAPI.sendAnimPacket(this, 1);
     	        }
- /*   	        else if(this.getAttackTarget() != null) {
+  /*  	        else if(this.getAttackTarget() != null) {
             		roarCount.thereAndBack(0F, 0.1F, 1, 40);
-            		System.out.println("Called");
+            		System.out.println(roarCount.change);
     	        }*/
     	        return null;
     		}

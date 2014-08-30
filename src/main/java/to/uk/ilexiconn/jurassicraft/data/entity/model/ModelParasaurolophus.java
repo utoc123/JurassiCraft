@@ -264,6 +264,25 @@ public class ModelParasaurolophus extends MowzieModelBase
       addChildTo(Crest_2, Head);
       addChildTo(Crest_3, Head);
       
+      addChildTo(Head, Neck);
+      addChildTo(Neck, Body_2);
+      addChildTo(Body_2, Body_1);
+      addChildTo(Body_1, Body_3);
+      
+      addChildTo(Tail_6, Tail_5);
+      addChildTo(Tail_5, Tail_4);
+      addChildTo(Tail_4, Tail_3);
+      addChildTo(Tail_3, Tail_2);
+      addChildTo(Tail_2, Tail_1);
+      addChildTo(Tail_1, Body_3);
+      
+      addChildTo(Left_Hand, Lower_Arm_Left);
+      addChildTo(Lower_Arm_Left, Upper_Arm_Left);
+      addChildTo(Upper_Arm_Left, Body_1);
+      addChildTo(Right_Hand, Lower_Arm_Right);
+      addChildTo(Lower_Arm_Right, Upper_Arm_Right);
+      addChildTo(Upper_Arm_Right, Body_1);
+      
       addChildTo(Foot_Right, Right_Lower_Foot);
       addChildTo(Right_Lower_Foot, Right_Upper_Foot);
       addChildTo(Right_Upper_Foot, Right_Calf_1);
@@ -278,6 +297,9 @@ public class ModelParasaurolophus extends MowzieModelBase
       Crest_3.setRotationPoint(0, Crest_3.rotationPointY, 6);
       Crest_3.offsetY -= 0.19F;
       Crest_3.offsetZ -= 0.35F;
+      Head.rotationPointY -= 2;
+      Head.rotationPointZ += 2;
+      Neck.setRotationPoint(0, -4, -3);
       
       Left_Lower_Foot.setInitValuesToCurrentPose();
       Left_Upper_Foot.setInitValuesToCurrentPose();
@@ -331,22 +353,22 @@ public class ModelParasaurolophus extends MowzieModelBase
 //    Right_Calf_1.render(f5);
     Left_Thigh.render(f5);
     Right_Thigh.render(f5);
-    Body_1.render(f5);
-    Body_2.render(f5);
-    Neck.render(f5);
-    Tail_1.render(f5);
+//    Body_1.render(f5);
+//    Body_2.render(f5);
+//    Neck.render(f5);
+/*    Tail_1.render(f5);
     Tail_2.render(f5);
     Tail_3.render(f5);
     Tail_4.render(f5);
-    Tail_5.render(f5);
-    Upper_Arm_Right.render(f5);
+    Tail_5.render(f5);*/
+/*    Upper_Arm_Right.render(f5);
     Upper_Arm_Left.render(f5);
     Lower_Arm_Left.render(f5);
     Lower_Arm_Right.render(f5);
     Left_Hand.render(f5);
-    Right_Hand.render(f5);
-    Tail_6.render(f5);
-    Head.render(f5);
+    Right_Hand.render(f5);*/
+//    Tail_6.render(f5);
+//    Head.render(f5);
 //    Snout_1.render(f5);
 //    Snout_2.render(f5);
 //    Jaw.render(f5);
@@ -354,8 +376,8 @@ public class ModelParasaurolophus extends MowzieModelBase
 //    Crest_2.render(f5);
 //    Crest_3.render(f5);
     Body_3.render(f5);
-    Foot_Left.render(f5);
-    Foot_Right.render(f5);
+//    Foot_Left.render(f5);
+//    Foot_Right.render(f5);
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -372,5 +394,4 @@ public class ModelParasaurolophus extends MowzieModelBase
     walk(Right_Thigh, 0.5F, 0.5F, false, 0F, f, f1);
     walk(Left_Thigh, 0.5F, 0.5F, true, 0F, f, f1);
   }
-
 }
