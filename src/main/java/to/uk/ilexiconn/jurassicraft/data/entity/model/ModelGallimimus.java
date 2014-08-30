@@ -64,42 +64,36 @@ public class ModelGallimimus extends MowzieModelBase
     Left_Upper_Foot.setTextureSize(256, 256);
     Left_Upper_Foot.mirror = true;
     setRotation(Left_Upper_Foot, 0F, 1.570796F, 0.9599311F);
-    Right_Upper_Foot.mirror = true;
     Right_Upper_Foot = new MowzieModelRenderer(this, 81, 0);
     Right_Upper_Foot.addBox(0F, 0F, -1F, 7, 2, 2);
     Right_Upper_Foot.setRotationPoint(-5.1F, 17F, 8.1F);
     Right_Upper_Foot.setTextureSize(256, 256);
     Right_Upper_Foot.mirror = true;
     setRotation(Right_Upper_Foot, 0F, 1.570796F, 0.9599311F);
-    Right_Upper_Foot.mirror = false;
     Left_Calf_1 = new MowzieModelRenderer(this, 65, 0);
     Left_Calf_1.addBox(-1.5F, 0F, 0F, 3, 10, 3);
     Left_Calf_1.setRotationPoint(5F, 12.5F, 2F);
     Left_Calf_1.setTextureSize(256, 256);
     Left_Calf_1.mirror = true;
     setRotation(Left_Calf_1, 0.7238469F, 0F, 0F);
-    Right_Calf_1.mirror = true;
     Right_Calf_1 = new MowzieModelRenderer(this, 65, 0);
     Right_Calf_1.addBox(-1.5F, 0F, 0F, 3, 10, 3);
     Right_Calf_1.setRotationPoint(-5F, 12.5F, 2F);
     Right_Calf_1.setTextureSize(256, 256);
     Right_Calf_1.mirror = true;
     setRotation(Right_Calf_1, 0.7238469F, 0F, 0.0174533F);
-    Right_Calf_1.mirror = false;
     Left_Thigh = new MowzieModelRenderer(this, 27, 57);
     Left_Thigh.addBox(0F, 0F, -10F, 4, 4, 11);
     Left_Thigh.setRotationPoint(3F, 4F, 6F);
     Left_Thigh.setTextureSize(256, 256);
     Left_Thigh.mirror = true;
     setRotation(Left_Thigh, 1.029744F, 0F, 0F);
-    Right_Thigh.mirror = true;
     Right_Thigh = new MowzieModelRenderer(this, 27, 57);
     Right_Thigh.addBox(-4F, 0F, -10F, 4, 4, 11);
     Right_Thigh.setRotationPoint(-3F, 4F, 6F);
     Right_Thigh.setTextureSize(256, 256);
     Right_Thigh.mirror = true;
     setRotation(Right_Thigh, 1.029744F, 0F, 0F);
-    Right_Thigh.mirror = false;
     Body_1 = new MowzieModelRenderer(this, 118, 0);
     Body_1.addBox(-3.5F, -2F, -9F, 7, 8, 12);
     Body_1.setRotationPoint(0F, 3.6F, 7F);
@@ -160,14 +154,12 @@ public class ModelGallimimus extends MowzieModelBase
     Tail_5.setTextureSize(256, 256);
     Tail_5.mirror = true;
     setRotation(Tail_5, 0.0500879F, 0F, 0F);
-    Upper_Arm_Right.mirror = true;
     Upper_Arm_Right = new MowzieModelRenderer(this, 0, 56);
     Upper_Arm_Right.addBox(-2F, 0F, 0F, 2, 2, 5);
     Upper_Arm_Right.setRotationPoint(-3F, 5F, -4F);
     Upper_Arm_Right.setTextureSize(256, 256);
     Upper_Arm_Right.mirror = true;
     setRotation(Upper_Arm_Right, -1.22173F, 0F, 0F);
-    Upper_Arm_Right.mirror = false;
     Upper_Arm_Left = new MowzieModelRenderer(this, 0, 56);
     Upper_Arm_Left.addBox(0F, 0F, 0F, 2, 2, 5);
     Upper_Arm_Left.setRotationPoint(3F, 5F, -4F);
@@ -180,28 +172,24 @@ public class ModelGallimimus extends MowzieModelBase
     Lower_Arm_Left.setTextureSize(256, 256);
     Lower_Arm_Left.mirror = true;
     setRotation(Lower_Arm_Left, -0.6320364F, 0F, 0F);
-    Lower_Arm_Right.mirror = true;
     Lower_Arm_Right = new MowzieModelRenderer(this, 0, 68);
     Lower_Arm_Right.addBox(-1F, 0F, 0F, 1, 5, 1);
     Lower_Arm_Right.setRotationPoint(-3.5F, 9F, -3.5F);
     Lower_Arm_Right.setTextureSize(256, 256);
     Lower_Arm_Right.mirror = true;
     setRotation(Lower_Arm_Right, -0.6320364F, 0F, 0F);
-    Lower_Arm_Right.mirror = false;
     Hand_Left = new MowzieModelRenderer(this, 81, 54);
     Hand_Left.addBox(0F, 0F, 0F, 2, 1, 2);
     Hand_Left.setRotationPoint(3.5F, 13F, -7F);
     Hand_Left.setTextureSize(256, 256);
     Hand_Left.mirror = true;
     setRotation(Hand_Left, 0F, 1.169274F, 1.673038F);
-    Hand_Right.mirror = true;
     Hand_Right = new MowzieModelRenderer(this, 81, 54);
     Hand_Right.addBox(0F, 0F, 0F, 2, 1, 2);
     Hand_Right.setRotationPoint(-3F, 13F, -6F);
     Hand_Right.setTextureSize(256, 256);
     Hand_Right.mirror = true;
     setRotation(Hand_Right, 0F, -1.169266F, 1.673038F);
-    Hand_Right.mirror = false;
     Hand_Left_Claw_Left = new MowzieModelRenderer(this, 81, 45);
     Hand_Left_Claw_Left.addBox(0F, 0F, 0F, 2, 1, 1);
     Hand_Left_Claw_Left.setRotationPoint(4F, 14F, -5.4F);
@@ -244,14 +232,12 @@ public class ModelGallimimus extends MowzieModelBase
     Foot_Left.setTextureSize(256, 256);
     Foot_Left.mirror = true;
     setRotation(Foot_Left, 0F, 0F, 0F);
-    Foot_Right.mirror = true;
     Foot_Right = new MowzieModelRenderer(this, 0, 0);
     Foot_Right.addBox(-1.5F, 0F, -3F, 3, 2, 5);
     Foot_Right.setRotationPoint(-5.1F, 22F, 5.5F);
     Foot_Right.setTextureSize(256, 256);
     Foot_Right.mirror = true;
     setRotation(Foot_Right, 0F, 0F, 0F);
-    Foot_Right.mirror = false;
     Neck_1 = new MowzieModelRenderer(this, 182, 38);
     Neck_1.addBox(-2F, 0F, -7F, 4, 4, 8);
     Neck_1.setRotationPoint(0F, 2.6F, -3F);
@@ -324,7 +310,7 @@ public class ModelGallimimus extends MowzieModelBase
        Neck_4.setInitValuesToCurrentPose();
        Neck_5.setInitValuesToCurrentPose();
        
-       System.out.println("Model was constructed");
+      // System.out.println("Model was constructed");
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -366,7 +352,7 @@ public class ModelGallimimus extends MowzieModelBase
     Neck_3.render(f5);
     Neck_4.render(f5);
     Neck_5.render(f5);
-    System.out.println("rendered");
+   // System.out.println("rendered");
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)

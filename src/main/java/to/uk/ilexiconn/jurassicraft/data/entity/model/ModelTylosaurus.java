@@ -356,14 +356,12 @@ public class ModelTylosaurus extends MowzieModelBase
       Knob_27.setTextureSize(256, 128);
       Knob_27.mirror = false;
       setRotation(Knob_27, 0.5356765F, 0F, 0F);
-      Knob_28.mirror = false;
       Knob_28 = new MowzieModelRenderer(this, 36, 4);
       Knob_28.addBox(-0.5F, 0F, 0F, 1, 2, 1);
       Knob_28.setRotationPoint(0F, 19.6F, 48F);
       Knob_28.setTextureSize(256, 128);
       Knob_28.mirror = false;
       setRotation(Knob_28, 0.5356765F, 0F, 0F);
-      Knob_28.mirror = false;
       Knob_29 = new MowzieModelRenderer(this, 36, 4);
       Knob_29.addBox(-0.5F, 0F, 0F, 1, 2, 1);
       Knob_29.setRotationPoint(0F, 19.2F, 50F);
