@@ -55,8 +55,8 @@ public class ModelGallimimus extends MowzieModelBase
   
   public ModelGallimimus()
   {
-    textureWidth = 64;
-    textureHeight = 32;
+    textureWidth = 256;
+    textureHeight = 256;
     
     Left_Upper_Foot = new MowzieModelRenderer(this, 81, 0);
     Left_Upper_Foot.addBox(0F, 0F, -1F, 7, 2, 2);
