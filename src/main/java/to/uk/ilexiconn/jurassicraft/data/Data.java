@@ -96,7 +96,6 @@ public final class Data extends Util
         /** Entities */
         {
         	int entityId = EntityRegistry.findGlobalUniqueEntityId();
-			EntityRegistry.registerGlobalEntityID(EntityDinoEgg.class, "dino_egg", entityId, 0, 0);
 			EntityRegistry.registerModEntity(EntityDinoEgg.class, "dino_egg", entityId, JurassiCraft.instance, 64, 1, true);
         }
     }
