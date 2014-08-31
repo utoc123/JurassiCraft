@@ -196,6 +196,17 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 				{
 					amountToIncrease = 1;
 				}
+				else
+				{
+					if(!warm && this.isWet())
+					{
+						amountToIncrease = -2;
+					}
+					else
+					{
+						amountToIncrease = -1;
+					}
+				}
 			}
 
 			currentSpawnTime += amountToIncrease;
