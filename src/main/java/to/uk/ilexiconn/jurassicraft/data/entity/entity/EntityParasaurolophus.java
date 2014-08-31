@@ -1,6 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
+import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,8 @@ import net.minecraft.world.World;
 public class EntityParasaurolophus extends EntityDinosaurCreature
 {
 	public int texid;
-
+	public ControlledParam walkLean = new ControlledParam(0, 0, (float) Math.PI/2, 0);
+	
     public EntityParasaurolophus(World world)
     {
         super(world, 11);
@@ -19,9 +21,9 @@ public class EntityParasaurolophus extends EntityDinosaurCreature
         tasks.addTask(2, new EntityAIMate(this, 1.0D));
         tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
         tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        tasks.addTask(7, new EntityAILookIdle(this));
+//        tasks.addTask(5, new EntityAIWander(this, 1.0D));
+//        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+//        tasks.addTask(7, new EntityAILookIdle(this));
         texid = rand.nextInt(2);
 
     }
