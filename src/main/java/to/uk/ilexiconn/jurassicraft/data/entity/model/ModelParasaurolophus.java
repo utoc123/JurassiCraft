@@ -438,7 +438,7 @@ public class ModelParasaurolophus extends MowzieModelBase
     f1 = (float) Math.cos(f/20)*0.25F + 0.5F;*/
     float scaleFactor = 0.6F;
     float height = 2F;
-    float allFoursLean = (float) (Math.pow(f1, 1/(f1*10))/2);
+    float allFoursLean = (float) (Math.pow(f1, 1/(f1*10))/4);
     newfaceTarget(Head, 2, f3, f4);
     newfaceTarget(Neck, 2, f3, f4);
     
@@ -455,10 +455,10 @@ public class ModelParasaurolophus extends MowzieModelBase
     Tail_6.rotateAngleX -= 1 * allFoursLean/7;
     Upper_Arm_Left.rotateAngleX -= allFoursLean;
     Upper_Arm_Right.rotateAngleX -= allFoursLean;
-    Upper_Arm_Left.rotationPointY += allFoursLean*3;
-    Upper_Arm_Left.rotationPointZ -= allFoursLean*3;
-    Upper_Arm_Right.rotationPointY += allFoursLean*3;
-    Upper_Arm_Right.rotationPointZ -= allFoursLean*3;
+    Upper_Arm_Left.rotationPointY += allFoursLean*10;
+    Upper_Arm_Left.rotationPointZ -= allFoursLean*10;
+    Upper_Arm_Right.rotationPointY += allFoursLean*10;
+    Upper_Arm_Right.rotationPointZ -= allFoursLean*10;
     
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
     MowzieModelRenderer[] bodyParts = {this.Body_3, this.Body_1, this.Body_2, this.Neck, this.Head};
@@ -490,5 +490,18 @@ public class ModelParasaurolophus extends MowzieModelBase
     
     newchainWave(tailParts, 1F * scaleFactor, -0.1F, 2, f, f1);
     newtailSwing(tailParts, 0.5F * scaleFactor, 0.1F * f1, 2, f);
+    
+    //Idle
+    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, para.frame, 1F);
+    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, para.frame, 1F);
+    newwalk(Body_3, 0.1F, 0.04F, false, 0F, 0F, para.frame, 1F);
+    newwalk(Upper_Arm_Right, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F);
+    newwalk(Upper_Arm_Left, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F); 
+    newwalk(Lower_Arm_Right, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
+    newwalk(Lower_Arm_Left, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
+    newwalk(Right_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
+    newwalk(Left_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
+    
+    newchainWave(tailParts, 0.1F, -0.05F, 2, para.frame, 1F);
     }
 }
