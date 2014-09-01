@@ -21,9 +21,9 @@ public class EntityParasaurolophus extends EntityDinosaurCreature
         tasks.addTask(2, new EntityAIMate(this, 1.0D));
         tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
         tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-//        tasks.addTask(5, new EntityAIWander(this, 1.0D));
-//        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-//        tasks.addTask(7, new EntityAILookIdle(this));
+       tasks.addTask(5, new EntityAIWander(this, 1.0D));
+        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        tasks.addTask(7, new EntityAILookIdle(this));
         texid = rand.nextInt(2);
 
     }
@@ -31,5 +31,12 @@ public class EntityParasaurolophus extends EntityDinosaurCreature
     public EntityParasaurolophus createChild(EntityAgeable entity)
     {
         return new EntityParasaurolophus(worldObj);
+    }
+    
+    public void onUpdate() {
+    	super.onUpdate();
+    	if (this.moveForward != 0) walkLean.change = 0.1F;
+    	if (this.moveForward == 0) walkLean.change = -0.1F;
+    	walkLean.update();
     }
 }
