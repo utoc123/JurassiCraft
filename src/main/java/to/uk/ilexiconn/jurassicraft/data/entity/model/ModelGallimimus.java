@@ -184,7 +184,6 @@ public class ModelGallimimus extends MowzieModelBase
     Foot_Left.setTextureSize(256, 256);
     Foot_Left.mirror = false;
     setRotation(Foot_Left, 0F, 0F, 0F);
-    Foot_Right.mirror = false;
     Foot_Right = new MowzieModelRenderer(this, 0, 0);
     Foot_Right.addBox(-1.5F, 0F, -3F, 3, 2, 5);
     Foot_Right.setRotationPoint(-5.1F, 22F, 5.5F);
