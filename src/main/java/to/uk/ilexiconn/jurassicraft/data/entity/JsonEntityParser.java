@@ -2,11 +2,9 @@ package to.uk.ilexiconn.jurassicraft.data.entity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import to.uk.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -59,7 +57,7 @@ public class JsonEntityParser extends Util
         {
             File tempFile = File.createTempFile("dinos", ".json");
             tempFile.deleteOnExit();
-            InputStream in = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation(Util.getModId() + "dinos.json")).getInputStream();
+            InputStream in = JsonEntityParser.class.getResourceAsStream("dinos.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return  tempFile;
