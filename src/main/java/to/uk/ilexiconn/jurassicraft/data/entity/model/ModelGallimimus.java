@@ -271,11 +271,24 @@ public class ModelGallimimus extends MowzieModelBase
     Hand_Right_Claw_Middle.mirror = false;
     setRotation(Hand_Right_Claw_Middle, -0.5917596F, 2.089648F, 0F);
       
- //     addChildTo(Foot, Calf);
- //     addChildTo(Calf, Thigh2);
- //     addChildTo(Foot2, Calf2);
- //     addChildTo(Calf2, Thigh);
+    addChildTo(Lower_Jaw, Head);
+    addChildTo(Upper_Jaw, Head);
+    addChildTo(Head, Neck_5);
+    addChildTo(Neck_5, Neck_4);
+    addChildTo(Neck_4, Neck_3);
+    addChildTo(Neck_3, Neck_2);
+    addChildTo(Neck_2, Neck_1);
+    addChildTo(Neck_1, Body_2);
+    addChildTo(Body_2, Body_1);
       
+    //Corrections
+    Head.setRotationPoint(0, -1, -3);
+    Neck_5.setRotationPoint(0, 0, -2);
+    Neck_4.setRotationPoint(0, 0, -3);
+    Neck_3.setRotationPoint(0, 0, -3);
+    Neck_2.setRotationPoint(0, 0.5F, -6);
+    Body_2.setRotationPoint(0, -1, -6F);
+    
       Left_Upper_Foot.setInitValuesToCurrentPose();
       Right_Upper_Foot.setInitValuesToCurrentPose();
        Left_Calf_1.setInitValuesToCurrentPose();
@@ -311,8 +324,6 @@ public class ModelGallimimus extends MowzieModelBase
        Neck_3.setInitValuesToCurrentPose();
        Neck_4.setInitValuesToCurrentPose();
        Neck_5.setInitValuesToCurrentPose();
-       
-      // System.out.println("Model was constructed");
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -326,10 +337,10 @@ public class ModelGallimimus extends MowzieModelBase
     Left_Thigh.render(f5);
     Right_Thigh.render(f5);
     Body_1.render(f5);
-    Body_2.render(f5);
-    Head.render(f5);
-    Upper_Jaw.render(f5);
-    Lower_Jaw.render(f5);
+//    Body_2.render(f5);
+//    Head.render(f5);
+//    Upper_Jaw.render(f5);
+//    Lower_Jaw.render(f5);
     Tail_1.render(f5);
     Tail_2.render(f5);
     Tail_3.render(f5);
@@ -349,12 +360,11 @@ public class ModelGallimimus extends MowzieModelBase
     Hand_Right_Claw_Middle.render(f5);
     Foot_Left.render(f5);
     Foot_Right.render(f5);
-    Neck_1.render(f5);
-    Neck_2.render(f5);
-    Neck_3.render(f5);
-    Neck_4.render(f5);
-    Neck_5.render(f5);
-   // System.out.println("rendered");
+//    Neck_1.render(f5);
+//    Neck_2.render(f5);
+//    Neck_3.render(f5);
+//    Neck_4.render(f5);
+//    Neck_5.render(f5);
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)

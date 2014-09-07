@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
+import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 import net.minecraft.entity.EntityAgeable;
@@ -31,6 +32,12 @@ public class EntityParasaurolophus extends EntityDinosaurCreature
     public EntityParasaurolophus createChild(EntityAgeable entity)
     {
         return new EntityParasaurolophus(worldObj);
+    }
+    
+    public String getLivingSound()
+    {
+    	        this.playSound("jurassicraft:ParaTrumpet01", 8.0F, 1.0F);
+    	        return null;
     }
     
     public void onUpdate() {

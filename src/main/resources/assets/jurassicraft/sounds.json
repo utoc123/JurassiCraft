@@ -44,5 +44,6 @@
        "hypsi4": {"category": "master","sounds": [{"name": "hypsi4","stream": false}]},
        "ovi1": {"category": "master","sounds": [{"name": "ovi1","stream": false}]},
        "ovi2": {"category": "master","sounds": [{"name": "ovi2","stream": false}]},
-       "ovi3": {"category": "master","sounds": [{"name": "ovi3","stream": false}]}
+       "ovi3": {"category": "master","sounds": [{"name": "ovi3","stream": false}]},
+       "Paratrumpet01": {"category": "master","sounds": [{"name": "Paratrumpet01","stream": false}]}
 }
