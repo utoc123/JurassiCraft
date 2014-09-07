@@ -11,9 +11,10 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityMeganeura;
 
 public class ModelMeganeura extends MowzieModelBase

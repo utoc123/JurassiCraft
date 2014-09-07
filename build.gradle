@@ -22,7 +22,7 @@ buildscript
 
 apply plugin: 'forge'
 
-version = "1.2.3"
+version = "1.2.4"
 group= "to.uk.ilexiconn.jurassicraft"
 archivesBaseName = "JurassiCraft"
 libsDirName = '../target'
@@ -31,6 +31,20 @@ minecraft
 {
     version = "1.7.10-10.13.0.1180"
     runDir = "minecraft"
+}
+
+repositories
+{
+    maven
+    {
+        name = "ilexiconn"
+        url = "http://ilexiconn.uk.to/maven/"
+    }
+}
+
+dependencies
+{
+    compile 'ilexiconn:LLib:1.7.10-0.1.0-7:dev'
 }
 
 processResources

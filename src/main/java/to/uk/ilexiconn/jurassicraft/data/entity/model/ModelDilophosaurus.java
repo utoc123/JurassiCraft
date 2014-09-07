@@ -1,9 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDilophosaurus;
 
 public class ModelDilophosaurus extends MowzieModelBase

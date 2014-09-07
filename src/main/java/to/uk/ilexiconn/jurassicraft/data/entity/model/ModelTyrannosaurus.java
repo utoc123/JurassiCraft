@@ -2,16 +2,13 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.world.World;
-import net.minecraftforge.event.world.WorldEvent;
-
 import org.lwjgl.opengl.GL11;
-
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityTyrannosaurus;
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
 
 @SideOnly(Side.CLIENT)
 public class ModelTyrannosaurus extends MowzieModelBase
@@ -395,39 +392,39 @@ public class ModelTyrannosaurus extends MowzieModelBase
         float height = 1.5F * f1;
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
-        newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
-        newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
-        newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
-        newwalk(Body_1, 1F * scaleFactor, height/10, true, 0F, 0.15F, f, f1);
-        newwalk(Body_2, 1F * scaleFactor, height/20, true, -0.5F, 0F, f, f1);
-        newwalk(Neck, 1F * scaleFactor, height/20, true, -1F, 0.5F, f, f1);
-        newwalk(Head, 1F * scaleFactor, height/10F, false, 0.5F, -0.2F, f, f1);
+        bob(Body_1, 1F * scaleFactor, height, false, f, f1);
+        bob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+        bob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+        walk(Body_1, 1F * scaleFactor, height / 10, true, 0F, 0.15F, f, f1);
+        walk(Body_2, 1F * scaleFactor, height / 20, true, -0.5F, 0F, f, f1);
+        walk(Neck, 1F * scaleFactor, height / 20, true, -1F, 0.5F, f, f1);
+        walk(Head, 1F * scaleFactor, height / 10F, false, 0.5F, -0.2F, f, f1);
         
-        newwalk(Lower_Arm_Right, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
-        newwalk(Lower_Arm_Left, 1F * scaleFactor, height/5, true, -1F, -0.5F, f, f1);
+        walk(Lower_Arm_Right, 1F * scaleFactor, height / 5, true, -1F, -0.5F, f, f1);
+        walk(Lower_Arm_Left, 1F * scaleFactor, height / 5, true, -1F, -0.5F, f, f1);
         
-        newwalk(Left_Thigh, 0.5F * scaleFactor, 0.5F, false, 0F, 0.7F, f, f1);
-        newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.3F, true, 1.5F, 0F, f, f1);
-        newwalk(Left_Calf_2, 0.5F * scaleFactor, 0.7F, false, 0.5F, -0.4F, f, f1);
-        newwalk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 0.5F, f, f1);
+        walk(Left_Thigh, 0.5F * scaleFactor, 0.5F, false, 0F, 0.7F, f, f1);
+        walk(Left_Calf_1, 0.5F * scaleFactor, 0.3F, true, 1.5F, 0F, f, f1);
+        walk(Left_Calf_2, 0.5F * scaleFactor, 0.7F, false, 0.5F, -0.4F, f, f1);
+        walk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 0.5F, f, f1);
         
-        newwalk(Right_Thigh, 0.5F * scaleFactor, 0.5F, true, 0F, 0.7F, f, f1);
-        newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.3F, false, 1.5F , 0F, f, f1);
-        newwalk(Right_Calf_2, 0.5F * scaleFactor, 0.7F, true, 0.5F, -0.4F, f, f1);
-        newwalk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 0.5F, f, f1);
+        walk(Right_Thigh, 0.5F * scaleFactor, 0.5F, true, 0F, 0.7F, f, f1);
+        walk(Right_Calf_1, 0.5F * scaleFactor, 0.3F, false, 1.5F, 0F, f, f1);
+        walk(Right_Calf_2, 0.5F * scaleFactor, 0.7F, true, 0.5F, -0.4F, f, f1);
+        walk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 0.5F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-	    newchainWave(tailParts, 1F * scaleFactor, 0.07F, 2, f, f1);
+	    chainWave(tailParts, 1F * scaleFactor, 0.07F, 2, f, f1);
 	    
 	    //Idling
-	    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
-	    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, trex.frame, 1F);
-	    newwalk(Body_1, 0.1F, 0.05F, false, 0F, 0F, trex.frame, 1F);
-	    newwalk(Lower_Arm_Right, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
-	    newwalk(Lower_Arm_Left, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);  
+	    walk(Neck, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
+	    walk(Head, 0.1F, 0.07F, true, 0F, 0F, trex.frame, 1F);
+	    walk(Body_1, 0.1F, 0.05F, false, 0F, 0F, trex.frame, 1F);
+	    walk(Lower_Arm_Right, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
+	    walk(Lower_Arm_Left, 0.1F, 0.07F, false, -1F, 0F, trex.frame, 1F);
 	    
-		newtailSwing(tailParts, 0.1F, 0.05F, 1, trex.frame);
-	    newchainWave(tailParts, 0.1F, -0.05F, 2, trex.frame, 1F);
+		tailSwing(tailParts, 0.1F, 0.05F, 1, trex.frame);
+	    chainWave(tailParts, 0.1F, -0.05F, 2, trex.frame, 1F);
 	    
 	    //Specialized animations
 	    Head.rotateAngleZ += Math.cos(trex.frame/3)*trex.roarTiltDegree.value/3;

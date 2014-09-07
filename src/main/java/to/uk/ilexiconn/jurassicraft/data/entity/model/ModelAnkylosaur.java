@@ -3,10 +3,11 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
-
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
 
 public class ModelAnkylosaur extends MowzieModelBase
 {
@@ -281,10 +282,10 @@ public class ModelAnkylosaur extends MowzieModelBase
         faceTarget(HeadHorn3, 1, f3, f4);
         faceTarget(HeadHorn4, 1, f3, f4);
         
-        walk(Thigh1, 0.5F, 1F, false, 0F, f, f1);
-        walk(Thigh2, 0.5F, 1F, true, 0F, f, f1);
-        walk(Thigh3, 0.5F, 1F, true, 0F, f, f1);
-        walk(Thigh4, 0.5F, 1F, false, 0F, f, f1);
+        walk(Thigh1, 0.5F, 1F, false, 0F, f, f1, 0);
+        walk(Thigh2, 0.5F, 1F, true, 0F, f, f1, 0);
+        walk(Thigh3, 0.5F, 1F, true, 0F, f, f1, 0);
+        walk(Thigh4, 0.5F, 1F, false, 0F, f, f1, 0);
         
         MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
         tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.frame);

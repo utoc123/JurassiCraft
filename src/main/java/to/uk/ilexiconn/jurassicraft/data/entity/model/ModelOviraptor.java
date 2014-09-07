@@ -1,10 +1,11 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import net.minecraft.client.model.ModelBase;
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelOviraptor extends ModelBase
+public class ModelOviraptor extends MowzieModelBase
 {
   //fields
     MowzieModelRenderer Head;

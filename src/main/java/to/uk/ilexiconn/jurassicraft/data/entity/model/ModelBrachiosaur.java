@@ -1,9 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityBrachiosaur;
-
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityBrachiosaur;
 
 public class ModelBrachiosaur extends MowzieModelBase
 {
@@ -418,31 +419,31 @@ public class ModelBrachiosaur extends MowzieModelBase
         resetPose();
        // f = brachObama.frame;
        // f1 = 0.2F;
-        newwalk(top_leg_right, 0.2F, 0.5F, false, 0F, 0F, f, f1);
-        newbob(top_leg_right, 0.4F, 1.5F, false, f, f1);
-        newwalk(bottom_leg_right, 0.2F, 0.5F, true, 1F, 0F, f, f1);
-        newwalk(right_back_foot, 0.2F, 0.5F, false, 1F, 0F, f, f1);
+        walk(top_leg_right, 0.2F, 0.5F, false, 0F, 0F, f, f1);
+        bob(top_leg_right, 0.4F, 1.5F, false, f, f1);
+        walk(bottom_leg_right, 0.2F, 0.5F, true, 1F, 0F, f, f1);
+        walk(right_back_foot, 0.2F, 0.5F, false, 1F, 0F, f, f1);
         
-        newwalk(top_leg_left, 0.2F, 0.5F, false, (float) ((2*Math.PI)/3F), 0, f, f1);
-        newbob(top_leg_left, 0.4F, 1.5F, false, f, f1);
-        newwalk(bottom_leg_left, 0.2F, 0.5F, true, (float) (((2*Math.PI)/3F)+1F), 0F, f, f1);
-        newwalk(left_back_foot, 0.2F, 0.5F, false, (float) (((2*Math.PI)/3F)+1F), 0F, f, f1);
+        walk(top_leg_left, 0.2F, 0.5F, false, (float) ((2 * Math.PI) / 3F), 0, f, f1);
+        bob(top_leg_left, 0.4F, 1.5F, false, f, f1);
+        walk(bottom_leg_left, 0.2F, 0.5F, true, (float) (((2 * Math.PI) / 3F) + 1F), 0F, f, f1);
+        walk(left_back_foot, 0.2F, 0.5F, false, (float) (((2 * Math.PI) / 3F) + 1F), 0F, f, f1);
         
-        newwalk(front_left_top_leg, 0.2F, 0.5F, false, (float) ((2*Math.PI)/3F) -0.5F, 0F, f, f1);
-        newbob(front_left_top_leg, 0.4F, 1.5F, false, f, f1);
-        newwalk(bottom_front_left_leg, 0.2F, 1F, true, (float) (((2*Math.PI)/3F)-0.5 -0.5), -0.5F, f, f1);
-        newwalk(front_left_foot, 0.2F, 0.5F, false, (float) (((2*Math.PI)/3F)-0.5 -0.5F), 0.5F, f, f1);
+        walk(front_left_top_leg, 0.2F, 0.5F, false, (float) ((2 * Math.PI) / 3F) - 0.5F, 0F, f, f1);
+        bob(front_left_top_leg, 0.4F, 1.5F, false, f, f1);
+        walk(bottom_front_left_leg, 0.2F, 1F, true, (float) (((2 * Math.PI) / 3F) - 0.5 - 0.5), -0.5F, f, f1);
+        walk(front_left_foot, 0.2F, 0.5F, false, (float) (((2 * Math.PI) / 3F) - 0.5 - 0.5F), 0.5F, f, f1);
         
-        newwalk(front_right_top_leg, 0.2F, 0.5F, false, -0.5F, 0, f, f1);
-        newbob(front_right_top_leg, 0.4F, 1.5F, false, f, f1);
-        newwalk(bottom_front_right_leg, 0.2F, 1F, true, -0.5F -0.5F, -0.5F, f, f1);
-        newwalk(front_right_foot, 0.2F, 0.5F, false, -0.5F-0.5F, 0.5F, f, f1);
+        walk(front_right_top_leg, 0.2F, 0.5F, false, -0.5F, 0, f, f1);
+        bob(front_right_top_leg, 0.4F, 1.5F, false, f, f1);
+        walk(bottom_front_right_leg, 0.2F, 1F, true, -0.5F - 0.5F, -0.5F, f, f1);
+        walk(front_right_foot, 0.2F, 0.5F, false, -0.5F - 0.5F, 0.5F, f, f1);
         
-        newbob(body_1, 0.4F, 1.5F, false, f, f1);
+        bob(body_1, 0.4F, 1.5F, false, f, f1);
         MowzieModelRenderer[] neckParts = {this.head, this.neck7, this.neck6, this.neck5, this.neck4, this.neck3, this.neck2, this.neck1};
         MowzieModelRenderer[] tailParts = {tail5, tail4, tail3};
-        newchainWave(neckParts, 0.05F, 0.05F, -4, brachObama.frame, 1);
-        newtailSwing(tailParts, 0.05F, 0.2F, 2, brachObama.frame);
+        chainWave(neckParts, 0.05F, 0.05F, -4, brachObama.frame, 1);
+        tailSwing(tailParts, 0.05F, 0.2F, 2, brachObama.frame);
 
     }
 }

@@ -5,6 +5,8 @@
 // - ZeuX
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelTylosaurus extends MowzieModelBase

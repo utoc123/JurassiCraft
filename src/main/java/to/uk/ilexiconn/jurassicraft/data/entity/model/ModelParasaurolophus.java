@@ -11,10 +11,11 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityHypsilophodon;
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityParasaurolophus;
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityParasaurolophus;
 
 public class ModelParasaurolophus extends MowzieModelBase
 {
@@ -439,8 +440,8 @@ public class ModelParasaurolophus extends MowzieModelBase
     float scaleFactor = 0.6F;
     float height = 2F;
     float allFoursLean = (float) (Math.pow(f1, 1/(f1*10))/4);
-    newfaceTarget(Head, 2, f3, f4);
-    newfaceTarget(Neck, 2, f3, f4);
+    faceTarget(Head, 2, f3, f4);
+    faceTarget(Neck, 2, f3, f4);
     
     //All fours behavior
     Body_3.rotateAngleX += allFoursLean;
@@ -462,46 +463,46 @@ public class ModelParasaurolophus extends MowzieModelBase
     
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
     MowzieModelRenderer[] bodyParts = {this.Body_3, this.Body_1, this.Body_2, this.Neck, this.Head};
-    newbob(Body_3, 1F * scaleFactor, 1F * height, false, f, f1);
-    newbob(Left_Thigh, 1F * scaleFactor, 1F * height, false, f, f1);
-    newbob(Right_Thigh, 1F * scaleFactor, 1F * height, false, f, f1);
+    bob(Body_3, 1F * scaleFactor, 1F * height, false, f, f1);
+    bob(Left_Thigh, 1F * scaleFactor, 1F * height, false, f, f1);
+    bob(Right_Thigh, 1F * scaleFactor, 1F * height, false, f, f1);
 
-    newwalk(Neck, 1F * scaleFactor, 0.15F * height, false, 1F, 0F, f, f1);
-    newwalk(Head, 1F * scaleFactor, 0.15F * height, true, 1F, 0F, f, f1);
+    walk(Neck, 1F * scaleFactor, 0.15F * height, false, 1F, 0F, f, f1);
+    walk(Head, 1F * scaleFactor, 0.15F * height, true, 1F, 0F, f, f1);
     
-    newwalk(Left_Thigh, 0.5F * scaleFactor, 0.5F, false, 0F, 0.3F, f, f1);
-    newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 2F, 0F, f, f1);
-    newwalk(Left_Upper_Foot, 0.5F * scaleFactor, 0.7F, false, 0F, -0.4F, f, f1);
-    newwalk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 1F, f, f1);
+    walk(Left_Thigh, 0.5F * scaleFactor, 0.5F, false, 0F, 0.3F, f, f1);
+    walk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 2F, 0F, f, f1);
+    walk(Left_Upper_Foot, 0.5F * scaleFactor, 0.7F, false, 0F, -0.4F, f, f1);
+    walk(Foot_Left, 0.5F * scaleFactor, 1F, true, 0.5F, 1F, f, f1);
     
-    newwalk(Right_Thigh, 0.5F * scaleFactor, 0.5F, true, 0F, 0.3F, f, f1);
-    newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 2F , 0F, f, f1);
-    newwalk(Right_Upper_Foot, 0.5F * scaleFactor, 0.7F, true, 0F, -0.4F, f, f1);
-    newwalk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 1F, f, f1);
+    walk(Right_Thigh, 0.5F * scaleFactor, 0.5F, true, 0F, 0.3F, f, f1);
+    walk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 2F, 0F, f, f1);
+    walk(Right_Upper_Foot, 0.5F * scaleFactor, 0.7F, true, 0F, -0.4F, f, f1);
+    walk(Foot_Right, 0.5F * scaleFactor, 1F, false, 0.5F, 1F, f, f1);
 
     float frontOffset = 1.3F;
-    newwalk(Upper_Arm_Left, 0.5F* scaleFactor, 1F, false, -0.5F - frontOffset, -0.5F, f, f1);
-    newwalk(Lower_Arm_Left, 0.5F* scaleFactor, 1F, true, -1F - frontOffset, -0.5F, f, f1);
-    newwalk(Left_Hand, 0.5F* scaleFactor, 0.5F, false, -1F - frontOffset, 0.5F, f, f1);
+    walk(Upper_Arm_Left, 0.5F * scaleFactor, 1F, false, -0.5F - frontOffset, -0.5F, f, f1);
+    walk(Lower_Arm_Left, 0.5F * scaleFactor, 1F, true, -1F - frontOffset, -0.5F, f, f1);
+    walk(Left_Hand, 0.5F * scaleFactor, 0.5F, false, -1F - frontOffset, 0.5F, f, f1);
     
-    newwalk(Upper_Arm_Right, 0.5F* scaleFactor, 1F, true, -0.5F - frontOffset, -0.5F, f, f1);
-    newwalk(Lower_Arm_Right, 0.5F* scaleFactor, 1F, false, -1F - frontOffset, 0F, f, f1);
-    newwalk(Right_Hand, 0.5F* scaleFactor, 0.5F, true, -1F - frontOffset, 0.5F, f, f1);
+    walk(Upper_Arm_Right, 0.5F * scaleFactor, 1F, true, -0.5F - frontOffset, -0.5F, f, f1);
+    walk(Lower_Arm_Right, 0.5F * scaleFactor, 1F, false, -1F - frontOffset, 0F, f, f1);
+    walk(Right_Hand, 0.5F * scaleFactor, 0.5F, true, -1F - frontOffset, 0.5F, f, f1);
     
-    newchainWave(tailParts, 1F * scaleFactor, -0.1F, 2, f, f1);
-    newtailSwing(tailParts, 0.5F * scaleFactor, 0.1F * f1, 2, f);
+    chainWave(tailParts, 1F * scaleFactor, -0.1F, 2, f, f1);
+    tailSwing(tailParts, 0.5F * scaleFactor, 0.1F * f1, 2, f);
     
     //Idle
-    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, para.frame, 1F);
-    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, para.frame, 1F);
-    newwalk(Body_3, 0.1F, 0.04F, false, 0F, 0F, para.frame, 1F);
-    newwalk(Upper_Arm_Right, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F);
-    newwalk(Upper_Arm_Left, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F); 
-    newwalk(Lower_Arm_Right, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
-    newwalk(Lower_Arm_Left, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
-    newwalk(Right_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
-    newwalk(Left_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
+    walk(Neck, 0.1F, 0.07F, false, -1F, 0F, para.frame, 1F);
+    walk(Head, 0.1F, 0.07F, true, 0F, 0F, para.frame, 1F);
+    walk(Body_3, 0.1F, 0.04F, false, 0F, 0F, para.frame, 1F);
+    walk(Upper_Arm_Right, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F);
+    walk(Upper_Arm_Left, 0.1F, 0.1F, false, -1F, 0F, para.frame, 1F);
+    walk(Lower_Arm_Right, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
+    walk(Lower_Arm_Left, 0.1F, 0.1F, true, -1.5F, 0F, para.frame, 1F);
+    walk(Right_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
+    walk(Left_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
     
-    newchainWave(tailParts, 0.1F, -0.05F, 2, para.frame, 1F);
+    chainWave(tailParts, 0.1F, -0.05F, 2, para.frame, 1F);
     }
 }

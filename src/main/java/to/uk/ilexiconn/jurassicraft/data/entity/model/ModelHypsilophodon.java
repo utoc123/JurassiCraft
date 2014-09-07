@@ -6,9 +6,11 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityHypsilophodon;
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityHypsilophodon;
 
 public class ModelHypsilophodon extends MowzieModelBase
 {
@@ -290,42 +292,42 @@ public class ModelHypsilophodon extends MowzieModelBase
     float height = 12F * f1;
     MowzieModelRenderer[] tailParts = {this.tail3, this.tail2, this.tail1};
 
-    newfaceTarget(head, 1, f3, f4);
+    faceTarget(head, 1, f3, f4);
     
-    newbob(body2, 0.5F * scaleFactor, height, true, f, f1);
-    newbob(upperlegright, 0.5F * scaleFactor, height, true, f, f1);
-    newbob(upperlegleft, 0.5F * scaleFactor, height, true, f, f1);
+    bob(body2, 0.5F * scaleFactor, height, true, f, f1);
+    bob(upperlegright, 0.5F * scaleFactor, height, true, f, f1);
+    bob(upperlegleft, 0.5F * scaleFactor, height, true, f, f1);
     
-    newwalk(upperlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0.25F, f, f1);
-    newwalk(upperlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0.25F, f, f1);
-    newwalk(midlegleft, 1F * scaleFactor, 0.75F, false, 1.5F, 0F, f, f1);
-    newwalk(midlegright, 1F * scaleFactor, 0.75F, false, 1F, 0F, f, f1);
-    newwalk(lowerlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0F, f, f1);
-    newwalk(lowerlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0F, f, f1);
-    newwalk(feetleft, 1F * scaleFactor, 0.5F, true, 1F, 0.75F, f, f1);
-    newwalk(feetright, 1F * scaleFactor, 0.5F, true, 0.5F, 0.75F, f, f1);
+    walk(upperlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0.25F, f, f1);
+    walk(upperlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0.25F, f, f1);
+    walk(midlegleft, 1F * scaleFactor, 0.75F, false, 1.5F, 0F, f, f1);
+    walk(midlegright, 1F * scaleFactor, 0.75F, false, 1F, 0F, f, f1);
+    walk(lowerlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0F, f, f1);
+    walk(lowerlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0F, f, f1);
+    walk(feetleft, 1F * scaleFactor, 0.5F, true, 1F, 0.75F, f, f1);
+    walk(feetright, 1F * scaleFactor, 0.5F, true, 0.5F, 0.75F, f, f1);
     
-    newwalk(body2, 1F *scaleFactor, 0.3F, false, 0.5F, 0F, f, f1);
-    newwalk(body1, 1F *scaleFactor, 0.5F, true, 1.0F, 0F, f, f1);
-    newwalk(neck, 1F *scaleFactor, 0.3F, true, 0.25F, 0.3F, f, f1);
-    newwalk(head, 1F *scaleFactor, 0.3F, false, 0.25F, -0.3F, f, f1);
+    walk(body2, 1F * scaleFactor, 0.3F, false, 0.5F, 0F, f, f1);
+    walk(body1, 1F * scaleFactor, 0.5F, true, 1.0F, 0F, f, f1);
+    walk(neck, 1F * scaleFactor, 0.3F, true, 0.25F, 0.3F, f, f1);
+    walk(head, 1F * scaleFactor, 0.3F, false, 0.25F, -0.3F, f, f1);
     
-    newwalk(shoulderright, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
-    newwalk(shoulderleft, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
-    newwalk(armright, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
-    newwalk(armleft, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
+    walk(shoulderright, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
+    walk(shoulderleft, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
+    walk(armright, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
+    walk(armleft, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
     
-    newchainWave(tailParts, 0.2F, -0.05F, 2, hypster.frame, 1F);
-    newwalk(neck, 0.2F, 0.1F, false, -1F, 0F, hypster.frame, 1F);
-    newwalk(head, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
-    newwalk(body1, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
-    newwalk(body2, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
-    newwalk(shoulderright, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
-    newwalk(shoulderleft, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
-    newwalk(armright, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
-    newwalk(armleft, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    chainWave(tailParts, 0.2F, -0.05F, 2, hypster.frame, 1F);
+    walk(neck, 0.2F, 0.1F, false, -1F, 0F, hypster.frame, 1F);
+    walk(head, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    walk(body1, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    walk(body2, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    walk(shoulderright, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    walk(shoulderleft, 0.2F, 0.1F, true, 0F, 0F, hypster.frame, 1F);
+    walk(armright, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
+    walk(armleft, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
     
-    newchainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
+    chainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
 
   }
 }

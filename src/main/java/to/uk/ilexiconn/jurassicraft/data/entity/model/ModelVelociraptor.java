@@ -10,12 +10,13 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import ilexiconn.llib.client.model.MowzieModelBase;
+import ilexiconn.llib.client.model.MowzieModelRenderer;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityVelociraptor;
-
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 public class ModelVelociraptor extends MowzieModelBase
 {
@@ -575,41 +576,41 @@ public class ModelVelociraptor extends MowzieModelBase
     if(raptor.getAnimID() == 3 && raptor.getAnimTick() >= 6) f1 = 0;
     float scaleFactor = 0.75F;
     float height = 2F * f1;
-    newbob(Body_1, 1F * scaleFactor, height, false, f, f1);
-    newbob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
-    newbob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
-    newbob(Neck, 1F * scaleFactor, height/2, false, f, f1);
+    bob(Body_1, 1F * scaleFactor, height, false, f, f1);
+    bob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+    bob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+    bob(Neck, 1F * scaleFactor, height / 2, false, f, f1);
     
-    newwalk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.4F, f, f1);
-    newwalk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.4F, f, f1);
+    walk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.4F, f, f1);
+    walk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.4F, f, f1);
     
-    newwalk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
-    newwalk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
-    newwalk(Left_Upper_Foot, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
-    newwalk(Foot_Left, 0.5F * scaleFactor, 1.5F, true, 0.5F, 1F, f, f1);
+    walk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
+    walk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
+    walk(Left_Upper_Foot, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
+    walk(Foot_Left, 0.5F * scaleFactor, 1.5F, true, 0.5F, 1F, f, f1);
     
-    newwalk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
-    newwalk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F , 0F, f, f1);
-    newwalk(Right_Upper_Foot, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
-    newwalk(Foot_Right, 0.5F * scaleFactor, 1.5F, false, 0.5F, 1F, f, f1);
+    walk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
+    walk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F, 0F, f, f1);
+    walk(Right_Upper_Foot, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
+    walk(Foot_Right, 0.5F * scaleFactor, 1.5F, false, 0.5F, 1F, f, f1);
 
-    newfaceTarget(Head, 2, f3, f4);
-    newfaceTarget(Neck, 2, f3, f4);
+    faceTarget(Head, 2, f3, f4);
+    faceTarget(Neck, 2, f3, f4);
     
     MowzieModelRenderer[] rightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
     MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
     MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
-    newtailSwing(tailParts, 1F * scaleFactor, 0.1F * f1, 2, f);
-    newchainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
-    newchainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
-    newchainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+    tailSwing(tailParts, 1F * scaleFactor, 0.1F * f1, 2, f);
+    chainWave(tailParts, 1F * scaleFactor, -0.05F, 2, f, f1);
+    chainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+    chainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
     //Idling
-    newchainWave(tailParts, 0.1F, -0.05F, 2, raptor.frame, 1F);
-    newwalk(Neck, 0.1F, 0.07F, false, -1F, 0F, raptor.frame, 1F);
-    newwalk(Head, 0.1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
-    newwalk(Body_1, 0.1F, 0.05F, false, 0F, 0F, raptor.frame, 1F);
-    newchainWave(rightArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
-    newchainWave(leftArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
+    chainWave(tailParts, 0.1F, -0.05F, 2, raptor.frame, 1F);
+    walk(Neck, 0.1F, 0.07F, false, -1F, 0F, raptor.frame, 1F);
+    walk(Head, 0.1F, 0.07F, true, 0F, 0F, raptor.frame, 1F);
+    walk(Body_1, 0.1F, 0.05F, false, 0F, 0F, raptor.frame, 1F);
+    chainWave(rightArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
+    chainWave(leftArmParts, 0.1F, -0.1F, 4, raptor.frame, 1F);
     
 /*    newfaceTarget(Tail_1, 6, raptor.getRenderYawOffsetChange(), 0);
     newfaceTarget(Tail_2, 6, raptor.getRenderYawOffsetChange(), 0);

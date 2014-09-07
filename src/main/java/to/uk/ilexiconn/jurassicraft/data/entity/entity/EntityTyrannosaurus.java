@@ -1,28 +1,15 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import java.util.List;
-
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
-import to.uk.ilexiconn.jurassicraft.data.entity.model.MowzieModelRenderer;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
 
 public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   

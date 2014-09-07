@@ -1,29 +1,42 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import java.util.Map.Entry;
-
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.world.biome.BiomeGenBase;
-import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ilexiconn.llib.LLib;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.biome.BiomeGenBase;
+import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 
-@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.1.2")
+import java.util.Map.Entry;
+
+@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.1.2", dependencies = "after:llib")
 public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
     public static JurassiCraft instance;
     public boolean isServerInitialized;
 
+    @Deprecated
+    public static boolean versionCheck;
+
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
     {
+        try
+        {
+            LLib.addConfigSyncMethod("syncConfig", this);
+        }
+        catch (NoSuchMethodException e)
+        {
+            e.printStackTrace();
+        }
+
         getData().init();
 
         getEntityParser().parseServerEntities();
@@ -49,6 +62,11 @@ public class JurassiCraft extends Util
     @Mod.EventHandler
     public void load(FMLInitializationEvent event)
     {
-        EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.deepOcean, BiomeGenBase.ocean});
+        EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, BiomeGenBase.deepOcean, BiomeGenBase.ocean);
+    }
+
+    public void syncConfig()
+    {
+        versionCheck = LLib.config.getBoolean("Version Check", "jurassicraft", true, "Do an automatic version check on every start");
     }
 }
