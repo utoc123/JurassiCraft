@@ -25,26 +25,37 @@ configurations {
     repoUploadFTP
 }
 
+repositories {
+	maven
+	{
+		name = "ilexiconn"
+		url = "http://ilexiconn.uk.to/maven/"
+	}
+}
+
+dependencies {
+    compile 'ilexiconn:LLib:1.7.10-0.1.0-7:dev'
+}
+
 minecraft {
     version = "1.7.10-10.13.1.1213-new"
     runDir = "minecraft"
 }
 
-processResources
-        {
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+processResources {
+	inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
-                include 'changelog.info'
-                expand 'version':project.version, 'mcversion':project.minecraft.version
-            }
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        include 'changelog.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
 
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
 
 dependencies {
     repoUploadFTP([
@@ -54,21 +65,21 @@ dependencies {
 }
 
 jar {
-    classifier = 'universal'
+    classifier = 'daily_build_' + getDate() + '-universal'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'src'
+    classifier = 'daily_build_' + getDate() + '-src'
     from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    classifier = 'daily_build_' + getDate() + '-javadoc'
     from javadoc.destinationDir
 }
 
 task devJar(type: Jar) {
-    classifier = 'dev'
+    classifier = 'daily_build_' + getDate() + '-dev'
     from sourceSets.main.output
 }
 
@@ -86,4 +97,10 @@ uploadArchives {
             authentication(userName: username, password: password)
         }
     }
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy MM dd')
+    return formattedDate
 }
