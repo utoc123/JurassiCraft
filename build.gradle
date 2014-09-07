@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.2.4"
+version = "1.2.4-daily_build-" + getDate()
 group = "ilexiconn.jurassicraft"
 archivesBaseName = "JurassiCraft"
 
@@ -65,21 +65,21 @@ dependencies {
 }
 
 jar {
-    classifier = 'daily_build_' + getDate() + '-universal'
+    classifier = 'universal'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'daily_build_' + getDate() + '-src'
+    classifier = 'src'
     from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'daily_build_' + getDate() + '-javadoc'
+    classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
 task devJar(type: Jar) {
-    classifier = 'daily_build_' + getDate() + '-dev'
+    classifier = 'dev'
     from sourceSets.main.output
 }
 
@@ -101,6 +101,6 @@ uploadArchives {
 
 def getDate() {
     def date = new Date()
-    def formattedDate = date.format('yyyy MM dd')
+    def formattedDate = date.format('yyyy_MM_dd')
     return formattedDate
 }

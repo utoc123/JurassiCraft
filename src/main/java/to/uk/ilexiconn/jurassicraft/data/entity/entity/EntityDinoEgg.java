@@ -1,11 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import io.netty.buffer.ByteBuf;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Random;
-
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -16,10 +12,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.minecart.MinecartCollisionEvent;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Random;
 
 public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 {
@@ -331,7 +329,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
 	public ResourceLocation getTexture() 
 	{
-		return new ResourceLocation(JurassiCraft.getModId() + "textures\\eggs\\egg" + dino + ".png");
+		return new ResourceLocation(JurassiCraft.getModId() + "textures/eggs/egg" + dino + ".png");
 	}
 
 	@Override

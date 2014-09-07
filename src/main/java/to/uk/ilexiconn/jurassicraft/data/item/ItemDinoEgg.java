@@ -16,7 +16,7 @@ public class ItemDinoEgg extends Item
 	{
 		super();
 		this.setUnlocalizedName("egg_" + dinoName);
-		this.setTextureName(Util.getModId() + ":egg_" + dinoName);
+		this.setTextureName(Util.getModId() + "egg_" + dinoName);
 		this.setCreativeTab(JurassiCraft.getCreativeTab(0));
 		this.dinoName = dinoName;
 	}
