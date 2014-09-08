@@ -50,12 +50,20 @@ public class ModelEmbryo extends MowzieModelBase
         shapes[8].setRotationPoint(-2f, 3f, 0.5f);
         shapes[8].setRotationAngles(-0.4363323f, 0f, 0f);
 
+        addChildTo(shapes[2], shapes[1]);
+        addChildTo(shapes[1], shapes[0]);
         addChildTo(shapes[5], shapes[0]);
         addChildTo(shapes[6], shapes[0]);
         addChildTo(shapes[7], shapes[0]);
         addChildTo(shapes[8], shapes[0]);
         addChildTo(shapes[3], shapes[4]);
         addChildTo(shapes[4], shapes[0]);
+        
+        //Corrections
+        shapes[1].rotationPointZ -= 3.5;
+        shapes[1].rotationPointY -= 1.9;
+        shapes[2].rotationPointZ += 4.2;
+        shapes[2].rotationPointY -= 1;
 
         for (MowzieModelRenderer shape : shapes)
         {
@@ -67,9 +75,17 @@ public class ModelEmbryo extends MowzieModelBase
     public void render(TileCultivate tile)
     {
         shapes[0].render(0.0625f);
-        shapes[1].render(0.0625f);
-        shapes[2].render(0.0625f);
+//        shapes[1].render(0.0625f);
+//        shapes[2].render(0.0625f);
+//        shapes[3].render(0.0625f);
+//        shapes[4].render(0.0625f);
+ //       shapes[5].render(0.0625f);
+ //       shapes[6].render(0.0625f);
+ //       shapes[7].render(0.0625f);
+//        shapes[8].render(0.0625f);
 
-        tailSwing(shapes, 0.13f, 0.1f, 0, tile.animationTick);
+        shapes[0].rotationPointY -= Math.cos(tile.animationTick/6)*0.01;
+        chainWave(shapes, 0.1F, 0.001F, 1, tile.animationTick, 1F);
+        shapes[0].rotateAngleY += 0.001;
     }
 }
