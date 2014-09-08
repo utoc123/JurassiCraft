@@ -1,16 +1,20 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import cpw.mods.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
@@ -22,14 +26,11 @@ import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemMeat;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
-import cpw.mods.fml.common.IWorldGenerator;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Util
 {
@@ -180,6 +181,13 @@ public class Util
 	{
 		GameRegistry.registerWorldGenerator(generator, weight);
 	}
+
+    public static void addBlockWithSubBlocks(int id, Block block, Class<? extends TileEntity> tileEntity, Class<? extends ItemBlock> itemBlock, boolean renderEntity)
+    {
+        if (id != -1) blocks[id] = block;
+        GameRegistry.registerBlock(block, itemBlock, block.getUnlocalizedName());
+        if (renderEntity) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
+    }
 
 	public void addEgg(final String dinoName)
 	{

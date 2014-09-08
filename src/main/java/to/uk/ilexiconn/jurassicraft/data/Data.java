@@ -18,12 +18,13 @@ import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemAmber;
+import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoBone;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemFossil;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
-import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer3D;
+import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderCultivateItem;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -47,22 +48,25 @@ public final class Data extends Util
         }
         
     	/** Blocks */
-        { 
-            addBlockWithTileEntity(0, new BlockCultivate(true), TileCultivate.class, true);
-            addBlockWithTileEntity(1, new BlockCultivate(false), TileCultivate.class, false);
-            addBlockWithTileEntity(2, new BlockAnalyzer(true), TileAnalyzer.class, true);
-            addBlockWithTileEntity(3, new BlockAnalyzer(false), TileAnalyzer.class, false);
-            addBlock(4, new BlockAmberOre());
-            addBlock(5, new BlockFossilOre());
-            addBlock(6, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
-            addBlock(7, new BlockFossilSandstoneOre());
-            addBlock(8, new BlockFossilClayOre(""));
-            addBlock(9, new BlockFossilClayOre("_stained_brown"));
-            addBlock(10, new BlockFossilClayOre("_stained_orange"));
-            addBlock(11, new BlockFossilClayOre("_stained_red"));
-            addBlock(12, new BlockFossilClayOre("_stained_silver"));
-            addBlock(13, new BlockFossilClayOre("_stained_white"));
-            addBlock(14, new BlockFossilClayOre("_stained_yellow"));
+        {
+            addBlockWithSubBlocks(0, new BlockCultivate.Bottom(false), TileCultivate.class, ItemBlockCultivate.class, true);
+            addBlock(1, new BlockCultivate.Top(false));
+            addBlockWithSubBlocks(2, new BlockCultivate.Bottom(true), TileCultivate.class, ItemBlockCultivate.class, false);
+            addBlock(3, new BlockCultivate.Top(true));
+
+            addBlockWithTileEntity(4, new BlockAnalyzer(true), TileAnalyzer.class, true);
+            addBlockWithTileEntity(5, new BlockAnalyzer(false), TileAnalyzer.class, false);
+            addBlock(6, new BlockAmberOre());
+            addBlock(7, new BlockFossilOre());
+            addBlock(8, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
+            addBlock(9, new BlockFossilSandstoneOre());
+            addBlock(10, new BlockFossilClayOre(""));
+            addBlock(11, new BlockFossilClayOre("_stained_brown"));
+            addBlock(12, new BlockFossilClayOre("_stained_orange"));
+            addBlock(13, new BlockFossilClayOre("_stained_red"));
+            addBlock(14, new BlockFossilClayOre("_stained_silver"));
+            addBlock(15, new BlockFossilClayOre("_stained_white"));
+            addBlock(16, new BlockFossilClayOre("_stained_yellow"));
         }
         
     	/** Items */
@@ -110,7 +114,7 @@ public final class Data extends Util
         
         /** Item Renderers */
         {
-            addItemRenderer(Item.getItemFromBlock(getBlock(1)), new CultivateRenderer3D());
+            addItemRenderer(Item.getItemFromBlock(getBlock(0)), new RenderCultivateItem());
         }
         
         /** Entity Renderers */

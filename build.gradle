@@ -29,12 +29,12 @@ repositories {
 	maven
 	{
 		name = "ilexiconn"
-		url = "http://ilexiconn.uk.to/maven/"
+		url = "http://ilexiconn.uk.to/maven/ilexiconn/"
 	}
 }
 
 dependencies {
-    compile 'ilexiconn:LLib:1.7.10-0.1.0-7:dev'
+    compile 'llib:LLib:1.7.10-0.1.0-8:dev'
 }
 
 minecraft {

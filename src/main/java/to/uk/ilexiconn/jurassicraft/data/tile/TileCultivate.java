@@ -1,15 +1,14 @@
 package to.uk.ilexiconn.jurassicraft.data.tile;
 
-import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
+import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 
 public class TileCultivate extends TileEntity implements IInventory
 {
@@ -18,24 +17,28 @@ public class TileCultivate extends TileEntity implements IInventory
     public ItemStack[] stacks = new ItemStack[2];
 	public int cultivateTime = 0;
 	public int timeToCultivate = 400;
+    public int rotation;
+    public int progress;
+    public float animationTick;
+    public int fluidLevel = 0;
 
 	public void updateEntity()
     {
         if (getStackInSlot(0) != null)
         {
-            if (!getActive()) BlockCultivate.updateCultivateBlockState(true, worldObj, xCoord, yCoord, zCoord);
+            if (!getActive()) BlockCultivate.updateBlockStateWithBottom(worldObj, xCoord, yCoord, zCoord, true);
 
-			if (canCultivate())
-				++cultivateTime;
+			if (canCultivate()) ++cultivateTime;
 
-			if (cultivateTime > timeToCultivate)
-				finishItem();
+			if (cultivateTime > timeToCultivate) finishItem();
         }
         else
         {
-            if (getActive()) BlockCultivate.updateCultivateBlockState(false, worldObj, xCoord, yCoord, zCoord);
+            if (getActive()) BlockCultivate.updateBlockStateWithBottom(worldObj, xCoord, yCoord, zCoord, false);
 			cultivateTime = 0;
         }
+
+        animationTick += 0.3f;
     }
 
 	public boolean canCultivate()
@@ -54,7 +57,7 @@ public class TileCultivate extends TileEntity implements IInventory
 
     public boolean getActive()
     {
-        return worldObj.getBlock(xCoord, yCoord, zCoord) == Util.getBlock(0);
+        return worldObj.getBlock(xCoord, yCoord, zCoord) != Util.getBlock(0);
     }
 
 	public void finishItem()
@@ -146,6 +149,9 @@ public class TileCultivate extends TileEntity implements IInventory
 			stacks[1] = ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Egg"));
 
 		cultivateTime = compound.getInteger("CultivateTime");
+
+        rotation = compound.getInteger("rotation");
+        fluidLevel = compound.getInteger("fluid");
 	}
 
 	@Override
@@ -159,6 +165,9 @@ public class TileCultivate extends TileEntity implements IInventory
 			compound.setTag("Egg", stacks[1].writeToNBT(new NBTTagCompound()));
 
 		compound.setInteger("CultivateTime", cultivateTime);
+
+        compound.setInteger("rotation", rotation);
+        compound.setInteger("fluid", fluidLevel);
 	}
 
 	public boolean hasCustomInventoryName()

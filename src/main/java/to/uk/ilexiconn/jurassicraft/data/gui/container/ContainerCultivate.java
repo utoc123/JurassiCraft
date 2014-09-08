@@ -1,6 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data.gui.container;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,7 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotDNA;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
@@ -22,7 +21,7 @@ public class ContainerCultivate extends Container
         tileCultivate = tileEntity;
         inventoryPlayer = inventory;
         
-        addSlotToContainer(new Slot(tileEntity, 0, 45, 38));
+        addSlotToContainer(new SlotDNA(tileEntity, 0, 45, 38));
         addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
         
         bindPlayerInventory(inventoryPlayer);

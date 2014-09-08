@@ -27,24 +27,24 @@ public class ModelCultivate extends ModelBase
         shapes[4] = new ModelRenderer(this, 56, 22);
         shapes[4].addBox(0f, 0f, 0f, 1, 25, 1);
         shapes[4].setRotationPoint(-8f, -7f, 7f);
-        shapes[5] = new ModelRenderer(this, 0, 22);
-        shapes[5].addBox(0f, 0f, 0f, 14, 25, 14);
-        shapes[5].setRotationPoint(-7f, -7f, -7f);
-        shapes[6] = new ModelRenderer(this, 0, 0);
-        shapes[6].addBox(0f, 0f, 0f, 16, 1, 16);
-        shapes[6].setRotationPoint(-8f, -8f, -8f);
+        shapes[5] = new ModelRenderer(this, 0, 0);
+        shapes[5].addBox(0f, 0f, 0f, 16, 1, 16);
+        shapes[5].setRotationPoint(-8f, -8f, -8f);
+        shapes[6] = new ModelRenderer(this, 0, 22);
+        shapes[6].addBox(0f, 0f, 0f, 14, 25, 14);
+        shapes[6].setRotationPoint(-7f, -7f, -7f);
 
-        for (ModelRenderer shape : shapes)
-        {
-            shape.setTextureSize(64, 64);
-        }
+        for (ModelRenderer shape : shapes) shape.setTextureSize(64, 64);
     }
 
-    public void render()
+    public void render(boolean withGlass)
     {
-        for (ModelRenderer shape : shapes)
-        {
-            shape.render(0.0625f);
-        }
+        for (int i = 0; i < shapes.length - 1; i++) shapes[i].render(0.0625f);
+        if (withGlass) shapes[6].render(0.0625f);
+    }
+
+    public void renderGlass()
+    {
+        shapes[6].render(0.0625f);
     }
 }
