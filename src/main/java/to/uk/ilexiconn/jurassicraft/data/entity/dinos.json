@@ -110,7 +110,7 @@
         "dinoSpeed":0.3,
         "dinoHealth":30,
         "dinoStrenght":0,
-        "dinoScale":1.1,
+        "dinoScale":1.3,
         "hitboxSizeXZ":1.7,
         "hitboxSizeY":2.1,
         "livingSound1":"jurassicraft:gali1",
