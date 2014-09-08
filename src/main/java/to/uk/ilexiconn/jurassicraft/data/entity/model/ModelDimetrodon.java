@@ -260,10 +260,10 @@ else
 	public void setRotationAngles(float f, float f1, float f2, float f3,
 			float f4, float f5) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-        walk(this.Leg1, 0.25F, 0.5f, true, 0, f, f1, 0);
-        walk(this.Leg4, 0.25F, 0.5f, true, 0, f, f1, 0);
-        walk(this.Leg3, 0.25F, 0.5f, false, 0, f, f1, 0);
-        walk(this.Leg2, 0.25F, 0.5f, false, 0, f, f1, 0);
+        walk(this.Leg1, 0.25F, 0.5f, true, 0, 0, f, f1);
+        walk(this.Leg4, 0.25F, 0.5f, true, 0, 0, f, f1);
+        walk(this.Leg3, 0.25F, 0.5f, false, 0, 0, f, f1);
+        walk(this.Leg2, 0.25F, 0.5f, false, 0, 0, f, f1);
 	}
 
 }

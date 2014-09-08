@@ -339,7 +339,7 @@ public class ModelHerrerasaur extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-    walk(Right_Thigh, 1.0F, 0.7F, false, 0, f, f1, 0);
-    walk(Left_Thigh, 1.0F, 0.7F, true, 0, f, f1, 0);
+    walk(Right_Thigh, 1.0F, 0.7F, false, 0, 0, f, f1);
+    walk(Left_Thigh, 1.0F, 0.7F, true, 0, 0, f, f1);
   }
 }

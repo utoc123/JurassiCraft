@@ -232,8 +232,8 @@ public class ModelLeaellynasaur extends MowzieModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-    walk(upperleg, 0.7F, 0.5F, false, 0F, f, f1, 0);
-    walk(upperleg1, 0.7F, 0.5F, true, 0F, f, f1, 0);
+    walk(upperleg, 0.7F, 0.5F, false, 0F, 0, f, f1);
+    walk(upperleg1, 0.7F, 0.5F, true, 0F, 0, f, f1);
   }
 
 }
