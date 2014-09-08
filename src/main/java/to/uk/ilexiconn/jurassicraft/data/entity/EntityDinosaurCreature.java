@@ -20,8 +20,9 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 		super(world);
 		dinoID = id;
 		Dinosaur dinoByID = Util.getDinoByID(id);
-		setSize(dinoByID.hitboxSizeXZ, dinoByID.hitboxSizeY);
+		setSize(dinoByID.xzHitbox, dinoByID.yHitbox);
 		getNavigator().setAvoidsWater(true);
+        setHealth((float) dinoByID.health);
 	}
 
 	public boolean isAIEnabled()
@@ -33,8 +34,8 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 	{
 		super.applyEntityAttributes();
 		Dinosaur dinoByID = Util.getDinoByID(dinoID);
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.dinoHealth * 2);
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.dinoSpeed);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.health);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.speed);
 	}
 
 	public String getLivingSound()

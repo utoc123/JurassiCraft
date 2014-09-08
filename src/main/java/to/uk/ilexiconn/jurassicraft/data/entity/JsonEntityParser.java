@@ -24,8 +24,8 @@ public class JsonEntityParser extends Util
         configLoaded = true;
         for (Dinosaur dino : dinos)
         {
-            addMeat(dino.dinoName);
-            addDNA(dino.dinoName);
+            addMeat(dino.name);
+            addDNA(dino.name);
             addEntity(dino);
         }
     }

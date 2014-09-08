@@ -56,7 +56,7 @@ public class Util
 	{
 		for (Map.Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
 		{
-			if(dino.getKey().dinoName.equals(dinoName))
+			if(dino.getKey().name.equals(dinoName))
 			{
 				return dino.getValue();
 			}
@@ -157,12 +157,12 @@ public class Util
 	{
 		try
 		{
-			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.dinoName);
+			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.name);
 			dinos.put(dino, entity);
 			int entityId = EntityRegistry.findGlobalUniqueEntityId();
-			EntityRegistry.registerGlobalEntityID(entity, dino.dinoName, entityId, 0, 0);
-			EntityRegistry.registerModEntity(entity, dino.dinoName, entityId, JurassiCraft.instance, 64, 1, true);
-			addEgg(dino.dinoName);
+			EntityRegistry.registerGlobalEntityID(entity, dino.name, entityId, 0, 0);
+			EntityRegistry.registerModEntity(entity, dino.name, entityId, JurassiCraft.instance, 64, 1, true);
+			addEgg(dino.name);
 		}
 		catch (Exception e)
 		{
@@ -211,8 +211,8 @@ public class Util
 	{
 		try
 		{
-			RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.render.Render" + dino.dinoName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
-			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.dinoName);
+			RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.render.Render" + dino.name).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
+			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.name);
 			proxy.renderEntity(entity, renderer);
 		}
 		catch (Exception e)
@@ -244,7 +244,7 @@ public class Util
 	{
 		for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
 		{
-			if(dino.getKey().dinoName.equals(name))
+			if(dino.getKey().name.equals(name))
 			{
 				return dino.getKey().id;
 			}

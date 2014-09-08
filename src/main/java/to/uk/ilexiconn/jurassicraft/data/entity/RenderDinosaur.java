@@ -27,6 +27,6 @@ public abstract class RenderDinosaur extends RenderLiving
 
     public void preRenderCallback(EntityLivingBase entity, float side)
     {
-        GL11.glScalef(getDino().dinoScale, getDino().dinoScale, getDino().dinoScale);
+        GL11.glScalef(getDino().scale, getDino().scale, getDino().scale);
     }
 }

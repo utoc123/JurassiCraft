@@ -59,14 +59,14 @@ public class TileEgg extends TileEntity
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		tag.setString("dinoName", dinoName);
+		tag.setString("name", dinoName);
 		tag.setInteger("hatchTime", hatchTime);
 	}
 
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		dinoName = tag.getString("dinoName");
+		dinoName = tag.getString("name");
 		hatchTime = tag.getInteger("hatchTime");
 	}
 

@@ -42,7 +42,7 @@ public class JurassiCraft extends Util
         getEntityParser().parseServerEntities();
 
         for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet())
-            LogHelper.info("Added dino " + dino.getKey().dinoName + " with ID " + dino.getKey().id);
+            LogHelper.info("Added dino " + dino.getKey().name + " with ID " + dino.getKey().id);
 
         isServerInitialized = true;
         LogHelper.info("PreInitialization complete");

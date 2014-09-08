@@ -174,7 +174,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			
 			Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
 			
-			if(dinosaur.isWaterCreature)
+			if(dinosaur.waterCreature)
 			{
 				if(!isWet())
 				{
@@ -211,7 +211,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
 			if(currentSpawnTime < -500)
 			{
-				if(dinosaur.isWaterCreature)
+				if(dinosaur.waterCreature)
 				{
 					dried = true;
 				}
@@ -341,6 +341,6 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	@Override
 	public void readSpawnData(ByteBuf additionalData) 
 	{
-		dino = Util.getDinoByID(additionalData.readInt()).dinoName;
+		dino = Util.getDinoByID(additionalData.readInt()).name;
 	}
 }

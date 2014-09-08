@@ -1,10 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -16,6 +11,11 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.Util;
+
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
 
@@ -37,16 +37,17 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
       super(world);
       dinoID = id;
       Dinosaur dinoByID = Util.getDinoByID(dinoID);
-      setSize(dinoByID.hitboxSizeXZ, dinoByID.hitboxSizeY);
+      setSize(dinoByID.xzHitbox, dinoByID.yHitbox);
       this.factor2 = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
+      setHealth((float) dinoByID.health);
    }
 
    public void applyEntityAttributes()
    {
        super.applyEntityAttributes();
        Dinosaur dinoByID = Util.getDinoByID(dinoID);
-       getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.dinoHealth * 2);
-       getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.dinoSpeed);
+       getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.health);
+       getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.speed);
    }
    
    public boolean canDespawn()
@@ -116,7 +117,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    protected int getAttackStrength()
    {
 	  Dinosaur dinoByID = Util.getDinoByID(dinoID);
-      return (int)dinoByID.dinoStrength;
+      return (int)dinoByID.strength;
    }
 
    protected boolean canAttackEntity(Entity entity) 
