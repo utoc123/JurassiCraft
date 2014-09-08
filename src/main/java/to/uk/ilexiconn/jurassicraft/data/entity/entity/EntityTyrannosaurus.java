@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import ilexiconn.llib.utils.ControlledParam;
+import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.*;
