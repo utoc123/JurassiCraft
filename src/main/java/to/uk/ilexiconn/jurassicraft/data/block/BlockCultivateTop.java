@@ -2,7 +2,6 @@ package to.uk.ilexiconn.jurassicraft.data.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ilexiconn.llib.block.ICustomHighlightedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,7 +19,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import java.util.List;
 import java.util.Random;
 
-public class BlockCultivateTop extends Block implements ICustomHighlightedBlock
+public class BlockCultivateTop extends Block
 {
     public static String[] colors = {"black", "red", "green", "brown", "blue", "purple", "cyan", "light_gray", "gray", "pink", "lime", "yellow", "light_blue", "magenta", "orange", "white"};
     @SideOnly(Side.CLIENT)
@@ -137,10 +136,5 @@ public class BlockCultivateTop extends Block implements ICustomHighlightedBlock
             closest.blockZ = z;
         }
         return closest;
-    }
-
-    public AxisAlignedBB[] getHighlightedBoxes(World world, int i, int i2, int i3, EntityPlayer entityPlayer)
-    {
-        return BlockCultivate.boxes[0];
     }
 }
