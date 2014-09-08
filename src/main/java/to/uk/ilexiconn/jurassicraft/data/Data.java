@@ -51,10 +51,10 @@ public final class Data extends Util
         
     	/** Blocks */
         {
-            addBlockWithSubBlocks(0, new BlockCultivate.Bottom(false), TileCultivate.class, ItemBlockCultivate.class, true);
-            addBlock(1, new BlockCultivate.Top(false));
-            addBlockWithSubBlocks(2, new BlockCultivate.Bottom(true), TileCultivate.class, ItemBlockCultivate.class, false);
-            addBlock(3, new BlockCultivate.Top(true));
+            addBlockWithSubBlocks(0, new BlockCultivateBottom(false), TileCultivate.class, ItemBlockCultivate.class, true);
+            addBlock(1, new BlockCultivateTop(false));
+            addBlockWithSubBlocks(2, new BlockCultivateBottom(true), TileCultivate.class, ItemBlockCultivate.class, false);
+            addBlock(3, new BlockCultivateTop(true));
 
             addBlockWithTileEntity(4, new BlockAnalyzer(true), TileAnalyzer.class, true);
             addBlockWithTileEntity(5, new BlockAnalyzer(false), TileAnalyzer.class, false);
@@ -97,7 +97,7 @@ public final class Data extends Util
         {
             addShapedRecipe(new ItemStack(getBlock(3)), "IFI", "IFI", 'I', Items.iron_ingot, 'F', getItem(2));
 
-            for (int i = 0; i < BlockCultivate.Bottom.colors.length; i++)
+            for (int i = 0; i < BlockCultivateBottom.colors.length; i++)
             {
                 addShapelessRecipe(new ItemStack(getBlock(0), 1, i), new ItemStack(Items.dye, 1, i), new ItemStack(getBlock(0)));
                 addShapedRecipe(new ItemStack(getBlock(0), 1, i), "GDG", "GWG", "III", 'I', Items.iron_ingot, 'G', Blocks.glass, 'D', new ItemStack(Items.dye, 1, i), 'W', Items.water_bucket);
