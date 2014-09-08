@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile 'llib:LLib:1.7.10-0.1.0-8:dev'
+    compile 'llib:LLib:1.7.10-0.1.0-10:dev'
 }
 
 minecraft {

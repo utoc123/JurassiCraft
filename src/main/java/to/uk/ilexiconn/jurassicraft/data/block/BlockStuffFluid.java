@@ -32,7 +32,7 @@ public class BlockStuffFluid extends BlockFluidClassic
         fluidIcons = new IIcon[2];
 
         fluidIcons[0] = iconRegister.registerIcon(Util.getModId() + "cultivator_water_still");
-        fluidIcons[1] = iconRegister.registerIcon(Util.getModId() + "cultivator_water_flow");
+        fluidIcons[1] = iconRegister.registerIcon(Util.getModId() + "cultivator_water_still");
     }
 
     public boolean canDisplace(IBlockAccess world, int x, int y, int z)

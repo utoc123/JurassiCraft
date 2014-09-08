@@ -33,6 +33,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public final class Data extends Util
 {
+    public static Fluid fluid;
+    public static Block stuffFluid;
+
     public void init()
     {
     	/** Creativetabs */
@@ -41,7 +44,7 @@ public final class Data extends Util
             {
                 public Item getTabIconItem()
                 {
-                    return Item.getItemFromBlock(getBlock(1));
+                    return Item.getItemFromBlock(getBlock(0));
                 }
             });
         }
@@ -103,10 +106,11 @@ public final class Data extends Util
         }
 
         { /** Other test stuff */
-            Fluid fluid = new Fluid("stuff").setLuminosity(5).setViscosity(1);
+
+            fluid = new Fluid("stuff").setLuminosity(5).setViscosity(1);
             FluidRegistry.registerFluid(fluid);
 
-            Block stuffFluid = new BlockStuffFluid(fluid, Material.water).setBlockName("stuffBlock").setCreativeTab(getCreativeTab(0));
+            stuffFluid = new BlockStuffFluid(fluid, Material.water).setBlockName("stuffBlock").setCreativeTab(null);
             GameRegistry.registerBlock(stuffFluid, "stuffFluid");
 
             fluid.setUnlocalizedName(stuffFluid.getUnlocalizedName());

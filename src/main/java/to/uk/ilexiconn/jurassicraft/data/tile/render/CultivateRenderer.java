@@ -9,9 +9,9 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import org.lwjgl.opengl.GL11;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEmbryo;
@@ -67,7 +67,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         cultivate.render(false);
         GL11.glPopMatrix();
 
-        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), FluidRegistry.getFluid("stuff"));
+        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), Data.fluid, Data.stuffFluid);
         if (displayList != null)
         {
             GL11.glPushMatrix();
