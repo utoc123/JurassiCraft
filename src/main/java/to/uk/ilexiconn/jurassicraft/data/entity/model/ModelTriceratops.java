@@ -355,10 +355,10 @@ public class ModelTriceratops extends MowzieModelBase
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         faceTarget(Head, 1, f3, f4);
-        walk(BackLeg3, 0.5F, 0.3F, false, 0F, f, f1, 0);
-        walk(BackLeg4, 0.5F, 0.3F, true, 0F, f, f1, 0);
-        walk(FrontLeg3, 0.5F, 0.5F, true, 0F, f, f1, 0);
-        walk(FrontLeg4, 0.5F, 0.5F, false, 0F, f, f1, 0);
+        walk(BackLeg3, 0.5F, 0.3F, false, 0F, 0, f, f1);
+        walk(BackLeg4, 0.5F, 0.3F, true, 0F, 0, f, f1);
+        walk(FrontLeg3, 0.5F, 0.5F, true, 0F, 0, f, f1);
+        walk(FrontLeg4, 0.5F, 0.5F, false, 0F, 0, f, f1);
     }
 
 }
