@@ -95,8 +95,13 @@ public final class Data extends Util
         
        	/** Recipes */
         {
-            addShapedRecipe(new ItemStack(getBlock(1)), "GGG", "GCG", "III", 'G', Blocks.glass, 'C', new ItemStack(Items.dye, 1, 2), 'I', Items.iron_ingot);
             addShapedRecipe(new ItemStack(getBlock(3)), "IFI", "IFI", 'I', Items.iron_ingot, 'F', getItem(2));
+
+            for (int i = 0; i < BlockCultivate.Bottom.colors.length; i++)
+            {
+                addShapelessRecipe(new ItemStack(getBlock(0), 1, i), new ItemStack(Items.dye, 1, i), new ItemStack(getBlock(0)));
+                addShapedRecipe(new ItemStack(getBlock(0), 1, i), "GDG", "GWG", "III", 'I', Items.iron_ingot, 'G', Blocks.glass, 'D', new ItemStack(Items.dye, 1, i), 'W', Items.water_bucket);
+            }
         }
         
         /** Entities */
