@@ -1,19 +1,18 @@
 package to.uk.ilexiconn.jurassicraft.data;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockAmberOre;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockAnalyzer;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilClayOre;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilOre;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilSandstoneOre;
-import to.uk.ilexiconn.jurassicraft.data.block.GhostBlock;
+import to.uk.ilexiconn.jurassicraft.data.block.*;
 import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.gui.GuiHandler;
@@ -101,6 +100,16 @@ public final class Data extends Util
         {
         	int entityId = EntityRegistry.findGlobalUniqueEntityId();
 			EntityRegistry.registerModEntity(EntityDinoEgg.class, "dino_egg", entityId, JurassiCraft.instance, 64, 1, true);
+        }
+
+        { /** Other test stuff */
+            Fluid fluid = new Fluid("stuff").setLuminosity(5).setViscosity(1);
+            FluidRegistry.registerFluid(fluid);
+
+            Block stuffFluid = new BlockStuffFluid(fluid, Material.water).setBlockName("stuffBlock").setCreativeTab(getCreativeTab(0));
+            GameRegistry.registerBlock(stuffFluid, "stuffFluid");
+
+            fluid.setUnlocalizedName(stuffFluid.getUnlocalizedName());
         }
     }
 
