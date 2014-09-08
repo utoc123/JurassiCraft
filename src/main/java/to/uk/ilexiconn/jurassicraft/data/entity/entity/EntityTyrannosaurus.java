@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
+import ilexiconn.llib.utils.ControlledParam;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.*;
@@ -9,7 +10,6 @@ import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
-import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
 public class EntityTyrannosaurus extends EntityDinosaurMonster
 {   
