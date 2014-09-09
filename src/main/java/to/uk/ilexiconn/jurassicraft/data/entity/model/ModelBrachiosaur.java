@@ -259,6 +259,9 @@ public class ModelBrachiosaur extends MowzieModelBase
         addChildTo(front_right_foot, bottom_front_right_leg);
         addChildTo(bottom_front_right_leg, front_right_top_leg);
         
+        addChildTo(front_left_top_leg, body_3);
+        addChildTo(front_right_top_leg, body_3);
+        
         addChildTo(tail5, tail4);
         addChildTo(tail4, tail3);
         addChildTo(tail3, tail2);
@@ -342,7 +345,7 @@ public class ModelBrachiosaur extends MowzieModelBase
         top_leg_left.render(f5);
 //    bottom_leg_left.render(f5);
 //    left_back_foot.render(f5);
-        front_left_top_leg.render(f5);
+//        front_left_top_leg.render(f5);
 //    bottom_front_left_leg.render(f5);
 //    front_left_foot.render(f5);
 //        tail1.render(f5);
@@ -360,7 +363,7 @@ public class ModelBrachiosaur extends MowzieModelBase
  //       head.render(f5);
 //        snout.render(f5);
 //        jaw.render(f5);
-        front_right_top_leg.render(f5);
+//        front_right_top_leg.render(f5);
 //    bottom_front_right_leg.render(f5);
 //    front_right_foot.render(f5);
         top_leg_right.render(f5);
@@ -442,7 +445,17 @@ public class ModelBrachiosaur extends MowzieModelBase
         bob(body_1, 0.4F, 1.5F, false, f, f1);
         MowzieModelRenderer[] neckParts = {this.head, this.neck7, this.neck6, this.neck5, this.neck4, this.neck3, this.neck2, this.neck1};
         MowzieModelRenderer[] tailParts = {tail5, tail4, tail3};
-        chainWave(neckParts, 0.05F, 0.05F, -4, brachObama.frame, 1);
+        
+        //Idle
+        walk(body_1, 0.05F, 0.025F, false, 0, 0, brachObama.frame, 1);
+        walk(front_right_top_leg, 0.05F, 0.1F, false, 0, 0, brachObama.frame, 1);
+        walk(front_left_top_leg, 0.05F, 0.1F, false, 0, 0, brachObama.frame, 1);
+        walk(bottom_front_right_leg, 0.05F, 0.3F, true, 0, 0, brachObama.frame, 1);
+        walk(bottom_front_left_leg, 0.05F, 0.3F, true, 0, 0, brachObama.frame, 1);
+        walk(front_right_foot, 0.05F, 0.175F, false, 0, 0, brachObama.frame, 1);
+        walk(front_left_foot, 0.05F, 0.175F, false, 0, 0, brachObama.frame, 1);
+        chainWave(neckParts, 0.05F, -0.05F, -4, brachObama.frame, 1);
+        chainWave(tailParts, 0.05F, -0.05F, 1, brachObama.frame, 1);
         tailSwing(tailParts, 0.05F, 0.2F, 2, brachObama.frame);
 
     }
