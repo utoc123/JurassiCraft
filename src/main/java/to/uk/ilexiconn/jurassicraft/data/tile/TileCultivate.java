@@ -16,7 +16,7 @@ public class TileCultivate extends TileEntity implements IInventory
 	// 1 = Output
     public ItemStack[] stacks = new ItemStack[2];
 	public int cultivateTime = 0;
-	public int timeToCultivate = 400;
+	public int timeToCultivate = 2048;
     public int rotation;
     public int progress;
     public float animationTick;
