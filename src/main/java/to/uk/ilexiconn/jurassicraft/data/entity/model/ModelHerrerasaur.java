@@ -336,9 +336,45 @@ public class ModelHerrerasaur extends MowzieModelBase
     model.rotateAngleZ = z;
   }
   
+  public void resetPose() {
+	  Left_Upper_Foot.setCurrentPoseToInitValues();
+	    Right_Upper_Foot.setCurrentPoseToInitValues();
+	    Left_Calf_1.setCurrentPoseToInitValues();
+	    Right_Calf_1.setCurrentPoseToInitValues();
+	    Left_Thigh.setCurrentPoseToInitValues();
+	    Right_Thigh.setCurrentPoseToInitValues();
+	    Body_1.setCurrentPoseToInitValues();
+	    Body_2.setCurrentPoseToInitValues();
+	    Neck.setCurrentPoseToInitValues();
+	    Head.setCurrentPoseToInitValues();
+	    Upper_Jaw.setCurrentPoseToInitValues();
+	    Lower_Jaw.setCurrentPoseToInitValues();
+	    Tail_1.setCurrentPoseToInitValues();
+	    Tail_2.setCurrentPoseToInitValues();
+	    Tail_3.setCurrentPoseToInitValues();
+	    Tail_4.setCurrentPoseToInitValues();
+	    Tail_5.setCurrentPoseToInitValues();
+	    Tail_6.setCurrentPoseToInitValues();
+	    Upper_Arm_Right.setCurrentPoseToInitValues();
+	    Upper_Arm_Left.setCurrentPoseToInitValues();
+	    Lower_Arm_Left.setCurrentPoseToInitValues();
+	    Lower_Arm_Right.setCurrentPoseToInitValues();
+	    Hand_Left.setCurrentPoseToInitValues();
+	    Hand_Right.setCurrentPoseToInitValues();
+	    Hand_Left_Claw_Left.setCurrentPoseToInitValues();
+	    Hand_Left_Claw_Right.setCurrentPoseToInitValues();
+	    Hand_Left_Claw_Middle.setCurrentPoseToInitValues();
+	    Hand_Right_Claw_Right.setCurrentPoseToInitValues();
+	    Hand_Right_Claw_Left.setCurrentPoseToInitValues();
+	    Hand_Right_Claw_Middle.setCurrentPoseToInitValues();
+	    Foot_Left.setCurrentPoseToInitValues();
+	    Foot_Right.setCurrentPoseToInitValues();
+  }
+  
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
+    resetPose();
     walk(Right_Thigh, 1.0F, 0.7F, false, 0, 0, f, f1);
     walk(Left_Thigh, 1.0F, 0.7F, true, 0, 0, f, f1);
   }

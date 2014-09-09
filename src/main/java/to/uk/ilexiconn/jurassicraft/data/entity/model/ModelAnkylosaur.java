@@ -248,7 +248,7 @@ public class ModelAnkylosaur extends MowzieModelBase
         model.rotateAngleZ = z;
     }
 	
-	public void setAngles() {
+	public void resetPose() {
 		  Head.setCurrentPoseToInitValues();
 	      Mouth.setCurrentPoseToInitValues();
 	      Head_Block.setCurrentPoseToInitValues();
@@ -276,6 +276,7 @@ public class ModelAnkylosaur extends MowzieModelBase
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         EntityAnkylosaur ankylosaur = (EntityAnkylosaur) entity;
+        resetPose();
         faceTarget(Head, 1, f3, f4);
         faceTarget(HeadHorn1, 1, f3, f4);
         faceTarget(HeadHorn2, 1, f3, f4);

@@ -297,6 +297,46 @@ public class ModelTriceratops extends MowzieModelBase
         Right_Front_Foot.setTextureSize(256, 256);
         Right_Front_Foot.mirror = true;
         setRotation(Right_Front_Foot, 0F, 0F, 0F);
+        
+        BackLeg1.setInitValuesToCurrentPose();
+        BackLeg2.setInitValuesToCurrentPose();
+        BackLeg3.setInitValuesToCurrentPose();
+        BackLeg4.setInitValuesToCurrentPose();
+        FrontLeg1.setInitValuesToCurrentPose();
+        FrontLeg2.setInitValuesToCurrentPose();
+        FrontLeg3.setInitValuesToCurrentPose();
+        FrontLeg4.setInitValuesToCurrentPose();
+        Tail1.setInitValuesToCurrentPose();
+        Tail2.setInitValuesToCurrentPose();
+        Tail3.setInitValuesToCurrentPose();
+        Tail5.setInitValuesToCurrentPose();
+        Tail6.setInitValuesToCurrentPose();
+        Torso_1.setInitValuesToCurrentPose();
+        Neck.setInitValuesToCurrentPose();
+        Head.setInitValuesToCurrentPose();
+        Mouth.setInitValuesToCurrentPose();
+        Shield_thingy1.setInitValuesToCurrentPose();
+        Shield_thingy2.setInitValuesToCurrentPose();
+        Shield_thingy3.setInitValuesToCurrentPose();
+        Middle_Horn.setInitValuesToCurrentPose();
+        Left_Horn.setInitValuesToCurrentPose();
+        Right_Back_Foot.setInitValuesToCurrentPose();
+        Left_Back_Foot.setInitValuesToCurrentPose();
+        Torso_2.setInitValuesToCurrentPose();
+        Right_Horn.setInitValuesToCurrentPose();
+        Shield_thingy4.setInitValuesToCurrentPose();
+        Shield_thingy5.setInitValuesToCurrentPose();
+        Shield_thingy6.setInitValuesToCurrentPose();
+        Shield_thingy7.setInitValuesToCurrentPose();
+        Shield_thingy8.setInitValuesToCurrentPose();
+        Shield_thingy9.setInitValuesToCurrentPose();
+        Shield_thingy10.setInitValuesToCurrentPose();
+        Shield_thingy11.setInitValuesToCurrentPose();
+        Shield_thingy12.setInitValuesToCurrentPose();
+        Shield_thingy13.setInitValuesToCurrentPose();
+        Chest.setInitValuesToCurrentPose();
+        Left_Front_Foot.setInitValuesToCurrentPose();
+        Right_Front_Foot.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -350,15 +390,83 @@ public class ModelTriceratops extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
+    
+    public void resetPose() {
+    	BackLeg1.setCurrentPoseToInitValues();
+        BackLeg2.setCurrentPoseToInitValues();
+        BackLeg3.setCurrentPoseToInitValues();
+        BackLeg4.setCurrentPoseToInitValues();
+        FrontLeg1.setCurrentPoseToInitValues();
+        FrontLeg2.setCurrentPoseToInitValues();
+        FrontLeg3.setCurrentPoseToInitValues();
+        FrontLeg4.setCurrentPoseToInitValues();
+        Tail1.setCurrentPoseToInitValues();
+        Tail2.setCurrentPoseToInitValues();
+        Tail3.setCurrentPoseToInitValues();
+        Tail5.setCurrentPoseToInitValues();
+        Tail6.setCurrentPoseToInitValues();
+        Torso_1.setCurrentPoseToInitValues();
+        Neck.setCurrentPoseToInitValues();
+        Head.setCurrentPoseToInitValues();
+        Mouth.setCurrentPoseToInitValues();
+        Shield_thingy1.setCurrentPoseToInitValues();
+        Shield_thingy2.setCurrentPoseToInitValues();
+        Shield_thingy3.setCurrentPoseToInitValues();
+        Middle_Horn.setCurrentPoseToInitValues();
+        Left_Horn.setCurrentPoseToInitValues();
+        Right_Back_Foot.setCurrentPoseToInitValues();
+        Left_Back_Foot.setCurrentPoseToInitValues();
+        Torso_2.setCurrentPoseToInitValues();
+        Right_Horn.setCurrentPoseToInitValues();
+        Shield_thingy4.setCurrentPoseToInitValues();
+        Shield_thingy5.setCurrentPoseToInitValues();
+        Shield_thingy6.setCurrentPoseToInitValues();
+        Shield_thingy7.setCurrentPoseToInitValues();
+        Shield_thingy8.setCurrentPoseToInitValues();
+        Shield_thingy9.setCurrentPoseToInitValues();
+        Shield_thingy10.setCurrentPoseToInitValues();
+        Shield_thingy11.setCurrentPoseToInitValues();
+        Shield_thingy12.setCurrentPoseToInitValues();
+        Shield_thingy13.setCurrentPoseToInitValues();
+        Chest.setCurrentPoseToInitValues();
+        Left_Front_Foot.setCurrentPoseToInitValues();
+        Right_Front_Foot.setCurrentPoseToInitValues();
+    }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        resetPose();
         faceTarget(Head, 1, f3, f4);
+        faceTarget(Mouth, 1, f3, f4);
+        faceTarget(Shield_thingy1, 1, f3, f4);
+        faceTarget(Shield_thingy2, 1, f3, f4);
+        faceTarget(Shield_thingy3, 1, f3, f4);
+        faceTarget(Shield_thingy4, 1, f3, f4);
+        faceTarget(Shield_thingy5, 1, f3, f4);
+        faceTarget(Shield_thingy6, 1, f3, f4);
+        faceTarget(Shield_thingy7, 1, f3, f4);
+        faceTarget(Shield_thingy8, 1, f3, f4);
+        faceTarget(Shield_thingy9, 1, f3, f4);
+        faceTarget(Shield_thingy10, 1, f3, f4);
+        faceTarget(Shield_thingy11, 1, f3, f4);
+        faceTarget(Shield_thingy12, 1, f3, f4);
+        faceTarget(Shield_thingy13, 1, f3, f4);
+        faceTarget(Left_Horn, 1, f3, f4);
+        faceTarget(Right_Horn, 1, f3, f4);
+        faceTarget(Middle_Horn, 1, f3, f4);
+        walk(BackLeg1, 0.5F, 0.3F, false, 0F, 0, f, f1);
+        walk(BackLeg2, 0.5F, 0.3F, true, 0F, 0, f, f1);
         walk(BackLeg3, 0.5F, 0.3F, false, 0F, 0, f, f1);
         walk(BackLeg4, 0.5F, 0.3F, true, 0F, 0, f, f1);
+        walk(Right_Back_Foot, 0.5F, 0.3F, false, 0F, 0, f, f1);
+        walk(Left_Back_Foot, 0.5F, 0.3F, true, 0F, 0, f, f1);
+        walk(FrontLeg1, 0.5F, 0.5F, true, 0F, 0, f, f1);
+        walk(FrontLeg2, 0.5F, 0.5F, false, 0F, 0, f, f1);
         walk(FrontLeg3, 0.5F, 0.5F, true, 0F, 0, f, f1);
         walk(FrontLeg4, 0.5F, 0.5F, false, 0F, 0, f, f1);
+        walk(Left_Front_Foot, 0.5F, 0.5F, true, 0F, 0, f, f1);
+        walk(Right_Front_Foot, 0.5F, 0.5F, false, 0F, 0, f, f1);
     }
 
 }

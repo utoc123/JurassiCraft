@@ -229,6 +229,29 @@ public class ModelLeaellynasaur extends MowzieModelBase
     model.rotateAngleZ = z;
   }
   
+  public void resetPose() {
+	  body.setCurrentPoseToInitValues();
+      neck.setCurrentPoseToInitValues();
+      head.setCurrentPoseToInitValues();
+      bottombeak.setCurrentPoseToInitValues();
+      mouthtop.setCurrentPoseToInitValues();
+      upperleg.setCurrentPoseToInitValues();
+      upperleg1.setCurrentPoseToInitValues();
+      midleg.setCurrentPoseToInitValues();
+      midleg1.setCurrentPoseToInitValues();
+      lowerleg.setCurrentPoseToInitValues();
+      lowerleg1.setCurrentPoseToInitValues();
+      feet.setCurrentPoseToInitValues();
+      feet1.setCurrentPoseToInitValues();
+      tail.setCurrentPoseToInitValues();
+      shoulder1.setCurrentPoseToInitValues();
+      arm1.setCurrentPoseToInitValues();
+      shoulder.setCurrentPoseToInitValues();
+      arm.setCurrentPoseToInitValues();
+      body1.setCurrentPoseToInitValues();
+      tailback.setCurrentPoseToInitValues();
+  }
+  
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);

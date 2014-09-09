@@ -442,10 +442,51 @@ public class ModelStegosaur extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
+    
+    public void resetPose() {
+    	body_1.setCurrentPoseToInitValues();
+        leg_left_1.setCurrentPoseToInitValues();
+        leg_right_1.setCurrentPoseToInitValues();
+        neck_1.setCurrentPoseToInitValues();
+        tail_1.setCurrentPoseToInitValues();
+        tail_2.setCurrentPoseToInitValues();
+        tail_3.setCurrentPoseToInitValues();
+        tail_4.setCurrentPoseToInitValues();
+        leg_left_2.setCurrentPoseToInitValues();
+        leg_right_2.setCurrentPoseToInitValues();
+        leg_right_3.setCurrentPoseToInitValues();
+        leg_left_3.setCurrentPoseToInitValues();
+        foot_left.setCurrentPoseToInitValues();
+        arm_right_1.setCurrentPoseToInitValues();
+        arm_left_1.setCurrentPoseToInitValues();
+        arm_left_2.setCurrentPoseToInitValues();
+        arm_right_2.setCurrentPoseToInitValues();
+        head_back.setCurrentPoseToInitValues();
+        upper_jaw_1.setCurrentPoseToInitValues();
+        head_.setCurrentPoseToInitValues();
+        tail_end.setCurrentPoseToInitValues();
+        lower_jaw.setCurrentPoseToInitValues();
+        plate_1.setCurrentPoseToInitValues();
+        plate_2.setCurrentPoseToInitValues();
+        plate_3.setCurrentPoseToInitValues();
+        plate_4.setCurrentPoseToInitValues();
+        plate_5.setCurrentPoseToInitValues();
+        plate_6.setCurrentPoseToInitValues();
+        plate_7.setCurrentPoseToInitValues();
+        front_left_spike.setCurrentPoseToInitValues();
+        front_right_spike.setCurrentPoseToInitValues();
+        back_right_spike.setCurrentPoseToInitValues();
+        back_left_spike.setCurrentPoseToInitValues();
+        plate_8.setCurrentPoseToInitValues();
+        plate_9.setCurrentPoseToInitValues();
+        plate_10.setCurrentPoseToInitValues();
+        plate_11.setCurrentPoseToInitValues();
+    }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        resetPose();
         faceTarget(head_, 1, f3, f4);
         walk(leg_left_1, 0.5F, 0.3F, false, 0F, 0, f, f1);
         walk(leg_right_1, 0.5F, 0.3F, true, 0F, 0, f, f1);
