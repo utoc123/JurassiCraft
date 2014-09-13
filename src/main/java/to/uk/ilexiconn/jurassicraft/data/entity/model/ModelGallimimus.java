@@ -11,6 +11,7 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityGallimimus;
 import ilexiconn.llib.client.model.MowzieModelBase;
 import ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
@@ -280,6 +281,28 @@ public class ModelGallimimus extends MowzieModelBase
     addChildTo(Neck_2, Neck_1);
     addChildTo(Neck_1, Body_2);
     addChildTo(Body_2, Body_1);
+    
+    addChildTo(Foot_Left, Left_Upper_Foot);
+    addChildTo(Left_Upper_Foot, Left_Calf_1);
+    addChildTo(Left_Calf_1, Left_Thigh);
+    
+    addChildTo(Foot_Right, Right_Upper_Foot);
+    addChildTo(Right_Upper_Foot, Right_Calf_1);
+    addChildTo(Right_Calf_1, Right_Thigh);
+    
+    addChildTo(Hand_Left, Lower_Arm_Left);
+    addChildTo(Lower_Arm_Left, Upper_Arm_Left);
+    addChildTo(Upper_Arm_Left, Body_1);
+    
+    addChildTo(Hand_Right, Lower_Arm_Right);
+    addChildTo(Lower_Arm_Right, Upper_Arm_Right);
+    addChildTo(Upper_Arm_Right, Body_1);
+    
+    addChildTo(Tail_5, Tail_4);
+    addChildTo(Tail_4, Tail_3);
+    addChildTo(Tail_3, Tail_2);
+    addChildTo(Tail_2, Tail_1);
+    addChildTo(Tail_1, Body_1);
       
     //Corrections
     Head.setRotationPoint(0, -1, -3);
@@ -288,6 +311,9 @@ public class ModelGallimimus extends MowzieModelBase
     Neck_3.setRotationPoint(0, 0, -3);
     Neck_2.setRotationPoint(0, 0.5F, -6);
     Body_2.setRotationPoint(0, -1, -6F);
+    Tail_1.rotationPointY -= 3;
+    Foot_Left.offsetY += 0.15;
+    Foot_Right.offsetY += 0.15;
     
       Left_Upper_Foot.setInitValuesToCurrentPose();
       Right_Upper_Foot.setInitValuesToCurrentPose();
@@ -329,11 +355,11 @@ public class ModelGallimimus extends MowzieModelBase
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5);
-    Left_Upper_Foot.render(f5);
-    Right_Upper_Foot.render(f5);
-    Left_Calf_1.render(f5);
-    Right_Calf_1.render(f5);
+    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+//    Left_Upper_Foot.render(f5);
+//    Right_Upper_Foot.render(f5);
+//    Left_Calf_1.render(f5);
+//    Right_Calf_1.render(f5);
     Left_Thigh.render(f5);
     Right_Thigh.render(f5);
     Body_1.render(f5);
@@ -341,25 +367,25 @@ public class ModelGallimimus extends MowzieModelBase
 //    Head.render(f5);
 //    Upper_Jaw.render(f5);
 //    Lower_Jaw.render(f5);
-    Tail_1.render(f5);
+/*    Tail_1.render(f5);
     Tail_2.render(f5);
     Tail_3.render(f5);
     Tail_4.render(f5);
     Tail_5.render(f5);
-    Upper_Arm_Right.render(f5);
+ /*   Upper_Arm_Right.render(f5);
     Upper_Arm_Left.render(f5);
     Lower_Arm_Left.render(f5);
     Lower_Arm_Right.render(f5);
     Hand_Left.render(f5);
     Hand_Right.render(f5);
-    Hand_Left_Claw_Left.render(f5);
+ /*   Hand_Left_Claw_Left.render(f5);
     Hand_Left_Claw_Right.render(f5);
     Hand_Left_Claw_Middle.render(f5);
     Hand_Right_Claw_Right.render(f5);
     Hand_Right_Claw_Left.render(f5);
-    Hand_Right_Claw_Middle.render(f5);
-    Foot_Left.render(f5);
-    Foot_Right.render(f5);
+    Hand_Right_Claw_Middle.render(f5);*/
+//    Foot_Left.render(f5);
+//    Foot_Right.render(f5);
 //    Neck_1.render(f5);
 //    Neck_2.render(f5);
 //    Neck_3.render(f5);
@@ -374,10 +400,96 @@ public class ModelGallimimus extends MowzieModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  public void resetPose() {
+	  Left_Upper_Foot.setCurrentPoseToInitValues();
+      Right_Upper_Foot.setCurrentPoseToInitValues();
+       Left_Calf_1.setCurrentPoseToInitValues();
+       Right_Calf_1.setCurrentPoseToInitValues();
+       Left_Thigh.setCurrentPoseToInitValues();
+       Right_Thigh.setCurrentPoseToInitValues();
+       Body_1.setCurrentPoseToInitValues();
+       Body_2.setCurrentPoseToInitValues();
+       Head.setCurrentPoseToInitValues();
+       Upper_Jaw.setCurrentPoseToInitValues();
+       Lower_Jaw.setCurrentPoseToInitValues();
+       Tail_1.setCurrentPoseToInitValues();
+       Tail_2.setCurrentPoseToInitValues();
+       Tail_3.setCurrentPoseToInitValues();
+       Tail_4.setCurrentPoseToInitValues();
+       Tail_5.setCurrentPoseToInitValues();
+       Upper_Arm_Right.setCurrentPoseToInitValues();
+       Upper_Arm_Left.setCurrentPoseToInitValues();
+       Lower_Arm_Left.setCurrentPoseToInitValues();
+       Lower_Arm_Right.setCurrentPoseToInitValues();
+       Hand_Left.setCurrentPoseToInitValues();
+       Hand_Right.setCurrentPoseToInitValues();
+       Hand_Left_Claw_Left.setCurrentPoseToInitValues();
+       Hand_Left_Claw_Right.setCurrentPoseToInitValues();
+       Hand_Left_Claw_Middle.setCurrentPoseToInitValues();
+       Hand_Right_Claw_Right.setCurrentPoseToInitValues();
+       Hand_Right_Claw_Left.setCurrentPoseToInitValues();
+       Hand_Right_Claw_Middle.setCurrentPoseToInitValues();
+       Foot_Left.setCurrentPoseToInitValues();
+       Foot_Right.setCurrentPoseToInitValues();
+       Neck_1.setCurrentPoseToInitValues();
+       Neck_2.setCurrentPoseToInitValues();
+       Neck_3.setCurrentPoseToInitValues();
+       Neck_4.setCurrentPoseToInitValues();
+       Neck_5.setCurrentPoseToInitValues();
+  }
+  
+  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
-//    walk(Thigh, 0.7F, 0.4F, false, 0F, f, f1);
-//    walk(Thigh2, 0.7F, 0.4F, true, 0F, f, f1);
+    EntityGallimimus galli = (EntityGallimimus) entity; 
+    resetPose();
+/*    f = galli.frame;
+    f1 = 1F;*/
+    float scaleFactor = 0.9F;
+    float height = 2.5F * f1;
+    float legDelay = -0.1F;
+    
+    MowzieModelRenderer[] NeckParts = {this.Head, this.Neck_5, this.Neck_4, this.Neck_3, this.Neck_2, this.Neck_1};
+    MowzieModelRenderer[] TailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2};
+    
+    Body_1.rotationPointY -= 2;
+    Left_Thigh.rotationPointY -= 2;
+    Right_Thigh.rotationPointY -= 2;
+
+    bob(Body_1, 1F * scaleFactor, height, false, f, f1);
+    bob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+    bob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+    Body_1.rotationPointX += -f1*height*Math.cos(f*0.5*scaleFactor);
+    Left_Thigh.rotationPointX += -f1*height*Math.cos(f*0.5*scaleFactor);
+    Right_Thigh.rotationPointX += -f1*height*Math.cos(f*0.5*scaleFactor);
+    
+    Neck_1.rotateAngleZ += f1*0.2*height*Math.cos(f*0.5*scaleFactor);
+    Neck_2.rotateAngleY += f1*0.2*height*Math.cos(f*0.5*scaleFactor);
+    
+    walk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F - legDelay, 0.2F, f, f1);
+    walk(Left_Calf_1, 0.5F * scaleFactor, 0.7F, true, 2F - legDelay, 0F, f, f1);
+    walk(Left_Upper_Foot, 0.5F * scaleFactor, 0.5F, false, 3F - legDelay, 0F, f, f1);
+    walk(Foot_Left, 0.5F * scaleFactor, 0.5F, true, 1.5F - legDelay, 1F, f, f1);
+    
+    walk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F - legDelay, 0.2F, f, f1);
+    walk(Right_Calf_1, 0.5F * scaleFactor, 0.7F, false, 2F - legDelay, 0F, f, f1);
+    walk(Right_Upper_Foot, 0.5F * scaleFactor, 0.5F, true, 3F - legDelay, 0F, f, f1);
+    walk(Foot_Right, 0.5F * scaleFactor, 0.5F, false, 1.5F - legDelay, 1F, f, f1);
+    
+    walk(Upper_Arm_Right, 1 * scaleFactor, 0.3F, true, 0.3F, -0.3F, f, f1);
+    walk(Upper_Arm_Left, 1 * scaleFactor, 0.3F, true, 0.3F, -0.3F, f, f1);
+    walk(Lower_Arm_Right, 1 * scaleFactor, 0.3F, true, 0.6F, -0.7F, f, f1);
+    walk(Lower_Arm_Left, 1 * scaleFactor, 0.3F, true, 0.6F, -0.7F, f, f1);
+    walk(Hand_Right, 1 * scaleFactor, 0.3F, true, 0.9F, 1F, f, f1);
+    walk(Hand_Left, 1 * scaleFactor, 0.3F, true, 0.9F, 1F, f, f1);
+    
+    walk(Neck_1, scaleFactor, 0.3F, true, 1.5F, -1.5F, f, f1);
+    walk(Neck_2, scaleFactor, 0.1F, false, 1.5F, 0.7F, f, f1);
+    walk(Neck_3, scaleFactor, 0.1F, false, 1.5F, 0.5F, f, f1);
+    walk(Neck_4, scaleFactor, 0.1F, false, 1.5F, 0.3F, f, f1);
+    
+    chainWave(TailParts, 1 * scaleFactor, 0.1F, 1, f, f1);
+    tailSwing(TailParts, 0.5F * scaleFactor, 0.1F * f1, 2, f);
+
   }
 }
