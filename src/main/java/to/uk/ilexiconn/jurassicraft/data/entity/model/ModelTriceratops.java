@@ -298,6 +298,15 @@ public class ModelTriceratops extends MowzieModelBase
         Right_Front_Foot.mirror = true;
         setRotation(Right_Front_Foot, 0F, 0F, 0F);
         
+        addChildTo(Middle_Horn, Mouth);
+        addChildTo(Mouth, Head);
+        
+        addChildTo(Left_Front_Foot, FrontLeg3);
+        addChildTo(Right_Front_Foot, FrontLeg4);
+        
+        //Corrections
+        Middle_Horn.setRotationPoint(0, 0, 0);
+        
         BackLeg1.setInitValuesToCurrentPose();
         BackLeg2.setInitValuesToCurrentPose();
         BackLeg3.setInitValuesToCurrentPose();
@@ -359,11 +368,11 @@ public class ModelTriceratops extends MowzieModelBase
         Torso_1.render(f5);
         Neck.render(f5);
         Head.render(f5);
-        Mouth.render(f5);
+//        Mouth.render(f5);
         Shield_thingy1.render(f5);
         Shield_thingy2.render(f5);
         Shield_thingy3.render(f5);
-        Middle_Horn.render(f5);
+//        Middle_Horn.render(f5);
         Left_Horn.render(f5);
         Right_Back_Foot.render(f5);
         Left_Back_Foot.render(f5);
@@ -380,8 +389,8 @@ public class ModelTriceratops extends MowzieModelBase
         Shield_thingy12.render(f5);
         Shield_thingy13.render(f5);
         Chest.render(f5);
-        Left_Front_Foot.render(f5);
-        Right_Front_Foot.render(f5);
+//        Left_Front_Foot.render(f5);
+//        Right_Front_Foot.render(f5);
     }
 
     private void setRotation(MowzieModelRenderer model, float x, float y, float z)
@@ -438,7 +447,6 @@ public class ModelTriceratops extends MowzieModelBase
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         resetPose();
         faceTarget(Head, 1, f3, f4);
-        faceTarget(Mouth, 1, f3, f4);
         faceTarget(Shield_thingy1, 1, f3, f4);
         faceTarget(Shield_thingy2, 1, f3, f4);
         faceTarget(Shield_thingy3, 1, f3, f4);
@@ -454,19 +462,18 @@ public class ModelTriceratops extends MowzieModelBase
         faceTarget(Shield_thingy13, 1, f3, f4);
         faceTarget(Left_Horn, 1, f3, f4);
         faceTarget(Right_Horn, 1, f3, f4);
-        faceTarget(Middle_Horn, 1, f3, f4);
         walk(BackLeg1, 0.5F, 0.3F, false, 0F, 0, f, f1);
         walk(BackLeg2, 0.5F, 0.3F, true, 0F, 0, f, f1);
         walk(BackLeg3, 0.5F, 0.3F, false, 0F, 0, f, f1);
         walk(BackLeg4, 0.5F, 0.3F, true, 0F, 0, f, f1);
-        walk(Right_Back_Foot, 0.5F, 0.3F, false, 0F, 0, f, f1);
-        walk(Left_Back_Foot, 0.5F, 0.3F, true, 0F, 0, f, f1);
+        walk(Right_Back_Foot, 0.5F, 0.3F, true, 0F, 0, f, f1);
+        walk(Left_Back_Foot, 0.5F, 0.3F, false, 0F, 0, f, f1);
         walk(FrontLeg1, 0.5F, 0.5F, true, 0F, 0, f, f1);
         walk(FrontLeg2, 0.5F, 0.5F, false, 0F, 0, f, f1);
         walk(FrontLeg3, 0.5F, 0.5F, true, 0F, 0, f, f1);
         walk(FrontLeg4, 0.5F, 0.5F, false, 0F, 0, f, f1);
-        walk(Left_Front_Foot, 0.5F, 0.5F, true, 0F, 0, f, f1);
-        walk(Right_Front_Foot, 0.5F, 0.5F, false, 0F, 0, f, f1);
+//        walk(Left_Front_Foot, 0.5F, 0.5F, false, 0F, 0, f, f1);
+//        walk(Right_Front_Foot, 0.5F, 0.5F, true, 0F, 0, f, f1);
     }
 
 }
