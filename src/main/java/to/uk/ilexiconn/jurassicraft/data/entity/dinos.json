@@ -65,7 +65,7 @@
         "speed":0.23,
         "health":92,
         "strength":0,
-        "scale":2.4,
+        "scale":2.1,
         "xzHitbox":3.5,
         "yHitbox":3.5,
         "livingSound1":"jurassicraft:tric1",
