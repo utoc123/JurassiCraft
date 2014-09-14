@@ -110,7 +110,7 @@
         "speed":0.3,
         "health":30,
         "strength":0,
-        "scale":1.1,
+        "scale":1.4,
         "xzHitbox":1.7,
         "yHitbox":2.1,
         "livingSound1":"jurassicraft:gali1",
