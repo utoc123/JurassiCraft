@@ -83,9 +83,15 @@ public class ModelEmbryo extends MowzieModelBase
  //       shapes[6].render(0.0625f);
  //       shapes[7].render(0.0625f);
 //        shapes[8].render(0.0625f);
-
+        
+        MowzieModelRenderer[] BodyParts = {this.shapes[2], this.shapes[1], this.shapes[0], this.shapes[3], this.shapes[4]};
+        
         shapes[0].rotationPointY -= Math.cos(tile.animationTick/6)*0.01;
-        chainWave(shapes, 0.1F, 0.001F, 1, tile.animationTick, 1F);
+        chainWave(BodyParts, 0.1F, 0.001F, 1, tile.animationTick, 1F);
+        shapes[5].rotateAngleX += Math.cos(tile.animationTick/6 - 5)*0.005;
+        shapes[6].rotateAngleX += Math.cos(tile.animationTick/6 - 5)*0.005;
+        shapes[7].rotateAngleX += Math.cos(tile.animationTick/6 - 5)*0.005;
+        shapes[8].rotateAngleX += Math.cos(tile.animationTick/6 - 5)*0.005;
         shapes[0].rotateAngleY += 0.001;
     }
 }
