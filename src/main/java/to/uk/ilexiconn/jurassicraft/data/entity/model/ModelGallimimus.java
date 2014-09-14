@@ -55,6 +55,7 @@ public class ModelGallimimus extends MowzieModelBase
     MowzieModelRenderer Neck_3;
     MowzieModelRenderer Neck_4;
     MowzieModelRenderer Neck_5;
+    MowzieModelRenderer HeadJoint;
   
   public ModelGallimimus()
   {
@@ -271,10 +272,17 @@ public class ModelGallimimus extends MowzieModelBase
     Hand_Right_Claw_Middle.setTextureSize(256, 256);
     Hand_Right_Claw_Middle.mirror = false;
     setRotation(Hand_Right_Claw_Middle, -0.5917596F, 2.089648F, 0F);
-      
+    HeadJoint = new MowzieModelRenderer(this, 81, 57);
+    Hand_Right_Claw_Middle.addBox(0F, 0F, 0F, 0, 0, 0);
+    HeadJoint.setRotationPoint(-4.5F, 14F, -6.4F);
+    HeadJoint.setTextureSize(256, 256);
+    HeadJoint.mirror = false;
+    setRotation(HeadJoint, 0F, 0F, 0F);
+    
     addChildTo(Lower_Jaw, Head);
     addChildTo(Upper_Jaw, Head);
-    addChildTo(Head, Neck_5);
+    addChildTo(Head, HeadJoint);
+    addChildTo(HeadJoint, Neck_5);
     addChildTo(Neck_5, Neck_4);
     addChildTo(Neck_4, Neck_3);
     addChildTo(Neck_3, Neck_2);
@@ -305,7 +313,8 @@ public class ModelGallimimus extends MowzieModelBase
     addChildTo(Tail_1, Body_1);
       
     //Corrections
-    Head.setRotationPoint(0, -1, -3);
+    Head.setRotationPoint(0, 0, 0);
+    HeadJoint.setRotationPoint(0, -1, -3);
     Neck_5.setRotationPoint(0, 0, -2);
     Neck_4.setRotationPoint(0, 0, -3);
     Neck_3.setRotationPoint(0, 0, -3);
@@ -350,6 +359,7 @@ public class ModelGallimimus extends MowzieModelBase
        Neck_3.setInitValuesToCurrentPose();
        Neck_4.setInitValuesToCurrentPose();
        Neck_5.setInitValuesToCurrentPose();
+       HeadJoint.setInitValuesToCurrentPose();
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -436,6 +446,7 @@ public class ModelGallimimus extends MowzieModelBase
        Neck_3.setCurrentPoseToInitValues();
        Neck_4.setCurrentPoseToInitValues();
        Neck_5.setCurrentPoseToInitValues();
+       HeadJoint.setCurrentPoseToInitValues();
   }
   
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
@@ -458,6 +469,8 @@ public class ModelGallimimus extends MowzieModelBase
     Left_Thigh.rotationPointY -= 2;
     Right_Thigh.rotationPointY -= 2;
 
+    faceTarget(Head, 1, f3, f4);
+    
     bob(Body_1, 1F * scaleFactor, height, false, f, f1);
     bob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
     bob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
