@@ -451,6 +451,8 @@ public class ModelGallimimus extends MowzieModelBase
     
     MowzieModelRenderer[] NeckParts = {this.Head, this.Neck_5, this.Neck_4, this.Neck_3, this.Neck_2, this.Neck_1};
     MowzieModelRenderer[] TailParts = {this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2};
+    MowzieModelRenderer[] RightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
+    MowzieModelRenderer[] LeftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
     
     Body_1.rotationPointY -= 2;
     Left_Thigh.rotationPointY -= 2;
@@ -490,6 +492,12 @@ public class ModelGallimimus extends MowzieModelBase
     
     chainWave(TailParts, 1 * scaleFactor, 0.1F, 1, f, f1);
     tailSwing(TailParts, 0.5F * scaleFactor, 0.1F * f1, 2, f);
-
+    
+    //Idling
+    chainWave(TailParts, 0.1F, -0.05F, 1, galli.frame, 1F);
+    chainWave(NeckParts, 0.1F, -0.1F, 4, galli.frame, 1F);
+    walk(Body_1, 0.1F, 0.05F, false, 0F, 0F, galli.frame, 1F);
+    chainWave(RightArmParts, 0.1F, -0.15F, 4, galli.frame, 1F);
+    chainWave(LeftArmParts, 0.1F, -0.15F, 4, galli.frame, 1F);
   }
 }
