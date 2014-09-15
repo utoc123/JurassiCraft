@@ -21,10 +21,6 @@ version = "1.2.4-daily_build-" + getDate()
 group = "ilexiconn.jurassicraft"
 archivesBaseName = "JurassiCraft"
 
-configurations {
-    repoUploadFTP
-}
-
 repositories {
 	maven
 	{
@@ -57,13 +53,6 @@ processResources {
     }
 }
 
-dependencies {
-    repoUploadFTP([
-            'org.apache.maven.wagon:wagon-ftp:2.2',
-            'org.apache.maven.wagon:wagon-http:2.2',
-    ])
-}
-
 jar {
     classifier = 'universal'
 }
@@ -85,18 +74,6 @@ task devJar(type: Jar) {
 
 artifacts {
     archives sourcesJar, javadocJar, devJar
-}
-
-uploadArchives {
-    def username  = rootProject.getProperty('upload.username')?.trim()
-    def password  = rootProject.getProperty('upload.password')?.trim()
-
-    repositories.mavenDeployer {
-        configuration = configurations.repoUploadFTP
-        repository(url: 'ftp://ilexiconn.uk.to/public_html/maven') {
-            authentication(userName: username, password: password)
-        }
-    }
 }
 
 def getDate() {
