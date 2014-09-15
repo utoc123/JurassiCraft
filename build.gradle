@@ -25,7 +25,7 @@ repositories {
 	maven
 	{
 		name = "ilexiconn"
-		url = "http://ilexiconn.uk.to/maven/ilexiconn/"
+		url = "http://ilexiconn.uk.to/ilexiconn/"
 	}
 }
 
