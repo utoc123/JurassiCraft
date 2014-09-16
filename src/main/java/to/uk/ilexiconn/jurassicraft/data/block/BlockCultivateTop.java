@@ -14,7 +14,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 
 import java.util.List;
 import java.util.Random;
@@ -30,7 +30,7 @@ public class BlockCultivateTop extends Block
     {
         super(Material.cactus);
         setBlockName("cultivate_top_" + (lit ? "lit" : "idle"));
-        setBlockTextureName(Util.getModId() + "cultivate");
+        setBlockTextureName(DinoEntry.getModId() + "cultivate");
         setCreativeTab(null);
         setHardness(2f);
         setBlockBounds(0f, -1, 0f, 1f, 1f, 1f);
@@ -76,13 +76,13 @@ public class BlockCultivateTop extends Block
 
     public Item getItemDropped(int meta, Random random, int fortune)
     {
-        return Item.getItemFromBlock(Util.getBlock(0));
+        return Item.getItemFromBlock(DinoEntry.getBlock(0));
     }
 
     @SideOnly(Side.CLIENT)
     public Item getItem(World world, int x, int y, int z)
     {
-        return Item.getItemFromBlock(Util.getBlock(0));
+        return Item.getItemFromBlock(DinoEntry.getBlock(0));
     }
 
     public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta)

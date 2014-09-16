@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,17 +24,17 @@ public class BlockFossilSandstoneOre extends Block
     {
         super(Material.ground);
         setBlockName("fossil_sandstone_ore");
-        setBlockTextureName(Util.getModId() + "fossil_sandstone_ore");
+        setBlockTextureName(DinoEntry.getModId() + "fossil_sandstone_ore");
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(DinoEntry.getCreativeTab(0));
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
     }
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return Util.getItem(2);
+        return DinoEntry.getItem(2);
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)
@@ -56,13 +56,13 @@ public class BlockFossilSandstoneOre extends Block
     public void registerBlockIcons(IIconRegister register)
     {
         for (int i = 0; i < 6; ++i)
-            topIcons[i] = register.registerIcon(Util.getModId() + "fossil_side_" + i + "_sandstone_top");
+            topIcons[i] = register.registerIcon(DinoEntry.getModId() + "fossil_side_" + i + "_sandstone_top");
 
         for (int i = 0; i < 6; ++i)
-            normalIcons[i] = register.registerIcon(Util.getModId() + "fossil_side_" + i + "_sandstone_normal");
+            normalIcons[i] = register.registerIcon(DinoEntry.getModId() + "fossil_side_" + i + "_sandstone_normal");
 
         for (int i = 0; i < 6; ++i)
-            bottomIcons[i] = register.registerIcon(Util.getModId() + "fossil_side_" + i + "_sandstone_bottom");
+            bottomIcons[i] = register.registerIcon(DinoEntry.getModId() + "fossil_side_" + i + "_sandstone_bottom");
     }
 
     @Override

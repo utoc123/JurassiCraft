@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.world.gen;
 
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -22,7 +22,7 @@ public class WorldGenFossilOre implements IWorldGenerator
                 y = random.nextInt(64);
                 z = random.nextInt(16) + (chunkZ * 16);
 
-                (new WorldGenMinable(Util.getBlock(5), 7 + random.nextInt(3))).generate(world, random, x, y, z);
+                (new WorldGenMinable(DinoEntry.getBlock(5), 7 + random.nextInt(3))).generate(world, random, x, y, z);
             }
         }
     }

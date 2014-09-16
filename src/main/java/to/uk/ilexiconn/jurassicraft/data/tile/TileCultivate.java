@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 
@@ -57,7 +57,7 @@ public class TileCultivate extends TileEntity implements IInventory
 
     public boolean getActive()
     {
-        return worldObj.getBlock(xCoord, yCoord, zCoord) != Util.getBlock(0);
+        return worldObj.getBlock(xCoord, yCoord, zCoord) != DinoEntry.getBlock(0);
     }
 
 	public void finishItem()

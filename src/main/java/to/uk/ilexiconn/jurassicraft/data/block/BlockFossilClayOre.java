@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,10 +23,10 @@ public class BlockFossilClayOre extends Block
     {
         super(Material.ground);
         setBlockName("fossil_clay_ore" + color);
-        setBlockTextureName(Util.getModId() + "fossil_clay_ore" + color);
+        setBlockTextureName(DinoEntry.getModId() + "fossil_clay_ore" + color);
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(DinoEntry.getCreativeTab(0));
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
         textureSuffix = color;
@@ -34,7 +34,7 @@ public class BlockFossilClayOre extends Block
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return Util.getItem(2);
+        return DinoEntry.getItem(2);
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)
@@ -56,7 +56,7 @@ public class BlockFossilClayOre extends Block
     public void registerBlockIcons(IIconRegister register)
     {
         for (int i = 0; i < 6; ++i)
-            icons[i] = register.registerIcon(Util.getModId() + "fossil_side_" + i + "_hardened_clay" + textureSuffix);
+            icons[i] = register.registerIcon(DinoEntry.getModId() + "fossil_side_" + i + "_hardened_clay" + textureSuffix);
     }
 
     @Override

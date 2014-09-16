@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 
 @SideOnly(Side.CLIENT)
@@ -20,7 +20,7 @@ public class RenderCultivateItem implements IItemRenderer
     public RenderCultivateItem()
     {
         textures = new ResourceLocation[colors.length];
-        for (int i = 0; i < colors.length; i++) textures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
+        for (int i = 0; i < colors.length; i++) textures[i] = new ResourceLocation(DinoEntry.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
     }
 
     public boolean handleRenderType(ItemStack item, ItemRenderType type)

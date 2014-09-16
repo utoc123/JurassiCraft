@@ -1,7 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +22,7 @@ public class GhostBlock extends Block
         super(Material.cloth);
         this.block = block;
         setBlockName(name);
-        setBlockTextureName(Util.getModId() + name);
+        setBlockTextureName(DinoEntry.getModId() + name);
         blocksToBreak = blocks;
         setCreativeTab(null);
         setHardness(hardness);

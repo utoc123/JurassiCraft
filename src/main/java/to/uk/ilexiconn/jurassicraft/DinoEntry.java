@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Util
+public class DinoEntry
 {
 	/** Stuff */
 	private static final Data data = new Data();

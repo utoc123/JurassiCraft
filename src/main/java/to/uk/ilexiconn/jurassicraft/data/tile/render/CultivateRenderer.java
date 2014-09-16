@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import org.lwjgl.opengl.GL11;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
@@ -34,8 +34,8 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
     public CultivateRenderer()
     {
         cultivateTextures = new ResourceLocation[colors.length];
-        for (int i = 0; i < colors.length; i++) cultivateTextures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
-        embryoTextures = new ResourceLocation(Util.getModId() + "textures/blocks/embryo.png");
+        for (int i = 0; i < colors.length; i++) cultivateTextures[i] = new ResourceLocation(DinoEntry.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
+        embryoTextures = new ResourceLocation(DinoEntry.getModId() + "textures/blocks/embryo.png");
     }
 
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float meta)
@@ -43,7 +43,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         GL11.glEnable(GL11.GL_BLEND);
         TileCultivate tile = (TileCultivate) tileEntity;
 
-        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == Util.getBlock(2))
+        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == DinoEntry.getBlock(2))
         {
             GL11.glPushMatrix();
             GL11.glColor4f(1f, 1f, 1f, 1f);
