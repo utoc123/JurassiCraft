@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import to.uk.ilexiconn.ilexiconn.llib.client.render.RenderHelper;
+import to.uk.ilexiconn.llib.client.render.RenderHelper;
 import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;

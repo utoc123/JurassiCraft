@@ -1,7 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.block.model;
 
-import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelBase;
-import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelRenderer;
+import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 public class ModelEmbryo extends MowzieModelBase

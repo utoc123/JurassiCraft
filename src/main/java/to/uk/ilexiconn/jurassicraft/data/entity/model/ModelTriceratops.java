@@ -11,8 +11,8 @@
 
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelBase;
-import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelRenderer;
+import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelTriceratops extends MowzieModelBase
