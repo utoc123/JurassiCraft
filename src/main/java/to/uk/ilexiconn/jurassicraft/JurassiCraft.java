@@ -6,9 +6,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ilexiconn.llib.LLib;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import to.uk.ilexiconn.ilexiconn.llib.LLib;
+import to.uk.ilexiconn.ilexiconn.llib.config.ConfigSync;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
@@ -28,15 +29,6 @@ public class JurassiCraft extends DinoEntry
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
     {
-        try
-        {
-            LLib.addConfigSyncMethod("syncConfig", this);
-        }
-        catch (NoSuchMethodException e)
-        {
-            e.printStackTrace();
-        }
-
         getData().init();
 
         getEntityParser().parseServerEntities();
@@ -65,6 +57,7 @@ public class JurassiCraft extends DinoEntry
         EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, BiomeGenBase.deepOcean, BiomeGenBase.ocean);
     }
 
+    @ConfigSync
     public void syncConfig()
     {
         versionCheck = LLib.config.getBoolean("Version Check", "jurassicraft", true, "Do an automatic version check on every start");

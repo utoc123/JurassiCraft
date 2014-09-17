@@ -18,23 +18,23 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.2.4-daily_build-" + getDate()
-group = "ilexiconn.jurassicraft"
+group = "maven.jurassicraft"
 archivesBaseName = "JurassiCraft"
 
 repositories {
 	maven
 	{
 		name = "ilexiconn"
-		url = "http://ilexiconn.uk.to/ilexiconn/"
+		url = "http://ilexiconn.uk.to/maven/"
 	}
 }
 
 dependencies {
-    compile 'llib:LLib:1.7.10-0.1.0-10:dev'
+    compile 'llib:LLib:1.7.10-0.1.0-19:dev'
 }
 
 minecraft {
-    version = "1.7.10-10.13.1.1213-new"
+    version = "1.7.10-10.13.1.1217"
     runDir = "minecraft"
 }
 

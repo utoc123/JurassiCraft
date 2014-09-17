@@ -1,15 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.data.tile.render;
 
-import ilexiconn.llib.client.render.RenderHelper;
-import ilexiconn.llib.client.render.RenderInfo;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 import org.lwjgl.opengl.GL11;
+import to.uk.ilexiconn.ilexiconn.llib.client.render.RenderHelper;
 import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
@@ -17,19 +14,13 @@ import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEmbryo;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CultivateRenderer extends TileEntitySpecialRenderer
 {
-    private static Map<Fluid, int[]> renderCache = new HashMap<Fluid, int[]>();
-    private static RenderInfo liquidBlock = new RenderInfo();
     public String[] colors = {"black", "red", "green", "brown", "blue", "purple", "cyan", "light_gray", "gray", "pink", "lime", "yellow", "light_blue", "magenta", "orange", "white"};
     public ModelCultivate cultivate = new ModelCultivate();
     public ModelEmbryo embryo = new ModelEmbryo();
     public ResourceLocation[] cultivateTextures;
     public ResourceLocation embryoTextures;
-    private static RenderBlocks renderBlocks = new RenderBlocks();
 
     public CultivateRenderer()
     {

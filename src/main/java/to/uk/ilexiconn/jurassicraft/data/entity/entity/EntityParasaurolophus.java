@@ -1,12 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import ilexiconn.llib.utils.ControlledParam;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
+import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
 public class EntityParasaurolophus extends EntityDinosaurCreature
 {

@@ -3,8 +3,8 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
-import ilexiconn.llib.client.model.MowzieModelBase;
-import ilexiconn.llib.client.model.MowzieModelRenderer;
+import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
