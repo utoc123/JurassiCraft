@@ -74,7 +74,7 @@ item.egg_Gallimimus.name=Egg of a Gallimimus
 
 /blocks
 tile.cultivate_idle.name=Cultivate
-tile.analyzer_idle.name=Analyzer
+tile.dnaExtractor.name=DNA Extractor
 tile.fossil_sandstone_ore.name=Sandstone Fossil Ore
 tile.fossil_clay_ore.name=Clay Fossil Ore
 tile.fossil_clay_ore_stained_brown.name= Brown Stained Clay Fossil Ore

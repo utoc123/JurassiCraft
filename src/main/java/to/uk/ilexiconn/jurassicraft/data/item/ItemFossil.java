@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.data.item;
 import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.Item;
 
-public class ItemFossil extends Item
+public class ItemFossil extends Item implements AnyDNASource
 {
     public ItemFossil()
     {
