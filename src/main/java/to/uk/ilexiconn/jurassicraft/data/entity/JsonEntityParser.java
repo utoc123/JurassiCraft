@@ -17,7 +17,7 @@ public class JsonEntityParser extends Util
 
     public void parseServerEntities()
     {
-        loadConfig(DinoConfig.loadServerFile());
+        loadConfig(DinoConfig.loadDinoConfig());
         for (Dinosaur dino : dinos)
         {
             addMeat(dino.name);
@@ -29,7 +29,7 @@ public class JsonEntityParser extends Util
     @SideOnly(Side.CLIENT)
     public void parseClientEntities()
     {
-        loadConfig(DinoConfig.loadClientFile());
+        loadConfig(DinoConfig.loadDinoConfig());
         for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 
