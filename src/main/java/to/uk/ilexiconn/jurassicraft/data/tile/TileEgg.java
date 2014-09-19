@@ -9,7 +9,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class TileEgg extends TileEntity
 {
@@ -78,7 +78,7 @@ public class TileEgg extends TileEntity
 		{
 			if(hatchTime >= totalHatchTime)
 			{
-				Class dinoToSpawnClass = DinoEntry.getDinoClass(dinoName);
+				Class dinoToSpawnClass = Util.getDinoClass(dinoName);
 				try 
 				{
 					Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);

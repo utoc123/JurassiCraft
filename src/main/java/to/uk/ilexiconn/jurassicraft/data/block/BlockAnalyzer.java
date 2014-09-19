@@ -1,7 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,8 +34,8 @@ public class BlockAnalyzer extends BlockContainer
         super(Material.iron);
         this.active = active;
         setBlockName("analyzer_" + (active ? "active" : "idle"));
-        setBlockTextureName(DinoEntry.getModId() + "analyzer");
-        setCreativeTab(active ? null : DinoEntry.getCreativeTab(0));
+        setBlockTextureName(Util.getModId() + "analyzer");
+        setCreativeTab(active ? null : Util.getCreativeTab(0));
         setHardness(3.0f);
     }
 
@@ -47,9 +47,9 @@ public class BlockAnalyzer extends BlockContainer
         if (analyzerTileEntity != null)
         {
             if (isActive)
-                worldObj.setBlock(xCoord, yCoord, zCoord, DinoEntry.getBlock(2));
+                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(2));
             else
-                worldObj.setBlock(xCoord, yCoord, zCoord, DinoEntry.getBlock(3));
+                worldObj.setBlock(xCoord, yCoord, zCoord, Util.getBlock(3));
 
             worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, metadata, 2);
             analyzerTileEntity.validate();
@@ -72,10 +72,10 @@ public class BlockAnalyzer extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        topIcon = iconRegister.registerIcon(DinoEntry.getModId() + "analyzer_top");
-        sideIcon = iconRegister.registerIcon(DinoEntry.getModId() + "analyzer_side");
-        frontIconIdle = iconRegister.registerIcon(DinoEntry.getModId() + "analyzer_front_idle");
-        frontIconActive = iconRegister.registerIcon(DinoEntry.getModId() + "analyzer_front_active");
+        topIcon = iconRegister.registerIcon(Util.getModId() + "analyzer_top");
+        sideIcon = iconRegister.registerIcon(Util.getModId() + "analyzer_side");
+        frontIconIdle = iconRegister.registerIcon(Util.getModId() + "analyzer_front_idle");
+        frontIconActive = iconRegister.registerIcon(Util.getModId() + "analyzer_front_active");
     }
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack)

@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.tile.render;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEgg;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileEgg;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -22,7 +22,7 @@ public class EggRenderer extends TileEntitySpecialRenderer
         GL11.glTranslatef((float) x + 0.5f, (float) y + translation, (float) z + 0.5f);
         GL11.glScalef(scale, scale, scale);
 
-        texture = new ResourceLocation(DinoEntry.getModId() + "textures/eggs/egg" + egg.getDinoName() + ".png");
+        texture = new ResourceLocation(Util.getModId() + "textures/eggs/egg" + egg.getDinoName() + ".png");
         bindTexture(texture);
         GL11.glRotatef(180f, 0f, 0f, 1f);
         model.render();

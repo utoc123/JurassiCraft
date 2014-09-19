@@ -1,9 +1,8 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemDNA extends Item
 {
@@ -11,17 +10,17 @@ public class ItemDNA extends Item
     {
         super();
         setUnlocalizedName(name + "_DNA");
-        setTextureName(DinoEntry.getModId() + name + "_DNA");
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setTextureName(Util.getModId() + name + "_DNA");
+        setCreativeTab(Util.getCreativeTab(0));
     }
 
 	public Item getCorrespondingEgg()
 	{
-		int id = DinoEntry.getDNAArray().lastIndexOf(this);
+		int id = Util.getDNAArray().lastIndexOf(this);
 
-		if (DinoEntry.getEggArray().size() > id)
-			if (DinoEntry.getEggArray().get(id) != null)
-				return DinoEntry.getEggArray().get(id);
+		if (Util.getEggArray().size() > id)
+			if (Util.getEggArray().get(id) != null)
+				return Util.getEggArray().get(id);
 
 		return null;
 	}

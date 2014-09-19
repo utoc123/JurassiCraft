@@ -6,7 +6,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 
 public class ItemBlockCultivate extends ItemBlock
@@ -37,7 +37,7 @@ public class ItemBlockCultivate extends ItemBlock
         if (world.getBlock(x, y + 1, z).isReplaceable(world, x, y, z))
         {
             super.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
-            world.setBlock(x, y + 1, z, DinoEntry.getBlock(1));
+            world.setBlock(x, y + 1, z, Util.getBlock(1));
             world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y, z), 2);
             BlockCultivate.setRotation(world, x, y, z, MathHelper.floor_double((double) ((player.rotationYaw * 4F) / 360F) + 0.5D) & 3);
             return true;

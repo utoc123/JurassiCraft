@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +24,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 	{
 		super(world);
 		dinoID = id;
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		setSize(dinoByID.xzHitbox, dinoByID.yHitbox);
 		getNavigator().setAvoidsWater(true);
         setHealth((float) dinoByID.health);
@@ -38,7 +38,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 	public void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.health);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.speed);
 		//getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(Util.getDinos().get(dinoID).dinoStrenght);
@@ -90,14 +90,14 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 
 	public int getAttackStrength(Entity par1Entity)
 	{
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		return (int) dinoByID.strength;
 	}
 
 	public String getLivingSound()
 	{
 		int I = rand.nextInt(1)+1;
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		if(I == 1)
 		{
 			return dinoByID.livingSound1;
@@ -110,13 +110,13 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 
 	public String getHurtSound()
 	{
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		return dinoByID.hurtSound;
 	}
 
 	public String getDeathSound()
 	{
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		return dinoByID.deathSound;
 	}
 
@@ -152,7 +152,7 @@ public abstract class EntityDinosaurMonster extends EntityMob implements IAnimat
 
 	public Item getDropItem()
 	{
-		return DinoEntry.getMeat(dinoID);
+		return Util.getMeat(dinoID);
 	}
 
 	public void onUpdate()

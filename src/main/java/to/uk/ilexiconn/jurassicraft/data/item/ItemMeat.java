@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.Potion;
 
@@ -11,7 +11,7 @@ public class ItemMeat extends ItemFood
         super(4, 0.1f, true);
         setPotionEffect(Potion.hunger.id, 30, 0, 0.8f);
         setUnlocalizedName(name + "_Meat");
-        setTextureName(DinoEntry.getModId() + name + "_Meat");
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setTextureName(Util.getModId() + name + "_Meat");
+        setCreativeTab(Util.getCreativeTab(0));
     }
 }

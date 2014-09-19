@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.Item;
 
 public class ItemAmber extends Item
@@ -9,7 +9,7 @@ public class ItemAmber extends Item
     {
         super();
         setUnlocalizedName("amber");
-        setTextureName(DinoEntry.getModId() + "amber");
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setTextureName(Util.getModId() + "amber");
+        setCreativeTab(Util.getCreativeTab(0));
     }
 }

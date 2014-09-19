@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.tile;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockAnalyzer;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +33,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
     {
         analyzerItemStacks = new ItemStack[13];
 
-        dnas = DinoEntry.getDNAArray();
+        dnas = Util.getDNAArray();
     }
 
     private static int getItemBurnTime()
@@ -254,7 +254,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
             {
                 Item var2 = analyzerItemStacks[var1].getItem();
 
-                if (var2 == DinoEntry.getItem(2) || var2 == DinoEntry.getItem(1))
+                if (var2 == Util.getItem(2) || var2 == Util.getItem(1))
                 {
                     RawIndex = var1;
                     break;
@@ -285,7 +285,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
         {
             ItemStack var1 = null;
 
-            if (analyzerItemStacks[RawIndex].getItem() == DinoEntry.getItem(2))
+            if (analyzerItemStacks[RawIndex].getItem() == Util.getItem(2))
             {
                 int dnaResult = (new Random()).nextInt(99);
 
@@ -304,7 +304,7 @@ public class TileAnalyzer extends TileEntity implements ISidedInventory
                 }
             }
 
-            if (analyzerItemStacks[RawIndex].getItem() == DinoEntry.getItem(1))
+            if (analyzerItemStacks[RawIndex].getItem() == Util.getItem(1))
                 var1 = new ItemStack(getRandomDNA(new Random()));
 
             if (var1 != null)

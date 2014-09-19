@@ -13,7 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 
 import java.lang.reflect.InvocationTargetException;
@@ -172,7 +172,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			boolean warm = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
 			boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
 			
-			Dinosaur dinosaur = DinoEntry.getDinoByID(DinoEntry.getDinoIDByName(dino));
+			Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
 			
 			if(dinosaur.waterCreature)
 			{
@@ -223,7 +223,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			
 			if(currentSpawnTime >= spawnTime)
 			{
-				Class dinoToSpawnClass = DinoEntry.getDinoClass(dino);
+				Class dinoToSpawnClass = Util.getDinoClass(dino);
 
 				try 
 				{
@@ -335,12 +335,12 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	@Override
 	public void writeSpawnData(ByteBuf buffer)
 	{
-		buffer.writeInt(DinoEntry.getDinoIDByName(dino));
+		buffer.writeInt(Util.getDinoIDByName(dino));
 	}
 
 	@Override
 	public void readSpawnData(ByteBuf additionalData) 
 	{
-		dino = DinoEntry.getDinoByID(additionalData.readInt()).name;
+		dino = Util.getDinoByID(additionalData.readInt()).name;
 	}
 }

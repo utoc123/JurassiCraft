@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -36,17 +36,17 @@ public class BlockFossilOre extends Block
     {
         super(Material.ground);
         setBlockName("fossil_ore");
-        setBlockTextureName(DinoEntry.getModId() + "fossil_ore");
+        setBlockTextureName(Util.getModId() + "fossil_ore");
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setCreativeTab(Util.getCreativeTab(0));
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
     }
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return DinoEntry.getItem(2);
+        return Util.getItem(2);
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)
@@ -67,12 +67,12 @@ public class BlockFossilOre extends Block
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        icon_0 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_0");
-        icon_1 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_1");
-        icon_2 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_2");
-        icon_3 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_3");
-        icon_4 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_4");
-        icon_5 = iconRegister.registerIcon(DinoEntry.getModId() + "fossil_side_5");
+        icon_0 = iconRegister.registerIcon(Util.getModId() + "fossil_side_0");
+        icon_1 = iconRegister.registerIcon(Util.getModId() + "fossil_side_1");
+        icon_2 = iconRegister.registerIcon(Util.getModId() + "fossil_side_2");
+        icon_3 = iconRegister.registerIcon(Util.getModId() + "fossil_side_3");
+        icon_4 = iconRegister.registerIcon(Util.getModId() + "fossil_side_4");
+        icon_5 = iconRegister.registerIcon(Util.getModId() + "fossil_side_5");
     }
 
     @SideOnly(Side.CLIENT)

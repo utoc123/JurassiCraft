@@ -7,7 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 
@@ -15,7 +15,7 @@ public class EntityTylosaurus extends EntitySwimming {
 
     public EntityTylosaurus(World world) {
         super(world);
-        Dinosaur dino = DinoEntry.getDinoByID(14);
+        Dinosaur dino = Util.getDinoByID(14);
         this.setSize(dino.xzHitbox, dino.yHitbox);
 
         this.swimRadius = 16.0F;
@@ -28,13 +28,13 @@ public class EntityTylosaurus extends EntitySwimming {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        Dinosaur dino = DinoEntry.getDinoByID(14);
+        Dinosaur dino = Util.getDinoByID(14);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dino.health);
     }
 
     @Override
     public Item getDropItem() {
-        return DinoEntry.getMeat(14);
+        return Util.getMeat(14);
     }
 
     @Override

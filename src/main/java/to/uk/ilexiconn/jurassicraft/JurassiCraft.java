@@ -17,7 +17,7 @@ import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import java.util.Map.Entry;
 
 @Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.2.4", dependencies = "after:llib")
-public class JurassiCraft extends DinoEntry
+public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
     public static JurassiCraft instance;

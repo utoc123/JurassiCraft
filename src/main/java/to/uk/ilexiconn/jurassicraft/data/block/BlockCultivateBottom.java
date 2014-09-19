@@ -17,7 +17,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 import java.util.List;
@@ -34,8 +34,8 @@ public class BlockCultivateBottom extends BlockContainer
     {
         super(Material.cactus); //Yes..., Cactus xD
         setBlockName("cultivate_bottom_" + (lit ? "lit" : "idle"));
-        setBlockTextureName(DinoEntry.getModId() + "cultivate");
-        setCreativeTab(lit ? null : DinoEntry.getCreativeTab(0));
+        setBlockTextureName(Util.getModId() + "cultivate");
+        setCreativeTab(lit ? null : Util.getCreativeTab(0));
         setHardness(2f);
         setBlockBounds(0f, 0f, 0f, 1f, 2f, 1f);
         if (lit) setLightLevel(1.0f);
@@ -104,13 +104,13 @@ public class BlockCultivateBottom extends BlockContainer
 
     public Item getItemDropped(int meta, Random random, int fortune)
     {
-        return Item.getItemFromBlock(DinoEntry.getBlock(0));
+        return Item.getItemFromBlock(Util.getBlock(0));
     }
 
     @SideOnly(Side.CLIENT)
     public Item getItem(World world, int x, int y, int z)
     {
-        return Item.getItemFromBlock(DinoEntry.getBlock(0));
+        return Item.getItemFromBlock(Util.getBlock(0));
     }
 
     public TileEntity createNewTileEntity(World world, int meta)

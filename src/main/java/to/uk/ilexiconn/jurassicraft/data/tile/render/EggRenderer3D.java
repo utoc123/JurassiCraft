@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.tile.render;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEgg;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -113,7 +113,7 @@ public class EggRenderer3D implements IItemRenderer
 				GL11.glScalef(scale * 4, scale * 4, scale * 4);
 			}
 
-			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(DinoEntry.getModId() + "textures/eggs/egg" + dino + ".png"));
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Util.getModId() + "textures/eggs/egg" + dino + ".png"));
 
 			model.render();
 

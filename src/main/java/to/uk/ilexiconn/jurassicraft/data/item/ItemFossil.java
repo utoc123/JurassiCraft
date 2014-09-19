@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.Item;
 
 public class ItemFossil extends Item
@@ -9,7 +9,7 @@ public class ItemFossil extends Item
     {
         super();
         setUnlocalizedName("fossil");
-        setTextureName(DinoEntry.getModId() + "fossil");
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setTextureName(Util.getModId() + "fossil");
+        setCreativeTab(Util.getCreativeTab(0));
     }
 }

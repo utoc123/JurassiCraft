@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,17 +17,17 @@ public class BlockAmberOre extends Block
     {
         super(Material.ground);
         setBlockName("amber_ore");
-        setBlockTextureName(DinoEntry.getModId() + "amber_ore");
+        setBlockTextureName(Util.getModId() + "amber_ore");
         setHardness(3.0F);
         setResistance(5.0F);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 1);
-        setCreativeTab(DinoEntry.getCreativeTab(0));
+        setCreativeTab(Util.getCreativeTab(0));
     }
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return DinoEntry.getItem(1);
+        return Util.getItem(1);
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)

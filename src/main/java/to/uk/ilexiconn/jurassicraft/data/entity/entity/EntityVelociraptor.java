@@ -14,11 +14,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
 import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
 import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
 import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
-import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 
 public class EntityVelociraptor extends EntityDinosaurMonster

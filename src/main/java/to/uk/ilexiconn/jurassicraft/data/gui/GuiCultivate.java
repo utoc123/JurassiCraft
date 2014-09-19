@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.gui;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.gui.container.ContainerCultivate;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -28,7 +28,7 @@ public class GuiCultivate extends GuiContainer
     public void drawGuiContainerBackgroundLayer(float i, int d, int k)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(new ResourceLocation(DinoEntry.getModId() + "textures/gui/guiCultivate.png"));
+        mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiCultivate.png"));
         int var5 = (this.width - this.xSize) / 2;
         int var6 = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);

@@ -9,7 +9,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class BlockStuffFluid extends BlockFluidClassic
 {
@@ -31,8 +31,8 @@ public class BlockStuffFluid extends BlockFluidClassic
     {
         fluidIcons = new IIcon[2];
 
-        fluidIcons[0] = iconRegister.registerIcon(DinoEntry.getModId() + "cultivator_water_still");
-        fluidIcons[1] = iconRegister.registerIcon(DinoEntry.getModId() + "cultivator_water_still");
+        fluidIcons[0] = iconRegister.registerIcon(Util.getModId() + "cultivator_water_still");
+        fluidIcons[1] = iconRegister.registerIcon(Util.getModId() + "cultivator_water_still");
     }
 
     public boolean canDisplace(IBlockAccess world, int x, int y, int z)

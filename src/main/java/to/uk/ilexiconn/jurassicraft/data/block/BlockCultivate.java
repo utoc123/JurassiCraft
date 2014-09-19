@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.data.block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 public class BlockCultivate
@@ -41,8 +41,8 @@ public class BlockCultivate
         int metadata = world.getBlockMetadata(x, y, z);
         TileEntity tileEntity = world.getTileEntity(x, y, z);
 
-        world.setBlock(x, y, z, DinoEntry.getBlock(lit ? 2 : 0));
-        world.setBlock(x, y + 1, z, DinoEntry.getBlock(lit ? 3 : 1));
+        world.setBlock(x, y, z, Util.getBlock(lit ? 2 : 0));
+        world.setBlock(x, y + 1, z, Util.getBlock(lit ? 3 : 1));
 
         if (tileEntity != null)
         {

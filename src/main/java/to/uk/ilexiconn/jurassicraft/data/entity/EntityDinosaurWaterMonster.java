@@ -11,7 +11,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    {
       super(world);
       dinoID = id;
-      Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+      Dinosaur dinoByID = Util.getDinoByID(dinoID);
       setSize(dinoByID.xzHitbox, dinoByID.yHitbox);
       this.factor2 = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
       setHealth((float) dinoByID.health);
@@ -45,7 +45,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    public void applyEntityAttributes()
    {
        super.applyEntityAttributes();
-       Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+       Dinosaur dinoByID = Util.getDinoByID(dinoID);
        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.health);
        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.speed);
    }
@@ -77,7 +77,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
 
    public Item getDropItem()
    {
-       return DinoEntry.getMeat(dinoID);
+       return Util.getMeat(dinoID);
    }
 
    public void onUpdate()
@@ -90,7 +90,7 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
    {
        int I = rand.nextInt(1)+1;
        
-       Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+       Dinosaur dinoByID = Util.getDinoByID(dinoID);
        
        if(I == 1)
        {
@@ -104,19 +104,19 @@ public abstract class EntityDinosaurWaterMonster extends EntityWaterMob {
 
    public String getHurtSound()
    {
-	   Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+	   Dinosaur dinoByID = Util.getDinoByID(dinoID);
        return dinoByID.hurtSound;
    }
 
    public String getDeathSound()
    {
-	   Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+	   Dinosaur dinoByID = Util.getDinoByID(dinoID);
        return dinoByID.deathSound;
    }
    
    protected int getAttackStrength()
    {
-	  Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+	  Dinosaur dinoByID = Util.getDinoByID(dinoID);
       return (int)dinoByID.strength;
    }
 

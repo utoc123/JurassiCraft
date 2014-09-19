@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.block.*;
 import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
@@ -31,7 +31,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public final class Data extends DinoEntry
+public final class Data extends Util
 {
     public static Fluid fluid;
     public static Block stuffFluid;

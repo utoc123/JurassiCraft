@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
-import to.uk.ilexiconn.jurassicraft.DinoEntry;
+import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.Item;
@@ -19,7 +19,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 	{
 		super(world);
 		dinoID = id;
-		Dinosaur dinoByID = DinoEntry.getDinoByID(id);
+		Dinosaur dinoByID = Util.getDinoByID(id);
 		setSize(dinoByID.xzHitbox, dinoByID.yHitbox);
 		getNavigator().setAvoidsWater(true);
         setHealth((float) dinoByID.health);
@@ -33,7 +33,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 	public void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dinoByID.health);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(dinoByID.speed);
 	}
@@ -41,7 +41,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 	public String getLivingSound()
 	{
 		int I = rand.nextInt(1)+1;
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		if(I == 1)
 		{
 			return dinoByID.livingSound1;
@@ -54,13 +54,13 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 
 	public String getHurtSound()
 	{
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		return dinoByID.hurtSound;
 	}
 
 	public String getDeathSound()
 	{
-		Dinosaur dinoByID = DinoEntry.getDinoByID(dinoID);
+		Dinosaur dinoByID = Util.getDinoByID(dinoID);
 		return dinoByID.deathSound;
 	}
 
@@ -96,7 +96,7 @@ public abstract class EntityDinosaurCreature extends EntityAnimal implements IAn
 
 	public Item getDropItem()
 	{
-		return DinoEntry.getMeat(dinoID);
+		return Util.getMeat(dinoID);
 	}
 
 	public void onUpdate()
