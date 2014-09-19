@@ -49,6 +49,7 @@ processResources {
     }
 
     from(sourceSets.main.resources.srcDirs) {
+        include 'to/uk/ilexiconn/data/entity/dinos.json'
         exclude 'mcmod.info'
     }
 }
