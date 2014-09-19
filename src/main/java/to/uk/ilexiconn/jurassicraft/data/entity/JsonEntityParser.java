@@ -7,21 +7,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
 public class JsonEntityParser extends Util
 {
     private Collection<Dinosaur> dinos;
-    private boolean configLoaded;
 
     public void parseServerEntities()
     {
-        loadConfig(getConfigFile());
-        configLoaded = true;
+        loadConfig(DinoConfig.loadServerFile());
         for (Dinosaur dino : dinos)
         {
             addMeat(dino.name);
@@ -33,7 +29,7 @@ public class JsonEntityParser extends Util
     @SideOnly(Side.CLIENT)
     public void parseClientEntities()
     {
-        while (!configLoaded);
+        loadConfig(DinoConfig.loadClientFile());
         for (Dinosaur dino : dinos) addEntityRenderer(dino);
     }
 
@@ -48,23 +44,6 @@ public class JsonEntityParser extends Util
         catch (Exception e)
         {
             e.printStackTrace();
-        }
-    }
-
-    private File getConfigFile()
-    {
-        try
-        {
-            File tempFile = File.createTempFile("dinos", ".json");
-            tempFile.deleteOnExit();
-            InputStream in = JsonEntityParser.class.getResourceAsStream("dinos.json");
-            FileOutputStream out = new FileOutputStream(tempFile);
-            org.apache.commons.io.IOUtils.copy(in, out);
-            return  tempFile;
-        }
-        catch (Exception e)
-        {
-            return null;
         }
     }
 }
