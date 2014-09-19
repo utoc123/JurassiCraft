@@ -6,7 +6,7 @@ import to.uk.ilexiconn.llib.content.ContentType;
 @ContentHandler(modid = "jurassicraft", type = ContentType.CREATIVETAB)
 public class ModCreativeTabs
 {
-    public void item()
+    public void init()
     {
 
     }
