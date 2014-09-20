@@ -187,10 +187,6 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 						amountToIncrease = -1;
 					}
 				}
-				else
-				{
-					amountToIncrease = 2;
-				}
 			}
 			else
 			{
