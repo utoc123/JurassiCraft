@@ -34,7 +34,7 @@
         "name":"Velociraptor",
         "speed":0.25,
         "health":60,
-        "strength":25,
+        "strength":10,
         "scale":1.05,
         "hitboxSizeXZ:":1.9,
         "yHitbox":1.5,
