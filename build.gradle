@@ -22,8 +22,7 @@ group = "maven.jurassicraft"
 archivesBaseName = "JurassiCraft"
 
 repositories {
-	maven
-	{
+	maven {
 		name = "ilexiconn"
 		url = "http://ilexiconn.uk.to/maven/"
 	}

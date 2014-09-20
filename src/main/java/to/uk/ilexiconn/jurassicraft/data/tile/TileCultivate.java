@@ -1,12 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.tile;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemStack;
@@ -20,7 +15,11 @@ import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftCreatureInformation;
 import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 
-public class TileCultivate extends TileEntity implements ISidedInventory, IInventory {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+public class TileCultivate extends TileEntity implements ISidedInventory {
 
 	private Random random;
 	private ItemStack[] slots = new ItemStack[4];
@@ -64,7 +63,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory, IInven
 	}
 
 	/** Returns the current hatchery time. */
-	public int getcultivateTime() {
+	public int getCultivateTime() {
 		return this.cultivateTime;
 	}
 
@@ -190,7 +189,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory, IInven
 		if (this.getCultivateSpeed() <= 0) {
 			this.setCultivateSpeed(100);
 		}
-		return (this.getcultivateTime() * i) / this.getCultivateSpeed();
+		return (this.getCultivateTime() * i) / this.getCultivateSpeed();
 	}
 
 	/** Returns a percentage of the proximate value scaled for X value. */
