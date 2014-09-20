@@ -132,6 +132,13 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory {
 						}
 						this.slots[j] = newItem;
 						return;
+					} else if (this.slots[j].getItem() == newItem.getItem()) {
+						this.slots[i].stackSize--;
+						if (this.slots[i].stackSize <= 0) {
+							this.slots[i] = (ItemStack) null;
+						}
+						this.slots[j].stackSize++;
+						return;
 					}
 				}
 			}

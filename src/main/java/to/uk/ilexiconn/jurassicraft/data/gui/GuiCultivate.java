@@ -1,38 +1,61 @@
 package to.uk.ilexiconn.jurassicraft.data.gui;
 
-import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.gui.container.ContainerCultivate;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import org.lwjgl.opengl.GL11;
 
-public class GuiCultivate extends GuiContainer
-{
-	TileCultivate tileCultivate;
+import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftCreatureInformation;
+import to.uk.ilexiconn.jurassicraft.data.gui.container.ContainerCultivate;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
-    public GuiCultivate(InventoryPlayer inventory, TileCultivate tileEntity)
-    {
-        super(new ContainerCultivate(inventory, tileEntity));
-		tileCultivate = tileEntity;
-    }
+public class GuiCultivate extends GuiContainer {
 
-    public void drawGuiContainerForegroundLayer(int i, int d)
-    {
-        fontRendererObj.drawString(StatCollector.translateToLocal("Cultivate"), 8, 8, 0x4bc2fc);
-        fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 95, 0x4bc2fc);
-    }
+	private TileCultivate hatchery;
 
-    public void drawGuiContainerBackgroundLayer(float i, int d, int k)
-    {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiCultivate.png"));
-        int var5 = (this.width - this.xSize) / 2;
-        int var6 = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
-		int var7 = this.tileCultivate.getCookProgressScaled(18);
-		this.drawTexturedModalRect(var5 + 79, var6 + 41, 177, 18, var7 + 1, 10);
-    }
+	public GuiCultivate(InventoryPlayer inventoryPlayer, TileEntity entity) {
+		super(new ContainerCultivate(inventoryPlayer, entity));
+		if (entity instanceof TileCultivate) {
+			TileCultivate entityHatchery = (TileCultivate) entity;
+			this.hatchery = entityHatchery;
+			this.xSize = 352;
+			this.ySize = 188;
+		}
+	}
+
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+	}
+
+	@Override
+	protected void drawGuiContainerForegroundLayer(int i, int j) {
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Cultivate"), this.xSize*3/8 - this.fontRendererObj.getStringWidth("Cultivate")/2 - 1, 20, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Proximates"), 200, 48, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Minerals"), 200, 74, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Vitamins"), 200, 100, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Lipids"), 200, 126, 4210752);
+	}
+
+	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiCultivateLeft.png"));
+		drawTexturedModalRect(this.width / 2 - xSize / 2, this.height / 2 - ySize / 2, 0, 0, 176, 188);
+		int i0 = this.hatchery.getWaterStoredProgressScaled(67);
+		this.drawTexturedModalRect(guiLeft + 48, guiTop + 18, 0, 188, 42, 67 - i0);
+		mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiCultivateRight.png"));
+		drawTexturedModalRect(this.width / 2 + 1, this.height / 2 - ySize / 2, 0, 0, 176, 166);
+		int i1 = this.hatchery.getProximateBarScaled(150);
+		this.drawTexturedModalRect(guiLeft + 190, guiTop + 56, 0, 166, i1, 9);
+		int i2 = this.hatchery.getMineralBarScaled(150);
+		this.drawTexturedModalRect(guiLeft + 190, guiTop + 82, 0, 175, i2, 9);
+		int i3 = this.hatchery.getVitaminBarScaled(150);
+		this.drawTexturedModalRect(guiLeft + 190, guiTop + 108, 0, 184, i3, 9);
+		int i4 = this.hatchery.getLipidBarScaled(150);
+		this.drawTexturedModalRect(guiLeft + 190, guiTop + 134, 0, 193, i4, 9);
+	}
 }

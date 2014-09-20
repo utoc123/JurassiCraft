@@ -40,7 +40,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
             GL11.glColor4f(1f, 1f, 1f, 1f);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             GL11.glTranslatef((float) x + 0.5f, (float) y + 1.5f, (float) z + 0.5f);
-            GL11.glScalef(1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f));
+            //GL11.glScalef(1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f));
             int rotation = BlockCultivate.getRotation(tile.getWorldObj(), tile.xCoord, tile.yCoord, tile.zCoord);
             GL11.glRotatef(rotation == 0 ? 0f : rotation == 1 ? -90f : rotation == 2 ? -180f : 90f, 0f, 1f, 0f);
             GL11.glRotatef(180f, 0f, 0f, 1f);
