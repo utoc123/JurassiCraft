@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
+import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurMonster;
 
 public class EntityTyrannosaurus extends EntityDinosaurMonster
@@ -26,7 +27,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.setSize(5F, 6F);
         tasks.addTask(2, new AITyrannosaurusRoar(this));
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed + 0.2F, false));
-        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityStegosaur.class, moveSpeed, true));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, moveSpeed, true));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
@@ -36,7 +37,7 @@ public class EntityTyrannosaurus extends EntityDinosaurMonster
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityDinosaurCreature.class, 0, false));
         this.experienceValue = 1000;   
         texid = rand.nextInt(2);
     }
