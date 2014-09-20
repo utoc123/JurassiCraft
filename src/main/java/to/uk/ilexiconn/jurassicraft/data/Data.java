@@ -20,6 +20,7 @@ import to.uk.ilexiconn.jurassicraft.data.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoBone;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemFossil;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileDNAExtractor;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
