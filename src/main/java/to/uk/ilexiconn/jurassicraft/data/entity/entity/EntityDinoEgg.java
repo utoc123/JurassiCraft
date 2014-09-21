@@ -173,7 +173,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 			boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
 			
 			Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
-			
+
 			if(dinosaur.waterCreature)
 			{
 				if(!isWet())
@@ -215,6 +215,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
 			if(currentSpawnTime < -500)
 			{
+				
 				if(dinosaur.waterCreature)
 				{
 					dried = true;
@@ -345,6 +346,6 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	@Override
 	public void readSpawnData(ByteBuf additionalData) 
 	{
-		dino = Util.getDinoByID(additionalData.readInt()).name;
+		dino = Util.getDinoByID(additionalData.readInt()).creatureName;
 	}
 }

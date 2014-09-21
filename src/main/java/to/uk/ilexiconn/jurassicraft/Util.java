@@ -57,7 +57,7 @@ public class Util
 	{
 		for (Map.Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
 		{
-			if(dino.getKey().name.equals(dinoName))
+			if(dino.getKey().creatureName.equals(dinoName))
 			{
 				return dino.getValue();
 			}
@@ -158,12 +158,12 @@ public class Util
 	{
 		try
 		{
-			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.name);
+			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
 			dinos.put(dino, entity);
 			int entityId = EntityRegistry.findGlobalUniqueEntityId();
-			EntityRegistry.registerGlobalEntityID(entity, dino.name, entityId, 0, 0);
-			EntityRegistry.registerModEntity(entity, dino.name, entityId, JurassiCraft.instance, 64, 1, true);
-			addEgg(dino.name);
+			EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
+			EntityRegistry.registerModEntity(entity, dino.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+			addEgg(dino.creatureName);
 		}
 		catch (Exception e)
 		{
@@ -219,8 +219,8 @@ public class Util
 	{
 		try
 		{
-			RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.render.Render" + dino.name).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
-			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.name);
+			RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
+			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
 			proxy.renderEntity(entity, renderer);
 		}
 		catch (Exception e)
@@ -239,7 +239,7 @@ public class Util
 	{
 		for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
 		{
-			if(dino.getKey().id == id)
+			if(dino.getKey().creatureID == id)
 			{
 				return dino.getKey();
 			}
@@ -252,9 +252,9 @@ public class Util
 	{
 		for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet()) 
 		{
-			if(dino.getKey().name.equals(name))
+			if(dino.getKey().creatureName.equals(name))
 			{
-				return dino.getKey().id;
+				return dino.getKey().creatureID;
 			}
 		}
 		
