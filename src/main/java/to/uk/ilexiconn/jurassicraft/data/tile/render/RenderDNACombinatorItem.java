@@ -7,14 +7,14 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import to.uk.ilexiconn.jurassicraft.data.tile.TileDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileDNACombinator;
 
-public class RenderDNAExtractorItem implements IItemRenderer {
+public class RenderDNACombinatorItem implements IItemRenderer {
 
-	private TileEntitySpecialRenderer render = new DNAExtractorRenderer();
-	private TileEntity tileEntity = new TileDNAExtractor();
+	private TileEntitySpecialRenderer render = new DNACombinatorRenderer();
+	private TileEntity tileEntity = new TileDNACombinator();
 
-	public RenderDNAExtractorItem() {
+	public RenderDNACombinatorItem() {
 
 	}
 
@@ -31,13 +31,17 @@ public class RenderDNAExtractorItem implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		if (type == IItemRenderer.ItemRenderType.ENTITY) {
-			GL11.glTranslatef(-0.5F, -0.35F, -0.5F);
+			GL11.glTranslatef(-0.5F, 1.75F, -0.5F);
+			GL11.glScalef(1.5F, 1.5F, 1.5F);
+		} else if (type == IItemRenderer.ItemRenderType.INVENTORY) {
+			GL11.glTranslatef(-0.45F, 1.4F, -0.5F);
 			GL11.glScalef(1.2F, 1.2F, 1.2F);
 		} else if (type == IItemRenderer.ItemRenderType.EQUIPPED_FIRST_PERSON) {
 			GL11.glRotatef(-90F, 0.0F, 1.0F, 0.0F);
-			GL11.glTranslatef(0.0F, 0.5F, 0.0F);
+			GL11.glTranslatef(-0.45F, 2.25F, -0.5F);
+			GL11.glScalef(1.5F, 1.5F, 1.5F);
 		} else if (type == IItemRenderer.ItemRenderType.EQUIPPED) {
-			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+			GL11.glTranslatef(-0.1F, 2.25F, -0.4F);
 			GL11.glScalef(1.5F, 1.5F, 1.5F);
 		}
 		this.render.renderTileEntityAt(this.tileEntity, 0.0D, 0.0D, 0.0D, 0.0F);

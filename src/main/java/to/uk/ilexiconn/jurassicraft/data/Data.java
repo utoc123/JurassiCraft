@@ -1,6 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,7 +11,16 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.block.*;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockAmberOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivateBottom;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivateTop;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockDNACombinator;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilClayOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockFossilSandstoneOre;
+import to.uk.ilexiconn.jurassicraft.data.block.BlockStuffFluid;
+import to.uk.ilexiconn.jurassicraft.data.block.GhostBlock;
 import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.data.gui.GuiHandler;
@@ -20,17 +28,20 @@ import to.uk.ilexiconn.jurassicraft.data.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoBone;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemFossil;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileAnalyzer;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileDNAExtractor;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.CultivateRenderer;
+import to.uk.ilexiconn.jurassicraft.data.tile.render.DNACombinatorRenderer;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.DNAExtractorRenderer;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderCultivateItem;
+import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderDNACombinatorItem;
 import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderDNAExtractorItem;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenAmberOre;
 import to.uk.ilexiconn.jurassicraft.data.world.gen.WorldGenFossilOre;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -59,17 +70,18 @@ public final class Data extends Util
             addBlockWithSubBlocks(2, new BlockCultivateBottom(true), TileCultivate.class, ItemBlockCultivate.class, false);
             addBlock(3, new BlockCultivateTop(true));
             addBlockWithTileEntity(4, new BlockDNAExtractor(), TileDNAExtractor.class, true);
-            addBlock(5, new BlockAmberOre());
-            addBlock(6, new BlockFossilOre());
-            addBlock(7, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
-            addBlock(8, new BlockFossilSandstoneOre());
-            addBlock(9, new BlockFossilClayOre(""));
-            addBlock(10, new BlockFossilClayOre("_stained_brown"));
-            addBlock(11, new BlockFossilClayOre("_stained_orange"));
-            addBlock(12, new BlockFossilClayOre("_stained_red"));
-            addBlock(13, new BlockFossilClayOre("_stained_silver"));
-            addBlock(14, new BlockFossilClayOre("_stained_white"));
-            addBlock(15, new BlockFossilClayOre("_stained_yellow"));
+            addBlockWithTileEntity(5, new BlockDNACombinator(), TileDNACombinator.class, true);
+            addBlock(6, new BlockAmberOre());
+            addBlock(7, new BlockFossilOre());
+            addBlock(8, new GhostBlock("cultivate_idle", getBlock(1), 1f, new int[]{-1}, -1, 2, 0f, -1f, 0f, 1f, 1f, 1f).setBlockName("cultivate_top"));
+            addBlock(9, new BlockFossilSandstoneOre());
+            addBlock(10, new BlockFossilClayOre(""));
+            addBlock(11, new BlockFossilClayOre("_stained_brown"));
+            addBlock(12, new BlockFossilClayOre("_stained_orange"));
+            addBlock(13, new BlockFossilClayOre("_stained_red"));
+            addBlock(14, new BlockFossilClayOre("_stained_silver"));
+            addBlock(15, new BlockFossilClayOre("_stained_white"));
+            addBlock(16, new BlockFossilClayOre("_stained_yellow"));
         }
         
     	/** Items */
@@ -130,12 +142,14 @@ public final class Data extends Util
         { 
             addBlockRenderer(TileCultivate.class, new CultivateRenderer());
             addBlockRenderer(TileDNAExtractor.class, new DNAExtractorRenderer());
+            addBlockRenderer(TileDNACombinator.class, new DNACombinatorRenderer());
         }
         
         /** Item Renderers */
         {
             addItemRenderer(Item.getItemFromBlock(getBlock(0)), new RenderCultivateItem());
             addItemRenderer(Item.getItemFromBlock(getBlock(4)), new RenderDNAExtractorItem());
+            addItemRenderer(Item.getItemFromBlock(getBlock(5)), new RenderDNACombinatorItem());
         }
         
         /** Entity Renderers */

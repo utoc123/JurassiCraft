@@ -8,27 +8,22 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotDNASource;
-import to.uk.ilexiconn.jurassicraft.data.item.AnyDNASource;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotDNASample;
+import to.uk.ilexiconn.jurassicraft.data.item.AnyDNASample;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileDNACombinator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerDNAExtractor extends Container {
+public class ContainerDNACombinator extends Container {
 
-	private TileDNAExtractor dnaExtractor;
+	private TileDNACombinator dnaCombinator;
 	private short lastAnalyzeTime;
 
-	public ContainerDNAExtractor(InventoryPlayer playerInventory, TileEntity tileEntity) {
-		this.dnaExtractor = (TileDNAExtractor) tileEntity;
-		this.addSlotToContainer(new SlotDNASource(dnaExtractor, 0, 29, 29));
-		this.addSlotToContainer(new SlotDNASource(dnaExtractor, 1, 47, 29));
-		this.addSlotToContainer(new SlotDNASource(dnaExtractor, 2, 29, 47));
-		this.addSlotToContainer(new SlotDNASource(dnaExtractor, 3, 47, 47));
-		this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaExtractor, 4, 113, 29));
-		this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaExtractor, 5, 131, 29));
-		this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaExtractor, 6, 113, 47));
-		this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaExtractor, 7, 131, 47));
+	public ContainerDNACombinator(InventoryPlayer playerInventory, TileEntity tileEntity) {
+		this.dnaCombinator = (TileDNACombinator) tileEntity;
+		this.addSlotToContainer(new SlotDNASample(dnaCombinator, 0, 55, 20));
+		this.addSlotToContainer(new SlotDNASample(dnaCombinator, 1, 105, 20));
+		this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaCombinator, 2, 81, 67));
 
 		for (int i = 0; i < 3; i++) {
 			for (int k = 0; k < 9; k++) {
@@ -45,14 +40,14 @@ public class ContainerDNAExtractor extends Container {
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
 		if (!player.worldObj.isRemote) {
-			dnaExtractor.closeInventory();
+			dnaCombinator.closeInventory();
 		}
 	}
 
 	@Override
 	public void addCraftingToCrafters(ICrafting iCrafting) {
 		super.addCraftingToCrafters(iCrafting);
-		iCrafting.sendProgressBarUpdate(this, 0, this.dnaExtractor.getExtractionTime());
+		iCrafting.sendProgressBarUpdate(this, 0, this.dnaCombinator.getCombinationTime());
 	}
 
 	@Override
@@ -60,24 +55,24 @@ public class ContainerDNAExtractor extends Container {
 		super.detectAndSendChanges();
 		for (int i = 0; i < this.crafters.size(); i++) {
 			ICrafting iCrafting = (ICrafting) this.crafters.get(i);
-			if (this.lastAnalyzeTime != this.dnaExtractor.getExtractionTime()) {
-				iCrafting.sendProgressBarUpdate(this, 0, this.dnaExtractor.getExtractionTime());
+			if (this.lastAnalyzeTime != this.dnaCombinator.getCombinationTime()) {
+				iCrafting.sendProgressBarUpdate(this, 0, this.dnaCombinator.getCombinationTime());
 			}
 		}
-		lastAnalyzeTime = dnaExtractor.getExtractionTime();
+		lastAnalyzeTime = dnaCombinator.getCombinationTime();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int i, int unknown) {
 		if (i == 0) {
-			this.dnaExtractor.setExtractionTime((short) unknown);
+			this.dnaCombinator.setCombinationTime((short) unknown);
 		}
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return dnaExtractor.isUseableByPlayer(player);
+		return dnaCombinator.isUseableByPlayer(player);
 	}
 
 	@Override
@@ -88,14 +83,14 @@ public class ContainerDNAExtractor extends Container {
 			if (slot != null && slot.getHasStack()) {
 				ItemStack stackInSlot = slot.getStack();
 				stackFinal = stackInSlot.copy();
-				if (i < 8) {
+				if (i < 3) {
 					if (!mergeItemStack(stackInSlot, 9, inventorySlots.size(), true)) {
 						return null;
 					}
 					slot.onSlotChange(stackInSlot, stackFinal);
-				} else if (i >= 8) {
-					if (stackInSlot.getItem() instanceof AnyDNASource) {
-						if (!mergeItemStack(stackInSlot, 0, 4, false)) {
+				} else if (i >= 3) {
+					if (stackInSlot.getItem() instanceof AnyDNASample) {
+						if (!mergeItemStack(stackInSlot, 0, 2, false)) {
 							return null;
 						}
 					} else {

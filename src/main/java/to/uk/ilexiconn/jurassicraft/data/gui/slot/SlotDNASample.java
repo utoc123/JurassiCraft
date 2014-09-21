@@ -14,7 +14,7 @@ public class SlotDNASample extends Slot {
 
 	@Override
 	public int getSlotStackLimit() {
-		return 1;
+		return 64;
 	}
 
 	@Override
