@@ -20,21 +20,20 @@ import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
 public class EntityTyrannosaurus extends EntityJurassiCraftCreature {
-	public int texid;
+
 	private int stepCount = 0;
 	private float shakeCount = 0;
 	public ControlledParam roarCount = new ControlledParam(0F, 0F, 0.5F, 0F);
 	public ControlledParam roarTiltDegree = new ControlledParam(0F, 0F, 1F, 0F);
 
 	public EntityTyrannosaurus(World world) {
-		super(world, (byte) 6, (byte) 2);
-		tasks.addTask(2, new AITyrannosaurusRoar(this));
-		System.out.println("Test: " + this.getCreatureSpeed());
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 0.2F, false));
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed(), true));
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
+		super(world, (byte) 6);
+		tasks.addTask(2, new AITyrannosaurusRoar(this));		
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.0, false));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed() + 1.0, true));
+		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 1.0));
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		//this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+		this.tasks.addTask(1, new EntityAIPanic(this, 2.0 * this.getCreatureSpeed() + 1.0));
 		this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
 		this.tasks.addTask(0, new EntityAIWander(this, 1.3D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -54,10 +53,10 @@ public class EntityTyrannosaurus extends EntityJurassiCraftCreature {
 				AnimationAPI.sendAnimPacket(this, 1);
 			}
 			/*
-			else if(this.getAttackTarget() != null) {
-			roarCount.thereAndBack(0F, 0.1F, 1, 40);
-			System.out.println(roarCount.change); }
-			*/
+			 * else if(this.getAttackTarget() != null) {
+			 * roarCount.thereAndBack(0F, 0.1F, 1, 40);
+			 * System.out.println(roarCount.change); }
+			 */
 			return null;
 		} else if (I == 2) {
 			this.playSound("jurassicraft:trex2", 5.0F, 1.0F);

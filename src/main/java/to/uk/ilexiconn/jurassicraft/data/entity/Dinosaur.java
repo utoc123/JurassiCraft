@@ -39,7 +39,8 @@ public class Dinosaur
 
     public int ticksToAdulthood;
     public int cultivateSpeed;
-
+    public int numberOfTextures;
+    
     public ArrayList favoriteFoodList;
     public ArrayList ridingItemList;
 

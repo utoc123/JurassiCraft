@@ -37,7 +37,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	protected int animTick;
 	public int frame;
 
-	public EntityJurassiCraftCreature(World world, byte id, byte numberOfTextures) {
+	public EntityJurassiCraftCreature(World world, byte id) {
 		super(world);
 		if (id >= 0 && id < Util.getDinos().size()) {
 			this.creatureID = id;
@@ -45,17 +45,17 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			this.creatureID = 0;
 		}
 		this.resetGrowthStageList();
-		this.setInitCreatureData();
+		this.setCreatureGender(this.rand.nextInt(2) > 0);
+		this.setCreatureTexture((byte) this.rand.nextInt(Util.getDinoByID(creatureID).numberOfTextures));
 		if (this.worldObj.isRemote) {
 			this.setCreatureSize();
 			this.setCreatureScale();
 		} else {
 			this.setHalfOfTheCreatureSize();
 		}
-		this.setCreatureTexture((byte) this.rand.nextInt(numberOfTextures + 1));
 		this.animID = 0;
 		this.animTick = 0;
-		this.setGenetics(75);
+		this.setGenetics(75); // remove later
 	}
 
 	/**
@@ -82,18 +82,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		super.entityInit();
 		this.dataWatcher.addObject(12, Float.valueOf((float) ((((this.length / Util.getDinoByID(creatureID).maxLength) * (this.height / Util.getDinoByID(creatureID).maxHeight)) / 2))));
 		this.dataWatcher.addObject(13, Byte.valueOf((byte) (0)));
-		this.geneticQuality = 1.0F;
-	}
-
-	/** Sets the initial status of the creature. */
-	private void setInitCreatureData() {
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(this.getGeneticQuality() * Util.getDinoByID(creatureID).minHealth);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(this.getGeneticQuality() * Util.getDinoByID(creatureID).minStrength);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getGeneticQuality() * Util.getDinoByID(creatureID).minSpeed);
-		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(this.getGeneticQuality() * Util.getDinoByID(creatureID).minKnockback);
-		this.length = this.getGeneticQuality() * Util.getDinoByID(creatureID).minLength;
-		this.height = this.getGeneticQuality() * Util.getDinoByID(creatureID).minHeight;
-		this.setCreatureGender(this.rand.nextBoolean());
 	}
 
 	/** Updates the creature status. */
@@ -107,7 +95,38 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxKnockback - Util.getDinoByID(this.creatureID).minKnockback) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minKnockback)));
 		this.setCreatureLength();
 		this.setCreatureHeight();
+		this.setHalfOfTheCreatureSize();
 		this.setCreatureScale();
+		/*
+		System.out.println("=============== UPDATE DATA ===============");
+		if (this.worldObj.isRemote) {
+			System.out.println("=============== Client ===============");
+			System.out.println("getCreatureHealth: " + this.getCreatureHealth());
+			System.out.println("getCreatureAttack: " + this.getCreatureAttack());
+			System.out.println("getCreatureSpeed: " + this.getCreatureSpeed());
+			System.out.println("getCreatureKnockback: " + this.getCreatureKnockback());
+			System.out.println("getCreatureTexture: " + this.getCreatureTexture());
+			System.out.println("getCreatureLength: " + this.getCreatureLength());
+			System.out.println("getCreatureHeight: " + this.getCreatureHeight());
+			System.out.println("getCreatureScale: " + this.getCreatureScale());
+			System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
+			System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
+			System.out.println("======================================");
+		} else {
+			System.out.println("=============== Server ===============");
+			System.out.println("getCreatureHealth: " + this.getCreatureHealth());
+			System.out.println("getCreatureAttack: " + this.getCreatureAttack());
+			System.out.println("getCreatureSpeed: " + this.getCreatureSpeed());
+			System.out.println("getCreatureKnockback: " + this.getCreatureKnockback());
+			System.out.println("getCreatureTexture: " + this.getCreatureTexture());
+			System.out.println("getCreatureLength: " + this.getCreatureLength());
+			System.out.println("getCreatureHeight: " + this.getCreatureHeight());
+			System.out.println("getCreatureScale: " + this.getCreatureScale());
+			System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
+			System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
+			System.out.println("======================================");
+		}
+		*/
 	}
 
 	/**
@@ -151,15 +170,18 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		super.setSize(this.getXZBouningBox(), this.getYBouningBox());
 	}
 
-	/** Sets a new bounding box for the creature depending on its status. This is the half of the original BB, to better fit in combat */
+	/**
+	 * Sets a new bounding box for the creature depending on its status. This is
+	 * the half of the original BB, to better fit in combat
+	 */
 	protected final void setHalfOfTheCreatureSize() {
 		this.setBouningBox();
-		super.setSize(this.getXZBouningBox()/2.0F, this.getYBouningBox()/2.0F);
+		super.setSize(this.getXZBouningBox() / 2.0F, this.getYBouningBox() / 2.0F);
 	}
 
 	/** Returns the scale of the creature. */
 	public float getCreatureScale() {
-		return (float) this.dataWatcher.getWatchableObjectFloat(12) * Util.getDinoByID(this.creatureID).scaleAdjustment ;
+		return (float) this.dataWatcher.getWatchableObjectFloat(12) * Util.getDinoByID(this.creatureID).scaleAdjustment;
 	}
 
 	/** Sets the scale of the creature depending on the age and genetic quality. */
@@ -184,7 +206,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 
 	@Override
 	public void onLivingUpdate() {
-		//System.out.println("Test: ");
+		// System.out.println("Test: ");
 		if (this.getTotalTicksLived() < (Util.getDinoByID(this.creatureID).ticksToAdulthood + 1) && this.growthStageList.contains((int) this.getTotalTicksLived())) {
 			if (this.getGrowthStage() < 120) {
 				this.setGrowthStage((byte) (this.getGrowthStage() + 1));
@@ -250,8 +272,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	/** Sets the creature into the analyzer and show its status. */
 	@SideOnly(Side.CLIENT)
 	private void showStatus() {
-		//FMLClientHandler.instance().getClient().thePlayer.openGui(BygoneAge.instance,
-		//BygoneAgeGuiInformation.ANALYZER.getGuiId(), this.worldObj, 0, 0, 0);
+		// FMLClientHandler.instance().getClient().thePlayer.openGui(BygoneAge.instance,
+		// BygoneAgeGuiInformation.ANALYZER.getGuiId(), this.worldObj, 0, 0, 0);
 	}
 
 	/** Returns the creature ID. */
@@ -444,7 +466,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	}
 
 	/** Sets the creature texture. */
-	private byte getCreatureTexture() {
+	public byte getCreatureTexture() {
 		return this.texture;
 	}
 
@@ -547,31 +569,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 
 	@Override
 	protected int getExperiencePoints(EntityPlayer player) {
-			return (int) (1000 * this.getGrowthStage()/120);
-	}
-
-	@Override
-	public void writeEntityToNBT(NBTTagCompound compound) {
-		super.writeEntityToNBT(compound);
-		compound.setInteger("TicksExisted", this.getTotalTicksLived());
-		compound.setFloat("GeneticQuality", this.getGeneticQuality());
-		compound.setBoolean("Gender", this.getCreatureGender());
-		compound.setByte("Stage", this.getGrowthStage());
-		compound.setByte("Texture", this.getCreatureTexture());
-	}
-	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound compound) {
-		super.readEntityFromNBT(compound);
-		this.setTicksExisted(compound.getInteger("TicksExisted"));
-		this.setGeneticQuality(compound.getFloat("GeneticQuality"));
-		this.setCreatureGender(compound.getBoolean("Gender"));
-		this.setCreatureTexture(compound.getByte("Texture"));
-		this.resetGrowthStageList();
-		this.setGrowthStage(compound.getByte("Stage"));
-		this.setCreatureScale();
-		this.setCreatureLength();
-		this.setCreatureHeight();
+		return (int) (1000 * this.getGrowthStage() / 120);
 	}
 
 	@Override
@@ -608,12 +606,37 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	}
 
 	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("TicksExisted", this.getTotalTicksLived());
+		compound.setFloat("GeneticQuality", this.getGeneticQuality());
+		compound.setByte("Stage", this.getGrowthStage());
+		compound.setBoolean("Gender", this.getCreatureGender());
+		compound.setByte("Texture", this.getCreatureTexture());
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setTicksExisted(compound.getInteger("TicksExisted"));
+		this.setGeneticQuality(compound.getFloat("GeneticQuality"));
+		this.resetGrowthStageList();
+		this.setGrowthStage(compound.getByte("Stage"));
+		this.setCreatureGender(compound.getBoolean("Gender"));
+		this.setCreatureTexture(compound.getByte("Texture"));
+		this.setCreatureLength();
+		this.setCreatureHeight();
+		this.setCreatureScale();
+	}
+
+	@Override
 	public void writeSpawnData(ByteBuf buffer) {
 		buffer.writeInt(this.ticksExisted);
 		buffer.writeFloat(this.geneticQuality);
 		buffer.writeFloat(this.bBoxXZ);
 		buffer.writeFloat(this.bBoxY);
 		buffer.writeBoolean(this.gender);
+		buffer.writeByte(this.texture);
 	}
 
 	@Override
@@ -623,6 +646,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		this.bBoxXZ = additionalData.readFloat();
 		this.bBoxY = additionalData.readFloat();
 		this.gender = additionalData.readBoolean();
+		this.texture = additionalData.readByte();
 		this.setCreatureSize();
 	}
 }
