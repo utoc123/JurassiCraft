@@ -87,9 +87,9 @@
         "minKnockback":0.5,
         "maxKnockback":1.0,
         "minLength":1.0,
-        "maxLength":2.5,
+        "maxLength":2.3,
         "minHeight":0.5,
-        "maxHeight":1.8,
+        "maxHeight":1.6,
         "scaleAdjustment":0.9,
         "minProximate":1200,
         "minMinerals":800,
@@ -567,7 +567,7 @@
         "livingSound2":"jurassicraft:tylo2",
         "hurtSound":"jurassicraft:tylo3",
         "deathSound":"jurassicraft:tylo4",
-        "numberOfTextures":1
+        "numberOfTextures":2
     },
     {
         "creatureID":15,
@@ -605,6 +605,6 @@
         "livingSound2":"jurassicraft:ovi1",
         "hurtSound":"jurassicraft:ovi2",
         "deathSound":"jurassicraft:ovi3",
-        "numberOfTextures":1
+        "numberOfTextures":2
     }
 ]
