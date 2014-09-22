@@ -16,7 +16,7 @@ import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 
 import java.util.Map.Entry;
 
-@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.2.4", dependencies = "after:llib")
+@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 PRE-RELEASE", dependencies = "required-after:llib@[0.1.1,)")
 public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
