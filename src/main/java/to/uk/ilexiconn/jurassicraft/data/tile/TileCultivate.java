@@ -15,6 +15,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftCreatureInformation;
 import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
+import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoEgg;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -332,7 +333,9 @@ public class TileCultivate extends TileEntity implements ISidedInventory {
 		if (!canCultivate()) {
 			return;
 		} else {
+			
 			ItemStack cultivateResult = new ItemStack(((ItemDNA) this.slots[2].getItem()).getCorrespondingEgg(), 1, 0);
+			((ItemDinoEgg) cultivateResult.getItem()).setEggQuality(cultivateResult, ((ItemDNA) this.slots[2].getItem()).getQuality(this.slots[2]));
 			this.slots[2] = (ItemStack) null;
 			this.slots[2] = cultivateResult;
 			this.setCultivateTime((short) 0);

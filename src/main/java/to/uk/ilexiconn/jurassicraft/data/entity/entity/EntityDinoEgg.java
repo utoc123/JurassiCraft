@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
@@ -26,6 +27,8 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	public int currentSpawnTime;
 	public boolean froze;
 	public boolean dried;
+	public int quality;
+	
 
 	public int rockAmount;
 	
@@ -42,16 +45,17 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		this.setSize(0.5F, 0.5F);
 	}
 
-	public EntityDinoEgg(World world, String dino, int spawnTime)
+	public EntityDinoEgg(World world, String dino, int spawnTime, int quality)
 	{
 		this(world);
 		this.dino = dino;
 		this.spawnTime = spawnTime;
+		this.quality = quality;
 	}
 
-	public EntityDinoEgg(World world, String dino, int spawnTime, double x, double y, double z)
+	public EntityDinoEgg(World world, String dino, int quality, int spawnTime, double x, double y, double z)
 	{
-		this(world, dino, spawnTime);
+		this(world, dino, spawnTime, quality);
 		this.setPosition(x + 0.5F, y, z + 0.5F);
 	}
 
@@ -235,7 +239,11 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
 					Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
 					dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
-
+					
+					if (dinoToSpawn instanceof EntityJurassiCraftCreature) {
+						((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality);
+					}
+					
 					worldObj.spawnEntityInWorld(dinoToSpawn);
 
 					attackEntityFrom(DamageSource.generic, 0F);
@@ -320,6 +328,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		this.dino = nbt.getString("Dino");
 		this.froze = nbt.getBoolean("Froze");
 		this.dried = nbt.getBoolean("Dried");
+		this.quality = nbt.getInteger("Quality");
 	}
 
 	@Override
@@ -330,6 +339,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 		nbt.setString("Dino", dino);
 		nbt.setBoolean("Froze", froze);
 		nbt.setBoolean("Dried", dried);
+		nbt.setInteger("Quality", quality);
 	}
 
 	public ResourceLocation getTexture() 

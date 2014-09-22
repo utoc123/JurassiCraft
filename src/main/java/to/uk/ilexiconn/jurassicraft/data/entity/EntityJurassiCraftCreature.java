@@ -55,7 +55,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		}
 		this.animID = 0;
 		this.animTick = 0;
-		this.setGenetics(75); // remove later
 	}
 
 	/**
@@ -559,7 +558,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 
 	@Override
 	protected float getSoundPitch() {
-		return Float.valueOf(0.7F + 0.3F * this.getGeneticQuality() + 0.3F * (120 - this.getGrowthStage()) / 120);
+		return Float.valueOf(1.0F + 0.8F * (120 - this.getGrowthStage()) / 120);
 	}
 
 	@Override

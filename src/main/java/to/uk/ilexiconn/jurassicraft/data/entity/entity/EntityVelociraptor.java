@@ -27,18 +27,15 @@ public class EntityVelociraptor extends EntityJurassiCraftCreature {
 
 	public EntityVelociraptor(World world) {
 		super(world, (byte) 2);
-		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.5, false));
-		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed() + 1.5, true));
-		tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 1.5D));
+		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.0D, false));
+		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed() + 0.8D, true));
+		tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 0.8D));
 		tasks.addTask(0, new EntityAISwimming(this));
-
 		tasks.addTask(2, new AIVelociraptorTwitchHead(this));
 		tasks.addTask(2, new AIVelociraptorRoar(this));
 		tasks.addTask(2, new AIVelociraptorLeap(this));
-
-		tasks.addTask(1, new EntityAIPanic(this, 2.0 * this.getCreatureSpeed() + 1.5));
-		tasks.addTask(3, new EntityAITempt(this, 1.5 * this.getCreatureSpeed() + 1.0, Items.beef, false));
-		tasks.addTask(5, new EntityAIWander(this, this.getCreatureSpeed() + 0.8));
+		tasks.addTask(3, new EntityAITempt(this, 1.5D * this.getCreatureSpeed() + 1.0D, Items.beef, false));
+		tasks.addTask(5, new EntityAIWander(this, this.getCreatureSpeed() + 0.7D));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(7, new EntityAILookIdle(this));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));

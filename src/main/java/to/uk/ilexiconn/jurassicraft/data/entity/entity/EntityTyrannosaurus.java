@@ -29,13 +29,12 @@ public class EntityTyrannosaurus extends EntityJurassiCraftCreature {
 	public EntityTyrannosaurus(World world) {
 		super(world, (byte) 6);
 		tasks.addTask(2, new AITyrannosaurusRoar(this));		
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.0, false));
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed() + 1.0, true));
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 1.0));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.2D, false));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityDinosaurCreature.class, this.getCreatureSpeed() + 1.0D, true));
+		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 1.0D));
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIPanic(this, 2.0 * this.getCreatureSpeed() + 1.0));
-		this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.beef, false));
-		this.tasks.addTask(0, new EntityAIWander(this, 1.3D));
+		this.tasks.addTask(3, new EntityAITempt(this, 1.5D * this.getCreatureSpeed() + 1.0D, Items.beef, false));
+		this.tasks.addTask(0, new EntityAIWander(this, this.getCreatureSpeed() + 0.6D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));

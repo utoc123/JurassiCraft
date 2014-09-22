@@ -6,7 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemDNA extends Item implements AnyDNASample {
@@ -24,6 +26,40 @@ public class ItemDNA extends Item implements AnyDNASample {
 			if (Util.getEggArray().get(id) != null)
 				return Util.getEggArray().get(id);
 		return null;
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack dnaSample, World world, EntityPlayer player) {
+		if (player.capabilities.isCreativeMode && player.isSneaking()) {
+			NBTTagCompound compound = new NBTTagCompound();
+			if (dnaSample.hasTagCompound()) {
+				int oldQuality = dnaSample.getTagCompound().getInteger("Quality");
+				dnaSample.getTagCompound().removeTag("Quality");
+				switch (oldQuality) {
+					case 25:
+						compound.setInteger("Quality", 50);	
+						break;
+					case 50:
+						compound.setInteger("Quality", 75);	
+						break;
+					case 75:
+						compound.setInteger("Quality", 100);	
+						break;
+					case 100:
+						compound.setInteger("Quality", 25);	
+						break;
+					default:
+						break;
+				}
+			} else {
+				compound.setInteger("Quality", 25);
+			}
+			dnaSample.setTagCompound(compound);
+			if (world.isRemote) {
+				player.addChatMessage(new ChatComponentText("Cheater! New quality changed to " + dnaSample.getTagCompound().getInteger("Quality") + "%"));
+			}
+		}
+		return dnaSample;
 	}
 
 	@Override
