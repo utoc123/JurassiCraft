@@ -35,7 +35,8 @@
         "livingSound2":"jurassicraft:ankylo2",
         "hurtSound":"jurassicraft:ankylo1",
         "deathSound":"jurassicraft:ankylo2",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":2
     },
     {
         "creatureID":1,
@@ -73,7 +74,8 @@
         "livingSound2":"jurassicraft:brac3",
         "hurtSound":"jurassicraft:brac2",
         "deathSound":"jurassicraft:brac4",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":2
     },
     {		
         "creatureID":2,
@@ -111,7 +113,8 @@
         "livingSound2":"jurassicraft:RapHiss02",
         "hurtSound":"jurassicraft:RapAttack01",
         "deathSound":"jurassicraft:RapAttack02",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {        
         "creatureID":3,
@@ -149,7 +152,8 @@
         "livingSound2":"jurassicraft:stego2",
         "hurtSound":"jurassicraft:stego1",
         "deathSound":"jurassicraft:stego2",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":2
     },
     {
         "creatureID":4,
@@ -187,7 +191,8 @@
         "livingSound2":"jurassicraft:tric1",
         "hurtSound":"jurassicraft:tric2",
         "deathSound":"jurassicraft:tric3",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":1
     },
     {        
         "creatureID":5,
@@ -225,7 +230,8 @@
         "livingSound2":null,
         "hurtSound":null,
         "deathSound":null,
-        "numberOfTextures":1
+        "numberOfTextures":1,
+        "ridingStyle":2
     },
     {
         "creatureID":6,
@@ -263,7 +269,8 @@
         "livingSound2":trex2,
         "hurtSound": trex3,
         "deathSound": trex3,
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":1
     },
     {
         "creatureID":7,
@@ -301,7 +308,8 @@
         "livingSound2":"jurassicraft:gali2",
         "hurtSound":"jurassicraft:gali3",
         "deathSound":"jurassicraft:gali3",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {        
         "creatureID":8,
@@ -339,7 +347,8 @@
         "livingSound2":"jurassicraft:hypsi2",
         "hurtSound":"jurassicraft:hypsi3",
         "deathSound":"jurassicraft:hypsi4",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {
         "creatureID":9,
@@ -377,7 +386,8 @@
         "livingSound2":"jurassicraft:leae1",
         "hurtSound":"jurassicraft:leae1",
         "deathSound":"jurassicraft:leae1",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {
         "creatureID":10,
@@ -415,7 +425,8 @@
         "livingSound2":"jurassicraft:herr2",
         "hurtSound":"jurassicraft:herr1",
         "deathSound":"jurassicraft:herr2",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {
         "creatureID":11,
@@ -453,7 +464,8 @@
         "livingSound2":"jurassicraft:para1",
         "hurtSound":"jurassicraft:para2",
         "deathSound":"jurassicraft:para2",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":2
     },
     {
         "creatureID":12,
@@ -491,7 +503,8 @@
         "livingSound2":null,
         "hurtSound":null,
         "deathSound":null,
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":2
     },
     {
         "creatureID":13,
@@ -529,7 +542,8 @@
         "livingSound2":"jurassicraft:dilo2",
         "hurtSound":"jurassicraft:dilo3",
         "deathSound":"jurassicraft:dilo1",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     },
     {
         "creatureID":14,
@@ -567,7 +581,8 @@
         "livingSound2":"jurassicraft:tylo2",
         "hurtSound":"jurassicraft:tylo3",
         "deathSound":"jurassicraft:tylo4",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":1
     },
     {
         "creatureID":15,
@@ -605,6 +620,7 @@
         "livingSound2":"jurassicraft:ovi1",
         "hurtSound":"jurassicraft:ovi2",
         "deathSound":"jurassicraft:ovi3",
-        "numberOfTextures":2
+        "numberOfTextures":2,
+        "ridingStyle":0
     }
 ]

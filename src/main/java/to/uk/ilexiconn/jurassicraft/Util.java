@@ -260,4 +260,30 @@ public class Util
 		
 		return -1;
 	}
+	
+	public static boolean isFavoriteFood(int id, Item food) 
+	{
+		ArrayList foodList = getDinoByID(id).favoriteFoodList;
+		for (int i = 0; i < foodList.size(); i++) 
+		{
+			if(foodList.contains(food))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean isRidingItem(int id, Item ridingItem) 
+	{
+		ArrayList itemList = getDinoByID(id).ridingItemList;
+		for (int i = 0; i < itemList.size(); i++) 
+		{
+			if(itemList.contains(ridingItem))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }
