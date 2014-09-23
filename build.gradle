@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compile 'llib:LLib:1.7.10-0.1.0-21:dev'
+    compile 'llib:LLib:1.7.10-0.1.1-26:dev'
 }
 
 minecraft {
