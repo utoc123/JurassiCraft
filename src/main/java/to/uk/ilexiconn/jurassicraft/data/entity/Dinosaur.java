@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dinosaur
 {
-    public byte creatureID;
+    public int creatureID;
 
     public String creatureName;
     public String livingSound1;
