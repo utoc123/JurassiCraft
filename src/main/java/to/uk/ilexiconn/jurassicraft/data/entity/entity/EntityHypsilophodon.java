@@ -12,23 +12,26 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
+import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
 
-public class EntityHypsilophodon extends EntityJurassiCraftCreature {
+public class EntityHypsilophodon extends EntityJurassiCraftLandProtective {
 
 	public EntityHypsilophodon(World world) {
-		super(world, (byte) 8);
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+		super(world, (byte) 8, 2);
+		this.getNavigator().setAvoidsWater(true);
+		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(2, this.aiSit);
 		// tasks.addTask(2, new EntityAIMate(this, 1.0D));
-		tasks.addTask(3, new EntityAITempt(this, 1.5D, Items.wheat, false));
-		this.tasks.addTask(4, new EntityAIAvoidEntity(this, EntityVelociraptor.class, 16.0F, 0.8D, 1.33D));
+		tasks.addTask(3, new EntityAITempt(this, 5.5D * this.getCreatureSpeed(), Items.wheat, false));
+		this.tasks.addTask(4, new EntityAIAvoidEntity(this, EntityVelociraptor.class, 16.0F, 5.0D * this.getCreatureSpeed(), 6.0D * this.getCreatureSpeed()));
 		// tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-		tasks.addTask(5, new EntityAIWander(this, 1.0D));
-		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		tasks.addTask(7, new EntityAILookIdle(this));
+		this.tasks.addTask(5, new EntityAIWander(this, 3.5D * this.getCreatureSpeed()));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(6, new EntityAILookIdle(this));
 	}
 
-	public EntityHypsilophodon createChild(EntityAgeable entity) {
-		return new EntityHypsilophodon(worldObj);
+	@Override
+	public int getTalkInterval() {
+		return 350;
 	}
 }

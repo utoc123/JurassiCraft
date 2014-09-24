@@ -512,7 +512,7 @@ public class ModelDilophosaurus extends MowzieModelBase
     
     EntityDilophosaurus dilo = (EntityDilophosaurus)entity;
 
-    if(dilo.angerLevel == 0)
+    if(dilo.getAttackTarget() != null)
     {
     	if(this.isChild)
     	{
