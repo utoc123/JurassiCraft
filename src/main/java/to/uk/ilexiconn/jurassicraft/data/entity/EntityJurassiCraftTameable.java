@@ -4,7 +4,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathEntity;
@@ -37,8 +36,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
 	public boolean interact(EntityPlayer player) {
 		ItemStack heldItemStack = player.inventory.getCurrentItem();
 		if (heldItemStack != null) {
-			//if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem())) { CHECK LATER
-			if (heldItemStack.getItem().equals(Items.golden_carrot)) {
+			if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem())) {
 				if (!player.capabilities.isCreativeMode) {
 					heldItemStack.stackSize--;
 				}
@@ -156,7 +154,10 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
 		return !this.getLeashed() && this.isTamed();
 	}
 
-	/** Returns true if the target is not the owner of this creature or other creature from the same owner. */
+	/**
+	 * Returns true if the target is not the owner of this creature or other
+	 * creature from the same owner.
+	 */
 	public boolean checkTarget(Entity target) {
 		if (target != (Entity) null && target != this.getOwner()) {
 			if (target instanceof EntityJurassiCraftTameable) {

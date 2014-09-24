@@ -1,21 +1,15 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
-import to.uk.ilexiconn.jurassicraft.data.ai.JurassiCraftEntityAITargetIfNonTamed;
 import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
-import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
-public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
+public class EntityTyrannosaurus extends EntityJurassiCraftCreature {
 
 	private int stepCount = 0;
 	private float shakeCount = 0;
@@ -24,16 +18,16 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 
 	public EntityTyrannosaurus(World world) {
 		super(world, (byte) 6);
+		tasks.addTask(2, new AITyrannosaurusRoar(this));		
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getCreatureSpeed() + 1.2D, false));
+		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed() + 1.0D));
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIWander(this, 4.0D * this.getCreatureSpeed()));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(2, new AITyrannosaurusRoar(this));
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 6.0D * this.getCreatureSpeed()));
-		this.tasks.addTask(5, new EntityAITempt(this, 6.0D * this.getCreatureSpeed(), Items.beef, false));
+		this.tasks.addTask(3, new EntityAITempt(this, 1.5D * this.getCreatureSpeed() + 1.0D, Items.beef, false));
+		this.tasks.addTask(0, new EntityAIWander(this, this.getCreatureSpeed() + 0.6D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(6, new EntityAILookIdle(this));
-		this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));
-		this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityParasaurolophus.class, 0));
+		this.tasks.addTask(7, new EntityAILookIdle(this));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 
 	public String getLivingSound() {

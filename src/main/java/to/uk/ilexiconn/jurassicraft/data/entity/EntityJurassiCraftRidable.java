@@ -6,7 +6,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
@@ -32,8 +31,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 	@Override
 	public boolean interact(EntityPlayer player) {
 		ItemStack playerItemStack = player.inventory.getCurrentItem();
-		//if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem())) { CHECK LATER
-		if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && playerItemStack.getItem().equals(Items.carrot_on_a_stick)) {
+		if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem())) {
 			if (this.isCreatureRidable() && this.isTamed() && this.isCreatureAdult() && this.riddenByEntity == null && player.getCommandSenderName().equals(this.getOwnerName())) {
 				this.setSitting(false);
 				this.setRidingPlayer(player);
@@ -99,7 +97,10 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 		this.setRotation(this.rotationYaw, this.rotationPitch);
 	}
 
-	/** Sets the mob rotation depending on where the player is looking (horse style). */
+	/**
+	 * Sets the mob rotation depending on where the player is looking (horse
+	 * style).
+	 */
 	private void handleMouseControlledRiding() {
 		this.prevRotationYaw = this.rotationYaw = this.riddenByEntity.rotationYaw;
 		this.rotationPitch = this.riddenByEntity.rotationPitch * 0.5F;
@@ -127,12 +128,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 
 	@Override
 	public void moveEntityWithHeading(float movementStrafing, float movementForward) {
-		// CHECK LATER
-		// if (this.riddenByEntity != null && this.riddenByEntity instanceof
-		// EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() !=
-		// (ItemStack) null && Util.isRidingItem(this.getCreatureID(),
-		// ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem())) {
-		if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem().equals(Items.carrot_on_a_stick)) {
+		if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem())) {
 			switch (Util.getDinoByID(this.getCreatureID()).ridingStyle) {
 				case 0:
 					this.handleMouseControlledRiding();
@@ -146,7 +142,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 				default:
 					this.handleItemControlledRiding();
 			}
-			this.stepHeight = 1.0F; // CHECK: Should change with height!!!
+			this.stepHeight = 1.0F; //CHECK: Should change with height!!!
 			movementStrafing = ((EntityLivingBase) this.riddenByEntity).moveStrafing * 0.5F * this.getMountingSpeed();
 			if (Minecraft.getMinecraft().gameSettings.keyBindBack.getIsKeyPressed()) {
 				movementForward = ((EntityLivingBase) this.riddenByEntity).moveForward * 0.3F * this.getMountingSpeed();
@@ -178,7 +174,10 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 		}
 	}
 
-	/** Decreases the held item durability and destroys the item if stack size is 0 or less. */
+	/**
+	 * Decreases the held item durability and destroys the item if stack size is
+	 * 0 or less.
+	 */
 	private void decreaseHeldItemDurability() {
 		if (((EntityPlayer) this.riddenByEntity).getHeldItem().getItemDamage() > ((EntityPlayer) this.riddenByEntity).getHeldItem().getMaxDamage()) {
 			((EntityPlayer) this.riddenByEntity).getHeldItem().stackSize--;

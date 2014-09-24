@@ -20,7 +20,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable 
 
 	public EntityJurassiCraftLandAggressive(World world, byte id) {
 		super(world, id);
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 6.0D * this.getCreatureSpeed(), false));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, false));
 		this.targetTasks.addTask(1, new JurassiCraftEntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new JurassiCraftEntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
@@ -32,7 +32,10 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable 
 		return false;
 	}
 
-	/** Sets the attack target if it is adult. If it is also tamed, this will check if the target is tamed by the player.*/
+	/**
+	 * Sets the attack target if it is adult. If it is also tamed, this will
+	 * check if the target is tamed by the player.
+	 */
 	private void becomeAngryAt(EntityJurassiCraftLandAggressive creature, Entity target) {
 		if (creature.isCreatureAdult()) {
 			if (creature.isTamed()) {

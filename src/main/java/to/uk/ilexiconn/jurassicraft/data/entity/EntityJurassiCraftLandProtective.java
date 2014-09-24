@@ -141,37 +141,37 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable 
 				}
 			}
 			if (this.checkTarget(attacker)) {
-				if (!this.isCreatureAdult()) {
+				if (this.isCreatureAdult()) {
 					if (!listChildren.isEmpty()) {
-						for (int i = 0; i < listChildren.size(); i++) {
+						for (int i = 0; i < listChildren.size(); ++i) {
 							becomePanic(listChildren.get(i));
 						}
 					}
 					if (!listAdult.isEmpty()) {
-						for (int i = 0; i < listAdult.size(); i++) {
+						for (int i = 0; i < listAdult.size(); ++i) {
 							becomeAngryAt(listAdult.get(i), attacker);
 						}
 					}
 				} else {
 					if (count >= this.numberOfAllies) {
 						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listChildren.size(); i++) {
+							for (int i = 0; i < listChildren.size(); ++i) {
 								becomePanic(listChildren.get(i));
 							}
 						}
 						if (!listAdult.isEmpty()) {
-							for (int i = 0; i < listAdult.size(); i++) {
+							for (int i = 0; i < listAdult.size(); ++i) {
 								becomeAngryAt(listAdult.get(i), attacker);
 							}
 						}
 					} else {
 						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listChildren.size(); i++) {
+							for (int i = 0; i < listChildren.size(); ++i) {
 								becomePanic(listChildren.get(i));
 							}
 						}
 						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listAdult.size(); i++) {
+							for (int i = 0; i < listAdult.size(); ++i) {
 								cancelAngryBehavior(listAdult.get(i));
 								becomePanic(listAdult.get(i));
 							}
