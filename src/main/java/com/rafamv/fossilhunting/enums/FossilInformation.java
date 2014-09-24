@@ -113,10 +113,10 @@ public enum FossilInformation {
 	/** Returns the itemstack that created the fossil based in its id. */
 	public static ItemStack getItemStackFromFossil(int id) {
 		ItemStack fossil;
-		if (id == FossilInformation.ANKYLOSAURUS.getFossilID()) {
+		/**if (id == FossilInformation.ANKYLOSAURUS.getFossilID()) {
 			fossil = new ItemStack(FHItems.itemDEXFossilAnkylosaurus, 1);
 			return fossil;
-		} else if (id == FossilInformation.CORONICERASROTIFORME.getFossilID()) {
+		} else **/if (id == FossilInformation.CORONICERASROTIFORME.getFossilID()) {
 			fossil = new ItemStack(FHItems.itemDEXFossilCoronicerasRotiforme, 1);
 			return fossil;
 		} else if (id == FossilInformation.COMPSOGNATHUS.getFossilID()) {

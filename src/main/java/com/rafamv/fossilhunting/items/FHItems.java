@@ -43,7 +43,7 @@ public class FHItems {
 	public static Item itemDEXFossilSpinosaurus;
 	public static Item itemDEXFossilDilophosaurus;
 	public static Item itemDEXFossilArchaeopteryx;
-	public static Item itemDEXFossilAnkylosaurus;
+	// public static Item itemDEXFossilAnkylosaurus;
 	
 	public static void mainRegistry() {
 		initItems();
@@ -80,7 +80,7 @@ public class FHItems {
 		itemDEXFossilSpinosaurus = new FossilSpinosaurus().setUnlocalizedName("FossilSpinosaurus");
 		itemDEXFossilDilophosaurus = new FossilDilophosaurus().setUnlocalizedName("FossilDilophosaurus");
 		itemDEXFossilArchaeopteryx = new FossilArchaeopteryx().setUnlocalizedName("FossilArchaeopteryx");
-		itemDEXFossilAnkylosaurus = new FossilAnkylosaurus().setUnlocalizedName("FossilAnkylosaurus");
+		// itemDEXFossilAnkylosaurus = new FossilAnkylosaurus().setUnlocalizedName("FossilAnkylosaurus");
 		
 	}
 	
@@ -114,7 +114,7 @@ public class FHItems {
 		//GameRegistry.registerItem(itemDEXFossilSpinosaurus, "FossilSpinosaurus");
 		//GameRegistry.registerItem(itemDEXFossilDilophosaurus, "FossilDilophosaurus");
 		//GameRegistry.registerItem(itemDEXFossilArchaeopteryx, "FossilArchaeopteryx");
-		GameRegistry.registerItem(itemDEXFossilAnkylosaurus, "FossilAnkylosaurus");
+		// GameRegistry.registerItem(itemDEXFossilAnkylosaurus, "FossilAnkylosaurus");
 	}
 
 }

@@ -131,16 +131,20 @@ public class Util
 
 	public void addDNA(String dinoName)
 	{
-		ItemDNA item = new ItemDNA(dinoName);
-		dnas.add(item);
-		GameRegistry.registerItem(item, item.getUnlocalizedName());
+        if (!dinoName.equals("Ankylosaur")) {
+            ItemDNA item = new ItemDNA(dinoName);
+            dnas.add(item);
+            GameRegistry.registerItem(item, item.getUnlocalizedName());
+        }
 	}
 
 	public void addMeat(String dinoName)
 	{
-		ItemMeat item = new ItemMeat(dinoName);
-		meat.add(item);
-		addItem(-1, item);
+        if (!dinoName.equals("Ankylosaur")) {
+            ItemMeat item = new ItemMeat(dinoName);
+            meat.add(item);
+            addItem(-1, item);
+        }
 	}
 
 	public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
@@ -161,7 +165,8 @@ public class Util
 			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
 			dinos.put(dino, entity);
 			int entityId = EntityRegistry.findGlobalUniqueEntityId();
-			EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
+            if (dino.creatureName.equals("Ankylosaur")) EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId);
+            else EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
 			EntityRegistry.registerModEntity(entity, dino.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
 			addEgg(dino.creatureName);
 		}
@@ -191,11 +196,13 @@ public class Util
 
 	public void addEgg(final String dinoName)
 	{
-		ItemDinoEgg egg = new ItemDinoEgg(dinoName);
-		
-		eggs.add(egg);
-		
-		addItem(-1, egg);
+        if (!dinoName.equals("Ankylosaur")) {
+            ItemDinoEgg egg = new ItemDinoEgg(dinoName);
+
+            eggs.add(egg);
+
+            addItem(-1, egg);
+        }
 	}
 
 	public void addShapedRecipe(ItemStack output, Object... obj)
