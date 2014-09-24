@@ -25,7 +25,7 @@ public abstract class RenderDinosaur extends RenderLiving {
 
 	public void preRenderCallback(EntityLivingBase entity, float side) {
 		float scale = (float) ((EntityJurassiCraftCreature) entity).getCreatureScale();
-		this.shadowSize = ((EntityJurassiCraftCreature) entity).getXZBouningBox() * 0.8F * scale;
+		this.shadowSize = ((EntityJurassiCraftCreature) entity).getXZBouningBox() * 0.4F * scale;
 		GL11.glScalef(scale, scale, scale);
 	}
 }

@@ -79,7 +79,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(12, Float.valueOf((float) ((((this.length / Util.getDinoByID(creatureID).maxLength) * (this.height / Util.getDinoByID(creatureID).maxHeight)) / 2))));
+		this.dataWatcher.addObject(12, Float.valueOf((float) ((((this.length / Util.getDinoByID(this.creatureID).maxLength) * (this.height / Util.getDinoByID(this.creatureID).maxHeight)) / 2))));
 		this.dataWatcher.addObject(13, Byte.valueOf((byte) (0)));
 	}
 
