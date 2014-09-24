@@ -22,7 +22,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 
 	public EntityJurassiCraftRidable(World world, byte id) {
 		super(world, id);
-		this.setMountingSpeed((float) (this.getCreatureSpeed() + 1.0D));
+		this.setMountingSpeed((float) (this.getCreatureSpeed() + 0.5D));
 	}
 
 	public boolean isCreatureRidable() {
@@ -34,6 +34,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 		ItemStack playerItemStack = player.inventory.getCurrentItem();
 		//if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem())) { CHECK LATER
 		if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && playerItemStack.getItem().equals(Items.carrot_on_a_stick)) {
+			System.out.println("Click 2 " + this.isCreatureRidable() + " tamed " + this.isTamed() + " ridden " + this.riddenByEntity == null + " owner " + player.getCommandSenderName().equals(this.getOwnerName()));
 			if (this.isCreatureRidable() && this.isTamed() && this.isCreatureAdult() && this.riddenByEntity == null && player.getCommandSenderName().equals(this.getOwnerName())) {
 				this.setSitting(false);
 				this.setRidingPlayer(player);
@@ -154,10 +155,10 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 				movementForward = ((EntityLivingBase) this.riddenByEntity).moveForward * this.getMountingSpeed();
 			}
 			if (Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed() && this.onGround && !this.isJumping && ((EntityPlayer) this.riddenByEntity).getHeldItem().getItemDamage() < ((EntityPlayer) this.riddenByEntity).getHeldItem().getMaxDamage() - 20) {
-				((EntityPlayer) this.riddenByEntity).getHeldItem().setItemDamage(((EntityPlayer) this.riddenByEntity).getHeldItem().getItemDamage() + 20);
+				//((EntityPlayer) this.riddenByEntity).getHeldItem().setItemDamage(((EntityPlayer) this.riddenByEntity).getHeldItem().getItemDamage() + 20); CHECK LATER
 				this.jump();
 			}
-			this.decreaseHeldItemDurability();
+			//this.decreaseHeldItemDurability(); CHECK LATER
 			if (!this.worldObj.isRemote) {
 				this.setAIMoveSpeed((float) this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue());
 				super.moveEntityWithHeading(movementStrafing, movementForward);

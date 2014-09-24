@@ -35,7 +35,7 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective {
 
 	@Override
 	public double getMountedYOffset() {
-		return (double) this.getYBouningBox() * 0.95D;
+		return (double) this.getYBouningBox() * 0.91D;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntityJurassiCraftCreature extends EntityCreature implements IAnimatedEntity, IEntityAdditionalSpawnData {
 
 	public byte creatureID;
-	public float geneticQuality;
+	public float geneticQuality = 1.0F;
 	public boolean gender;
 	public byte texture;
 	public float height;
@@ -214,7 +214,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 
 	@Override
 	public void onLivingUpdate() {
-		// System.out.println("Test: ");
+		//System.out.println("Test: " + this.getGeneticQuality());
 		if (this.getTotalTicksLived() < (Util.getDinoByID(this.creatureID).ticksToAdulthood + 1) && this.growthStageList.contains((int) this.getTotalTicksLived())) {
 			if (this.getGrowthStage() < 120) {
 				this.setGrowthStage((byte) (this.getGrowthStage() + 1));
