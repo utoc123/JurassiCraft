@@ -44,6 +44,10 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		} else {
 			this.creatureID = 0;
 		}
+		if (this.getGeneticQuality() < 0.8) {
+			System.out.print("Creature does not have a correct genetic quality. New genetic quality set to be 75%");
+			this.setGenetics(75);
+		}
 		this.resetGrowthStageList();
 		this.setCreatureGender(this.rand.nextInt(2) > 0);
 		this.setCreatureTexture((byte) this.rand.nextInt(Util.getDinoByID(creatureID).numberOfTextures));
@@ -55,6 +59,11 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		}
 		this.animID = 0;
 		this.animTick = 0;
+	}
+
+	@Override
+	public boolean isAIEnabled() {
+		return true;
 	}
 
 	/**
@@ -569,11 +578,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 	@Override
 	protected int getExperiencePoints(EntityPlayer player) {
 		return (int) (1000 * this.getGrowthStage() / 120);
-	}
-
-	@Override
-	public boolean isAIEnabled() {
-		return true;
 	}
 
 	@Override

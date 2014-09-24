@@ -26,13 +26,13 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive {
 	public EntityVelociraptor(World world) {
 		super(world, (byte) 2);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, 5.0D * this.getCreatureSpeed()));
+		tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);
 		tasks.addTask(2, new AIVelociraptorTwitchHead(this));
 		tasks.addTask(2, new AIVelociraptorRoar(this));
 		tasks.addTask(2, new AIVelociraptorLeap(this));
-		tasks.addTask(4, new EntityAITempt(this, 5.0D * this.getCreatureSpeed(), Items.beef, false));
-		tasks.addTask(5, new EntityAIWander(this, 3.0D * this.getCreatureSpeed()));
+		tasks.addTask(4, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.beef, false));
+		tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(7, new EntityAILookIdle(this));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));

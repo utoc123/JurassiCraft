@@ -26,8 +26,8 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable 
 	public EntityJurassiCraftLandProtective(World world, byte id, int alliesToAttack) {
 		super(world, id);
 		this.numberOfAllies = alliesToAttack;
-		this.tasks.addTask(1, new JurassiCraftLandEntityAIPanicIfNotAnger(this, 1.2D));
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, false));
+		this.tasks.addTask(1, new JurassiCraftLandEntityAIPanicIfNotAnger(this, 1.2D * this.getCreatureSpeed()));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, this.getCreatureSpeed(), false));
 		this.targetTasks.addTask(1, new JurassiCraftEntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new JurassiCraftEntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
@@ -180,7 +180,7 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable 
 				}
 				return super.attackEntityFrom(damageSource, damage);
 			} else {
-				return damageSource.getEntity() != this.getOwner() ? super.attackEntityFrom(damageSource, damage) : false;
+				return super.attackEntityFrom(damageSource, damage);
 			}
 		}
 	}

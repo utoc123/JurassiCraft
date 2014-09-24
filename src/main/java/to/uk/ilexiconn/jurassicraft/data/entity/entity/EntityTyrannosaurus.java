@@ -25,11 +25,11 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 	public EntityTyrannosaurus(World world) {
 		super(world, (byte) 6);
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIWander(this, 4.0D * this.getCreatureSpeed()));
+		this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(2, new AITyrannosaurusRoar(this));
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 6.0D * this.getCreatureSpeed()));
-		this.tasks.addTask(5, new EntityAITempt(this, 6.0D * this.getCreatureSpeed(), Items.beef, false));
+		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
+		this.tasks.addTask(5, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.beef, false));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));
@@ -41,7 +41,7 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 		// isRoaring = true;
 		int I = rand.nextInt(3) + 1;
 		if (I == 1) {
-			this.playSound("jurassicraft:trex1", 5.0F, 1.0F);
+			this.playSound("jurassicraft:trex1", 5.0F, this.getSoundPitch());
 			if (animID == 0 && this.getAttackTarget() == null) {
 				AnimationAPI.sendAnimPacket(this, 1);
 			}
@@ -52,7 +52,7 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 			 */
 			return null;
 		} else if (I == 2) {
-			this.playSound("jurassicraft:trex2", 5.0F, 1.0F);
+			this.playSound("jurassicraft:trex2", 5.0F, this.getSoundPitch());
 			return null;
 		} else {
 			return null;
@@ -62,12 +62,12 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 	}
 
 	public String getHurtSound() {
-		this.playSound("jurassicraft:trex3", 5.0F, 1.0F);
+		this.playSound("jurassicraft:trex3", 5.0F, this.getSoundPitch());
 		return null;
 	}
 
 	public String getDeathSound() {
-		this.playSound("jurassicraft:trex3", 5.0F, 1.0F);
+		this.playSound("jurassicraft:trex3", 5.0F, this.getSoundPitch());
 		return null;
 	}
 

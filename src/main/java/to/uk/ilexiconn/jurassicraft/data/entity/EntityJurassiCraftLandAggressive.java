@@ -75,7 +75,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable 
 				}
 				return super.attackEntityFrom(damageSource, damage);
 			} else {
-				return damageSource.getEntity() != this.getOwner() ? super.attackEntityFrom(damageSource, damage) : false;
+				return super.attackEntityFrom(damageSource, damage);
 			}
 		}
 	}
