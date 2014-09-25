@@ -27,7 +27,7 @@
         "yBoxDelta":2.0,
         "ticksToAdulthood":840000,
         "cultivateSpeed":1000,
-        "favoriteFoodList":null,
+        "favoriteFoodList":["chickenRaw", "apple", "potato"],
         "ridingItemList":null,
         "isRidable":false,
         "waterCreature":false,
