@@ -1,6 +1,7 @@
 package to.uk.ilexiconn.jurassicraft;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
@@ -13,7 +14,7 @@ import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 
 @SideOnly(Side.CLIENT)
-@ContentHandler(modid = "jurassicraft", type = ContentType.UNDEFINED)
+@ContentHandler(modid = "jurassicraft", type = ContentType.UNDEFINED, priority = EventPriority.LOW)
 public class ModRenderers
 {
     public void init()
