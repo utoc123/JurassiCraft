@@ -5,15 +5,11 @@
 // - ZeuX
 
 
-
-
-
-
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
+import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
-import net.minecraft.entity.Entity;
 
 public class ModelTriceratops extends MowzieModelBase
 {
@@ -297,16 +293,16 @@ public class ModelTriceratops extends MowzieModelBase
         Right_Front_Foot.setTextureSize(256, 256);
         Right_Front_Foot.mirror = true;
         setRotation(Right_Front_Foot, 0F, 0F, 0F);
-        
+
         addChildTo(Middle_Horn, Mouth);
         addChildTo(Mouth, Head);
-        
+
         addChildTo(Left_Front_Foot, FrontLeg3);
         addChildTo(Right_Front_Foot, FrontLeg4);
-        
+
         //Corrections
         Middle_Horn.setRotationPoint(0, 0, 0);
-        
+
         BackLeg1.setInitValuesToCurrentPose();
         BackLeg2.setInitValuesToCurrentPose();
         BackLeg3.setInitValuesToCurrentPose();
@@ -399,9 +395,10 @@ public class ModelTriceratops extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
-    
-    public void resetPose() {
-    	BackLeg1.setCurrentPoseToInitValues();
+
+    public void resetPose()
+    {
+        BackLeg1.setCurrentPoseToInitValues();
         BackLeg2.setCurrentPoseToInitValues();
         BackLeg3.setCurrentPoseToInitValues();
         BackLeg4.setCurrentPoseToInitValues();

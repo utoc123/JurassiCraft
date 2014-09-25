@@ -1,38 +1,33 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import to.uk.ilexiconn.jurassicraft.data.entity.EntityDinosaurCreature;
-
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 
-public class EntityMeganeura extends EntityDinosaurCreature implements IMob
+public class EntityMeganeura extends EntityJurassiCraftCreature implements IMob
 {
-	public int texid;
 
     public int courseChangeCooldown = 0;
     public double waypointX;
     public double waypointY;
     public double waypointZ;
     private Entity targetedEntity = null;
-    
+
     public EntityMeganeura(World par1World)
     {
-        super(par1World, 12);
+        super(par1World, (byte) 12);
         this.isImmuneToFire = false;
         this.experienceValue = 5;
-        texid = rand.nextInt(2);
-
     }
 
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
+        this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
     }
 
     protected void func_110147_ax()
@@ -63,15 +58,15 @@ public class EntityMeganeura extends EntityDinosaurCreature implements IMob
 
         if (var7 < 1.0D || var7 > 3600.0D)
         {
-            this.waypointX = this.posX + (double)((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.waypointY = this.posY + (double)((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.waypointZ = this.posZ + (double)((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            this.waypointX = this.posX + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            this.waypointY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            this.waypointZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
         }
 
         if (this.courseChangeCooldown-- <= 0)
         {
             this.courseChangeCooldown += this.rand.nextInt(5) + 2;
-            var7 = (double)MathHelper.sqrt_double(var7);
+            var7 = (double) MathHelper.sqrt_double(var7);
 
             if (this.isCourseTraversable(this.waypointX, this.waypointY, this.waypointZ, var7))
             {
@@ -87,6 +82,7 @@ public class EntityMeganeura extends EntityDinosaurCreature implements IMob
             }
         }
     }
+
     /**
      * True if the ghast has an unobstructed line of travel to the waypoint.
      */
@@ -97,7 +93,7 @@ public class EntityMeganeura extends EntityDinosaurCreature implements IMob
         double var13 = (this.waypointZ - this.posZ) / par7;
         AxisAlignedBB var15 = this.boundingBox.copy();
 
-        for (int var16 = 1; (double)var16 < par7; ++var16)
+        for (int var16 = 1; (double) var16 < par7; ++var16)
         {
             var15.offset(var9, var11, var13);
 
@@ -111,20 +107,16 @@ public class EntityMeganeura extends EntityDinosaurCreature implements IMob
     }
 
     /**
-     * Checks if the entityOLD's current position is a valid location to spawn this entityOLD.
+     * Checks if the entityOLD's current position is a valid location to spawn
+     * this entityOLD.
      */
     public boolean getCanSpawnHere()
     {
         return this.rand.nextInt(20) == 0 && super.getCanSpawnHere();
     }
-    
-	public float spiderScaleAmount() {
-		return 1.5F;
-	}
 
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1) {
-		
-		return null;
-	}
+    public float spiderScaleAmount()
+    {
+        return 1.5F;
+    }
 }

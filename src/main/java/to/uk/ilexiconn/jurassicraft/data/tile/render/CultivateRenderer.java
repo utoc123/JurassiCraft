@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.llib.client.render.RenderHelper;
-import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEmbryo;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
+import to.uk.ilexiconn.llib.client.render.RenderHelper;
 
 public class CultivateRenderer extends TileEntitySpecialRenderer
 {
@@ -25,7 +25,8 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
     public CultivateRenderer()
     {
         cultivateTextures = new ResourceLocation[colors.length];
-        for (int i = 0; i < colors.length; i++) cultivateTextures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
+        for (int i = 0; i < colors.length; i++)
+            cultivateTextures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
         embryoTextures = new ResourceLocation(Util.getModId() + "textures/blocks/embryo.png");
     }
 
@@ -34,13 +35,13 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         GL11.glEnable(GL11.GL_BLEND);
         TileCultivate tile = (TileCultivate) tileEntity;
 
-        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == Util.getBlock(2))
+        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == ModBlocks.cultivateBottomOn)
         {
             GL11.glPushMatrix();
             GL11.glColor4f(1f, 1f, 1f, 1f);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             GL11.glTranslatef((float) x + 0.5f, (float) y + 1.5f, (float) z + 0.5f);
-            GL11.glScalef(1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f));
+            //GL11.glScalef(1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f), 1f + (tile.progress / 10f + 0.1f));
             int rotation = BlockCultivate.getRotation(tile.getWorldObj(), tile.xCoord, tile.yCoord, tile.zCoord);
             GL11.glRotatef(rotation == 0 ? 0f : rotation == 1 ? -90f : rotation == 2 ? -180f : 90f, 0f, 1f, 0f);
             GL11.glRotatef(180f, 0f, 0f, 1f);
@@ -58,7 +59,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         cultivate.render(false);
         GL11.glPopMatrix();
 
-        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), Data.fluid, Data.stuffFluid);
+        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), ModBlocks.cultivateFluid, ModBlocks.cultivateLiquid);
         if (displayList != null)
         {
             GL11.glPushMatrix();

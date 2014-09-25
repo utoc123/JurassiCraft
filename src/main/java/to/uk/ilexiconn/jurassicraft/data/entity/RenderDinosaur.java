@@ -7,12 +7,25 @@ import org.lwjgl.opengl.GL11;
 
 public abstract class RenderDinosaur extends RenderLiving
 {
-    private Dinosaur dino;
 
-    public RenderDinosaur(ModelBase model, Dinosaur dino,  float shadow)
+    private Dinosaur dino;
+    private float resizableShadow;
+
+    public RenderDinosaur(ModelBase model, Dinosaur dino, float shadow)
     {
-        super(model, shadow);
-        setDino(dino);
+        super(model, 1.0F);
+        this.setDino(dino);
+        this.setShadow(shadow);
+    }
+
+    private void setShadow(float shadow)
+    {
+        this.resizableShadow = shadow;
+    }
+
+    public float getShadow()
+    {
+        return this.resizableShadow;
     }
 
     public void setDino(Dinosaur dino)
@@ -22,11 +35,13 @@ public abstract class RenderDinosaur extends RenderLiving
 
     public Dinosaur getDino()
     {
-        return dino;
+        return this.dino;
     }
 
     public void preRenderCallback(EntityLivingBase entity, float side)
     {
-        GL11.glScalef(getDino().scale, getDino().scale, getDino().scale);
+        float scale = (float) ((EntityJurassiCraftCreature) entity).getCreatureScale();
+        this.shadowSize = scale * this.getShadow();
+        GL11.glScalef(scale, scale, scale);
     }
 }

@@ -20,8 +20,8 @@ public class JsonEntityParser extends Util
         loadConfig(DinoConfig.loadDinoConfig());
         for (Dinosaur dino : dinos)
         {
-            addMeat(dino.name);
-            addDNA(dino.name);
+            addMeat(dino.creatureName);
+            addDNA(dino.creatureName);
             addEntity(dino);
         }
     }
@@ -37,7 +37,9 @@ public class JsonEntityParser extends Util
     {
         try
         {
-            Type collectionType = new TypeToken<Collection<Dinosaur>>(){}.getType();
+            Type collectionType = new TypeToken<Collection<Dinosaur>>()
+            {
+            }.getType();
 
             dinos = new Gson().fromJson(new FileReader(config), collectionType);
         }

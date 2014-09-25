@@ -11,13 +11,23 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 
+<<<<<<< HEAD
 public class EntityTylosaurus extends EntitySwimming {
 public int frame = 0;
 	
     public EntityTylosaurus(World world) {
         super(world);
+=======
+public class EntityTylosaurus extends EntitySwimming
+{
+
+    public EntityTylosaurus(World world)
+    {
+        super(world, (byte) 14);
+>>>>>>> FETCH_HEAD
         Dinosaur dino = Util.getDinoByID(14);
-        this.setSize(dino.xzHitbox, dino.yHitbox);
+        //this.setSize(dino.xzHitbox, dino.yHitbox);
+        this.setSize(1.0F, 1.0F);
 
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
@@ -27,19 +37,23 @@ public int frame = 0;
     }
 
     @Override
-    protected void applyEntityAttributes() {
+    protected void applyEntityAttributes()
+    {
         super.applyEntityAttributes();
         Dinosaur dino = Util.getDinoByID(14);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dino.health);
+        //this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dino.health);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10);
     }
 
     @Override
-    public Item getDropItem() {
+    public Item getDropItem()
+    {
         return Util.getMeat(14);
     }
 
     @Override
-    protected Entity findEntityToAttack() {
+    protected Entity findEntityToAttack()
+    {
         AxisAlignedBB area = this.boundingBox.expand(16.0D, 16.0D, 16.0D);
 
         EntityPlayer player = (EntityPlayer) super.findEntityToAttack();

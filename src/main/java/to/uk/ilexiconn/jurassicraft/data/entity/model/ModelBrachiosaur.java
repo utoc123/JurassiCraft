@@ -1,10 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
-import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
-import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityBrachiosaur;
+import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
 public class ModelBrachiosaur extends MowzieModelBase
 {
@@ -258,10 +258,10 @@ public class ModelBrachiosaur extends MowzieModelBase
 
         addChildTo(front_right_foot, bottom_front_right_leg);
         addChildTo(bottom_front_right_leg, front_right_top_leg);
-        
+
         addChildTo(front_left_top_leg, body_3);
         addChildTo(front_right_top_leg, body_3);
-        
+
         addChildTo(tail5, tail4);
         addChildTo(tail4, tail3);
         addChildTo(tail3, tail2);
@@ -271,7 +271,7 @@ public class ModelBrachiosaur extends MowzieModelBase
         addChildTo(hips, body_1);
         addChildTo(body_3, body_1);
         addChildTo(body_2, body_1);
-        
+
         addChildTo(nose, head);
         addChildTo(snout, head);
         addChildTo(jaw, head);
@@ -284,7 +284,7 @@ public class ModelBrachiosaur extends MowzieModelBase
         addChildTo(neck3, neck2);
         addChildTo(neck2, neck1);
         addChildTo(neck1, body_1);
-        
+
         //Corrections
         body_2.setRotationPoint(0, -4, -26);
         body_3.setRotationPoint(0, 0, -15);
@@ -298,7 +298,7 @@ public class ModelBrachiosaur extends MowzieModelBase
         tail1.setRotationPoint(0, -2, 6);
         tail4.setRotationPoint(0, -6, 15);
         tail5.setRotationPoint(0, 1, 20);
-        
+
         hips.setInitValuesToCurrentPose();
         body_1.setInitValuesToCurrentPose();
         body_2.setInitValuesToCurrentPose();
@@ -355,12 +355,12 @@ public class ModelBrachiosaur extends MowzieModelBase
 //        tail5.render(f5);
 //        neck1.render(f5);
 //        neck2.render(f5);
- //       neck3.render(f5);
- //       neck4.render(f5);
- //       neck5.render(f5);
- //       neck6.render(f5);
+        //       neck3.render(f5);
+        //       neck4.render(f5);
+        //       neck5.render(f5);
+        //       neck6.render(f5);
 //        neck7.render(f5);
- //       head.render(f5);
+        //       head.render(f5);
 //        snout.render(f5);
 //        jaw.render(f5);
 //        front_right_top_leg.render(f5);
@@ -371,9 +371,10 @@ public class ModelBrachiosaur extends MowzieModelBase
 //    right_back_foot.render(f5);
 //        nose.render(f5);
     }
-    
-    private void resetPose() {
-    	hips.setCurrentPoseToInitValues();
+
+    private void resetPose()
+    {
+        hips.setCurrentPoseToInitValues();
         body_1.setCurrentPoseToInitValues();
         body_2.setCurrentPoseToInitValues();
         body_3.setCurrentPoseToInitValues();
@@ -417,35 +418,35 @@ public class ModelBrachiosaur extends MowzieModelBase
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-    	EntityBrachiosaur brachObama = (EntityBrachiosaur) entity;
+        EntityBrachiosaur brachObama = (EntityBrachiosaur) entity;
         super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
         resetPose();
-       // f = brachObama.frame;
-       // f1 = 0.2F;
+        // f = brachObama.frame;
+        // f1 = 0.2F;
         walk(top_leg_right, 0.2F, 0.5F, false, 0F, 0F, f, f1);
         bob(top_leg_right, 0.4F, 1.5F, false, f, f1);
         walk(bottom_leg_right, 0.2F, 0.5F, true, 1F, 0F, f, f1);
         walk(right_back_foot, 0.2F, 0.5F, false, 1F, 0F, f, f1);
-        
+
         walk(top_leg_left, 0.2F, 0.5F, false, (float) ((2 * Math.PI) / 3F), 0, f, f1);
         bob(top_leg_left, 0.4F, 1.5F, false, f, f1);
         walk(bottom_leg_left, 0.2F, 0.5F, true, (float) (((2 * Math.PI) / 3F) + 1F), 0F, f, f1);
         walk(left_back_foot, 0.2F, 0.5F, false, (float) (((2 * Math.PI) / 3F) + 1F), 0F, f, f1);
-        
+
         walk(front_left_top_leg, 0.2F, 0.5F, false, (float) ((2 * Math.PI) / 3F) - 0.5F, 0F, f, f1);
         bob(front_left_top_leg, 0.4F, 1.5F, false, f, f1);
         walk(bottom_front_left_leg, 0.2F, 1F, true, (float) (((2 * Math.PI) / 3F) - 0.5 - 0.5), -0.5F, f, f1);
         walk(front_left_foot, 0.2F, 0.5F, false, (float) (((2 * Math.PI) / 3F) - 0.5 - 0.5F), 0.5F, f, f1);
-        
+
         walk(front_right_top_leg, 0.2F, 0.5F, false, -0.5F, 0, f, f1);
         bob(front_right_top_leg, 0.4F, 1.5F, false, f, f1);
         walk(bottom_front_right_leg, 0.2F, 1F, true, -0.5F - 0.5F, -0.5F, f, f1);
         walk(front_right_foot, 0.2F, 0.5F, false, -0.5F - 0.5F, 0.5F, f, f1);
-        
+
         bob(body_1, 0.4F, 1.5F, false, f, f1);
         MowzieModelRenderer[] neckParts = {this.head, this.neck7, this.neck6, this.neck5, this.neck4, this.neck3, this.neck2, this.neck1};
         MowzieModelRenderer[] tailParts = {tail5, tail4, tail3};
-        
+
         //Idle
         walk(body_1, 0.05F, 0.025F, false, 0, 0, brachObama.frame, 1);
         walk(front_right_top_leg, 0.05F, 0.1F, false, 0, 0, brachObama.frame, 1);

@@ -20,7 +20,8 @@ public class RenderCultivateItem implements IItemRenderer
     public RenderCultivateItem()
     {
         textures = new ResourceLocation[colors.length];
-        for (int i = 0; i < colors.length; i++) textures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
+        for (int i = 0; i < colors.length; i++)
+            textures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
     }
 
     public boolean handleRenderType(ItemStack item, ItemRenderType type)
@@ -32,9 +33,12 @@ public class RenderCultivateItem implements IItemRenderer
     {
         switch (helper)
         {
-            case ENTITY_ROTATION: return true;
-            case ENTITY_BOBBING: return true;
-            default: return false;
+            case ENTITY_ROTATION:
+                return true;
+            case ENTITY_BOBBING:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -44,9 +48,12 @@ public class RenderCultivateItem implements IItemRenderer
         int renderType = 0;
         switch (type)
         {
-            case ENTITY: renderType = 2;
-            case INVENTORY: if (renderType == 0) renderType = 1;
-            case EQUIPPED_FIRST_PERSON: if (renderType == 0) firstPerson = true;
+            case ENTITY:
+                renderType = 2;
+            case INVENTORY:
+                if (renderType == 0) renderType = 1;
+            case EQUIPPED_FIRST_PERSON:
+                if (renderType == 0) firstPerson = true;
             case EQUIPPED:
             {
                 GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -84,7 +91,7 @@ public class RenderCultivateItem implements IItemRenderer
                 }
                 else if (renderType == 1)
                 {
-                    GL11.glScalef(-6.2f,-6.2f, -6.2f);
+                    GL11.glScalef(-6.2f, -6.2f, -6.2f);
 
                     GL11.glRotatef(35f, 1.0f, 0.0f, 0.0f);
 

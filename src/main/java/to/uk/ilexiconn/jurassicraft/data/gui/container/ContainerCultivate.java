@@ -1,99 +1,203 @@
 package to.uk.ilexiconn.jurassicraft.data.gui.container;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
-import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotDNA;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
+import net.minecraft.tileentity.TileEntity;
+import to.uk.ilexiconn.jurassicraft.data.enums.JurassiCraftFoodNutrients;
+import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotBucket;
+import to.uk.ilexiconn.jurassicraft.data.gui.slot.SlotDNASample;
+import to.uk.ilexiconn.jurassicraft.data.item.AnyDNASample;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 public class ContainerCultivate extends Container
 {
-    public TileCultivate   tileCultivate;
-    public InventoryPlayer inventoryPlayer;
-    
-    public ContainerCultivate(InventoryPlayer inventory, TileCultivate tileEntity)
+
+    private TileCultivate cultivator;
+    private int lastWaterStored;
+    private int lastProximateValue;
+    private int lastMineralsValue;
+    private int lastVitaminsValue;
+    private int lastLipidsValue;
+
+    public ContainerCultivate(InventoryPlayer playerInventory, TileEntity tileEntity)
     {
-        tileCultivate = tileEntity;
-        inventoryPlayer = inventory;
-        
-        addSlotToContainer(new SlotDNA(tileEntity, 0, 45, 38));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntity, 1, 117, 38));
-        
-        bindPlayerInventory(inventoryPlayer);
-    }
-    
-    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
-    {
+        this.cultivator = (TileCultivate) tileEntity;
+        this.addSlotToContainer(new SlotBucket(cultivator, 0, 12, 20));
+        this.addSlotToContainer(new SlotBucket(cultivator, 1, 12, 68));
+        this.addSlotToContainer(new SlotDNASample(cultivator, 2, 122, 44));
+        this.addSlotToContainer(new Slot(cultivator, 3, 208, 20));
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int k = 0; k < 9; k++)
             {
-                addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlotToContainer(new Slot(playerInventory, k + i * 9 + 9, k * 18 + 8, i * 18 + 106));
             }
         }
-        
         for (int i = 0; i < 9; i++)
         {
-            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+            this.addSlotToContainer(new Slot(playerInventory, i, i * 18 + 8, 164));
         }
     }
-    
+
+    @Override
+    public void onContainerClosed(EntityPlayer player)
+    {
+        super.onContainerClosed(player);
+        if (!player.worldObj.isRemote)
+        {
+            cultivator.closeInventory();
+        }
+    }
+
+    @Override
+    public void addCraftingToCrafters(ICrafting iCrafting)
+    {
+        super.addCraftingToCrafters(iCrafting);
+        iCrafting.sendProgressBarUpdate(this, 0, this.cultivator.getWaterStored());
+        iCrafting.sendProgressBarUpdate(this, 1, this.cultivator.getProximateValue());
+        iCrafting.sendProgressBarUpdate(this, 2, this.cultivator.getMineralValue());
+        iCrafting.sendProgressBarUpdate(this, 3, this.cultivator.getVitaminValue());
+        iCrafting.sendProgressBarUpdate(this, 4, this.cultivator.getLipidValue());
+    }
+
+    @Override
+    public void detectAndSendChanges()
+    {
+        super.detectAndSendChanges();
+        for (int i = 0; i < this.crafters.size(); i++)
+        {
+            ICrafting iCrafting = (ICrafting) this.crafters.get(i);
+            if (this.lastWaterStored != this.cultivator.getWaterStored())
+            {
+                iCrafting.sendProgressBarUpdate(this, 0, this.cultivator.getWaterStored());
+            }
+            if (this.lastProximateValue != this.cultivator.getProximateValue())
+            {
+                iCrafting.sendProgressBarUpdate(this, 1, this.cultivator.getProximateValue());
+            }
+            if (this.lastMineralsValue != this.cultivator.getMineralValue())
+            {
+                iCrafting.sendProgressBarUpdate(this, 2, this.cultivator.getMineralValue());
+            }
+            if (this.lastVitaminsValue != this.cultivator.getVitaminValue())
+            {
+                iCrafting.sendProgressBarUpdate(this, 3, this.cultivator.getVitaminValue());
+            }
+            if (this.lastLipidsValue != this.cultivator.getLipidValue())
+            {
+                iCrafting.sendProgressBarUpdate(this, 4, this.cultivator.getLipidValue());
+            }
+        }
+        lastWaterStored = cultivator.getWaterStored();
+        lastProximateValue = cultivator.getProximateValue();
+        lastMineralsValue = cultivator.getMineralValue();
+        lastVitaminsValue = cultivator.getVitaminValue();
+        lastLipidsValue = cultivator.getLipidValue();
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int i, int unknown)
+    {
+        if (i == 0)
+        {
+            this.cultivator.setWaterStored((byte) unknown);
+        }
+        if (i == 1)
+        {
+            this.cultivator.setProximateValue((short) unknown);
+        }
+        if (i == 2)
+        {
+            this.cultivator.setMineralValue((short) unknown);
+        }
+        if (i == 3)
+        {
+            this.cultivator.setVitaminValue((short) unknown);
+        }
+        if (i == 4)
+        {
+            this.cultivator.setLipidValue((short) unknown);
+        }
+    }
+
+    @Override
     public boolean canInteractWith(EntityPlayer player)
     {
-        return true;
+        return cultivator.isUseableByPlayer(player);
     }
-    
-    public boolean canCultivate(ItemStack stack)
-    {
-        Item stackItem = stack.getItem();
-        
-        if (stackItem == null || !(stackItem instanceof ItemDNA)) return false;
-        
-        Item eggItem = ((ItemDNA) stackItem).getCorrespondingEgg();
-        
-        if (eggItem == null) return false;
-        
-        return true;
-    }
-    
-    public ItemStack transferStackInSlot(EntityPlayer player, int slot)
-    {
-        ItemStack stack = null;
-        Slot slotObject = (Slot) inventorySlots.get(slot);
 
-        //null checks and checks if the item can be stacked (maxStackSize > 1)
-        if (slotObject != null && slotObject.getHasStack()) {
-                ItemStack stackInSlot = slotObject.getStack();
-                stack = stackInSlot.copy();
-
-                //merges the item into player inventory since its in the tileEntity
-                if (slot < 2) {
-                        if (!this.mergeItemStack(stackInSlot, 2, 38, false)) {
-                                return null;
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int i)
+    {
+        if (!entityPlayer.worldObj.isRemote)
+        {
+            Slot slot = (Slot) inventorySlots.get(i);
+            ItemStack stackFinal = null;
+            if (slot != null && slot.getHasStack())
+            {
+                ItemStack stackInSlot = slot.getStack();
+                stackFinal = stackInSlot.copy();
+                if (i < 4)
+                {
+                    if (!mergeItemStack(stackInSlot, 4, inventorySlots.size(), true))
+                    {
+                        return null;
+                    }
+                    slot.onSlotChange(stackInSlot, stackFinal);
+                }
+                else if (i >= 4)
+                {
+                    if (stackInSlot.getItem() instanceof ItemBucket)
+                    {
+                        if (!mergeItemStack(stackInSlot, 0, 2, false))
+                        {
+                            return null;
                         }
-                }
-                //places it into the tileEntity is possible since its in the player inventory
-                else if (canCultivate(stackInSlot)) {
-                    if(!this.mergeItemStack(stackInSlot, 0, 1, false))
+                    }
+                    else if (stackInSlot.getItem() instanceof AnyDNASample)
+                    {
+                        if (!mergeItemStack(stackInSlot, 2, 3, false))
+                        {
+                            return null;
+                        }
+                    }
+                    else if (JurassiCraftFoodNutrients.FOODLIST.containsKey(stackInSlot.getItem()))
+                    {
+                        if (!mergeItemStack(stackInSlot, 3, 4, false))
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
                         return null;
+                    }
+                }
+                else
+                {
+                    return null;
                 }
 
-                if (stackInSlot.stackSize == 0) {
-                        slotObject.putStack(null);
-                } else {
-                        slotObject.onSlotChanged();
+                if (stackInSlot.stackSize == 0)
+                {
+                    slot.putStack((ItemStack) null);
                 }
-
-                if (stackInSlot.stackSize == stack.stackSize) {
-                        return null;
+                else
+                {
+                    slot.onSlotChanged();
                 }
-                slotObject.onPickupFromSlot(player, stackInSlot);
+                return stackFinal;
+            }
+            return null;
         }
-        return stack;
+        return null;
     }
 }

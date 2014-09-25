@@ -1,8 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.Potion;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemMeat extends ItemFood
 {
@@ -12,6 +13,6 @@ public class ItemMeat extends ItemFood
         setPotionEffect(Potion.hunger.id, 30, 0, 0.8f);
         setUnlocalizedName(name + "_Meat");
         setTextureName(Util.getModId() + name + "_Meat");
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(ModCreativeTabs.fossilTab);
     }
 }
