@@ -9,10 +9,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 /* Inherithed from Animals+ by Click_Me */
 
 public abstract class EntitySwimming extends EntityLiving implements IAnimals {
+
+    public byte creatureID;
 
     private double swimTargetX;
     private double swimTargetY;
@@ -31,8 +34,13 @@ public abstract class EntitySwimming extends EntityLiving implements IAnimals {
     protected float swimSpeed = 0.5F;
     protected boolean jumpOnLand = true;
 
-    public EntitySwimming(World world) {
+    public EntitySwimming(World world, byte id) {
         super(world);
+        if (id >= 0 && id < Util.getDinos().size()) {
+            this.creatureID = id;
+        } else {
+            this.creatureID = 0;
+        }
     }
 
     @Override

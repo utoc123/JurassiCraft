@@ -14,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 public class EntityTylosaurus extends EntitySwimming {
 
     public EntityTylosaurus(World world) {
-        super(world);
+        super(world, (byte) 14);
         Dinosaur dino = Util.getDinoByID(14);
         //this.setSize(dino.xzHitbox, dino.yHitbox);
         this.setSize(1.0F, 1.0F);

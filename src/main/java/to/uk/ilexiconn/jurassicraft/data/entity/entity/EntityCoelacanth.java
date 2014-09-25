@@ -11,7 +11,7 @@ import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 public class EntityCoelacanth extends EntitySwimming {
 
     public EntityCoelacanth(World world) {
-        super(world);
+        super(world, (byte) 5);
         Dinosaur dino = Util.getDinoByID(5);
         //this.setSize(dino.xzHitbox, dino.yHitbox);
         this.setSize(1.0F, 1.0F);

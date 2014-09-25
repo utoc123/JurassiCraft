@@ -24,4 +24,12 @@ public abstract class RenderSwimming extends RenderDinosaur {
         GL11.glRotatef(f3, 1.0F, 0.0F, 0.0F);
     }
 
+    @Override
+    public void preRenderCallback(EntityLivingBase entity, float side) {
+        /**float scale = (float) ((EntitySwimming) entity).getCreatureScale();
+        this.shadowSize = scale * this.getShadow();
+        GL11.glScalef(scale, scale, scale);
+        **/
+    }
+
 }
