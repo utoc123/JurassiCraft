@@ -2,8 +2,7 @@ package to.uk.ilexiconn.jurassicraft;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivateBottom;
-import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivateTop;
+import to.uk.ilexiconn.jurassicraft.data.block.*;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
@@ -18,6 +17,12 @@ public class ModBlocks
     @OverrideRegistry
     public static Block cultivateBottomOn;
     public static Block cultivateTopOn;
+    public static Block dnaExtractor;
+    public static Block dnsCombinator;
+    public static Block amberOre;
+    public static Block fossilOre;
+    public static Block sandstoneFossilOre;
+    public static Block clayFossilOre;
 
     public void init()
     {
@@ -25,6 +30,12 @@ public class ModBlocks
         cultivateTopOff = new BlockCultivateTop(false);
         cultivateBottomOn = new BlockCultivateBottom(true);
         cultivateTopOn = new BlockCultivateTop(true);
+        dnaExtractor = new BlockDNAExtractor();
+        dnsCombinator = new BlockDNACombinator();
+        amberOre = new BlockAmberOre();
+        fossilOre = new BlockFossilOre();
+        sandstoneFossilOre = new BlockFossilSandstoneOre();
+        clayFossilOre = new BlockFossilClayOre(""); //todo somefix fix this thing
 
         gameRegistry();
     }

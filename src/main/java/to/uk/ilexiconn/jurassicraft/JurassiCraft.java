@@ -46,8 +46,6 @@ public class JurassiCraft extends Util
     {
         while (!isServerInitialized);
 
-        getData().initClient();
-
         getEntityParser().parseClientEntities();
     }
     
