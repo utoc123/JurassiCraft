@@ -8,13 +8,9 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
@@ -39,8 +35,6 @@ public class Util
 	private static final JsonEntityParser entityParser = new JsonEntityParser();
 	@SidedProxy(clientSide = "to.uk.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "to.uk.ilexiconn.jurassicraft.proxy.ServerProxy")
 	public static ServerProxy proxy;
-	private static CreativeTabs[] tabs = new CreativeTabs[512];
-	private static Block[] blocks = new Block[512];
 	private static Item[] items = new Item[512];
 	private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
 	private static ArrayList<ItemDinoEgg> eggs = new ArrayList<ItemDinoEgg>();
@@ -50,10 +44,6 @@ public class Util
     public static int entityId;
 
 	/** Getters */
-	public static CreativeTabs getCreativeTab(int id)
-	{
-		return tabs[id];
-	}
 
 	public static Class<?> getDinoClass(String dinoName)
 	{
@@ -66,11 +56,6 @@ public class Util
 		}
 
 		return null;
-	}
-
-	public static Block getBlock(int id)
-	{
-		return blocks[id];
 	}
 
 	public static Item getItem(int id)
@@ -114,16 +99,6 @@ public class Util
 	}
 
 	/** Adders */
-	public void addCreativeTab(int id, CreativeTabs tab)
-	{
-		if (id != -1) tabs[id] = tab;
-	}
-
-	public void addBlock(int id, Block block)
-	{
-		if (id != -1) blocks[id] = block;
-		GameRegistry.registerBlock(block, block.getUnlocalizedName());
-	}
 
 	public void addItem(int id, Item item)
 	{
@@ -143,17 +118,6 @@ public class Util
 		ItemMeat item = new ItemMeat(dinoName);
 		meat.add(item);
 		addItem(-1, item);
-	}
-
-	public void addBlockWithTileEntity(int id, BlockContainer block, Class<? extends TileEntity> tileEntity, boolean doRegister)
-	{
-		addBlock(id, block);
-		if (doRegister) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
-	}
-
-	public void addTileEntity(Class<? extends TileEntity> tile)
-	{
-		GameRegistry.registerTileEntity(tile, tile.getSimpleName());
 	}
 
 	public void addEntity(Dinosaur dino)
@@ -183,13 +147,6 @@ public class Util
 	{
 		GameRegistry.registerWorldGenerator(generator, weight);
 	}
-
-    public static void addBlockWithSubBlocks(int id, Block block, Class<? extends TileEntity> tileEntity, Class<? extends ItemBlock> itemBlock, boolean renderEntity)
-    {
-        if (id != -1) blocks[id] = block;
-        GameRegistry.registerBlock(block, itemBlock, block.getUnlocalizedName());
-        if (renderEntity) GameRegistry.registerTileEntity(tileEntity, tileEntity.getSimpleName());
-    }
 
 	public void addEgg(final String dinoName)
 	{

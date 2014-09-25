@@ -52,23 +52,8 @@ public final class Data extends Util
 
     public void init()
     {
-    	/** Creativetabs */
-        { 
-            addCreativeTab(0, new CreativeTabs("fossilTab")
-            {
-                public Item getTabIconItem()
-                {
-                    return Item.getItemFromBlock(getBlock(0));
-                }
-            });
-        }
-        
     	/** Blocks */
         {
-            addBlockWithSubBlocks(0, new BlockCultivateBottom(false), TileCultivate.class, ItemBlockCultivate.class, true);
-            addBlock(1, new BlockCultivateTop(false));
-            addBlockWithSubBlocks(2, new BlockCultivateBottom(true), TileCultivate.class, ItemBlockCultivate.class, false);
-            addBlock(3, new BlockCultivateTop(true));
             addBlockWithTileEntity(4, new BlockDNAExtractor(), TileDNAExtractor.class, true);
             addBlockWithTileEntity(5, new BlockDNACombinator(), TileDNACombinator.class, true);
             addBlock(6, new BlockAmberOre());
