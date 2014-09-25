@@ -47,6 +47,8 @@ public class Util
 	private static Map<Dinosaur, Class<?>> dinos = new HashMap<Dinosaur, Class<?>>();
 	private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
+    public static int entityId;
+
 	/** Getters */
 	public static CreativeTabs getCreativeTab(int id)
 	{
@@ -160,7 +162,7 @@ public class Util
 		{
 			Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
 			dinos.put(dino, entity);
-			int entityId = EntityRegistry.findGlobalUniqueEntityId();
+			entityId = EntityRegistry.findGlobalUniqueEntityId();
 			EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
 			EntityRegistry.registerModEntity(entity, dino.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
 			addEgg(dino.creatureName);
