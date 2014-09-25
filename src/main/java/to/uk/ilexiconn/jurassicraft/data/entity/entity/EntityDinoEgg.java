@@ -28,6 +28,8 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	public boolean froze;
 	public boolean dried;
 	public int quality;
+
+    public int happend = 0;
 	
 
 	public int rockAmount;
@@ -233,8 +235,9 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 				}
 			}
 			
-			if(currentSpawnTime >= spawnTime)
+			if(currentSpawnTime >= spawnTime && happend < 1)
 			{
+                happend = +1;
 				Class dinoToSpawnClass = Util.getDinoClass(dino);
 
 				try 
