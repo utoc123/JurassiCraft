@@ -1,6 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -13,6 +12,8 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
 
@@ -39,7 +40,7 @@ public class BlockFossilOre extends Block
         setBlockTextureName(Util.getModId() + "fossil_ore");
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(ModCreativeTabs.fossilTab);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
     }

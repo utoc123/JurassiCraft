@@ -37,7 +37,9 @@ public class JsonEntityParser extends Util
     {
         try
         {
-            Type collectionType = new TypeToken<Collection<Dinosaur>>(){}.getType();
+            Type collectionType = new TypeToken<Collection<Dinosaur>>()
+            {
+            }.getType();
 
             dinos = new Gson().fromJson(new FileReader(config), collectionType);
         }

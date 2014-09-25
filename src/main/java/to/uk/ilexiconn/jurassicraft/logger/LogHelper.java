@@ -3,7 +3,8 @@ package to.uk.ilexiconn.jurassicraft.logger;
 import cpw.mods.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
 
-public class LogHelper {
+public class LogHelper
+{
     public static void log(Level logLevel, Object object)
     {
         FMLLog.log("JurassiCraft", logLevel, String.valueOf(object));

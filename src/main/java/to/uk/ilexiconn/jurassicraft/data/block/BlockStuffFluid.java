@@ -23,7 +23,7 @@ public class BlockStuffFluid extends BlockFluidClassic
 
     public IIcon getIcon(int side, int meta)
     {
-        return side == 0 || side == 1 ? fluidIcons[0]: fluidIcons[1];
+        return side == 0 || side == 1 ? fluidIcons[0] : fluidIcons[1];
     }
 
     @SideOnly(Side.CLIENT)

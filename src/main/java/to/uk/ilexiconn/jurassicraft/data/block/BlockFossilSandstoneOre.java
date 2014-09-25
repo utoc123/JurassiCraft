@@ -1,6 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data.block;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,6 +10,8 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
 
@@ -27,7 +28,7 @@ public class BlockFossilSandstoneOre extends Block
         setBlockTextureName(Util.getModId() + "fossil_sandstone_ore");
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(ModCreativeTabs.fossilTab);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
     }
@@ -73,9 +74,12 @@ public class BlockFossilSandstoneOre extends Block
 
         switch (side)
         {
-            case 0: return bottomIcons[metadata];
-            case 1: return topIcons[metadata];
-            default:return normalIcons[metadata];
+            case 0:
+                return bottomIcons[metadata];
+            case 1:
+                return topIcons[metadata];
+            default:
+                return normalIcons[metadata];
         }
     }
 }

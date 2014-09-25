@@ -1,10 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.data.world.gen;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
 

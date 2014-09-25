@@ -1,7 +1,8 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.Item;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemFossil extends Item implements AnyDNASource
 {
@@ -10,6 +11,6 @@ public class ItemFossil extends Item implements AnyDNASource
         super();
         setUnlocalizedName("fossil");
         setTextureName(Util.getModId() + "fossil");
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(ModCreativeTabs.fossilTab);
     }
 }

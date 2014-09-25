@@ -11,9 +11,11 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 
-public class EntityTylosaurus extends EntitySwimming {
+public class EntityTylosaurus extends EntitySwimming
+{
 
-    public EntityTylosaurus(World world) {
+    public EntityTylosaurus(World world)
+    {
         super(world, (byte) 14);
         Dinosaur dino = Util.getDinoByID(14);
         //this.setSize(dino.xzHitbox, dino.yHitbox);
@@ -27,7 +29,8 @@ public class EntityTylosaurus extends EntitySwimming {
     }
 
     @Override
-    protected void applyEntityAttributes() {
+    protected void applyEntityAttributes()
+    {
         super.applyEntityAttributes();
         Dinosaur dino = Util.getDinoByID(14);
         //this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(dino.health);
@@ -35,12 +38,14 @@ public class EntityTylosaurus extends EntitySwimming {
     }
 
     @Override
-    public Item getDropItem() {
+    public Item getDropItem()
+    {
         return Util.getMeat(14);
     }
 
     @Override
-    protected Entity findEntityToAttack() {
+    protected Entity findEntityToAttack()
+    {
         AxisAlignedBB area = this.boundingBox.expand(16.0D, 16.0D, 16.0D);
 
         EntityPlayer player = (EntityPlayer) super.findEntityToAttack();

@@ -3,11 +3,11 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 //import thehippomaster.AnimationAPI.IAnimatedEntity;
 //import thehippomaster.AnimationAPI.client.Animator;
 
-import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
-import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityAnkylosaur;
+import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
 public class ModelAnkylosaur extends MowzieModelBase
 {
@@ -32,15 +32,15 @@ public class ModelAnkylosaur extends MowzieModelBase
     MowzieModelRenderer Leg2;
     MowzieModelRenderer Leg3;
     MowzieModelRenderer Leg4;
-    
-	public static final float PI = (float)Math.PI;
-//	private Animator animator;
-	public int frame;
+
+    public static final float PI = (float) Math.PI;
+    //	private Animator animator;
+    public int frame;
 
     public ModelAnkylosaur()
     {
 //    	animator = new Animator(this);
-    	
+
         textureWidth = 128;
         textureHeight = 64;
 
@@ -170,41 +170,41 @@ public class ModelAnkylosaur extends MowzieModelBase
         Leg4.setTextureSize(128, 64);
         Leg4.mirror = true;
         setRotation(Leg4, 0F, 0F, 0F);
-        
+
         addChildTo(Mouth, Head);
-        
+
         addChildTo(Leg1, Thigh1);
         addChildTo(Leg2, Thigh2);
         addChildTo(Leg3, Thigh3);
         addChildTo(Leg4, Thigh4);
-        
+
         addChildTo(TailClub, Tail2);
         addChildTo(Tail2, Tail);
-        
+
         //Compensation
         TailClub.rotationPointY -= 2F;
 
-      Head.setInitValuesToCurrentPose();
-      Mouth.setInitValuesToCurrentPose();
-      Head_Block.setInitValuesToCurrentPose();
-      HeadHorn1.setInitValuesToCurrentPose();
-      HeadHorn2.setInitValuesToCurrentPose();
-      HeadHorn3.setInitValuesToCurrentPose();
-      HeadHorn4.setInitValuesToCurrentPose();
-      Body.setInitValuesToCurrentPose();
-      BodySpikes.setInitValuesToCurrentPose();
-      Neck.setInitValuesToCurrentPose();
-      Tail.setInitValuesToCurrentPose();
-      TailClub.setInitValuesToCurrentPose();
-      Tail2.setInitValuesToCurrentPose();
-      Thigh1.setInitValuesToCurrentPose();
-      Thigh2.setInitValuesToCurrentPose();
-      Thigh3.setInitValuesToCurrentPose();
-      Thigh4.setInitValuesToCurrentPose();
-      Leg1.setInitValuesToCurrentPose();
-      Leg2.setInitValuesToCurrentPose();
-      Leg3.setInitValuesToCurrentPose();
-      Leg4.setInitValuesToCurrentPose();
+        Head.setInitValuesToCurrentPose();
+        Mouth.setInitValuesToCurrentPose();
+        Head_Block.setInitValuesToCurrentPose();
+        HeadHorn1.setInitValuesToCurrentPose();
+        HeadHorn2.setInitValuesToCurrentPose();
+        HeadHorn3.setInitValuesToCurrentPose();
+        HeadHorn4.setInitValuesToCurrentPose();
+        Body.setInitValuesToCurrentPose();
+        BodySpikes.setInitValuesToCurrentPose();
+        Neck.setInitValuesToCurrentPose();
+        Tail.setInitValuesToCurrentPose();
+        TailClub.setInitValuesToCurrentPose();
+        Tail2.setInitValuesToCurrentPose();
+        Thigh1.setInitValuesToCurrentPose();
+        Thigh2.setInitValuesToCurrentPose();
+        Thigh3.setInitValuesToCurrentPose();
+        Thigh4.setInitValuesToCurrentPose();
+        Leg1.setInitValuesToCurrentPose();
+        Leg2.setInitValuesToCurrentPose();
+        Leg3.setInitValuesToCurrentPose();
+        Leg4.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -241,36 +241,37 @@ public class ModelAnkylosaur extends MowzieModelBase
         setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 	}*/
 
-	public void setRotation(ModelRenderer model, float x, float y, float z)
+    public void setRotation(ModelRenderer model, float x, float y, float z)
     {
         model.rotateAngleX = x;
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
-	
-	public void resetPose() {
-		  Head.setCurrentPoseToInitValues();
-	      Mouth.setCurrentPoseToInitValues();
-	      Head_Block.setCurrentPoseToInitValues();
-	      HeadHorn1.setCurrentPoseToInitValues();
-	      HeadHorn2.setCurrentPoseToInitValues();
-	      HeadHorn3.setCurrentPoseToInitValues();
-	      HeadHorn4.setCurrentPoseToInitValues();
-	      Body.setCurrentPoseToInitValues();
-	      BodySpikes.setCurrentPoseToInitValues();
-	      Neck.setCurrentPoseToInitValues();
-	      Tail.setCurrentPoseToInitValues();
-	      TailClub.setCurrentPoseToInitValues();
-	      Tail2.setCurrentPoseToInitValues();
-	      Thigh1.setCurrentPoseToInitValues();
-	      Thigh2.setCurrentPoseToInitValues();
-	      Thigh3.setCurrentPoseToInitValues();
-	      Thigh4.setCurrentPoseToInitValues();
-	      Leg1.setCurrentPoseToInitValues();
-	      Leg2.setCurrentPoseToInitValues();
-	      Leg3.setCurrentPoseToInitValues();
-	      Leg4.setCurrentPoseToInitValues();
-	}
+
+    public void resetPose()
+    {
+        Head.setCurrentPoseToInitValues();
+        Mouth.setCurrentPoseToInitValues();
+        Head_Block.setCurrentPoseToInitValues();
+        HeadHorn1.setCurrentPoseToInitValues();
+        HeadHorn2.setCurrentPoseToInitValues();
+        HeadHorn3.setCurrentPoseToInitValues();
+        HeadHorn4.setCurrentPoseToInitValues();
+        Body.setCurrentPoseToInitValues();
+        BodySpikes.setCurrentPoseToInitValues();
+        Neck.setCurrentPoseToInitValues();
+        Tail.setCurrentPoseToInitValues();
+        TailClub.setCurrentPoseToInitValues();
+        Tail2.setCurrentPoseToInitValues();
+        Thigh1.setCurrentPoseToInitValues();
+        Thigh2.setCurrentPoseToInitValues();
+        Thigh3.setCurrentPoseToInitValues();
+        Thigh4.setCurrentPoseToInitValues();
+        Leg1.setCurrentPoseToInitValues();
+        Leg2.setCurrentPoseToInitValues();
+        Leg3.setCurrentPoseToInitValues();
+        Leg4.setCurrentPoseToInitValues();
+    }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
@@ -282,12 +283,12 @@ public class ModelAnkylosaur extends MowzieModelBase
         faceTarget(HeadHorn2, 1, f3, f4);
         faceTarget(HeadHorn3, 1, f3, f4);
         faceTarget(HeadHorn4, 1, f3, f4);
-        
+
         walk(Thigh1, 0.5F, 1F, false, 0F, 0, f, f1);
         walk(Thigh2, 0.5F, 1F, true, 0F, 0, f, f1);
         walk(Thigh3, 0.5F, 1F, true, 0F, 0, f, f1);
         walk(Thigh4, 0.5F, 1F, false, 0F, 0, f, f1);
-        
+
         MowzieModelRenderer[] tailParts = {this.TailClub, this.Tail2, this.Tail};
         tailSwing(tailParts, 0.13F, 0.4F, 0, ankylosaur.frame);
     }

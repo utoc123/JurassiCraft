@@ -1,12 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.data.tile.render;
 
-import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEgg;
-import to.uk.ilexiconn.jurassicraft.data.tile.TileEgg;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEgg;
+import to.uk.ilexiconn.jurassicraft.data.tile.TileEgg;
 
 public class EggRenderer extends TileEntitySpecialRenderer
 {

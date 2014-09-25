@@ -8,11 +8,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-import to.uk.ilexiconn.llib.LLib;
-import to.uk.ilexiconn.llib.config.ConfigSync;
 import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityCoelacanth;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
+import to.uk.ilexiconn.llib.LLib;
+import to.uk.ilexiconn.llib.config.ConfigSync;
 
 import java.util.Map.Entry;
 
@@ -44,11 +44,11 @@ public class JurassiCraft extends Util
     @Mod.EventHandler
     public void initClient(FMLPreInitializationEvent event)
     {
-        while (!isServerInitialized);
+        while (!isServerInitialized) ;
 
         getEntityParser().parseClientEntities();
     }
-    
+
     @Mod.EventHandler
     public void load(FMLInitializationEvent event)
     {

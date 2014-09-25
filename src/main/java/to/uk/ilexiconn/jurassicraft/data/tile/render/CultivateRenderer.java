@@ -7,12 +7,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.llib.client.render.RenderHelper;
 import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEmbryo;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
+import to.uk.ilexiconn.llib.client.render.RenderHelper;
 
 public class CultivateRenderer extends TileEntitySpecialRenderer
 {
@@ -25,7 +25,8 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
     public CultivateRenderer()
     {
         cultivateTextures = new ResourceLocation[colors.length];
-        for (int i = 0; i < colors.length; i++) cultivateTextures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
+        for (int i = 0; i < colors.length; i++)
+            cultivateTextures[i] = new ResourceLocation(Util.getModId() + "textures/blocks/cultivate_" + colors[i] + ".png");
         embryoTextures = new ResourceLocation(Util.getModId() + "textures/blocks/embryo.png");
     }
 

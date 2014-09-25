@@ -1,7 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.item;
 
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.item.Item;
+import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemDinoBone extends Item
 {
@@ -10,6 +10,6 @@ public class ItemDinoBone extends Item
         super();
         setUnlocalizedName("dinoBone");
         setTextureName(Util.getModId() + "dinoBone");
-        setCreativeTab(Util.getCreativeTab(0));
+        setCreativeTab(ModCreativeTabs.fossilTab);
     }
 }

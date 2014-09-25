@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.data.block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
 public class BlockCultivate
@@ -11,28 +11,28 @@ public class BlockCultivate
     public static AxisAlignedBB[][] boxes =
             {
                     { //top
-                            AxisAlignedBB.getBoundingBox(0.0f,      -1.0f,      0.0f,       1.0f,       -0.6215f,   1.0f),
+                            AxisAlignedBB.getBoundingBox(0.0f, -1.0f, 0.0f, 1.0f, -0.6215f, 1.0f),
 
-                            AxisAlignedBB.getBoundingBox(0.0f,      -0.6215f,   0.0f,       0.062f,     0.93f,      0.062f),
-                            AxisAlignedBB.getBoundingBox(0.938f,    -0.6215f,   0.0f,       1.0f,       0.93f,      0.062f),
-                            AxisAlignedBB.getBoundingBox(0.0f,      -0.6215f,   0.938f,     0.062f,     0.93f,      1.0f),
-                            AxisAlignedBB.getBoundingBox(0.938f,    -0.6215f,   0.938f,     1.0f,       0.93f,      1.0f),
+                            AxisAlignedBB.getBoundingBox(0.0f, -0.6215f, 0.0f, 0.062f, 0.93f, 0.062f),
+                            AxisAlignedBB.getBoundingBox(0.938f, -0.6215f, 0.0f, 1.0f, 0.93f, 0.062f),
+                            AxisAlignedBB.getBoundingBox(0.0f, -0.6215f, 0.938f, 0.062f, 0.93f, 1.0f),
+                            AxisAlignedBB.getBoundingBox(0.938f, -0.6215f, 0.938f, 1.0f, 0.93f, 1.0f),
 
-                            AxisAlignedBB.getBoundingBox(0.062f,    -0.6215f,   0.062f,     0.938f,     0.93f,      0.938f),
+                            AxisAlignedBB.getBoundingBox(0.062f, -0.6215f, 0.062f, 0.938f, 0.93f, 0.938f),
 
-                            AxisAlignedBB.getBoundingBox(0.0f,      0.93f,      0.0f,       1.0f,       1.0f,       1.0f)
+                            AxisAlignedBB.getBoundingBox(0.0f, 0.93f, 0.0f, 1.0f, 1.0f, 1.0f)
                     },
                     { //bottom
-                            AxisAlignedBB.getBoundingBox(0.0f,      0.0f,       0.0f,       1.0f,       0.3785f,    1.0f),
+                            AxisAlignedBB.getBoundingBox(0.0f, 0.0f, 0.0f, 1.0f, 0.3785f, 1.0f),
 
-                            AxisAlignedBB.getBoundingBox(0.0f,      0.3785f,    0.0f,       0.062f,     1.93f,      0.062f),
-                            AxisAlignedBB.getBoundingBox(0.938f,    0.3785f,    0.0f,       1.0f,       1.93f,      0.062f),
-                            AxisAlignedBB.getBoundingBox(0.0f,      0.3785f,    0.938f,     0.062f,     1.93f,      1.0f),
-                            AxisAlignedBB.getBoundingBox(0.938f,    0.3785f,    0.938f,     1.0f,       1.93f,      1.0f),
+                            AxisAlignedBB.getBoundingBox(0.0f, 0.3785f, 0.0f, 0.062f, 1.93f, 0.062f),
+                            AxisAlignedBB.getBoundingBox(0.938f, 0.3785f, 0.0f, 1.0f, 1.93f, 0.062f),
+                            AxisAlignedBB.getBoundingBox(0.0f, 0.3785f, 0.938f, 0.062f, 1.93f, 1.0f),
+                            AxisAlignedBB.getBoundingBox(0.938f, 0.3785f, 0.938f, 1.0f, 1.93f, 1.0f),
 
-                            AxisAlignedBB.getBoundingBox(0.062f,    0.3785f,    0.062f,     0.938f,     1.93f,      0.938f),
+                            AxisAlignedBB.getBoundingBox(0.062f, 0.3785f, 0.062f, 0.938f, 1.93f, 0.938f),
 
-                            AxisAlignedBB.getBoundingBox(0.0f,      1.93f,      0.0f,       1.0f,       2.0f,       1.0f)
+                            AxisAlignedBB.getBoundingBox(0.0f, 1.93f, 0.0f, 1.0f, 2.0f, 1.0f)
                     }
             };
 
@@ -41,8 +41,8 @@ public class BlockCultivate
         int metadata = world.getBlockMetadata(x, y, z);
         TileEntity tileEntity = world.getTileEntity(x, y, z);
 
-        world.setBlock(x, y, z, Util.getBlock(lit ? 2 : 0));
-        world.setBlock(x, y + 1, z, Util.getBlock(lit ? 3 : 1));
+        world.setBlock(x, y, z, lit ? ModBlocks.cultivateBottomOn : ModBlocks.cultivateBottomOff);
+        world.setBlock(x, y + 1, z, lit ? ModBlocks.cultivateTopOn : ModBlocks.cultivateTopOff);
 
         if (tileEntity != null)
         {

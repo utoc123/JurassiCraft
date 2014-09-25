@@ -12,73 +12,73 @@ import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
 
 public class BACKUP_TileCultivate extends TileEntity implements IInventory
 {
-	// 0 = Input
-	// 1 = Output
+    // 0 = Input
+    // 1 = Output
     public ItemStack[] stacks = new ItemStack[2];
-	public int cultivateTime = 0;
-	public int timeToCultivate = 2048;
+    public int cultivateTime = 0;
+    public int timeToCultivate = 2048;
     public int rotation;
     public int progress;
     public float animationTick;
     public int fluidLevel = 0;
 
-	public void updateEntity()
+    public void updateEntity()
     {
         if (getStackInSlot(0) != null)
         {
             if (!getActive()) BlockCultivate.updateBlockStateWithBottom(worldObj, xCoord, yCoord, zCoord, true);
 
-			if (canCultivate()) ++cultivateTime;
+            if (canCultivate()) ++cultivateTime;
 
-			if (cultivateTime > timeToCultivate) finishItem();
+            if (cultivateTime > timeToCultivate) finishItem();
         }
         else
         {
             if (getActive()) BlockCultivate.updateBlockStateWithBottom(worldObj, xCoord, yCoord, zCoord, false);
-			cultivateTime = 0;
+            cultivateTime = 0;
         }
 
         animationTick += 0.3f;
     }
 
-	public boolean canCultivate()
-	{
-	    Item i = stacks[0].getItem();
-	    
-	    if(i == null || !(i instanceof ItemDNA)) return false;
-	    
-	    Item dnaItem = ((ItemDNA) i).getCorrespondingEgg();
-	    if(dnaItem == null) return false;
-	    
-		ItemStack result = new ItemStack(dnaItem);
-		
-		return stacks[1] == null || stacks[1].isItemEqual(result);
-	}
+    public boolean canCultivate()
+    {
+        Item i = stacks[0].getItem();
+
+        if (i == null || !(i instanceof ItemDNA)) return false;
+
+        Item dnaItem = ((ItemDNA) i).getCorrespondingEgg();
+        if (dnaItem == null) return false;
+
+        ItemStack result = new ItemStack(dnaItem);
+
+        return stacks[1] == null || stacks[1].isItemEqual(result);
+    }
 
     public boolean getActive()
     {
         return worldObj.getBlock(xCoord, yCoord, zCoord) != Util.getBlock(0);
     }
 
-	public void finishItem()
-	{
-		if (stacks[1] != null)
-			++stacks[1].stackSize;
-		else
-			stacks[1] = new ItemStack(((ItemDNA) stacks[0].getItem()).getCorrespondingEgg(), 1, 0);
+    public void finishItem()
+    {
+        if (stacks[1] != null)
+            ++stacks[1].stackSize;
+        else
+            stacks[1] = new ItemStack(((ItemDNA) stacks[0].getItem()).getCorrespondingEgg(), 1, 0);
 
-		if (stacks[0].stackSize != 1)
-			--stacks[0].stackSize;
-		else
-			stacks[0] = null;
+        if (stacks[0].stackSize != 1)
+            --stacks[0].stackSize;
+        else
+            stacks[0] = null;
 
-		cultivateTime = 0;
-	}
+        cultivateTime = 0;
+    }
 
-	public int getCookProgressScaled(int i)
-	{
-		return cultivateTime * i / timeToCultivate;
-	}
+    public int getCookProgressScaled(int i)
+    {
+        return cultivateTime * i / timeToCultivate;
+    }
 
     public int getSizeInventory()
     {
@@ -138,39 +138,39 @@ public class BACKUP_TileCultivate extends TileEntity implements IInventory
         return "Cultivate";
     }
 
-	@Override
-	public void readFromNBT(NBTTagCompound compound)
-	{
-		super.readFromNBT(compound);
+    @Override
+    public void readFromNBT(NBTTagCompound compound)
+    {
+        super.readFromNBT(compound);
 
-		if (compound.getCompoundTag("DNA") != null)
-			stacks[0] = ItemStack.loadItemStackFromNBT(compound.getCompoundTag("DNA"));
-		if (compound.getCompoundTag("Egg") != null)
-			stacks[1] = ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Egg"));
+        if (compound.getCompoundTag("DNA") != null)
+            stacks[0] = ItemStack.loadItemStackFromNBT(compound.getCompoundTag("DNA"));
+        if (compound.getCompoundTag("Egg") != null)
+            stacks[1] = ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Egg"));
 
-		cultivateTime = compound.getInteger("CultivateTime");
+        cultivateTime = compound.getInteger("CultivateTime");
 
         rotation = compound.getInteger("rotation");
         fluidLevel = compound.getInteger("fluid");
-	}
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound compound)
-	{
-		super.writeToNBT(compound);
+    @Override
+    public void writeToNBT(NBTTagCompound compound)
+    {
+        super.writeToNBT(compound);
 
-		if (stacks[0] != null)
-			compound.setTag("DNA", stacks[0].writeToNBT(new NBTTagCompound()));
-		if (stacks[1] != null)
-			compound.setTag("Egg", stacks[1].writeToNBT(new NBTTagCompound()));
+        if (stacks[0] != null)
+            compound.setTag("DNA", stacks[0].writeToNBT(new NBTTagCompound()));
+        if (stacks[1] != null)
+            compound.setTag("Egg", stacks[1].writeToNBT(new NBTTagCompound()));
 
-		compound.setInteger("CultivateTime", cultivateTime);
+        compound.setInteger("CultivateTime", cultivateTime);
 
         compound.setInteger("rotation", rotation);
         compound.setInteger("fluid", fluidLevel);
-	}
+    }
 
-	public boolean hasCustomInventoryName()
+    public boolean hasCustomInventoryName()
     {
         return false;
     }

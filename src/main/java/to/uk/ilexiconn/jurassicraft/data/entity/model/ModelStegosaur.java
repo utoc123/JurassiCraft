@@ -2,19 +2,19 @@ package to.uk.ilexiconn.jurassicraft.data.entity.model;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
-import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
+import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
+import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
 @SideOnly(Side.CLIENT)
 public class ModelStegosaur extends MowzieModelBase
 {
-	MowzieModelRenderer body_1;
-	MowzieModelRenderer leg_left_1;
-	MowzieModelRenderer leg_right_1;
-	MowzieModelRenderer neck_1;
+    MowzieModelRenderer body_1;
+    MowzieModelRenderer leg_left_1;
+    MowzieModelRenderer leg_right_1;
+    MowzieModelRenderer neck_1;
     MowzieModelRenderer tail_1;
     MowzieModelRenderer tail_2;
     MowzieModelRenderer tail_3;
@@ -276,32 +276,32 @@ public class ModelStegosaur extends MowzieModelBase
         plate_11.setTextureSize(256, 128);
         plate_11.mirror = true;
         setRotation(plate_11, -1.191368F, 0F, 0F);
-        
+
         addChildTo(lower_jaw, head_);
         addChildTo(upper_jaw_1, head_);
         addChildTo(head_, head_back);
-        
+
         addChildTo(leg_left_3, leg_left_2);
         addChildTo(leg_right_3, leg_right_2);
         addChildTo(leg_left_2, leg_left_1);
         addChildTo(leg_right_2, leg_right_1);
         addChildTo(arm_left_1, arm_left_2);
         addChildTo(arm_right_1, arm_right_2);
-        
+
         //Corrections
         upper_jaw_1.rotationPointY -= 5.5F;
         upper_jaw_1.rotationPointZ -= 2F;
-        
+
         lower_jaw.rotationPointY -= 5.2F;
         lower_jaw.rotationPointZ -= 2F;
-        
-        leg_left_3.setRotationPoint(0,0,0);
-        leg_left_2.setRotationPoint(0,0,0);
-        leg_right_3.setRotationPoint(0,0,0);
-        leg_right_2.setRotationPoint(0,0,0);
-        arm_right_1.setRotationPoint(0,0,0);
-        arm_left_1.setRotationPoint(0,0,0);
-        
+
+        leg_left_3.setRotationPoint(0, 0, 0);
+        leg_left_2.setRotationPoint(0, 0, 0);
+        leg_right_3.setRotationPoint(0, 0, 0);
+        leg_right_2.setRotationPoint(0, 0, 0);
+        arm_right_1.setRotationPoint(0, 0, 0);
+        arm_left_1.setRotationPoint(0, 0, 0);
+
         body_1.setInitValuesToCurrentPose();
         leg_left_1.setInitValuesToCurrentPose();
         leg_right_1.setInitValuesToCurrentPose();
@@ -363,7 +363,7 @@ public class ModelStegosaur extends MowzieModelBase
             tail_2.render(f5);
             tail_3.render(f5);
             tail_4.render(f5);
- //           leg_left_2.render(f5);
+            //           leg_left_2.render(f5);
 //            leg_right_2.render(f5);
 //            leg_right_3.render(f5);
 //            leg_left_3.render(f5);
@@ -376,7 +376,7 @@ public class ModelStegosaur extends MowzieModelBase
 //            upper_jaw_1.render(f5);
 //            head_.render(f5);
             tail_end.render(f5);
- //           lower_jaw.render(f5);
+            //           lower_jaw.render(f5);
             plate_1.render(f5);
             plate_2.render(f5);
             plate_3.render(f5);
@@ -442,9 +442,10 @@ public class ModelStegosaur extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
-    
-    public void resetPose() {
-    	body_1.setCurrentPoseToInitValues();
+
+    public void resetPose()
+    {
+        body_1.setCurrentPoseToInitValues();
         leg_left_1.setCurrentPoseToInitValues();
         leg_right_1.setCurrentPoseToInitValues();
         neck_1.setCurrentPoseToInitValues();

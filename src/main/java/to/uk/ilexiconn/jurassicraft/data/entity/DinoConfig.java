@@ -15,7 +15,7 @@ public class DinoConfig
             InputStream in = DinoConfig.class.getResourceAsStream("/dinos.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
-            return  tempFile;
+            return tempFile;
         }
         catch (Exception e)
         {
