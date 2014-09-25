@@ -19,6 +19,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.tile.TileCultivate;
 
@@ -90,7 +91,7 @@ public class BlockCultivateTop extends Block
     @Override
     public Item getItemDropped(int meta, Random random, int fortune)
     {
-        return Item.getItemFromBlock(Util.getBlock(0));
+        return Item.getItemFromBlock(ModBlocks.cultivateBottomOff);
     }
 
     @Override
@@ -144,7 +145,7 @@ public class BlockCultivateTop extends Block
     @SideOnly(Side.CLIENT)
     public Item getItem(World world, int x, int y, int z)
     {
-        return Item.getItemFromBlock(Util.getBlock(0));
+        return Item.getItemFromBlock(ModBlocks.cultivateBottomOff);
     }
 
     @Override

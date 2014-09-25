@@ -2,6 +2,7 @@ package to.uk.ilexiconn.jurassicraft.data.item;
 
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.Potion;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 public class ItemMeat extends ItemFood

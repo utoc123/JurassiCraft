@@ -6,8 +6,8 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.data.Data;
 import to.uk.ilexiconn.jurassicraft.data.block.BlockCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelCultivate;
 import to.uk.ilexiconn.jurassicraft.data.block.model.ModelEmbryo;
@@ -35,7 +35,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         GL11.glEnable(GL11.GL_BLEND);
         TileCultivate tile = (TileCultivate) tileEntity;
 
-        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == Util.getBlock(2))
+        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == ModBlocks.cultivateBottomOn)
         {
             GL11.glPushMatrix();
             GL11.glColor4f(1f, 1f, 1f, 1f);
@@ -59,7 +59,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         cultivate.render(false);
         GL11.glPopMatrix();
 
-        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), Data.fluid, Data.stuffFluid);
+        int[] displayList = RenderHelper.getFluidDisplayLists(tile.getWorldObj(), ModBlocks.cultivateFluid, ModBlocks.cultivateLiquid);
         if (displayList != null)
         {
             GL11.glPushMatrix();

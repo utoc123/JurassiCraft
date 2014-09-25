@@ -4,7 +4,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 
 import java.util.Random;
 
@@ -22,7 +22,7 @@ public class WorldGenFossilOre implements IWorldGenerator
                 y = random.nextInt(64);
                 z = random.nextInt(16) + (chunkZ * 16);
 
-                (new WorldGenMinable(Util.getBlock(7), 7 + random.nextInt(3))).generate(world, random, x, y, z);
+                (new WorldGenMinable(ModBlocks.fossilOre, 7 + random.nextInt(3))).generate(world, random, x, y, z);
             }
         }
     }
