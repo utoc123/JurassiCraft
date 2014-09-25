@@ -1,5 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
-public class IDinosaur
-{
+public interface IDinosaur {
+	
 }

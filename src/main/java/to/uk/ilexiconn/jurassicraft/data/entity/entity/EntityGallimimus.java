@@ -11,8 +11,9 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityGallimimus extends EntityJurassiCraftLandProtective {
+public class EntityGallimimus extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityGallimimus(World world) {
 		super(world, (byte) 7, 2);
@@ -22,7 +23,7 @@ public class EntityGallimimus extends EntityJurassiCraftLandProtective {
 		// tasks.addTask(2, new EntityAIMate(this, 1.0D));
 		tasks.addTask(4, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.wheat, false));
 		// tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-		this.tasks.addTask(5, new EntityAIAvoidEntity(this, EntityTyrannosaurus.class, 16.0F, 1.0D * this.getCreatureSpeed(), 1.1D * this.getCreatureSpeed()));
+		this.tasks.addTask(5, new EntityAIAvoidEntity(this, EntityTyrannosaurus.class, 12.0F, this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
 		this.tasks.addTask(6, new EntityAIWander(this, 0.6D * this.getCreatureSpeed()));
 		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
@@ -30,7 +31,7 @@ public class EntityGallimimus extends EntityJurassiCraftLandProtective {
 
 	@Override
 	public double getMountedYOffset() {
-		return (double) this.getYBouningBox() * 0.95D;
+		return (double) this.getYBouningBox() * 0.7D;
 	}
 
 	@Override

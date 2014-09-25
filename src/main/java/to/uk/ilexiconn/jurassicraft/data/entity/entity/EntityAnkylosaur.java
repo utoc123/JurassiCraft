@@ -11,8 +11,9 @@ import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityAnkylosaur extends EntityJurassiCraftLandProtective {
+public class EntityAnkylosaur extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityAnkylosaur(World world) {
 		super(world, (byte) 0, 1);

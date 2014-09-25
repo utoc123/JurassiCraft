@@ -13,11 +13,13 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityStegosaur extends EntityJurassiCraftLandProtective {
+public class EntityStegosaur extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityStegosaur(World world) {
 		super(world, (byte) 3, 1);
+		this.getNavigator().setAvoidsWater(true);
 		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);

@@ -13,9 +13,10 @@ import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.data.ai.JurassiCraftEntityAITargetIfNonTamed;
 import to.uk.ilexiconn.jurassicraft.data.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
-public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
+public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive implements IDinosaur {
 
 	private int stepCount = 0;
 	private float shakeCount = 0;
@@ -24,12 +25,13 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive {
 
 	public EntityTyrannosaurus(World world) {
 		super(world, (byte) 6);
+		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(2, new AITyrannosaurusRoar(this));
 		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
-		this.tasks.addTask(5, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.beef, false));
+		this.tasks.addTask(5, new EntityAITempt(this, 1.2D * this.getCreatureSpeed(), Items.beef, false));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));

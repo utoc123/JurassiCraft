@@ -15,7 +15,7 @@ public class RenderOviraptor extends RenderDinosaur
 {
     public RenderOviraptor(Dinosaur dino)
     {
-        super(new ModelOviraptor(), dino, 1f);
+        super(new ModelOviraptor(), dino, 0.6F);
     }
 
     public ResourceLocation getEntityTexture(Entity var1)

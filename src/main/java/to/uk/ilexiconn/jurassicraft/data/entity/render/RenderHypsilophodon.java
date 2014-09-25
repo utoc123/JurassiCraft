@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RenderHypsilophodon extends RenderDinosaur {
 	
 	public RenderHypsilophodon(Dinosaur dino) {
-		super(new ModelHypsilophodon(), dino, 1f);
+		super(new ModelHypsilophodon(), dino, 0.55F);
 	}
 
 	public ResourceLocation getEntityTexture(Entity var1) {

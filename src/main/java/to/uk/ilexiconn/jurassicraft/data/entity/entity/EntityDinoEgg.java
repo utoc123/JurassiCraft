@@ -42,12 +42,14 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	public EntityDinoEgg(World world) 
 	{
 		super(world);
+		System.out.println("Hello 3.");
 		this.setSize(0.5F, 0.5F);
 	}
 
 	public EntityDinoEgg(World world, String dino, int spawnTime, int quality)
 	{
 		this(world);
+		System.out.println("Hello 2. spawnTime " + spawnTime);
 		this.dino = dino;
 		this.spawnTime = spawnTime;
 		this.quality = quality;
@@ -56,6 +58,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 	public EntityDinoEgg(World world, String dino, int quality, int spawnTime, double x, double y, double z)
 	{
 		this(world, dino, spawnTime, quality);
+		System.out.println("Hello 1. dino" + dino);
 		this.setPosition(x + 0.5F, y, z + 0.5F);
 	}
 
@@ -246,7 +249,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 					
 					worldObj.spawnEntityInWorld(dinoToSpawn);
 
-					attackEntityFrom(DamageSource.generic, 0F);
+					//attackEntityFrom(DamageSource.generic, 0F);
 				} 
 				catch (InstantiationException e)
 				{

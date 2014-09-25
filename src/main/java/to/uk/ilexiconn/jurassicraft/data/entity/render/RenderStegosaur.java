@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderStegosaur extends RenderDinosaur {
 	public RenderStegosaur(Dinosaur dino) {
-		super(new ModelStegosaur(), dino, 1f);
+		super(new ModelStegosaur(), dino, 1.0F);
 	}
 
 	public ResourceLocation getEntityTexture(Entity var1) {

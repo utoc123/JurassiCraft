@@ -17,8 +17,9 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityTriceratops extends EntityJurassiCraftLandProtective {
+public class EntityTriceratops extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityTriceratops(World world) {
 		super(world, (byte) 4, 1);

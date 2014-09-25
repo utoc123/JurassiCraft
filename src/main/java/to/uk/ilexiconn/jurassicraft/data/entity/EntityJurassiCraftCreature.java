@@ -105,7 +105,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		this.setCreatureHeight();
 		this.setHalfOfTheCreatureSize();
 		this.setCreatureScale();
-		/*
 		System.out.println("=============== UPDATE DATA ===============");
 		if (this.worldObj.isRemote) {
 			System.out.println("=============== Client ===============");
@@ -134,7 +133,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
 			System.out.println("======================================");
 		}
-		*/
 	}
 
 	/**

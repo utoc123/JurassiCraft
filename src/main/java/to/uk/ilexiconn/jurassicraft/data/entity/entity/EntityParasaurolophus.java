@@ -14,9 +14,10 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 import to.uk.ilexiconn.jurassicraft.data.utility.ControlledParam;
 
-public class EntityParasaurolophus extends EntityJurassiCraftLandProtective {
+public class EntityParasaurolophus extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public ControlledParam walkLean = new ControlledParam(0, 0, (float) Math.PI / 2, 0);
 

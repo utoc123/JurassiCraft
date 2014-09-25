@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderParasaurolophus extends RenderDinosaur {
 	public RenderParasaurolophus(Dinosaur dino) {
-		super(new ModelParasaurolophus(), dino, 1f);
+		super(new ModelParasaurolophus(), dino, 0.8F);
 	}
 
 	public ResourceLocation getEntityTexture(Entity var1) {

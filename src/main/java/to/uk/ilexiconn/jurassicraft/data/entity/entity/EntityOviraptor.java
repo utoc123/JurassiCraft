@@ -13,11 +13,13 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityOviraptor extends EntityJurassiCraftLandAggressive {
+public class EntityOviraptor extends EntityJurassiCraftLandAggressive implements IDinosaur {
 	
 	public EntityOviraptor(World world) {
 		super(world, (byte) 15);
+		this.getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);
 		// tasks.addTask(2, new EntityAIMate(this, 1.0D));

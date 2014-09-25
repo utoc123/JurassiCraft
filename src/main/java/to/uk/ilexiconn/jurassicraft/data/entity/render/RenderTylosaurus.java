@@ -15,7 +15,7 @@ public class RenderTylosaurus extends RenderSwimming
 {
     public RenderTylosaurus(Dinosaur dino)
     {
-        super(new ModelTylosaurus(), dino, 1f);
+        super(new ModelTylosaurus(), dino, 1.0F);
     }
 
     public ResourceLocation getEntityTexture(Entity var1)

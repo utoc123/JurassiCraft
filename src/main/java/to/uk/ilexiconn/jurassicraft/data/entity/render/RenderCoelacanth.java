@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RenderCoelacanth extends RenderSwimming {
 
     public RenderCoelacanth(Dinosaur dino) {
-        super(new ModelCoelacanth(), dino, 1f);
+        super(new ModelCoelacanth(), dino, 0.5F);
     }
 
     public ResourceLocation getEntityTexture(Entity var1) {

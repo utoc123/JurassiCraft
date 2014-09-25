@@ -14,8 +14,9 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityHypsilophodon extends EntityJurassiCraftLandProtective {
+public class EntityHypsilophodon extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityHypsilophodon(World world) {
 		super(world, (byte) 8, 2);

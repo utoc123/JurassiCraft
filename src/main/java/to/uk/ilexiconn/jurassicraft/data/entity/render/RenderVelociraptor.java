@@ -13,7 +13,7 @@ public class RenderVelociraptor extends RenderDinosaur
 {
     public RenderVelociraptor(Dinosaur dino)
     {
-        super(new ModelVelociraptor(), dino, 1f);
+        super(new ModelVelociraptor(), dino, 0.65F);
     }
 
     public ResourceLocation getEntityTexture(Entity var1)

@@ -10,8 +10,9 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityBrachiosaur extends EntityJurassiCraftLandProtective {
+public class EntityBrachiosaur extends EntityJurassiCraftLandProtective implements IDinosaur {
 
 	public EntityBrachiosaur(World world) {
 		super(world, (byte) 1, 1);

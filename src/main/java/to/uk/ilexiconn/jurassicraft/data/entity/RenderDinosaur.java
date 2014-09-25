@@ -7,12 +7,22 @@ import net.minecraft.entity.EntityLivingBase;
 import org.lwjgl.opengl.GL11;
 
 public abstract class RenderDinosaur extends RenderLiving {
-	
+
 	private Dinosaur dino;
+	private float resizableShadow;
 
 	public RenderDinosaur(ModelBase model, Dinosaur dino, float shadow) {
-		super(model, shadow);
-		setDino(dino);
+		super(model, 1.0F);
+		this.setDino(dino);
+		this.setShadow(shadow);
+	}
+
+	private void setShadow(float shadow) {
+		this.resizableShadow = shadow;
+	}
+
+	public float getShadow() {
+		return this.resizableShadow;
 	}
 
 	public void setDino(Dinosaur dino) {
@@ -20,12 +30,12 @@ public abstract class RenderDinosaur extends RenderLiving {
 	}
 
 	public Dinosaur getDino() {
-		return dino;
+		return this.dino;
 	}
 
 	public void preRenderCallback(EntityLivingBase entity, float side) {
 		float scale = (float) ((EntityJurassiCraftCreature) entity).getCreatureScale();
-		this.shadowSize = ((EntityJurassiCraftCreature) entity).getXZBouningBox() * 0.4F * scale;
+		this.shadowSize = scale * this.getShadow();
 		GL11.glScalef(scale, scale, scale);
 	}
 }

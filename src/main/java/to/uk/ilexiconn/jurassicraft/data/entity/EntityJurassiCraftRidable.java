@@ -22,7 +22,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 
 	public EntityJurassiCraftRidable(World world, byte id) {
 		super(world, id);
-		this.setMountingSpeed((float) (this.getCreatureSpeed() + 0.5D));
+		this.setMountingSpeed((float) (1.2D * this.getCreatureSpeed()));
 	}
 
 	public boolean isCreatureRidable() {
@@ -34,7 +34,6 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 		ItemStack playerItemStack = player.inventory.getCurrentItem();
 		//if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem())) { CHECK LATER
 		if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && playerItemStack.getItem().equals(Items.carrot_on_a_stick)) {
-			System.out.println("Click 2 " + this.isCreatureRidable() + " tamed " + this.isTamed() + " ridden " + this.riddenByEntity == null + " owner " + player.getCommandSenderName().equals(this.getOwnerName()));
 			if (this.isCreatureRidable() && this.isTamed() && this.isCreatureAdult() && this.riddenByEntity == null && player.getCommandSenderName().equals(this.getOwnerName())) {
 				this.setSitting(false);
 				this.setRidingPlayer(player);
@@ -136,7 +135,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable {
 		if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem().equals(Items.carrot_on_a_stick)) {
 			switch (Util.getDinoByID(this.getCreatureID()).ridingStyle) {
 				case 0:
-					this.handleMouseControlledRiding();
+					this.handleItemControlledRiding();
 					break;
 				case 1:
 					this.handleKeyboardControlledRiding((float) (7.0F * this.getCreatureSpeed()));

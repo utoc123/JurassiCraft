@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RenderHerrerasaur extends RenderDinosaur {
 	
 	public RenderHerrerasaur(Dinosaur dino) {
-		super(new ModelHerrerasaur(), dino, 1f);
+		super(new ModelHerrerasaur(), dino, 0.5F);
 	}
 
 	public ResourceLocation getEntityTexture(Entity var1) {

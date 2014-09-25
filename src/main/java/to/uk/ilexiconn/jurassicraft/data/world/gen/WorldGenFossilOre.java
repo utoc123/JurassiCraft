@@ -22,7 +22,7 @@ public class WorldGenFossilOre implements IWorldGenerator
                 y = random.nextInt(64);
                 z = random.nextInt(16) + (chunkZ * 16);
 
-                (new WorldGenMinable(Util.getBlock(5), 7 + random.nextInt(3))).generate(world, random, x, y, z);
+                (new WorldGenMinable(Util.getBlock(7), 7 + random.nextInt(3))).generate(world, random, x, y, z);
             }
         }
     }

@@ -13,11 +13,13 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive {
+public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive implements IDinosaur {
 
 	public EntityDilophosaurus(World par1World) {
 		super(par1World, (byte) 13);
+		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);

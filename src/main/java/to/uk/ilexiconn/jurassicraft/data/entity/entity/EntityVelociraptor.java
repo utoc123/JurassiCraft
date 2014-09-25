@@ -17,14 +17,16 @@ import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorLeap;
 import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorRoar;
 import to.uk.ilexiconn.jurassicraft.data.animation.AIVelociraptorTwitchHead;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityVelociraptor extends EntityJurassiCraftLandAggressive {
+public class EntityVelociraptor extends EntityJurassiCraftLandAggressive implements IDinosaur {
 	public boolean leaping = false;
 	public int timeSinceLeap;
 	public int texid;
 
 	public EntityVelociraptor(World world) {
 		super(world, (byte) 2);
+		this.getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);

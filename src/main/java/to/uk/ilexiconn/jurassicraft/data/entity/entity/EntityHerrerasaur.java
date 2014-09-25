@@ -12,16 +12,17 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.ai.JurassiCraftEntityAITargetIfNonTamed;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
+import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive {
+public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive implements IDinosaur {
 
 	public EntityHerrerasaur(World par1World) {
 		super(par1World, (byte) 10);
-		this.setSize(5F, 6F);
+		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
 		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D * this.getCreatureSpeed()));
+		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
 		this.tasks.addTask(5, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.beef, false));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));

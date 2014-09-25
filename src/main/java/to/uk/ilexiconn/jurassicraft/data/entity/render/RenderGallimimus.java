@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderGallimimus extends RenderDinosaur {
 	public RenderGallimimus(Dinosaur dino) {
-		super(new ModelGallimimus(), dino, 1f);
+		super(new ModelGallimimus(), dino, 0.65F);
 	}
 
 	private static final ResourceLocation texture1 = new ResourceLocation(JurassiCraft.getModId() + "textures/entity/gallimimus1.png");
