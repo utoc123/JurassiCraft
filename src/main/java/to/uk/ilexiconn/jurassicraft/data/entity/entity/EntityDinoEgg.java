@@ -251,7 +251,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 					}
 					
 					worldObj.spawnEntityInWorld(dinoToSpawn);
-
+                    this.setDead();
 					//attackEntityFrom(DamageSource.generic, 0F);
 				} 
 				catch (InstantiationException e)
