@@ -12,14 +12,15 @@ import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntitySwimming;
 
 public class EntityTylosaurus extends EntitySwimming {
-
+public int frame = 0;
+	
     public EntityTylosaurus(World world) {
         super(world);
         Dinosaur dino = Util.getDinoByID(14);
         this.setSize(dino.xzHitbox, dino.yHitbox);
 
         this.swimRadius = 16.0F;
-        this.swimRadiusHeight = 6.0F;
+        this.swimRadiusHeight = 10.0F;
 
         this.swimSpeed = 0.6F;
         this.jumpOnLand = false;
@@ -47,5 +48,9 @@ public class EntityTylosaurus extends EntitySwimming {
 
         return this.worldObj.findNearestEntityWithinAABB(EntityAnimal.class, area, this);
     }
-
+    
+    public void onUpdate() {
+    	super.onUpdate();
+    	frame ++;
+    }
 }
