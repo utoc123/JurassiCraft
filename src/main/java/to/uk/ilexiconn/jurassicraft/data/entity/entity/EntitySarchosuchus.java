@@ -1,10 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.entity.entity;
 
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
@@ -12,10 +8,10 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntityCrocosaur extends EntityJurassiCraftLandAggressive implements IDinosaur
+public class EntitySarchosuchus extends EntityJurassiCraftLandAggressive implements IDinosaur
 {
 
-    public EntityCrocosaur(World world)
+    public EntitySarchosuchus(World world)
     {
         super(world, (byte) 17);
         this.getNavigator().setAvoidsWater(true);

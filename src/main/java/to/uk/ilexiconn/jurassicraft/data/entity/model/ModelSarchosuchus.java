@@ -16,7 +16,7 @@ import net.minecraft.util.MathHelper;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
-public class ModelCrocosaur extends MowzieModelBase
+public class ModelSarchosuchus extends MowzieModelBase
 {
   //fields
     MowzieModelRenderer bodytail;
@@ -47,7 +47,7 @@ public class ModelCrocosaur extends MowzieModelBase
     MowzieModelRenderer leg__left_b_2;
     MowzieModelRenderer leg__left_b_foot;
   
-  public ModelCrocosaur()
+  public ModelSarchosuchus()
   {
     textureWidth = 256;
     textureHeight = 128;
@@ -214,6 +214,34 @@ public class ModelCrocosaur extends MowzieModelBase
       leg__left_b_foot.setTextureSize(256, 128);
       leg__left_b_foot.mirror = true;
       setRotation(leg__left_b_foot, -1.570796F, 1.570796F, -1.570796F);
+      
+      bodytail.setInitValuesToCurrentPose();
+      head_part_1.setInitValuesToCurrentPose();
+      top_jaw_part_1.setInitValuesToCurrentPose();
+      top_jaw_part_2.setInitValuesToCurrentPose();
+      top_jaw_jaw_part_3.setInitValuesToCurrentPose();
+      bottomjaw_part_1.setInitValuesToCurrentPose();
+      bottom_jaw_part_2.setInitValuesToCurrentPose();
+      teeth_top.setInitValuesToCurrentPose();
+      body_part_1.setInitValuesToCurrentPose();
+      tail_part_1.setInitValuesToCurrentPose();
+      tail_part_2.setInitValuesToCurrentPose();
+      tail_part_3.setInitValuesToCurrentPose();
+      spikes.setInitValuesToCurrentPose();
+      spikes2.setInitValuesToCurrentPose();
+      spikes3.setInitValuesToCurrentPose();
+      leg__right_f_1.setInitValuesToCurrentPose();
+      leg__right_f_2.setInitValuesToCurrentPose();
+      leg__right_f_foot.setInitValuesToCurrentPose();
+      leg__left_f_1.setInitValuesToCurrentPose();
+      leg__left_f_2.setInitValuesToCurrentPose();
+      leg__left_f_foot.setInitValuesToCurrentPose();
+      leg__right_b_1.setInitValuesToCurrentPose();
+      leg__right_b_2.setInitValuesToCurrentPose();
+      leg__right_b_foot.setInitValuesToCurrentPose();
+      leg__left_b_1.setInitValuesToCurrentPose();
+      leg__left_b_2.setInitValuesToCurrentPose();
+      leg__left_b_foot.setInitValuesToCurrentPose();
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
