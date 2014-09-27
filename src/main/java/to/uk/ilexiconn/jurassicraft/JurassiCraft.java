@@ -23,14 +23,12 @@ public class JurassiCraft extends Util
     public static JurassiCraft instance;
     public boolean isServerInitialized;
 
-    @Deprecated
     public static boolean versionCheck;
+    public static boolean easterEggs;
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
     {
-        getData().init();
-
         getEntityParser().parseServerEntities();
 
         for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet())
@@ -44,7 +42,7 @@ public class JurassiCraft extends Util
     @Mod.EventHandler
     public void initClient(FMLPreInitializationEvent event)
     {
-        while (!isServerInitialized) ;
+        while (!isServerInitialized);
 
         getEntityParser().parseClientEntities();
     }
@@ -59,5 +57,6 @@ public class JurassiCraft extends Util
     public void syncConfig()
     {
         versionCheck = LLib.config.getBoolean("Version Check", "jurassicraft", true, "Do an automatic version check on every start");
+        easterEggs = LLib.config.getBoolean("Easter Eggs", "jurassicraft", false, "Enable all the easter eggs is the mod");
     }
 }
