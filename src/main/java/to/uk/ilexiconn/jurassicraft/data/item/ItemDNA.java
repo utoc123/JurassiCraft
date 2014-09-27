@@ -33,31 +33,6 @@ public class ItemDNA extends Item implements AnyDNASample
     }
 
     @Override
-    public void setDNASequence(ItemStack dnaSample)
-    {
-        if (!dnaSample.hasTagCompound())
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
-            dnaSample.setTagCompound(compound);
-        }
-        else
-        {
-            if (dnaSample.getTagCompound().hasKey("DNA"))
-            {
-                dnaSample.getTagCompound().removeTag("DNA");
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
-                dnaSample.setTagCompound(compound);
-            } else {
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
-                dnaSample.setTagCompound(compound);
-            }
-        }
-    }
-
-    @Override
     public String getDNASequence(ItemStack dnaSample)
     {
         if (dnaSample.hasTagCompound())
@@ -68,31 +43,6 @@ public class ItemDNA extends Item implements AnyDNASample
             }
         }
         return "DNA sequence was not determined yet!";
-    }
-
-    @Override
-    public void setQuality(ItemStack dnaSample, int quality)
-    {
-        if (!dnaSample.hasTagCompound())
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setInteger("Quality", quality);
-            dnaSample.setTagCompound(compound);
-        }
-        else
-        {
-            if (dnaSample.getTagCompound().hasKey("Quality"))
-            {
-                dnaSample.getTagCompound().removeTag("Quality");
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setInteger("Quality", quality);
-                dnaSample.setTagCompound(compound);
-            } else {
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setInteger("Quality", quality);
-                dnaSample.setTagCompound(compound);
-            }
-        }
     }
 
     @Override

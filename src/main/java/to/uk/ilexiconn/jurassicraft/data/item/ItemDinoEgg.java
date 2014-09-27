@@ -26,30 +26,6 @@ public class ItemDinoEgg extends Item
         this.dinoName = dinoName;
     }
 
-    public void setEggDNASequence(ItemStack egg, String dna)
-    {
-        if (!egg.hasTagCompound())
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setString("EggDNA", dna);
-            egg.setTagCompound(compound);
-        }
-        else
-        {
-            if (egg.getTagCompound().hasKey("EggQuality"))
-            {
-                egg.getTagCompound().removeTag("EggQuality");
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setString("EggQuality", dna);
-                egg.setTagCompound(compound);
-            } else {
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setString("EggDNA", dna);
-                egg.setTagCompound(compound);
-            }
-        }
-    }
-
     public String getEggDNASequence(ItemStack egg)
     {
         if (egg.hasTagCompound())
@@ -62,30 +38,6 @@ public class ItemDinoEgg extends Item
         return "DNA sequence was not determined yet!";
     }
 
-    public void setEggQuality(ItemStack egg, int quality)
-    {
-        if (!egg.hasTagCompound())
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setInteger("EggQuality", quality);
-            egg.setTagCompound(compound);
-        }
-        else
-        {
-            if (egg.getTagCompound().hasKey("EggQuality"))
-            {
-                egg.getTagCompound().removeTag("EggQuality");
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setInteger("EggQuality", quality);
-                egg.setTagCompound(compound);
-            } else {
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setInteger("EggQuality", quality);
-                egg.setTagCompound(compound);
-            }
-        }
-    }
-
     public int getEggQuality(ItemStack egg)
     {
         if (egg.hasTagCompound())
@@ -95,7 +47,7 @@ public class ItemDinoEgg extends Item
                 return egg.getTagCompound().getInteger("EggQuality");
             }
         }
-        System.out.println("Egg does not have quality");
+        System.out.println("Egg quality was not determined yet!");
         return 75;
     }
 
@@ -110,7 +62,7 @@ public class ItemDinoEgg extends Item
             }
             if (egg.getTagCompound().hasKey("EggQuality"))
             {
-                list.add(EnumChatFormatting.GREEN + "Quality " + egg.getTagCompound().getString("EggQuality") + "%");
+                list.add(EnumChatFormatting.GREEN + "Quality: " + egg.getTagCompound().getInteger("EggQuality") + "%");
             }
         }
     }

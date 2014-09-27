@@ -90,9 +90,28 @@ public class JurassiCraftDNAHelper {
 				dna = dna1 + chatChanged + dna2;
 			}
 		} else {
+			System.out.println("Invalid DNA!");
 			dna = JurassiCraftDNAHelper.createDefaultDNA();
 		}
 		return dna;
+	}
+
+	/** Returns a mixture of two DNA codes. */
+	public static String mixTwoDNAs(String dna1, String dna2) {
+		String newDNA = "";
+		if (dna1.length() > 0 && dna2.length() > 0 && dna1.length() == dna2.length()) {
+			for (int i = 0; i < dna1.length(); i++) {
+				if ((i % 2) == 0) {
+					newDNA = String.valueOf(newDNA + dna1.charAt(i));
+				} else {
+					newDNA = String.valueOf(newDNA + dna2.charAt(i));
+				}
+			}
+		} else {
+			System.out.println("Invalid DNA mixture!");
+			newDNA = JurassiCraftDNAHelper.createDefaultDNA();
+		}
+		return newDNA;
 	}
 
 	/**

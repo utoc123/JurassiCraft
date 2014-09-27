@@ -8,6 +8,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
@@ -28,7 +29,7 @@ public class BlockAmberOre extends Block
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return Util.getItem(1);
+        return ModItems.amber;
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)

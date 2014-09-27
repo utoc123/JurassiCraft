@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.data.tile;
 
+import to.uk.ilexiconn.jurassicraft.data.item.JurassiCraftDNAHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -58,7 +59,7 @@ public class TileDNACombinator extends TileEntity implements ISidedInventory
         {
             return false;
         }
-        else if (!slots[0].getTagCompound().hasKey("Quality") || !slots[1].getTagCompound().hasKey("Quality"))
+        else if (!slots[0].getTagCompound().hasKey("Quality") || !slots[1].getTagCompound().hasKey("Quality") || !slots[0].getTagCompound().hasKey("DNA") || !slots[1].getTagCompound().hasKey("DNA"))
         {
             return false;
         }
@@ -74,6 +75,7 @@ public class TileDNACombinator extends TileEntity implements ISidedInventory
         ItemStack combinedDNA = new ItemStack(slots[0].getItem());
         NBTTagCompound compound = new NBTTagCompound();
         compound.setInteger("Quality", slots[0].getTagCompound().getInteger("Quality") + slots[1].getTagCompound().getInteger("Quality"));
+        compound.setString("DNA", JurassiCraftDNAHelper.mixTwoDNAs(slots[0].getTagCompound().getString("DNA"), slots[1].getTagCompound().getString("DNA")));
         combinedDNA.setTagCompound(compound);
 
         slots[0].stackSize--;

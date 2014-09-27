@@ -53,7 +53,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
         if (this.getDNASequence().length() <= 0)
         {
-            System.out.print("Creature does not have a correct genetic code: " + this.getDNASequence() + ". A new random code was created.");
             this.setDNASequence(JurassiCraftDNAHelper.createDefaultDNA());
         }
         if (this.getGeneticQuality() < 0.6F || this.getGeneticQuality() >= 1.4F)
@@ -120,6 +119,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
      */
     private void updateCreatureData(int ticks)
     {
+        System.out.println("getDNASequence: " + this.getDNASequence());
+        System.out.println("getGeneticQuality: " + this.getGeneticQuality());
         double oldHealth = this.getCreatureHealth();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((int) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxHealth - Util.getDinoByID(this.creatureID).minHealth) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minHealth)));
         double newHealth = this.getCreatureHealth();
@@ -144,6 +145,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
          System.out.println("getCreatureScale: " + this.getCreatureScale());
          System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
          System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
+         System.out.println("getDNASequence: " + this.getDNASequence());
          System.out.println("======================================");
          } else {
          System.out.println("=============== Server ===============");
@@ -157,6 +159,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
          System.out.println("getCreatureScale: " + this.getCreatureScale());
          System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
          System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
+         System.out.println("getDNASequence: " + this.getDNASequence());
          System.out.println("======================================");
          }*/
     }

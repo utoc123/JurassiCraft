@@ -490,10 +490,11 @@ public class TileCultivate extends TileEntity implements ISidedInventory
         }
         else
         {
-
+            NBTTagCompound compound = new NBTTagCompound();
             ItemStack cultivateResult = new ItemStack(((ItemDNA) this.slots[2].getItem()).getCorrespondingEgg(), 1, 0);
-            ((ItemDinoEgg) cultivateResult.getItem()).setEggQuality(cultivateResult, ((ItemDNA) this.slots[2].getItem()).getQuality(this.slots[2]));
-            ((ItemDinoEgg) cultivateResult.getItem()).setEggDNASequence(cultivateResult, ((ItemDNA) this.slots[2].getItem()).getDNASequence(this.slots[2]));
+            compound.setInteger("EggQuality", this.slots[2].getTagCompound().getInteger("Quality"));
+            compound.setString("EggDNA", this.slots[2].getTagCompound().getString("DNA"));
+            cultivateResult.setTagCompound(compound);
             this.slots[2] = (ItemStack) null;
             this.slots[2] = cultivateResult;
             this.setCultivateTime((short) 0);
@@ -627,27 +628,30 @@ public class TileCultivate extends TileEntity implements ISidedInventory
 
     public void cancelHatching(float progress)
     {
-        this.setProximateValue((short) (this.getProximateValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumProximate())));
-        this.setMineralValue((short) (this.getMineralValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumMinerals())));
-        this.setVitaminValue((short) (this.getVitaminValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumvitamins())));
-        this.setLipidValue((short) (this.getLipidValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumLipids())));
-        if (progress >= 0.75F)
-        {
-            this.setWaterStored((byte) 0);
-        }
-        else if (progress >= 0.5F)
-        {
-            this.setWaterStored((byte) 1);
-        }
-        else
-        {
-            this.setWaterStored((byte) 2);
-        }
-        this.cultivateTime = 0;
-        this.cultivateSpeed = 100;
-        this.creatureID = -1;
-        this.growthRateList.clear();
-        this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+    	if (this.isHatching()) 
+    	{
+            this.setProximateValue((short) (this.getProximateValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumProximate())));
+            this.setMineralValue((short) (this.getMineralValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumMinerals())));
+            this.setVitaminValue((short) (this.getVitaminValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumvitamins())));
+            this.setLipidValue((short) (this.getLipidValue() - (int) (progress * JurassiCraftCreatureInformation.values()[this.getEmbryoID()].getMinimumLipids())));
+            if (progress >= 0.75F)
+            {
+                this.setWaterStored((byte) 0);
+            }
+            else if (progress >= 0.5F)
+            {
+                this.setWaterStored((byte) 1);
+            }
+            else
+            {
+                this.setWaterStored((byte) 2);
+            }
+            this.cultivateTime = 0;
+            this.cultivateSpeed = 100;
+            this.creatureID = -1;
+            this.growthRateList.clear();
+            this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+    	}
     }
 
     @Override

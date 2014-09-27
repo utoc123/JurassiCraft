@@ -33,6 +33,35 @@ public class GuiCultivateProcess extends GuiScreen
     }
 
     @Override
+    public void updateScreen() {
+    	if (!this.cultivator.isHatching()) 
+    	{
+    	    this.mc.thePlayer.closeScreen();
+    	}
+    }
+
+    @Override
+    public void onGuiClosed()
+    {
+        super.onGuiClosed();
+    }
+
+    @Override
+    public boolean doesGuiPauseGame()
+    {
+        return false;
+    }
+
+    @Override
+    protected void keyTyped(char var1, int key)
+    {
+        if (key == 1 || key == this.mc.gameSettings.keyBindInventory.getKeyCode())
+        {
+            this.mc.thePlayer.closeScreen();
+        }
+    }
+
+    @Override
     public void initGui()
     {
         super.initGui();
@@ -66,26 +95,5 @@ public class GuiCultivateProcess extends GuiScreen
             this.fontRendererObj.drawString(StatCollector.translateToLocal("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%"), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%")) / 2, this.guiTop + 30, 4210752);
         }
         super.drawScreen(x, y, f);
-    }
-
-    @Override
-    protected void keyTyped(char var1, int key)
-    {
-        if (key == 1 || key == this.mc.gameSettings.keyBindInventory.getKeyCode())
-        {
-            this.mc.thePlayer.closeScreen();
-        }
-    }
-
-    @Override
-    public boolean doesGuiPauseGame()
-    {
-        return false;
-    }
-
-    @Override
-    public void onGuiClosed()
-    {
-        super.onGuiClosed();
     }
 }

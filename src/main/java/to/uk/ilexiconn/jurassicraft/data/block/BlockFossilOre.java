@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
@@ -47,7 +48,7 @@ public class BlockFossilOre extends Block
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return Util.getItem(2);
+        return ModItems.fossil;
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)
