@@ -7,6 +7,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import to.uk.ilexiconn.jurassicraft.data.block.*;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
+import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockFossilClayOre;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 import to.uk.ilexiconn.llib.content.OverrideRegistry;
@@ -25,6 +26,7 @@ public class ModBlocks
     public static Block amberOre;
     public static Block fossilOre;
     public static Block sandstoneFossilOre;
+    @OverrideRegistry
     public static Block clayFossilOre;
     @OverrideRegistry
     public static Fluid cultivateFluid;
@@ -42,7 +44,7 @@ public class ModBlocks
         amberOre = new BlockAmberOre();
         fossilOre = new BlockFossilOre();
         sandstoneFossilOre = new BlockFossilSandstoneOre();
-        clayFossilOre = new BlockFossilClayOre(""); //todo somefix fix this thing
+        clayFossilOre = new BlockFossilClayOre();
 
         gameRegistry();
     }
@@ -51,6 +53,7 @@ public class ModBlocks
     {
         GameRegistry.registerBlock(cultivateBottomOff, ItemBlockCultivate.class, "cultivateOff");
         GameRegistry.registerBlock(cultivateBottomOn, ItemBlockCultivate.class, "cultivateOn");
+        GameRegistry.registerBlock(clayFossilOre, ItemBlockFossilClayOre.class, "clayFossilOre");
 
         cultivateFluid = new Fluid("cultivate").setLuminosity(5).setViscosity(1);
         FluidRegistry.registerFluid(cultivateFluid);
