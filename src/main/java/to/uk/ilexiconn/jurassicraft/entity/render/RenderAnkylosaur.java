@@ -23,9 +23,9 @@ public class RenderAnkylosaur extends RenderDinosaur
         EntityAnkylosaur dino = (EntityAnkylosaur) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/ankylosaur1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/ankylosaur2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/ankylosaur1.png");

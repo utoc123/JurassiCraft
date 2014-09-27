@@ -22,7 +22,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
     public EntityJurassiCraftLandAggressive(World world, byte id)
     {
         super(world, id);
-        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 6.0D * this.getCreatureSpeed(), false));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.25F * this.getCreatureSpeed(), false));
         this.targetTasks.addTask(1, new JurassiCraftEntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new JurassiCraftEntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));

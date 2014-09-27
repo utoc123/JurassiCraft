@@ -25,9 +25,9 @@ public class RenderGallimimus extends RenderDinosaur
     {
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return texture1;
-            case 2:
+            case 1:
                 return texture2;
             default:
                 return texture1;

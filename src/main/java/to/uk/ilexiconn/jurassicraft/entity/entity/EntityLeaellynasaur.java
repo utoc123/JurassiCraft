@@ -13,7 +13,7 @@ public class EntityLeaellynasaur extends EntityJurassiCraftLandProtective implem
 
     public EntityLeaellynasaur(World world)
     {
-        super(world, (byte) 9, 3);
+        super(world, (byte) 9, 4);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);

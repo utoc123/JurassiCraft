@@ -23,9 +23,9 @@ public class RenderTriceratops extends RenderDinosaur
         EntityTriceratops dino = (EntityTriceratops) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/triceratops1.png");

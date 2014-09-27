@@ -231,19 +231,15 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
                     try
                     {
-
                         Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
-                        dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
-
                         if (dinoToSpawn instanceof EntityJurassiCraftCreature)
                         {
                             ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
+                            dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
+                            this.worldObj.spawnEntityInWorld(dinoToSpawn);
+                            this.currentSpawnTime = 0;
+                            this.setDead();
                         }
-
-                        worldObj.spawnEntityInWorld(dinoToSpawn);
-                        this.setDead();
-                        this.currentSpawnTime = 0;
-                        //attackEntityFrom(DamageSource.generic, 0F);
                     }
                     catch (InstantiationException e)
                     {

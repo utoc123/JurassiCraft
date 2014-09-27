@@ -74,6 +74,25 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
                         this.worldObj.setEntityState(this, (byte) 6);
                     }
                 }
+            } 
+            else if (this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote)
+            {
+                if (!this.isSitting())
+                {
+                    this.isJumping = false;
+                    this.setPathToEntity((PathEntity) null);
+                    this.setTarget((Entity) null);
+                    this.setAttackTarget((EntityLivingBase) null);
+                    this.aiSit.setSitting(true);
+                    this.setSitting(true);
+                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                }
+                else
+                {
+                    this.aiSit.setSitting(false);
+                    this.setSitting(false);
+                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is not sitting anymore."));
+                }
             }
             return super.interact(player);
         }

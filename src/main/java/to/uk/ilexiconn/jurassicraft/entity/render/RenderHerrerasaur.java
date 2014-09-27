@@ -24,9 +24,9 @@ public class RenderHerrerasaur extends RenderDinosaur
         EntityHerrerasaur dino = (EntityHerrerasaur) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/herrerasaur1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/herrerasaur2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/herrerasaur1.png");

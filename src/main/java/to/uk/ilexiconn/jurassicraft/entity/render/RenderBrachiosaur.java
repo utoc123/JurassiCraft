@@ -23,9 +23,9 @@ public class RenderBrachiosaur extends RenderDinosaur
         EntityBrachiosaur dino = (EntityBrachiosaur) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/brachiosaur1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/brachiosaur2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/brachiosaur1.png");

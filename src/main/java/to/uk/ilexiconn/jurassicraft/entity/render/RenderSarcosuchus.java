@@ -26,9 +26,9 @@ public class RenderSarcosuchus extends RenderDinosaur
     	EntitySarcosuchus dino = (EntitySarcosuchus) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus1.png");

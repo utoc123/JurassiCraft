@@ -24,9 +24,9 @@ public class RenderHypsilophodon extends RenderDinosaur
         EntityHypsilophodon dino = (EntityHypsilophodon) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon1.png");

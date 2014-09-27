@@ -13,7 +13,7 @@ public class EntityHypsilophodon extends EntityJurassiCraftLandProtective implem
 
     public EntityHypsilophodon(World world)
     {
-        super(world, (byte) 8, 2);
+        super(world, (byte) 8, 3);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);

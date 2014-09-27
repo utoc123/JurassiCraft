@@ -20,9 +20,9 @@ public class RenderVelociraptor extends RenderDinosaur
         EntityVelociraptor dino = (EntityVelociraptor) var1;
         switch (dino.getCreatureTexture())
         {
-            case 1:
+            case 0:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor1.png");
-            case 2:
+            case 1:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor1.png");
