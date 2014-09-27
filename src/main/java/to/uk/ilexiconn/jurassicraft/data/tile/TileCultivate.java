@@ -458,7 +458,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
         {
             if (this.slots[2].hasTagCompound())
             {
-                if (this.slots[2].getTagCompound().hasKey("Quality"))
+                if (this.slots[2].getTagCompound().hasKey("Quality") && this.slots[2].getTagCompound().hasKey("DNA"))
                 {
                     if (this.slots[2].getTagCompound().getInteger("Quality") >= 50)
                     {
@@ -493,6 +493,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
 
             ItemStack cultivateResult = new ItemStack(((ItemDNA) this.slots[2].getItem()).getCorrespondingEgg(), 1, 0);
             ((ItemDinoEgg) cultivateResult.getItem()).setEggQuality(cultivateResult, ((ItemDNA) this.slots[2].getItem()).getQuality(this.slots[2]));
+            ((ItemDinoEgg) cultivateResult.getItem()).setEggDNASequence(cultivateResult, ((ItemDNA) this.slots[2].getItem()).getDNASequence(this.slots[2]));
             this.slots[2] = (ItemStack) null;
             this.slots[2] = cultivateResult;
             this.setCultivateTime((short) 0);

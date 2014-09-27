@@ -24,10 +24,11 @@ public class RenderDilophosaurus extends RenderDinosaur
         switch (dino.getCreatureTexture())
         {
             case 1:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/dilophosaurus1.png");
+            case 2:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/dilophosaurus2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/dilophosaurus1.png");
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/dilophosaurus2.png");
         }
     }
 }

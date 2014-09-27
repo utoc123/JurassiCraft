@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
@@ -20,7 +21,7 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective implement
         // tasks.addTask(2, new AIAnkylosaurTailWhip(this));
         // tasks.addTask(2, new AIAnkylosaurTailSlam(this));
         // tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        tasks.addTask(4, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.wheat, false));
+        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed(), false));
         // tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));

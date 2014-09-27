@@ -8,10 +8,10 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.data.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.data.entity.IDinosaur;
 
-public class EntitySarchosuchus extends EntityJurassiCraftLandAggressive implements IDinosaur
+public class EntitySarcosuchus extends EntityJurassiCraftLandAggressive implements IDinosaur
 {
 
-    public EntitySarchosuchus(World world)
+    public EntitySarcosuchus(World world)
     {
         super(world, (byte) 17);
         this.getNavigator().setAvoidsWater(true);

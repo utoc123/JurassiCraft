@@ -1,6 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.data.entity;
 
 import com.rafamv.bygoneage.items.Analyzer;
+
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,13 +16,16 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.data.item.JurassiCraftDNAHelper;
 
 import java.util.HashSet;
+import java.util.logging.LogManager;
 
 public class EntityJurassiCraftCreature extends EntityCreature implements IAnimatedEntity, IEntityAdditionalSpawnData
 {
 
     public byte creatureID;
+    public String dnaSequence = "";
     public float geneticQuality = 1.0F;
     public boolean gender;
     public byte texture;
@@ -44,16 +48,22 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
         else
         {
+            System.out.print("Creature does not have a correct ID. ID set to 0.");
             this.creatureID = 0;
         }
-        if (this.getGeneticQuality() < 0.8)
+        if (this.getDNASequence().length() <= 0)
         {
-            System.out.print("Creature does not have a correct genetic quality. New genetic quality set to be 75%");
-            this.setGenetics(75);
+            System.out.print("Creature does not have a correct genetic code: " + this.getDNASequence() + ". A new random code was created.");
+            this.setDNASequence(JurassiCraftDNAHelper.createDefaultDNA());
+        }
+        if (this.getGeneticQuality() < 0.6F || this.getGeneticQuality() >= 1.4F)
+        {
+            System.out.print("Creature does not have a correct genetic quality. Genetic quality set to 75%");
+            this.setGenetics(75, this.getDNASequence());
         }
         this.resetGrowthStageList();
-        this.setCreatureGender(this.rand.nextInt(2) > 0);
-        this.setCreatureTexture((byte) this.rand.nextInt(Util.getDinoByID(creatureID).numberOfTextures));
+        this.setCreatureGender(JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) > 0.5F);
+        this.setCreatureTexture((byte) Math.round(JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence())*Util.getDinoByID(creatureID).numberOfTextures));
         if (this.worldObj.isRemote)
         {
             this.setCreatureSize();
@@ -121,7 +131,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         this.setCreatureHeight();
         this.setHalfOfTheCreatureSize();
         this.setCreatureScale();
-        /**System.out.println("=============== UPDATE DATA ===============");
+        /*System.out.println("=============== UPDATE DATA ===============");
          if (this.worldObj.isRemote) {
          System.out.println("=============== Client ===============");
          System.out.println("getCreatureHealth: " + this.getCreatureHealth());
@@ -148,7 +158,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
          System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
          System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
          System.out.println("======================================");
-         }**/
+         }*/
     }
 
     /**
@@ -255,7 +265,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     @Override
     public void onLivingUpdate()
     {
-        //System.out.println("Test: " + this.getGeneticQuality());
         if (this.getTotalTicksLived() < (Util.getDinoByID(this.creatureID).ticksToAdulthood + 1) && this.growthStageList.contains((int) this.getTotalTicksLived()))
         {
             if (this.getGrowthStage() < 120)
@@ -374,45 +383,28 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     }
 
     /**
-     * Sets the creature genetic data.
+     * Sets the creature DNA sequence.
      */
-    public void setGenetics(int dnaQuality)
+    public void setDNASequence(String dna)
     {
-        switch (dnaQuality)
-        {
-            case 50:
-                this.setGeneticQuality(0.8F + 0.15F * this.rand.nextFloat());
-                break;
-            case 75:
-                this.setGeneticQuality(0.95F + 0.10F * this.rand.nextFloat());
-                break;
-            case 100:
-                this.setGeneticQuality(1.05F + 0.15F * this.rand.nextFloat());
-                break;
-            default:
-                this.setGeneticQuality(0.8F + 0.4F * this.rand.nextFloat());
-        }
+        this.dnaSequence = dna;
+    }
+
+    /**
+     * Returns the creature DNA sequence.
+     */
+    public String getDNASequence()
+    {
+        return this.dnaSequence;
     }
 
     /**
      * Sets the creature genetic data.
      */
-    public void setRandomGenetics()
+    public void setGenetics(int dnaQuality, String dna)
     {
-        switch (this.rand.nextInt(3))
-        {
-            case 0:
-                this.setGeneticQuality(0.8F + 0.15F * this.rand.nextFloat());
-                break;
-            case 1:
-                this.setGeneticQuality(0.95F + 0.10F * this.rand.nextFloat());
-                break;
-            case 2:
-                this.setGeneticQuality(1.05F + 0.15F * this.rand.nextFloat());
-                break;
-            default:
-                this.setGeneticQuality(0.8F + 0.4F * this.rand.nextFloat());
-        }
+        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(dna, dnaQuality));
+        this.setGeneticQuality(JurassiCraftDNAHelper.getDefaultGeneticDNAQuality(dna));
     }
 
     /**
@@ -584,7 +576,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     }
 
     /**
-     * Returns the creature gender as a number. 0 is female and 1 is male.
+     * Returns the creature gender. False is female and true is male.
      */
     public boolean getCreatureGender()
     {
@@ -791,6 +783,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     {
         super.writeEntityToNBT(compound);
         compound.setInteger("TicksExisted", this.getTotalTicksLived());
+        compound.setString("DNASequence", this.getDNASequence());
         compound.setFloat("GeneticQuality", this.getGeneticQuality());
         compound.setByte("Stage", this.getGrowthStage());
         compound.setBoolean("Gender", this.getCreatureGender());
@@ -802,6 +795,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     {
         super.readEntityFromNBT(compound);
         this.setTicksExisted(compound.getInteger("TicksExisted"));
+        this.setDNASequence(compound.getString("DNASequence"));
         this.setGeneticQuality(compound.getFloat("GeneticQuality"));
         this.resetGrowthStageList();
         this.setGrowthStage(compound.getByte("Stage"));

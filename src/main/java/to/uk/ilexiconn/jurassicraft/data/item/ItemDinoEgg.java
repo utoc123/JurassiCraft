@@ -26,6 +26,42 @@ public class ItemDinoEgg extends Item
         this.dinoName = dinoName;
     }
 
+    public void setEggDNASequence(ItemStack egg, String dna)
+    {
+        if (!egg.hasTagCompound())
+        {
+            NBTTagCompound compound = new NBTTagCompound();
+            compound.setString("EggDNA", dna);
+            egg.setTagCompound(compound);
+        }
+        else
+        {
+            if (egg.getTagCompound().hasKey("EggQuality"))
+            {
+                egg.getTagCompound().removeTag("EggQuality");
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setString("EggQuality", dna);
+                egg.setTagCompound(compound);
+            } else {
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setString("EggDNA", dna);
+                egg.setTagCompound(compound);
+            }
+        }
+    }
+
+    public String getEggDNASequence(ItemStack egg)
+    {
+        if (egg.hasTagCompound())
+        {
+            if (egg.getTagCompound().hasKey("EggDNA"))
+            {
+                return egg.getTagCompound().getString("EggDNA");
+            }
+        }
+        return "DNA sequence was not determined yet!";
+    }
+
     public void setEggQuality(ItemStack egg, int quality)
     {
         if (!egg.hasTagCompound())
@@ -39,6 +75,10 @@ public class ItemDinoEgg extends Item
             if (egg.getTagCompound().hasKey("EggQuality"))
             {
                 egg.getTagCompound().removeTag("EggQuality");
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setInteger("EggQuality", quality);
+                egg.setTagCompound(compound);
+            } else {
                 NBTTagCompound compound = new NBTTagCompound();
                 compound.setInteger("EggQuality", quality);
                 egg.setTagCompound(compound);
@@ -64,6 +104,10 @@ public class ItemDinoEgg extends Item
     {
         if (egg.hasTagCompound())
         {
+            if (egg.getTagCompound().hasKey("EggDNA"))
+            {
+                list.add(EnumChatFormatting.GREEN + "DNA: " + egg.getTagCompound().getString("EggDNA"));
+            }
             if (egg.getTagCompound().hasKey("EggQuality"))
             {
                 list.add(EnumChatFormatting.GREEN + "Quality " + egg.getTagCompound().getString("EggQuality") + "%");
@@ -79,29 +123,42 @@ public class ItemDinoEgg extends Item
             NBTTagCompound compound = new NBTTagCompound();
             if (egg.hasTagCompound())
             {
-                int oldQuality = egg.getTagCompound().getInteger("EggQuality");
-                egg.getTagCompound().removeTag("EggQuality");
-                switch (oldQuality)
+            	if (egg.getTagCompound().hasKey("EggQuality"))
                 {
-                    case 25:
-                        compound.setInteger("EggQuality", 50);
-                        break;
-                    case 50:
-                        compound.setInteger("EggQuality", 75);
-                        break;
-                    case 75:
-                        compound.setInteger("EggQuality", 100);
-                        break;
-                    case 100:
-                        compound.setInteger("EggQuality", 25);
-                        break;
-                    default:
-                        break;
+            		int oldQuality = egg.getTagCompound().getInteger("EggQuality");
+                    egg.getTagCompound().removeTag("EggQuality");
+                    switch (oldQuality)
+                    {
+                        case 25:
+                            compound.setInteger("EggQuality", 50);
+                            break;
+                        case 50:
+                            compound.setInteger("EggQuality", 75);
+                            break;
+                        case 75:
+                            compound.setInteger("EggQuality", 100);
+                            break;
+                        case 100:
+                            compound.setInteger("EggQuality", 25);
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    compound.setInteger("EggQuality", 25);
+                }
+            	if (egg.getTagCompound().hasKey("EggDNA"))
+                {
+            		egg.getTagCompound().removeTag("EggDNA");
+                    compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
+                } else {
+                    compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
                 }
             }
             else
             {
                 compound.setInteger("EggQuality", 25);
+                compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
             }
             egg.setTagCompound(compound);
             if (world.isRemote)
@@ -112,20 +169,16 @@ public class ItemDinoEgg extends Item
         return egg;
     }
 
-    /**
-     * Callback for item usage. If the item does something special on right
-     * clicking, he will have one of those. Return True if something happen and
-     * false if it don't. This is for ITEMS, not BLOCKS
-     */
+    @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ)
     {
         if (!world.isRemote && !player.capabilities.isCreativeMode)
         {
-            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), 2048, x, y + 1, z));
+            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), this.getEggDNASequence(stack), 2048, x, y + 1, z));
         }
         else if (!world.isRemote && !player.isSneaking())
         {
-            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), 2048, x, y + 1, z));
+            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), this.getEggDNASequence(stack), 2048, x, y + 1, z));
         }
         else
         {

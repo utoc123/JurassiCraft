@@ -16,7 +16,7 @@ import net.minecraft.util.MathHelper;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
-public class ModelSarchosuchus extends MowzieModelBase
+public class ModelSarcosuchus extends MowzieModelBase
 {
   //fields
     MowzieModelRenderer bodytail;
@@ -47,7 +47,7 @@ public class ModelSarchosuchus extends MowzieModelBase
     MowzieModelRenderer leg__left_b_2;
     MowzieModelRenderer leg__left_b_foot;
   
-  public ModelSarchosuchus()
+  public ModelSarcosuchus()
   {
     textureWidth = 256;
     textureHeight = 128;

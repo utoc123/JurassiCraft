@@ -21,13 +21,11 @@ public class RenderCearadactylus extends RenderDinosaur
     public ResourceLocation getEntityTexture(Entity var1)
     {
         EntityCearadactylus dino = (EntityCearadactylus) var1;
-        switch (dino.getCreatureTexture())
+        if (dino.isMale())
         {
-            case 1:
-            default:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Cearadactylus1.png");
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Cearadactylus2.png");
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/cearadactylus1.png");
+        } else {
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/cearadactylus2.png");
         }
     }
 }

@@ -28,6 +28,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     public boolean froze;
     public boolean dried;
     public int quality;
+	private String dnaSequence;
 
     public int happend = 0;
 
@@ -44,24 +45,22 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     public EntityDinoEgg(World world)
     {
         super(world);
-        System.out.println("Hello 3.");
         this.setSize(0.5F, 0.5F);
     }
 
-    public EntityDinoEgg(World world, String dino, int spawnTime, int quality)
+    public EntityDinoEgg(World world, String dino, int spawnTime)
     {
         this(world);
-        System.out.println("Hello 2. spawnTime " + spawnTime);
         this.dino = dino;
         this.spawnTime = spawnTime;
-        this.quality = quality;
     }
 
-    public EntityDinoEgg(World world, String dino, int quality, int spawnTime, double x, double y, double z)
+    public EntityDinoEgg(World world, String dino, int quality, String dna, int spawnTime, double x, double y, double z)
     {
-        this(world, dino, spawnTime, quality);
-        System.out.println("Hello 1. dino" + dino);
+        this(world, dino, spawnTime);
         this.setPosition(x + 0.5F, y, z + 0.5F);
+        this.quality = quality;
+        this.dnaSequence = dna;
     }
 
     public boolean attackEntityFrom(DamageSource damage, float amount)
@@ -248,7 +247,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
                     if (dinoToSpawn instanceof EntityJurassiCraftCreature)
                     {
-                        ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality);
+                        ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
                     }
 
                     worldObj.spawnEntityInWorld(dinoToSpawn);
@@ -336,6 +335,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
         this.froze = nbt.getBoolean("Froze");
         this.dried = nbt.getBoolean("Dried");
         this.quality = nbt.getInteger("Quality");
+        this.dnaSequence = nbt.getString("DNASequence");
     }
 
     @Override
@@ -347,6 +347,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
         nbt.setBoolean("Froze", froze);
         nbt.setBoolean("Dried", dried);
         nbt.setInteger("Quality", quality);
+        nbt.setString("DNASequence", dnaSequence);
     }
 
     public ResourceLocation getTexture()

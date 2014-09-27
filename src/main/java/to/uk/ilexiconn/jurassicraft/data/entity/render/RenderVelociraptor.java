@@ -21,10 +21,11 @@ public class RenderVelociraptor extends RenderDinosaur
         switch (dino.getCreatureTexture())
         {
             case 1:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor1.png");
+            case 2:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor1.png");
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/velociraptor2.png");
         }
     }
 }

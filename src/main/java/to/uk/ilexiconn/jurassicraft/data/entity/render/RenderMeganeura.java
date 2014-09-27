@@ -24,10 +24,11 @@ public class RenderMeganeura extends RenderDinosaur
         switch (dino.getCreatureTexture())
         {
             case 1:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/meganeura1.png");
+            case 2:
+                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/meganeura2.png");
             default:
                 return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/meganeura1.png");
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/meganeura2.png");
         }
     }
 }

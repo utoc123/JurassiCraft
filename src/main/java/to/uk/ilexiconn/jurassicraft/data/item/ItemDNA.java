@@ -33,44 +33,41 @@ public class ItemDNA extends Item implements AnyDNASample
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack dnaSample, World world, EntityPlayer player)
+    public void setDNASequence(ItemStack dnaSample)
     {
-        if (player.capabilities.isCreativeMode && player.isSneaking())
+        if (!dnaSample.hasTagCompound())
         {
             NBTTagCompound compound = new NBTTagCompound();
-            if (dnaSample.hasTagCompound())
-            {
-                int oldQuality = dnaSample.getTagCompound().getInteger("Quality");
-                dnaSample.getTagCompound().removeTag("Quality");
-                switch (oldQuality)
-                {
-                    case 25:
-                        compound.setInteger("Quality", 50);
-                        break;
-                    case 50:
-                        compound.setInteger("Quality", 75);
-                        break;
-                    case 75:
-                        compound.setInteger("Quality", 100);
-                        break;
-                    case 100:
-                        compound.setInteger("Quality", 25);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                compound.setInteger("Quality", 25);
-            }
+            compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
             dnaSample.setTagCompound(compound);
-            if (world.isRemote)
+        }
+        else
+        {
+            if (dnaSample.getTagCompound().hasKey("DNA"))
             {
-                player.addChatMessage(new ChatComponentText("Cheater! New quality changed to " + dnaSample.getTagCompound().getInteger("Quality") + "%"));
+                dnaSample.getTagCompound().removeTag("DNA");
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                dnaSample.setTagCompound(compound);
+            } else {
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                dnaSample.setTagCompound(compound);
             }
         }
-        return dnaSample;
+    }
+
+    @Override
+    public String getDNASequence(ItemStack dnaSample)
+    {
+        if (dnaSample.hasTagCompound())
+        {
+            if (dnaSample.getTagCompound().hasKey("DNA"))
+            {
+                return dnaSample.getTagCompound().getString("DNA");
+            }
+        }
+        return "DNA sequence was not determined yet!";
     }
 
     @Override
@@ -87,6 +84,10 @@ public class ItemDNA extends Item implements AnyDNASample
             if (dnaSample.getTagCompound().hasKey("Quality"))
             {
                 dnaSample.getTagCompound().removeTag("Quality");
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setInteger("Quality", quality);
+                dnaSample.setTagCompound(compound);
+            } else {
                 NBTTagCompound compound = new NBTTagCompound();
                 compound.setInteger("Quality", quality);
                 dnaSample.setTagCompound(compound);
@@ -112,10 +113,69 @@ public class ItemDNA extends Item implements AnyDNASample
     {
         if (dnaSample.hasTagCompound())
         {
+            if (dnaSample.getTagCompound().hasKey("DNA"))
+            {
+                list.add(EnumChatFormatting.GREEN + "DNA: " + dnaSample.getTagCompound().getString("DNA"));
+            }
             if (dnaSample.getTagCompound().hasKey("Quality"))
             {
-                list.add(EnumChatFormatting.GREEN + "Quality " + dnaSample.getTagCompound().getString("Quality") + "%");
+                list.add(EnumChatFormatting.GREEN + "Quality: " + dnaSample.getTagCompound().getInteger("Quality") + "%");
             }
         }
+    }
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack dnaSample, World world, EntityPlayer player)
+    {
+        if (player.capabilities.isCreativeMode && player.isSneaking())
+        {
+            NBTTagCompound compound = new NBTTagCompound();
+            if (dnaSample.hasTagCompound())
+            {
+            	if (dnaSample.getTagCompound().hasKey("Quality"))
+                {
+            		int oldQuality = dnaSample.getTagCompound().getInteger("Quality");
+                    dnaSample.getTagCompound().removeTag("Quality");
+                    switch (oldQuality)
+                    {
+                        case 25:
+                            compound.setInteger("Quality", 50);
+                            break;
+                        case 50:
+                            compound.setInteger("Quality", 75);
+                            break;
+                        case 75:
+                            compound.setInteger("Quality", 100);
+                            break;
+                        case 100:
+                            compound.setInteger("Quality", 25);
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    compound.setInteger("Quality", 25);
+                }
+            	if (dnaSample.getTagCompound().hasKey("DNA"))
+                {
+                    dnaSample.getTagCompound().removeTag("DNA");
+                    compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                } else {
+                    compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                }
+            }
+            else
+            {
+                compound.setInteger("Quality", 25);
+                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+            }
+            dnaSample.setTagCompound(compound);
+            if (world.isRemote)
+            {
+                player.addChatMessage(new ChatComponentText("Cheater! New quality changed to " + dnaSample.getTagCompound().getInteger("Quality") + "%"));
+                player.addChatMessage(new ChatComponentText("Genetic code is: " + dnaSample.getTagCompound().getString("DNA")));
+            }
+        }
+        return dnaSample;
     }
 }
