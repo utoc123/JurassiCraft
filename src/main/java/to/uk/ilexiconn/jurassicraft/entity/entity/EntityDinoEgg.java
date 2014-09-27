@@ -223,7 +223,6 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
             if (currentSpawnTime < -500)
             {
-
                 if (dinosaur.waterCreature)
                 {
                     dried = true;

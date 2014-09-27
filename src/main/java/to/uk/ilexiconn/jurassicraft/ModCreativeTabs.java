@@ -18,7 +18,7 @@ public class ModCreativeTabs
         {
             public Item getTabIconItem()
             {
-                return Items.potato;
+                return ModItems.fossil;
             }
         };
     }
