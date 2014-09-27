@@ -30,17 +30,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     public int quality;
 	private String dnaSequence;
 
-    public int happend = 0;
-
-
     public int rockAmount;
-
-    /**
-     * Gegy's TODO: CLIENT - SERVER STUFF
-     * Spawning in wrong place
-     * Disappearing
-     * Suitable Environments
-     */
 
     public EntityDinoEgg(World world)
     {
@@ -233,9 +223,8 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
                 }
             }
 
-            if (currentSpawnTime >= spawnTime && happend < 1)
+            if (currentSpawnTime >= spawnTime)
             {
-                happend = +1;
                 Class dinoToSpawnClass = Util.getDinoClass(dino);
 
                 try
@@ -251,6 +240,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
                     worldObj.spawnEntityInWorld(dinoToSpawn);
                     this.setDead();
+                    this.currentSpawnTime = 0;
                     //attackEntityFrom(DamageSource.generic, 0F);
                 }
                 catch (InstantiationException e)
