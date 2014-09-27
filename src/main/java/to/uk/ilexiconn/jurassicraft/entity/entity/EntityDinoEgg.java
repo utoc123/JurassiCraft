@@ -119,182 +119,185 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     {
         super.onUpdate();
 
-        if (worldObj.isRemote)
+        if(!this.isDead)
         {
-            if (this.dataWatcher.getWatchableObjectInt(25) == 0)
+        	if (worldObj.isRemote)
             {
-                froze = false;
-            }
-            else
-            {
-                froze = true;
-            }
-
-            if (this.dataWatcher.getWatchableObjectInt(26) == 0)
-            {
-                dried = false;
-            }
-            else
-            {
-                dried = true;
-            }
-
-            this.currentSpawnTime = this.dataWatcher.getWatchableObjectInt(27);
-        }
-
-        if (!this.onGround)
-        {
-            this.motionY -= 0.05F;
-        }
-
-        if (motionY < -0.8F)
-        {
-            this.motionY = -0.8F;
-        }
-
-        if (this.onGround)
-        {
-            this.motionX *= 0.5F;
-            this.motionZ *= 0.5F;
-        }
-        else
-        {
-            this.motionX *= 0.7F;
-            this.motionZ *= 0.7F;
-        }
-
-        if (!worldObj.isRemote)
-        {
-            int amountToIncrease = 0;
-
-            boolean warm = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
-            boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
-
-            Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
-
-            if (dinosaur.waterCreature)
-            {
-                if (!isWet())
+                if (this.dataWatcher.getWatchableObjectInt(25) == 0)
                 {
-                    if (overheat)
-                    {
-                        amountToIncrease = -2;
-                    }
-                    else
-                    {
-                        amountToIncrease = -1;
-                    }
-                }
-                else
-                {
-                    amountToIncrease = 2;
-                }
-            }
-            else
-            {
-                if (warm && !this.isWet())
-                {
-                    amountToIncrease = 1;
-                }
-                else
-                {
-                    if (!warm && this.isWet())
-                    {
-                        amountToIncrease = -2;
-                    }
-                    else
-                    {
-                        amountToIncrease = -1;
-                    }
-                }
-            }
-
-            currentSpawnTime += amountToIncrease;
-
-            if (currentSpawnTime < -500)
-            {
-                if (dinosaur.waterCreature)
-                {
-                    dried = true;
+                    froze = false;
                 }
                 else
                 {
                     froze = true;
                 }
+
+                if (this.dataWatcher.getWatchableObjectInt(26) == 0)
+                {
+                    dried = false;
+                }
+                else
+                {
+                    dried = true;
+                }
+
+                this.currentSpawnTime = this.dataWatcher.getWatchableObjectInt(27);
             }
 
-            if (currentSpawnTime >= spawnTime)
+            if (!this.onGround)
             {
-                Class dinoToSpawnClass = Util.getDinoClass(dino);
+                this.motionY -= 0.05F;
+            }
 
-                try
+            if (motionY < -0.8F)
+            {
+                this.motionY = -0.8F;
+            }
+
+            if (this.onGround)
+            {
+                this.motionX *= 0.5F;
+                this.motionZ *= 0.5F;
+            }
+            else
+            {
+                this.motionX *= 0.7F;
+                this.motionZ *= 0.7F;
+            }
+
+            if (!worldObj.isRemote)
+            {
+                int amountToIncrease = 0;
+
+                boolean warm = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
+                boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
+
+                Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
+
+                if (dinosaur.waterCreature)
                 {
-
-                    Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
-                    dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
-
-                    if (dinoToSpawn instanceof EntityJurassiCraftCreature)
+                    if (!isWet())
                     {
-                        ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
+                        if (overheat)
+                        {
+                            amountToIncrease = -2;
+                        }
+                        else
+                        {
+                            amountToIncrease = -1;
+                        }
+                    }
+                    else
+                    {
+                        amountToIncrease = 2;
+                    }
+                }
+                else
+                {
+                    if (warm && !this.isWet())
+                    {
+                        amountToIncrease = 1;
+                    }
+                    else
+                    {
+                        if (!warm && this.isWet())
+                        {
+                            amountToIncrease = -2;
+                        }
+                        else
+                        {
+                            amountToIncrease = -1;
+                        }
+                    }
+                }
+
+                currentSpawnTime += amountToIncrease;
+
+                if (currentSpawnTime < -500)
+                {
+                    if (dinosaur.waterCreature)
+                    {
+                        dried = true;
+                    }
+                    else
+                    {
+                        froze = true;
+                    }
+                }
+
+                if (currentSpawnTime >= spawnTime)
+                {
+                    Class dinoToSpawnClass = Util.getDinoClass(dino);
+
+                    try
+                    {
+
+                        Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
+                        dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
+
+                        if (dinoToSpawn instanceof EntityJurassiCraftCreature)
+                        {
+                            ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
+                        }
+
+                        worldObj.spawnEntityInWorld(dinoToSpawn);
+                        this.setDead();
+                        this.currentSpawnTime = 0;
+                        //attackEntityFrom(DamageSource.generic, 0F);
+                    }
+                    catch (InstantiationException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (IllegalAccessException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (IllegalArgumentException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (InvocationTargetException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (NoSuchMethodException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (SecurityException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            if (currentSpawnTime < (spawnTime - 100))
+            {
+                if (!this.dried && !this.froze)
+                {
+                    if (this.rotationPitch >= 5)
+                    {
+                        rockAmount = -1;
+                    }
+                    else if (this.rotationPitch <= -5)
+                    {
+                        rockAmount = 1;
                     }
 
-                    worldObj.spawnEntityInWorld(dinoToSpawn);
-                    this.setDead();
-                    this.currentSpawnTime = 0;
-                    //attackEntityFrom(DamageSource.generic, 0F);
-                }
-                catch (InstantiationException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (IllegalAccessException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (IllegalArgumentException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (InvocationTargetException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (NoSuchMethodException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (SecurityException e)
-                {
-                    e.printStackTrace();
+                    this.rotationPitch += (rockAmount / 2.0F);
                 }
             }
-        }
 
-        if (currentSpawnTime < (spawnTime - 100))
-        {
-            if (!this.dried && !this.froze)
+            if (!worldObj.isRemote)
             {
-                if (this.rotationPitch >= 5)
-                {
-                    rockAmount = -1;
-                }
-                else if (this.rotationPitch <= -5)
-                {
-                    rockAmount = 1;
-                }
-
-                this.rotationPitch += (rockAmount / 2.0F);
+                this.dataWatcher.updateObject(25, froze ? 1 : 0);
+                this.dataWatcher.updateObject(26, dried ? 1 : 0);
+                this.dataWatcher.updateObject(27, currentSpawnTime);
             }
-        }
 
-        if (!worldObj.isRemote)
-        {
-            this.dataWatcher.updateObject(25, froze ? 1 : 0);
-            this.dataWatcher.updateObject(26, dried ? 1 : 0);
-            this.dataWatcher.updateObject(27, currentSpawnTime);
+            this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
-
-        this.moveEntity(this.motionX, this.motionY, this.motionZ);
     }
 
     public void fall(float fallDistance)
