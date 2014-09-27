@@ -119,7 +119,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		double newHealth = this.getCreatureHealth();
 		this.heal((float) (newHealth - oldHealth));
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxStrength - Util.getDinoByID(this.creatureID).minStrength) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minStrength)));
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxSpeed - Util.getDinoByID(this.creatureID).minSpeed) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minSpeed)));
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((float) (ticks * (Util.getDinoByID(this.creatureID).maxSpeed - Util.getDinoByID(this.creatureID).minSpeed) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minSpeed));
 		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxKnockback - Util.getDinoByID(this.creatureID).minKnockback) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minKnockback)));
 		this.setCreatureLength();
 		this.setCreatureHeight();
@@ -814,9 +814,9 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         compound.setInteger("TicksExisted", this.getTotalTicksLived());
         compound.setString("DNASequence", this.getDNASequence());
         compound.setFloat("GeneticQuality", this.getGeneticQuality());
-        compound.setByte("Stage", this.getGrowthStage());
         compound.setBoolean("Gender", this.getCreatureGender());
         compound.setByte("Texture", this.getCreatureTexture());
+        compound.setByte("Stage", this.getGrowthStage());
     }
 
     @Override
@@ -826,10 +826,10 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         this.setTicksExisted(compound.getInteger("TicksExisted"));
         this.setDNASequence(compound.getString("DNASequence"));
         this.setGeneticQuality(compound.getFloat("GeneticQuality"));
-        this.resetGrowthStageList();
-        this.setGrowthStage(compound.getByte("Stage"));
         this.setCreatureGender(compound.getBoolean("Gender"));
         this.setCreatureTexture(compound.getByte("Texture"));
+        this.resetGrowthStageList();
+        this.setGrowthStage(compound.getByte("Stage"));
         this.setCreatureLength();
         this.setCreatureHeight();
         this.setCreatureScale();

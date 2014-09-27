@@ -123,111 +123,147 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
     }
 
 	@Override
-	protected Entity findPlayerToAttack() {
-		EntityPlayer entityplayer = this.worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
-		return this.isAngry() && entityplayer != null && this.canEntityBeSeen(entityplayer) ? entityplayer : null;
-	}
-
-	@Override
-	public boolean attackEntityFrom(DamageSource damageSource, float damage) {
-		if (this.isEntityInvulnerable()) {
+	public boolean attackEntityFrom(DamageSource damageSource, float damage) 
+	{
+		if (this.isEntityInvulnerable()) 
+		{
 			return false;
-		} else {
+		} 
+		else 
+		{
 			Entity attacker = damageSource.getEntity();
 			int count = 0;
 			List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 16.0D, 16.0D));
 			ArrayList<EntityJurassiCraftLandProtective> listChildren = new ArrayList<EntityJurassiCraftLandProtective>();
 			ArrayList<EntityJurassiCraftLandProtective> listAdult = new ArrayList<EntityJurassiCraftLandProtective>();
-			if (this.isCreatureAdult()) {
+			if (this.isCreatureAdult()) 
+			{
 				listAdult.add(this);
-			} else {
+			} 
+			else 
+			{
 				listChildren.add(this);
 				count++;
 			}
-			for (int i = 0; i < list.size(); ++i) {
+			for (int i = 0; i < list.size(); ++i) 
+			{
 				Entity entityNeighbor = (Entity) list.get(i);
-				if (entityNeighbor.getClass() == this.getClass()) {
+				if (entityNeighbor.getClass() == this.getClass()) 
+				{
 					EntityJurassiCraftLandProtective validEntityNeighbor = (EntityJurassiCraftLandProtective) entityNeighbor;
-					if (validEntityNeighbor.isCreatureAdult()) {
+					if (validEntityNeighbor.isCreatureAdult()) 
+					{
 						listAdult.add(validEntityNeighbor);
 						count++;
-					} else {
+					} 
+					else 
+					{
 						listChildren.add(validEntityNeighbor);
 					}
 				}
 			}
-			if (this.checkTarget(attacker)) {
-				if (this.isCreatureAdult()) {
-					if (!listChildren.isEmpty()) {
-						for (int i = 0; i < listChildren.size(); ++i) {
+			if (this.checkTarget(attacker)) 
+			{
+				if (this.isCreatureAdult()) 
+				{
+					if (!listChildren.isEmpty()) 
+					{
+						for (int i = 0; i < listChildren.size(); ++i) 
+						{
 							becomePanic(listChildren.get(i));
 						}
 					}
-					if (!listAdult.isEmpty()) {
-						for (int i = 0; i < listAdult.size(); ++i) {
+					if (!listAdult.isEmpty()) 
+					{
+						for (int i = 0; i < listAdult.size(); ++i) 
+						{
 							becomeAngryAt(listAdult.get(i), attacker);
 						}
 					}
-				} else {
-					if (count >= this.numberOfAllies) {
-						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listChildren.size(); ++i) {
+				} 
+				else 
+				{
+					if (count >= this.numberOfAllies) 
+					{
+						if (!listChildren.isEmpty()) 
+						{
+							for (int i = 0; i < listChildren.size(); ++i) 
+							{
 								becomePanic(listChildren.get(i));
 							}
 						}
-						if (!listAdult.isEmpty()) {
-							for (int i = 0; i < listAdult.size(); ++i) {
+						if (!listAdult.isEmpty()) 
+						{
+							for (int i = 0; i < listAdult.size(); ++i) 
+							{
 								becomeAngryAt(listAdult.get(i), attacker);
 							}
 						}
-					} else {
-						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listChildren.size(); ++i) {
+					} 
+					else 
+					{
+						if (!listChildren.isEmpty()) 
+						{
+							for (int i = 0; i < listChildren.size(); ++i) 
+							{
 								becomePanic(listChildren.get(i));
 							}
 						}
-						if (!listChildren.isEmpty()) {
-							for (int i = 0; i < listAdult.size(); ++i) {
+						if (!listAdult.isEmpty()) 
+						{
+							for (int i = 0; i < listAdult.size(); ++i) 
+							{
 								becomePanic(listAdult.get(i));
 							}
 						}
 					}
 				}
 				return super.attackEntityFrom(damageSource, damage);
-			} else {
-				return damageSource.getEntity() != this.getOwner() ? super.attackEntityFrom(damageSource, damage) : false;
+			} 
+			else 
+			{
+				return super.attackEntityFrom(damageSource, damage);
 			}
 		}
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity target) {
-		if (this.attackTime <= 0 && target.boundingBox.maxY > this.boundingBox.minY && target.boundingBox.minY < this.boundingBox.maxY) {
+	public boolean attackEntityAsMob(Entity target) 
+	{
+		if (this.attackTime <= 0 && target.boundingBox.maxY > this.boundingBox.minY && target.boundingBox.minY < this.boundingBox.maxY) 
+		{
 			this.attackTime = 20;
 			float attackDamage = (float) this.getCreatureAttack();
 			int i = 0;
-			if (target instanceof EntityLivingBase) {
+			if (target instanceof EntityLivingBase) 
+			{
 				attackDamage += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) target);
 				i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) target);
 			}
 			boolean flag = target.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
-			if (flag) {
-				if (i > 0) {
+			if (flag) 
+			{
+				if (i > 0) 
+				{
 					target.addVelocity((double) (-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * (float) i * 0.5F), 0.1D, (double) (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * (float) i * 0.5F));
 					this.motionX *= 0.6D;
 					this.motionZ *= 0.6D;
 				}
 				int j = EnchantmentHelper.getFireAspectModifier(this);
-				if (j > 0) {
+				if (j > 0) 
+				{
 					target.setFire(j * 4);
 				}
-				if (target instanceof EntityLivingBase) {
+				if (target instanceof EntityLivingBase) 
+				{
 					EnchantmentHelper.func_151384_a((EntityLivingBase) target, this);
 				}
 				EnchantmentHelper.func_151385_b(this, target);
 			}
 			return flag;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 	}
