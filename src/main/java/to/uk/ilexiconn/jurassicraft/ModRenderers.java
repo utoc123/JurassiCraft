@@ -6,10 +6,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
-import to.uk.ilexiconn.jurassicraft.data.entity.RenderDinoEgg;
-import to.uk.ilexiconn.jurassicraft.data.entity.entity.EntityDinoEgg;
-import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderCultivateItem;
-import to.uk.ilexiconn.jurassicraft.data.tile.render.RenderDNAExtractorItem;
+import to.uk.ilexiconn.jurassicraft.entity.RenderDinoEgg;
+import to.uk.ilexiconn.jurassicraft.entity.entity.EntityDinoEgg;
+import to.uk.ilexiconn.jurassicraft.tile.render.RenderCultivateItem;
+import to.uk.ilexiconn.jurassicraft.tile.render.RenderDNACombinatorItem;
+import to.uk.ilexiconn.jurassicraft.tile.render.RenderDNAExtractorItem;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 
@@ -21,7 +22,7 @@ public class ModRenderers
     {
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.cultivateBottomOff), new RenderCultivateItem());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dnaExtractor), new RenderDNAExtractorItem());
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dnsCombinator), new RenderDNAExtractorItem());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dnaCombinator), new RenderDNACombinatorItem());
 
         RenderingRegistry.registerEntityRenderingHandler(EntityDinoEgg.class, new RenderDinoEgg());
     }

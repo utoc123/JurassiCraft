@@ -14,12 +14,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
-import to.uk.ilexiconn.jurassicraft.data.Data;
-import to.uk.ilexiconn.jurassicraft.data.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.data.entity.JsonEntityParser;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemDNA;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemDinoEgg;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemMeat;
+import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
+import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
+import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
+import to.uk.ilexiconn.jurassicraft.item.ItemMeat;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
 
@@ -28,12 +27,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+@Deprecated
 public class Util
 {
     /**
      * Stuff
      */
-    private static final Data data = new Data();
     private static final JsonEntityParser entityParser = new JsonEntityParser();
     @SidedProxy(clientSide = "to.uk.ilexiconn.jurassicraft.proxy.ClientProxy", serverSide = "to.uk.ilexiconn.jurassicraft.proxy.ServerProxy")
     public static ServerProxy proxy;
@@ -82,11 +81,6 @@ public class Util
         return "jurassicraft:";
     }
 
-    public static Data getData()
-    {
-        return data;
-    }
-
     public static JsonEntityParser getEntityParser()
     {
         return entityParser;
@@ -130,7 +124,7 @@ public class Util
     {
         try
         {
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.entity.Entity" + dino.creatureName);
             dinos.put(dino, entity);
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
@@ -184,8 +178,8 @@ public class Util
     {
         try
         {
-            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.data.entity.entity.Entity" + dino.creatureName);
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.entity.Entity" + dino.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)

@@ -7,7 +7,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import to.uk.ilexiconn.jurassicraft.data.block.*;
 import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockCultivate;
-import to.uk.ilexiconn.jurassicraft.data.item.ItemBlockFossilClayOre;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 import to.uk.ilexiconn.llib.content.OverrideRegistry;
@@ -22,7 +21,7 @@ public class ModBlocks
     public static Block cultivateBottomOn;
     public static Block cultivateTopOn;
     public static Block dnaExtractor;
-    public static Block dnsCombinator;
+    public static Block dnaCombinator;
     public static Block amberOre;
     public static Block fossilOre;
     public static Block sandstoneFossilOre;
@@ -40,7 +39,7 @@ public class ModBlocks
         cultivateBottomOn = new BlockCultivateBottom(true);
         cultivateTopOn = new BlockCultivateTop(true);
         dnaExtractor = new BlockDNAExtractor();
-        dnsCombinator = new BlockDNACombinator();
+        dnaCombinator = new BlockDNACombinator();
         amberOre = new BlockAmberOre();
         fossilOre = new BlockFossilOre();
         sandstoneFossilOre = new BlockFossilSandstoneOre();
