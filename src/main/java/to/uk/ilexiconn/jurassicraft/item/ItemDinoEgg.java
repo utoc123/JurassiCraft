@@ -136,6 +136,9 @@ public class ItemDinoEgg extends Item
         {
             this.onItemRightClick(stack, world, player);
         }
+        
+        stack.stackSize--;
+        
         return true;
     }
 }
