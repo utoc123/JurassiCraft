@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.data.item;
+package to.uk.ilexiconn.jurassicraft.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
