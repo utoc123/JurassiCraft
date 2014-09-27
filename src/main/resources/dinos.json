@@ -694,10 +694,10 @@
         "ridingItemList":null,
         "isRidable":false,
         "waterCreature":false,
-        "livingSound1":"jurassicraft:ovi1",
-        "livingSound2":"jurassicraft:ovi1",
-        "hurtSound":"jurassicraft:ovi1",
-        "deathSound":"jurassicraft:ovi1",
+        "livingSound1":null,
+        "livingSound2":null,
+        "hurtSound":null,
+        "deathSound":null,
         "numberOfTextures":2,
         "ridingStyle":0
 	}
