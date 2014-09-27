@@ -94,3 +94,6 @@ tile.fossil_clay_ore_stained_white.name=White Stained Clay Fossil Ore
 tile.fossil_clay_ore_stained_yellow.name=Yellow Stained Clay Fossil Ore
 
 entity.dino_egg.name=Dino Egg
+
+container.dnaExtractor=DNA Extractor
+container.dnaCombinator=DNA Combinator

@@ -46,6 +46,7 @@ public class RenderCultivateItem implements IItemRenderer
     {
         boolean firstPerson = false;
         int renderType = 0;
+        
         switch (type)
         {
             case ENTITY:
@@ -113,6 +114,8 @@ public class RenderCultivateItem implements IItemRenderer
 
                 GL11.glPopMatrix();
             }
+		default:
+			break;
         }
     }
 }

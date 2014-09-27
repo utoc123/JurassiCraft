@@ -3,6 +3,7 @@ package to.uk.ilexiconn.jurassicraft;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,6 +11,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.entity.EntityCoelacanth;
+import to.uk.ilexiconn.jurassicraft.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.llib.LLib;
 import to.uk.ilexiconn.llib.config.ConfigSync;
@@ -36,6 +38,8 @@ public class JurassiCraft extends Util
 
         isServerInitialized = true;
         LogHelper.info("PreInitialization complete");
+        
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @SideOnly(Side.CLIENT)
