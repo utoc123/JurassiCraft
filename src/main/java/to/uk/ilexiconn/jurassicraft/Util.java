@@ -27,6 +27,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * @deprecated Start using LLib's Content Handler System instead
+ */
 @Deprecated
 public class Util
 {
