@@ -14,7 +14,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.Level;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 
@@ -47,6 +49,11 @@ public class BlockFossilClayOre extends Block
         setCreativeTab(ModCreativeTabs.fossilTab);
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
+    }
+
+    public Item getItemDropped(int value, Random random, int thing)
+    {
+        return ModItems.fossil;
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)

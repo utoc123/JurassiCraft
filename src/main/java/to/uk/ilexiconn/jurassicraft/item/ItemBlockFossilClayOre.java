@@ -2,9 +2,11 @@ package to.uk.ilexiconn.jurassicraft.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
 
 public class ItemBlockFossilClayOre extends ItemBlock
 {
@@ -34,8 +36,10 @@ public class ItemBlockFossilClayOre extends ItemBlock
         return meta;
     }
 
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack)
+    public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)
     {
+        super.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
         world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z), 2);
+        return true;
     }
 }

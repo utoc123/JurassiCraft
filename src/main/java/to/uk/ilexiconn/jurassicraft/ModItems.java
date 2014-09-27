@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import net.minecraft.item.Item;
 import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoBone;
@@ -7,7 +8,7 @@ import to.uk.ilexiconn.jurassicraft.item.ItemFossil;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.ITEM)
+@ContentHandler(modid = "jurassicraft", type = ContentType.ITEM, priority = EventPriority.HIGH)
 public class ModItems
 {
     public static Item amber;
