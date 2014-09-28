@@ -7,10 +7,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import to.uk.ilexiconn.jurassicraft.block.model.ModelEgg;
+import to.uk.ilexiconn.jurassicraft.client.model.block.ModelEgg;
 import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelCoelacanthEgg;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelMeganeuraEgg;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCoelacanthEgg;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMeganeuraEgg;
 
 public class RenderDinoEgg extends Render
 {

@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityLeaellynasaur;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelLeaellynasaur;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelLeaellynasaur;
 
 @SideOnly(Side.CLIENT)
 public class RenderLeaellynasaur extends RenderDinosaur

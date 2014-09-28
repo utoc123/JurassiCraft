@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityBrachiosaur;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelBrachiosaur;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelBrachiosaur;
 
 @SideOnly(Side.CLIENT)
 public class RenderBrachiosaur extends RenderDinosaur

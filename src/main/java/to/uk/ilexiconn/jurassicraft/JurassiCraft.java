@@ -9,14 +9,10 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
-import to.uk.ilexiconn.jurassicraft.gui.GuiHandler;
-import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.llib.LLib;
 import to.uk.ilexiconn.llib.config.ConfigSync;
-
-import java.util.Map.Entry;
 
 @Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 PRE-RELEASE", dependencies = "required-after:llib@[0.1.1,)")
 public class JurassiCraft extends Util
@@ -33,11 +29,7 @@ public class JurassiCraft extends Util
     {
         getEntityParser().parseServerEntities();
 
-        for (Entry<Dinosaur, Class<?>> dino : getDinos().entrySet())
-            LogHelper.info("Added dino " + dino.getKey().creatureName + " with ID " + dino.getKey().creatureID);
-
         isServerInitialized = true;
-        LogHelper.info("PreInitialization complete");
         
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }

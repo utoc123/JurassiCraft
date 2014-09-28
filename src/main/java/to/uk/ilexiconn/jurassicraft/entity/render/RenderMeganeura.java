@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityMeganeura;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelMeganeura;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMeganeura;
 
 @SideOnly(Side.CLIENT)
 public class RenderMeganeura extends RenderDinosaur

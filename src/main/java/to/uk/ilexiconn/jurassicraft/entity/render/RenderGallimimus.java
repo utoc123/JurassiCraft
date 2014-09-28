@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityGallimimus;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelGallimimus;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelGallimimus;
 
 @SideOnly(Side.CLIENT)
 public class RenderGallimimus extends RenderDinosaur

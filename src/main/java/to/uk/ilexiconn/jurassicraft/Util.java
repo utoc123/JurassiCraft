@@ -1,25 +1,17 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.client.IItemRenderer;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.item.ItemMeat;
-import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
 
 import java.util.ArrayList;
@@ -136,19 +128,8 @@ public class Util
         }
         catch (Exception e)
         {
-            LogHelper.warn("Failed to register dino!");
             e.printStackTrace();
         }
-    }
-
-    public void addGuiHandler(IGuiHandler handler)
-    {
-        NetworkRegistry.INSTANCE.registerGuiHandler(JurassiCraft.instance, handler);
-    }
-
-    public void addWorldGenerator(IWorldGenerator generator, int weight)
-    {
-        GameRegistry.registerWorldGenerator(generator, weight);
     }
 
     public void addEgg(final String dinoName)
@@ -158,22 +139,6 @@ public class Util
         eggs.add(egg);
 
         addItem(-1, egg);
-    }
-
-    public void addShapedRecipe(ItemStack output, Object... obj)
-    {
-        GameRegistry.addRecipe(output, obj);
-    }
-
-    public void addShapelessRecipe(ItemStack output, Object... obj)
-    {
-        GameRegistry.addShapelessRecipe(output, obj);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void addBlockRenderer(Class<? extends TileEntity> tileEntity, TileEntitySpecialRenderer renderer)
-    {
-        proxy.renderTileEntity(tileEntity, renderer);
     }
 
     @SideOnly(Side.CLIENT)
@@ -189,12 +154,6 @@ public class Util
         {
 
         }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void addItemRenderer(Item item, IItemRenderer render)
-    {
-        proxy.renderItem(item, render);
     }
 
     public static Dinosaur getDinoByID(int id)

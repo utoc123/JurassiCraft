@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityParasaurolophus;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelParasaurolophus;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelParasaurolophus;
 
 @SideOnly(Side.CLIENT)
 public class RenderParasaurolophus extends RenderDinosaur

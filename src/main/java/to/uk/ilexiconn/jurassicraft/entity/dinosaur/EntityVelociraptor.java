@@ -2,13 +2,12 @@ package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
-import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorLeap;
-import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorRoar;
-import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorTwitchHead;
+import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorLeap;
+import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorRoar;
+import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorTwitchHead;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 

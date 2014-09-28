@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityAnkylosaur;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelAnkylosaur;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelAnkylosaur;
 
 @SideOnly(Side.CLIENT)
 public class RenderAnkylosaur extends RenderDinosaur

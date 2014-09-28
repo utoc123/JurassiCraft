@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityHypsilophodon;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelHypsilophodon;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelHypsilophodon;
 
 @SideOnly(Side.CLIENT)
 public class RenderHypsilophodon extends RenderDinosaur

@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityHerrerasaur;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelHerrerasaur;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelHerrerasaur;
 
 @SideOnly(Side.CLIENT)
 public class RenderHerrerasaur extends RenderDinosaur

@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityVelociraptor;
-import to.uk.ilexiconn.jurassicraft.entity.model.ModelVelociraptor;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelVelociraptor;
 
 public class RenderVelociraptor extends RenderDinosaur
 {
