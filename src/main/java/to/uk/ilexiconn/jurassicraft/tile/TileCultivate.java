@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class TileCultivate extends TileEntity implements ISidedInventory
 {
-
+    public int animationTick;
     private Random random;
     private ItemStack[] slots = new ItemStack[4];
     private short cultivateTime;
@@ -566,6 +566,9 @@ public class TileCultivate extends TileEntity implements ISidedInventory
     @Override
     public void updateEntity()
     {
+        animationTick++;
+        if (animationTick == Integer.MAX_VALUE) animationTick = 0;
+
         if (!this.worldObj.isRemote)
         {
             if (!this.isHatching())
