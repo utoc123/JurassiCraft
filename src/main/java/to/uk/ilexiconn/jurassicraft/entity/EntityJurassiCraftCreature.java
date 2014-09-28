@@ -1,15 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
-import com.rafamv.bygoneage.items.Analyzer;
-
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
+
+import java.util.HashSet;
+
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
@@ -17,9 +14,13 @@ import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHelper;
+import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
 
-import java.util.HashSet;
+import com.rafamv.bygoneage.items.Analyzer;
+
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityJurassiCraftCreature extends EntityCreature implements IAnimatedEntity, IEntityAdditionalSpawnData
 {
@@ -56,8 +57,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
             this.setRandomGenetics();
         }
         this.resetGrowthStageList();
-        this.setCreatureGender(JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) == 0.5F ? this.rand.nextBoolean() : (JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) > 0.5F));
-        this.setNewCreatureTexture(JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
+        this.setCreatureGender(JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()) == 0.5F ? this.rand.nextBoolean() : (JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()) > 0.5F));
+        this.setNewCreatureTexture(JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
         if (this.worldObj.isRemote)
         {
             this.setCreatureSize();
@@ -353,7 +354,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
             }
             else if (player.getHeldItem().getItem().equals(ModItems.growthSerum))
             {
-                this.forceCreatureGrowth(player, player.getHeldItem(), (byte) 5);
+                this.forceCreatureGrowth(player, player.getHeldItem(), (byte) 10);
             }
         }
         return super.interact(player);
@@ -411,28 +412,28 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
      */
     public void setGenetics(int dnaQuality, String dna)
     {
-        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(dna, dnaQuality));
-        this.setGeneticQuality(JurassiCraftDNAHelper.getDefaultGeneticDNAQuality(dna));
+        this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(dna, dnaQuality));
+        this.setGeneticQuality(JurassiCraftDNAHandler.getDefaultGeneticDNAQuality(dna));
     }
 
     /** Sets the creature genetic data randomly. */
     public void setRandomGenetics()
     {
-    	String randomDNA = JurassiCraftDNAHelper.createDefaultDNA();
+    	String randomDNA = JurassiCraftDNAHandler.createDefaultDNA();
     	switch (this.rand.nextInt(3)) {
     		case 0:
-    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 50));
+    	        this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(randomDNA, 50));
     			break;
     		case 1:
-    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 75));
+    	        this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(randomDNA, 75));
     			break;
     		case 2:
-    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 100));
+    	        this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(randomDNA, 100));
     			break;
     		default:
-    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 75));
+    	        this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(randomDNA, 75));
     	}
-        this.setGeneticQuality(JurassiCraftDNAHelper.getDefaultGeneticDNAQuality(randomDNA));
+        this.setGeneticQuality(JurassiCraftDNAHandler.getDefaultGeneticDNAQuality(randomDNA));
     }
 
     /**

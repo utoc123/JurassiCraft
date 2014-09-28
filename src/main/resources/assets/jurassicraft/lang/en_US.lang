@@ -79,7 +79,8 @@ item.egg_Leaellynasaur.name=Egg of a Leaellynasaura
 item.egg_Gallimimus.name=Egg of a Gallimimus
 item.egg_Cearadactylus.name=Egg of a Cearadactylus
 item.egg_Sarcosuchus.name=Egg of a Sarchosuchus
-item.growthSerum.name= Growth Serum
+item.growthSerum.name=Growth Serum
+item.gypsumPowder.name=Gypsum Powder
 
 /blocks
 tile.cultivate_idle.name=Cultivate
@@ -93,6 +94,9 @@ tile.fossil_clay_ore_stained_red.name=Red Stained Clay Fossil Ore
 tile.fossil_clay_ore_stained_silver.name=Silver Stained Clay Fossil Ore
 tile.fossil_clay_ore_stained_white.name=White Stained Clay Fossil Ore
 tile.fossil_clay_ore_stained_yellow.name=Yellow Stained Clay Fossil Ore
+tile.block_Gypsum_Block.name=Gypsum Block
+tile.block_Gypsum_Brick.name=Gypsum Brick
+tile.block_Gypsum_CobbleStone.name=Gypsum Cobblestone
 
 entity.dino_egg.name=Dino Egg
 

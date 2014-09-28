@@ -1,5 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,8 +12,6 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
-
-import java.util.List;
 
 public class ItemDinoEgg extends Item
 {
@@ -102,15 +102,15 @@ public class ItemDinoEgg extends Item
             	if (egg.getTagCompound().hasKey("EggDNA"))
                 {
             		egg.getTagCompound().removeTag("EggDNA");
-                    compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
+                    compound.setString("EggDNA", JurassiCraftDNAHandler.createDefaultDNA());
                 } else {
-                    compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
+                    compound.setString("EggDNA", JurassiCraftDNAHandler.createDefaultDNA());
                 }
             }
             else
             {
                 compound.setInteger("EggQuality", 25);
-                compound.setString("EggDNA", JurassiCraftDNAHelper.createDefaultDNA());
+                compound.setString("EggDNA", JurassiCraftDNAHandler.createDefaultDNA());
             }
             egg.setTagCompound(compound);
             if (world.isRemote)

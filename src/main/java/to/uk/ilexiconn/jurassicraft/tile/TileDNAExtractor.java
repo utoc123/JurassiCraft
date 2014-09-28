@@ -1,5 +1,8 @@
 package to.uk.ilexiconn.jurassicraft.tile;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -13,10 +16,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.item.AnyDNASource;
 import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
-import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHelper;
-
-import java.util.ArrayList;
-import java.util.Random;
+import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
 
 public class TileDNAExtractor extends TileEntity implements ISidedInventory
 {
@@ -87,7 +87,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                     if (!newItem.hasTagCompound())
                     {
                         compound.setInteger("Quality", 100);
-                        compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                        compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                         newItem.setTagCompound(compound);
                     }
                     else
@@ -107,7 +107,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             compound.setString("DNA", dna);
                             newItem.setTagCompound(compound);
                         } else {
-                            compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                            compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                         }
                     }
                 }
@@ -137,7 +137,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             {
                                 compound.setInteger("Quality", 100);
                             }
-                            compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                            compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                             newItem.setTagCompound(compound);
                         }
                         else
@@ -178,7 +178,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                                 compound.setString("DNA", dna);
                                 newItem.setTagCompound(compound);
                             } else {
-                                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                                compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                             }
                             
                             

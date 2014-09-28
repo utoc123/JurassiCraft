@@ -2,7 +2,7 @@ package to.uk.ilexiconn.jurassicraft.item;
 
 import java.util.Random;
 
-public class JurassiCraftDNAHelper {
+public class JurassiCraftDNAHandler {
 
 	private static Random random = new Random();
 
@@ -91,7 +91,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return dna;
 	}
@@ -109,7 +109,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA mixture!");
-			newDNA = JurassiCraftDNAHelper.createDefaultDNA();
+			newDNA = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return newDNA;
 	}
@@ -139,7 +139,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}
@@ -166,7 +166,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}
@@ -196,7 +196,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}
@@ -223,7 +223,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}
@@ -253,7 +253,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}
@@ -280,7 +280,7 @@ public class JurassiCraftDNAHelper {
 			}
 		} else {
 			System.out.println("Invalid DNA!");
-			dna = JurassiCraftDNAHelper.createDefaultDNA();
+			dna = JurassiCraftDNAHandler.createDefaultDNA();
 		}
 		return (Float.valueOf((int) (100000 * quality))) / 100000.0F;
 	}

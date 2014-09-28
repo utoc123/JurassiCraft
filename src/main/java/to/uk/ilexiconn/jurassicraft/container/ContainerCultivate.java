@@ -1,7 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,11 +8,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.container.slot.SlotBucket;
-import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASample;
+import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASampleAndEgg;
+import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.item.AnyDNASample;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerCultivate extends Container
 {
@@ -31,7 +31,7 @@ public class ContainerCultivate extends Container
         this.cultivator = (TileCultivate) tileEntity;
         this.addSlotToContainer(new SlotBucket(cultivator, 0, 12, 20));
         this.addSlotToContainer(new SlotBucket(cultivator, 1, 12, 68));
-        this.addSlotToContainer(new SlotDNASample(cultivator, 2, 122, 44));
+        this.addSlotToContainer(new SlotDNASampleAndEgg(cultivator, 2, 122, 44));
         this.addSlotToContainer(new Slot(cultivator, 3, 208, 20));
         for (int i = 0; i < 3; i++)
         {
@@ -158,13 +158,6 @@ public class ContainerCultivate extends Container
                     if (stackInSlot.getItem() instanceof ItemBucket)
                     {
                         if (!mergeItemStack(stackInSlot, 0, 2, false))
-                        {
-                            return null;
-                        }
-                    }
-                    else if (stackInSlot.getItem() instanceof AnyDNASample)
-                    {
-                        if (!mergeItemStack(stackInSlot, 2, 3, false))
                         {
                             return null;
                         }

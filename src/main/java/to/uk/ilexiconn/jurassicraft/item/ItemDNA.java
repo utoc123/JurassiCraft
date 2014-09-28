@@ -1,5 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,8 +11,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
-
-import java.util.List;
 
 public class ItemDNA extends Item implements AnyDNASample
 {
@@ -109,15 +109,15 @@ public class ItemDNA extends Item implements AnyDNASample
             	if (dnaSample.getTagCompound().hasKey("DNA"))
                 {
                     dnaSample.getTagCompound().removeTag("DNA");
-                    compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                    compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                 } else {
-                    compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                    compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
                 }
             }
             else
             {
                 compound.setInteger("Quality", 25);
-                compound.setString("DNA", JurassiCraftDNAHelper.createDefaultDNA());
+                compound.setString("DNA", JurassiCraftDNAHandler.createDefaultDNA());
             }
             dnaSample.setTagCompound(compound);
             if (world.isRemote)

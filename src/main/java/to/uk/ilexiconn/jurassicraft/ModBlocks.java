@@ -1,16 +1,27 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import to.uk.ilexiconn.jurassicraft.block.*;
+import to.uk.ilexiconn.jurassicraft.block.BlockAmberOre;
+import to.uk.ilexiconn.jurassicraft.block.BlockCultivateBottom;
+import to.uk.ilexiconn.jurassicraft.block.BlockCultivateTop;
+import to.uk.ilexiconn.jurassicraft.block.BlockDNACombinator;
+import to.uk.ilexiconn.jurassicraft.block.BlockDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.block.BlockFossilClayOre;
+import to.uk.ilexiconn.jurassicraft.block.BlockFossilOre;
+import to.uk.ilexiconn.jurassicraft.block.BlockFossilSandstoneOre;
+import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBlock;
+import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBrick;
+import to.uk.ilexiconn.jurassicraft.block.BlockGypsumCobblestone;
+import to.uk.ilexiconn.jurassicraft.block.BlockStuffFluid;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockFossilClayOre;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 import to.uk.ilexiconn.llib.content.OverrideRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @ContentHandler(modid = "jurassicraft", type = ContentType.BLOCK)
 public class ModBlocks
@@ -23,6 +34,9 @@ public class ModBlocks
     public static Block cultivateTopOn;
     public static Block dnaExtractor;
     public static Block dnaCombinator;
+    public static Block gypsumBlock;
+    public static Block gypsumBrick;
+    public static Block gypsumCobblestone;
     public static Block amberOre;
     public static Block fossilOre;
     public static Block sandstoneFossilOre;
@@ -45,6 +59,9 @@ public class ModBlocks
         fossilOre = new BlockFossilOre();
         sandstoneFossilOre = new BlockFossilSandstoneOre();
         clayFossilOre = new BlockFossilClayOre();
+        gypsumBlock = new BlockGypsumBlock();
+        gypsumBrick = new BlockGypsumBrick();
+        gypsumCobblestone = new BlockGypsumCobblestone();
 
         gameRegistry();
     }
