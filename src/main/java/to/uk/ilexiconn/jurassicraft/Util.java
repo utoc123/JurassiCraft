@@ -225,12 +225,12 @@ public class Util
     public static boolean isFavoriteFood(int id, Item heldItem)
     {
     	ArrayList itemList = getDinoByID(id).favoriteFoodList;
-        return itemList.isEmpty() ? false : itemList.contains(heldItem.getUnlocalizedName());
+        return !itemList.isEmpty() && itemList.contains(heldItem.getUnlocalizedName());
     }
 
     public static boolean isRidingItem(int id, Item heldItem)
     {
     	ArrayList itemList = getDinoByID(id).ridingItemList;
-        return itemList.isEmpty() ? false : itemList.contains(heldItem.getUnlocalizedName());
+        return !itemList.isEmpty() && itemList.contains(heldItem.getUnlocalizedName());
     }
 }
