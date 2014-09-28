@@ -35,7 +35,7 @@ public class CultivateRenderer extends TileEntitySpecialRenderer
         GL11.glEnable(GL11.GL_BLEND);
         TileCultivate tile = (TileCultivate) tileEntity;
 
-        if (tile.getWorldObj().getBlock(tile.xCoord, tile.yCoord, tile.zCoord) == ModBlocks.cultivateBottomOn)
+        if (tile.isHatching())
         {
             GL11.glPushMatrix();
             GL11.glColor4f(1f, 1f, 1f, 1f);
