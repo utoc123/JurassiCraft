@@ -182,7 +182,7 @@ public class Util
         try
         {
             RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.entity.Entity" + dino.creatureName);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaur.Entity" + dino.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
