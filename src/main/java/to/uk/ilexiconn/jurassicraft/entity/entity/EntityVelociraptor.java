@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorLeap;
 import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorRoar;
 import to.uk.ilexiconn.jurassicraft.animation.AIVelociraptorTwitchHead;
@@ -27,7 +28,7 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
         tasks.addTask(2, new AIVelociraptorTwitchHead(this));
         tasks.addTask(2, new AIVelociraptorRoar(this));
         tasks.addTask(2, new AIVelociraptorLeap(this));
-        tasks.addTask(4, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.beef, false));
+        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed(), false));
         tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));

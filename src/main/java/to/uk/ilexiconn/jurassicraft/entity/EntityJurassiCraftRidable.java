@@ -36,8 +36,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
     public boolean interact(EntityPlayer player)
     {
         ItemStack playerItemStack = player.inventory.getCurrentItem();
-        //if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem())) { CHECK LATER
-        if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && playerItemStack.getItem().equals(Items.carrot_on_a_stick))
+        if (!this.worldObj.isRemote && playerItemStack != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), playerItemStack.getItem()))
         {
             if (this.isCreatureRidable() && this.isTamed() && this.isCreatureAdult() && this.riddenByEntity == null && player.getCommandSenderName().equals(this.getOwnerName()))
             {
@@ -111,6 +110,25 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
     /**
      * Sets the mob rotation depending on the item position (pig style).
      */
+    private void handleFastItemControlledRiding()
+    {
+        this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
+        float adjust = MathHelper.wrapAngleTo180_float(((EntityLivingBase) this.riddenByEntity).rotationYaw - this.rotationYaw) * 0.5F;
+        if (adjust > 6.0F)
+        {
+            adjust = 6.0F;
+        }
+        else if (adjust < -6.0F)
+        {
+            adjust = -6.0F;
+        }
+        this.rotationYaw = MathHelper.wrapAngleTo180_float(this.rotationYaw + adjust);
+        this.setRotation(this.rotationYaw, this.rotationPitch);
+    }
+
+    /**
+     * Sets the mob rotation depending on the item position (pig style).
+     */
     private void handleItemControlledRiding()
     {
         this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
@@ -164,20 +182,15 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
     @Override
     public void moveEntityWithHeading(float movementStrafing, float movementForward)
     {
-        // CHECK LATER
-        // if (this.riddenByEntity != null && this.riddenByEntity instanceof
-        // EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() !=
-        // (ItemStack) null && Util.isRidingItem(this.getCreatureID(),
-        // ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem())) {
-        if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem().equals(Items.carrot_on_a_stick))
+        if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem()))
         {
             switch (Util.getDinoByID(this.getCreatureID()).ridingStyle)
             {
                 case 0:
-                    this.handleItemControlledRiding();
+                    this.handleFastItemControlledRiding();
                     break;
                 case 1:
-                    this.handleKeyboardControlledRiding((float) (7.0F * this.getCreatureSpeed()));
+                    this.handleMouseControlledRiding();
                     break;
                 case 2:
                     this.handleItemControlledRiding();

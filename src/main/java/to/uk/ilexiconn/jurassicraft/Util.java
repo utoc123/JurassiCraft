@@ -219,33 +219,18 @@ public class Util
                 return dino.getKey().creatureID;
             }
         }
-
         return -1;
     }
 
-    public static boolean isFavoriteFood(int id, Item food)
+    public static boolean isFavoriteFood(int id, Item heldItem)
     {
-        ArrayList foodList = getDinoByID(id).favoriteFoodList;
-        for (int i = 0; i < foodList.size(); i++)
-        {
-            if (foodList.contains(food))
-            {
-                return true;
-            }
-        }
-        return false;
+    	ArrayList itemList = getDinoByID(id).favoriteFoodList;
+        return itemList.isEmpty() ? false : itemList.contains(heldItem.getUnlocalizedName());
     }
 
-    public static boolean isRidingItem(int id, Item ridingItem)
+    public static boolean isRidingItem(int id, Item heldItem)
     {
-        ArrayList itemList = getDinoByID(id).ridingItemList;
-        for (int i = 0; i < itemList.size(); i++)
-        {
-            if (itemList.contains(ridingItem))
-            {
-                return true;
-            }
-        }
-        return false;
+    	ArrayList itemList = getDinoByID(id).ridingItemList;
+        return itemList.isEmpty() ? false : itemList.contains(heldItem.getUnlocalizedName());
     }
 }

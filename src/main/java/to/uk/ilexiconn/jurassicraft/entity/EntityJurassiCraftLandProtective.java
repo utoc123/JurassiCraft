@@ -8,7 +8,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -162,27 +161,26 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
 					}
 				}
 			}
-			if (this.checkTarget(attacker)) 
+			if (!this.isCreatureAdult()) 
 			{
-				if (this.isCreatureAdult()) 
+				if (!listChildren.isEmpty()) 
 				{
-					if (!listChildren.isEmpty()) 
+					for (int i = 0; i < listChildren.size(); ++i) 
 					{
-						for (int i = 0; i < listChildren.size(); ++i) 
-						{
-							becomePanic(listChildren.get(i));
-						}
+						becomePanic(listChildren.get(i));
 					}
-					if (!listAdult.isEmpty()) 
-					{
-						for (int i = 0; i < listAdult.size(); ++i) 
-						{
-							becomeAngryAt(listAdult.get(i), attacker);
-						}
-					}
-				} 
-				else 
+				}
+				if (!listAdult.isEmpty()) 
 				{
+					for (int i = 0; i < listAdult.size(); ++i) 
+					{
+						becomeAngryAt(listAdult.get(i), attacker);
+					}
+				}
+			} 
+			else 
+			{
+				if (attacker != this.getOwner()) {
 					if (count >= this.numberOfAllies) 
 					{
 						if (!listChildren.isEmpty()) 
@@ -202,8 +200,7 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
 					} 
 					else 
 					{
-						if (!listChildren.isEmpty()) 
-						{
+						if (!listChildren.isEmpty()) {
 							for (int i = 0; i < listChildren.size(); ++i) 
 							{
 								becomePanic(listChildren.get(i));
@@ -218,12 +215,8 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
 						}
 					}
 				}
-				return super.attackEntityFrom(damageSource, damage);
-			} 
-			else 
-			{
-				return super.attackEntityFrom(damageSource, damage);
 			}
+			return super.attackEntityFrom(damageSource, damage);
 		}
 	}
 

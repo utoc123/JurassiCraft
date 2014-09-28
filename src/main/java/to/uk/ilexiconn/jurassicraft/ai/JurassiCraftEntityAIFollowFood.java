@@ -93,7 +93,7 @@ public class JurassiCraftEntityAIFollowFood extends EntityAIBase
     {
         this.temptingPlayer = null;
         this.temptedEntity.getNavigator().clearPathEntity();
-        this.delayTemptCounter = 100;
+        this.delayTemptCounter = 60;
         this.isRunning = false;
         this.temptedEntity.getNavigator().setAvoidsWater(this.avoidWater);
     }

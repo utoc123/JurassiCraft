@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -19,7 +20,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
         this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
-        this.tasks.addTask(5, new EntityAITempt(this, 1.2D * this.getCreatureSpeed(), Items.beef, false));
+        this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.2D * this.getCreatureSpeed(), false));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
     }

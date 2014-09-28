@@ -125,10 +125,12 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		this.setCreatureHeight();
 		this.setHalfOfTheCreatureSize();
 		this.setCreatureScale();
-		System.out.println("=============== UPDATE DATA ===============");
+		/*System.out.println("=============== UPDATE DATA ===============");
 		if (this.worldObj.isRemote) 
 		{
 			System.out.println("=============== Client ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
 			System.out.println("Health: " + this.getCreatureHealth());
 			System.out.println("Attack: " + this.getCreatureAttack());
 			System.out.println("Speed: " + this.getCreatureSpeed());
@@ -145,6 +147,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		else 
 		{
 			System.out.println("=============== Server ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
 			System.out.println("Health: " + this.getCreatureHealth());
 			System.out.println("Attack: " + this.getCreatureAttack());
 			System.out.println("Speed: " + this.getCreatureSpeed());
@@ -157,7 +161,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
 			System.out.println("Adult: " + this.isCreatureAdult());
 			System.out.println("======================================");
-		}
+		}*/
     }
 
     /**
