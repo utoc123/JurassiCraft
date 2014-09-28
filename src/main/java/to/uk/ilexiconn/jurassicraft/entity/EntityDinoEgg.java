@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity;
 
 import io.netty.buffer.ByteBuf;
 
@@ -18,8 +18,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData

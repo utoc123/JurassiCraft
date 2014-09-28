@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityCoelacanth;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
 import to.uk.ilexiconn.jurassicraft.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.logger.LogHelper;
 import to.uk.ilexiconn.llib.LLib;

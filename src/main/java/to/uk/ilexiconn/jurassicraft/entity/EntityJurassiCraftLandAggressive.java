@@ -35,6 +35,12 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
         return false;
     }
 
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
     /**
      * Sets the attack target if it is adult. If it is also tamed, this will check if the target is tamed by the player.
      */

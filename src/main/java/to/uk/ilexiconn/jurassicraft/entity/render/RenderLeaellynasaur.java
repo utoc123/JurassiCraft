@@ -6,8 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.RenderDinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityLeaellynasaur;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityLeaellynasaur;
 import to.uk.ilexiconn.jurassicraft.entity.model.ModelLeaellynasaur;
 
 @SideOnly(Side.CLIENT)

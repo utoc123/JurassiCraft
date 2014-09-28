@@ -34,6 +34,12 @@ public class EntityJurassiCraftLandCoward extends EntityJurassiCraftRidable
         this.fleeingTick = value;
     }
 
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
     /** Returns the fleeing ticks of the creature. Higher than zero means that the creature was attacked. */
     public int getFleeingTick()
     {

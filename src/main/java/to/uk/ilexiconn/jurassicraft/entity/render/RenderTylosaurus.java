@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.RenderSwimming;
 import to.uk.ilexiconn.jurassicraft.entity.model.ModelTylosaurus;
 
 @SideOnly(Side.CLIENT)

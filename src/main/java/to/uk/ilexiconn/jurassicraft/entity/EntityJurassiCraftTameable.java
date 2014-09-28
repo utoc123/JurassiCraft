@@ -38,6 +38,12 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
     }
 
     @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
+    @Override
     public boolean interact(EntityPlayer player)
     {
         ItemStack heldItemStack = player.inventory.getCurrentItem();

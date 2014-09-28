@@ -3,10 +3,12 @@ package to.uk.ilexiconn.jurassicraft.entity.model;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
+
 import org.lwjgl.opengl.GL11;
+
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityTyrannosaurus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityTyrannosaurus;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 

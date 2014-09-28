@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity;
 
 import java.util.ArrayList;
 import java.util.List;

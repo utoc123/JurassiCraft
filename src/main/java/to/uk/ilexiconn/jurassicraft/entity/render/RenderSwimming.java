@@ -1,10 +1,13 @@
-package to.uk.ilexiconn.jurassicraft.entity;
+package to.uk.ilexiconn.jurassicraft.entity.render;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.EntityLivingBase;
+
 import org.lwjgl.opengl.GL11;
+
+import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 
 @SideOnly(Side.CLIENT)
 public abstract class RenderSwimming extends RenderDinosaur

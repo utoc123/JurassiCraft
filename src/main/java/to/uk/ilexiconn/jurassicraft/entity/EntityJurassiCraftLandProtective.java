@@ -35,6 +35,12 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
         this.targetTasks.addTask(4, new JurassiCraftEntityAIAngerProtective(this));
     }
 
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
     /**
      * Sets the anger level of the creature. This is a short that is reduced to
      * zero if it is positive (done in the JurassiCraftEntityAIAngerProtective AI class).

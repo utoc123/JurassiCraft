@@ -70,7 +70,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         this.animID = 0;
         this.animTick = 0;
     }
-
+    
     @Override
     public boolean isAIEnabled()
     {

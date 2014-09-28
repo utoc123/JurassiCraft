@@ -9,7 +9,7 @@ package to.uk.ilexiconn.jurassicraft.entity.model;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityMeganeura;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityMeganeura;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
