@@ -69,7 +69,7 @@ public class GuiCultivateProcess extends GuiScreen
         this.buttonList.clear();
         this.guiLeft = (int) ((this.width - this.xSize) / 2);
         this.guiTop = (int) ((this.height - this.ySize) / 2);
-        this.buttonList.add(new GuiButton(0, this.guiLeft + (this.xSize - 100) / 2, this.guiTop + 70, 100, 20, "Cancel hatching"));
+        this.buttonList.add(new GuiButton(0, this.guiLeft + (this.xSize - 100) / 2, this.guiTop + 70, 100, 20, "Stop cultivating"));
     }
 
     @Override
