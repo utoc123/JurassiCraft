@@ -127,7 +127,7 @@ public class Util
     {
         try
         {
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.entity.Entity" + dino.creatureName);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaur.Entity" + dino.creatureName);
             dinos.put(dino, entity);
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
