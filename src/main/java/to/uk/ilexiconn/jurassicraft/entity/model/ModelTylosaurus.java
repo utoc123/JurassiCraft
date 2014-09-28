@@ -7,9 +7,7 @@ package to.uk.ilexiconn.jurassicraft.entity.model;
 
 
 import to.uk.ilexiconn.jurassicraft.entity.entity.EntityTylosaurus;
-
 import net.minecraft.entity.Entity;
-
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
@@ -617,6 +615,9 @@ public class ModelTylosaurus extends MowzieModelBase
     walk(Right_Front_Flipper, 1 * scaleFactor, 0.3F, false, 0F, 0F, f, f1);
     walk(Left_Back_Flipper, 1 * scaleFactor, 0.3F, false, -1F, 0F, f, f1);
     walk(Right_Back_Flipper, 1 * scaleFactor, 0.3F, false, -1F, 0F, f, f1);
+/*    for (int i = 0; i < bodyParts.length; i++) {
+    	bodyParts[i].rotateAngleY += tylo.deltaAngle*(Math.PI/180);
+    }*/
   }
   
 }
