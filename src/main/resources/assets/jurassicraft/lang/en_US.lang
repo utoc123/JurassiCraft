@@ -20,7 +20,7 @@ entity.Triceratops.name=Triceratops
 entity.Stegosaur.name=Stegosaurus
 entity.Dilophosaurus.name=Dilophosaurus
 entity.Cearadactylus.name=Cearadactylus
-entity.Sarcosuchus.name=Sarcosuchus
+entity.Sarcosuchus.name=Sarchosuchus
 
 //items
 item.dinoBone.name=Dinosaur Bone
@@ -59,8 +59,8 @@ item.Oviraptor_DNA.name=Oviraptor DNA
 item.Tylosaurus_Meat.name=Tylosaurus Meat
 item.Cearadactylus_Meat.name=Cearadactylus Meat
 item.Cearadactylus_DNA.name=Cearadactylus DNA
-item.Sarcosuchus_Meat.name=Sarcosuchus Meat
-item.Sarcosuchus_DNA.name=Sarcosuchus DNA
+item.Sarcosuchus_Meat.name=Sarchosuchus Meat
+item.Sarcosuchus_DNA.name=Sarchosuchus DNA
 item.egg_Brachiosaur.name=Egg of a Brachiosaurus
 item.egg_Velociraptor.name=Egg of a Velociraptor
 item.egg_Ankylosaur.name=Egg of an Ankylosaurus
@@ -78,7 +78,8 @@ item.egg_Hypsilophodon.name=Egg of a Hypsilophodon
 item.egg_Leaellynasaur.name=Egg of a Leaellynasaura
 item.egg_Gallimimus.name=Egg of a Gallimimus
 item.egg_Cearadactylus.name=Egg of a Cearadactylus
-item.egg_Sarcosuchus.name=Egg of a Sarcosuchus
+item.egg_Sarcosuchus.name=Egg of a Sarchosuchus
+item.growthSerum.name= Growth Serum
 
 /blocks
 tile.cultivate_idle.name=Cultivate
