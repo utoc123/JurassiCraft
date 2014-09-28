@@ -22,7 +22,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
     public EntityJurassiCraftLandAggressive(World world, byte id)
     {
         super(world, id);
-        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 6.0D * this.getCreatureSpeed(), false));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.25F * this.getCreatureSpeed(), false));
         this.targetTasks.addTask(1, new JurassiCraftEntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new JurassiCraftEntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
@@ -35,6 +35,12 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
         return false;
     }
 
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
     /**
      * Sets the attack target if it is adult. If it is also tamed, this will check if the target is tamed by the player.
      */
@@ -57,20 +63,6 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
     }
 
     @Override
-    protected Entity findPlayerToAttack()
-    {
-        if (this.isCreatureAdult() && !this.isTamed())
-        {
-            EntityPlayer entityplayer = this.worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
-            return entityplayer != null && this.canEntityBeSeen(entityplayer) ? entityplayer : null;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    @Override
     public boolean attackEntityFrom(DamageSource damageSource, float damage)
     {
         if (this.isEntityInvulnerable())
@@ -83,7 +75,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
             if (attacker != (Entity) null && this.checkTarget(attacker))
             {
                 this.becomeAngryAt(this, attacker);
-                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 16.0D, 16.0D));
+                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 8.0D, 16.0D));
                 for (int i = 0; i < list.size(); ++i)
                 {
                     Entity entityNeighbor = (Entity) list.get(i);
@@ -118,14 +110,14 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
     @Override
     public boolean attackEntityAsMob(Entity entity)
     {
-        float f = (float) this.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+		float attackDamage = (float) this.getCreatureAttack();
         int i = 0;
         if (entity instanceof EntityLivingBase)
         {
-            f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) entity);
+        	attackDamage += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) entity);
             i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) entity);
         }
-        boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+        boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
         if (flag)
         {
             if (i > 0)

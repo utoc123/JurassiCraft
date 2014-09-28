@@ -1,7 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.animation;
 
 import thehippomaster.AnimationAPI.AIAnimation;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityTyrannosaurus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityTyrannosaurus;
 
 
 public class AITyrannosaurusRoar extends AIAnimation

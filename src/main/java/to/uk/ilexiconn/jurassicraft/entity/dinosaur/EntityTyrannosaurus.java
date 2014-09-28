@@ -1,10 +1,11 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfNonTamed;
 import to.uk.ilexiconn.jurassicraft.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
@@ -28,7 +29,7 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive implem
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(2, new AITyrannosaurusRoar(this));
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
-        this.tasks.addTask(5, new EntityAITempt(this, 1.2D * this.getCreatureSpeed(), Items.beef, false));
+        this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.2D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));

@@ -8,6 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 
 @SideOnly(Side.CLIENT)
@@ -89,10 +90,22 @@ public class GuiCultivateProcess extends GuiScreen
         mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiCultivateProgress.png"));
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
         this.drawTexturedModalRect(this.guiLeft + 13, this.guiTop + 49, 0, 107, this.cultivator.getcultivateTimeProgressScaled(150), 9);
-        if (this.cultivator.getEmbryoID() >= 0)
+        byte embryoID = this.cultivator.getEmbryoID();
+		if (embryoID >= 0)
         {
-            this.fontRendererObj.drawString(StatCollector.translateToLocal("Cultivating: " + Util.getDinoByID(this.cultivator.getEmbryoID()).creatureName), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Cultivating: " + Util.getDinoByID(this.cultivator.getEmbryoID()).creatureName)) / 2, this.guiTop + 10, 4210752);
-            this.fontRendererObj.drawString(StatCollector.translateToLocal("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%"), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%")) / 2, this.guiTop + 30, 4210752);
+            Dinosaur dino = Util.getDinoByID(embryoID);
+            
+            if(dino != null)
+            {
+    			this.fontRendererObj.drawString(StatCollector.translateToLocal("Cultivating: " + dino.creatureName), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Cultivating: " + dino.creatureName)) / 2, this.guiTop + 10, 4210752);
+                this.fontRendererObj.drawString(StatCollector.translateToLocal("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%"), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%")) / 2, this.guiTop + 30, 4210752);
+            }
+            else
+            {
+    			this.fontRendererObj.drawString(StatCollector.translateToLocal("Cultivating: " + embryoID), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Cultivating: " + embryoID)) / 2, this.guiTop + 10, 4210752);
+                this.fontRendererObj.drawString(StatCollector.translateToLocal("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%"), this.guiLeft + (this.xSize - this.fontRendererObj.getStringWidth("Progress: " + this.cultivator.getcultivateTimeProgressScaled(100) + "%")) / 2, this.guiTop + 30, 4210752);
+            }
+           
         }
         super.drawScreen(x, y, f);
     }

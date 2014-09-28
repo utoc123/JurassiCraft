@@ -1,7 +1,11 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity;
 
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import io.netty.buffer.ByteBuf;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -14,11 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Random;
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 {
@@ -36,6 +36,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     {
         super(world);
         this.setSize(0.5F, 0.5F);
+        this.stepHeight = 1F;
     }
 
     public EntityDinoEgg(World world, String dino, int spawnTime)
@@ -169,16 +170,23 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
             {
                 int amountToIncrease = 0;
 
-                boolean warm = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 6;
-                boolean overheat = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ) > 10;
-
+                List<EggEnviroment> enviroments = EggEnviroment.getEnviroments(this);
+                
                 Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
 
-                if (dinosaur.waterCreature)
+                boolean wet = enviroments.contains(EggEnviroment.WET);
+                
+                boolean warm = enviroments.contains(EggEnviroment.WARM);
+                
+                boolean overheat = enviroments.contains(EggEnviroment.OVERHEAT);
+                
+                boolean cold = enviroments.contains(EggEnviroment.COLD);
+                
+				if (dinosaur.waterCreature)
                 {
-                    if (!isWet())
+                    if (!wet)
                     {
-                        if (overheat)
+						if (overheat)
                         {
                             amountToIncrease = -2;
                         }
@@ -194,13 +202,13 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
                 }
                 else
                 {
-                    if (warm && !this.isWet())
+					if (warm && !wet)
                     {
                         amountToIncrease = 1;
                     }
                     else
                     {
-                        if (!warm && this.isWet())
+                        if (cold && wet)
                         {
                             amountToIncrease = -2;
                         }
@@ -231,19 +239,15 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
                     try
                     {
-
                         Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
-                        dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
-
                         if (dinoToSpawn instanceof EntityJurassiCraftCreature)
                         {
                             ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
+                            dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
+                            this.worldObj.spawnEntityInWorld(dinoToSpawn);
+                            this.currentSpawnTime = 0;
+                            this.setDead();
                         }
-
-                        worldObj.spawnEntityInWorld(dinoToSpawn);
-                        this.setDead();
-                        this.currentSpawnTime = 0;
-                        //attackEntityFrom(DamageSource.generic, 0F);
                     }
                     catch (InstantiationException e)
                     {

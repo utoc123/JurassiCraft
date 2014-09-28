@@ -13,13 +13,14 @@ import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftAISit;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAISit;
 
 public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature implements IEntityOwnable
 {
 
-    protected JurassiCraftAISit aiSit = new JurassiCraftAISit(this);
+    protected JurassiCraftEntityAISit aiSit = new JurassiCraftEntityAISit(this);
     //DataWatchers: Owner = 14, Tamed Related = 15;
 
     public EntityJurassiCraftTameable(World world, byte id)
@@ -37,42 +38,80 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
     }
 
     @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
+    @Override
     public boolean interact(EntityPlayer player)
     {
         ItemStack heldItemStack = player.inventory.getCurrentItem();
         if (heldItemStack != null)
         {
-            //if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem())) { CHECK LATER
-            if (heldItemStack.getItem().equals(Items.golden_carrot))
+            if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem()))
             {
-                if (!player.capabilities.isCreativeMode)
-                {
-                    heldItemStack.stackSize--;
-                }
-                if (heldItemStack.stackSize <= 0)
-                {
-                    player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
-                }
-                this.heal(2.0F);
-                if (!this.isTamed() && !this.worldObj.isRemote)
-                {
-                    if (this.rand.nextInt(5) == 0)
+            	if ((double) (this.getHealth() + 3.0F) <= this.getCreatureHealth()) {
+                    if (!player.capabilities.isCreativeMode)
                     {
-                        this.setTamed(true);
-                        this.setPathToEntity((PathEntity) null);
-                        this.setAttackTarget((EntityLivingBase) null);
-                        this.aiSit.setSitting(true);
-                        this.setOwner(player.getCommandSenderName());
-                        this.playTameEffect(true);
-                        this.worldObj.setEntityState(this, (byte) 7);
-                        player.addChatMessage(new ChatComponentText("You tamed this creature!"));
-                        player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                        heldItemStack.stackSize--;
                     }
-                    else
+                    if (heldItemStack.stackSize <= 0)
                     {
-                        this.playTameEffect(true);
-                        this.worldObj.setEntityState(this, (byte) 6);
+                        player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
                     }
+                    this.heal(3.0F);
+            	} 
+            	else 
+            	{
+            		if (!this.isTamed() && !this.worldObj.isRemote)
+                    {
+                        if (!player.capabilities.isCreativeMode)
+                        {
+                            heldItemStack.stackSize--;
+                        }
+                        if (heldItemStack.stackSize <= 0)
+                        {
+                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
+                        }
+                        if (this.rand.nextInt(4) == 0)
+                        {
+                            this.setTamed(true);
+                            this.setPathToEntity((PathEntity) null);
+                            this.setAttackTarget((EntityLivingBase) null);
+                            this.aiSit.setSitting(true);
+                            this.setOwner(player.getCommandSenderName());
+                            this.playTameEffect(true);
+                            this.worldObj.setEntityState(this, (byte) 7);
+                            player.addChatMessage(new ChatComponentText("You tamed this creature!"));
+                            player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                        }
+                        else
+                        {
+                            this.playTameEffect(true);
+                            this.worldObj.setEntityState(this, (byte) 6);
+                        }
+                    }	
+            	}
+                
+            }
+            else if (this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote && heldItemStack.getItem() != ModItems.growthSerum)
+            {
+                if (!this.isSitting())
+                {
+                    this.isJumping = false;
+                    this.setPathToEntity((PathEntity) null);
+                    this.setTarget((Entity) null);
+                    this.setAttackTarget((EntityLivingBase) null);
+                    this.aiSit.setSitting(true);
+                    this.setSitting(true);
+                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                }
+                else
+                {
+                    this.aiSit.setSitting(false);
+                    this.setSitting(false);
+                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is not sitting anymore."));
                 }
             }
             return super.interact(player);
@@ -151,7 +190,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
         }
     }
 
-    public JurassiCraftAISit getAiSit()
+    public JurassiCraftEntityAISit getAiSit()
     {
         return this.aiSit;
     }
@@ -204,7 +243,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
      */
     public boolean checkTarget(Entity target)
     {
-        if (target != (Entity) null && target != this.getOwner())
+        if (target != (Entity) null && target != this && target != this.getOwner())
         {
             if (target instanceof EntityJurassiCraftTameable)
             {

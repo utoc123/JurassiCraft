@@ -1,28 +1,27 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
-public class EntityHypsilophodon extends EntityJurassiCraftLandProtective implements IDinosaur
+public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive implements IDinosaur
 {
 
-    public EntityHypsilophodon(World world)
+    public EntityDilophosaurus(World par1World)
     {
-        super(world, (byte) 8, 2);
+        super(par1World, (byte) 13);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
         this.tasks.addTask(2, this.aiSit);
-        // tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        tasks.addTask(3, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.wheat, false));
-        this.tasks.addTask(4, new EntityAIAvoidEntity(this, EntityVelociraptor.class, 16.0F, 1.1D * this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
-        // tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 6.0D * this.getCreatureSpeed()));
+        this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, this.getCreatureSpeed()));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
     }
 

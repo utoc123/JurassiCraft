@@ -49,6 +49,12 @@ public abstract class EntitySwimming extends EntityLiving implements IAnimals
     }
 
     @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+    
+    @Override
     protected boolean canTriggerWalking()
     {
         return false;

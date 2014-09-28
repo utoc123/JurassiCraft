@@ -9,7 +9,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityDinoEgg;
+import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
 
 import java.util.List;
 

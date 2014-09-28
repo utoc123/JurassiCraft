@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHelper;
 
@@ -22,10 +23,9 @@ import java.util.HashSet;
 
 public class EntityJurassiCraftCreature extends EntityCreature implements IAnimatedEntity, IEntityAdditionalSpawnData
 {
-
     public byte creatureID;
-    public String dnaSequence = "";
-    public float geneticQuality = 1.0F;
+    public String dnaSequence;
+    public float geneticQuality;
     public boolean gender;
     public byte texture;
     public float height;
@@ -50,18 +50,14 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
             System.out.print("Creature does not have a correct ID. ID set to 0.");
             this.creatureID = 0;
         }
-        if (this.getDNASequence().length() <= 0)
-        {
-            this.setDNASequence(JurassiCraftDNAHelper.createDefaultDNA());
-        }
         if (this.getGeneticQuality() < 0.6F || this.getGeneticQuality() >= 1.4F)
         {
-            System.out.print("Creature does not have a correct genetic quality. Genetic quality set to 75%");
-            this.setGenetics(75, this.getDNASequence());
+        	//This will set a random genetics. It will be replaced if there is one already set.
+            this.setRandomGenetics();
         }
         this.resetGrowthStageList();
-        this.setCreatureGender(JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) > 0.5F);
-        this.setCreatureTexture((byte) Math.round(JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence())*Util.getDinoByID(creatureID).numberOfTextures));
+        this.setCreatureGender(JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) == 0.5F ? this.rand.nextBoolean() : (JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()) > 0.5F));
+        this.setNewCreatureTexture(JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
         if (this.worldObj.isRemote)
         {
             this.setCreatureSize();
@@ -74,7 +70,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         this.animID = 0;
         this.animTick = 0;
     }
-
+    
     @Override
     public boolean isAIEnabled()
     {
@@ -118,49 +114,54 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
      */
     private void updateCreatureData(int ticks)
     {
-        System.out.println("getDNASequence: " + this.getDNASequence());
-        System.out.println("getGeneticQuality: " + this.getGeneticQuality());
-        double oldHealth = this.getCreatureHealth();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((int) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxHealth - Util.getDinoByID(this.creatureID).minHealth) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minHealth)));
-        double newHealth = this.getCreatureHealth();
-        this.heal((float) (newHealth - oldHealth));
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxStrength - Util.getDinoByID(this.creatureID).minStrength) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minStrength)));
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxSpeed - Util.getDinoByID(this.creatureID).minSpeed) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minSpeed)));
-        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxKnockback - Util.getDinoByID(this.creatureID).minKnockback) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minKnockback)));
-        this.setCreatureLength();
-        this.setCreatureHeight();
-        this.setHalfOfTheCreatureSize();
-        this.setCreatureScale();
-        /*System.out.println("=============== UPDATE DATA ===============");
-         if (this.worldObj.isRemote) {
-         System.out.println("=============== Client ===============");
-         System.out.println("getCreatureHealth: " + this.getCreatureHealth());
-         System.out.println("getCreatureAttack: " + this.getCreatureAttack());
-         System.out.println("getCreatureSpeed: " + this.getCreatureSpeed());
-         System.out.println("getCreatureKnockback: " + this.getCreatureKnockback());
-         System.out.println("getCreatureTexture: " + this.getCreatureTexture());
-         System.out.println("getCreatureLength: " + this.getCreatureLength());
-         System.out.println("getCreatureHeight: " + this.getCreatureHeight());
-         System.out.println("getCreatureScale: " + this.getCreatureScale());
-         System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
-         System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
-         System.out.println("getDNASequence: " + this.getDNASequence());
-         System.out.println("======================================");
-         } else {
-         System.out.println("=============== Server ===============");
-         System.out.println("getCreatureHealth: " + this.getCreatureHealth());
-         System.out.println("getCreatureAttack: " + this.getCreatureAttack());
-         System.out.println("getCreatureSpeed: " + this.getCreatureSpeed());
-         System.out.println("getCreatureKnockback: " + this.getCreatureKnockback());
-         System.out.println("getCreatureTexture: " + this.getCreatureTexture());
-         System.out.println("getCreatureLength: " + this.getCreatureLength());
-         System.out.println("getCreatureHeight: " + this.getCreatureHeight());
-         System.out.println("getCreatureScale: " + this.getCreatureScale());
-         System.out.println("getCreatureGenderString: " + this.getCreatureGenderString());
-         System.out.println("getCreatureGenderString: " + this.getCreatureTexture());
-         System.out.println("getDNASequence: " + this.getDNASequence());
-         System.out.println("======================================");
-         }*/
+		double oldHealth = this.getCreatureHealth();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((int) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxHealth - Util.getDinoByID(this.creatureID).minHealth) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minHealth)));
+		double newHealth = this.getCreatureHealth();
+		this.heal((float) (newHealth - oldHealth));
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxStrength - Util.getDinoByID(this.creatureID).minStrength) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minStrength)));
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((float) (ticks * (Util.getDinoByID(this.creatureID).maxSpeed - Util.getDinoByID(this.creatureID).minSpeed) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minSpeed));
+		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue((float) (this.getGeneticQuality() * (ticks * (Util.getDinoByID(this.creatureID).maxKnockback - Util.getDinoByID(this.creatureID).minKnockback) / Util.getDinoByID(this.creatureID).ticksToAdulthood + Util.getDinoByID(this.creatureID).minKnockback)));
+		this.setCreatureLength();
+		this.setCreatureHeight();
+		this.setHalfOfTheCreatureSize();
+		this.setCreatureScale();
+		/*System.out.println("=============== UPDATE DATA ===============");
+		if (this.worldObj.isRemote) 
+		{
+			System.out.println("=============== Client ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
+			System.out.println("Health: " + this.getCreatureHealth());
+			System.out.println("Attack: " + this.getCreatureAttack());
+			System.out.println("Speed: " + this.getCreatureSpeed());
+			System.out.println("Knockback: " + this.getCreatureKnockback());
+			System.out.println("Length: " + this.getCreatureLength());
+			System.out.println("Height: " + this.getCreatureHeight());
+			System.out.println("Scale: " + this.getCreatureScale());
+			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()));
+			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
+			System.out.println("Adult: " + this.isCreatureAdult());
+			System.out.println("======================================");
+		} 
+		else 
+		{
+			System.out.println("=============== Server ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
+			System.out.println("Health: " + this.getCreatureHealth());
+			System.out.println("Attack: " + this.getCreatureAttack());
+			System.out.println("Speed: " + this.getCreatureSpeed());
+			System.out.println("Knockback: " + this.getCreatureKnockback());
+			System.out.println("Length: " + this.getCreatureLength());
+			System.out.println("Height: " + this.getCreatureHeight());
+			System.out.println("Scale: " + this.getCreatureScale());
+			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()));
+			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
+			System.out.println("Adult: " + this.isCreatureAdult());
+			System.out.println("======================================");
+		}*/
     }
 
     /**
@@ -350,7 +351,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
             {
                 this.showStatus();
             }
-            else if (player.getHeldItem().getItem().equals(Items.golden_carrot))
+            else if (player.getHeldItem().getItem().equals(ModItems.growthSerum))
             {
                 this.forceCreatureGrowth(player, player.getHeldItem(), (byte) 5);
             }
@@ -384,6 +385,11 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         return Util.getDinoByID(this.creatureID).creatureName;
     }
 
+	/** Checks if the creature has a genetic code. */
+	public boolean hasDNASequence() {
+		return !(this.getDNASequence() == null || this.getDNASequence() == "");
+	}
+
     /**
      * Sets the creature DNA sequence.
      */
@@ -401,12 +407,32 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     }
 
     /**
-     * Sets the creature genetic data.
+     * Sets the creature genetic data depending on the dna quality and code.
      */
     public void setGenetics(int dnaQuality, String dna)
     {
         this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(dna, dnaQuality));
         this.setGeneticQuality(JurassiCraftDNAHelper.getDefaultGeneticDNAQuality(dna));
+    }
+
+    /** Sets the creature genetic data randomly. */
+    public void setRandomGenetics()
+    {
+    	String randomDNA = JurassiCraftDNAHelper.createDefaultDNA();
+    	switch (this.rand.nextInt(3)) {
+    		case 0:
+    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 50));
+    			break;
+    		case 1:
+    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 75));
+    			break;
+    		case 2:
+    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 100));
+    			break;
+    		default:
+    	        this.setDNASequence(JurassiCraftDNAHelper.reviseDNA(randomDNA, 75));
+    	}
+        this.setGeneticQuality(JurassiCraftDNAHelper.getDefaultGeneticDNAQuality(randomDNA));
     }
 
     /**
@@ -547,9 +573,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         return (int) ((this.getCreatureHeight() * i) / (1.2F * Util.getDinoByID(this.creatureID).maxHeight));
     }
 
-    /**
-     * Returns true if the creature is a male.
-     */
+    /** Returns true if the creature is a male. */
     public boolean isMale()
     {
         if (this.getCreatureGender())
@@ -562,9 +586,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
     }
 
-    /**
-     * Returns the creature gender as String.
-     */
+    /** Returns the creature gender as String. */
     public String getCreatureGenderString()
     {
         if (this.getCreatureGender())
@@ -577,28 +599,37 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
     }
 
-    /**
-     * Returns the creature gender. False is female and true is male.
-     */
+    /** Returns the creature gender. False is female and true is male. */
     public boolean getCreatureGender()
     {
         return this.gender;
     }
 
-    /**
-     * Sets the creature gender. 0 is female and 1 is male.
-     */
+    /** Sets the creature gender. 0 is female and 1 is male. */
     public void setCreatureGender(boolean sex)
     {
         this.gender = sex;
     }
 
     /**
-     * Sets the creature texture.
+     * Sets the creature texture based on the genetics.
      */
-    private void setCreatureTexture(byte textureID)
+    private void setNewCreatureTexture(float textureFromGenetics)
     {
-        this.texture = textureID;
+    	float texturesInterval = (float) (1.0F/Util.getDinoByID(this.creatureID).numberOfTextures);
+    	for (int i = 1; i <= Util.getDinoByID(this.creatureID).numberOfTextures; i++) {
+    		if (textureFromGenetics <= texturesInterval * i) {
+    	        this.texture = (byte) (i - 1);
+    	        return;
+    		}
+    	}
+        this.texture = (byte) 0;
+    }
+    
+    /** Sets the creature texture. */
+    private void setCreatureTexture(byte texture)
+    {
+        this.texture = texture;
     }
 
     /**
@@ -787,9 +818,9 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         compound.setInteger("TicksExisted", this.getTotalTicksLived());
         compound.setString("DNASequence", this.getDNASequence());
         compound.setFloat("GeneticQuality", this.getGeneticQuality());
-        compound.setByte("Stage", this.getGrowthStage());
         compound.setBoolean("Gender", this.getCreatureGender());
         compound.setByte("Texture", this.getCreatureTexture());
+        compound.setByte("Stage", this.getGrowthStage());
     }
 
     @Override
@@ -799,10 +830,10 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         this.setTicksExisted(compound.getInteger("TicksExisted"));
         this.setDNASequence(compound.getString("DNASequence"));
         this.setGeneticQuality(compound.getFloat("GeneticQuality"));
-        this.resetGrowthStageList();
-        this.setGrowthStage(compound.getByte("Stage"));
         this.setCreatureGender(compound.getBoolean("Gender"));
         this.setCreatureTexture(compound.getByte("Texture"));
+        this.resetGrowthStageList();
+        this.setGrowthStage(compound.getByte("Stage"));
         this.setCreatureLength();
         this.setCreatureHeight();
         this.setCreatureScale();

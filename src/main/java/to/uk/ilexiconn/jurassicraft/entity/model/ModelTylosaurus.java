@@ -6,7 +6,11 @@
 package to.uk.ilexiconn.jurassicraft.entity.model;
 
 
+<<<<<<< HEAD
 import to.uk.ilexiconn.jurassicraft.entity.entity.EntityTylosaurus;
+=======
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityTylosaurus;
+>>>>>>> FETCH_HEAD
 import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;

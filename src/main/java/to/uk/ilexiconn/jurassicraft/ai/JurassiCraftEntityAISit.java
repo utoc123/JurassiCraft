@@ -16,6 +16,7 @@ public class JurassiCraftEntityAISit extends EntityAIBase
         this.setMutexBits(5);
     }
 
+    @Override
     public boolean shouldExecute()
     {
         if (!this.creature.isTamed())
@@ -37,12 +38,14 @@ public class JurassiCraftEntityAISit extends EntityAIBase
         }
     }
 
+    @Override
     public void startExecuting()
     {
         this.creature.getNavigator().clearPathEntity();
         this.creature.setSitting(true);
     }
 
+    @Override
     public void resetTask()
     {
         this.creature.setSitting(false);

@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.animation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import thehippomaster.AnimationAPI.AIAnimation;
-import to.uk.ilexiconn.jurassicraft.entity.entity.EntityVelociraptor;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityVelociraptor;
 
 public class AIVelociraptorLeap extends AIAnimation
 {

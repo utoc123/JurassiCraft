@@ -1,34 +1,29 @@
-package to.uk.ilexiconn.jurassicraft.entity.entity;
+package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
-public class EntityTriceratops extends EntityJurassiCraftLandProtective implements IDinosaur
+public class EntityOviraptor extends EntityJurassiCraftLandAggressive implements IDinosaur
 {
 
-    public EntityTriceratops(World world)
+    public EntityOviraptor(World world)
     {
-        super(world, (byte) 4, 1);
+        super(world, (byte) 15);
         this.getNavigator().setAvoidsWater(true);
-        this.tasks.addTask(0, new EntityAISwimming(this));
+        tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         // tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        tasks.addTask(4, new EntityAITempt(this, 1.1D * this.getCreatureSpeed(), Items.wheat, false));
+        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         // tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
-    }
-
-    @Override
-    public double getMountedYOffset()
-    {
-        return (double) this.getYBouningBox() * 0.91D;
+        tasks.addTask(5, new EntityAIWander(this, 0.75D * this.getCreatureSpeed()));
+        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        tasks.addTask(7, new EntityAILookIdle(this));
     }
 
     @Override
