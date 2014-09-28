@@ -7,7 +7,7 @@ import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
 public class JurassiCraftEntityAIOwnerHurtByTarget extends EntityAITarget
 {
     EntityJurassiCraftTameable defendingTameable;
-    EntityLivingBase howTheOwnerIsAttacking;
+    EntityLivingBase whoTheOwnerIsAttacking;
     private int revengeTime;
 
     public JurassiCraftEntityAIOwnerHurtByTarget(EntityJurassiCraftTameable entityTameable)
@@ -33,15 +33,15 @@ public class JurassiCraftEntityAIOwnerHurtByTarget extends EntityAITarget
             }
             else
             {
-                this.howTheOwnerIsAttacking = entitylivingbase.getAITarget();
+                this.whoTheOwnerIsAttacking = entitylivingbase.getAITarget();
                 int i = entitylivingbase.func_142015_aE();
-                if (this.howTheOwnerIsAttacking instanceof EntityJurassiCraftTameable)
+                if (this.whoTheOwnerIsAttacking instanceof EntityJurassiCraftTameable)
                 {
-                    return i != this.revengeTime && this.isSuitableTarget(this.howTheOwnerIsAttacking, false) && (this.howTheOwnerIsAttacking.getClass() != this.defendingTameable.getClass() || ((EntityJurassiCraftTameable) this.howTheOwnerIsAttacking).getOwner() != this.defendingTameable.getOwner());
+                    return i != this.revengeTime && this.isSuitableTarget(this.whoTheOwnerIsAttacking, false) && (this.whoTheOwnerIsAttacking.getClass() != this.defendingTameable.getClass() || ((EntityJurassiCraftTameable) this.whoTheOwnerIsAttacking).getOwner() != this.defendingTameable.getOwner());
                 }
                 else
                 {
-                    return i != this.revengeTime && this.isSuitableTarget(this.howTheOwnerIsAttacking, false);
+                    return i != this.revengeTime && this.isSuitableTarget(this.whoTheOwnerIsAttacking, false);
                 }
             }
         }
@@ -50,7 +50,7 @@ public class JurassiCraftEntityAIOwnerHurtByTarget extends EntityAITarget
     @Override
     public void startExecuting()
     {
-        this.taskOwner.setAttackTarget(this.howTheOwnerIsAttacking);
+        this.taskOwner.setAttackTarget(this.whoTheOwnerIsAttacking);
         EntityLivingBase defenderCreature = this.defendingTameable.getOwner();
         if (defenderCreature != null)
         {

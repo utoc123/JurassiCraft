@@ -69,7 +69,7 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
             if (attacker != (Entity) null && this.checkTarget(attacker))
             {
                 this.becomeAngryAt(this, attacker);
-                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 16.0D, 16.0D));
+                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 8.0D, 16.0D));
                 for (int i = 0; i < list.size(); ++i)
                 {
                     Entity entityNeighbor = (Entity) list.get(i);

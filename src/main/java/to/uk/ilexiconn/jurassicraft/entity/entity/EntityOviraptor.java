@@ -19,7 +19,7 @@ public class EntityOviraptor extends EntityJurassiCraftLandAggressive implements
         tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         // tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed(), false));
+        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         // tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         tasks.addTask(5, new EntityAIWander(this, 0.75D * this.getCreatureSpeed()));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));

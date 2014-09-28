@@ -132,7 +132,7 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
 		{
 			Entity attacker = damageSource.getEntity();
 			int count = 0;
-			List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 16.0D, 16.0D));
+			List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(16.0D, 8.0D, 16.0D));
 			ArrayList<EntityJurassiCraftLandProtective> listChildren = new ArrayList<EntityJurassiCraftLandProtective>();
 			ArrayList<EntityJurassiCraftLandProtective> listAdult = new ArrayList<EntityJurassiCraftLandProtective>();
 			if (this.isCreatureAdult()) 

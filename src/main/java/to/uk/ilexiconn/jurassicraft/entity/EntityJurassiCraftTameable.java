@@ -15,12 +15,12 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftAISit;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAISit;
 
 public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature implements IEntityOwnable
 {
 
-    protected JurassiCraftAISit aiSit = new JurassiCraftAISit(this);
+    protected JurassiCraftEntityAISit aiSit = new JurassiCraftEntityAISit(this);
     //DataWatchers: Owner = 14, Tamed Related = 15;
 
     public EntityJurassiCraftTameable(World world, byte id)
@@ -184,7 +184,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
         }
     }
 
-    public JurassiCraftAISit getAiSit()
+    public JurassiCraftEntityAISit getAiSit()
     {
         return this.aiSit;
     }

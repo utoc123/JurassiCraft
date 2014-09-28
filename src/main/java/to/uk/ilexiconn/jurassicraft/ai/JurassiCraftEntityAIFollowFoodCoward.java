@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 
-public class JurassiCraftEntityAIFollowFood extends EntityAIBase
+public class JurassiCraftEntityAIFollowFoodCoward extends EntityAIBase
 {
     private EntityJurassiCraftCreature temptedEntity;
     private double speed;
@@ -20,10 +20,11 @@ public class JurassiCraftEntityAIFollowFood extends EntityAIBase
     private boolean isRunning;
     private boolean avoidWater;
 
-    public JurassiCraftEntityAIFollowFood(EntityJurassiCraftCreature creature, double velocity)
+    public JurassiCraftEntityAIFollowFoodCoward(EntityJurassiCraftCreature creature, double velocity)
     {
         this.temptedEntity = creature;
         this.speed = velocity;
+        this.setMutexBits(1);
         this.setMutexBits(3);
     }
 
@@ -52,6 +53,31 @@ public class JurassiCraftEntityAIFollowFood extends EntityAIBase
     }
 
     @Override
+    public boolean continueExecuting()
+    {
+		if (this.temptedEntity.getDistanceSqToEntity(this.temptingPlayer) < 24.0D) 
+		{
+			if (this.temptingPlayer.getDistanceSq(this.targetX, this.targetY, this.targetZ) > 0.010000000000000002D) 
+			{
+				return false;
+			}
+			if (Math.abs((double) this.temptingPlayer.rotationPitch - this.rotationPitchOfThePlayer) > 5.0D || Math.abs((double) this.temptingPlayer.rotationYaw - this.rotationYawOfThePlayer) > 5.0D) 
+			{
+				return false;
+			}
+		} 
+		else 
+		{
+			this.targetX = this.temptingPlayer.posX;
+			this.targetY = this.temptingPlayer.posY;
+			this.targetZ = this.temptingPlayer.posZ;
+		}
+		this.rotationPitchOfThePlayer = (double) this.temptingPlayer.rotationPitch;
+		this.rotationYawOfThePlayer = (double) this.temptingPlayer.rotationYaw;
+        return this.shouldExecute();
+    }
+
+    @Override
     public void startExecuting()
     {
         this.targetX = this.temptingPlayer.posX;
@@ -67,7 +93,7 @@ public class JurassiCraftEntityAIFollowFood extends EntityAIBase
     {
         this.temptingPlayer = null;
         this.temptedEntity.getNavigator().clearPathEntity();
-        this.delayTemptCounter = 60;
+        this.delayTemptCounter = 150;
         this.isRunning = false;
         this.temptedEntity.getNavigator().setAvoidsWater(this.avoidWater);
     }

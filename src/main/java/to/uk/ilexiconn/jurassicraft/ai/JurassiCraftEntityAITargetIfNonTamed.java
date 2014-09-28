@@ -14,6 +14,7 @@ public class JurassiCraftEntityAITargetIfNonTamed extends EntityAINearestAttacka
         this.creature = entityTameable;
     }
 
+    @Override
     public boolean shouldExecute()
     {
         return this.creature.isCreatureAdult() && !this.creature.isTamed() && super.shouldExecute();
