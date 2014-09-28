@@ -36,6 +36,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     {
         super(world);
         this.setSize(0.5F, 0.5F);
+        this.stepHeight = 1F;
     }
 
     public EntityDinoEgg(World world, String dino, int spawnTime)
