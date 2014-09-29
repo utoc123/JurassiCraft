@@ -10,9 +10,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.entity.EntitySwimming;
 import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;
 
-public class EntityTylosaurus extends NewEntitySwimming {
+public class EntityTylosaurus extends EntitySwimming {
 
     public EntityTylosaurus(World world)
     {

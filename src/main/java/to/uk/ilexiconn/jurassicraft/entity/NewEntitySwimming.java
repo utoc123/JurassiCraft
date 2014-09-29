@@ -77,6 +77,8 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
             
             this.renderYawOffset += (-((float) Math.atan2(this.motionX, this.motionZ)) * 180.0F / (float) Math.PI - this.renderYawOffset) * 0.5F;
             this.rotationYaw = this.renderYawOffset;
+            float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+            this.rotationPitch += ((float) Math.atan2(this.motionY, (double) f) * 180.0F / (float) Math.PI - this.rotationPitch) * 0.5F;
         }
         frame++;
     }
@@ -105,9 +107,9 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
                     MathHelper.floor_double(this.swimTargetY + this.height), MathHelper.floor_double(this.swimTargetZ))
                     .getMaterial() == Material.water)
             {
-//                this.motionX += dx / dist * 0.05D * (double) this.swimSpeed;
+                this.motionX += dx / dist * 0.05D * (double) this.swimSpeed;
                 this.motionY += dy / dist * 0.1D * (double) this.swimSpeed;
-//                this.motionZ += dz / dist * 0.05D * (double) this.swimSpeed;
+                this.motionZ += dz / dist * 0.05D * (double) this.swimSpeed;
             }
             else
             {
@@ -142,9 +144,6 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
             	this.distanceFromTarget = 100;
                 this.isAttacking = false;
             }
-            
-            float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-            this.rotationPitch += ((float) Math.atan2(this.motionY, (double) f) * 180.0F / (float) Math.PI - this.rotationPitch) * 0.5F;
             
         }
         else
