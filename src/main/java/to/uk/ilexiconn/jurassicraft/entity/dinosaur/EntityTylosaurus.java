@@ -11,15 +11,10 @@ import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.EntitySwimming;
+import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;
 import to.uk.ilexiconn.jurassicraft.utility.ControlledParam;
 
-public class EntityTylosaurus extends EntitySwimming {
-public int frame = 0;
-public float angle = 0;
-public float deltaAngle = 4;
-public float maxSpeed = 0.4F;
-public float currentSpeed = 0.2F;
-private int timeUntilDeltaAngleChange = 0;
+public class EntityTylosaurus extends NewEntitySwimming {
 
     public EntityTylosaurus(World world)
     {
@@ -35,6 +30,8 @@ private int timeUntilDeltaAngleChange = 0;
         this.swimSpeed = 0.6F;
 
         this.jumpOnLand = false;
+        this.attackInterval = 1;
+        this.isAgressive = true;
     }
 
     @Override
@@ -66,22 +63,5 @@ private int timeUntilDeltaAngleChange = 0;
     
     public void onUpdate() {
     	super.onUpdate();
-    	frame ++;
-       	if (this.inWater == true) {
-       		float vx = (float) (currentSpeed*Math.cos(angle*(Math.PI/180)));
-       		float vz = (float) (currentSpeed*Math.sin(angle*(Math.PI/180)));
-       		this.motionX = vx;
-       		this.motionZ = vz;
-       		this.angle += deltaAngle;
-       		if(timeUntilDeltaAngleChange <= 0){
-       			int I = rand.nextInt(20) + 1;
-    			if (I == 1)
-    			{
-    				deltaAngle = -1*deltaAngle;
-    				timeUntilDeltaAngleChange = 40;
-    			}
-       		}
-       		timeUntilDeltaAngleChange -= 1;
-       	}
     }
 }
