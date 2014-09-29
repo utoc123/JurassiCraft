@@ -1,8 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
-import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
-
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -36,8 +38,10 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive implem
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.2D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));
-        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityParasaurolophus.class, 0));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityStegosaur.class, 0));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityGallimimus.class, 0));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityOviraptor.class, 0));
     }
 
     public String getLivingSound()
