@@ -3,14 +3,12 @@ package to.uk.ilexiconn.jurassicraft;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
-import to.uk.ilexiconn.jurassicraft.item.JurassiCraftCraftingHandler;
 import to.uk.ilexiconn.llib.LLib;
 import to.uk.ilexiconn.llib.config.ConfigSync;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -26,6 +24,7 @@ public class JurassiCraft extends Util
 
     public static boolean versionCheck;
     public static boolean easterEggs;
+	public static EntityJurassiCraftCreature creatureToAnalyze;
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)

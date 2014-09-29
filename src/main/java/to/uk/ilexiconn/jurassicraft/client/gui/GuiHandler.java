@@ -1,6 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -10,6 +9,7 @@ import to.uk.ilexiconn.jurassicraft.container.ContainerDNAExtractor;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
 {
@@ -27,6 +27,9 @@ public class GuiHandler implements IGuiHandler
 
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
+		if (ID == 69) {
+			return new GuiDinoPad();
+		}
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity instanceof TileDNAExtractor)
             return new GuiDNAExtractor(player.inventory, (TileDNAExtractor) tileEntity);

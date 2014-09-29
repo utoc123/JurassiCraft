@@ -16,6 +16,8 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAISit;
+import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
+import to.uk.ilexiconn.jurassicraft.item.ItemGrowthSerum;
 
 public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature implements IEntityOwnable
 {
@@ -47,7 +49,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
     public boolean interact(EntityPlayer player)
     {
         ItemStack heldItemStack = player.inventory.getCurrentItem();
-        if (heldItemStack != null)
+        if (heldItemStack != null && !(heldItemStack.getItem() instanceof ItemGrowthSerum) && !(heldItemStack.getItem() instanceof ItemDinoPad))
         {
             if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem()))
             {
@@ -93,9 +95,8 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
                         }
                     }	
             	}
-                
             }
-            else if (this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote && heldItemStack.getItem() != ModItems.growthSerum)
+            else if (this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote)
             {
                 if (!this.isSitting())
                 {
@@ -116,7 +117,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
             }
             return super.interact(player);
         }
-        else if (this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote)
+        else if (heldItemStack == null && this.isTamed() && this.isOwner(player) && !this.worldObj.isRemote)
         {
             if (!this.isSitting())
             {

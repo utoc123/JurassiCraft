@@ -106,6 +106,10 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
      */
     private void becomePanic(EntityJurassiCraftLandProtective fleeingCreature)
     {
+    	if (fleeingCreature.isSitting()) {
+            this.aiSit.setSitting(false);
+            this.setSitting(false);
+    	}
         fleeingCreature.setFleeingTick(50 + rand.nextInt(71));
         fleeingCreature.setAttackTarget((EntityLivingBase) null);
         fleeingCreature.setAngerLevel((short) 0);

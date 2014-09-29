@@ -49,6 +49,10 @@ public class EntityJurassiCraftLandCoward extends EntityJurassiCraftRidable
     /** Increases the fleeing ticks by 75 ticks plus a random number of ticks between 0 and 70. */
     private void becomePanic(EntityJurassiCraftLandCoward fleeingCreature)
     {
+    	if (fleeingCreature.isSitting()) {
+            this.aiSit.setSitting(false);
+            this.setSitting(false);
+    	}
         fleeingCreature.setFleeingTick(75 + rand.nextInt(100));
         fleeingCreature.setAttackTarget((EntityLivingBase) null);
     }

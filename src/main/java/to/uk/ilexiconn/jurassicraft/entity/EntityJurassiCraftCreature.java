@@ -1,9 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
 import io.netty.buffer.ByteBuf;
-
 import java.util.HashSet;
-
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,12 +10,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
-
-import com.rafamv.bygoneage.items.Analyzer;
-
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -348,7 +346,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     {
         if (player.getHeldItem() != (ItemStack) null)
         {
-            if (player.getHeldItem().getItem() instanceof Analyzer)
+            if (player.getHeldItem().getItem() instanceof ItemDinoPad)
             {
                 this.showStatus();
             }
@@ -366,8 +364,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     @SideOnly(Side.CLIENT)
     private void showStatus()
     {
-        // FMLClientHandler.instance().getClient().thePlayer.openGui(BygoneAge.instance,
-        // BygoneAgeGuiInformation.ANALYZER.getGuiId(), this.worldObj, 0, 0, 0);
+    	JurassiCraft.creatureToAnalyze = this;
+        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 69, this.worldObj, 0, 0, 0);
     }
 
     /**
