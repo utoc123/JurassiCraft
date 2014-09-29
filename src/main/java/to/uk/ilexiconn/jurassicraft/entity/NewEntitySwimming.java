@@ -168,7 +168,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     			}
        		}
        		timeUntilDeltaAngleChange -= 1;
-       		System.out.println("Distance from target as the entity file sees it is" + distanceFromTarget);
+  //     		System.out.println("Distance from target as the entity file sees it is" + distanceFromTarget);
        	}
     }
 
