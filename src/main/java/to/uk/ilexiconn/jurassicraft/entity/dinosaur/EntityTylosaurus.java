@@ -19,7 +19,7 @@ public class EntityTylosaurus extends NewEntitySwimming {
         super(world, (byte) 14);
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
-        this.swimSpeed = 0.6F;
+        this.swimSpeed = 0.8F;
         this.jumpOnLand = false;
         this.attackInterval = 1;
         this.isAgressive = true;

@@ -72,8 +72,12 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     {
         super.onUpdate();
 
-        if (this.isInWater())
+        if (this.isInWater()) {
             this.motionY *= 0.1D;
+            
+            this.renderYawOffset += (-((float) Math.atan2(this.motionX, this.motionZ)) * 180.0F / (float) Math.PI - this.renderYawOffset) * 0.5F;
+            this.rotationYaw = this.renderYawOffset;
+        }
         frame++;
     }
 
@@ -92,7 +96,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
             if (dist < 1.0D || dist > 1000.0D)
             {
                 this.swimTargetX = this.posX + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadius);
-                this.swimTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadiusHeight * 10);
+                this.swimTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadiusHeight);
                 this.swimTargetZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadius);
                 this.isAttacking = false;
             }
@@ -138,11 +142,10 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
             	this.distanceFromTarget = 100;
                 this.isAttacking = false;
             }
-
-            this.renderYawOffset += (-((float) Math.atan2(this.motionX, this.motionZ)) * 180.0F / (float) Math.PI - this.renderYawOffset) * 0.5F;
-            this.rotationYaw = this.renderYawOffset;
+            
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.rotationPitch += ((float) Math.atan2(this.motionY, (double) f) * 180.0F / (float) Math.PI - this.rotationPitch) * 0.5F;
+            
         }
         else
         {
