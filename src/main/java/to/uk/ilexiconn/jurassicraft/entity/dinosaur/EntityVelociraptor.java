@@ -41,6 +41,7 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityTriceratops.class, 0, true));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGallimimus.class, 0, true));
         targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityOviraptor.class, 0, true));
+        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityBrachiosaur.class, 0, true));
     }
 
     public void onLivingUpdate()

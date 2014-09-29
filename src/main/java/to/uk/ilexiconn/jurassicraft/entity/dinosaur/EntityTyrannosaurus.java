@@ -42,6 +42,7 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive implem
         targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0));
         targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityGallimimus.class, 0));
         targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityOviraptor.class, 0));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityBrachiosaur.class, 0));
     }
 
     public String getLivingSound()
