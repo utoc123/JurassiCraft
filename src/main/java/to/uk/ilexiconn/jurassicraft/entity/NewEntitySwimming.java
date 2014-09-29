@@ -2,9 +2,7 @@ package to.uk.ilexiconn.jurassicraft.entity;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -13,7 +11,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 
 /* Inherithed from Animals+ by Click_Me */
 
-public abstract class NewEntitySwimming extends EntityLiving implements IAnimals
+public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
 {
 
     public byte creatureID;
@@ -40,7 +38,7 @@ public abstract class NewEntitySwimming extends EntityLiving implements IAnimals
 
     public NewEntitySwimming(World world, byte id)
     {
-        super(world);
+        super(world, id);
         if (id >= 0 && id < Util.getDinos().size())
         {
             this.creatureID = id;
@@ -61,12 +59,6 @@ public abstract class NewEntitySwimming extends EntityLiving implements IAnimals
     protected boolean canTriggerWalking()
     {
         return false;
-    }
-
-    @Override
-    protected boolean isAIEnabled()
-    {
-        return true;
     }
 
     @Override
@@ -228,13 +220,6 @@ public abstract class NewEntitySwimming extends EntityLiving implements IAnimals
         }
         else
             this.setAir(300);
-    }
-
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage);
     }
 
     @Override

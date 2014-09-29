@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoBone;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
+import to.uk.ilexiconn.jurassicraft.item.ItemDinoSteak;
 import to.uk.ilexiconn.jurassicraft.item.ItemFossil;
 import to.uk.ilexiconn.jurassicraft.item.ItemGrowthSerum;
 import to.uk.ilexiconn.jurassicraft.item.ItemGypsumPowder;
@@ -20,6 +21,7 @@ public class ModItems
     public static Item dinoBone;
     public static Item growthSerum;
     public static Item gypsumPowder;
+    public static Item dinoSteak;
 
     public void init()
     {
@@ -29,5 +31,6 @@ public class ModItems
         growthSerum = new ItemGrowthSerum();
         gypsumPowder = new ItemGypsumPowder();
         dinoPad = new ItemDinoPad();
+        dinoSteak = new ItemDinoSteak();
     }
 }

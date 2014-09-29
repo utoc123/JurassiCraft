@@ -1,9 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
+import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.EntitySwimming;
@@ -14,13 +17,8 @@ public class EntityCoelacanth extends EntitySwimming
     public EntityCoelacanth(World world)
     {
         super(world, (byte) 5);
-        Dinosaur dino = Util.getDinoByID(5);
-        //this.setSize(dino.xzHitbox, dino.yHitbox);
-        this.setSize(1.0F, 1.0F);
-
         this.swimRadius = 8.0F;
         this.swimRadiusHeight = 4.0F;
-
         this.swimSpeed = 0.4F;
         this.jumpOnLand = false;
     }
@@ -52,15 +50,12 @@ public class EntityCoelacanth extends EntitySwimming
     @Override
     public Item getDropItem()
     {
-        return Util.getMeat(5);
+        return Util.getMeat(this.getCreatureID());
     }
 
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        Dinosaur dino = Util.getDinoByID(5);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10);
-    }
-
+	@Override
+	protected void dropFewItems(boolean recentlyBeenHit, int enchantBonus) 
+	{
+		this.dropItem(Util.getMeat(this.getCreatureID()), 1);
+	}
 }

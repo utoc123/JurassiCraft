@@ -1,8 +1,15 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
+import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
+import com.rafamv.bygoneage.registry.BygoneAgeItems;
+
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
@@ -63,4 +70,25 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective implement
     {
         return Util.getDinoByID(this.getCreatureID()).deathSound;
     }
+
+    @Override
+    public Item getDropItem()
+    {
+        return Util.getMeat(this.getCreatureID());
+    }
+
+	@Override
+	protected void dropFewItems(boolean recentlyBeenHit, int enchantBonus) 
+	{
+		float developmentFraction = this.getGrowthStage() / 120.0F;
+		int count = Math.round(1 + (3.0F * developmentFraction) + this.rand.nextInt(2 + (int) (3.0F * developmentFraction)) + this.rand.nextInt(1 + enchantBonus));
+		if (this.isBurning()) 
+		{
+			this.dropItem(ModItems.dinoSteak, count);
+		} 
+		else 
+		{
+			this.dropItem(Util.getMeat(this.getCreatureID()), count);
+		}
+	}
 }
