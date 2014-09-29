@@ -92,7 +92,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
             if (dist < 1.0D || dist > 1000.0D)
             {
                 this.swimTargetX = this.posX + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadius);
-                this.swimTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadiusHeight);
+                this.swimTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadiusHeight * 10);
                 this.swimTargetZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * this.swimRadius);
                 this.isAttacking = false;
             }
@@ -168,6 +168,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     			}
        		}
        		timeUntilDeltaAngleChange -= 1;
+       		System.out.println("Distance from target as the entity file sees it is" + distanceFromTarget);
        	}
     }
 
