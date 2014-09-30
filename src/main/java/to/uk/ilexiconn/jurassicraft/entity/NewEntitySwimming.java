@@ -170,7 +170,10 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     			}
        		}
        		timeUntilDeltaAngleChange -= 1;
+<<<<<<< HEAD
   //     		System.out.println("Distance from target as the entity file sees it is" + distanceFromTarget);
+=======
+>>>>>>> parent of b41ae38... Increased Tylosaur's range of vertical motion
        	}
     }
 
