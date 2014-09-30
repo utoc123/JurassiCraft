@@ -7,18 +7,16 @@ public class JurassiCraftEntityAITargetIfNonTamed extends EntityAINearestAttacka
 {
 
     private EntityJurassiCraftTameable creature;
-    private float age;
 
-    public JurassiCraftEntityAITargetIfNonTamed(EntityJurassiCraftTameable entityTameable, Class targetClass, int chance, float ageToAttack)
+    public JurassiCraftEntityAITargetIfNonTamed(EntityJurassiCraftTameable entityTameable, Class targetClass, int chance)
     {
         super(entityTameable, targetClass, chance, false);
         this.creature = entityTameable;
-        this.age = ageToAttack;
     }
 
     @Override
     public boolean shouldExecute()
     {
-        return this.creature.isCreatureOlderThan(this.age) && !this.creature.isTamed() && super.shouldExecute();
+        return this.creature.isCreatureAdult() && !this.creature.isTamed() && super.shouldExecute();
     }
 }

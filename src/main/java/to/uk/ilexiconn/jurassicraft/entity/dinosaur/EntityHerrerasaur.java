@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
-import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfNonTamed;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfHasAgeAndNonTamed;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -28,8 +28,8 @@ public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive implemen
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityHypsilophodon.class, 0, 0.4F));
-        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityLeaellynasaur.class, 0, 0.4F));
+        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityHypsilophodon.class, 0, 0.4F));
+        this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityLeaellynasaur.class, 0, 0.4F));
 
         this.setCreatureExperiencePoints(2500);
     }

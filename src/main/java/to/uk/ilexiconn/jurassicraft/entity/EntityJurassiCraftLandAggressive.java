@@ -1,9 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
+import java.util.List;
+
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,8 +14,6 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIOwnerHurtByTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIOwnerHurtTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfNonTamed;
-
-import java.util.List;
 
 public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
 {
