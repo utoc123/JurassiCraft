@@ -68,26 +68,65 @@ public class JurassiCraftDNAHandler {
 				int charAt = random.nextInt(dna.length());
 				String dna1 = dna.substring(0, charAt);
 				String dna2 = dna.substring(charAt + 1, dna.length());
-				String chatChanged = String.valueOf(dna.charAt(charAt));
-				while (chatChanged.equals(String.valueOf(dna.charAt(charAt)))) {
-					switch (random.nextInt(4)) {
+				String charChanged = String.valueOf(dna.charAt(charAt));
+				if (charChanged == "A") {
+					switch (random.nextInt(3)) {
 						case 0:
-							chatChanged = "A";
+							charChanged = "C";
 							break;
 						case 1:
-							chatChanged = "C";
+							charChanged = "G";
 							break;
 						case 2:
-							chatChanged = "G";
-							break;
-						case 3:
-							chatChanged = "T";
+							charChanged = "T";
 							break;
 						default:
-							chatChanged = "_FAIL_";
+							charChanged = "A";
+					}
+				} else if (charChanged == "C") {
+					switch (random.nextInt(3)) {
+						case 0:
+							charChanged = "A";
+							break;
+						case 1:
+							charChanged = "G";
+							break;
+						case 2:
+							charChanged = "T";
+							break;
+						default:
+							charChanged = "C";
+					}
+				} else if (charChanged == "G") {
+					switch (random.nextInt(3)) {
+						case 0:
+							charChanged = "A";
+							break;
+						case 1:
+							charChanged = "C";
+							break;
+						case 2:
+							charChanged = "T";
+							break;
+						default:
+							charChanged = "G";
+					}
+				} else if (charChanged == "T") {
+					switch (random.nextInt(3)) {
+						case 0:
+							charChanged = "A";
+							break;
+						case 1:
+							charChanged = "C";
+							break;
+						case 2:
+							charChanged = "G";
+							break;
+						default:
+							charChanged = "T";
 					}
 				}
-				dna = dna1 + chatChanged + dna2;
+				dna = dna1 + charChanged + dna2;
 			}
 		} else {
 			System.out.println("Invalid DNA!");

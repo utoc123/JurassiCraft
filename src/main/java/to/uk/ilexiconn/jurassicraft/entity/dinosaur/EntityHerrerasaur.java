@@ -30,6 +30,8 @@ public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive implemen
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityHypsilophodon.class, 0));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfNonTamed(this, EntityLeaellynasaur.class, 0));
+
+        this.setCreatureExperiencePoints(2500);
     }
 
     @Override

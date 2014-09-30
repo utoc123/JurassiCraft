@@ -32,6 +32,8 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective implement
         this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
+        
+        this.setCreatureExperiencePoints(5000);
     }
 
     @Override

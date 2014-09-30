@@ -1,14 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftRidable;
 
-public class EntityMeganeura extends EntityJurassiCraftCreature implements IMob
+public class EntityMeganeura extends EntityJurassiCraftRidable
 {
 
     public int courseChangeCooldown = 0;
@@ -17,24 +15,16 @@ public class EntityMeganeura extends EntityJurassiCraftCreature implements IMob
     public double waypointZ;
     private Entity targetedEntity = null;
 
-    public EntityMeganeura(World par1World)
+    public EntityMeganeura(World world)
     {
-        super(par1World, (byte) 12);
-        this.isImmuneToFire = false;
-        this.experienceValue = 5;
+        super(world, (byte) 12);
+        this.setCreatureExperiencePoints(20);
     }
 
     protected void entityInit()
     {
         super.entityInit();
         this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
-    }
-
-    protected void func_110147_ax()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(5.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }
 
     /**
@@ -44,7 +34,6 @@ public class EntityMeganeura extends EntityJurassiCraftCreature implements IMob
     {
         super.onUpdate();
         byte var1 = this.dataWatcher.getWatchableObjectByte(16);
-
     }
 
     protected void updateEntityActionState()

@@ -8,20 +8,20 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import to.uk.ilexiconn.jurassicraft.client.model.block.ModelEgg;
-import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCoelacanthEgg;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMeganeuraEgg;
+import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
 
 public class RenderDinoEgg extends Render
 {
-    public RenderDinoEgg()
-    {
+    public RenderDinoEgg() {
+    	
     }
 
     @Override
     public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float p_76986_9_)
     {
-        renderEgg((EntityDinoEgg) entity, x, y, z, rotationYaw, p_76986_9_);
+        this.renderEgg((EntityDinoEgg) entity, x, y, z, rotationYaw, p_76986_9_);
     }
 
     private void renderEgg(EntityDinoEgg entity, double x, double y, double z, float rotationYaw, float p_76986_9_)
@@ -66,15 +66,10 @@ public class RenderDinoEgg extends Render
             GL11.glPopMatrix();
         }
     }
-
-    private ResourceLocation getDinoEggTexture(EntityDinoEgg egg)
-    {
-        return egg.getTexture();
-    }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(Entity entity)
     {
-        return getDinoEggTexture((EntityDinoEgg) entity);
+        return ((EntityDinoEgg) entity).getTexture();
     }
 }

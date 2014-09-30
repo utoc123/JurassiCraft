@@ -27,6 +27,8 @@ public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive implem
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
+
+        this.setCreatureExperiencePoints(1500);
     }
 
     @Override

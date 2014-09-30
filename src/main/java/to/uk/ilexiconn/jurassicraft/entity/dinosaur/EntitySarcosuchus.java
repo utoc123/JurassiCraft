@@ -28,6 +28,8 @@ public class EntitySarcosuchus extends EntityJurassiCraftLandAggressive implemen
         tasks.addTask(5, new EntityAIWander(this, 0.75D * this.getCreatureSpeed()));
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
+
+        this.setCreatureExperiencePoints(4000);
     }
 
     @Override

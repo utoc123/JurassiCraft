@@ -1,7 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
 import io.netty.buffer.ByteBuf;
+
 import java.util.HashSet;
+
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,6 +38,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     protected int animID;
     protected int animTick;
     public int frame;
+    
+    public int expParameter = 100;
 
     public EntityJurassiCraftCreature(World world, byte id)
     {
@@ -51,7 +55,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
         if (this.getGeneticQuality() < 0.6F || this.getGeneticQuality() >= 1.4F)
         {
-        	//This will set a random genetics. It will be replaced if there is one already set.
             this.setRandomGenetics();
         }
         this.resetGrowthStageList();
@@ -771,12 +774,22 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         return Float.valueOf(0.7F + 0.3F * this.getGrowthStage() / 120);
     }
 
+    public void setCreatureExperiencePoints(int points)
+    {
+        this.expParameter = points;
+    }
+
+    public int getCreatureExperiencePoints()
+    {
+        return this.expParameter;
+    }
+
     @Override
     protected int getExperiencePoints(EntityPlayer player)
     {
-        return (int) (1000 * this.getGrowthStage() / 120);
+        return (int) (this.getCreatureExperiencePoints() * this.getGeneticQuality() * this.getGrowthStage() / 120);
     }
-
+    
     @Override
     public void setAnimID(int id)
     {

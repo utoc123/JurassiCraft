@@ -3,9 +3,9 @@ package to.uk.ilexiconn.jurassicraft.entity.render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCearadactylus;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCearadactylus;
-import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCearadactylus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -17,14 +17,17 @@ public class RenderCearadactylus extends RenderDinosaur
         super(new ModelCearadactylus(), dino, 0.5F);
     }
 
-    public ResourceLocation getEntityTexture(Entity var1)
+    @Override
+    public ResourceLocation getEntityTexture(Entity entity)
     {
-        EntityCearadactylus dino = (EntityCearadactylus) var1;
+        EntityCearadactylus dino = (EntityCearadactylus) entity;
         if (dino.isMale())
         {
-            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/cearadactylus1.png");
-        } else {
-            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/cearadactylus2.png");
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Cearadactylus_Male_1.png");
+        } 
+        else 
+        {
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Cearadactylus_Female_1.png");
         }
     }
 }

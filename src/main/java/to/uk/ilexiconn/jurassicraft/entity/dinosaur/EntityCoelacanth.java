@@ -21,6 +21,8 @@ public class EntityCoelacanth extends EntitySwimming
         this.swimRadiusHeight = 4.0F;
         this.swimSpeed = 0.4F;
         this.jumpOnLand = false;
+
+        this.setCreatureExperiencePoints(50);
     }
 
     @Override

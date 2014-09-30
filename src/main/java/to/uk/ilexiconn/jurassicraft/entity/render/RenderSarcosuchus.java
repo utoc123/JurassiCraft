@@ -3,9 +3,9 @@ package to.uk.ilexiconn.jurassicraft.entity.render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelSarcosuchus;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntitySarcosuchus;
-import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelSarcosuchus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -17,17 +17,31 @@ public class RenderSarcosuchus extends RenderDinosaur
         super(new ModelSarcosuchus(), dino, 0.5F);
     }
 
-    public ResourceLocation getEntityTexture(Entity var1)
+    @Override
+    public ResourceLocation getEntityTexture(Entity entity)
     {
-    	EntitySarcosuchus dino = (EntitySarcosuchus) var1;
-        switch (dino.getCreatureTexture())
+    	EntitySarcosuchus dino = (EntitySarcosuchus) entity;
+        if (dino.isMale())
         {
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus1.png");
-            case 1:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus2.png");
-            default:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/sarcosuchus1.png");
+            switch (dino.getCreatureTexture()) {
+            	case 0:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Wetlands_Male_1.png");
+            	case 1:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Arid_Male_1.png");
+            	default:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Wetlands_Male_1.png");
+            }
+        } 
+        else 
+        {
+        	switch (dino.getCreatureTexture()) {
+            	case 0:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Wetlands_Female_1.png");
+            	case 1:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Arid_Female_1.png");
+            	default:
+            		return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Sarcosuchus_Wetlands_Female_1.png");
+            }
         }
     }
 }

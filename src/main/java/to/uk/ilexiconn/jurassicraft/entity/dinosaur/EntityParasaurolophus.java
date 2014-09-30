@@ -31,6 +31,8 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
         this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
+
+        this.setCreatureExperiencePoints(1000);
     }
 
     @Override

@@ -9,8 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
 
-/* Inherithed from Animals+ by Click_Me */
-
+/** Inherithed from Animals+ by Click_Me */
 public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
 {
 

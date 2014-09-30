@@ -1,13 +1,13 @@
 package to.uk.ilexiconn.jurassicraft.entity.render;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelHypsilophodon;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityHypsilophodon;
-import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelHypsilophodon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderHypsilophodon extends RenderDinosaur
@@ -18,17 +18,17 @@ public class RenderHypsilophodon extends RenderDinosaur
         super(new ModelHypsilophodon(), dino, 0.55F);
     }
 
-    public ResourceLocation getEntityTexture(Entity var1)
+    @Override
+    public ResourceLocation getEntityTexture(Entity entity)
     {
-        EntityHypsilophodon dino = (EntityHypsilophodon) var1;
-        switch (dino.getCreatureTexture())
+        EntityHypsilophodon dino = (EntityHypsilophodon) entity;
+        if (dino.isMale())
         {
-            case 0:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon1.png");
-            case 1:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon2.png");
-            default:
-                return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/hypsilophodon1.png");
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Hypsilophodon_Male_1.png");
+        } 
+        else 
+        {
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Hypsilophodon_Female_1.png");
         }
     }
 }

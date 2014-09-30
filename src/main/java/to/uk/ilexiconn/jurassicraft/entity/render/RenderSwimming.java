@@ -12,14 +12,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public abstract class RenderSwimming extends RenderDinosaur
 {
-
-    /* Inherithed from Animals+ by Click_Me */
-
+	
+    /** Inherithed from Animals+ by Click_Me */
     public RenderSwimming(ModelBase modelbase, Dinosaur dino, float shadow)
     {
         super(modelbase, dino, shadow);
     }
 
+    @Override
     protected void rotateCorpse(EntityLivingBase entitylivingbase, float f, float f1, float f2)
     {
         super.rotateCorpse(entitylivingbase, f, f1, f2);

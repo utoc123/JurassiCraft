@@ -42,6 +42,7 @@ public abstract class RenderDinosaur extends RenderLiving
         return this.dino;
     }
 
+    @Override
     public void preRenderCallback(EntityLivingBase entity, float side)
     {
         float scale = (float) ((EntityJurassiCraftCreature) entity).getCreatureScale();

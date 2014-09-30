@@ -28,6 +28,8 @@ public class EntityBrachiosaur extends EntityJurassiCraftLandProtective implemen
         this.tasks.addTask(5, new EntityAIWander(this, this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 12.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
+
+        this.setCreatureExperiencePoints(5000);
     }
 
     @Override
