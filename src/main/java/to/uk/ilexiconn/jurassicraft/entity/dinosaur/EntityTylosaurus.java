@@ -13,7 +13,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntitySwimming;
 import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;
 
-public class EntityTylosaurus extends EntitySwimming {
+public class EntityTylosaurus extends NewEntitySwimming {
 
     public EntityTylosaurus(World world)
     {
