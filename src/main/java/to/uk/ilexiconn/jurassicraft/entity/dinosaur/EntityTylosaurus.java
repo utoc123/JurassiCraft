@@ -10,7 +10,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.EntitySwimming;
 import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;
 
 public class EntityTylosaurus extends NewEntitySwimming {
@@ -20,7 +19,7 @@ public class EntityTylosaurus extends NewEntitySwimming {
         super(world, (byte) 14);
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
-        this.swimSpeed = 0.8F;
+        this.swimSpeed = 0.6F;
         this.jumpOnLand = false;
         this.attackInterval = 1;
         this.isAgressive = true;

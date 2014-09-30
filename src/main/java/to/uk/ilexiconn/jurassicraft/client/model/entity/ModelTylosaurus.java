@@ -610,10 +610,10 @@ public class ModelTylosaurus extends MowzieModelBase
 /*    f = tylo.frame;
     f1 = 1F;*/
     float scaleFactor = 0.3F;
-//    float mouthOpenDivider = Math.abs(tylo.distanceFromTarget);
-//    System.out.println("Distance from target as the model file sees it is" + tylo.distanceFromTarget);
-//    if (mouthOpenDivider < 1) mouthOpenDivider = 1;
-//    Lower_Jaw.rotateAngleX += 1/mouthOpenDivider;
+    float mouthOpenDivider = Math.abs(tylo.distanceFromTarget);
+//	System.out.println(tylo.distanceFromTarget);
+    if (mouthOpenDivider < 1) mouthOpenDivider = 1;
+    Lower_Jaw.rotateAngleX += 1/mouthOpenDivider;
     MowzieModelRenderer[] bodyParts = {this.Head, this.Neck_, this.Body_Section_1, this.Body_Section_2, this.Body_Section_3, this.Tail_Section_1, this.Tail_Section_2, this.Tail_Section_3, this.Tail_Section_4, this.Fluke_Section_1, this.Fluke_Section_3, this.Fluke_Section_6};
     tailSwing(bodyParts, 1F * scaleFactor, 0.1F * f1, -3, f);
     Head.rotationPointX -= 3*f1*Math.sin(f*scaleFactor);    walk(Right_Front_Flipper, 1 * scaleFactor, 0.3F, false, 0F, 0F, f, f1);
