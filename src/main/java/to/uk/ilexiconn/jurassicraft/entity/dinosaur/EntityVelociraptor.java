@@ -10,6 +10,7 @@ import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfNonTamed;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorLeap;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorRoar;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorTwitchHead;
@@ -37,11 +38,11 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
         tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         tasks.addTask(7, new EntityAILookIdle(this));
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityStegosaur.class, 0, true));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityTriceratops.class, 0, true));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGallimimus.class, 0, true));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityOviraptor.class, 0, true));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityBrachiosaur.class, 0, true));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityStegosaur.class, 0, 0.7F));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityTriceratops.class, 0, 0.8F));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityGallimimus.class, 0, 0.25F));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityOviraptor.class, 0, 0.33F));
+        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfNonTamed(this, EntityBrachiosaur.class, 0, 0.9F));
 
         this.setCreatureExperiencePoints(4500);
     }
