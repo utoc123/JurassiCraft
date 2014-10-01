@@ -15,6 +15,7 @@ import thehippomaster.AnimationAPI.IAnimatedEntity;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.client.gui.GuiDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -367,7 +368,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     @SideOnly(Side.CLIENT)
     private void showStatus()
     {
-    	JurassiCraft.creatureToAnalyze = this;
+    	GuiDinoPad.creatureToAnalyze = this;
         FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 69, this.worldObj, 0, 0, 0);
     }
 

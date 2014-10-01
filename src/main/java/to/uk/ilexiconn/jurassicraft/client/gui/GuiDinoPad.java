@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL12;
 
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,20 +21,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiDinoPad extends GuiScreen {
 
+	public static EntityJurassiCraftCreature creatureToAnalyze;
 	private EntityJurassiCraftTameable creature;
 	private int xSize;
 	private int ySize;
 	private int guiLeft;
 	private int guiTop;
+	private float renderRotation;
 
 	public GuiDinoPad() 
 	{
 		super();
-		if (JurassiCraft.creatureToAnalyze instanceof EntityJurassiCraftTameable) 
+		if (this.creatureToAnalyze instanceof EntityJurassiCraftTameable) 
 		{
-			this.creature = (EntityJurassiCraftTameable) JurassiCraft.creatureToAnalyze;
+			this.creature = (EntityJurassiCraftTameable) this.creatureToAnalyze;
 			this.xSize = 256;
 			this.ySize = 176;
+			this.renderRotation = 0.0F;
 		}
 	}
 
@@ -69,6 +73,7 @@ public class GuiDinoPad extends GuiScreen {
 	@Override
 	public void updateScreen() 
 	{
+		this.renderRotation++;
 		if (this.creature.isDead) 
 		{
 			this.mc.thePlayer.closeScreen();
@@ -84,7 +89,13 @@ public class GuiDinoPad extends GuiScreen {
 		
 		this.renderEmptyBars();
 		this.renderStatusBars();
-		this.renderCreature(this.guiLeft + 60, this.guiTop + 100, (int) (20 - 5 * this.creature.getCreatureScale()), (float) (this.guiLeft + 70) - x, (float) (this.guiTop + 100 - 50) - y, this.creature);
+		
+		if (this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
+			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, 1.0F);
+		} else {
+			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, 1.0F);
+		}
+				
 		this.renderNameGenderStrings();
 		this.renderStatusStrings();
 		this.renderTamedStrings();
@@ -141,25 +152,21 @@ public class GuiDinoPad extends GuiScreen {
 		}
 	}
 
-	private static void renderCreature(int posX, int posY, int scale, float rotation1, float rotation2, EntityLivingBase creature) 
+	private void renderCreature(int posX, int posY, float scale) 
 	{
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) posX, (float) posY, 50.0F);
-		GL11.glScalef((float) (-scale), (float) scale, (float) scale);
+		GL11.glScalef(scale, scale, scale);
 		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(-((float) Math.atan((double) (rotation2 / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-		creature.renderYawOffset = (float) Math.atan((double) (rotation1 / 40.0F)) * 20.0F;
-		creature.rotationYaw = (float) Math.atan((double) (rotation1 / 40.0F)) * 40.0F;
-		creature.rotationPitch = -((float) Math.atan((double) (rotation2 / 40.0F))) * 20.0F;
-		creature.rotationYawHead = creature.rotationYaw;
-		creature.prevRotationYawHead = creature.rotationYaw;
+		
+		GL11.glRotatef(this.renderRotation, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, creature.yOffset, 0.0F);
-		RenderManager.instance.playerViewY = 180.0F;
-		RenderManager.instance.renderEntityWithPosYaw(creature, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+		RenderManager.instance.renderEntityWithPosYaw(creature, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+		
 		GL11.glPopMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);

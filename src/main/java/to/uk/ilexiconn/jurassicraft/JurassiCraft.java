@@ -24,7 +24,6 @@ public class JurassiCraft extends Util
 
     public static boolean versionCheck;
     public static boolean easterEggs;
-	public static EntityJurassiCraftCreature creatureToAnalyze;
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
