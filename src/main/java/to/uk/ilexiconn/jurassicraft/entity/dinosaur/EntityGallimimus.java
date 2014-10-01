@@ -2,10 +2,12 @@ package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
 import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
@@ -32,7 +34,7 @@ public class EntityGallimimus extends EntityJurassiCraftLandProtective implement
 
         this.setCreatureExperiencePoints(1000);
     }
-
+    
     @Override
     public double getMountedYOffset()
     {

@@ -790,6 +790,11 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     {
         return (int) (this.getCreatureExperiencePoints() * this.getGeneticQuality() * this.getGrowthStage() / 120);
     }
+
+    public boolean isWaterCreature()
+    {
+        return Util.getDinoByID(this.getCreatureID()).waterCreature;
+    }
     
     @Override
     public void setAnimID(int id)

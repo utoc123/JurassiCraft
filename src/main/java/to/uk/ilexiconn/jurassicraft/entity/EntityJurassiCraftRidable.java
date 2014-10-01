@@ -18,8 +18,8 @@ import to.uk.ilexiconn.jurassicraft.Util;
 public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
 {
 
-    private float prevRearingAmount;
-    float mountingSpeed;
+    protected float prevRearingAmount;
+    private float mountingSpeed;
 
     public EntityJurassiCraftRidable(World world, byte id)
     {
@@ -95,24 +95,6 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
         player.mountEntity(this);
     }
 
-    @Override
-    public void updateRiderPosition()
-    {
-        super.updateRiderPosition();
-        if (this.prevRearingAmount > 0.0F)
-        {
-            float f = MathHelper.sin(this.renderYawOffset * (float) Math.PI / 180.0F);
-            float f1 = MathHelper.cos(this.renderYawOffset * (float) Math.PI / 180.0F);
-            float f2 = 0.7F * this.prevRearingAmount;
-            float f3 = 0.15F * this.prevRearingAmount;
-            this.riddenByEntity.setPosition(this.posX + (double) (f2 * f), this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset() + (double) f3, this.posZ - (double) (f2 * f1));
-            if (this.riddenByEntity instanceof EntityLivingBase)
-            {
-                ((EntityLivingBase) this.riddenByEntity).renderYawOffset = this.renderYawOffset;
-            }
-        }
-    }
-
     /**
      * Sets the mob rotation depending on the item position (pig style).
      */
@@ -135,7 +117,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
     /**
      * Sets the mob rotation depending on the item position (pig style).
      */
-    private void handleItemControlledRiding()
+    private void handleSlowItemControlledRiding()
     {
         this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
         float adjust = MathHelper.wrapAngleTo180_float(((EntityLivingBase) this.riddenByEntity).rotationYaw - this.rotationYaw) * 0.5F;
@@ -146,6 +128,25 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
         else if (adjust < -2.0F)
         {
             adjust = -2.0F;
+        }
+        this.rotationYaw = MathHelper.wrapAngleTo180_float(this.rotationYaw + adjust);
+        this.setRotation(this.rotationYaw, this.rotationPitch);
+    }
+
+    /**
+     * Sets the mob rotation depending on the item position (pig style).
+     */
+    private void handleVerySlowItemControlledRiding()
+    {
+        this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
+        float adjust = MathHelper.wrapAngleTo180_float(((EntityLivingBase) this.riddenByEntity).rotationYaw - this.rotationYaw) * 0.5F;
+        if (adjust > 0.8F)
+        {
+            adjust = 0.8F;
+        }
+        else if (adjust < -0.8F)
+        {
+            adjust = -0.8F;
         }
         this.rotationYaw = MathHelper.wrapAngleTo180_float(this.rotationYaw + adjust);
         this.setRotation(this.rotationYaw, this.rotationPitch);
@@ -193,19 +194,22 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
             switch (Util.getDinoByID(this.getCreatureID()).ridingStyle)
             {
                 case 0:
-                    this.handleFastItemControlledRiding();
-                    break;
-                case 1:
                     this.handleMouseControlledRiding();
                     break;
+                case 1:
+                    this.handleFastItemControlledRiding();
+                    break;
                 case 2:
-                    this.handleItemControlledRiding();
+                    this.handleSlowItemControlledRiding();
+                    break;
+                case 3:
+                    this.handleVerySlowItemControlledRiding();
                     break;
                 default:
-                    this.handleItemControlledRiding();
+                    this.handleSlowItemControlledRiding();
             }
             this.stepHeight = 1.0F; // CHECK: Should change with height!!!
-            movementStrafing = ((EntityLivingBase) this.riddenByEntity).moveStrafing * 0.5F * this.getMountingSpeed();
+            movementStrafing = 0.25F * ((EntityLivingBase) this.riddenByEntity).moveStrafing * this.getMountingSpeed();
             if (Minecraft.getMinecraft().gameSettings.keyBindBack.getIsKeyPressed())
             {
                 movementForward = ((EntityLivingBase) this.riddenByEntity).moveForward * 0.3F * this.getMountingSpeed();

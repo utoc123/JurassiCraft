@@ -91,9 +91,9 @@ public class GuiDinoPad extends GuiScreen {
 		this.renderStatusBars();
 		
 		if (this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 115), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
+			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
 		} else {
-			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 115), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
+			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
 		}
 		
 		this.renderNameGenderStrings();

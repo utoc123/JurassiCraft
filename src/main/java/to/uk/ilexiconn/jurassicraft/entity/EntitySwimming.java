@@ -197,5 +197,4 @@ public abstract class EntitySwimming extends EntityJurassiCraftRidable
     {
         return this.worldObj.checkNoEntityCollision(this.boundingBox);
     }
-
 }
