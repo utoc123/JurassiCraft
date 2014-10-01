@@ -90,16 +90,12 @@ public class GuiDinoPad extends GuiScreen {
 		this.renderEmptyBars();
 		this.renderStatusBars();
 		
-		float desiredSize = 65;
-		
 		if (this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-			float scale = desiredSize/creature.getCreatureLength();
-			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, scale);
+			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 115), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
 		} else {
-			float scale = desiredSize/creature.getCreatureHeight();
-			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, scale);
+			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 115), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
 		}
-				
+		
 		this.renderNameGenderStrings();
 		this.renderStatusStrings();
 		this.renderTamedStrings();
@@ -156,19 +152,20 @@ public class GuiDinoPad extends GuiScreen {
 		}
 	}
 
-	private void renderCreature(int posX, int posY, float scale) 
+	private void renderCreature(float posX, float posY, float scale) 
 	{
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) posX, (float) posY, 50.0F);
-		GL11.glScalef(scale, scale, scale);
+		GL11.glTranslatef( posX, posY, 50.0F);
+		GL11.glScalef(-scale, scale, scale);
 		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
 		
-		GL11.glRotatef(this.renderRotation, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(1.5F * this.renderRotation, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, creature.yOffset, 0.0F);
+		RenderManager.instance.playerViewY = 180.0F;
 		RenderManager.instance.renderEntityWithPosYaw(creature, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 		
 		GL11.glPopMatrix();
