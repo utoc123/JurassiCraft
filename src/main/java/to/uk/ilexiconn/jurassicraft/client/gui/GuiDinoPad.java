@@ -90,10 +90,14 @@ public class GuiDinoPad extends GuiScreen {
 		this.renderEmptyBars();
 		this.renderStatusBars();
 		
+		float desiredSize = 65;
+		
 		if (this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, 1.0F);
+			float scale = desiredSize/creature.getCreatureLength();
+			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, scale);
 		} else {
-			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, 1.0F);
+			float scale = desiredSize/creature.getCreatureHeight();
+			this.renderCreature(this.guiLeft + 67, this.guiTop + 115, scale);
 		}
 				
 		this.renderNameGenderStrings();
