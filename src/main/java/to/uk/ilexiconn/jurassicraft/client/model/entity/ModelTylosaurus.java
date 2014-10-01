@@ -444,7 +444,7 @@ public class ModelTylosaurus extends MowzieModelBase
     Upper_Jaw.rotationPointY -= 5;
     Upper_Jaw.rotationPointZ -= 14;
     
-    Head.rotationPointZ += 35;
+//    Head.rotationPointZ += 35;
     
     Head.setInitValuesToCurrentPose();
     Upper_Jaw.setInitValuesToCurrentPose();
