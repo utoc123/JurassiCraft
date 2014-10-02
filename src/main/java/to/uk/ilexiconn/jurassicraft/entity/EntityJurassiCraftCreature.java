@@ -311,13 +311,13 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     @Override
     public boolean interact(EntityPlayer player)
     {
-
+    	/**
 		System.out.println("=============== UPDATE DATA ===============");
 		if (this.worldObj.isRemote) 
 		{
 			System.out.println("=============== Client ===============");
 			if (this instanceof EntityJurassiCraftTameable)
-			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
+				System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
 			System.out.println("Health: " + this.getCreatureHealth());
 			System.out.println("Attack: " + this.getCreatureAttack());
 			System.out.println("Speed: " + this.getCreatureSpeed());
@@ -325,7 +325,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			System.out.println("Length: " + this.getCreatureLength());
 			System.out.println("Height: " + this.getCreatureHeight());
 			System.out.println("Scale: " + this.getCreatureScale());
-			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Genetic Quality: " + this.getGeneticQuality() + ", DNASequence: " + this.getDNASequence() + ". Revised DNA for 50% " + JurassiCraftDNAHandler.reviseDNA(this.getDNASequence(), 50));
 			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()));
 			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
 			System.out.println("Adult: " + this.isCreatureAdult());
@@ -335,7 +335,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		{
 			System.out.println("=============== Server ===============");
 			if (this instanceof EntityJurassiCraftTameable)
-			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
+				System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
 			System.out.println("Health: " + this.getCreatureHealth());
 			System.out.println("Attack: " + this.getCreatureAttack());
 			System.out.println("Speed: " + this.getCreatureSpeed());
@@ -343,12 +343,13 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			System.out.println("Length: " + this.getCreatureLength());
 			System.out.println("Height: " + this.getCreatureHeight());
 			System.out.println("Scale: " + this.getCreatureScale());
-			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Genetic Quality: " + this.getGeneticQuality() + ", DNASequence: " + this.getDNASequence() + ". Revised DNA for 50% " + JurassiCraftDNAHandler.reviseDNA(this.getDNASequence(), 50));
 			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()));
 			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
 			System.out.println("Adult: " + this.isCreatureAdult());
 			System.out.println("======================================");
 		}
+    	*/
     	
         if (player.getHeldItem() != (ItemStack) null)
         {
@@ -416,6 +417,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
      */
     public void setGenetics(int dnaQuality, String dna)
     {
+    	System.out.println("Quality: " + dnaQuality + "% Code: " + dna + ", after being revised: " + JurassiCraftDNAHandler.reviseDNA(dna, dnaQuality));
         this.setDNASequence(JurassiCraftDNAHandler.reviseDNA(dna, dnaQuality));
         this.setGeneticQuality(JurassiCraftDNAHandler.getDefaultGeneticDNAQuality(dna));
     }

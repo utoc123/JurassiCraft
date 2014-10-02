@@ -69,7 +69,7 @@ public class JurassiCraftDNAHandler {
 				String dna1 = dna.substring(0, charAt);
 				String dna2 = dna.substring(charAt + 1, dna.length());
 				String charChanged = String.valueOf(dna.charAt(charAt));
-				if (charChanged == "A") {
+				if (charChanged.equals("A")) {
 					switch (random.nextInt(3)) {
 						case 0:
 							charChanged = "C";
@@ -83,7 +83,7 @@ public class JurassiCraftDNAHandler {
 						default:
 							charChanged = "A";
 					}
-				} else if (charChanged == "C") {
+				} else if (charChanged.equals("C")) {
 					switch (random.nextInt(3)) {
 						case 0:
 							charChanged = "A";
@@ -97,7 +97,7 @@ public class JurassiCraftDNAHandler {
 						default:
 							charChanged = "C";
 					}
-				} else if (charChanged == "G") {
+				} else if (charChanged.equals("G")) {
 					switch (random.nextInt(3)) {
 						case 0:
 							charChanged = "A";
@@ -111,7 +111,7 @@ public class JurassiCraftDNAHandler {
 						default:
 							charChanged = "G";
 					}
-				} else if (charChanged == "T") {
+				} else if (charChanged.equals("T")) {
 					switch (random.nextInt(3)) {
 						case 0:
 							charChanged = "A";
