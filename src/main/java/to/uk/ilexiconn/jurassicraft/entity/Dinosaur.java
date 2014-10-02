@@ -46,5 +46,6 @@ public class Dinosaur
     public ArrayList ridingItemList;
 
     public boolean isRidable;
+    public boolean canBeTamedUponSpawning;
     public boolean waterCreature;
 }

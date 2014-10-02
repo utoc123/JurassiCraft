@@ -128,43 +128,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		this.setCreatureHeight();
 		this.setHalfOfTheCreatureSize();
 		this.setCreatureScale();
-		/*System.out.println("=============== UPDATE DATA ===============");
-		if (this.worldObj.isRemote) 
-		{
-			System.out.println("=============== Client ===============");
-			if (this instanceof EntityJurassiCraftTameable)
-			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
-			System.out.println("Health: " + this.getCreatureHealth());
-			System.out.println("Attack: " + this.getCreatureAttack());
-			System.out.println("Speed: " + this.getCreatureSpeed());
-			System.out.println("Knockback: " + this.getCreatureKnockback());
-			System.out.println("Length: " + this.getCreatureLength());
-			System.out.println("Height: " + this.getCreatureHeight());
-			System.out.println("Scale: " + this.getCreatureScale());
-			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
-			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()));
-			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
-			System.out.println("Adult: " + this.isCreatureAdult());
-			System.out.println("======================================");
-		} 
-		else 
-		{
-			System.out.println("=============== Server ===============");
-			if (this instanceof EntityJurassiCraftTameable)
-			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
-			System.out.println("Health: " + this.getCreatureHealth());
-			System.out.println("Attack: " + this.getCreatureAttack());
-			System.out.println("Speed: " + this.getCreatureSpeed());
-			System.out.println("Knockback: " + this.getCreatureKnockback());
-			System.out.println("Length: " + this.getCreatureLength());
-			System.out.println("Height: " + this.getCreatureHeight());
-			System.out.println("Scale: " + this.getCreatureScale());
-			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
-			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHelper.getDefaultGenderDNAQuality(this.getDNASequence()));
-			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHelper.getDefaultTextureDNAQuality(this.getDNASequence()));
-			System.out.println("Adult: " + this.isCreatureAdult());
-			System.out.println("======================================");
-		}*/
     }
 
     /**
@@ -348,6 +311,45 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     @Override
     public boolean interact(EntityPlayer player)
     {
+
+		System.out.println("=============== UPDATE DATA ===============");
+		if (this.worldObj.isRemote) 
+		{
+			System.out.println("=============== Client ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
+			System.out.println("Health: " + this.getCreatureHealth());
+			System.out.println("Attack: " + this.getCreatureAttack());
+			System.out.println("Speed: " + this.getCreatureSpeed());
+			System.out.println("Knockback: " + this.getCreatureKnockback());
+			System.out.println("Length: " + this.getCreatureLength());
+			System.out.println("Height: " + this.getCreatureHeight());
+			System.out.println("Scale: " + this.getCreatureScale());
+			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()));
+			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
+			System.out.println("Adult: " + this.isCreatureAdult());
+			System.out.println("======================================");
+		} 
+		else 
+		{
+			System.out.println("=============== Server ===============");
+			if (this instanceof EntityJurassiCraftTameable)
+			System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName());
+			System.out.println("Health: " + this.getCreatureHealth());
+			System.out.println("Attack: " + this.getCreatureAttack());
+			System.out.println("Speed: " + this.getCreatureSpeed());
+			System.out.println("Knockback: " + this.getCreatureKnockback());
+			System.out.println("Length: " + this.getCreatureLength());
+			System.out.println("Height: " + this.getCreatureHeight());
+			System.out.println("Scale: " + this.getCreatureScale());
+			System.out.println("DNASequence: " + this.getDNASequence() + ". Genetic Quality: " + this.getGeneticQuality());
+			System.out.println("Gender: " + this.getCreatureGenderString() + ". Genetic for gender: " + JurassiCraftDNAHandler.getDefaultGenderDNAQuality(this.getDNASequence()));
+			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
+			System.out.println("Adult: " + this.isCreatureAdult());
+			System.out.println("======================================");
+		}
+    	
         if (player.getHeldItem() != (ItemStack) null)
         {
             if (player.getHeldItem().getItem() instanceof ItemDinoPad)

@@ -173,6 +173,11 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
         }
     }
 
+    public boolean canBeTamedUponSpawning()
+    {
+        return Util.getDinoByID(this.getCreatureID()).canBeTamedUponSpawning;
+    }
+    
     public boolean isTamed()
     {
         return (this.dataWatcher.getWatchableObjectByte(15) & 4) != 0;

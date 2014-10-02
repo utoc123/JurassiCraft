@@ -3,12 +3,14 @@ package to.uk.ilexiconn.jurassicraft.entity;
 import io.netty.buffer.ByteBuf;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -242,9 +244,18 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
                         Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);
                         if (dinoToSpawn instanceof EntityJurassiCraftCreature)
                         {
-                            ((EntityJurassiCraftCreature) dinoToSpawn).setGenetics(quality, dnaSequence);
-                            dinoToSpawn.setPosition(this.posX, this.posY, this.posZ);
-                            this.worldObj.spawnEntityInWorld(dinoToSpawn);
+                        	EntityJurassiCraftCreature baby = (EntityJurassiCraftCreature) dinoToSpawn;
+                        	baby.setGenetics(quality, dnaSequence);
+                        	if (dinoToSpawn instanceof EntityJurassiCraftTameable && ((EntityJurassiCraftTameable) baby).canBeTamedUponSpawning()) {
+                        		EntityPlayer owner = this.seachForOwner(baby);
+                            	if (owner != null) {
+                            		((EntityJurassiCraftTameable) baby).setTamed(true);
+                        			((EntityJurassiCraftTameable) baby).setOwner(owner.getCommandSenderName());
+                                    this.worldObj.setEntityState((EntityJurassiCraftTameable) baby, (byte) 7);
+                            	}
+                        	}
+                			baby.setPosition(this.posX, this.posY, this.posZ);
+                            this.worldObj.spawnEntityInWorld(baby);
                             this.currentSpawnTime = 0;
                             this.setDead();
                         }
@@ -304,7 +315,26 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
         }
     }
 
-    public void fall(float fallDistance)
+    private EntityPlayer seachForOwner(EntityJurassiCraftCreature baby) {
+    	List<Entity> listNearEntities = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(6.0D, 6.0D, 6.0D));
+        ArrayList<EntityPlayer> listPlayers = new ArrayList<EntityPlayer>();
+        EntityPlayer owner = null;
+        float minimumDistance = 11.0F;
+        for (int i = 0; i < listNearEntities.size(); i++) {
+        	if (listNearEntities.get(i) instanceof EntityPlayer) {
+        		listPlayers.add((EntityPlayer) listNearEntities.get(i));
+        	}
+        }
+        for (int i = 0; i < listPlayers.size(); i++) {
+        	float distanceToCompare = listPlayers.get(i).getDistanceToEntity(this);
+        	if (distanceToCompare < minimumDistance) {
+        		owner = listPlayers.get(i);
+        	}
+        }
+        return owner;
+	}
+
+	public void fall(float fallDistance)
     {
         super.fall(fallDistance);
 
