@@ -11,7 +11,7 @@ public class BygoneAgeWaterEntityAISwim extends EntityAIBase {
 	protected EntityBygoneAgeWaterCreature entity;
 	protected final float floatSpeed;
 	protected final float sinkSpeed;
-	protected final float FAST_floatSpeed;
+	protected final float fastFloatSpeed;
 	protected final float fastSinkSpeed;
 
 	public BygoneAgeWaterEntityAISwim(EntityBygoneAgeWaterCreature creature, float floatVelocity, float sinkVelocity) {
@@ -19,8 +19,8 @@ public class BygoneAgeWaterEntityAISwim extends EntityAIBase {
 		this.setMutexBits(4);
 		this.floatSpeed = floatVelocity > 1.0F ? 1.0F : floatVelocity;
 		this.sinkSpeed = -sinkVelocity;
-		this.FAST_floatSpeed = this.floatSpeed * 50.0F;
-		this.fastSinkSpeed = -this.FAST_floatSpeed;
+		this.fastFloatSpeed = this.floatSpeed * 50.0F;
+		this.fastSinkSpeed = -this.fastFloatSpeed;
 	}
 
 	public boolean shouldExecute() {
@@ -34,7 +34,7 @@ public class BygoneAgeWaterEntityAISwim extends EntityAIBase {
 			double var10000 = Math.abs(this.entity.posY - player.posY);
 			this.getClass();
 			if (var10000 > 1.5D) {
-				this.entity.motionY = player.posY < this.entity.posY ? (double) this.fastSinkSpeed : (double) this.FAST_floatSpeed;
+				this.entity.motionY = player.posY < this.entity.posY ? (double) this.fastSinkSpeed : (double) this.fastFloatSpeed;
 			} else {
 				this.entity.motionY = player.posY < this.entity.posY ? (double) this.sinkSpeed : (double) this.floatSpeed;
 			}
@@ -63,7 +63,7 @@ public class BygoneAgeWaterEntityAISwim extends EntityAIBase {
 			if (this.entity.motionY < 0.0D) {
 				this.entity.motionY = 0.0D;
 			}
-			this.entity.motionY += (double) this.FAST_floatSpeed;
+			this.entity.motionY += (double) this.fastFloatSpeed;
 		}
 	}
 }
