@@ -87,7 +87,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
                 this.flightTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
                 this.flightTargetZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 32.0F);
 
-                if (this.targetEntity != null) {
+                if (d < 1.0D && this.targetEntity != null) {
                     this.targetEntity.attackEntityFrom(DamageSource.causeMobDamage(this), 4.0F);
                     this.targetEntity = null;
                 }
@@ -101,7 +101,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
             float f1 = MathHelper.wrapAngleTo180_float(f - this.rotationYaw);
             this.rotationYaw += f1;
 
-            if (this.rand.nextInt(30) == 0)
+            if (this.rand.nextInt(50) == 0)
                 this.targetEntity = this.findPlayerToAttack();
 
             if (this.flightTargetY < this.posY
