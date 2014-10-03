@@ -1,17 +1,16 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
@@ -27,6 +26,7 @@ public class GuiDinoPad extends GuiScreen {
 	private int ySize;
 	private int guiLeft;
 	private int guiTop;
+	private int pageNumber;
 	private float renderRotation;
 
 	public GuiDinoPad() 
@@ -37,7 +37,6 @@ public class GuiDinoPad extends GuiScreen {
 			this.creature = (EntityJurassiCraftTameable) this.creatureToAnalyze;
 			this.xSize = 256;
 			this.ySize = 176;
-			this.renderRotation = 0.0F;
 		}
 	}
 
@@ -45,8 +44,11 @@ public class GuiDinoPad extends GuiScreen {
 	public void initGui() 
 	{
 		this.buttonList.clear();
+		this.renderRotation = 0.0F;
+		this.pageNumber = 0;
 		this.guiLeft = (int) ((this.width - this.xSize) / 2);
 		this.guiTop = (int) ((this.height - this.ySize) / 2);
+        this.buttonList.add(new GuiDinopadButton(0, this.guiLeft + (this.xSize - 18) / 2, this.guiTop + 146, 18, 18));
 	}
 
 	@Override
@@ -80,26 +82,55 @@ public class GuiDinoPad extends GuiScreen {
 		}
 	}
 
+    @Override
+    public void actionPerformed(GuiButton button)
+    {
+    	if (button.id == 0)
+        {
+    		switch (this.pageNumber) {
+    			case 0:
+    				this.pageNumber = 1;
+    				break;
+    			case 1:
+    				this.pageNumber = 0;
+    				break;
+    			default:
+    				this.pageNumber = 0;
+    		}
+        }
+    }
+
 	@Override
 	public void drawScreen(int x, int y, float f) 
 	{
 		drawDefaultBackground();
 		mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiDinoPad.png"));
 		drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-		
-		this.renderEmptyBars();
-		this.renderStatusBars();
-		
-		if (this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
-		} else {
-			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
+		if (this.pageNumber == 0) {
+			this.renderEmptyBars();
+			this.renderStatusBars();
+			
+			if (this.creature.getCreatureID() >= 0 && this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
+				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
+			} else {
+				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
+			}
+			
+			this.renderNameGenderStrings();
+			this.renderStatusStrings();
+			this.renderTamedStrings();
+		} 
+		else if (this.pageNumber == 1) 
+		{
+			if (this.creature.getCreatureID() >= 0 && this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
+				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
+			} else {
+				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
+			}
+			this.renderNameGenderStrings();
+			this.renderCreatureInformation();
+			this.renderTamedStrings();
 		}
-		
-		this.renderNameGenderStrings();
-		this.renderStatusStrings();
-		this.renderTamedStrings();
-		
 		super.drawScreen(x, y, f);
 	}
 
@@ -150,6 +181,13 @@ public class GuiDinoPad extends GuiScreen {
 		{
 			this.fontRendererObj.drawString(StatCollector.translateToLocal("Owner: none"), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Owner: none") / 2, this.guiTop + 122, 14737632);
 		}
+	}
+
+	private void renderCreatureInformation() 
+	{
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Health: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHealth)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Health: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHealth)) / 2, this.guiTop + 45, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Length: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxLength)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Length: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxLength)) / 2, this.guiTop + 70, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Height: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHeight)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Height: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHeight)) / 2, this.guiTop + 95, 14737632);
 	}
 
 	private void renderCreature(float posX, float posY, float scale) 
