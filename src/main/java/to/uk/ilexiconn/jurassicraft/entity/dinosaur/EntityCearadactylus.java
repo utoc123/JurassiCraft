@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -137,6 +138,18 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
 
     public void setFlying(boolean flying) {
         this.dataWatcher.updateObject(17, new Byte((byte) (flying ? 1 : 0)));
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbttag) {
+        super.readEntityFromNBT(nbttag);
+        this.dataWatcher.updateObject(17, Byte.valueOf(nbttag.getByte("Flying")));
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbttag) {
+        super.writeEntityToNBT(nbttag);
+        nbttag.setByte("Flying", this.dataWatcher.getWatchableObjectByte(17));
     }
 
     @Override
