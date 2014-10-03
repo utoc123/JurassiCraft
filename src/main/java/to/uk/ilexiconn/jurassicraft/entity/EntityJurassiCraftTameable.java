@@ -18,6 +18,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAISit;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.ItemGrowthSerum;
+import to.uk.ilexiconn.jurassicraft.item.ItemOnAStick;
 
 public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature implements IEntityOwnable
 {
@@ -49,7 +50,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
     public boolean interact(EntityPlayer player)
     {
         ItemStack heldItemStack = player.inventory.getCurrentItem();
-        if (heldItemStack != null && !(heldItemStack.getItem() instanceof ItemGrowthSerum) && !(heldItemStack.getItem() instanceof ItemDinoPad))
+        if (heldItemStack != null && !(heldItemStack.getItem() instanceof ItemGrowthSerum) && !(heldItemStack.getItem() instanceof ItemDinoPad) && !(heldItemStack.getItem() instanceof ItemOnAStick))
         {
             if (Util.isFavoriteFood(this.getCreatureID(), heldItemStack.getItem()))
             {

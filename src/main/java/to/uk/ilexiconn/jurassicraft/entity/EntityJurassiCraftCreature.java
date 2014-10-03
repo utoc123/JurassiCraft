@@ -316,6 +316,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		if (this.worldObj.isRemote) 
 		{
 			System.out.println("=============== Client ===============");
+	        if (player.getHeldItem() != (ItemStack) null)
+	        	System.out.println("Held item = " + player.getHeldItem().getUnlocalizedName());
 			if (this instanceof EntityJurassiCraftTameable)
 				System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
 			System.out.println("Health: " + this.getCreatureHealth());
@@ -334,6 +336,8 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 		else 
 		{
 			System.out.println("=============== Server ===============");
+	        if (player.getHeldItem() != (ItemStack) null)
+	        	System.out.println("Held item = " + player.getHeldItem().getUnlocalizedName());
 			if (this instanceof EntityJurassiCraftTameable)
 				System.out.println("Owner: " + ((EntityJurassiCraftTameable) this).getOwnerName() + ", isTamed: " + ((EntityJurassiCraftTameable) this).isTamed());
 			System.out.println("Health: " + this.getCreatureHealth());
@@ -348,8 +352,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
 			System.out.println("Texture number: " + this.getCreatureTexture() + ". Genetic for texture: " + JurassiCraftDNAHandler.getDefaultTextureDNAQuality(this.getDNASequence()));
 			System.out.println("Adult: " + this.isCreatureAdult());
 			System.out.println("======================================");
-		}
-    	*/
+		}*/
     	
         if (player.getHeldItem() != (ItemStack) null)
         {

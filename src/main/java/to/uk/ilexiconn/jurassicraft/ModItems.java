@@ -8,6 +8,7 @@ import to.uk.ilexiconn.jurassicraft.item.ItemDinoSteak;
 import to.uk.ilexiconn.jurassicraft.item.ItemFossil;
 import to.uk.ilexiconn.jurassicraft.item.ItemGrowthSerum;
 import to.uk.ilexiconn.jurassicraft.item.ItemGypsumPowder;
+import to.uk.ilexiconn.jurassicraft.item.ItemOnAStick;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 import cpw.mods.fml.common.eventhandler.EventPriority;
@@ -22,6 +23,12 @@ public class ModItems
     public static Item growthSerum;
     public static Item gypsumPowder;
     public static Item dinoSteak;
+    public static Item appleOnAStick;
+    public static Item beefOnAStick;
+    public static Item carrotOnAStick;
+    public static Item fishOnAStick;
+    public static Item porkOnAStick;
+    public static Item wheatOnAStick;
 
     public void init()
     {
@@ -32,5 +39,11 @@ public class ModItems
         gypsumPowder = new ItemGypsumPowder();
         dinoPad = new ItemDinoPad();
         dinoSteak = new ItemDinoSteak();
+        appleOnAStick = new ItemOnAStick("Apple");
+        beefOnAStick = new ItemOnAStick("Beef");
+        carrotOnAStick = new ItemOnAStick("Carrot");
+        fishOnAStick = new ItemOnAStick("Fish");
+        porkOnAStick = new ItemOnAStick("Pork");
+        wheatOnAStick = new ItemOnAStick("Wheat");
     }
 }
