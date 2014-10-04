@@ -10,13 +10,9 @@ import to.uk.ilexiconn.llib.content.ContentType;
 @ContentHandler(modid = "jurassicraft", type = ContentType.CREATIVETAB, priority = EventPriority.HIGHEST)
 public class ModCreativeTabs
 {
-    public static CreativeTabs fossilTab;
-
-    public void init()
+   public static CreativeTabs fossilTab = new CreativeTabs("fossilTab")
     {
-        fossilTab = new CreativeTabs("fossilTab")
-        {
-            public Item getTabIconItem()
+         public Item getTabIconItem()
             {
                 return ModItems.fossil;
             }
