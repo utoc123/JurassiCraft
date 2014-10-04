@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.entity.ai;
+package to.uk.ilexiconn.jurassicraft.ai;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCearadactylus;

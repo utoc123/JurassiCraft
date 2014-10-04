@@ -39,17 +39,17 @@ public class TileDNAExtractorRenderer extends TileEntitySpecialRenderer
                 int direction = tileEntityModel.getBlockMetadata();
                 switch (direction)
                 {
-                    case 2:
+                    case 0:
                         angle = -180;
                         break;
-                    case 3:
+                    case 1:
+                        angle = -90;
+                        break;
+                    case 2:
                         angle = 0;
                         break;
-                    case 4:
+                    case 3:
                         angle = -270;
-                        break;
-                    case 5:
-                        angle = -90;
                         break;
                     default:
                         angle = -180;

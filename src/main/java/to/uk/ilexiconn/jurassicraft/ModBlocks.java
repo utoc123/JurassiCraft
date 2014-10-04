@@ -9,6 +9,7 @@ import to.uk.ilexiconn.jurassicraft.block.BlockCultivateBottom;
 import to.uk.ilexiconn.jurassicraft.block.BlockCultivateTop;
 import to.uk.ilexiconn.jurassicraft.block.BlockDNACombinator;
 import to.uk.ilexiconn.jurassicraft.block.BlockDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.block.BlockDinoPad;
 import to.uk.ilexiconn.jurassicraft.block.BlockFossilClayOre;
 import to.uk.ilexiconn.jurassicraft.block.BlockFossilOre;
 import to.uk.ilexiconn.jurassicraft.block.BlockFossilSandstoneOre;
@@ -40,6 +41,7 @@ public class ModBlocks
     public static Block amberOre;
     public static Block fossilOre;
     public static Block sandstoneFossilOre;
+    public static Block dinoPad;
     @OverrideRegistry
     public static Block clayFossilOre;
     @OverrideRegistry
@@ -58,6 +60,7 @@ public class ModBlocks
         amberOre = new BlockAmberOre();
         fossilOre = new BlockFossilOre();
         sandstoneFossilOre = new BlockFossilSandstoneOre();
+        dinoPad = new BlockDinoPad();
         clayFossilOre = new BlockFossilClayOre();
         gypsumBlock = new BlockGypsumBlock();
         gypsumBrick = new BlockGypsumBrick();

@@ -7,21 +7,20 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
+import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDinoPadRenderer;
+import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDNAExtractorRenderer;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 
 @SideOnly(Side.CLIENT)
-public class ItemDNAExtractorRenderer implements IItemRenderer
+public class ItemDinoPadRenderer implements IItemRenderer
 {
+    private TileEntitySpecialRenderer render = new TileDinoPadRenderer();
+    private TileEntity tileEntity = new TileDinoPad();
 
-    private TileEntitySpecialRenderer render = new TileDNAExtractorRenderer();
-    private TileEntity tileEntity = new TileDNAExtractor();
-
-    public ItemDNAExtractorRenderer()
+    public ItemDinoPadRenderer()
     {
-
+    	
     }
 
     @Override
@@ -39,20 +38,30 @@ public class ItemDNAExtractorRenderer implements IItemRenderer
     @Override
     public void renderItem(ItemRenderType type, ItemStack item, Object... data)
     {
-        if (type == IItemRenderer.ItemRenderType.ENTITY)
+    	if (type == IItemRenderer.ItemRenderType.INVENTORY)
         {
-            GL11.glTranslatef(-0.5F, -0.35F, -0.5F);
-            GL11.glScalef(1.2F, 1.2F, 1.2F);
+            GL11.glRotatef(-90F, 0.0F, 1.0F, 0.1F);
+            GL11.glTranslatef(-0.5F, 0.15F, -1.0F);
+            GL11.glScalef(1.5F, 1.5F, 1.5F);
         }
         else if (type == IItemRenderer.ItemRenderType.EQUIPPED_FIRST_PERSON)
         {
-            GL11.glRotatef(-90F, 0.0F, 1.0F, 0.0F);
-            GL11.glTranslatef(0.0F, 0.5F, 0.0F);
+            GL11.glRotatef(90F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(60F, 0.0F, 1.0F, 0.0F);
+            GL11.glTranslatef(-1F, -1.0F, -1F);
+            GL11.glScalef(3.0F, 3.0F, 3.0F);
         }
         else if (type == IItemRenderer.ItemRenderType.EQUIPPED)
         {
-            GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+            GL11.glRotatef(150F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
+            GL11.glTranslatef(-0.5F, 0.75F, 0.0F);
             GL11.glScalef(1.5F, 1.5F, 1.5F);
+        }
+        else if (type == IItemRenderer.ItemRenderType.ENTITY)
+        {
+            GL11.glRotatef(-90F, 1.0F, 0.5F, 0.0F);
+            GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
         }
         this.render.renderTileEntityAt(this.tileEntity, 0.0D, 0.0D, 0.0D, 0.0F);
     }

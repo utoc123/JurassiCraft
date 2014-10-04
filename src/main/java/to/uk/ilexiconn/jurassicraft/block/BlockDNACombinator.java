@@ -68,19 +68,19 @@ public class BlockDNACombinator extends BlockContainer
         int l = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
         if (l == 0)
         {
-            world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+            world.setBlockMetadataWithNotify(x, y, z, 0, 2);
         }
         else if (l == 1)
         {
-            world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+            world.setBlockMetadataWithNotify(x, y, z, 1, 2);
         }
         else if (l == 2)
         {
-            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+            world.setBlockMetadataWithNotify(x, y, z, 2, 2);
         }
         else if (l == 3)
         {
-            world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
         }
     }
 

@@ -5,18 +5,20 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
-import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDnaCombiner;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 
-public class TileDNACombinatorRenderer extends TileEntitySpecialRenderer
+import org.lwjgl.opengl.GL11;
+
+import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDinoPad;
+import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
+
+public class TileDinoPadRenderer extends TileEntitySpecialRenderer
 {
 
-    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/dnaCombinator.png");
-    private ModelDnaCombiner model = new ModelDnaCombiner();
+    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/dinoPad.png");
+    private ModelDinoPad model = new ModelDinoPad();
 
-    public TileDNACombinatorRenderer()
+    public TileDinoPadRenderer()
     {
 
     }
@@ -24,9 +26,9 @@ public class TileDNACombinatorRenderer extends TileEntitySpecialRenderer
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f)
     {
-        if (tileEntity instanceof TileDNACombinator)
+        if (tileEntity instanceof TileDinoPad)
         {
-            TileDNACombinator tileEntityModel = (TileDNACombinator) tileEntity;
+        	TileDinoPad tileEntityModel = (TileDinoPad) tileEntity;
             int angle = 0;
             GL11.glPushMatrix();
             if (tileEntityModel.getWorldObj() == null)
@@ -40,29 +42,25 @@ public class TileDNACombinatorRenderer extends TileEntitySpecialRenderer
                 {
                     case 0:
                         angle = -180;
-                        GL11.glTranslatef((float) x + 1.0F, (float) y + 1.5F, (float) z + 1.0F);
                         break;
                     case 1:
                         angle = -90;
-                        GL11.glTranslatef((float) x, (float) y + 1.5F, (float) z + 1.0F);
                         break;
                     case 2:
                         angle = 0;
-                        GL11.glTranslatef((float) x, (float) y + 1.5F, (float) z);
                         break;
                     case 3:
                         angle = -270;
-                        GL11.glTranslatef((float) x + 1.0F, (float) y + 1.5F, (float) z);
                         break;
                     default:
                         angle = -180;
-                        GL11.glTranslatef((float) x, (float) y + 1.5F, (float) z);
                         break;
                 }
             }
+            GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
             GL11.glScalef(1.0F, 1.0F, 1.0F);
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-            GL11.glRotatef(angle + 180, 0.0F, 1.0F, 0F);
+            GL11.glRotatef(angle, 0.0F, 1.0F, 0F);
             Minecraft.getMinecraft().renderEngine.bindTexture(texture);
             this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             GL11.glPopMatrix();

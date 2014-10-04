@@ -15,10 +15,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ai.EntityAICearadactylus;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.ai.EntityAICearadactylus;
 
 public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implements IDinosaur {
 
