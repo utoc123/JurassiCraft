@@ -51,6 +51,8 @@ public class ModBlocks
 
     public void init()
     {
+        new ModCreativeTabs();
+        
         cultivateBottomOff = new BlockCultivateBottom(false);
         cultivateTopOff = new BlockCultivateTop(false);
         cultivateBottomOn = new BlockCultivateBottom(true);
