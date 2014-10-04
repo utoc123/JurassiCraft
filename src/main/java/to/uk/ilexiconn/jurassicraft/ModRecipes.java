@@ -20,14 +20,14 @@ public class ModRecipes
 
             GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.cultivateBottomOff, 1, i), new ItemStack(Items.dye, 1, i), new ItemStack(ModBlocks.cultivateBottomOff));
             GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.cultivateBottomOff, 1, i), "GDG", "GWG", "III", 'I', Items.iron_ingot, 'G', Blocks.glass, 'D', new ItemStack(Items.dye, 1, i), 'W', Items.water_bucket);
-    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.dnaCombinator, 1), new Object[] { "III", "IRI", "III", 'I', Items.iron_ingot, 'R', Items.redstone });
-    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.dnaExtractor, 1), new Object[] { "IIG", "IRG", "III", 'G', Blocks.glass, 'I', Items.iron_ingot, 'R', Items.redstone });
+    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.dnaCombinator, 1), "III", "IRI", "III", 'I', Items.iron_ingot, 'R', Items.redstone);
+    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.dnaExtractor, 1), "IIG", "IRG", "III", 'G', Blocks.glass, 'I', Items.iron_ingot, 'R', Items.redstone);
             
-    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.gypsumBrick, 1), new Object[] { "BB", "BB", 'B', ModBlocks.gypsumBlock });
+    		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.gypsumBrick, 1), "BB", "BB", 'B', ModBlocks.gypsumBlock);
 
-    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), new Object[] { "TG", 'T', Items.stone_pickaxe.setContainerItem(Items.stone_pickaxe), 'G', ModBlocks.gypsumCobblestone });
-    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), new Object[] { "TG", 'T', Items.iron_pickaxe.setContainerItem(Items.iron_pickaxe), 'G', ModBlocks.gypsumCobblestone });
-    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), new Object[] { "TG", 'T', Items.diamond_pickaxe.setContainerItem(Items.diamond_pickaxe), 'G', ModBlocks.gypsumCobblestone });
+    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), "TG", 'T', Items.stone_pickaxe.setContainerItem(Items.stone_pickaxe), 'G', ModBlocks.gypsumCobblestone);
+    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), "TG", 'T', Items.iron_pickaxe.setContainerItem(Items.iron_pickaxe), 'G', ModBlocks.gypsumCobblestone);
+    		GameRegistry.addShapedRecipe(new ItemStack(ModItems.gypsumPowder, 2), "TG", 'T', Items.diamond_pickaxe.setContainerItem(Items.diamond_pickaxe), 'G', ModBlocks.gypsumCobblestone);
     		
     		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.growthSerum, 1), Items.water_bucket.setContainerItem(Items.bucket), new ItemStack(Items.beef, 1),  new ItemStack(Items.bone, 1),  new ItemStack(Items.golden_carrot, 1));
             GameRegistry.addShapelessRecipe(new ItemStack(ModItems.growthSerum, 1), Items.water_bucket.setContainerItem(Items.bucket), new ItemStack(Items.fish, 1),  new ItemStack(Items.bone, 1),  new ItemStack(Items.golden_carrot, 1));

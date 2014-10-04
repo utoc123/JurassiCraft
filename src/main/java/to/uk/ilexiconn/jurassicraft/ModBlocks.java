@@ -51,22 +51,19 @@ public class ModBlocks
 
     public void init()
     {
-        new ModCreativeTabs();
-        
         cultivateBottomOff = new BlockCultivateBottom(false);
         cultivateTopOff = new BlockCultivateTop(false);
         cultivateBottomOn = new BlockCultivateBottom(true);
         cultivateTopOn = new BlockCultivateTop(true);
         dnaExtractor = new BlockDNAExtractor();
         dnaCombinator = new BlockDNACombinator();
-        amberOre = new BlockAmberOre();
-        fossilOre = new BlockFossilOre();
-        sandstoneFossilOre = new BlockFossilSandstoneOre();
-        dinoPad = new BlockDinoPad();
-        clayFossilOre = new BlockFossilClayOre();
         gypsumBlock = new BlockGypsumBlock();
         gypsumBrick = new BlockGypsumBrick();
         gypsumCobblestone = new BlockGypsumCobblestone();
+        amberOre = new BlockAmberOre();
+        fossilOre = new BlockFossilOre();
+        sandstoneFossilOre = new BlockFossilSandstoneOre();
+        clayFossilOre = new BlockFossilClayOre();
 
         gameRegistry();
     }
