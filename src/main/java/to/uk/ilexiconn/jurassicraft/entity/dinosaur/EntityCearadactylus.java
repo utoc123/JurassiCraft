@@ -102,7 +102,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
             float f1 = MathHelper.wrapAngleTo180_float(f - this.rotationYaw);
             this.rotationYaw += f1;
 
-            if (this.rand.nextInt(50) == 0)
+            if (!this.isTamed() && this.rand.nextInt(50) == 0)
                 this.targetEntity = this.findPlayerToAttack();
 
             if (this.flightTargetY < this.posY
