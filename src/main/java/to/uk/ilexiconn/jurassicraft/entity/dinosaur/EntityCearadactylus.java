@@ -85,7 +85,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
 
             if (d < 1.0D || d > 100.0D || this.rand.nextInt(50) == 0) {
                 this.flightTargetX = this.posX + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 32.0F);
-                this.flightTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
+                this.flightTargetY = this.posY + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 8.0F);
                 this.flightTargetZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 32.0F);
 
                 if (d < 1.0D && this.targetEntity != null) {
@@ -123,7 +123,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
 
         //
         this.flightTargetX = this.posX + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 32.0F);
-        this.flightTargetY = this.posY + (double) (this.rand.nextFloat() * 16.0F);
+        this.flightTargetY = this.posY + (double) (this.rand.nextFloat() * 8.0F);
         this.flightTargetZ = this.posZ + (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 32.0F);
     }
 
@@ -141,6 +141,14 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
     }
 
     @Override
+    protected void fall(float p_70069_1_) {
+    }
+
+    @Override
+    protected void updateFallState(double p_70064_1_, boolean p_70064_3_) {
+    }
+
+    @Override
     public void readEntityFromNBT(NBTTagCompound nbttag) {
         super.readEntityFromNBT(nbttag);
         this.dataWatcher.updateObject(17, Byte.valueOf(nbttag.getByte("Flying")));
@@ -150,14 +158,6 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
     public void writeEntityToNBT(NBTTagCompound nbttag) {
         super.writeEntityToNBT(nbttag);
         nbttag.setByte("Flying", this.dataWatcher.getWatchableObjectByte(17));
-    }
-
-    @Override
-    protected void fall(float p_70069_1_) {
-    }
-
-    @Override
-    protected void updateFallState(double p_70064_1_, boolean p_70064_3_) {
     }
 
     // Other's code:
