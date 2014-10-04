@@ -64,6 +64,7 @@ public class ModBlocks
         fossilOre = new BlockFossilOre();
         sandstoneFossilOre = new BlockFossilSandstoneOre();
         clayFossilOre = new BlockFossilClayOre();
+        dinoPad = new BlockDinoPad();
 
         gameRegistry();
     }
