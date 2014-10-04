@@ -7,11 +7,9 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
@@ -27,9 +25,14 @@ public class BlockDinoPad extends Block implements ITileEntityProvider
         this.setHardness(0.0F);
         this.setResistance(0.0F);
         this.setStepSound(Block.soundTypeStone);
-        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.2F, 0.8F);
+        this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.2F, 0.9F);
         this.setBlockTextureName(JurassiCraft.getModId() + "dnaExtractorBreakingParticles");
     }
+	
+	@Override
+	public boolean hasTileEntity(int metadata) {
+		return true;
+	}
 
     @Override
     public int getRenderType()
@@ -49,10 +52,26 @@ public class BlockDinoPad extends Block implements ITileEntityProvider
         return false;
     }
 
-    @Override
-    public Item getItemDropped(int value, Random random, int var)
-    {
-        return ModItems.dinoPad;
+	@Override
+	public int quantityDropped(int metadata, int fortune, Random random) {
+		return 0;
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) 
+	{
+		TileEntity tileentity = (TileEntity) world.getTileEntity(x, y, z);
+		if (tileentity instanceof TileDinoPad) 
+		{
+			TileDinoPad dinopad = (TileDinoPad) tileentity;
+			float x1 = world.rand.nextFloat() * 0.8F + 0.1F;
+			float y1 = world.rand.nextFloat() * 0.8F + 0.1F;
+			float z1 = world.rand.nextFloat() * 0.8F + 0.1F;
+			ItemStack itemStack = new ItemStack(ModItems.dinoPad);
+			EntityItem entityPlanks = new EntityItem(world, (double) ((float) x + x1), (double) ((float) y + y1), (double) ((float) z + z1), itemStack);
+			world.spawnEntityInWorld(entityPlanks);
+		}
+		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
 	@Override
