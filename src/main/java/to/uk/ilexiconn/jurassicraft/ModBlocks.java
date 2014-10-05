@@ -16,6 +16,7 @@ import to.uk.ilexiconn.jurassicraft.block.BlockFossilSandstoneOre;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBlock;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBrick;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumCobblestone;
+import to.uk.ilexiconn.jurassicraft.block.BlockSecurityFenceBase;
 import to.uk.ilexiconn.jurassicraft.block.BlockStuffFluid;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockFossilClayOre;
@@ -42,6 +43,9 @@ public class ModBlocks
     public static Block fossilOre;
     public static Block sandstoneFossilOre;
     public static Block dinoPad;
+    public static Block securityFenceBase;
+    //public static Block securityFenceBaseMedium;
+    //public static Block securityFenceBaseHigh;
     @OverrideRegistry
     public static Block clayFossilOre;
     @OverrideRegistry
@@ -65,7 +69,9 @@ public class ModBlocks
         sandstoneFossilOre = new BlockFossilSandstoneOre();
         clayFossilOre = new BlockFossilClayOre();
         dinoPad = new BlockDinoPad();
-
+        securityFenceBase = new BlockSecurityFenceBase();
+        //securityFenceBaseMedium = new BlockSecurityFenceBase();
+        //securityFenceBaseHigh = new BlockSecurityFenceBase();
         gameRegistry();
     }
 

@@ -7,11 +7,9 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.container.slot.SlotBucket;
 import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASampleAndEgg;
 import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
-import to.uk.ilexiconn.jurassicraft.item.AnyDNASample;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,9 +24,9 @@ public class ContainerCultivate extends Container
     private int lastVitaminsValue;
     private int lastLipidsValue;
 
-    public ContainerCultivate(InventoryPlayer playerInventory, TileEntity tileEntity)
+    public ContainerCultivate(InventoryPlayer playerInventory, TileCultivate tileEntity)
     {
-        this.cultivator = (TileCultivate) tileEntity;
+        this.cultivator = tileEntity;
         this.addSlotToContainer(new SlotBucket(cultivator, 0, 12, 20));
         this.addSlotToContainer(new SlotBucket(cultivator, 1, 12, 68));
         this.addSlotToContainer(new SlotDNASampleAndEgg(cultivator, 2, 122, 44));

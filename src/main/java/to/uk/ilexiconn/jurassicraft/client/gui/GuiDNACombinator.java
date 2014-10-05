@@ -2,10 +2,11 @@ package to.uk.ilexiconn.jurassicraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import org.lwjgl.opengl.GL11;
+
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.container.ContainerDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
@@ -15,16 +16,12 @@ public class GuiDNACombinator extends GuiContainer
 
     private TileDNACombinator dnaCombinator;
 
-    public GuiDNACombinator(InventoryPlayer inventoryPlayer, TileEntity tileEntity)
+    public GuiDNACombinator(InventoryPlayer inventoryPlayer, TileDNACombinator tileEntity)
     {
         super(new ContainerDNACombinator(inventoryPlayer, tileEntity));
-        if (tileEntity instanceof TileDNACombinator)
-        {
-            TileDNACombinator tileDNACombinator = (TileDNACombinator) tileEntity;
-            this.dnaCombinator = tileDNACombinator;
-            this.xSize = 176;
-            this.ySize = 188;
-        }
+        this.dnaCombinator = tileEntity;
+        this.xSize = 176;
+        this.ySize = 188;
     }
 
     @Override

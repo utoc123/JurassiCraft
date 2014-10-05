@@ -48,7 +48,7 @@ public class GuiDinoPad extends GuiScreen {
 		this.pageNumber = 0;
 		this.guiLeft = (int) ((this.width - this.xSize) / 2);
 		this.guiTop = (int) ((this.height - this.ySize) / 2);
-        this.buttonList.add(new GuiDinopadButton(0, this.guiLeft + (this.xSize - 18) / 2, this.guiTop + 146, 18, 18));
+        this.buttonList.add(new GuiButtonDinopad(0, this.guiLeft + (this.xSize - 18) / 2, this.guiTop + 146, 18, 18));
 	}
 
 	@Override

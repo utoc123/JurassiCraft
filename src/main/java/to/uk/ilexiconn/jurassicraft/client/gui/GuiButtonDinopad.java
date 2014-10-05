@@ -13,9 +13,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiDinopadButton extends GuiButton 
+public class GuiButtonDinopad extends GuiButton 
 {
-	public GuiDinopadButton(int id, int xPos, int yPos, int width, int height) 
+	public GuiButtonDinopad(int id, int xPos, int yPos, int width, int height) 
 	{
 		super(id, xPos, yPos, width, height, "");
 		this.visible = false;

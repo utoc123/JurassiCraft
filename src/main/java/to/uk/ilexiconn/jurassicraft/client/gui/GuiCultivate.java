@@ -2,7 +2,6 @@ package to.uk.ilexiconn.jurassicraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -17,16 +16,12 @@ public class GuiCultivate extends GuiContainer
 
     private TileCultivate cultivator;
 
-    public GuiCultivate(InventoryPlayer inventoryPlayer, TileEntity entity)
+    public GuiCultivate(InventoryPlayer inventoryPlayer, TileCultivate entity)
     {
         super(new ContainerCultivate(inventoryPlayer, entity));
-        if (entity instanceof TileCultivate)
-        {
-            TileCultivate entityHatchery = (TileCultivate) entity;
-            this.cultivator = entityHatchery;
-            this.xSize = 352;
-            this.ySize = 188;
-        }
+        this.cultivator = entity;
+        this.xSize = 352;
+	    this.ySize = 188;
     }
 
     @Override

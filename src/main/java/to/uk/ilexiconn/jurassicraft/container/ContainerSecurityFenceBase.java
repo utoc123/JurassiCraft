@@ -5,26 +5,23 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemStack;
-import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASample;
-import to.uk.ilexiconn.jurassicraft.item.AnyDNASample;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
+import net.minecraft.tileentity.TileEntity;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerDNACombinator extends Container
+public class ContainerSecurityFenceBase extends Container
 {
 
-    private TileDNACombinator dnaCombinator;
-    private short lastAnalyzeTime;
+    private TileSecurityFenceBase fence;
+    private int lastRedstone;
 
-    public ContainerDNACombinator(InventoryPlayer playerInventory, TileDNACombinator tileEntity)
+    public ContainerSecurityFenceBase(InventoryPlayer playerInventory, TileEntity tileEntity)
     {
-        this.dnaCombinator = tileEntity;
-        this.addSlotToContainer(new SlotDNASample(dnaCombinator, 0, 55, 20));
-        this.addSlotToContainer(new SlotDNASample(dnaCombinator, 1, 105, 20));
-        this.addSlotToContainer(new SlotFurnace(playerInventory.player, dnaCombinator, 2, 81, 67));
+        this.fence = (TileSecurityFenceBase) tileEntity;
+        this.addSlotToContainer(new Slot(this.fence, 0, 37, 24));
 
         for (int i = 0; i < 3; i++)
         {
@@ -39,22 +36,12 @@ public class ContainerDNACombinator extends Container
             this.addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 164));
         }
     }
-
-    @Override
-    public void onContainerClosed(EntityPlayer player)
-    {
-        super.onContainerClosed(player);
-        if (!player.worldObj.isRemote)
-        {
-            dnaCombinator.closeInventory();
-        }
-    }
-
+    
     @Override
     public void addCraftingToCrafters(ICrafting iCrafting)
     {
         super.addCraftingToCrafters(iCrafting);
-        iCrafting.sendProgressBarUpdate(this, 0, this.dnaCombinator.getCombinationTime());
+        iCrafting.sendProgressBarUpdate(this, 0, this.fence.getRedstoneStored());
     }
 
     @Override
@@ -64,12 +51,12 @@ public class ContainerDNACombinator extends Container
         for (int i = 0; i < this.crafters.size(); i++)
         {
             ICrafting iCrafting = (ICrafting) this.crafters.get(i);
-            if (this.lastAnalyzeTime != this.dnaCombinator.getCombinationTime())
+            if (this.lastRedstone != this.fence.getRedstoneStored())
             {
-                iCrafting.sendProgressBarUpdate(this, 0, this.dnaCombinator.getCombinationTime());
+                iCrafting.sendProgressBarUpdate(this, 0, this.fence.getRedstoneStored());
             }
         }
-        lastAnalyzeTime = dnaCombinator.getCombinationTime();
+        this.lastRedstone = this.fence.getRedstoneStored();
     }
 
     @Override
@@ -78,14 +65,24 @@ public class ContainerDNACombinator extends Container
     {
         if (i == 0)
         {
-            this.dnaCombinator.setCombinationTime((short) unknown);
+            this.fence.setRedstoneStored(unknown);
         }
     }
-
+    
+    @Override
+    public void onContainerClosed(EntityPlayer player)
+    {
+        super.onContainerClosed(player);
+        if (!player.worldObj.isRemote)
+        {
+        	this.fence.closeInventory();
+        }
+    }
+    
     @Override
     public boolean canInteractWith(EntityPlayer player)
     {
-        return dnaCombinator.isUseableByPlayer(player);
+        return this.fence.isUseableByPlayer(player);
     }
 
     @Override
@@ -99,7 +96,7 @@ public class ContainerDNACombinator extends Container
             {
                 ItemStack stackInSlot = slot.getStack();
                 stackFinal = stackInSlot.copy();
-                if (i < 3)
+                if (i < 1)
                 {
                     if (!mergeItemStack(stackInSlot, 9, inventorySlots.size(), true))
                     {
@@ -107,11 +104,11 @@ public class ContainerDNACombinator extends Container
                     }
                     slot.onSlotChange(stackInSlot, stackFinal);
                 }
-                else if (i >= 3)
+                else if (i >= 1)
                 {
-                    if (stackInSlot.getItem() instanceof AnyDNASample)
+                    if (stackInSlot.getItem() instanceof ItemRedstone)
                     {
-                        if (!mergeItemStack(stackInSlot, 0, 2, false))
+                        if (!mergeItemStack(stackInSlot, 0, 1, false))
                         {
                             return null;
                         }

@@ -6,6 +6,7 @@ import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
 import to.uk.ilexiconn.jurassicraft.tile.TileEgg;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
 import to.uk.ilexiconn.llib.content.ContentHandler;
 import to.uk.ilexiconn.llib.content.ContentType;
 
@@ -19,5 +20,6 @@ public class ModTileEntities
     	GameRegistry.registerTileEntity(TileCultivate.class, "jurassicraft:cultivator");
     	GameRegistry.registerTileEntity(TileEgg.class, "jurassicraft:tile_egg");
     	GameRegistry.registerTileEntity(TileDinoPad.class, "jurassicraft:dino_pad");
+    	GameRegistry.registerTileEntity(TileSecurityFenceBase.class, "jurassicraft:securityFenceBase");
     }
 }

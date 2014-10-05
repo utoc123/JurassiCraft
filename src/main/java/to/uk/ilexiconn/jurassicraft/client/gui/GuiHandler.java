@@ -6,9 +6,11 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.container.ContainerCultivate;
 import to.uk.ilexiconn.jurassicraft.container.ContainerDNACombinator;
 import to.uk.ilexiconn.jurassicraft.container.ContainerDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.container.ContainerSecurityFenceBase;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
@@ -22,6 +24,8 @@ public class GuiHandler implements IGuiHandler
             return new ContainerCultivate(player.inventory, (TileCultivate) tileEntity);
         if (tileEntity instanceof TileDNACombinator)
             return new ContainerDNACombinator(player.inventory, (TileDNACombinator) tileEntity);
+        if (tileEntity instanceof TileSecurityFenceBase)
+            return new ContainerSecurityFenceBase(player.inventory, (TileSecurityFenceBase) tileEntity);
         return null;
     }
 
@@ -39,6 +43,8 @@ public class GuiHandler implements IGuiHandler
             return new GuiCultivateProcess((TileCultivate) tileEntity);
         if (tileEntity instanceof TileDNACombinator)
             return new GuiDNACombinator(player.inventory, (TileDNACombinator) tileEntity);
+        if (tileEntity instanceof TileSecurityFenceBase)
+            return new GuiSecurityFenceBase(player.inventory, (TileSecurityFenceBase) tileEntity);
         return null;
     }
 }

@@ -1,7 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,10 +7,11 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASource;
 import to.uk.ilexiconn.jurassicraft.item.AnyDNASource;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerDNAExtractor extends Container
 {
@@ -20,9 +19,9 @@ public class ContainerDNAExtractor extends Container
     private TileDNAExtractor dnaExtractor;
     private short lastAnalyzeTime;
 
-    public ContainerDNAExtractor(InventoryPlayer playerInventory, TileEntity tileEntity)
+    public ContainerDNAExtractor(InventoryPlayer playerInventory, TileDNAExtractor tileEntity)
     {
-        this.dnaExtractor = (TileDNAExtractor) tileEntity;
+        this.dnaExtractor = tileEntity;
         this.addSlotToContainer(new SlotDNASource(dnaExtractor, 0, 29, 29));
         this.addSlotToContainer(new SlotDNASource(dnaExtractor, 1, 47, 29));
         this.addSlotToContainer(new SlotDNASource(dnaExtractor, 2, 29, 47));

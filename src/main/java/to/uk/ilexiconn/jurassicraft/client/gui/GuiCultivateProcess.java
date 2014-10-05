@@ -1,15 +1,14 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCultivateProcess extends GuiScreen
@@ -21,16 +20,12 @@ public class GuiCultivateProcess extends GuiScreen
     private int guiLeft;
     private int guiTop;
 
-    public GuiCultivateProcess(TileEntity entity)
+    public GuiCultivateProcess(TileCultivate entity)
     {
         super();
-        if (entity instanceof TileCultivate)
-        {
-            TileCultivate entityHatchery = (TileCultivate) entity;
-            this.cultivator = entityHatchery;
-            this.xSize = 176;
-            this.ySize = 107;
-        }
+        this.cultivator = entity;
+        this.xSize = 176;
+        this.ySize = 107;
     }
 
     @Override

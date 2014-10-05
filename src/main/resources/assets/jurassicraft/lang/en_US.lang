@@ -87,6 +87,7 @@ item.dinopad.name=Dinopad
 tile.cultivate_idle.name=Cultivate
 tile.dnaExtractor.name=DNA Extractor
 tile.dnaCombinator.name=DNA Combinator
+tile.security_Fence_Base.name=Security Fence Base
 tile.fossil_sandstone_ore.name=Sandstone Fossil Ore
 tile.fossil_clay_ore.name=Clay Fossil Ore
 tile.fossil_clay_ore_stained_brown.name= Brown Stained Clay Fossil Ore
@@ -103,3 +104,7 @@ entity.dino_egg.name=Dino Egg
 
 container.dnaExtractor=DNA Extractor
 container.dnaCombinator=DNA Combinator
+container.securityFence=Security Fence
+container.securityFenceLow=Low
+container.securityFenceMedium=Medium
+container.securityFenceHigh=High
