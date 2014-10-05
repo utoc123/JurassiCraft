@@ -197,6 +197,19 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                 }
                 for (int j = 4; j < 8; j++)
                 {
+                    if (this.slots[j] != (ItemStack) null && this.slots[j].getItem() == newItem.getItem())
+                    {
+                        this.slots[i].stackSize--;
+                        if (this.slots[i].stackSize <= 0)
+                        {
+                            this.slots[i] = (ItemStack) null;
+                        }
+                        this.slots[j].stackSize++;
+                        return;
+                    }
+                }
+                for (int j = 4; j < 8; j++)
+                {
                     if (this.slots[j] == (ItemStack) null)
                     {
                         this.slots[i].stackSize--;
@@ -205,16 +218,6 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             this.slots[i] = (ItemStack) null;
                         }
                         this.slots[j] = newItem;
-                        return;
-                    }
-                    else if (this.slots[j].getItem() == newItem.getItem())
-                    {
-                        this.slots[i].stackSize--;
-                        if (this.slots[i].stackSize <= 0)
-                        {
-                            this.slots[i] = (ItemStack) null;
-                        }
-                        this.slots[j].stackSize++;
                         return;
                     }
                 }
