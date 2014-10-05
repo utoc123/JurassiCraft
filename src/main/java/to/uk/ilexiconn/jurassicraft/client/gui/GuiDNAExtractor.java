@@ -36,7 +36,7 @@ public class GuiDNAExtractor extends GuiContainer
     @Override
     protected void drawGuiContainerForegroundLayer(int i, int j)
     {
-        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.dnaExtractor"), xSize / 2 - this.fontRendererObj.getStringWidth("container.dnaExtractor") / 2, 5, 4210752);
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.dnaExtractor"), this.xSize - this.fontRendererObj.getStringWidth("container.dnaExtractor"), 7, 4210752);
         this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 94, 4210752);
     }
 

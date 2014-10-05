@@ -52,7 +52,7 @@ public class ItemDinoPad extends Item
 			++x;
 		}
 
-		if (!player.canPlayerEdit(x, y, z, side, stack)) 
+		if (!player.canPlayerEdit(x, y, z, side, stack) || !player.isSneaking()) 
 		{
 			return false;
 		} 

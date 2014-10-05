@@ -247,7 +247,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
                         	EntityJurassiCraftCreature baby = (EntityJurassiCraftCreature) dinoToSpawn;
                         	baby.setGenetics(quality, dnaSequence);
                         	if (dinoToSpawn instanceof EntityJurassiCraftTameable && ((EntityJurassiCraftTameable) baby).canBeTamedUponSpawning()) {
-                        		EntityPlayer owner = this.seachForOwner(baby);
+                        		EntityPlayer owner = this.worldObj.getClosestPlayerToEntity(this, 6.0F);
                             	if (owner != null) {
                             		((EntityJurassiCraftTameable) baby).setTamed(true);
                         			((EntityJurassiCraftTameable) baby).setOwner(owner.getCommandSenderName());
@@ -314,25 +314,6 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
     }
-
-    private EntityPlayer seachForOwner(EntityJurassiCraftCreature baby) {
-    	List<Entity> listNearEntities = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(6.0D, 6.0D, 6.0D));
-        ArrayList<EntityPlayer> listPlayers = new ArrayList<EntityPlayer>();
-        EntityPlayer owner = null;
-        float minimumDistance = 11.0F;
-        for (int i = 0; i < listNearEntities.size(); i++) {
-        	if (listNearEntities.get(i) instanceof EntityPlayer) {
-        		listPlayers.add((EntityPlayer) listNearEntities.get(i));
-        	}
-        }
-        for (int i = 0; i < listPlayers.size(); i++) {
-        	float distanceToCompare = listPlayers.get(i).getDistanceToEntity(this);
-        	if (distanceToCompare < minimumDistance) {
-        		owner = listPlayers.get(i);
-        	}
-        }
-        return owner;
-	}
 
 	public void fall(float fallDistance)
     {
