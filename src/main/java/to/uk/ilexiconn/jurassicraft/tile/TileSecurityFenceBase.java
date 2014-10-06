@@ -124,17 +124,18 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	return (this.slots[0] != (ItemStack) null && this.slots[0].getItem() instanceof ItemRedstone);
     }
 
-    public boolean hasEnoughRedstone()
+    public boolean hasEnoughRedstone(int securityLevel)
     {
-    	return (this.slots[0] == (ItemStack) null || !(this.slots[0].getItem() instanceof ItemRedstone)) ? false : (this.slots[0].stackSize >= this.redstoneRequired * this.getSecurityLevel());
+    	return (this.slots[0] == (ItemStack) null || !(this.slots[0].getItem() instanceof ItemRedstone)) ? false : (this.slots[0].stackSize >= this.redstoneRequired * securityLevel);
     }
     
-    public boolean hasRequiredStructure()
+    public boolean hasRequiredStructure(int securityLevel, int direction)
     {
-    	switch (this.getDirection()) 
+    	switch (direction) 
     	{
-    		case 0: //South - North
-    			switch (this.getSecurityLevel()) 
+    		/** North - South */
+    		case 0:
+    			switch (securityLevel) 
     	    	{
     	    		case 1:
     	    			return this.checkBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 1, 3, 0);
@@ -145,8 +146,9 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	   			default:
     	    			return false;
     	    	}
-    		case 1: //East - West
-    			switch (this.getSecurityLevel()) 
+    		/** East - West */
+    		case 1: 
+    			switch (securityLevel) 
     	    	{
     	    		case 1:
     	    			return this.checkBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 0, 3, 1);
@@ -157,8 +159,9 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	   			default:
     	    			return false;
     	    	}
+       		/** Error! North - South */
     		default:
-    			switch (this.getSecurityLevel()) 
+    			switch (securityLevel) 
     	    	{
     	    		case 1:
     	    			return this.checkBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 1, 3, 0);
@@ -172,12 +175,13 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	}
     }
 
-    private void buildFence()
+    private void buildFence(int securityLevel, int direction)
     {
-    	switch (this.getDirection()) 
+    	switch (direction) 
     	{
-    		case 0: //South - North
-    			switch (this.getSecurityLevel()) {
+    		/** South - North */
+    		case 0: 
+    			switch (securityLevel) {
     	    		case 1:
     	    			this.removeBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 1, 3, 0);
     	    			//this.worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.securityFenceLow);
@@ -194,8 +198,9 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	    			return;
     	    	}
     			break;
-    		case 1: //East - West
-    			switch (this.getSecurityLevel()) {
+    		/** East - West */
+    		case 1: 
+    			switch (securityLevel) {
     	    		case 1:
     	    			this.removeBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 0, 3, 1);
     	    			//this.worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.securityFenceLow);
@@ -212,8 +217,9 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	    			return;
     	    	}
     			break;
-    		default: //Error
-    			switch (this.getSecurityLevel()) {
+        	/** Error! South - North */
+    		default: 
+    			switch (securityLevel) {
     	    		case 1:
     	    			this.removeBlocksForFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 1, 3, 0);
     	    			//this.worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.securityFenceLow);
@@ -232,18 +238,21 @@ public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
     	}
     }
     
-    public void tryToBuildFence()
+    public void tryToBuildFence(int securityLevel, int direction)
     {
-		if (this.hasEnoughRedstone()) 
+		if (!this.worldObj.isRemote) 
 		{
-			if (this.hasRequiredStructure()) 
+			if (this.hasEnoughRedstone(securityLevel)) 
 			{
-				this.slots[0].stackSize -= this.redstoneRequired * this.getSecurityLevel();
-				if (this.slots[0].stackSize <= 0) 
+				if (this.hasRequiredStructure(securityLevel, direction)) 
 				{
-					this.slots[0] = (ItemStack) null;
+					this.slots[0].stackSize -= this.redstoneRequired * securityLevel;
+					if (this.slots[0].stackSize <= 0) 
+					{
+						this.slots[0] = (ItemStack) null;
+					}
+					this.buildFence(securityLevel, direction);
 				}
-				//this.buildFence(); CHANGE LATER
 			}
 		}
     }

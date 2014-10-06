@@ -5,12 +5,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
+import to.uk.ilexiconn.jurassicraft.packet.MessageDeleteBlock;
 import to.uk.ilexiconn.llib.LLib;
 import to.uk.ilexiconn.llib.config.ConfigSync;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,6 +24,8 @@ public class JurassiCraft extends Util
     public static JurassiCraft instance;
     public boolean isServerInitialized;
 
+    public static SimpleNetworkWrapper network;
+    
     public static boolean versionCheck;
     public static boolean easterEggs;
 
@@ -33,6 +37,9 @@ public class JurassiCraft extends Util
         isServerInitialized = true;
         
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        
+        network = NetworkRegistry.INSTANCE.newSimpleChannel("JurassiCraftChannel");
+        network.registerMessage(MessageDeleteBlock.Handler.class, MessageDeleteBlock.class, 0, Side.SERVER);
     }
 
     @SideOnly(Side.CLIENT)

@@ -8,8 +8,10 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.container.ContainerSecurityFenceBase;
+import to.uk.ilexiconn.jurassicraft.packet.MessageDeleteBlock;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
 
 public class GuiSecurityFenceBase extends GuiContainer
@@ -38,7 +40,7 @@ public class GuiSecurityFenceBase extends GuiContainer
     
 	@Override
     public void updateScreen() {
-		if (this.fence.hasEnoughRedstone() && this.fence.hasRequiredStructure()) 
+		if (this.fence.hasEnoughRedstone(this.fence.getSecurityLevel()) && this.fence.hasRequiredStructure(this.fence.getSecurityLevel(), this.fence.getDirection())) 
 		{
 			((GuiButton) this.buttonList.get(3)).enabled = true;
 		} 
@@ -96,7 +98,7 @@ public class GuiSecurityFenceBase extends GuiContainer
 				}
 				break;
 			case 3:
-				this.fence.tryToBuildFence();
+				JurassiCraft.network.sendToServer(new MessageDeleteBlock(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(), this.fence.getDirection()));
 				break;
 			default:
 				return;
