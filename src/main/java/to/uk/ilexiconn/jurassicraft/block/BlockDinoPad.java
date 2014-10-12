@@ -9,6 +9,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.ModItems;
@@ -117,6 +118,12 @@ public class BlockDinoPad extends Block implements ITileEntityProvider
 	public boolean canBlockStay(World world, int x, int y, int z) 
 	{
 		return world.getBlock(x, y - 1, z).getMaterial().isSolid();
+	}
+
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) 
+	{
+		return new ItemStack(ModItems.dinoPad, 1);
 	}
     
     @Override

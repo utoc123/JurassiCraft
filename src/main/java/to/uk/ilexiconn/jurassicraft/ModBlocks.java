@@ -16,8 +16,17 @@ import to.uk.ilexiconn.jurassicraft.block.BlockFossilSandstoneOre;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBlock;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBrick;
 import to.uk.ilexiconn.jurassicraft.block.BlockGypsumCobblestone;
-import to.uk.ilexiconn.jurassicraft.block.BlockSecurityFenceBase;
 import to.uk.ilexiconn.jurassicraft.block.BlockStuffFluid;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighBase;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighGrid;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighPole;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowBase;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowGrid;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowPole;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMain;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumBase;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumGrid;
+import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumPole;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockFossilClayOre;
 import to.uk.ilexiconn.llib.content.ContentHandler;
@@ -28,11 +37,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @ContentHandler(modid = "jurassicraft", type = ContentType.BLOCK)
 public class ModBlocks
 {
+
+    @OverrideRegistry
+    public static Block clayFossilOre;
+    @OverrideRegistry
+    public static Fluid cultivateFluid;
+    @OverrideRegistry
+    public static Block cultivateLiquid;
     @OverrideRegistry
     public static Block cultivateBottomOff;
-    public static Block cultivateTopOff;
     @OverrideRegistry
     public static Block cultivateBottomOn;
+    public static Block cultivateTopOff;
     public static Block cultivateTopOn;
     public static Block dnaExtractor;
     public static Block dnaCombinator;
@@ -44,14 +60,15 @@ public class ModBlocks
     public static Block sandstoneFossilOre;
     public static Block dinoPad;
     public static Block securityFenceBase;
-    //public static Block securityFenceBaseMedium;
-    //public static Block securityFenceBaseHigh;
-    @OverrideRegistry
-    public static Block clayFossilOre;
-    @OverrideRegistry
-    public static Fluid cultivateFluid;
-    @OverrideRegistry
-    public static Block cultivateLiquid;
+    public static Block securityFenceLowPole;
+    public static Block securityFenceLowBase;
+    public static Block securityFenceLowFence;
+    public static Block securityFenceMediumPole;
+    public static Block securityFenceMediumBase;
+    public static Block securityFenceMediumFence;
+    public static Block securityFenceHighPole;
+    public static Block securityFenceHighBase;
+    public static Block securityFenceHighFence;
 
     public void init()
     {
@@ -69,9 +86,16 @@ public class ModBlocks
         sandstoneFossilOre = new BlockFossilSandstoneOre();
         clayFossilOre = new BlockFossilClayOre();
         dinoPad = new BlockDinoPad();
-        securityFenceBase = new BlockSecurityFenceBase();
-        //securityFenceBaseMedium = new BlockSecurityFenceBase();
-        //securityFenceBaseHigh = new BlockSecurityFenceBase();
+        securityFenceBase = new BlockSecurityFenceMain();
+        securityFenceLowPole = new BlockSecurityFenceLowPole();
+        securityFenceLowBase = new BlockSecurityFenceLowBase();
+        securityFenceLowFence = new BlockSecurityFenceLowGrid();
+        securityFenceMediumPole = new BlockSecurityFenceMediumPole();
+        securityFenceMediumBase = new BlockSecurityFenceMediumBase();
+        securityFenceMediumFence = new BlockSecurityFenceMediumGrid();
+        securityFenceHighPole = new BlockSecurityFenceHighPole();
+        securityFenceHighBase = new BlockSecurityFenceHighBase();
+        securityFenceHighFence = new BlockSecurityFenceHighGrid();
         gameRegistry();
     }
 

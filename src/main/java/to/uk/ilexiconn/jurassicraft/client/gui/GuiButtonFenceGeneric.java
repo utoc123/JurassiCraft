@@ -13,12 +13,16 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiButtonFenceLevelIncrease extends GuiButton 
+public class GuiButtonFenceGeneric extends GuiButton 
 {
+    public int xguiPos;
+    public int yguiPos;
 	
-	public GuiButtonFenceLevelIncrease(int id, int xPos, int yPos, int width, int height) 
+	public GuiButtonFenceGeneric(int id, int xPos, int yPos, int xguiPosition, int yguiPosition, int width, int height) 
 	{
 		super(id, xPos, yPos, width, height, "");
+		this.xguiPos = xguiPosition;
+		this.yguiPos = yguiPosition;
 	}
 
 	@Override
@@ -26,27 +30,30 @@ public class GuiButtonFenceLevelIncrease extends GuiButton
     {
 		if (this.visible)
         {
+			mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiSecurityFenceWidgets.png"));
 			if (this.enabled)
 	        {
 	            FontRenderer fontrenderer = mc.fontRenderer;
-		        mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiSecurityFence.png"));
 	            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	            GL11.glEnable(GL11.GL_BLEND);
 	            OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 	            GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 	            if (x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height) 
 	            {
-	            	this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 192, this.width, this.height);
+	            	this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, yguiPos + this.height, this.width, this.height);
+	            } 
+	            else 
+	            {
+	            	this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, 0, this.width, this.height);
 	            }
 	            this.mouseDragged(mc, x, y);
 	        } else {
 	        	FontRenderer fontrenderer = mc.fontRenderer;
-		        mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiSecurityFence.png"));
 	            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	            GL11.glEnable(GL11.GL_BLEND);
 	            OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				this.drawTexturedModalRect(this.xPosition, this.yPosition, 10, 192, this.width, this.height);
+				this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, yguiPos + 2 * this.height, this.width, this.height);
 				this.mouseDragged(mc, x, y);
 	        }
         }

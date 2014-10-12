@@ -3,9 +3,9 @@ package to.uk.ilexiconn.jurassicraft;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
-import to.uk.ilexiconn.jurassicraft.packet.MessageDeleteBlock;
+import to.uk.ilexiconn.jurassicraft.packet.MessageFenceBuilding;
+import to.uk.ilexiconn.jurassicraft.packet.MessageFenceCrafting;
 import to.uk.ilexiconn.llib.LLib;
 import to.uk.ilexiconn.llib.config.ConfigSync;
 import cpw.mods.fml.common.Mod;
@@ -39,7 +39,8 @@ public class JurassiCraft extends Util
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel("JurassiCraftChannel");
-        network.registerMessage(MessageDeleteBlock.Handler.class, MessageDeleteBlock.class, 0, Side.SERVER);
+        network.registerMessage(MessageFenceCrafting.Handler.class, MessageFenceCrafting.class, 0, Side.SERVER);
+        network.registerMessage(MessageFenceBuilding.Handler.class, MessageFenceBuilding.class, 1, Side.SERVER);
     }
 
     @SideOnly(Side.CLIENT)

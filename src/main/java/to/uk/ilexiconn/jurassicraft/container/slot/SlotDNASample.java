@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import to.uk.ilexiconn.jurassicraft.item.AnyDNASample;
+import to.uk.ilexiconn.jurassicraft.item.IDNASample;
 
 public class SlotDNASample extends Slot
 {
@@ -22,6 +22,6 @@ public class SlotDNASample extends Slot
     @Override
     public boolean isItemValid(ItemStack itemstack)
     {
-        return (itemstack.getItem() instanceof AnyDNASample);
+        return (itemstack.getItem() instanceof IDNASample);
     }
 }

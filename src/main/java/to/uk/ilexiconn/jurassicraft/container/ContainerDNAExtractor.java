@@ -8,7 +8,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import to.uk.ilexiconn.jurassicraft.container.slot.SlotDNASource;
-import to.uk.ilexiconn.jurassicraft.item.AnyDNASource;
+import to.uk.ilexiconn.jurassicraft.item.IDNASource;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -114,7 +114,7 @@ public class ContainerDNAExtractor extends Container
                 }
                 else if (i >= 8)
                 {
-                    if (stackInSlot.getItem() instanceof AnyDNASource)
+                    if (stackInSlot.getItem() instanceof IDNASource)
                     {
                         if (!mergeItemStack(stackInSlot, 0, 4, false))
                         {

@@ -6,22 +6,19 @@ import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileSecurityFenceBase extends TileEntity implements ISidedInventory
+public class BACK_UP_TileSecurityFenceMain extends TileEntity implements ISidedInventory
 {
 
     private ItemStack[] slots = new ItemStack[1];
     private static final int redstoneRequired = 8;
     private int redstoneStored = 0;
-    private int securityLevel = 1;
+    private int securityLevel = 0;
     private int direction = 0;
 
-    public TileSecurityFenceBase()
+    public BACK_UP_TileSecurityFenceMain()
     {
     	
     }

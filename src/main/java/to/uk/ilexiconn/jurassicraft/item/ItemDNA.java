@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
 
-public class ItemDNA extends Item implements AnyDNASample
+public class ItemDNA extends Item implements IDNASample
 {
 
     public ItemDNA(String name)

@@ -2,7 +2,7 @@ package to.uk.ilexiconn.jurassicraft.item;
 
 import net.minecraft.item.ItemStack;
 
-public interface AnyDNASample
+public interface IDNASample
 {
 	String getDNASequence(ItemStack dnaSample);
 

@@ -3,13 +3,13 @@ package to.uk.ilexiconn.jurassicraft.packet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageDeleteBlock implements IMessage 
+public class MessageFenceBuilding implements IMessage 
 {
 
 	private int xCoord;
@@ -17,19 +17,24 @@ public class MessageDeleteBlock implements IMessage
 	private int zCoord;
 	private int securityLevel;
 	private int direction;
+	private int distance;
+	private int height;
+	
 
-	public MessageDeleteBlock() 
+	public MessageFenceBuilding() 
 	{
 
 	}
 
-	public MessageDeleteBlock(int xCoord, int yCoord, int zCoord, int securityLevel, int direction) 
+	public MessageFenceBuilding(int xCoord, int yCoord, int zCoord, int securityLevel, int direction, int distance, int height) 
 	{
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 		this.zCoord = zCoord;
 		this.securityLevel = securityLevel;
 		this.direction = direction;
+		this.distance = distance;
+		this.height = height;
 	}
 
 	@Override
@@ -40,6 +45,8 @@ public class MessageDeleteBlock implements IMessage
 		zCoord = ByteBufUtils.readVarInt(buf, 5);
 		securityLevel = ByteBufUtils.readVarInt(buf, 5);
 		direction = ByteBufUtils.readVarInt(buf, 5);
+		distance = ByteBufUtils.readVarInt(buf, 5);
+		height = ByteBufUtils.readVarInt(buf, 5);
 	}
 
 	@Override
@@ -50,27 +57,27 @@ public class MessageDeleteBlock implements IMessage
 		ByteBufUtils.writeVarInt(buf, zCoord, 5);
 		ByteBufUtils.writeVarInt(buf, securityLevel, 5);
 		ByteBufUtils.writeVarInt(buf, direction, 5);
+		ByteBufUtils.writeVarInt(buf, distance, 5);
+		ByteBufUtils.writeVarInt(buf, height, 5);
 	}
 
-	public static class Handler implements IMessageHandler<MessageDeleteBlock, IMessage> 
+	public static class Handler implements IMessageHandler<MessageFenceBuilding, IMessage> 
 	{
 		@Override
-		public IMessage onMessage(MessageDeleteBlock message, MessageContext ctx) 
+		public IMessage onMessage(MessageFenceBuilding message, MessageContext ctx) 
 		{
 			if (ctx.getServerHandler().playerEntity != (EntityPlayer) null) 
 			{
 				if (!ctx.getServerHandler().playerEntity.worldObj.isRemote) 
 				{
 					TileEntity tileEntity = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.xCoord, message.yCoord, message.zCoord);
-					if (tileEntity instanceof TileSecurityFenceBase) 
+					if (tileEntity instanceof TileSecurityFence) 
 					{
-						TileSecurityFenceBase fence = (TileSecurityFenceBase) tileEntity;
-						if (message.securityLevel >= 1 && message.securityLevel <= 3) 
+						TileSecurityFence fence = (TileSecurityFence) tileEntity;
+						if (message.securityLevel > -1 && message.securityLevel < 4) 
 						{
-							if (message.direction == 0 || message.direction == 1) 
-							{
-								fence.tryToBuildFence(message.securityLevel, message.direction);
-							}
+							System.out.println("Method sent!");
+							fence.tryToBuildFence(message.securityLevel, message.direction, message.distance, message.height);
 						}
 					}
 				}

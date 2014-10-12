@@ -2,6 +2,7 @@
 itemGroup.fossilTab=JurassiCraft
 
 //entities
+entity.dino_egg.name=Dino Egg
 entity.Ankylosaur.name=Ankylosaurus
 entity.Brachiosaur.name=Brachiosaurus
 entity.Velociraptor.name=Velociraptor
@@ -100,11 +101,19 @@ tile.block_Gypsum_Block.name=Gypsum Block
 tile.block_Gypsum_Brick.name=Gypsum Brick
 tile.block_Gypsum_CobbleStone.name=Gypsum Cobblestone
 
-entity.dino_egg.name=Dino Egg
-
 container.dnaExtractor=DNA Extractor
 container.dnaCombinator=DNA Combinator
-container.securityFence=Security Fence
-container.securityFenceLow=Low
-container.securityFenceMedium=Medium
-container.securityFenceHigh=High
+container.securityFenceInexistent=Nothing built yet
+container.securityFenceLow=Low Security Fence
+container.securityFenceMedium=Medium Security Fence
+container.securityFenceHigh=High Security Fence
+container.directionSouth=South
+container.directionWest=West
+container.directionNorth=North
+container.directionEast=East
+container.directionInexistent=Not defined
+container.ironingots=Iron ingots
+container.redstone=Redstone
+container.fencebasesblocks=Bases
+container.fencegridsblocks=Grids
+container.fencepolesblocks=Poles

@@ -8,32 +8,34 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceBase;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerSecurityFenceBase extends Container
 {
 
-    private TileSecurityFenceBase fence;
+    private TileSecurityFence fence;
+    private int lastIronIngots;
     private int lastRedstone;
 
     public ContainerSecurityFenceBase(InventoryPlayer playerInventory, TileEntity tileEntity)
     {
-        this.fence = (TileSecurityFenceBase) tileEntity;
-        this.addSlotToContainer(new Slot(this.fence, 0, 37, 24));
+        this.fence = (TileSecurityFence) tileEntity;
+        this.addSlotToContainer(new Slot(this.fence, 0, 120, 47));
+        this.addSlotToContainer(new Slot(this.fence, 1, 120, 77));
 
         for (int i = 0; i < 3; i++)
         {
             for (int k = 0; k < 9; k++)
             {
-                this.addSlotToContainer(new Slot(playerInventory, k + i * 9 + 9, 8 + k * 18, 106 + i * 18));
+                this.addSlotToContainer(new Slot(playerInventory, k + i * 9 + 9, 48 + k * 18, 174 + i * 18));
             }
         }
 
         for (int i = 0; i < 9; i++)
         {
-            this.addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 164));
+            this.addSlotToContainer(new Slot(playerInventory, i, 48 + i * 18, 232));
         }
     }
     
@@ -41,7 +43,8 @@ public class ContainerSecurityFenceBase extends Container
     public void addCraftingToCrafters(ICrafting iCrafting)
     {
         super.addCraftingToCrafters(iCrafting);
-        iCrafting.sendProgressBarUpdate(this, 0, this.fence.getRedstoneStored());
+        iCrafting.sendProgressBarUpdate(this, 0, this.fence.getIronIngotsStored());
+        iCrafting.sendProgressBarUpdate(this, 1, this.fence.getRedstoneStored());
     }
 
     @Override
@@ -51,11 +54,16 @@ public class ContainerSecurityFenceBase extends Container
         for (int i = 0; i < this.crafters.size(); i++)
         {
             ICrafting iCrafting = (ICrafting) this.crafters.get(i);
+            if (this.lastIronIngots != this.fence.getIronIngotsStored())
+            {
+                iCrafting.sendProgressBarUpdate(this, 0, this.fence.getIronIngotsStored());
+            }
             if (this.lastRedstone != this.fence.getRedstoneStored())
             {
-                iCrafting.sendProgressBarUpdate(this, 0, this.fence.getRedstoneStored());
+                iCrafting.sendProgressBarUpdate(this, 1, this.fence.getRedstoneStored());
             }
         }
+        this.lastIronIngots = this.fence.getIronIngotsStored();
         this.lastRedstone = this.fence.getRedstoneStored();
     }
 
@@ -65,7 +73,11 @@ public class ContainerSecurityFenceBase extends Container
     {
         if (i == 0)
         {
-            this.fence.setRedstoneStored(unknown);
+        	this.fence.setIronIngotsStored((short) unknown);
+        }
+        else if (i == 1)
+        {
+        	this.fence.setRedstoneStored((short) unknown);
         }
     }
     
@@ -96,7 +108,7 @@ public class ContainerSecurityFenceBase extends Container
             {
                 ItemStack stackInSlot = slot.getStack();
                 stackFinal = stackInSlot.copy();
-                if (i < 1)
+                if (i < 2)
                 {
                     if (!mergeItemStack(stackInSlot, 9, inventorySlots.size(), true))
                     {
@@ -104,11 +116,18 @@ public class ContainerSecurityFenceBase extends Container
                     }
                     slot.onSlotChange(stackInSlot, stackFinal);
                 }
-                else if (i >= 1)
+                else if (i >= 2)
                 {
-                    if (stackInSlot.getItem() instanceof ItemRedstone)
+                	if (stackInSlot.getItem().getUnlocalizedName().equals("item.ingotIron"))
                     {
                         if (!mergeItemStack(stackInSlot, 0, 1, false))
+                        {
+                            return null;
+                        }
+                    }
+                    else if (stackInSlot.getItem() instanceof ItemRedstone)
+                    {
+                        if (!mergeItemStack(stackInSlot, 1, 2, false))
                         {
                             return null;
                         }

@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.item.AnyDNASource;
+import to.uk.ilexiconn.jurassicraft.item.IDNASource;
 import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
@@ -77,7 +77,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
     {
         for (int i = 0; i < 4; i++)
         {
-            if (slots[i] != (ItemStack) null && slots[i].getItem() instanceof AnyDNASource)
+            if (slots[i] != (ItemStack) null && slots[i].getItem() instanceof IDNASource)
             {
                 ItemStack newItem = (ItemStack) null;
                 if (slots[i].getItem() instanceof ItemAmber)
