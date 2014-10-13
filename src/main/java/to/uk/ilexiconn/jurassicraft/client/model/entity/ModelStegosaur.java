@@ -21,8 +21,8 @@ public class ModelStegosaur extends MowzieModelBase
     MowzieModelRenderer tail_4;
     MowzieModelRenderer leg_left_2;
     MowzieModelRenderer leg_right_2;
-    MowzieModelRenderer leg_right_3;
-    MowzieModelRenderer leg_left_3;
+    MowzieModelRenderer leg_right_back_3;
+    MowzieModelRenderer leg_left_back_3;
     MowzieModelRenderer foot_left;
     MowzieModelRenderer arm_right_1;
     MowzieModelRenderer arm_left_1;
@@ -48,6 +48,9 @@ public class ModelStegosaur extends MowzieModelBase
     MowzieModelRenderer plate_9;
     MowzieModelRenderer plate_10;
     MowzieModelRenderer plate_11;
+    MowzieModelRenderer upper_jaw_2;
+    MowzieModelRenderer leg_left_front_3;
+    MowzieModelRenderer leg_right_front_3;
 
     public ModelStegosaur()
     {
@@ -114,18 +117,18 @@ public class ModelStegosaur extends MowzieModelBase
         leg_right_2.setTextureSize(256, 128);
         leg_right_2.mirror = true;
         setRotation(leg_right_2, 0.6108652F, 0F, 0F);
-        leg_right_3 = new MowzieModelRenderer(this, 2, 64);
-        leg_right_3.addBox(-3.5F, 16F, 3F, 3, 6, 4);
-        leg_right_3.setRotationPoint(-5.8F, 2F, 5.8F);
-        leg_right_3.setTextureSize(256, 128);
-        leg_right_3.mirror = true;
-        setRotation(leg_right_3, 0F, 0F, 0F);
-        leg_left_3 = new MowzieModelRenderer(this, 3, 75);
-        leg_left_3.addBox(0.5F, 16F, 3F, 3, 6, 4);
-        leg_left_3.setRotationPoint(6F, 2F, 5.8F);
-        leg_left_3.setTextureSize(256, 128);
-        leg_left_3.mirror = true;
-        setRotation(leg_left_3, 0F, 0F, 0F);
+        leg_right_back_3 = new MowzieModelRenderer(this, 2, 64);
+        leg_right_back_3.addBox(-3.7F, 16F, 3F, 3, 6, 4);
+        leg_right_back_3.setRotationPoint(-5.8F, 2F, 5.8F);
+        leg_right_back_3.setTextureSize(256, 128);
+        leg_right_back_3.mirror = true;
+        setRotation(leg_right_back_3, 0F, 0F, 0F);
+        leg_left_back_3 = new MowzieModelRenderer(this, 3, 75);
+        leg_left_back_3.addBox(0.5F, 16F, 3F, 3, 6, 4);
+        leg_left_back_3.setRotationPoint(6F, 2F, 5.8F);
+        leg_left_back_3.setTextureSize(256, 128);
+        leg_left_back_3.mirror = true;
+        setRotation(leg_left_back_3, 0F, 0F, 0F);
         foot_left = new MowzieModelRenderer(this, 106, 107);
         foot_left.addBox(-5.5F, -1.5F, 0F, 11, 11, 9);
         foot_left.setRotationPoint(0F, 7F, -12F);
@@ -133,29 +136,29 @@ public class ModelStegosaur extends MowzieModelBase
         foot_left.mirror = true;
         setRotation(foot_left, 0.2443461F, 0F, 0F);
         arm_right_1 = new MowzieModelRenderer(this, 54, 52);
-        arm_right_1.addBox(-0.8F, 3.5F, 3.4F, 3, 7, 4);
-        arm_right_1.setRotationPoint(-6F, 13F, -8F);
+        arm_right_1.addBox(-1F, 2.5F, 3.4F, 3, 5, 4);
+        arm_right_1.setRotationPoint(-6F, 12.8F, -7.7F);
         arm_right_1.setTextureSize(256, 128);
-        arm_right_1.mirror = false;
-        setRotation(arm_right_1, -0.296706F, 0F, 0F);
+        arm_right_1.mirror = true;
+        setRotation(arm_right_1, -0.3665191F, 0F, 0F);
         arm_left_1 = new MowzieModelRenderer(this, 2, 52);
-        arm_left_1.addBox(-2.2F, 3.5F, 3.4F, 3, 7, 4);
-        arm_left_1.setRotationPoint(6F, 13F, -8F);
+        arm_left_1.addBox(-2F, 2.5F, 3.4F, 3, 5, 4);
+        arm_left_1.setRotationPoint(6F, 12.8F, -7.7F);
         arm_left_1.setTextureSize(256, 128);
         arm_left_1.mirror = true;
-        setRotation(arm_left_1, -0.296706F, 0F, 0F);
+        setRotation(arm_left_1, -0.3665191F, 0F, 0F);
         arm_left_2 = new MowzieModelRenderer(this, 26, 50);
         arm_left_2.addBox(-2F, 0F, 0F, 3, 7, 4);
-        arm_left_2.setRotationPoint(6F, 13F, -8F);
+        arm_left_2.setRotationPoint(6F, 12.8F, -8F);
         arm_left_2.setTextureSize(256, 128);
         arm_left_2.mirror = true;
-        setRotation(arm_left_2, 0.296706F, 0F, 0F);
+        setRotation(arm_left_2, 0.3839724F, 0F, 0F);
         arm_right_2 = new MowzieModelRenderer(this, 40, 50);
-        arm_right_2.addBox(-1F, 0F, 0F, 3, 7, 4);
-        arm_right_2.setRotationPoint(-6F, 13F, -8F);
+        arm_right_2.addBox(-1.5F, 0F, 0F, 3, 7, 4);
+        arm_right_2.setRotationPoint(-5.5F, 12.8F, -8F);
         arm_right_2.setTextureSize(256, 128);
-        arm_right_2.mirror = false;
-        setRotation(arm_right_2, 0.296706F, 0F, 0F);
+        arm_right_2.mirror = true;
+        setRotation(arm_right_2, 0.3839724F, 0F, 0F);
         head_back = new MowzieModelRenderer(this, 42, 101);
         head_back.addBox(-2.5F, 1F, 0F, 5, 5, 6);
         head_back.setRotationPoint(0F, 7.5F, -20F);
@@ -163,7 +166,7 @@ public class ModelStegosaur extends MowzieModelBase
         head_back.mirror = true;
         setRotation(head_back, -0.0622742F, 0F, 0F);
         upper_jaw_1 = new MowzieModelRenderer(this, 51, 116);
-        upper_jaw_1.addBox(-1F, -1F, -7.5F, 2, 3, 5);
+        upper_jaw_1.addBox(-0.9F, -1F, -7.5F, 2, 3, 5);
         upper_jaw_1.setRotationPoint(0F, 9.8F, -22F);
         upper_jaw_1.setTextureSize(256, 128);
         upper_jaw_1.mirror = true;
@@ -229,20 +232,20 @@ public class ModelStegosaur extends MowzieModelBase
         plate_7.mirror = true;
         setRotation(plate_7, -1.047198F, 0F, 0F);
         front_left_spike = new MowzieModelRenderer(this, 211, 59);
-        front_left_spike.addBox(-18.5F, 12.5F, 7F, 1, 1, 7);
+        front_left_spike.addBox(-18.5F, 12.5F, 6F, 1, 1, 7);
         front_left_spike.setRotationPoint(0F, 3F, 11.5F);
         front_left_spike.setTextureSize(256, 128);
         front_left_spike.mirror = true;
         setRotation(front_left_spike, 0.5410521F, 1.047198F, 0F);
         front_right_spike = new MowzieModelRenderer(this, 211, 59);
-        front_right_spike.addBox(17.5F, 12.5F, 7F, 1, 1, 7);
+        front_right_spike.addBox(17.5F, 12.5F, 6F, 1, 1, 7);
         front_right_spike.setRotationPoint(0F, 3F, 11.5F);
         front_right_spike.setTextureSize(256, 128);
         front_right_spike.mirror = true;
         setRotation(front_right_spike, 0.5410521F, -1.047198F, 0F);
         back_right_spike = new MowzieModelRenderer(this, 211, 45);
-        back_right_spike.addBox(21.9F, 13F, 10.7F, 1, 1, 6);
-        back_right_spike.setRotationPoint(0F, 3.8F, 11F);
+        back_right_spike.addBox(21.9F, 12.9F, 10.7F, 1, 1, 6);
+        back_right_spike.setRotationPoint(0F, 3.6F, 11F);
         back_right_spike.setTextureSize(256, 128);
         back_right_spike.mirror = true;
         setRotation(back_right_spike, 0.3739991F, -0.997331F, 0F);
@@ -276,17 +279,38 @@ public class ModelStegosaur extends MowzieModelBase
         plate_11.setTextureSize(256, 128);
         plate_11.mirror = true;
         setRotation(plate_11, -1.191368F, 0F, 0F);
+        upper_jaw_2 = new MowzieModelRenderer(this, 51, 116);
+        upper_jaw_2.addBox(-1.1F, -1F, -7.5F, 2, 3, 5);
+        upper_jaw_2.setRotationPoint(0F, 9.8F, -22F);
+        upper_jaw_2.setTextureSize(256, 128);
+        upper_jaw_2.mirror = true;
+        setRotation(upper_jaw_2, 0F, 0F, 0F);
+        leg_left_front_3 = new MowzieModelRenderer(this, 3, 78);
+        leg_left_front_3.addBox(-1.5F, 0F, -2F, 3, 3, 4);
+        leg_left_front_3.setRotationPoint(5.5F, 21F, -5.2F);
+        leg_left_front_3.setTextureSize(256, 128);
+        leg_left_front_3.mirror = true;
+        setRotation(leg_left_front_3, 0F, 0F, 0F);
+        leg_right_front_3 = new MowzieModelRenderer(this, 2, 67);
+        leg_right_front_3.addBox(-1.5F, 0F, -2F, 3, 3, 4);
+        leg_right_front_3.setRotationPoint(-5.5F, 21F, -5.2F);
+        leg_right_front_3.setTextureSize(256, 128);
+        leg_right_front_3.mirror = true;
+        setRotation(leg_right_front_3, 0F, 0F, 0F);
 
         addChildTo(lower_jaw, head_);
         addChildTo(upper_jaw_1, head_);
         addChildTo(head_, head_back);
 
-        addChildTo(leg_left_3, leg_left_2);
-        addChildTo(leg_right_3, leg_right_2);
-        addChildTo(leg_left_2, leg_left_1);
-        addChildTo(leg_right_2, leg_right_1);
+        addChildTo(leg_left_front_3, arm_left_1);
+        addChildTo(leg_right_front_3, arm_right_1);
         addChildTo(arm_left_1, arm_left_2);
         addChildTo(arm_right_1, arm_right_2);
+        
+        addChildTo(leg_left_back_3, leg_left_2);
+        addChildTo(leg_right_back_3, leg_right_2);
+        addChildTo(leg_left_2, leg_left_1);
+        addChildTo(leg_right_2, leg_right_1);
 
         //Corrections
         upper_jaw_1.rotationPointY -= 5.5F;
@@ -295,12 +319,15 @@ public class ModelStegosaur extends MowzieModelBase
         lower_jaw.rotationPointY -= 5.2F;
         lower_jaw.rotationPointZ -= 2F;
 
-        leg_left_3.setRotationPoint(0, 0, 0);
+        /*leg_left_front_3.setRotationPoint(0, 0, 0);
         leg_left_2.setRotationPoint(0, 0, 0);
         leg_right_3.setRotationPoint(0, 0, 0);
         leg_right_2.setRotationPoint(0, 0, 0);
         arm_right_1.setRotationPoint(0, 0, 0);
-        arm_left_1.setRotationPoint(0, 0, 0);
+        arm_left_1.setRotationPoint(0, 0, 0);*/
+        
+        leg_left_2.setRotationPoint(0, 0, 0);
+        leg_right_2.setRotationPoint(0, 0, 0);
 
         body_1.setInitValuesToCurrentPose();
         leg_left_1.setInitValuesToCurrentPose();
@@ -312,8 +339,8 @@ public class ModelStegosaur extends MowzieModelBase
         tail_4.setInitValuesToCurrentPose();
         leg_left_2.setInitValuesToCurrentPose();
         leg_right_2.setInitValuesToCurrentPose();
-        leg_right_3.setInitValuesToCurrentPose();
-        leg_left_3.setInitValuesToCurrentPose();
+        leg_right_front_3.setInitValuesToCurrentPose();
+        leg_left_front_3.setInitValuesToCurrentPose();
         foot_left.setInitValuesToCurrentPose();
         arm_right_1.setInitValuesToCurrentPose();
         arm_left_1.setInitValuesToCurrentPose();
@@ -339,63 +366,14 @@ public class ModelStegosaur extends MowzieModelBase
         plate_9.setInitValuesToCurrentPose();
         plate_10.setInitValuesToCurrentPose();
         plate_11.setInitValuesToCurrentPose();
+        leg_right_back_3.setInitValuesToCurrentPose();
+        leg_left_back_3.setInitValuesToCurrentPose();
     }
 
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
         setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-
-        if (isChild)
-        {
-            float var8 = 2.0F;
-            GL11.glPushMatrix();
-            GL11.glTranslatef(0.0F, 5.0F * f5, 2.0F * f5);
-            GL11.glPopMatrix();
-            GL11.glPushMatrix();
-            GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
-            GL11.glTranslatef(0.0F, 24.0F * f5, 0.0F);
-            body_1.render(f5);
-            leg_left_1.render(f5);
-            leg_right_1.render(f5);
-            neck_1.render(f5);
-            tail_1.render(f5);
-            tail_2.render(f5);
-            tail_3.render(f5);
-            tail_4.render(f5);
-            //           leg_left_2.render(f5);
-//            leg_right_2.render(f5);
-//            leg_right_3.render(f5);
-//            leg_left_3.render(f5);
-//            foot_left.render(f5);
-//            arm_right_1.render(f5);
-//            arm_left_1.render(f5);
-            arm_left_2.render(f5);
-            arm_right_2.render(f5);
-            head_back.render(f5);
-//            upper_jaw_1.render(f5);
-//            head_.render(f5);
-            tail_end.render(f5);
-            //           lower_jaw.render(f5);
-            plate_1.render(f5);
-            plate_2.render(f5);
-            plate_3.render(f5);
-            plate_4.render(f5);
-            plate_5.render(f5);
-            plate_6.render(f5);
-            plate_7.render(f5);
-            front_left_spike.render(f5);
-            front_right_spike.render(f5);
-            back_right_spike.render(f5);
-            back_left_spike.render(f5);
-            plate_8.render(f5);
-            plate_9.render(f5);
-            plate_10.render(f5);
-            plate_11.render(f5);
-            GL11.glPopMatrix();
-        }
-        else
-        {
             body_1.render(f5);
             leg_left_1.render(f5);
             leg_right_1.render(f5);
@@ -406,11 +384,11 @@ public class ModelStegosaur extends MowzieModelBase
             tail_4.render(f5);
 //            leg_left_2.render(f5);
 //            leg_right_2.render(f5);
-//            leg_right_3.render(f5);
-//            leg_left_3.render(f5);
+//            leg_right_back_3.render(f5);
+//            leg_left_back_3.render(f5);
             foot_left.render(f5);
-//            arm_right_1.render(f5);
-//            arm_left_1.render(f5);
+ //           arm_right_1.render(f5);
+ //           arm_left_1.render(f5);
             arm_left_2.render(f5);
             arm_right_2.render(f5);
             head_back.render(f5);
@@ -433,7 +411,9 @@ public class ModelStegosaur extends MowzieModelBase
             plate_9.render(f5);
             plate_10.render(f5);
             plate_11.render(f5);
-        }
+//            upper_jaw_2.render(f5);
+//            leg_left_front_3.render(f5);
+//            leg_right_front_3.render(f5);
     }
 
     private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -455,8 +435,8 @@ public class ModelStegosaur extends MowzieModelBase
         tail_4.setCurrentPoseToInitValues();
         leg_left_2.setCurrentPoseToInitValues();
         leg_right_2.setCurrentPoseToInitValues();
-        leg_right_3.setCurrentPoseToInitValues();
-        leg_left_3.setCurrentPoseToInitValues();
+        leg_right_front_3.setCurrentPoseToInitValues();
+        leg_left_front_3.setCurrentPoseToInitValues();
         foot_left.setCurrentPoseToInitValues();
         arm_right_1.setCurrentPoseToInitValues();
         arm_left_1.setCurrentPoseToInitValues();
@@ -482,6 +462,8 @@ public class ModelStegosaur extends MowzieModelBase
         plate_9.setCurrentPoseToInitValues();
         plate_10.setCurrentPoseToInitValues();
         plate_11.setCurrentPoseToInitValues();
+        leg_left_back_3.setCurrentPoseToInitValues();
+        leg_right_back_3.setCurrentPoseToInitValues();
     }
 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
@@ -493,6 +475,5 @@ public class ModelStegosaur extends MowzieModelBase
         walk(leg_right_1, 0.5F, 0.3F, true, 0F, 0, f, f1);
         walk(arm_left_2, 0.5F, 0.5F, true, 0F, 0, f, f1);
         walk(arm_right_2, 0.5F, 0.5F, false, 0F, 0, f, f1);
-
     }
 }
