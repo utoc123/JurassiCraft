@@ -1,24 +1,29 @@
 package to.uk.ilexiconn.jurassicraft;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
-import cpw.mods.fml.common.eventhandler.EventPriority;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.CREATIVETAB, priority = EventPriority.HIGHEST)
-public class ModCreativeTabs 
+public enum ModCreativeTabs
 {
-    public static CreativeTabs fossilTab;
+    ITEMS("items", Items.apple),
+    BLOCKS("blocks", Item.getItemFromBlock(Blocks.stone));
 
-    public void init()
+    private CreativeTabs creativeTab;
+    private ModCreativeTabs(String n, final Item i)
     {
-        fossilTab = new CreativeTabs("fossilTab")
+        creativeTab = new CreativeTabs("jc." + n)
         {
             public Item getTabIconItem()
             {
-                return ModItems.fossil;
+                return i;
             }
         };
+    }
+
+    public CreativeTabs getTab()
+    {
+        return creativeTab;
     }
 }

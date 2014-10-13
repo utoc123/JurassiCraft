@@ -13,6 +13,6 @@ public class ItemMeat extends ItemFood
         setPotionEffect(Potion.hunger.id, 30, 0, 0.8f);
         setUnlocalizedName(name + "_Meat");
         setTextureName(Util.getModId() + name + "_Meat");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 }

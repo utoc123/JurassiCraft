@@ -22,7 +22,7 @@ public class ItemDinoEgg extends Item
         super();
         this.setUnlocalizedName("egg_" + dinoName);
         this.setTextureName(Util.getModId() + "egg_" + dinoName);
-        this.setCreativeTab(ModCreativeTabs.fossilTab);
+        this.setCreativeTab(ModCreativeTabs.ITEMS.getTab());
         this.dinoName = dinoName;
     }
 

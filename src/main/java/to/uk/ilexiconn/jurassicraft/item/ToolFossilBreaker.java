@@ -17,7 +17,7 @@ public class ToolFossilBreaker extends ItemPickaxe {
 		this.setMaxStackSize(1);
 		setUnlocalizedName(toolName);
 		setTextureName(Util.getModId() + toolName);
-		setCreativeTab(ModCreativeTabs.fossilTab);
+		setCreativeTab(ModCreativeTabs.ITEMS.getTab());
 	}
 
 	@Override

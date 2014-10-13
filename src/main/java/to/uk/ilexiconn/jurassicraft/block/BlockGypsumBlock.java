@@ -1,20 +1,13 @@
 package to.uk.ilexiconn.jurassicraft.block;
 
-import java.util.Random;
-
-import to.uk.ilexiconn.jurassicraft.ModBlocks;
-import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
-import to.uk.ilexiconn.jurassicraft.ModItems;
-import to.uk.ilexiconn.jurassicraft.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
+import to.uk.ilexiconn.jurassicraft.ModBlocks;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.Util;
 
-import com.rafamv.fossilhunting.FossilHunting;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
 
 public class BlockGypsumBlock extends Block {
 
@@ -25,7 +18,7 @@ public class BlockGypsumBlock extends Block {
         setBlockName("block_Gypsum_Block");
 		this.setStepSound(soundTypeStone);
 		this.setHarvestLevel("pickaxe", 1);
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
         setBlockTextureName(Util.getModId() + "block_Gypsum_Block");
 	}
 

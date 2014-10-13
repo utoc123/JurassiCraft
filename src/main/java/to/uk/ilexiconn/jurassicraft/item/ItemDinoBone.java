@@ -11,6 +11,6 @@ public class ItemDinoBone extends Item
         super();
         setUnlocalizedName("dinoBone");
         setTextureName(Util.getModId() + "dinoBone");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 }

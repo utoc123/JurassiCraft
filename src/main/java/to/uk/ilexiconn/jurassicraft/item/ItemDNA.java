@@ -20,7 +20,7 @@ public class ItemDNA extends Item implements IDNASample
         super();
         setUnlocalizedName(name + "_DNA");
         setTextureName(Util.getModId() + name + "_DNA");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 
     public Item getCorrespondingEgg()

@@ -41,7 +41,7 @@ public class BlockFossilOre extends Block
         setBlockTextureName(Util.getModId() + "fossil_ore");
         setHardness(3.0F);
         setResistance(5.0F);
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
         setStepSound(Block.soundTypeStone);
         setHarvestLevel("pickaxe", 0);
     }

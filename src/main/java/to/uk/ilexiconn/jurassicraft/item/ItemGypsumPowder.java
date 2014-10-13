@@ -10,6 +10,6 @@ public class ItemGypsumPowder extends Item {
         super();
         setUnlocalizedName("gypsumPowder");
         setTextureName(Util.getModId() + "gypsum_Powder");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
 	}
 }

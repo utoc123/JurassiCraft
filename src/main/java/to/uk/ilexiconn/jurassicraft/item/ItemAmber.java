@@ -11,6 +11,6 @@ public class ItemAmber extends Item implements IDNASource
         super();
         setUnlocalizedName("amber");
         setTextureName(Util.getModId() + "amber");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 }

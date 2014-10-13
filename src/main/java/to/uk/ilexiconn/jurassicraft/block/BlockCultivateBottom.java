@@ -41,7 +41,7 @@ public class BlockCultivateBottom extends BlockContainer
         super(Material.cactus); // Yes..., Cactus xD
         setBlockName("cultivate_bottom_" + (lit ? "lit" : "idle"));
         setBlockTextureName(Util.getModId() + "cultivate");
-        setCreativeTab(lit ? null : ModCreativeTabs.fossilTab);
+        setCreativeTab(lit ? null : ModCreativeTabs.BLOCKS.getTab());
         setHardness(2f);
         setBlockBounds(0f, 0f, 0f, 1f, 2f, 1f);
         if (lit)

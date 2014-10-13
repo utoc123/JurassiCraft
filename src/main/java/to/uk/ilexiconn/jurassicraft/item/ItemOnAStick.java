@@ -11,6 +11,6 @@ public class ItemOnAStick extends Item
         super();
         setUnlocalizedName(foodOnAStick + "OnAStick");
         setTextureName(Util.getModId() + foodOnAStick + "OnAStick");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 }

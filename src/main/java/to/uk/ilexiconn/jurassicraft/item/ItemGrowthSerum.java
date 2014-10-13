@@ -11,6 +11,6 @@ public class ItemGrowthSerum extends Item
         super();
         setUnlocalizedName("growthSerum");
         setTextureName(Util.getModId() + "growth_Serum");
-        setCreativeTab(ModCreativeTabs.fossilTab);
+        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 }
