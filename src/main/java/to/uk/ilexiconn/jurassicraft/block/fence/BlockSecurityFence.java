@@ -50,6 +50,7 @@ public class BlockSecurityFence extends Block implements ITileEntityProvider
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) 
 	{
+		System.out.println(world.getBlock(x, y, z).getUnlocalizedName());
 		return null;
 	}
 

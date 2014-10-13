@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.container.ContainerCultivate;
 import to.uk.ilexiconn.jurassicraft.container.ContainerDNACombinator;
 import to.uk.ilexiconn.jurassicraft.container.ContainerDNAExtractor;
-import to.uk.ilexiconn.jurassicraft.container.ContainerSecurityFenceBase;
+import to.uk.ilexiconn.jurassicraft.container.ContainerSecurityFence;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
@@ -25,7 +25,7 @@ public class GuiHandler implements IGuiHandler
         if (tileEntity instanceof TileDNACombinator)
             return new ContainerDNACombinator(player.inventory, (TileDNACombinator) tileEntity);
         if (tileEntity instanceof TileSecurityFence)
-            return new ContainerSecurityFenceBase(player.inventory, (TileSecurityFence) tileEntity);
+            return new ContainerSecurityFence(player.inventory, (TileSecurityFence) tileEntity);
         return null;
     }
 

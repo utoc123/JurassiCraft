@@ -88,7 +88,6 @@ public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFe
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int direction) 
 	{
-		System.out.println(direction);
 		switch (direction) {
 		/** Facing South, should search West */
 			case 0:
