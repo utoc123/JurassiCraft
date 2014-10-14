@@ -7,7 +7,5 @@ public class BlockSecurityFenceHighBase extends BlockSecurityFence implements IF
 	public BlockSecurityFenceHighBase() 
 	{
 		this.setBlockName("block_High_Security_Fence_Base");
-		/** Temporary */
-		this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
 	}
 }

@@ -18,8 +18,6 @@ public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IF
 	public BlockSecurityFenceHighGrid() 
 	{
 		this.setBlockName("block_High_Security_Fence_Grid");
-		/** Temporary */
-		this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
 	}
 
 	@Override

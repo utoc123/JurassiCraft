@@ -9,7 +9,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageFenceBuilding implements IMessage 
+public class MessageFenceFixing implements IMessage 
 {
 
 	private int xCoord;
@@ -19,14 +19,17 @@ public class MessageFenceBuilding implements IMessage
 	private int direction;
 	private int distance;
 	private int height;
+	private int bases;
+	private int grids;
+	private int poles;
 	
 
-	public MessageFenceBuilding() 
+	public MessageFenceFixing() 
 	{
 
 	}
 
-	public MessageFenceBuilding(int xCoord, int yCoord, int zCoord, int securityLevel, int direction, int distance, int height) 
+	public MessageFenceFixing(int xCoord, int yCoord, int zCoord, int securityLevel, int direction, int distance, int height, int bases, int grids, int poles) 
 	{
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
@@ -35,6 +38,9 @@ public class MessageFenceBuilding implements IMessage
 		this.direction = direction;
 		this.distance = distance;
 		this.height = height;
+		this.bases = bases;
+		this.grids = grids;
+		this.poles = poles;
 	}
 
 	@Override
@@ -47,6 +53,9 @@ public class MessageFenceBuilding implements IMessage
 		direction = ByteBufUtils.readVarInt(buf, 5);
 		distance = ByteBufUtils.readVarInt(buf, 5);
 		height = ByteBufUtils.readVarInt(buf, 5);
+		bases = ByteBufUtils.readVarInt(buf, 5);
+		grids = ByteBufUtils.readVarInt(buf, 5);
+		poles = ByteBufUtils.readVarInt(buf, 5);
 	}
 
 	@Override
@@ -59,12 +68,15 @@ public class MessageFenceBuilding implements IMessage
 		ByteBufUtils.writeVarInt(buf, direction, 5);
 		ByteBufUtils.writeVarInt(buf, distance, 5);
 		ByteBufUtils.writeVarInt(buf, height, 5);
+		ByteBufUtils.writeVarInt(buf, bases, 5);
+		ByteBufUtils.writeVarInt(buf, grids, 5);
+		ByteBufUtils.writeVarInt(buf, poles, 5);
 	}
 
-	public static class Handler implements IMessageHandler<MessageFenceBuilding, IMessage> 
+	public static class Handler implements IMessageHandler<MessageFenceFixing, IMessage> 
 	{
 		@Override
-		public IMessage onMessage(MessageFenceBuilding message, MessageContext ctx) 
+		public IMessage onMessage(MessageFenceFixing message, MessageContext ctx) 
 		{
 			if (ctx.getServerHandler().playerEntity != (EntityPlayer) null) 
 			{
@@ -76,7 +88,7 @@ public class MessageFenceBuilding implements IMessage
 						TileSecurityFence fence = (TileSecurityFence) tileEntity;
 						if (message.securityLevel > -1 && message.securityLevel < 4) 
 						{
-							fence.tryToBuildFence(message.securityLevel, message.direction, message.distance, message.height);
+							fence.tryToFixFence(message.securityLevel, message.direction, message.distance, message.height, message.bases, message.grids, message.poles);
 						}
 					}
 				}
