@@ -9,8 +9,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumGrid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -185,5 +185,11 @@ public class BlockSecurityFenceMediumGrid extends BlockSecurityFence implements 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) 
 	{
 		entity.attackEntityFrom(DamageSource.generic, 8.0F);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int metadata) 
+	{
+		return new TileSecurityFenceMediumGrid();
 	}
 }

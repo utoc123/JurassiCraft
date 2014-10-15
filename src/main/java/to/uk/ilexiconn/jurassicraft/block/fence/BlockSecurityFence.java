@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.tile.TileBlockSecurityFence;
 
 public class BlockSecurityFence extends Block implements ITileEntityProvider
 {
@@ -50,20 +49,12 @@ public class BlockSecurityFence extends Block implements ITileEntityProvider
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) 
 	{
-		System.out.println(world.getBlock(x, y, z).getUnlocalizedName());
 		return null;
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) 
 	{
-		try 
-		{
-			return new TileBlockSecurityFence();
-		} 
-		catch (Exception e) 
-		{
-			throw new RuntimeException(e);
-		}
+		return null;
 	}
 }

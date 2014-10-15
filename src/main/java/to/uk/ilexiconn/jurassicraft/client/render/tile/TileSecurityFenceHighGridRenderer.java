@@ -9,29 +9,28 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDNAExtractorBase;
-import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDNAExtractorGlass;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
+import to.uk.ilexiconn.jurassicraft.client.model.block.ModelHighFenceTop;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
 
-public class TileDNAExtractorRenderer extends TileEntitySpecialRenderer
+public class TileSecurityFenceHighGridRenderer extends TileEntitySpecialRenderer
 {
 
-    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/dnaExtractor.png");
-    private ModelDNAExtractorBase modelBase = new ModelDNAExtractorBase();
-    private ModelDNAExtractorGlass modelGlass = new ModelDNAExtractorGlass();
+    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/highSecurityFence.png");
+    private ModelHighFenceTop model = new ModelHighFenceTop();
 
-    public TileDNAExtractorRenderer()
+    public TileSecurityFenceHighGridRenderer()
     {
-
+    	
     }
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f)
     {
-        if (tileEntity instanceof TileDNAExtractor)
+        if (tileEntity instanceof TileSecurityFenceHighGrid)
         {
-            TileDNAExtractor tileEntityModel = (TileDNAExtractor) tileEntity;
+        	TileSecurityFenceHighGrid tileEntityModel = (TileSecurityFenceHighGrid) tileEntity;
             int angle = 0;
+            GL11.glPushMatrix();
             if (tileEntityModel.getWorldObj() == null)
             {
                 angle = 0;
@@ -55,19 +54,12 @@ public class TileDNAExtractorRenderer extends TileEntitySpecialRenderer
                         break;
                 }
             }
-            GL11.glPushMatrix();
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
             GL11.glScalef(1.0F, 1.0F, 1.0F);
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-            GL11.glRotatef(angle + 180, 0.0F, 1.0F, 0F);
+            GL11.glRotatef(angle, 0.0F, 1.0F, 0F);
             Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-            this.modelBase.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-            GL11.glEnable(GL11.GL_BLEND);
-            GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.55F);
-            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-            this.modelGlass.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-            GL11.glDisable(GL11.GL_BLEND);
+            this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             GL11.glPopMatrix();
         }
     }

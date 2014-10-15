@@ -52,9 +52,6 @@ public class TileDinoPadRenderer extends TileEntitySpecialRenderer
                     case 3:
                         angle = -270;
                         break;
-                    default:
-                        angle = -180;
-                        break;
                 }
             }
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);

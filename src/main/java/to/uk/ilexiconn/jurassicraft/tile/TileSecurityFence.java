@@ -421,10 +421,10 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		return (TileSecurityFence) tileEntity;
 	}
 
-	public int[] getBlocksToRepair(int securityLevel, int direction, int distance) {
+	public int[] getBlocksToRepair(int security, int direction, int distance) {
 		int[] brokenBlocks = new int[3];
 		int height = 0;
-		switch (securityLevel) {
+		switch (security) {
 			case 1:
 				height = 2;
 				break;
@@ -435,79 +435,83 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 				height = 5;
 				break;
 		}
-		switch (direction) {
-			case 0:
-				for (int i = 1; i < distance; i++) {
-					if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord + i))
-						brokenBlocks[0]++;
-				}
-				for (int i = 1; i < distance; i++) {
-					for (int j = 1; j <= height; j++) {
-						if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + i))
-							brokenBlocks[1]++;
+		if (security > 0 && security < 4) {
+			switch (direction) {
+				case 0:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord + i))
+							brokenBlocks[0]++;
 					}
-				}
-				for (int j = 1; j <= height; j++) {
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + distance))
-						brokenBlocks[2]++;
-				}
-				break;
-			case 1:
-				for (int i = 1; i < distance; i++) {
-					if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord - 1, this.yCoord, this.zCoord))
-						brokenBlocks[0]++;
-				}
-				for (int i = 1; i < distance; i++) {
-					for (int j = 1; j <= height; j++) {
-						if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord - 1, this.yCoord + j, this.zCoord))
-							brokenBlocks[1]++;
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + i))
+								brokenBlocks[1]++;
+						}
 					}
-				}
-				for (int j = 1; j <= height; j++) {
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord - distance, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-				}
-				break;
-			case 2:
-				for (int i = 1; i < distance; i++) {
-					if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord - i))
-						brokenBlocks[0]++;
-				}
-				for (int i = 1; i < distance; i++) {
 					for (int j = 1; j <= height; j++) {
-						if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - i))
-							brokenBlocks[1]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + distance))
+							brokenBlocks[2]++;
 					}
-				}
-				for (int j = 1; j <= height; j++) {
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - distance))
-						brokenBlocks[2]++;
-				}
-				break;
-			case 3:
-				for (int i = 1; i < distance; i++) {
-					if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + 1, this.yCoord, this.zCoord))
-						brokenBlocks[0]++;
-				}
-				for (int i = 1; i < distance; i++) {
+					break;
+				case 1:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord - 1, this.yCoord, this.zCoord))
+							brokenBlocks[0]++;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord - 1, this.yCoord + j, this.zCoord))
+								brokenBlocks[1]++;
+						}
+					}
 					for (int j = 1; j <= height; j++) {
-						if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + 1, this.yCoord + j, this.zCoord))
-							brokenBlocks[1]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord - distance, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
 					}
-				}
-				for (int j = 1; j <= height; j++) {
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-					if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord + distance, this.yCoord + j, this.zCoord))
-						brokenBlocks[2]++;
-				}
-				break;
+					break;
+				case 2:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord - i))
+							brokenBlocks[0]++;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - i))
+								brokenBlocks[1]++;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - distance))
+							brokenBlocks[2]++;
+					}
+					break;
+				case 3:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + 1, this.yCoord, this.zCoord))
+							brokenBlocks[0]++;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + 1, this.yCoord + j, this.zCoord))
+								brokenBlocks[1]++;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord + distance, this.yCoord + j, this.zCoord))
+							brokenBlocks[2]++;
+					}
+					break;
+			}
+		} else {
+			brokenBlocks = new int[]{0, 0, 0};
 		}
 		return brokenBlocks;
 	}

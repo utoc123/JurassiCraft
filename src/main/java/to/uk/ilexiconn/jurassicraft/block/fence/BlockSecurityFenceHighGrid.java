@@ -11,6 +11,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
+import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -18,6 +19,8 @@ public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IF
 	public BlockSecurityFenceHighGrid() 
 	{
 		this.setBlockName("block_High_Security_Fence_Grid");
+		/** Temporary */
+        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
 	}
 
 	@Override
@@ -185,5 +188,11 @@ public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IF
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) 
 	{
 		entity.attackEntityFrom(DamageSource.generic, 12.0F);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int metadata) 
+	{
+		return new TileSecurityFenceHighGrid();
 	}
 }

@@ -1,5 +1,6 @@
 //creativeTab
-itemGroup.fossilTab=JurassiCraft
+itemGroup.jc.blocks=JurassiCraft Blocks
+itemGroup.jc.items=JurassiCraft Items
 
 //entities
 entity.dino_egg.name=Dino Egg

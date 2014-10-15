@@ -45,20 +45,11 @@ public class GuiSecurityFence extends GuiContainer {
 		this.buttonList.add(new GuiButton(7, this.guiLeft + 138, this.guiTop + 130, 80, 20, StatCollector.translateToLocal("container.fixFence")));
 		this.fenceMap = this.fence.getAllMainBlocks();
 		this.refreshFixButton();
+		this.refreshUpgradeButton();
 	}
 
 	@Override
 	public void updateScreen() {
-		if (this.fence.canBuildFence(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())))) {
-			this.requiredMaterials = this.fence.getBlocksToRepair(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()));
-			if (requiredMaterials[0] == 0 && requiredMaterials[1] == 0 && requiredMaterials[2] == 0) {
-				((GuiButton) this.buttonList.get(3)).enabled = true;
-			} else {
-				((GuiButton) this.buttonList.get(3)).enabled = false;
-			}
-		} else {
-			((GuiButton) this.buttonList.get(3)).enabled = false;
-		}
 		if (this.fence.canCraftBase()) {
 			((GuiButton) this.buttonList.get(4)).enabled = true;
 		} else {
@@ -93,6 +84,7 @@ public class GuiSecurityFence extends GuiContainer {
 					this.fence.setDirection((byte) (3));
 				}
 				this.refreshFixButton();
+				this.refreshUpgradeButton();
 				break;
 			case 1:
 				if (this.fence.getDirection() + 1 < 4) {
@@ -101,36 +93,44 @@ public class GuiSecurityFence extends GuiContainer {
 					this.fence.setDirection((byte) (0));
 				}
 				this.refreshFixButton();
+				this.refreshUpgradeButton();
 				break;
 			case 2:
 				this.fenceMap = this.fence.getAllMainBlocks();
 				this.refreshFixButton();
+				this.refreshUpgradeButton();
 				break;
 			case 3:
-				JurassiCraft.network.sendToServer(new MessageFenceBuilding(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection()))));
+				JurassiCraft.network.sendToServer(new MessageFenceBuilding(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence
+						.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection()))));
+				((GuiButton) this.buttonList.get(3)).enabled = false;
 				break;
 			case 4:
 				if (this.fence.canCraftBase()) {
 					this.fence.tryToIncreaseFenceBases();
 					JurassiCraft.network.sendToServer(new MessageFenceCrafting(0, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord));
+					this.refreshUpgradeButton();
 				}
 				break;
 			case 5:
 				if (this.fence.canCraftGrid()) {
 					this.fence.tryToIncreaseFenceGrids();
 					JurassiCraft.network.sendToServer(new MessageFenceCrafting(1, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord));
+					this.refreshUpgradeButton();
 				}
 				break;
 			case 6:
 				if (this.fence.canCraftPole()) {
 					this.fence.tryToIncreaseFencePoles();
 					JurassiCraft.network.sendToServer(new MessageFenceCrafting(2, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord));
+					this.refreshUpgradeButton();
 				}
 				break;
 			case 7:
-				JurassiCraft.network.sendToServer(new MessageFenceFixing(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(this.fence.getDirection()) - 1, this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) - 1, this.requiredMaterials[0], this.requiredMaterials[1], this.requiredMaterials[2]));
+				JurassiCraft.network.sendToServer(new MessageFenceFixing(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(this.fence.getDirection()) - 1, this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence
+						.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) - 1, this.requiredMaterials[0], this.requiredMaterials[1], this.requiredMaterials[2]));
 				((GuiButton) this.buttonList.get(7)).visible = false;
-				this.refreshFixButton();
+				requiredMaterials = new int[]{0, 0, 0};
 				break;
 		}
 	}
@@ -143,22 +143,11 @@ public class GuiSecurityFence extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j) {
 		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 48, 163, 4210752);
-		int distance = this.fence.calculateDistanceToNextPole(this.fence.getDirection());
 		String text = "";
 		if ((requiredMaterials[0] == 0 && requiredMaterials[1] == 0 && requiredMaterials[2] == 0) || !this.fence.isFenceBuilt(this.fence.getDirection())) {
-			text = StatCollector.translateToLocal("container.fencebasesblocks") + ": " + this.fence.getFenceBasesStored() + "/" + ((distance - 1) > -1 ? (distance - 1) : 0);
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 79, 4210752);
-			text = StatCollector.translateToLocal("container.fencegridsblocks") + ": " + this.fence.getFenceGridsStored() + "/" + ((this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) * (distance - 1)) > -1 ? (this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) * (distance - 1)) : 0);
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 96, 4210752);
-			text = StatCollector.translateToLocal("container.fencepolesblocks") + ": " + this.fence.getFencePolesStored() + "/" + ((distance - 1) > -1 ? ((this.fence.getSecurityLevel(this.fence.getDirection()) == 0 || this.fence.getSecurityLevel(this.fence.getDirection()) == 2) ? 4 : 2) : 0);
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 113, 4210752);
+			this.drawMaterialsToBuild();
 		} else {
-			text = StatCollector.translateToLocal("container.fencebasesblocks") + ": " + this.fence.getFenceBasesStored() + "/" + requiredMaterials[0];
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 79, 4210752);
-			text = StatCollector.translateToLocal("container.fencegridsblocks") + ": " + this.fence.getFenceGridsStored() + "/" + requiredMaterials[1];
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 96, 4210752);
-			text = StatCollector.translateToLocal("container.fencepolesblocks") + ": " + this.fence.getFencePolesStored() + "/" + requiredMaterials[2];
-			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text)/2, 113, 4210752);
+			this.drawMaterialsToFix();
 		}
 		switch (this.fence.getSecurityLevel(this.fence.getDirection())) {
 			case 0:
@@ -195,6 +184,52 @@ public class GuiSecurityFence extends GuiContainer {
 		this.fontRendererObj.drawString(text, 56 - this.fontRendererObj.getStringWidth(text) / 2, 146, 4210752);
 	}
 
+	private void drawMaterialsToFix() {
+		String text = "";
+		text = StatCollector.translateToLocal("container.fencebasesblocks") + ": " + this.fence.getFenceBasesStored() + "/" + requiredMaterials[0];
+		this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 79, 4210752);
+		text = StatCollector.translateToLocal("container.fencegridsblocks") + ": " + this.fence.getFenceGridsStored() + "/" + requiredMaterials[1];
+		this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 96, 4210752);
+		text = StatCollector.translateToLocal("container.fencepolesblocks") + ": " + this.fence.getFencePolesStored() + "/" + requiredMaterials[2];
+		this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 113, 4210752);
+	}
+
+	private void drawMaterialsToBuild() {
+		String text = "";
+		if (this.fence.getSecurityLevel(this.fence.getDirection()) < 3) {
+			int distance = this.fence.calculateDistanceToNextPole(this.fence.getDirection());
+			int requiredMaterial = 0;
+			if ((distance - 1) > -1) {
+				requiredMaterial = distance - 1;
+			} else {
+				requiredMaterial = 0;
+			}
+			text = StatCollector.translateToLocal("container.fencebasesblocks") + ": " + this.fence.getFenceBasesStored() + "/" + ((requiredMaterial > 0) ? requiredMaterial : "--");
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 79, 4210752);
+			if ((this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) * (distance - 1)) > -1) {
+				requiredMaterial = this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) * (distance - 1);
+			} else {
+				requiredMaterial = 0;
+			}
+			text = StatCollector.translateToLocal("container.fencegridsblocks") + ": " + this.fence.getFenceGridsStored() + "/" + ((requiredMaterial > 0) ? requiredMaterial : "--");
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 96, 4210752);
+			if ((distance - 1) > -1) {
+				requiredMaterial = ((this.fence.getSecurityLevel(this.fence.getDirection()) == 0 || this.fence.getSecurityLevel(this.fence.getDirection()) == 2) ? 4 : 2);
+			} else {
+				requiredMaterial = 0;
+			}
+			text = StatCollector.translateToLocal("container.fencepolesblocks") + ": " + this.fence.getFencePolesStored() + "/" + ((requiredMaterial > 0) ? requiredMaterial : "--");
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 113, 4210752);
+		} else {
+			text = StatCollector.translateToLocal("container.fencebasesblocks") + ": " + this.fence.getFenceBasesStored() + "/--";
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 79, 4210752);
+			text = StatCollector.translateToLocal("container.fencegridsblocks") + ": " + this.fence.getFenceGridsStored() + "/--";
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 96, 4210752);			
+			text = StatCollector.translateToLocal("container.fencepolesblocks") + ": " + this.fence.getFencePolesStored() + "/--";
+			this.fontRendererObj.drawString(text, 178 - this.fontRendererObj.getStringWidth(text) / 2, 113, 4210752);
+		}
+	}
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -221,7 +256,7 @@ public class GuiSecurityFence extends GuiContainer {
 			}
 		}
 	}
-	
+
 	private void refreshFixButton() {
 		if (this.fence.isFenceBuilt(this.fence.getDirection())) {
 			this.requiredMaterials = this.fence.getBlocksToRepair(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()));
@@ -232,6 +267,19 @@ public class GuiSecurityFence extends GuiContainer {
 			}
 		} else {
 			((GuiButton) this.buttonList.get(7)).visible = false;
+		}
+	}
+
+	private void refreshUpgradeButton() {
+		if (this.fence.canBuildFence(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())))) {
+			this.requiredMaterials = this.fence.getBlocksToRepair(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()));
+			if (requiredMaterials[0] == 0 && requiredMaterials[1] == 0 && requiredMaterials[2] == 0) {
+				((GuiButton) this.buttonList.get(3)).enabled = true;
+			} else {
+				((GuiButton) this.buttonList.get(3)).enabled = false;
+			}
+		} else {
+			((GuiButton) this.buttonList.get(3)).enabled = false;
 		}
 	}
 }
