@@ -263,7 +263,7 @@ public class GuiSecurityFence extends GuiContainer {
 			if (requiredMaterials[0] == 0 && requiredMaterials[1] == 0 && requiredMaterials[2] == 0) {
 				((GuiButton) this.buttonList.get(7)).visible = false;
 			} else {
-				((GuiButton) this.buttonList.get(7)).visible = true;
+				((GuiButton) this.buttonList.get(7)).visible = this.fence.canRepair(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection());
 			}
 		} else {
 			((GuiButton) this.buttonList.get(7)).visible = false;

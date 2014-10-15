@@ -2,14 +2,10 @@ package to.uk.ilexiconn.jurassicraft.block.fence;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowGrid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,31 +15,39 @@ public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFe
 	{
 		this.setBlockName("block_Low_Security_Fence_Grid");
 	}
-
+	
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) 
+	public void breakBlock(World world, int x, int y, int z, Block block, int direction) 
 	{
-		int direction = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		/** South */
-		if (direction == 0) 
-		{
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+		switch (direction) {
+			case 0:
+			case 2:
+				if (world.getBlock(x - 1, y, z) instanceof BlockSecurityFenceLowGrid) {
+					if (world.getTileEntity(x - 1, y, z) != (TileEntity) null)
+						world.removeTileEntity(x - 1, y, z);
+					world.setBlockToAir(x - 1, y, z);
+				}
+				if (world.getBlock(x + 1, y, z) instanceof BlockSecurityFenceLowGrid) {
+					if (world.getTileEntity(x + 1, y, z) != (TileEntity) null)
+						world.removeTileEntity(x + 1, y, z);
+					world.setBlockToAir(x + 1, y, z);
+				}
+				break;
+			case 1:
+			case 3:
+				if (world.getBlock(x, y, z + 1) instanceof BlockSecurityFenceLowGrid) {
+					if (world.getTileEntity(x, y, z + 1) != (TileEntity) null)
+						world.removeTileEntity(x, y, z + 1);
+					world.setBlockToAir(x, y, z + 1);
+				}
+				if (world.getBlock(x, y, z - 1) instanceof BlockSecurityFenceLowGrid) {
+					if (world.getTileEntity(x, y, z - 1) != (TileEntity) null)
+						world.removeTileEntity(x, y, z - 1);
+					world.setBlockToAir(x, y, z - 1);
+				}
+				break;
 		}
-		/** West */
-		else if (direction == 1) 
-		{
-			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-		}
-		/** North */
-		else if (direction == 2) 
-		{
-			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-		}
-		/** East */
-		else if (direction == 3) 
-		{
-			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-		}
+		super.breakBlock(world, x, y, z, block, direction);
 	}
 
 	@Override
@@ -83,102 +87,6 @@ public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFe
 		{
 			return AxisAlignedBB.getBoundingBox((double) x, (double) y, (double) z, (double) (x + 1.0D), (double) (y + 1.0D), (double) (z + 1.0D));
 		}
-	}
-
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int direction) 
-	{
-		switch (direction) {
-		/** Facing South, should search West */
-			case 0:
-				for (int i = 1; i < 12; i++) 
-				{
-					if (world.getBlock(x - i, y, z) instanceof IFencePole) 
-					{
-						for (int j = 1; j < 7; j++) 
-						{
-							if (world.getBlock(x - i, y - j, z) instanceof BlockSecurityFenceMain) 
-							{
-								TileEntity fence = world.getTileEntity(x - i, y - j, z);
-								if (fence instanceof TileSecurityFence) 
-								{
-									((TileSecurityFence) fence).breakFenceLineAt((byte) 3, j);
-									break;
-								}
-							}
-						}
-						break;
-					}
-				}
-				break;
-			/** Facing West, should search North */
-			case 1:
-				for (int i = 1; i < 12; i++) 
-				{
-					if (world.getBlock(x, y, z - i) instanceof IFencePole) 
-					{
-						for (int j = 1; j < 7; j++) 
-						{
-							if (world.getBlock(x, y - j, z - i) instanceof BlockSecurityFenceMain) 
-							{
-								TileEntity fence = world.getTileEntity(x, y - j, z - i);
-								if (fence instanceof TileSecurityFence) 
-								{
-									((TileSecurityFence) fence).breakFenceLineAt((byte) 0, j);
-									break;
-								}
-							}
-						}
-						break;
-					}
-				}
-				break;
-			/** Facing North, should search East */
-			case 2:
-				for (int i = 1; i < 12; i++) 
-				{
-					if (world.getBlock(x + i, y, z) instanceof IFencePole) 
-					{
-						for (int j = 1; j < 7; j++) 
-						{
-							if (world.getBlock(x + i, y - j, z) instanceof BlockSecurityFenceMain) 
-							{
-								TileEntity fence = world.getTileEntity(x + i, y - j, z);
-								if (fence instanceof TileSecurityFence) 
-								{
-									((TileSecurityFence) fence).breakFenceLineAt((byte) 1, j);
-									break;
-								}
-							}
-						}
-						break;
-					}
-				}
-				break;
-			/** Facing East, should search South */
-			case 3:
-				for (int i = 1; i < 12; i++) 
-				{
-					if (world.getBlock(x, y, z + i) instanceof IFencePole) 
-					{
-						for (int j = 1; j < 7; j++) 
-						{
-							if (world.getBlock(x, y - j, z + i) instanceof BlockSecurityFenceMain) 
-							{
-								TileEntity fence = world.getTileEntity(x, y - j, z + i);
-								if (fence instanceof TileSecurityFence) 
-								{
-									((TileSecurityFence) fence).breakFenceLineAt((byte) 2, j);
-									break;
-								}
-							}
-						}
-						break;
-					}
-				}
-				break;
-		}
-		super.breakBlock(world, x, y, z, block, direction);
 	}
 
 	@Override

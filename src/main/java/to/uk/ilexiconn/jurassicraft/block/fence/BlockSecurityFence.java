@@ -5,8 +5,10 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
@@ -21,6 +23,32 @@ public class BlockSecurityFence extends Block implements ITileEntityProvider
 		this.setHarvestLevel("pickaxe", 2);
 		this.setStepSound(soundTypeMetal);
 		this.setBlockTextureName(Util.getModId() + "block_Security_Fence_Breaking_Particles");
+	}
+
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) 
+	{
+		int direction = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		/** South */
+		if (direction == 0) 
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+		}
+		/** West */
+		else if (direction == 1) 
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		}
+		/** North */
+		else if (direction == 2) 
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		}
+		/** East */
+		else if (direction == 3) 
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		}
 	}
 
 	public int quantityDropped(Random rand) 

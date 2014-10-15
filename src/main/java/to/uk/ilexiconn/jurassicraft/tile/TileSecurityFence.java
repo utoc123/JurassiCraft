@@ -24,13 +24,13 @@ import to.uk.ilexiconn.jurassicraft.block.fence.IFencePole;
 public class TileSecurityFence extends TileEntity implements ISidedInventory {
 
 	private ItemStack[] slots = new ItemStack[2];
-	private byte[] securityLevel = new byte[4];
+	private byte[] fenceSecurityLevel = new byte[4];
+	private byte fenceDirection = 0;
+	private byte distancePlanned = 0;
+	private byte heightPlanned = 0;
 	private short fenceGridsStored = 0;
 	private short fenceBasesStored = 0;
 	private short fencePolesStored = 0;
-	private byte distancePlanned = 0;
-	private byte heightPlanned = 0;
-	private byte direction = 0;
 
 	public TileSecurityFence() {
 
@@ -61,25 +61,25 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 	}
 
 	public byte getSecurityLevel(int direction) {
-		return securityLevel[direction];
+		return fenceSecurityLevel[direction];
 	}
 
 	public void setSecurityLevel(byte securityLV, int direction) {
-		if (securityLV > 0 && securityLV <= 3) {
-			this.securityLevel[direction] = securityLV;
+		if (securityLV > -1 && securityLV < 4) {
+			this.fenceSecurityLevel[direction] = securityLV;
 		}
 	}
 
 	public byte getDirection() {
-		return direction;
+		return fenceDirection;
 	}
 
 	public void setDirection(byte dir) {
-		this.direction = dir;
+		this.fenceDirection = dir;
 	}
 
 	public boolean isFenceBuilt(int direction) {
-		return this.securityLevel[direction] > 0;
+		return this.fenceSecurityLevel[direction] > 0;
 	}
 
 	public byte getHeightPlanned(int level) {
@@ -122,9 +122,9 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 
 	public boolean isFenceValid(int direction, int level) {
 		if (level == 0) {
-			return !(this.securityLevel[direction] > 0);
+			return !(this.fenceSecurityLevel[direction] > 0);
 		} else if (level == 1 || level == 2 || level == 3) {
-			return (this.securityLevel[direction] > 0);
+			return (this.fenceSecurityLevel[direction] > 0);
 		}
 		return false;
 	}
@@ -205,18 +205,18 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 
 	public boolean hasEnoughFencePoles(int securityLV) {
 		TileEntity tileEntity = (TileEntity) null;
-		switch (direction) {
+		switch (fenceDirection) {
 			case 0:
-				tileEntity = this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord + this.calculateDistanceToNextPole(direction));
+				tileEntity = this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord + this.calculateDistanceToNextPole(fenceDirection));
 				break;
 			case 1:
-				tileEntity = this.worldObj.getTileEntity(this.xCoord - this.calculateDistanceToNextPole(direction), this.yCoord, this.zCoord);
+				tileEntity = this.worldObj.getTileEntity(this.xCoord - this.calculateDistanceToNextPole(fenceDirection), this.yCoord, this.zCoord);
 				break;
 			case 2:
-				tileEntity = this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord - this.calculateDistanceToNextPole(direction));
+				tileEntity = this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord - this.calculateDistanceToNextPole(fenceDirection));
 				break;
 			case 3:
-				tileEntity = this.worldObj.getTileEntity(this.xCoord + this.calculateDistanceToNextPole(direction), this.yCoord, this.zCoord);
+				tileEntity = this.worldObj.getTileEntity(this.xCoord + this.calculateDistanceToNextPole(fenceDirection), this.yCoord, this.zCoord);
 				break;
 		}
 		if (tileEntity instanceof TileSecurityFence) {
@@ -294,6 +294,77 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		return world.getBlock(x, y, z) instanceof IFenceBase;
 	}
 
+	/**
+	 * Returns the TileEntity of the next fence in a certain direction related
+	 * to another fence. It will check only for a range of 11 blocks apart.
+	 */
+	public TileSecurityFence getNextFence(TileSecurityFence fence, int direction) {
+		TileEntity tileEntity = (TileEntity) null;
+		switch (direction) {
+		/** South */
+			case 0:
+				for (int i = 1; i < 12; i++) {
+					if (fence.hasSecurityFenceMainBlockAt(fence.worldObj, fence.xCoord, fence.yCoord, fence.zCoord + i))
+						tileEntity = fence.worldObj.getTileEntity(fence.xCoord, fence.yCoord, fence.zCoord + i);
+				}
+				break;
+			/** West */
+			case 1:
+				for (int i = 1; i < 12; i++) {
+					if (fence.hasSecurityFenceMainBlockAt(fence.worldObj, fence.xCoord - i, fence.yCoord, fence.zCoord))
+						tileEntity = fence.worldObj.getTileEntity(fence.xCoord - i, fence.yCoord, fence.zCoord);
+				}
+				break;
+			/** North */
+			case 2:
+				for (int i = 1; i < 12; i++) {
+					if (fence.hasSecurityFenceMainBlockAt(fence.worldObj, fence.xCoord, fence.yCoord, fence.zCoord - i))
+						tileEntity = fence.worldObj.getTileEntity(fence.xCoord, fence.yCoord, fence.zCoord - i);
+				}
+				break;
+			/** East */
+			case 3:
+				for (int i = 1; i < 12; i++) {
+					if (fence.hasSecurityFenceMainBlockAt(fence.worldObj, fence.xCoord + i, fence.yCoord, fence.zCoord))
+						tileEntity = fence.worldObj.getTileEntity(fence.xCoord + i, fence.yCoord, fence.zCoord);
+				}
+				break;
+		}
+		if (tileEntity instanceof TileSecurityFence) {
+			return (TileSecurityFence) tileEntity;
+		} else {
+			return (TileSecurityFence) null;
+		}
+	}
+
+	/**
+	 * Returns the TileEntity of the next fence in a certain direction related
+	 * to another fence and distance.
+	 */
+	public TileSecurityFence getNextFence(TileSecurityFence fence, int direction, int distance) {
+		TileEntity tileEntity = (TileEntity) null;
+		switch (direction) {
+			case 0:
+				tileEntity = fence.worldObj.getTileEntity(fence.xCoord, fence.yCoord, fence.zCoord + distance);
+				break;
+			case 1:
+				tileEntity = fence.worldObj.getTileEntity(fence.xCoord - distance, fence.yCoord, fence.zCoord);
+				break;
+			case 2:
+				tileEntity = fence.worldObj.getTileEntity(fence.xCoord, fence.yCoord, fence.zCoord - distance);
+				break;
+			case 3:
+				tileEntity = fence.worldObj.getTileEntity(fence.xCoord + distance, fence.yCoord, fence.zCoord);
+				break;
+		}
+		if (tileEntity instanceof TileSecurityFence) {
+			return (TileSecurityFence) tileEntity;
+		} else {
+			return null;
+		}
+	}
+
+	/** Returns the distance of the next fence in a certain direction. */
 	public int calculateDistanceToNextPole(int direction) {
 		switch (direction) {
 		/** South */
@@ -330,70 +401,25 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 
 	/** Returns the height of the pole connected to this block. */
 	public int calculateHeighOfThePole() {
-		int numberOfBlocks = 0;
-		while (this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + numberOfBlocks + 1, this.zCoord)) {
-			numberOfBlocks++;
+		int i = 0;
+		while (this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + i + 1, this.zCoord)) {
+			i++;
 		}
-		return numberOfBlocks;
+		return i;
 	}
 
 	/**
-	 * Remove all blocks at a certain direction and between two fence poles at a
-	 * specific height relative to the fence main block.
+	 * Returns a HashMap<Integer, int[]> with all fence blocks between an area
+	 * of 22 x 22. Integer array (int[]) with the block coordinates: (0 =
+	 * xCoord, 1 = yCoord, 2 = zCoord)
 	 */
-	public void breakFenceLineAt(byte direction, int height) {
-		int lineSize = this.calculateDistanceToNextPole(direction);
-		switch (direction) {
-		/** South */
-			case 0:
-				for (int i = 1; i < lineSize; i++) {
-					if (this.worldObj.getTileEntity(this.xCoord, this.yCoord + height, this.zCoord + i) != (TileEntity) null) {
-						this.worldObj.removeTileEntity(this.xCoord, this.yCoord + height, this.zCoord + i);
-					}
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord + height, this.zCoord + i);
-				}
-				break;
-			/** West */
-			case 1:
-				for (int i = 1; i < lineSize; i++) {
-					if (this.worldObj.getTileEntity(this.xCoord - i, this.yCoord + height, this.zCoord) != (TileEntity) null) {
-						this.worldObj.removeTileEntity(this.xCoord - i, this.yCoord + height, this.zCoord);
-					}
-					this.worldObj.setBlockToAir(this.xCoord - i, this.yCoord + height, this.zCoord);
-				}
-				break;
-			/** North */
-			case 2:
-				for (int i = 1; i < lineSize; i++) {
-					if (this.worldObj.getTileEntity(this.xCoord, this.yCoord + height, this.zCoord - i) != (TileEntity) null) {
-						this.worldObj.removeTileEntity(this.xCoord, this.yCoord + height, this.zCoord - i);
-					}
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord + height, this.zCoord - i);
-				}
-				break;
-			/** East */
-			case 3:
-				for (int i = 1; i < lineSize; i++) {
-					if (this.worldObj.getTileEntity(this.xCoord + i, this.yCoord + height, this.zCoord) != (TileEntity) null) {
-						this.worldObj.removeTileEntity(this.xCoord + i, this.yCoord + height, this.zCoord);
-					}
-					this.worldObj.setBlockToAir(this.xCoord + i, this.yCoord + height, this.zCoord);
-				}
-				break;
-		}
-	}
-
-	@Override
-	public void updateEntity() {
-
-	}
-
 	public HashMap<Integer, int[]> getAllMainBlocks() {
 		HashMap<Integer, int[]> map = new HashMap<Integer, int[]>();
 		int numberOfBlocks = 0;
 		for (int i = -11; i < 12; i++) {
 			for (int k = -11; k < 12; k++) {
-				if (this.hasSecurityFenceMainBlockAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord + k)) {
+				if (this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord + k) || this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord + k) || this.hasSecurityFencePoleAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord + k)
+						|| this.hasSecurityFenceMainBlockAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord + k)) {
 					map.put(numberOfBlocks, new int[] { i, k });
 					numberOfBlocks++;
 				}
@@ -402,25 +428,18 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		return map;
 	}
 
-	public TileSecurityFence getNextFence(World world, int x, int y, int z, int direction, int distance) {
-		TileEntity tileEntity = (TileEntity) null;
-		switch (direction) {
-			case 0:
-				tileEntity = world.getTileEntity(x, y, z + distance);
-				break;
-			case 1:
-				tileEntity = world.getTileEntity(x - distance, y, z);
-				break;
-			case 2:
-				tileEntity = world.getTileEntity(x, y, z - distance);
-				break;
-			case 3:
-				tileEntity = world.getTileEntity(x + distance, y, z);
-				break;
-		}
-		return (TileSecurityFence) tileEntity;
+	/**
+	 * Returns the number of blocks missing depending on the security level and
+	 * direction.
+	 */
+	public int[] getBlocksToRepair(int security, int direction) {
+		return this.getBlocksToRepair(security, direction, this.calculateDistanceToNextPole(direction));
 	}
 
+	/**
+	 * Returns the number of blocks missing depending on the security level,
+	 * direction, and distance.
+	 */
 	public int[] getBlocksToRepair(int security, int direction, int distance) {
 		int[] brokenBlocks = new int[3];
 		int height = 0;
@@ -493,12 +512,12 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 					break;
 				case 3:
 					for (int i = 1; i < distance; i++) {
-						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + 1, this.yCoord, this.zCoord))
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord))
 							brokenBlocks[0]++;
 					}
 					for (int i = 1; i < distance; i++) {
 						for (int j = 1; j <= height; j++) {
-							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + 1, this.yCoord + j, this.zCoord))
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + i, this.yCoord + j, this.zCoord))
 								brokenBlocks[1]++;
 						}
 					}
@@ -511,9 +530,103 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 					break;
 			}
 		} else {
-			brokenBlocks = new int[]{0, 0, 0};
+			brokenBlocks = new int[] { 0, 0, 0 };
 		}
 		return brokenBlocks;
+	}
+
+	/** Returns true if the fence can be repaired. This checks for air blocks. */
+	public boolean canRepair(int security, int direction) {
+		int distance = this.calculateDistanceToNextPole(direction);
+		int height = 0;
+		switch (security) {
+			case 1:
+				height = 2;
+				break;
+			case 2:
+				height = 3;
+				break;
+			case 3:
+				height = 5;
+				break;
+		}
+		if (security > 0 && security < 4) {
+			switch (direction) {
+				case 0:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord + i) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord, this.zCoord + i))
+							return false;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + i) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord + i))
+								return false;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord))
+							return false;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord + distance) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord + distance))
+							return false;
+					}
+					break;
+				case 1:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord - 1, this.yCoord, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
+							return false;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord - 1, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord + j, this.zCoord))
+								return false;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord))
+							return false;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord - distance, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord - distance, this.yCoord + j, this.zCoord))
+							return false;
+					}
+					break;
+				case 2:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord, this.yCoord, this.zCoord - i) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord, this.zCoord - i))
+							return false;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - i) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord - i))
+								return false;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord))
+							return false;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord - distance) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord - distance))
+							return false;
+					}
+					break;
+				case 3:
+					for (int i = 1; i < distance; i++) {
+						if (!this.hasSecurityFenceBaseAt(this.worldObj, this.xCoord + i, this.yCoord, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord + i, this.yCoord, this.zCoord))
+							return false;
+					}
+					for (int i = 1; i < distance; i++) {
+						for (int j = 1; j <= height; j++) {
+							if (!this.hasSecurityFenceGridAt(this.worldObj, this.xCoord + i, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord + i, this.yCoord + j, this.zCoord))
+								return false;
+						}
+					}
+					for (int j = 1; j <= height; j++) {
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord, this.yCoord + j, this.zCoord))
+							return false;
+						if (!this.hasSecurityFencePoleAt(this.worldObj, this.xCoord + distance, this.yCoord + j, this.zCoord) && !this.worldObj.isAirBlock(this.xCoord + distance, this.yCoord + j, this.zCoord))
+							return false;
+					}
+					break;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -867,9 +980,11 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 			case 0:
 				blockMetadata = 3;
 				for (int j = 1; j < height + 1; j++) {
+					world.setBlockMetadataWithNotify(x, y + j, z, 4, 2);
 					world.setBlockToAir(x, y + j, z);
 					world.removeTileEntity(x, y + j, z);
 					world.setBlock(x, y + j, z, fencePole, blockMetadata, 2);
+					world.setBlockMetadataWithNotify(x, y + j, z + distance, 4, 2);
 					world.setBlockToAir(x, y + j, z + distance);
 					world.removeTileEntity(x, y + j, z + distance);
 					world.setBlock(x, y + j, z + distance, fencePole, blockMetadata, 2);
@@ -891,9 +1006,11 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 			case 1:
 				blockMetadata = 0;
 				for (int j = 1; j < height + 1; j++) {
+					world.setBlockMetadataWithNotify(x, y + j, z, 4, 2);
 					world.setBlockToAir(x, y + j, z);
 					world.removeTileEntity(x, y + j, z);
 					world.setBlock(x, y + j, z, fencePole, blockMetadata, 2);
+					world.setBlockMetadataWithNotify(x - distance, y + j, z, 4, 2);
 					world.setBlockToAir(x - distance, y + j, z);
 					world.removeTileEntity(x - distance, y + j, z);
 					world.setBlock(x - distance, y + j, z, fencePole, blockMetadata, 2);
@@ -915,9 +1032,11 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 			case 2:
 				blockMetadata = 1;
 				for (int j = 1; j < height + 1; j++) {
+					world.setBlockMetadataWithNotify(x, y + j, z, 4, 2);
 					world.setBlockToAir(x, y + j, z);
 					world.removeTileEntity(x, y + j, z);
 					world.setBlock(x, y + j, z, fencePole, blockMetadata, 2);
+					world.setBlockMetadataWithNotify(x, y + j, z - distance, 4, 2);
 					world.setBlockToAir(x, y + j, z - distance);
 					world.removeTileEntity(x, y + j, z - distance);
 					world.setBlock(x, y + j, z - distance, fencePole, blockMetadata, 2);
@@ -939,9 +1058,11 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 			case 3:
 				blockMetadata = 2;
 				for (int j = 1; j < height + 1; j++) {
+					world.setBlockMetadataWithNotify(x, y + j, z, 4, 2);
 					world.setBlockToAir(x, y + j, z);
 					world.removeTileEntity(x, y + j, z);
 					world.setBlock(x, y + j, z, fencePole, blockMetadata, 2);
+					world.setBlockMetadataWithNotify(x + distance, y + j, z, 4, 2);
 					world.setBlockToAir(x + distance, y + j, z);
 					world.removeTileEntity(x + distance, y + j, z);
 					world.setBlock(x + distance, y + j, z, fencePole, blockMetadata, 2);
@@ -962,33 +1083,9 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		}
 		return;
 	}
-
-	private void consumeMaterialsAndSetFenceAsBuilt(TileSecurityFence nextFence, int security, int dir) {
-		int prevMaterial = this.getFenceBasesStored();
-		int requiredMaterial = this.getRequiredFenceBases(dir);
-		this.setFenceBasesStored((short) (this.getFenceBasesStored() - requiredMaterial));
-		if (this.getFenceBasesStored() <= 0) {
-			this.setFenceBasesStored((short) 0);
-			requiredMaterial = requiredMaterial - prevMaterial;
-			nextFence.setFenceBasesStored((short) (nextFence.getFenceBasesStored() - requiredMaterial));
-		}
-		prevMaterial = this.getFenceGridsStored();
-		requiredMaterial = this.getRequiredFenceGrids(security, dir);
-		this.setFenceGridsStored((short) (this.getFenceGridsStored() - requiredMaterial));
-		if (this.getFenceGridsStored() <= 0) {
-			this.setFenceGridsStored((short) 0);
-			requiredMaterial = requiredMaterial - prevMaterial;
-			nextFence.setFenceGridsStored((short) (nextFence.getFenceGridsStored() - requiredMaterial));
-		}
-		prevMaterial = this.getFencePolesStored();
-		requiredMaterial = this.getRequiredFencePoles(security);
-		this.setFencePolesStored((short) (this.getFencePolesStored() - requiredMaterial));
-		if (this.getFencePolesStored() <= 0) {
-			this.setFencePolesStored((short) 0);
-			requiredMaterial = requiredMaterial - prevMaterial;
-			nextFence.setFencePolesStored((short) (nextFence.getFencePolesStored() - requiredMaterial));
-		}
-		switch (dir) {
+	
+	private void setFenceUpgrade(TileSecurityFence nextFence, int security, int direction) {
+		switch (direction) {
 			case 0:
 				this.setSecurityLevel((byte) (security + 1), 0);
 				nextFence.setSecurityLevel((byte) (security + 1), 2);
@@ -1008,6 +1105,33 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		}
 		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 		nextFence.worldObj.markBlockForUpdate(nextFence.xCoord, nextFence.yCoord, nextFence.zCoord);
+	}
+
+	private void consumeMaterials(TileSecurityFence nextFence, int security, int direction) {
+		int prevMaterial = this.getFenceBasesStored();
+		int requiredMaterial = this.getRequiredFenceBases(direction);
+		this.setFenceBasesStored((short) (this.getFenceBasesStored() - requiredMaterial));
+		if (this.getFenceBasesStored() <= 0) {
+			this.setFenceBasesStored((short) 0);
+			requiredMaterial = requiredMaterial - prevMaterial;
+			nextFence.setFenceBasesStored((short) (nextFence.getFenceBasesStored() - requiredMaterial));
+		}
+		prevMaterial = this.getFenceGridsStored();
+		requiredMaterial = this.getRequiredFenceGrids(security, direction);
+		this.setFenceGridsStored((short) (this.getFenceGridsStored() - requiredMaterial));
+		if (this.getFenceGridsStored() <= 0) {
+			this.setFenceGridsStored((short) 0);
+			requiredMaterial = requiredMaterial - prevMaterial;
+			nextFence.setFenceGridsStored((short) (nextFence.getFenceGridsStored() - requiredMaterial));
+		}
+		prevMaterial = this.getFencePolesStored();
+		requiredMaterial = this.getRequiredFencePoles(security);
+		this.setFencePolesStored((short) (this.getFencePolesStored() - requiredMaterial));
+		if (this.getFencePolesStored() <= 0) {
+			this.setFencePolesStored((short) 0);
+			requiredMaterial = requiredMaterial - prevMaterial;
+			nextFence.setFencePolesStored((short) (nextFence.getFencePolesStored() - requiredMaterial));
+		}
 	}
 
 	private void consumeMaterials(int bases, int grids, int poles) {
@@ -1034,9 +1158,10 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 	public void tryToBuildFence(int security, int direction, int distance, int height) {
 		if (!this.worldObj.isRemote) {
 			if (this.canBuildFence(security, direction, distance, height)) {
-				TileSecurityFence nextFence = this.getNextFence(this.worldObj, this.xCoord, this.yCoord, this.zCoord, direction, distance);
+				TileSecurityFence nextFence = this.getNextFence(this, direction, distance);
+				this.consumeMaterials(nextFence, security, direction);
+				this.setFenceUpgrade(nextFence, security, direction);
 				this.placeFenceBlocks(this.worldObj, security, direction, distance, height, this.xCoord, this.yCoord, this.zCoord);
-				this.consumeMaterialsAndSetFenceAsBuilt(nextFence, security, direction);
 			}
 		}
 	}
