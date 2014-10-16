@@ -15,20 +15,18 @@ public class MessageFenceCrafting implements IMessage
 	private int xCoord;
 	private int yCoord;
 	private int zCoord;
-	private int amount;
 
 	public MessageFenceCrafting() 
 	{
 
 	}
 
-	public MessageFenceCrafting(int id, int x, int y, int z, int materials) 
+	public MessageFenceCrafting(int id, int x, int y, int z) 
 	{
 		this.craftingID = id;
 		this.xCoord = x;
 		this.yCoord = y;
 		this.zCoord = z;
-		this.amount = materials;
 	}
 
 	@Override
@@ -38,7 +36,6 @@ public class MessageFenceCrafting implements IMessage
 		this.xCoord = ByteBufUtils.readVarInt(buf, 5);
 		this.yCoord = ByteBufUtils.readVarInt(buf, 5);
 		this.zCoord = ByteBufUtils.readVarInt(buf, 5);
-		this.amount = ByteBufUtils.readVarInt(buf, 5);
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class MessageFenceCrafting implements IMessage
 		ByteBufUtils.writeVarInt(buf, this.xCoord, 5);
 		ByteBufUtils.writeVarInt(buf, this.yCoord, 5);
 		ByteBufUtils.writeVarInt(buf, this.zCoord, 5);
-		ByteBufUtils.writeVarInt(buf, this.amount, 5);
 	}
 
 	public static class Handler implements IMessageHandler<MessageFenceCrafting, IMessage> 
@@ -65,22 +61,13 @@ public class MessageFenceCrafting implements IMessage
 					{
 						switch (message.craftingID) {
 							case 0:
-								((TileSecurityFence) tileEntity).tryToIncreaseFenceBases(message.amount);
+								((TileSecurityFence) tileEntity).tryToIncreaseFenceBases();
 								break;
 							case 1:
-								((TileSecurityFence) tileEntity).tryToIncreaseFenceGrids(message.amount);
+								((TileSecurityFence) tileEntity).tryToIncreaseFenceGrids();
 								break;
 							case 2:
-								((TileSecurityFence) tileEntity).tryToIncreaseFencePoles(message.amount);
-								break;
-							case 3:
-								((TileSecurityFence) tileEntity).tryToIncreaseFenceBases(message.amount);
-								break;
-							case 4:
-								((TileSecurityFence) tileEntity).tryToIncreaseFenceGrids(message.amount);
-								break;
-							case 5:
-								((TileSecurityFence) tileEntity).tryToIncreaseFencePoles(message.amount);
+								((TileSecurityFence) tileEntity).tryToIncreaseFencePoles();
 								break;
 						}
 					}

@@ -20,8 +20,8 @@ public class ContainerSecurityFence extends Container
     public ContainerSecurityFence(InventoryPlayer playerInventory, TileEntity tileEntity)
     {
         this.fence = (TileSecurityFence) tileEntity;
-        this.addSlotToContainer(new Slot(this.fence, 0, 159, 47));
-        this.addSlotToContainer(new Slot(this.fence, 1, 193, 47));
+        this.addSlotToContainer(new Slot(this.fence, 0, 152, 47));
+        this.addSlotToContainer(new Slot(this.fence, 1, 187, 47));
 
         for (int i = 0; i < 3; i++)
         {

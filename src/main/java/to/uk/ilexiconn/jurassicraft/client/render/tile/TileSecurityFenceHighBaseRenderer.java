@@ -9,14 +9,14 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.client.model.block.ModelHighSecurityFenceBase;
+import to.uk.ilexiconn.jurassicraft.client.model.block.ModelHighFenceBase;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighBase;
 
 public class TileSecurityFenceHighBaseRenderer extends TileEntitySpecialRenderer
 {
 
-    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/modelHighSecurityFenceGrid.png");
-    private ModelHighSecurityFenceBase model = new ModelHighSecurityFenceBase();
+    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/highSecurityFence.png");
+    private ModelHighFenceBase model = new ModelHighFenceBase();
 
     public TileSecurityFenceHighBaseRenderer()
     {
