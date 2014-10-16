@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
 
@@ -22,6 +23,7 @@ public class BlockSecurityFenceMain extends BlockContainer
 		this.setResistance(10.0F);
 		this.setBlockName("security_Fence_Main");
 		this.setBlockTextureName(Util.getModId() + "security_Fence_Main");
+        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
 	}
 
 	@Override

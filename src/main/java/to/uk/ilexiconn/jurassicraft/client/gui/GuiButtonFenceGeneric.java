@@ -44,7 +44,7 @@ public class GuiButtonFenceGeneric extends GuiButton
 	            } 
 	            else 
 	            {
-	            	this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, 0, this.width, this.height);
+	            	this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, yguiPos, this.width, this.height);
 	            }
 	            this.mouseDragged(mc, x, y);
 	        } else {
