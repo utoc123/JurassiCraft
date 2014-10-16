@@ -10,7 +10,11 @@ public class BlockSecurityFenceMediumPole extends BlockSecurityFence implements 
 {
 	public BlockSecurityFenceMediumPole() 
 	{
+		this.setHardness(15.0F);
+		this.setResistance(200.0F);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("block_Medium_Security_Fence_Pole");
+		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 1.0F, 0.7F);
 	}
 
 	@Override

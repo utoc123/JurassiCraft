@@ -35,18 +35,27 @@ public class GuiSecurityFence extends GuiContainer {
 	public void initGui() {
 		super.initGui();
 		this.buttonList.clear();
+		/** Direction buttons. */
 		this.buttonList.add(new GuiButtonFenceGeneric(0, this.guiLeft + 54, this.guiTop + 126, 15, 45, 15, 10));
 		this.buttonList.add(new GuiButtonFenceGeneric(1, this.guiLeft + 10, this.guiTop + 78, 15, 0, 10, 15));
 		this.buttonList.add(new GuiButtonFenceGeneric(2, this.guiLeft + 54, this.guiTop + 34, 0, 45, 15, 10));
 		this.buttonList.add(new GuiButtonFenceGeneric(3, this.guiLeft + 102, this.guiTop + 78, 25, 0, 10, 15));
+		
+		/** Craft buttons. */
 		this.buttonList.add(new GuiButtonFenceGeneric(4, this.guiLeft + 122, this.guiTop + 79, 50, 0, 7, 7));
 		this.buttonList.add(new GuiButtonFenceGeneric(5, this.guiLeft + 122, this.guiTop + 96, 50, 0, 7, 7));
 		this.buttonList.add(new GuiButtonFenceGeneric(6, this.guiLeft + 122, this.guiTop + 113, 50, 0, 7, 7));
 		this.buttonList.add(new GuiButtonFenceGeneric(7, this.guiLeft + 237, this.guiTop + 79, 57, 0, 11, 7));
 		this.buttonList.add(new GuiButtonFenceGeneric(8, this.guiLeft + 237, this.guiTop + 96, 57, 0, 11, 7));
 		this.buttonList.add(new GuiButtonFenceGeneric(9, this.guiLeft + 237, this.guiTop + 113, 57, 0, 11, 7));
+		
+		/** Update button. */
 		this.buttonList.add(new GuiButtonFenceGeneric(10, this.guiLeft + 23, this.guiTop + 142, 35, 0, 15, 15));
+
+		/** Upgrade button. */
 		this.buttonList.add(new GuiButtonFenceGeneric(11, this.guiLeft + 186, this.guiTop + 11, 0, 0, 15, 15));
+
+		/** Fixing button. */
 		this.buttonList.add(new GuiButton(12, this.guiLeft + 138, this.guiTop + 130, 80, 20, StatCollector.translateToLocal("container.fixFence")));
 		this.fenceMap = this.fence.getAllMainBlocks();
 		this.refreshFixButton();
@@ -81,42 +90,38 @@ public class GuiSecurityFence extends GuiContainer {
 				((GuiButton) this.buttonList.get(3)).enabled = false;
 				break;
 		}
-		if (this.fence.canCraftBase()) {
+		if (this.fence.canCraftBases(1)) {
 			((GuiButton) this.buttonList.get(4)).enabled = true;
+			if (this.fence.canCraftBases(3)) {
+				((GuiButton) this.buttonList.get(7)).enabled = true;
+			} else {
+				((GuiButton) this.buttonList.get(7)).enabled = false;
+			}
 		} else {
 			((GuiButton) this.buttonList.get(4)).enabled = false;
-		}
-		if (this.fence.canCraftGrid()) {
-			((GuiButton) this.buttonList.get(5)).enabled = true;
-		} else {
-			((GuiButton) this.buttonList.get(5)).enabled = false;
-		}
-		if (this.fence.canCraftPole()) {
-			((GuiButton) this.buttonList.get(6)).enabled = true;
-		} else {
-			((GuiButton) this.buttonList.get(6)).enabled = false;
-		}
-		if (this.fence.canCraftAllBases(this.fence.getRequiredFenceBases(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection()))) {
-			((GuiButton) this.buttonList.get(7)).enabled = true;
-		} else {
 			((GuiButton) this.buttonList.get(7)).enabled = false;
 		}
-		if (this.fence.canCraftAllGrids(this.fence.getRequiredFenceGrids(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection()))) {
-			((GuiButton) this.buttonList.get(8)).enabled = true;
+		if (this.fence.canCraftGrids(1)) {
+			((GuiButton) this.buttonList.get(5)).enabled = true;
+			if (this.fence.canCraftGrids(3)) {
+				((GuiButton) this.buttonList.get(8)).enabled = true;
+			} else {
+				((GuiButton) this.buttonList.get(8)).enabled = false;
+			}
 		} else {
+			((GuiButton) this.buttonList.get(5)).enabled = false;
 			((GuiButton) this.buttonList.get(8)).enabled = false;
 		}
-		if (this.fence.canCraftAllPoles(this.fence.getRequiredFencePoles(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection()))) {
-			((GuiButton) this.buttonList.get(9)).enabled = true;
-		} else {
-			((GuiButton) this.buttonList.get(9)).enabled = false;
-		}
-		if (((GuiButton) this.buttonList.get(12)).visible) {
-			if (this.fence.getFenceBasesStored() >= requiredMaterials[0] && this.fence.getFenceGridsStored() >= requiredMaterials[1] && this.fence.getFencePolesStored() >= requiredMaterials[2]) {
-				((GuiButton) this.buttonList.get(12)).enabled = true;
+		if (this.fence.canCraftPoles(1)) {
+			((GuiButton) this.buttonList.get(6)).enabled = true;
+			if (this.fence.canCraftPoles(3)) {
+				((GuiButton) this.buttonList.get(9)).enabled = true;
 			} else {
-				((GuiButton) this.buttonList.get(12)).enabled = false;
+				((GuiButton) this.buttonList.get(9)).enabled = false;
 			}
+		} else {
+			((GuiButton) this.buttonList.get(6)).enabled = false;
+			((GuiButton) this.buttonList.get(9)).enabled = false;
 		}
 	}
 
@@ -159,22 +164,20 @@ public class GuiSecurityFence extends GuiContainer {
 				this.refreshUpgradeButton();
 				break;
 			case 7:
-				int materials = this.fence.getRequiredFenceBases(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection());
-				this.fence.tryToIncreaseFenceBases(materials);
-				JurassiCraft.network.sendToServer(new MessageFenceCrafting(3, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, materials));
+				this.fence.tryToIncreaseFenceBases(3);
+				JurassiCraft.network.sendToServer(new MessageFenceCrafting(3, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, 3));
 				this.refreshUpgradeButton();
 				break;
 			case 8:
-				this.fence.tryToIncreaseFenceGrids(this.fence.getRequiredFenceGrids(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection()));
-				JurassiCraft.network.sendToServer(new MessageFenceCrafting(4, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getRequiredFenceGrids(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection())));
+				this.fence.tryToIncreaseFenceGrids(3);
+				JurassiCraft.network.sendToServer(new MessageFenceCrafting(4, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, 3));
 				this.refreshUpgradeButton();
 				break;
 			case 9:
-				this.fence.tryToIncreaseFencePoles(this.fence.getRequiredFencePoles(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection()));
-				JurassiCraft.network.sendToServer(new MessageFenceCrafting(5, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getRequiredFencePoles(this.fence.getSecurityLevel(this.fence.getDirection()), this.fence.getDirection())));
+				this.fence.tryToIncreaseFencePoles(3);
+				JurassiCraft.network.sendToServer(new MessageFenceCrafting(5, this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, 3));
 				this.refreshUpgradeButton();
 				break;
-
 			case 10:
 				this.fenceMap = this.fence.getAllMainBlocks();
 				this.refreshFixButton();
@@ -187,7 +190,7 @@ public class GuiSecurityFence extends GuiContainer {
 				break;
 			case 12:
 				JurassiCraft.network.sendToServer(new MessageFenceFixing(this.fence.xCoord, this.fence.yCoord, this.fence.zCoord, this.fence.getSecurityLevel(this.fence.getDirection()) - 1, this.fence.getDirection(), this.fence.calculateDistanceToNextPole(this.fence.getDirection()), this.fence
-						.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection())) - 1, this.requiredMaterials[0], this.requiredMaterials[1], this.requiredMaterials[2]));
+						.getHeightPlanned(this.fence.getSecurityLevel(this.fence.getDirection()) - 1), this.requiredMaterials[0], this.requiredMaterials[1], this.requiredMaterials[2]));
 				((GuiButton) this.buttonList.get(12)).visible = false;
 				requiredMaterials = new int[] { 0, 0, 0 };
 				break;

@@ -11,12 +11,14 @@ import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IFenceGrid {
+public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IFenceGrid 
+{
 	public BlockSecurityFenceHighGrid() 
 	{
+		this.setHardness(20.0F);
+		this.setResistance(300.0F);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("block_High_Security_Fence_Grid");
-		/** Temporary */
-        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
 	}
 
 	@Override
@@ -39,7 +41,6 @@ public class BlockSecurityFenceHighGrid extends BlockSecurityFence implements IF
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z) 
 	{
 		int widthInPixels = 6;

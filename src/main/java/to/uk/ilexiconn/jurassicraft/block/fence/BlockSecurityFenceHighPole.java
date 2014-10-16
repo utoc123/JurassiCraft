@@ -10,9 +10,11 @@ public class BlockSecurityFenceHighPole extends BlockSecurityFence implements IF
 {
 	public BlockSecurityFenceHighPole() 
 	{
+		this.setHardness(40.0F);
+		this.setResistance(600.0F);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("block_High_Security_Fence_Pole");
-		/** Temporary */
-        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
+		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 1.0F, 0.7F);
 	}
 
 	@Override

@@ -9,7 +9,11 @@ public class BlockSecurityFenceLowBase extends BlockSecurityFence implements IFe
 {
 	public BlockSecurityFenceLowBase() 
 	{
+		this.setHardness(10.0F);
+		this.setResistance(150.0F);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("block_Low_Security_Fence_Base");
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 	}
 
 	@Override

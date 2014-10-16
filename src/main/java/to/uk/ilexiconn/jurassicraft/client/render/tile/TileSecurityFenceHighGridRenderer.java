@@ -15,7 +15,7 @@ import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
 public class TileSecurityFenceHighGridRenderer extends TileEntitySpecialRenderer
 {
 
-    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/modelHighSecurityFenceBase.png");
+    private static final ResourceLocation texture = new ResourceLocation(Util.getModId() + "textures/blocks/modelHighSecurityFenceGrid.png");
     private ModelHighSecurityFenceGrid model = new ModelHighSecurityFenceGrid();
 
     public TileSecurityFenceHighGridRenderer()

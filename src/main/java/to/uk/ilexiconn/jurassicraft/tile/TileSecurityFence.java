@@ -26,8 +26,6 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 	private ItemStack[] slots = new ItemStack[2];
 	private byte[] fenceSecurityLevel = new byte[4];
 	private byte fenceDirection = 0;
-	private byte distancePlanned = 0;
-	private byte heightPlanned = 0;
 	private short fenceGridsStored = 0;
 	private short fenceBasesStored = 0;
 	private short fencePolesStored = 0;
@@ -232,50 +230,50 @@ public class TileSecurityFence extends TileEntity implements ISidedInventory {
 		return world.getBlock(x, y, z) instanceof BlockSecurityFenceMain;
 	}
 
-	public boolean canCraftBase() {
-		return (this.slots[0] != (ItemStack) null && this.slots[0].stackSize - 8 > -1 && this.getFenceBasesStored() + 1 <= 256);
+	public boolean canCraftBases(int number) {
+		return (number > 0 && this.slots[0] != (ItemStack) null && this.slots[0].stackSize - 8 * number > -1 && this.getFenceBasesStored() + number <= 256);
 	}
 
-	public boolean canCraftGrid() {
-		return (this.slots[0] != (ItemStack) null && this.slots[1] != (ItemStack) null && this.slots[0].stackSize - 1 > -1 && this.slots[1].stackSize - 3 > -1 && this.getFenceGridsStored() + 1 <= 256);
+	public boolean canCraftGrids(int number) {
+		return (number > 0 && this.slots[0] != (ItemStack) null && this.slots[1] != (ItemStack) null && this.slots[0].stackSize - 1 * number > -1 && this.slots[1].stackSize - 3 * number > -1 && this.getFenceGridsStored() + number <= 256);
 	}
 
-	public boolean canCraftPole() {
-		return (this.slots[0] != (ItemStack) null && this.slots[1] != (ItemStack) null && this.slots[0].stackSize - 6 > -1 && this.slots[1].stackSize - 4 > -1 && this.getFencePolesStored() + 1 <= 256);
+	public boolean canCraftPoles(int number) {
+		return (number > 0 && this.slots[0] != (ItemStack) null && this.slots[1] != (ItemStack) null && this.slots[0].stackSize - 6 * number > -1 && this.slots[1].stackSize - 4 * number > -1 && this.getFencePolesStored() + number <= 256);
 	}
 
-	public void tryToIncreaseFenceBases() {
-		if (this.canCraftBase()) {
-			this.setFenceBasesStored((short) (this.getFenceBasesStored() + 1));
-			this.slots[0].stackSize = this.slots[0].stackSize - 8;
+	public void tryToIncreaseFenceBases(int number) {
+		if (this.canCraftBases(number)) {
+			this.setFenceBasesStored((short) (this.getFenceBasesStored() + number));
+			this.slots[0].stackSize = this.slots[0].stackSize - 8 * number;
 			if (this.slots[0].stackSize < 1) {
 				this.slots[0] = (ItemStack) null;
 			}
 		}
 	}
 
-	public void tryToIncreaseFenceGrids() {
-		if (this.canCraftGrid()) {
-			this.setFenceGridsStored((short) (this.getFenceGridsStored() + 1));
-			this.slots[0].stackSize = this.slots[0].stackSize - 1;
+	public void tryToIncreaseFenceGrids(int number) {
+		if (this.canCraftGrids(number)) {
+			this.setFenceGridsStored((short) (this.getFenceGridsStored() + number));
+			this.slots[0].stackSize = this.slots[0].stackSize - 1 * number;
 			if (this.slots[0].stackSize < 1) {
 				this.slots[0] = (ItemStack) null;
 			}
-			this.slots[1].stackSize = this.slots[1].stackSize - 3;
+			this.slots[1].stackSize = this.slots[1].stackSize - 3 * number;
 			if (this.slots[1].stackSize < 1) {
 				this.slots[1] = (ItemStack) null;
 			}
 		}
 	}
 
-	public void tryToIncreaseFencePoles() {
-		if (this.canCraftPole()) {
-			this.setFencePolesStored((short) (this.getFencePolesStored() + 1));
-			this.slots[0].stackSize = this.slots[0].stackSize - 6;
+	public void tryToIncreaseFencePoles(int number) {
+		if (this.canCraftPoles(number)) {
+			this.setFencePolesStored((short) (this.getFencePolesStored() + number));
+			this.slots[0].stackSize = this.slots[0].stackSize - 6 * number;
 			if (this.slots[0].stackSize < 1) {
 				this.slots[0] = (ItemStack) null;
 			}
-			this.slots[1].stackSize = this.slots[1].stackSize - 4;
+			this.slots[1].stackSize = this.slots[1].stackSize - 4 * number;
 			if (this.slots[1].stackSize < 1) {
 				this.slots[1] = (ItemStack) null;
 			}

@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfHasAgeAndNonTamed;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
@@ -26,6 +27,7 @@ public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive implemen
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
+        this.tasks.addTask(5, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityHypsilophodon.class, 0, 0.4F));

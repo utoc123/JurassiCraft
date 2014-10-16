@@ -18,9 +18,6 @@ public class BlockSecurityFence extends Block implements ITileEntityProvider
 	public BlockSecurityFence() 
 	{
 		super(Material.iron);
-		this.setHardness(2.5f);
-		this.setResistance(6.0f);
-		this.setHarvestLevel("pickaxe", 2);
 		this.setStepSound(soundTypeMetal);
 		this.setBlockTextureName(Util.getModId() + "block_Security_Fence_Breaking_Particles");
 	}

@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfHasAgeAndNonTamed;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorLeap;
@@ -27,22 +28,23 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
     {
         super(world, (byte) 2);
         this.getNavigator().setAvoidsWater(true);
-        tasks.addTask(0, new EntityAISwimming(this));
-        tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
-        this.tasks.addTask(2, this.aiSit);
-        tasks.addTask(2, new AIVelociraptorTwitchHead(this));
-        tasks.addTask(2, new AIVelociraptorRoar(this));
-        tasks.addTask(2, new AIVelociraptorLeap(this));
-        tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
-        tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
-        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        tasks.addTask(7, new EntityAILookIdle(this));
-        targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityStegosaur.class, 0, 0.7F));
-        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityTriceratops.class, 0, 0.8F));
-        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityGallimimus.class, 0, 0.25F));
-        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityOviraptor.class, 0, 0.33F));
-        targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityBrachiosaur.class, 0, 0.9F));
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
+        this.tasks.addTask(4, this.aiSit);
+        this.tasks.addTask(2, new AIVelociraptorTwitchHead(this));
+        this.tasks.addTask(2, new AIVelociraptorRoar(this));
+        this.tasks.addTask(2, new AIVelociraptorLeap(this));
+        this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
+        this.tasks.addTask(5, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
+        this.tasks.addTask(6, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityStegosaur.class, 0, 0.7F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityTriceratops.class, 0, 0.8F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityGallimimus.class, 0, 0.25F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityOviraptor.class, 0, 0.33F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityBrachiosaur.class, 0, 0.9F));
 
         this.setCreatureExperiencePoints(4500);
     }

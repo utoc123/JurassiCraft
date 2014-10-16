@@ -13,6 +13,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFenceGrid {
 	public BlockSecurityFenceLowGrid() 
 	{
+		this.setHardness(5.0F);
+		this.setResistance(75.0F);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("block_Low_Security_Fence_Grid");
 	}
 	
@@ -70,7 +73,6 @@ public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFe
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z) 
 	{
 		int widthInPixels = 6;

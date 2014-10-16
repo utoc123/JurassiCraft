@@ -23,7 +23,6 @@ public class EntityTylosaurus extends NewEntitySwimming {
         this.jumpOnLand = false;
         this.attackInterval = 1;
         this.isAgressive = true;
-
         this.setCreatureExperiencePoints(5000);
     }
 

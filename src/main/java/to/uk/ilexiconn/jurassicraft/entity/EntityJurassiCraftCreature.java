@@ -485,7 +485,7 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
     {
         return (float) this.bBoxY;
     }
-
+    
     /**
      * Returns the current health of the creature. This is just a information
      * for the user.
