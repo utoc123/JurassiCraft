@@ -1,8 +1,8 @@
-//creativeTab
+//CreativeTab
 itemGroup.jc.blocks=JurassiCraft Blocks
 itemGroup.jc.items=JurassiCraft Items
 
-//entities
+//Entities
 entity.dino_egg.name=Dino Egg
 entity.Ankylosaur.name=Ankylosaurus
 entity.Brachiosaur.name=Brachiosaurus
@@ -24,7 +24,7 @@ entity.Dilophosaurus.name=Dilophosaurus
 entity.Cearadactylus.name=Cearadactylus
 entity.Sarcosuchus.name=Sarcosuchus
 
-//items
+//Items
 item.dinoBone.name=Dinosaur Bone
 item.Ankylosaur_Meat.name=Ankylosaurus Meat
 item.Ankylosaur_DNA.name=Ankylosaurus DNA
@@ -85,7 +85,7 @@ item.growthSerum.name=Growth Serum
 item.gypsumPowder.name=Gypsum Powder
 item.dinopad.name=Dinopad
 
-/blocks
+/Blocks
 tile.cultivate_idle.name=Cultivate
 tile.dnaExtractor.name=DNA Extractor
 tile.dnaCombinator.name=DNA Combinator
@@ -102,6 +102,7 @@ tile.block_Gypsum_Block.name=Gypsum Block
 tile.block_Gypsum_Brick.name=Gypsum Brick
 tile.block_Gypsum_CobbleStone.name=Gypsum Cobblestone
 
+/Containers
 container.dnaExtractor=DNA Extractor
 container.dnaCombinator=DNA Combinator
 container.securityFenceInexistent=Nothing built yet
@@ -117,3 +118,44 @@ container.fixFence=Fix Fence
 container.fencebasesblocks=Bases
 container.fencegridsblocks=Grids
 container.fencepolesblocks=Poles
+container.pad.creature=Creature
+container.pad.years=years, 
+container.pad.months=months, 
+container.pad.days=days
+container.pad.year=year, 
+container.pad.month=month, 
+container.pad.day=day
+container.pad.health=Health
+container.pad.attack=Attack
+container.pad.speed=Speed
+container.pad.height=Height
+container.pad.length=Length
+container.pad.owner=Owner
+container.pad.ridable=Ridable
+container.pad.none=none
+container.pad.maxHealth=Maximum Health
+container.pad.maxLength=Maximum Length
+container.pad.maxHeight=Maximum Height
+
+/Dinosaur info
+container.pad.infoAnkylosaur.page1=Ankylosaurus ("fused lizard") is a genus of ankylosaurid dinosaur. Fossils of Ankylosaurus are found in geologic formations dating to the very end of the Cretaceous period, between 66.5 and 66.0 million years ago, in western North America.
+container.pad.infoAnkylosaur.page2=Ankylosaurus was a large animal by modern standards, estimated at lengths of 9 m (30 ft) and weighing up to 6 tonnes (13,000 lb). The whole animal is estimated at 6.25 m (20.5 feet) long, 1.5 m (4.9 feet) wide and 1.7 m (5.6 feet) tall at the hip.
+container.pad.infoAnkylosaur.page3=The tail club of Ankylosaurus is composed of several large osteoderms, which are fused to the last few tail vertebrae. It was heavy and supported by the last seven tail vertebrae, which interlocked to form a stiff rod at the base of the club.
+container.pad.infoBrachiosaur.page1=Brachiosaur
+container.pad.infoVelociraptor.page1=Velociraptor
+container.pad.infoStegosaur.page1=Stegosaur
+container.pad.infoTriceratops.page1=Triceratops
+container.pad.infoCoelacanth.page1=Coelacanth
+container.pad.infoTyrannosaurus.page1=Tyrannosaurus
+container.pad.infoGallimimus.page1=Gallimimus
+container.pad.infoHypsilophodon.page1=Hypsilophodon
+container.pad.infoLeaellynasaur.page1=Leaellynasaur
+container.pad.infoHerrerasaur.page1=Herrerasaurus was one of the earliest dinosaurs. Its name means "Herrera's lizard", after the rancher who discovered the first specimen. All known fossils of this carnivore have been discovered in rocks of Carnian age, 231.4 million years ago in northwestern Argentina.
+container.pad.infoHerrerasaur.page2=Herrerasaurus was a lightly built bipedal carnivore with a long tail and a relatively small head. Its length is estimated at 3 to 6 meters (10 to 20 ft), and its hip height at more than 1.1 meters (3.3 ft). It may have weighed around 210 to 350 kilograms (463 to 772 lb).
+container.pad.infoParasaurolophus.page1=Parasaurolophus
+container.pad.infoMeganeura.page1=Meganeura
+container.pad.infoDilophosaurus.page1=Dilophosaurus
+container.pad.infoTylosaurus.page1=Tylosaurus
+container.pad.infoOviraptor.page1=Oviraptor
+container.pad.infoCearadactylus.page1=Cearadactylus
+container.pad.infoSarcosuchus.page1=Sarcosuchus

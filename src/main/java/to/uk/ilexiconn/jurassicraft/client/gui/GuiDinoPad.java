@@ -1,5 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
+import java.util.HashMap;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -26,8 +28,9 @@ public class GuiDinoPad extends GuiScreen {
 	private int ySize;
 	private int guiLeft;
 	private int guiTop;
-	private int pageNumber;
 	private float renderRotation;
+	private int pageNumber;
+	private HashMap<Integer, String[]> dinoInfo = new HashMap<Integer, String[]>();
 
 	public GuiDinoPad() 
 	{
@@ -44,6 +47,10 @@ public class GuiDinoPad extends GuiScreen {
 	public void initGui() 
 	{
 		this.buttonList.clear();
+		this.dinoInfo.clear();
+		for (int numberOfPages = 1; numberOfPages <= Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages; numberOfPages++) {
+			this.dinoInfo.put(numberOfPages, this.getCreatureInformation(numberOfPages));
+		}
 		this.renderRotation = 0.0F;
 		this.pageNumber = 0;
 		this.guiLeft = (int) ((this.width - this.xSize) / 2);
@@ -91,11 +98,13 @@ public class GuiDinoPad extends GuiScreen {
     			case 0:
     				this.pageNumber = 1;
     				break;
-    			case 1:
-    				this.pageNumber = 0;
-    				break;
     			default:
-    				this.pageNumber = 0;
+    				if (this.pageNumber < Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages) {
+        				this.pageNumber++;
+    				} else {
+        				this.pageNumber = 0;
+    				}
+    				break;
     		}
         }
     }
@@ -106,30 +115,25 @@ public class GuiDinoPad extends GuiScreen {
 		drawDefaultBackground();
 		mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiDinoPad.png"));
 		drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-		if (this.pageNumber == 0) {
-			this.renderEmptyBars();
-			this.renderStatusBars();
-			
-			if (this.creature.getCreatureID() >= 0 && this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
-			} else {
-				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
-			}
-			
-			this.renderNameGenderStrings();
-			this.renderStatusStrings();
-			this.renderTamedStrings();
-		} 
-		else if (this.pageNumber == 1) 
-		{
-			if (this.creature.getCreatureID() >= 0 && this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
-				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
-			} else {
-				this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F/creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
-			}
-			this.renderNameGenderStrings();
-			this.renderCreatureInformation();
-			this.renderTamedStrings();
+		switch (this.pageNumber) {
+			case 0:
+				this.renderEmptyBars();
+				this.renderStatusBars();
+
+				if (this.creature.getCreatureID() >= 0 && this.creature.getCreatureLength() > this.creature.getCreatureHeight()) {
+					this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F / creature.getCreatureLength()) * (0.4F + 0.6F * this.creature.getCreatureLength() / Util.getDinoByID(this.creature.getCreatureID()).maxLength)));
+				} else {
+					this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), (float) ((55.0F / creature.getCreatureHeight()) * (0.4F + 0.6F * this.creature.getCreatureHeight() / Util.getDinoByID(this.creature.getCreatureID()).maxHeight)));
+				}
+
+				this.renderNameGenderStrings();
+				this.renderStatusStrings();
+				this.renderTamedStrings();
+				break;
+			default:
+				this.renderNameGenderStrings();
+				this.renderCreatureInformation(this.pageNumber);
+				break;
 		}
 		super.drawScreen(x, y, f);
 	}
@@ -150,17 +154,17 @@ public class GuiDinoPad extends GuiScreen {
 
 	private void renderNameGenderStrings() 
 	{
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Creature: " + this.creature.getCreatureName()), this.guiLeft + 127 - this.fontRendererObj.getStringWidth("Creature: " + this.creature.getCreatureName()) / 2, this.guiTop + 11, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal(this.creature.getCreatureAgeString() + ", " + this.creature.getCreatureGenderString()), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(this.creature.getCreatureAgeString() + ", " + this.creature.getCreatureGenderString()) / 2, this.guiTop + 19, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.creature") + ": " + this.creature.getCreatureName(), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.creature") + ": " + this.creature.getCreatureName()) / 2, this.guiTop + 11, 14737632);
+		this.fontRendererObj.drawString(this.creature.getCreatureAgeString() + ", " + this.creature.getCreatureGenderString(), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(this.creature.getCreatureAgeString() + ", " + this.creature.getCreatureGenderString()) / 2, this.guiTop + 19, 14737632);
 	}
 
 	private void renderStatusStrings() 
 	{
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Health: " + String.valueOf(this.creature.getCreatureCurrentHealth() + "/" + this.creature.getCreatureHealth())), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Health: " + String.valueOf(this.creature.getCreatureCurrentHealth() + "/" + this.creature.getCreatureHealth())) / 2, this.guiTop + 45, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Attack: " + String.valueOf(this.creature.getCreatureAttack())), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Attack: " + String.valueOf(this.creature.getCreatureAttack())) / 2, this.guiTop + 70, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Speed: " + String.valueOf(this.creature.getCreatureSpeed())), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Speed: " + String.valueOf(this.creature.getCreatureSpeed())) / 2, this.guiTop + 95, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Height: " + String.valueOf(this.creature.getCreatureHeight())), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Height: " + String.valueOf(this.creature.getCreatureHeight())) / 2, this.guiTop + 116, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Length: " + String.valueOf(this.creature.getCreatureLength())), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Length: " + String.valueOf(this.creature.getCreatureLength())) / 2, this.guiTop + 126, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.health") + ": " + String.valueOf(this.creature.getCreatureCurrentHealth() + "/" + this.creature.getCreatureHealth()), this.guiLeft + 192 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.health") + String.valueOf(this.creature.getCreatureCurrentHealth() + "/" + this.creature.getCreatureHealth())) / 2, this.guiTop + 45, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.attack") + ": " + String.valueOf(this.creature.getCreatureAttack()), this.guiLeft + 192 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.attack") + String.valueOf(this.creature.getCreatureAttack())) / 2, this.guiTop + 70, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.speed") + ": " + String.valueOf(this.creature.getCreatureSpeed()), this.guiLeft + 192 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.speed") + String.valueOf(this.creature.getCreatureSpeed())) / 2, this.guiTop + 95, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.height") + ": " + String.valueOf(this.creature.getCreatureHeight()), this.guiLeft + 192 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.height") + String.valueOf(this.creature.getCreatureHeight())) / 2, this.guiTop + 116, 14737632);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.length") + ": " + String.valueOf(this.creature.getCreatureLength()), this.guiLeft + 192 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.length") + String.valueOf(this.creature.getCreatureLength())) / 2, this.guiTop + 126, 14737632);
 	}
 
 	private void renderTamedStrings() 
@@ -169,25 +173,51 @@ public class GuiDinoPad extends GuiScreen {
 		{
 			if (Util.getDinoByID(creature.getCreatureID()).isRidable && this.creature.isCreatureAdult()) 
 			{
-				this.fontRendererObj.drawString(StatCollector.translateToLocal("Owner: " + ((EntityJurassiCraftTameable) creature).getOwnerName()), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Owner: " + ((EntityJurassiCraftTameable) creature).getOwnerName()) / 2, this.guiTop + 112, 14737632);
-				this.fontRendererObj.drawString(StatCollector.translateToLocal("Ridable"), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Ridable") / 2, this.guiTop + 122, 14737632);
+				this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.owner") + ": " + ((EntityJurassiCraftTameable) creature).getOwnerName(), this.guiLeft + 67 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.owner") + ((EntityJurassiCraftTameable) creature).getOwnerName()) / 2, this.guiTop + 112, 14737632);
+				this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.ridable"), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Ridable") / 2, this.guiTop + 122, 14737632);
 			} 
 			else 
 			{
-				this.fontRendererObj.drawString(StatCollector.translateToLocal("Owner: " + ((EntityJurassiCraftTameable) creature).getOwnerName()), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Owner: " + ((EntityJurassiCraftTameable) creature).getOwnerName()) / 2, this.guiTop + 122, 14737632);
+				this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.owner") + ": "  + ((EntityJurassiCraftTameable) creature).getOwnerName(), this.guiLeft + 67 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.owner") + ": "  + ((EntityJurassiCraftTameable) creature).getOwnerName()) / 2, this.guiTop + 122, 14737632);
 			}
 		}
 		else 
 		{
-			this.fontRendererObj.drawString(StatCollector.translateToLocal("Owner: none"), this.guiLeft + 67 - this.fontRendererObj.getStringWidth("Owner: none") / 2, this.guiTop + 122, 14737632);
+			this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.owner") + ": " + StatCollector.translateToLocal("container.pad.none"), this.guiLeft + 67 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.owner") + ": " + StatCollector.translateToLocal("container.pad.none")) / 2, this.guiTop + 122, 14737632);
 		}
 	}
 
-	private void renderCreatureInformation() 
+	private String[] getCreatureInformation(int page) 
 	{
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Health: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHealth)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Health: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHealth)) / 2, this.guiTop + 45, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Length: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxLength)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Length: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxLength)) / 2, this.guiTop + 70, 14737632);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("Maximum Height: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHeight)), this.guiLeft + 192 - this.fontRendererObj.getStringWidth("Maximum Height: " + String.valueOf(Util.getDinoByID(this.creature.getCreatureID()).maxHeight)) / 2, this.guiTop + 95, 14737632);
+		String info = StatCollector.translateToLocal("container.pad.info" + Util.getDinoByID(this.creature.getCreatureID()).creatureName + ".page" + page);
+		String[] pageInfo = new String[8];
+		if (info != null && info != "") {
+			int line = 0;
+			int index = 0;
+			for (int infoSize = info.length(); infoSize >= 43; line++) {
+				index = 43;
+				while (!String.valueOf(info.substring(0, index).charAt(index - 1)).equals(" ")) {
+					index--;
+				}
+				pageInfo[line] = info.substring(0, index - 1);
+				info = info.substring(index, infoSize);
+				infoSize = info.length();
+			}
+			pageInfo[line] = info;
+		}
+		return pageInfo;
+	}
+	
+	private void renderCreatureInformation(int page) 
+	{
+		if (this.dinoInfo.containsKey(page)) {
+			for (int line = 0; line < this.dinoInfo.get(page).length; line++) 
+			{
+				this.fontRendererObj.drawString(this.dinoInfo.get(page)[line], this.guiLeft + 128 - this.fontRendererObj.getStringWidth(this.dinoInfo.get(page)[line]) / 2, this.guiTop + 45 + 12 * line, 14737632);
+			}
+		} else {
+			this.fontRendererObj.drawString("Page missing! This is a bug!", this.guiLeft + 128 - this.fontRendererObj.getStringWidth("Page missing! This is a bug!") / 2, this.guiTop + 45, 14737632);
+		}
 	}
 
 	private void renderCreature(float posX, float posY, float scale) 
@@ -200,12 +230,10 @@ public class GuiDinoPad extends GuiScreen {
 		GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-		
 		GL11.glRotatef(1.5F * this.renderRotation, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, creature.yOffset, 0.0F);
 		RenderManager.instance.playerViewY = 180.0F;
 		RenderManager.instance.renderEntityWithPosYaw(creature, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
-		
 		GL11.glPopMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);

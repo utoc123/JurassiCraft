@@ -37,7 +37,8 @@
         "deathSound":"jurassicraft:ankylo2",
         "numberOfTextures":2,
         "ridingStyle":2,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 3
     },
     {
         "creatureID":1,
@@ -77,7 +78,8 @@
         "deathSound":"jurassicraft:brac4",
         "numberOfTextures":2,
         "ridingStyle":3,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {		
         "creatureID":2,
@@ -117,7 +119,8 @@
         "deathSound":"jurassicraft:RapAttack02",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {        
         "creatureID":3,
@@ -157,7 +160,8 @@
         "deathSound":"jurassicraft:stego2",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":4,
@@ -197,7 +201,8 @@
         "deathSound":"jurassicraft:tric3",
         "numberOfTextures":2,
         "ridingStyle":1,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {        
         "creatureID":5,
@@ -237,7 +242,8 @@
         "deathSound":null,
         "numberOfTextures":1,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":6,
@@ -277,7 +283,8 @@
         "deathSound":"jurassicraft:trex3",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":7,
@@ -317,7 +324,8 @@
         "deathSound":"jurassicraft:gali3",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {        
         "creatureID":8,
@@ -357,7 +365,8 @@
         "deathSound":"jurassicraft:hypsi4",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":9,
@@ -397,7 +406,8 @@
         "deathSound":"jurassicraft:leae1",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":10,
@@ -437,7 +447,8 @@
         "deathSound":"jurassicraft:herr2",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 2
     },
     {
         "creatureID":11,
@@ -477,7 +488,8 @@
         "deathSound":"jurassicraft:para2",
         "numberOfTextures":2,
         "ridingStyle":1,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":12,
@@ -517,7 +529,8 @@
         "deathSound":null,
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":13,
@@ -557,7 +570,8 @@
         "deathSound":"jurassicraft:dilo1",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":14,
@@ -597,7 +611,8 @@
         "deathSound":"jurassicraft:tylo4",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
     {
         "creatureID":15,
@@ -637,7 +652,8 @@
         "deathSound":"jurassicraft:ovi3",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
     },
 	{
 	    "creatureID":16,
@@ -677,7 +693,8 @@
         "deathSound":"jurassicraft:ovi3",
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
 	},
 	{
 	    "creatureID":17,
@@ -717,6 +734,7 @@
         "deathSound":null,
         "numberOfTextures":2,
         "ridingStyle":0,
-        "canBeTamedUponSpawning": true
+        "canBeTamedUponSpawning": true,
+        "numberOfInfoPages": 1
 	}
 ]

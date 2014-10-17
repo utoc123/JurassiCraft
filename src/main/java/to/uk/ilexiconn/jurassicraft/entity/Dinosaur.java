@@ -41,6 +41,7 @@ public class Dinosaur
     public int cultivateSpeed;
     public int numberOfTextures;
     public int ridingStyle;
+    public int numberOfInfoPages;
 
     public ArrayList favoriteFoodList;
     public ArrayList ridingItemList;

@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
@@ -713,41 +714,41 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         byte years = (byte) getCreatureAgeInYears();
         byte months = (byte) (getCreatureAgeInMonths() - 12 * this.getCreatureAgeInYears());
         byte days = (byte) (getCreatureAgeInDays() - 30 * this.getCreatureAgeInMonths());
-        String yearString = " years, ";
-        String monthString = " months, ";
-        String dayString = " days";
+        String yearString = StatCollector.translateToLocal("container.pad.years");
+        String monthString = StatCollector.translateToLocal("container.pad.months");
+        String dayString = StatCollector.translateToLocal("container.pad.days");
         if (years <= 1)
         {
-            yearString = " year, ";
+            yearString = StatCollector.translateToLocal("container.pad.year");
         }
         if (months <= 1)
         {
-            monthString = " month, ";
+            monthString = StatCollector.translateToLocal("container.pad.month");
         }
         if (days <= 1)
         {
-            dayString = " day";
+            dayString = StatCollector.translateToLocal("container.pad.day");
         }
         if (years <= 0)
         {
             if (months <= 0)
             {
-                return (String.valueOf(days) + dayString);
+                return (String.valueOf(days) + " " + dayString);
             }
             else
             {
-                return (String.valueOf(months) + monthString + String.valueOf(days) + dayString);
+                return (String.valueOf(months) + " " + monthString + String.valueOf(days) + " " + dayString);
             }
         }
         else
         {
             if (months <= 0)
             {
-                return (String.valueOf(years) + yearString + String.valueOf(days) + dayString);
+                return (String.valueOf(years) + " " + yearString + String.valueOf(days) + " " + dayString);
             }
             else
             {
-                return (String.valueOf(years) + yearString + String.valueOf(months) + monthString + String.valueOf(days) + dayString);
+                return (String.valueOf(years) + " " + yearString + String.valueOf(months) + " " + monthString + String.valueOf(days) + " " + dayString);
             }
         }
     }

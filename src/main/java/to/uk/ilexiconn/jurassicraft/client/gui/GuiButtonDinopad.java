@@ -18,21 +18,21 @@ public class GuiButtonDinopad extends GuiButton
 	public GuiButtonDinopad(int id, int xPos, int yPos, int width, int height) 
 	{
 		super(id, xPos, yPos, width, height, "");
-		this.visible = false;
 	}
 
 	@Override
 	public void drawButton(Minecraft mc, int x, int y) 
 	{
-		FontRenderer fontrenderer = mc.fontRenderer;
-		mc.getTextureManager().bindTexture(buttonTextures);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		if (x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height) {
-			GL11.glEnable(GL11.GL_BLEND);
+		if (this.visible) {
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);GL11.glEnable(GL11.GL_BLEND);
 			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiDinoPad.png"));
-			this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 210, this.width, this.height);
+			if (x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height) {
+				this.drawTexturedModalRect(this.xPosition, this.yPosition, width, 210, this.width, this.height);
+			} else {
+				this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 210, this.width, this.height);
+			}
 		}
 		this.mouseDragged(mc, x, y);
 	}
