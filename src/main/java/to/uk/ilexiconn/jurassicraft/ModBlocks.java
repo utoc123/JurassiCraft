@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
@@ -34,7 +35,7 @@ import to.uk.ilexiconn.llib.content.ContentType;
 import to.uk.ilexiconn.llib.content.OverrideRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.BLOCK)
+@ContentHandler(modid = "jurassicraft", type = ContentType.BLOCK, priority = EventPriority.HIGH)
 public class ModBlocks
 {
 
