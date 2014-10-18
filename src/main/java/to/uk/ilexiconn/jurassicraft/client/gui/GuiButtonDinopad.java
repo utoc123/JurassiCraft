@@ -15,9 +15,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiButtonDinopad extends GuiButton 
 {
-	public GuiButtonDinopad(int id, int xPos, int yPos, int width, int height) 
+    public int xguiPos;
+    public int yguiPos;
+	
+	public GuiButtonDinopad(int id, int xPos, int yPos, int xguiPosition, int yguiPosition, int width, int height) 
 	{
 		super(id, xPos, yPos, width, height, "");
+		this.xguiPos = xguiPosition;
+		this.yguiPos = yguiPosition;
 	}
 
 	@Override
@@ -28,10 +33,10 @@ public class GuiButtonDinopad extends GuiButton
 			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiDinoPad.png"));
-			if (x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height) {
-				this.drawTexturedModalRect(this.xPosition, this.yPosition, width, 210, this.width, this.height);
+			if ((x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height) || !this.enabled) {
+				this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos + width, yguiPos, this.width, this.height);
 			} else {
-				this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 210, this.width, this.height);
+				this.drawTexturedModalRect(this.xPosition, this.yPosition, xguiPos, yguiPos, this.width, this.height);
 			}
 		}
 		this.mouseDragged(mc, x, y);

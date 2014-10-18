@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 
 public enum ModCreativeTabs
 {
-    ITEMS("items", ModItems.amber),
-    BLOCKS("blocks", Item.getItemFromBlock(ModBlocks.fossilOre));
+    ITEMS("items", Items.apple),
+    BLOCKS("blocks", Item.getItemFromBlock(Blocks.stone));
 
     private CreativeTabs creativeTab;
     private ModCreativeTabs(String n, final Item i)

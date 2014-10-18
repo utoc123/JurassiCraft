@@ -55,7 +55,9 @@ public class GuiDinoPad extends GuiScreen {
 		this.pageNumber = 0;
 		this.guiLeft = (int) ((this.width - this.xSize) / 2);
 		this.guiTop = (int) ((this.height - this.ySize) / 2);
-        this.buttonList.add(new GuiButtonDinopad(0, this.guiLeft + (this.xSize - 18) / 2, this.guiTop + 146, 18, 18));
+        this.buttonList.add(new GuiButtonDinopad(0, this.guiLeft + (this.xSize - 18) / 2, this.guiTop + 146, 0, 210, 18, 18));
+        this.buttonList.add(new GuiButtonDinopad(1, this.guiLeft + (this.xSize - 18) / 2 - 14, this.guiTop + 146, 36, 210, 12, 18));
+        this.buttonList.add(new GuiButtonDinopad(2, this.guiLeft + (this.xSize - 18) / 2 + 20, this.guiTop + 146, 60, 210, 12, 18));
 	}
 
 	@Override
@@ -92,19 +94,25 @@ public class GuiDinoPad extends GuiScreen {
     @Override
     public void actionPerformed(GuiButton button)
     {
+    	System.out.println("this.pageNumber " + this.pageNumber + " max: " + Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages);
     	if (button.id == 0)
         {
-    		switch (this.pageNumber) {
-    			case 0:
-    				this.pageNumber = 1;
-    				break;
-    			default:
-    				if (this.pageNumber < Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages) {
-        				this.pageNumber++;
-    				} else {
-        				this.pageNumber = 0;
-    				}
-    				break;
+			this.pageNumber = 0;
+        }
+    	if (button.id == 1)
+        {
+    		if (this.pageNumber > 0) {
+    			this.pageNumber--;
+    		} else {
+    			this.pageNumber = Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages;
+    		}
+        }
+    	if (button.id == 2)
+        {
+    		if (this.pageNumber < Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages) {
+    			this.pageNumber++;
+    		} else {
+    			this.pageNumber = 0;
     		}
         }
     }

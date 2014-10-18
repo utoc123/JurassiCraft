@@ -1,18 +1,18 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
-import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
-
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -31,7 +31,6 @@ public class EntityGallimimus extends EntityJurassiCraftLandProtective implement
         this.tasks.addTask(6, new EntityAIWander(this, 0.6D * this.getCreatureSpeed()));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-
         this.setCreatureExperiencePoints(1000);
     }
     

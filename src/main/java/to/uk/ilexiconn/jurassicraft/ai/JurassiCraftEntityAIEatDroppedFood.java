@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
 
 public class JurassiCraftEntityAIEatDroppedFood extends EntityAIBase {
@@ -36,7 +35,6 @@ public class JurassiCraftEntityAIEatDroppedFood extends EntityAIBase {
 			for (int i = nearEntityList.size() - 1; i > -1; i--) {
 				if (nearEntityList.get(i) instanceof EntityItem && Util.isFavoriteFood(this.hungryCreature.getCreatureID(), ((EntityItem) nearEntityList.get(i)).getEntityItem().getItem())) {
 					this.droppedFood = (EntityItem) nearEntityList.get(i);
-					this.hungryCreature.getNavigator().tryMoveToXYZ(droppedFood.posX, droppedFood.posY, droppedFood.posZ, this.hungryCreature.getCreatureSpeed());
 					return this.droppedFood != (EntityItem) null;
 				}
 			}
@@ -46,16 +44,19 @@ public class JurassiCraftEntityAIEatDroppedFood extends EntityAIBase {
 
 	@Override
 	public void startExecuting() {
-		this.hungryCreature.setSitting(false);
+		if (this.hungryCreature.isTamed()) {
+			this.hungryCreature.setSitting(false);
+		}
+		this.hungryCreature.getNavigator().tryMoveToXYZ(droppedFood.posX, droppedFood.posY, droppedFood.posZ, this.hungryCreature.getCreatureSpeed());
 		super.startExecuting();
 	}
 
 	@Override
 	public void updateTask() {
 		if (this.hungryCreature.getNavigator() == null) {
-			this.hungryCreature.getNavigator().tryMoveToXYZ(droppedFood.posX, droppedFood.posY, droppedFood.posZ, this.hungryCreature.getCreatureSpeed());
+			this.hungryCreature.getNavigator().tryMoveToXYZ(this.droppedFood.posX, this.droppedFood.posY, this.droppedFood.posZ, this.hungryCreature.getCreatureSpeed());
 		}
-		double distance = Math.sqrt(Math.pow((double) (this.hungryCreature.posX - droppedFood.posX), 2.0D) + Math.pow((double) (this.hungryCreature.posY - droppedFood.posY), 2.0D) + Math.pow((double) (this.hungryCreature.posZ - droppedFood.posZ), 2.0D));
+		double distance = Math.sqrt(Math.pow((double) (this.hungryCreature.posX - this.droppedFood.posX), 2.0D) + Math.pow((double) (this.hungryCreature.posY - this.droppedFood.posY), 2.0D) + Math.pow((double) (this.hungryCreature.posZ - this.droppedFood.posZ), 2.0D));
 		if (distance < 1.0D) {
 			this.droppedFood.setDead();
 		} else {
@@ -65,7 +66,7 @@ public class JurassiCraftEntityAIEatDroppedFood extends EntityAIBase {
 
 	@Override
 	public boolean continueExecuting() {
-		return (timeTryingToEat < 100 && !this.droppedFood.isDead && !this.hungryCreature.isDead);
+		return (this.timeTryingToEat < 100 && !this.droppedFood.isDead && !this.hungryCreature.isDead);
 	}
 
 	@Override
