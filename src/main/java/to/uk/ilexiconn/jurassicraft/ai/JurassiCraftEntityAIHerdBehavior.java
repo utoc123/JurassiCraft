@@ -27,17 +27,17 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 		this.maxDistanceToHerd = distanceToConsiderHerd;
 		this.movementSpeed = speed;
 		this.timeTryingToMove = 0;
-        this.setMutexBits(3);
+		this.setMutexBits(3);
 	}
 
 	@Override
 	public boolean isInterruptible() {
-		return true;
+		return this.timeTryingToMove > this.maxTimeTryingToMove / 2.0D;
 	}
 
 	@Override
 	public boolean shouldExecute() {
-		if (this.lostCreature.getAttackTarget() != null || this.lostCreature.getRNG().nextInt(350) < 349) {
+		if (this.lostCreature.getAttackTarget() != null || this.lostCreature.getRNG().nextInt(100) < 99) {
 			return false;
 		}
 		ArrayList<EntityJurassiCraftTameable> nearCreaturesList = new ArrayList<EntityJurassiCraftTameable>();
@@ -48,23 +48,34 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 					nearCreaturesList.add((EntityJurassiCraftTameable) nearEntityList.get(i));
 				}
 			}
-			if (nearCreaturesList.size() > 1) {
+			if (nearCreaturesList.size() < 4) {
 				double minDistance = this.searchDistance + 1;
 				for (int j = 0; j < nearCreaturesList.size(); j++) {
 					double distance = nearCreaturesList.get(j).getDistanceToEntity(this.lostCreature);
 					if (distance < minDistance) {
-						if (distance < this.maxDistanceToHerd && this.lostCreature.getRNG().nextInt(50) < 100) {
-							this.herdCreature = nearCreaturesList.get(j);
-							this.distanceToHerd = this.lostCreature.getDistanceToEntity(herdCreature);
-							return this.lostCreature.isEntityAlive() && this.herdCreature.isEntityAlive() && !this.lostCreature.isSitting() && this.distanceToHerd > this.maxDistanceToHerd;
-						} else {
-							minDistance = distance;
-							this.herdCreature = nearCreaturesList.get(j);
-						}
+						minDistance = distance;
+						this.herdCreature = nearCreaturesList.get(j);
 					}
 				}
 			} else {
-				this.herdCreature = nearCreaturesList.get(0);
+				ArrayList<Integer> nearCreatureAndNumberOfOtherNearCreatures = new ArrayList<Integer>();
+				int numberOfNeighbor;
+				for (int j = 0; j < nearCreaturesList.size(); j++) {
+					numberOfNeighbor = 0;
+					for (int k = 0; k < nearCreaturesList.size(); k++) {
+						if (nearCreaturesList.get(j).getDistanceToEntity(nearCreaturesList.get(k)) < this.maxDistanceToHerd) {
+							numberOfNeighbor++;
+						}
+					}
+					nearCreatureAndNumberOfOtherNearCreatures.add(numberOfNeighbor);
+				}
+				numberOfNeighbor = 0;
+				for (int i = 0; i < nearCreatureAndNumberOfOtherNearCreatures.size(); i++) {
+					if (nearCreatureAndNumberOfOtherNearCreatures.get(i) > numberOfNeighbor) {
+						numberOfNeighbor = nearCreatureAndNumberOfOtherNearCreatures.get(i);
+						this.herdCreature = nearCreaturesList.get(i);
+					}
+				}
 			}
 			this.distanceToHerd = this.lostCreature.getDistanceToEntity(herdCreature);
 			return this.lostCreature.isEntityAlive() && this.herdCreature.isEntityAlive() && !this.lostCreature.isSitting() && this.distanceToHerd > this.maxDistanceToHerd;
@@ -74,7 +85,6 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 
 	@Override
 	public void startExecuting() {
-		System.out.println("Herd Behavior Started!");
 		this.lostCreatureOldFollowRange = this.lostCreature.getEntityAttribute(SharedMonsterAttributes.followRange).getAttributeValue();
 		this.lostCreature.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(this.searchDistance);
 		this.lostCreature.getNavigator().tryMoveToEntityLiving(this.herdCreature, this.movementSpeed);
@@ -92,7 +102,7 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 
 	@Override
 	public boolean continueExecuting() {
-		return (!this.lostCreature.getNavigator().noPath() && this.timeTryingToMove < this.maxTimeTryingToMove / 2.0D && this.distanceToHerd > this.maxDistanceToHerd && this.lostCreature.isEntityAlive() && this.herdCreature.isEntityAlive());
+		return (!this.lostCreature.getNavigator().noPath() && this.timeTryingToMove < this.maxTimeTryingToMove && this.distanceToHerd > this.maxDistanceToHerd / 2.0D && this.lostCreature.isEntityAlive() && this.herdCreature.isEntityAlive());
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -28,7 +29,7 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
         this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-
+        this.tasks.addTask(7, new JurassiCraftEntityAIHerdBehavior(this, 96, 2000, 20, 0.7D * this.getCreatureSpeed()));
         this.setCreatureExperiencePoints(3500);
     }
 

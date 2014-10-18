@@ -94,7 +94,6 @@ public class GuiDinoPad extends GuiScreen {
     @Override
     public void actionPerformed(GuiButton button)
     {
-    	System.out.println("this.pageNumber " + this.pageNumber + " max: " + Util.getDinoByID(this.creature.getCreatureID()).numberOfInfoPages);
     	if (button.id == 0)
         {
 			this.pageNumber = 0;
