@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIGallimimusFlocking;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;

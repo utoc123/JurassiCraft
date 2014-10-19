@@ -13,12 +13,12 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 	private EntityJurassiCraftTameable lostCreature;
 	private EntityJurassiCraftTameable herdCreature;
 	private double lostCreatureOldFollowRange;
-	private double maxTimeTryingToMove;
 	private double searchDistance;
 	private double distanceToHerd;
 	private double maxDistanceToHerd;
 	private double movementSpeed;
 	private int timeTryingToMove;
+	private int maxTimeTryingToMove;
 
 	public JurassiCraftEntityAIHerdBehavior(EntityJurassiCraftTameable creature, double distance, int maxNumberOfTicksTrying, double distanceToConsiderHerd, double speed) {
 		this.lostCreature = creature;
@@ -37,7 +37,7 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 
 	@Override
 	public boolean shouldExecute() {
-		if (this.lostCreature.getAttackTarget() != null || this.lostCreature.getRNG().nextInt(100) < 99) {
+		if (this.lostCreature.getAttackTarget() != null || this.lostCreature.getRNG().nextInt(100) < 99 || !this.lostCreature.isEntityAlive()) {
 			return false;
 		}
 		ArrayList<EntityJurassiCraftTameable> nearCreaturesList = new ArrayList<EntityJurassiCraftTameable>();
@@ -77,8 +77,10 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 					}
 				}
 			}
-			this.distanceToHerd = this.lostCreature.getDistanceToEntity(herdCreature);
-			return this.lostCreature.isEntityAlive() && this.herdCreature.isEntityAlive() && !this.lostCreature.isSitting() && this.distanceToHerd > this.maxDistanceToHerd;
+			if (this.herdCreature.isEntityAlive() && this.lostCreature.isEntityAlive()) {
+				this.distanceToHerd = this.lostCreature.getDistanceToEntity(herdCreature);
+				return !this.lostCreature.isSitting() && this.distanceToHerd > this.maxDistanceToHerd;
+			}
 		}
 		return false;
 	}
