@@ -14,7 +14,7 @@
         "maxLength":6.0,
         "minHeight":0.5,
         "maxHeight":2.5,
-        "scaleAdjustment":2.4,
+        "scaleAdjustment":2.1,
         "minProximate":800,
         "minMinerals":2000,
         "minVitamins":1000,

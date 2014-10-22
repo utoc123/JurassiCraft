@@ -36,7 +36,7 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective implement
     @Override
     public double getMountedYOffset()
     {
-        return (double) this.getYBouningBox() * 0.89D;
+        return (double) this.getYBouningBox() * 1.05D;
     }
 
     @Override

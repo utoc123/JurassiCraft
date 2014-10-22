@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
@@ -86,7 +87,12 @@ public class Util
         return dinos;
     }
 
-    public static ItemMeat getMeat(int id)
+    public static ArrayList<ItemMeat> getDinoMeats()
+    {
+        return meat;
+    }
+
+    public static Item getMeat(int id)
     {
         return meat.get(id);
     }
