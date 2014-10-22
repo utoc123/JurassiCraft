@@ -4,6 +4,9 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
+import to.uk.ilexiconn.jurassicraft.gen.WorldGenAmberOre;
+import to.uk.ilexiconn.jurassicraft.gen.WorldGenFossilOre;
+import to.uk.ilexiconn.jurassicraft.gen.WorldGenGypsum;
 import to.uk.ilexiconn.jurassicraft.packet.MessageFenceBuilding;
 import to.uk.ilexiconn.jurassicraft.packet.MessageFenceCrafting;
 import to.uk.ilexiconn.jurassicraft.packet.MessageFenceFixing;
@@ -15,6 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -43,6 +47,13 @@ public class JurassiCraft extends Util
         network.registerMessage(MessageFenceCrafting.Handler.class, MessageFenceCrafting.class, 0, Side.SERVER);
         network.registerMessage(MessageFenceBuilding.Handler.class, MessageFenceBuilding.class, 1, Side.SERVER);
         network.registerMessage(MessageFenceFixing.Handler.class, MessageFenceFixing.class, 2, Side.SERVER);
+        
+        /*
+        I think someone forgot this.
+		GameRegistry.registerWorldGenerator(new WorldGenAmberOre(), 1);
+		GameRegistry.registerWorldGenerator(new WorldGenFossilOre(), 1);
+		GameRegistry.registerWorldGenerator(new WorldGenGypsum(), 1);
+		*/
     }
 
     @SideOnly(Side.CLIENT)

@@ -5,12 +5,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
+import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 
 import java.util.Random;
@@ -35,7 +38,16 @@ public class BlockFossilSandstoneOre extends Block
 
     public Item getItemDropped(int value, Random random, int thing)
     {
-        return Util.getItem(2);
+    	float rand = random.nextFloat();
+    	if (rand < 0.25F) {
+            return Item.getItemFromBlock(Blocks.sandstone);
+    	} else if (rand < 0.5F) {
+            return Item.getItemFromBlock(Blocks.sand);
+    	} else if (rand < 0.75F) {
+            return Items.bone;
+    	} else {
+            return ModItems.fossil;
+    	}
     }
 
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int h)

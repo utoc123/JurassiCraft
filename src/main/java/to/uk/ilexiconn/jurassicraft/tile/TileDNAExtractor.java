@@ -11,6 +11,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.item.IDNASource;
@@ -113,7 +116,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                 }
                 else
                 {
-                    if (this.worldObj.rand.nextInt(99) > 74)
+                    if (this.worldObj.rand.nextInt(99) > 75)
                     {
                         NBTTagCompound compound = new NBTTagCompound();
                         newItem = new ItemStack(getRandomDNA(new Random()));
@@ -121,15 +124,15 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                         {
                             compound = new NBTTagCompound();
                             float probability = this.worldObj.rand.nextFloat();
-                            if (probability < 0.25)
+                            if (probability < 0.35F)
                             {
                                 compound.setInteger("Quality", 25);
                             }
-                            else if (probability < 0.50)
+                            else if (probability < 0.65F)
                             {
                                 compound.setInteger("Quality", 50);
                             }
-                            else if (probability < 0.75)
+                            else if (probability < 0.90F)
                             {
                                 compound.setInteger("Quality", 75);
                             }
@@ -153,15 +156,15 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             {
                                 compound = new NBTTagCompound();
                                 float probability = this.worldObj.rand.nextFloat();
-                                if (probability < 0.25)
+                                if (probability < 0.35)
                                 {
                                     compound.setInteger("Quality", 25);
                                 }
-                                else if (probability < 0.50)
+                                else if (probability < 0.65)
                                 {
                                     compound.setInteger("Quality", 50);
                                 }
-                                else if (probability < 0.75)
+                                else if (probability < 0.90)
                                 {
                                     compound.setInteger("Quality", 75);
                                 }
@@ -205,6 +208,7 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             this.slots[i] = (ItemStack) null;
                         }
                         this.slots[j].stackSize++;
+                        this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
                         return;
                     }
                 }
@@ -218,11 +222,13 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
                             this.slots[i] = (ItemStack) null;
                         }
                         this.slots[j] = newItem;
+                        this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
                         return;
                     }
                 }
             }
         }
+        this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
     }
 
     private Item getRandomDNA(Random rand)
@@ -417,5 +423,20 @@ public class TileDNAExtractor extends TileEntity implements ISidedInventory
             }
         }
         nbt.setTag("Items", list);
+    }
+
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound compound = new NBTTagCompound();
+        this.writeToNBT(compound);
+        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, compound);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
+    {
+        NBTTagCompound compound = packet.func_148857_g();
+        this.readFromNBT(compound);
     }
 }
