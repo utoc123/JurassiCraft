@@ -77,7 +77,7 @@ public class JurassiCraftEntityAIHerdBehavior extends EntityAIBase {
 					}
 				}
 			}
-			if (this.herdCreature.isEntityAlive() && this.lostCreature.isEntityAlive()) {
+			if (this.herdCreature != null && this.herdCreature.isEntityAlive() && this.lostCreature.isEntityAlive()) {
 				this.distanceToHerd = this.lostCreature.getDistanceToEntity(herdCreature);
 				return !this.lostCreature.isSitting() && this.distanceToHerd > this.maxDistanceToHerd;
 			}

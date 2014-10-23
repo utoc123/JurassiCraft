@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiDinoPad extends GuiScreen {
 
-	public static EntityJurassiCraftCreature creatureToAnalyze;
+	public static Object creatureToAnalyze;
 	private EntityJurassiCraftTameable creature;
 	private int xSize;
 	private int ySize;

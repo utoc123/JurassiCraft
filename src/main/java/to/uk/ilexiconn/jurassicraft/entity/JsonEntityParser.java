@@ -18,11 +18,19 @@ public class JsonEntityParser extends Util
     public void parseServerEntities()
     {
         loadConfig(DinoConfig.loadDinoConfig());
-        for (Dinosaur dino : dinos)
+        for (Dinosaur creature : dinos)
         {
-            addMeat(dino.creatureName);
-            addDNA(dino.creatureName);
-            addEntity(dino);
+            switch (creature.creatureType) {
+            	case 0:
+                    addMeat(creature.creatureName);
+                    addDNA(creature.creatureName);
+                    addDinoEntity(creature);
+            		break;
+            	case 1:
+            		addDNA(creature.creatureName);
+                    addMammalEntity(creature);
+            		break;
+            }
         }
     }
 
@@ -30,7 +38,17 @@ public class JsonEntityParser extends Util
     public void parseClientEntities()
     {
         loadConfig(DinoConfig.loadDinoConfig());
-        for (Dinosaur dino : dinos) addEntityRenderer(dino);
+        for (Dinosaur creature : dinos)
+        {
+            switch (creature.creatureType) {
+            	case 0:
+            		addDinoEntityRenderer(creature);
+            		break;
+            	case 1:
+            		addMammalEntityRenderer(creature);
+            		break;
+            }
+        }
     }
 
     private void loadConfig(File config)

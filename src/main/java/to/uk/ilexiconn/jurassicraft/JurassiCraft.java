@@ -2,8 +2,11 @@ package to.uk.ilexiconn.jurassicraft;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
+import to.uk.ilexiconn.jurassicraft.entity.mammal.JurassiCraftInteractEvent;
+import to.uk.ilexiconn.jurassicraft.entity.mammal.JurassiCraftLivingEvent;
 import to.uk.ilexiconn.jurassicraft.gen.WorldGenAmberOre;
 import to.uk.ilexiconn.jurassicraft.gen.WorldGenFossilOre;
 import to.uk.ilexiconn.jurassicraft.gen.WorldGenGypsum;
@@ -48,12 +51,9 @@ public class JurassiCraft extends Util
         network.registerMessage(MessageFenceBuilding.Handler.class, MessageFenceBuilding.class, 1, Side.SERVER);
         network.registerMessage(MessageFenceFixing.Handler.class, MessageFenceFixing.class, 2, Side.SERVER);
         
-        /*
-        I think someone forgot this.
 		GameRegistry.registerWorldGenerator(new WorldGenAmberOre(), 1);
 		GameRegistry.registerWorldGenerator(new WorldGenFossilOre(), 1);
 		GameRegistry.registerWorldGenerator(new WorldGenGypsum(), 1);
-		*/
     }
 
     @SideOnly(Side.CLIENT)
@@ -69,6 +69,11 @@ public class JurassiCraft extends Util
     public void load(FMLInitializationEvent event)
     {
         EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, BiomeGenBase.deepOcean, BiomeGenBase.ocean);
+        
+        /** Not working yet!
+        MinecraftForge.EVENT_BUS.register(new JurassiCraftLivingEvent());
+        MinecraftForge.EVENT_BUS.register(new JurassiCraftInteractEvent());
+        */
     }
 
     @ConfigSync

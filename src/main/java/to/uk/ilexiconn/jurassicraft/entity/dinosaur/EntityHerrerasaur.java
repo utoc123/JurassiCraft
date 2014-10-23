@@ -1,10 +1,11 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
 
-import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
-
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModItems;

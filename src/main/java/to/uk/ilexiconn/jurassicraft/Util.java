@@ -1,24 +1,24 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.item.Item;
+import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
+import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
+import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
+import to.uk.ilexiconn.jurassicraft.item.ItemMammalSyringe;
+import to.uk.ilexiconn.jurassicraft.item.ItemMeat;
+import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
-import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
-import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
-import to.uk.ilexiconn.jurassicraft.item.ItemMeat;
-import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * @deprecated Start using LLib's Content Handler System instead
@@ -35,6 +35,7 @@ public class Util
     private static Item[] items = new Item[512];
     private static ArrayList<ItemDNA> dnas = new ArrayList<ItemDNA>();
     private static ArrayList<ItemDinoEgg> eggs = new ArrayList<ItemDinoEgg>();
+    private static ArrayList<ItemMammalSyringe> syringes = new ArrayList<ItemMammalSyringe>();
     private static Map<Dinosaur, Class<?>> dinos = new HashMap<Dinosaur, Class<?>>();
     private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
@@ -121,7 +122,7 @@ public class Util
         addItem(-1, item);
     }
 
-    public void addEntity(Dinosaur dino)
+    public void addDinoEntity(Dinosaur dino)
     {
         try
         {
@@ -147,13 +148,54 @@ public class Util
         addItem(-1, egg);
     }
 
+    public void addMammalEntity(Dinosaur mammal)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammal.Entity" + mammal.creatureName);
+            dinos.put(mammal, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, mammal.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, mammal.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+            addSyringe(mammal.creatureName);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void addSyringe(final String mammalName)
+    {
+    	ItemMammalSyringe syringe = new ItemMammalSyringe(mammalName);
+
+    	syringes.add(syringe);
+
+        addItem(-1, syringe);
+    }
+
     @SideOnly(Side.CLIENT)
-    public void addEntityRenderer(Dinosaur dino)
+    public void addDinoEntityRenderer(Dinosaur dino)
     {
         try
         {
             RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
             Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaur.Entity" + dino.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addMammalEntityRenderer(Dinosaur mammal)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + mammal.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(mammal);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammal.Entity" + mammal.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)

@@ -35,7 +35,8 @@ public class ItemDinoEgg extends Item
                 return egg.getTagCompound().getString("EggDNA");
             }
         }
-        return "DNA sequence was not determined yet!";
+        System.out.println("ERROR! DNA sequence was not determined yet!");
+        return JurassiCraftDNAHandler.createDefaultDNA();
     }
 
     public int getEggQuality(ItemStack egg)
@@ -47,7 +48,7 @@ public class ItemDinoEgg extends Item
                 return egg.getTagCompound().getInteger("EggQuality");
             }
         }
-        System.out.println("Egg quality was not determined yet!");
+        System.out.println("ERROR! Egg quality was not determined yet!");
         return 75;
     }
 
@@ -122,23 +123,24 @@ public class ItemDinoEgg extends Item
     }
 
     @Override
-    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ)
+    public boolean onItemUse(ItemStack egg, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ)
     {
         if (!world.isRemote && !player.capabilities.isCreativeMode)
         {
-            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), this.getEggDNASequence(stack), 2048, x, y + 1, z));
+            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(egg), this.getEggDNASequence(egg), 2048, x, y + 1, z));
         }
         else if (!world.isRemote && !player.isSneaking())
         {
-            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(stack), this.getEggDNASequence(stack), 2048, x, y + 1, z));
+            world.spawnEntityInWorld(new EntityDinoEgg(world, dinoName, this.getEggQuality(egg), this.getEggDNASequence(egg), 2048, x, y + 1, z));
         }
         else
         {
-            this.onItemRightClick(stack, world, player);
+            this.onItemRightClick(egg, world, player);
         }
-        
-        stack.stackSize--;
-        
+        egg.stackSize--;
+        if (egg.stackSize <= 0) {
+        	egg = (ItemStack) null;
+        }
         return true;
     }
 }
