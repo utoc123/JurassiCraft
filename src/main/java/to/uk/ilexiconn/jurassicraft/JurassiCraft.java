@@ -70,10 +70,9 @@ public class JurassiCraft extends Util
     {
         EntityRegistry.addSpawn(EntityCoelacanth.class, 2, 3, 5, EnumCreatureType.waterCreature, BiomeGenBase.deepOcean, BiomeGenBase.ocean);
         
-        /** Not working yet!
+        /** Not working yet! */
         MinecraftForge.EVENT_BUS.register(new JurassiCraftLivingEvent());
         MinecraftForge.EVENT_BUS.register(new JurassiCraftInteractEvent());
-        */
     }
 
     @ConfigSync

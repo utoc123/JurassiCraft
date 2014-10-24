@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
-import to.uk.ilexiconn.jurassicraft.client.gui.GuiDinoPad;
+import to.uk.ilexiconn.jurassicraft.client.gui.GuiPregnancyProgress;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +28,7 @@ public class EntityPregnantPig implements IExtendedEntityProperties
 		this.mammalName = "None";
 		this.dnaQuality = 0;
 		this.dnaSequence = "";
-		this.pregnancySpeed = -1;
+		this.pregnancySpeed = 0;
 	}
 
 	@Override
@@ -50,8 +50,8 @@ public class EntityPregnantPig implements IExtendedEntityProperties
     @SideOnly(Side.CLIENT)
     public void showStatus()
     {
-    	GuiDinoPad.creatureToAnalyze = (Object) this;
-        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 69, this.pig.worldObj, 0, 0, 0);
+    	GuiPregnancyProgress.creatureToAnalyze = (Object) this.pig;
+        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, this.pig.worldObj, 0, 0, 0);
     }
     
 	public String getDnaSequence() 
@@ -108,6 +108,15 @@ public class EntityPregnantPig implements IExtendedEntityProperties
 	{
 		this.dnaQuality = quality;
 	}
+	
+	public int getPregnancyProgressScaled(int barSize)
+    {
+        if (this.getPregnancySpeed() <= 0)
+        {
+        	this.setPregnancySpeed(2048);
+        }
+        return (this.getPregnancyProgress() * barSize) / this.getPregnancySpeed();
+    }
 
 	@Override
 	public void saveNBTData(NBTTagCompound compound) 

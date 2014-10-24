@@ -23,6 +23,7 @@ entity.Stegosaur.name=Stegosaurus
 entity.Dilophosaurus.name=Dilophosaurus
 entity.Cearadactylus.name=Cearadactylus
 entity.Sarcosuchus.name=Sarcosuchus
+entity.Mammoth.name=Mammoth
 
 //Items
 item.dinoBone.name=Dinosaur Bone
@@ -82,6 +83,7 @@ item.egg_Leaellynasaur.name=Egg of a Leaellynasaura
 item.egg_Gallimimus.name=Egg of a Gallimimus
 item.egg_Cearadactylus.name=Egg of a Cearadactylus
 item.egg_Sarcosuchus.name=Egg of a Sarcosuchus
+item.syringe_Mammoth.name=Syringe of Mammoth
 item.growthSerum.name=Growth Serum
 item.gypsumPowder.name=Gypsum Powder
 item.dinopad.name=Dinopad
@@ -108,6 +110,9 @@ entity.Interaction.isSitting=is sitting
 entity.Interaction.isNotSitting=is not sitting anymore
 
 //Containers
+container.cultivator.stopCultivating=Stop cultivating
+container.cultivator.cultivating=Cultivating
+container.cultivator.progress=Progress
 container.dnaExtractor=DNA Extractor
 container.dnaCombinator=DNA Combinator
 container.securityFenceInexistent=Nothing built yet
@@ -142,6 +147,11 @@ container.pad.maxHealth=Maximum Health
 container.pad.maxLength=Maximum Length
 container.pad.maxHeight=Maximum Height
 
+container.pad.pragnancy.cow=Pragnant Cow
+container.pad.pragnancy.pig=Pragnant Pig
+container.pad.pragnancy.horse=Pragnant Horse
+container.pad.pragnancy.sheep=Pragnant Sheep
+
 //Dinosaur info
 container.pad.infoAnkylosaur.page1=Ankylosaurus ("fused lizard") is a genus of ankylosaurid dinosaur. Fossils of Ankylosaurus are found in geologic formations dating to the very end of the Cretaceous period, between 66.5 and 66.0 million years ago, in western North America.
 container.pad.infoAnkylosaur.page2=Ankylosaurus was a large animal by modern standards, estimated at lengths of 9 m (30 ft) and weighing up to 6 tonnes (13,000 lb). The whole animal is estimated at 6.25 m (20.5 feet) long, 1.5 m (4.9 feet) wide and 1.7 m (5.6 feet) tall at the hip.
@@ -164,3 +174,4 @@ container.pad.infoTylosaurus.page1=Tylosaurus
 container.pad.infoOviraptor.page1=Oviraptor
 container.pad.infoCearadactylus.page1=Cearadactylus
 container.pad.infoSarcosuchus.page1=Sarcosuchus
+container.pad.infoMammoth.page1=Mammoth

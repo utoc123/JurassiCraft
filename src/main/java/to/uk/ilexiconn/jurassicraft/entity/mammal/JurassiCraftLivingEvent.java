@@ -14,13 +14,14 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class JurassiCraftLivingEvent
 {
 
+	@SubscribeEvent
 	public void onEntityConstructing(EntityConstructing event) 
 	{
-    	System.out.println("Hello? onEntityConstructing");
 		if (event.entity instanceof EntityCow && EntityPregnantCow.get((EntityCow) event.entity) == null) 
 		{
 			EntityPregnantCow.register((EntityCow) event.entity);
@@ -36,14 +37,15 @@ public class JurassiCraftLivingEvent
 		}
 	}
 
+	@SubscribeEvent
 	public void onEntityLiving(LivingUpdateEvent event) 
 	{
-    	System.out.println("Hello? onEntityLiving");
 		if (event.entityLiving instanceof EntityCow) 
 		{
 			EntityPregnantCow cow = EntityPregnantCow.get((EntityCow) event.entityLiving);
-			if (cow.getMammalName() != "None" || cow.getMammalName() != "" || cow.getMammalName() != null) {
-				if (cow.getPregnancyProgress() < cow.getPregnancySpeed())
+			if (cow != null && !cow.getMammalName().equals("None") && !cow.getMammalName().equals("")) 
+			{
+		    	if (cow.getPregnancyProgress() < cow.getPregnancySpeed())
 				{
 					cow.increasePregnancyProgress();
 					event.entityLiving.onLivingUpdate();
@@ -55,14 +57,15 @@ public class JurassiCraftLivingEvent
 					cow.setDnaQuality(0);
 					cow.setDnaSequence("");
 					cow.setPregnancyProgress(0);
-					cow.setPregnancySpeed(-1);
+					cow.setPregnancySpeed(0);
 				}
 			}
 		} 
 		else if (event.entityLiving instanceof EntityPig) 
 		{
 			EntityPregnantPig pig = EntityPregnantPig.get((EntityPig) event.entityLiving);
-			if (pig.getMammalName() != "None" || pig.getMammalName() != "" || pig.getMammalName() != null) {
+			if (pig != null && !pig.getMammalName().equals("None") && !pig.getMammalName().equals("")) 
+			{
 				if (pig.getPregnancyProgress() < pig.getPregnancySpeed())
 				{
 					pig.increasePregnancyProgress();
@@ -75,14 +78,15 @@ public class JurassiCraftLivingEvent
 					pig.setDnaQuality(0);
 					pig.setDnaSequence("");
 					pig.setPregnancyProgress(0);
-					pig.setPregnancySpeed(-1);
+					pig.setPregnancySpeed(0);
 				}
 			}
 		} 
 		else if (event.entityLiving instanceof EntityHorse) 
 		{
 			EntityPregnantHorse horse = EntityPregnantHorse.get((EntityHorse) event.entityLiving);
-			if (horse.getMammalName() != "None" || horse.getMammalName() != "" || horse.getMammalName() != null) {
+			if (horse != null && !horse.getMammalName().equals("None") && !horse.getMammalName().equals("")) 
+			{
 				if (horse.getPregnancyProgress() < horse.getPregnancySpeed())
 				{
 					horse.increasePregnancyProgress();
@@ -95,14 +99,15 @@ public class JurassiCraftLivingEvent
 					horse.setDnaQuality(0);
 					horse.setDnaSequence("");
 					horse.setPregnancyProgress(0);
-					horse.setPregnancySpeed(-1);
+					horse.setPregnancySpeed(0);
 				}
 			}
 		} 
 		else if (event.entityLiving instanceof EntitySheep) 
 		{
 			EntityPregnantSheep sheep = EntityPregnantSheep.get((EntitySheep) event.entityLiving);
-			if (sheep.getMammalName() != "None" || sheep.getMammalName() != "" || sheep.getMammalName() != null) {
+			if (sheep != null && !sheep.getMammalName().equals("None") && !sheep.getMammalName().equals("")) 
+			{
 				if (sheep.getPregnancyProgress() < sheep.getPregnancySpeed())
 				{
 					sheep.increasePregnancyProgress();
@@ -115,7 +120,7 @@ public class JurassiCraftLivingEvent
 					sheep.setDnaQuality(0);
 					sheep.setDnaSequence("");
 					sheep.setPregnancyProgress(0);
-					sheep.setPregnancySpeed(-1);
+					sheep.setPregnancySpeed(0);
 				}
 			}
 		}

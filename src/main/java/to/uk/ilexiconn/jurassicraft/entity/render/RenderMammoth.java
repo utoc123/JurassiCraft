@@ -23,11 +23,11 @@ public class RenderMammoth extends RenderDinosaur
         EntityMammoth dino = (EntityMammoth) entity;
         if (dino.isMale())
         {
-            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Brachiosaurus_Male_1.png");
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Mammoth_Male_1.png");
         } 
         else 
         {
-            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Brachiosaurus_Female_1.png");
+            return new ResourceLocation(JurassiCraft.getModId() + "textures/entity/Mammoth_Female_1.png");
         }
     }
 }

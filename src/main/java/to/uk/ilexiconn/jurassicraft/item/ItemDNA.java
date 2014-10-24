@@ -23,12 +23,17 @@ public class ItemDNA extends Item implements IDNASample
         setCreativeTab(ModCreativeTabs.ITEMS.getTab());
     }
 
-    public Item getCorrespondingEgg()
+    public Item getCorrespondingEggOrSyringe()
     {
         int id = Util.getDNAArray().lastIndexOf(this);
-        if (Util.getEggArray().size() > id)
-            if (Util.getEggArray().get(id) != null)
-                return Util.getEggArray().get(id);
+        switch (Util.getDinoByID(id).creatureType) {
+        	case 0:
+                if (Util.getEggArray().get(id) != null)
+                	return Util.getEggArray().get(id);
+        	case 1:
+                if (Util.getSyringeArray().get(id - Util.getEggArray().size()) != null)
+                	return Util.getSyringeArray().get(id - Util.getEggArray().size());
+        }
         return null;
     }
 

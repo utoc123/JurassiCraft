@@ -73,6 +73,11 @@ public class Util
         return eggs;
     }
 
+    public static ArrayList<ItemMammalSyringe> getSyringeArray()
+    {
+        return syringes;
+    }
+    
     public static String getModId()
     {
         return "jurassicraft:";

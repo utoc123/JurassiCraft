@@ -85,7 +85,7 @@ public class GuiDinoPad extends GuiScreen {
 	public void updateScreen() 
 	{
 		this.renderRotation++;
-		if (this.creature.isDead) 
+		if (!this.creature.isEntityAlive()) 
 		{
 			this.mc.thePlayer.closeScreen();
 		}
