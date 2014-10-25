@@ -112,7 +112,7 @@
         "yBoxDelta":1.2,
         "ticksToAdulthood":600000,
         "cultivateSpeed":1000,
-        "favoriteFoodList":["item.beefRaw""item.beefCooked""item.chickenRaw""item.chickenCooked""item.fishRaw""item.fishCooked"],
+        "favoriteFoodList":["item.beefRaw"],
         "ridingItemList":[""],
         "isRidable":false,
         "livingSound1":"jurassicraft:RapHiss01",
