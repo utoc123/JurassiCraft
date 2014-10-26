@@ -179,7 +179,7 @@ public class ItemMammalSyringe extends Item
 	private boolean setBaby(EntityLivingBase creature, ItemStack syringe) {
     	if (creature instanceof EntityCow)
         {
-        	if (!this.mammalName.equals("Mammoth")) {
+        	if (!this.mammalName.equals("Mammoth") && !this.mammalName.equals("Arsinoitherium")) {
     			return false;
         	} else {
             	EntityPregnantCow cow = EntityPregnantCow.get(((EntityCow) creature));
