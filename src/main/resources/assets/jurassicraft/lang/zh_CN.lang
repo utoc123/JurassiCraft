@@ -153,9 +153,9 @@ container.pad.pragnancy.horse=妊娠期马
 container.pad.pragnancy.sheep=妊娠期羊
 
 //Dinosaur info
-container.pad.infoAnkylosaur.page1=甲龙 (意为坚固的蜥蜴) 是开角龙属中的一种恐龙. 地质学家们通过甲龙化石推测出它是属于白垩纪晚期的一种恐龙, 生活在六千五百万至六千六百万年前的北美西部地域
-container.pad.infoAnkylosaur.page2=与大部份现代的陆地动物相比, 完全成长的甲龙仍是非常大型的动物. 已知最大型的头颅骨有64.5厘米长, 74.5厘米宽. 另一个针对甲龙的重建提出一个较小的体型估计值, 约6.25米长, 1.5米宽, 1.7米高.甲龙的重量估计超过6,000公斤
-container.pad.infoAnkylosaur.page3=甲龙巨大的尾锤由几块大型皮内成骨组成, 与最末几节尾椎愈合而成. 尾槌是非常重的, 以最末7节尾椎支撑, 彼此愈合形成一支坚硬的棒子
+container.pad.infoAnkylosaur.page1=甲龙 (意为坚固的蜥蜴) 是开角龙属中的一种恐龙. 地质学家们通过甲龙化石推测出它是属于白垩纪晚期的一种恐龙,生活在距今约六千五百万至六千六百万年前的北美西部地域
+container.pad.infoAnkylosaur.page2=与大部份现代的陆地动物相比,完全成长的甲龙仍是非常大型的动物. 已知最大型的头颅骨有64.5厘米长, 74.5厘米宽. 另一个针对甲龙的重建提出一个较小的体型估计值,约6.25米长, 1.5米宽, 1.7米高.甲龙的重量估计超过6,000公斤
+container.pad.infoAnkylosaur.page3=甲龙巨大的尾锤由几块大型皮内成骨组成,与最末几节尾椎愈合而成. 尾槌是非常重的, 以最末7节尾椎支撑, 彼此愈合形成一支坚硬的棒子
 container.pad.infoBrachiosaur.page1=腕龙
 container.pad.infoVelociraptor.page1=伶盗龙
 container.pad.infoStegosaur.page1=剑龙
@@ -165,8 +165,8 @@ container.pad.infoTyrannosaurus.page1=霸王龙
 container.pad.infoGallimimus.page1=似鸡龙
 container.pad.infoHypsilophodon.page1=棱齿龙
 container.pad.infoLeaellynasaur.page1=雷利诺龙
-container.pad.infoHerrerasaur.page1=埃雷拉龙是最早的肉食性恐龙之一. 所有已知的标本都是被发现于阿根廷巴塔哥尼亚西北部的三叠纪中期地层, 属于拉丁尼阶晚期, 约在2亿3140万年前
-container.pad.infoHerrerasaur.page2=艾雷拉龙也是轻巧的肉食性恐龙, 有长尾巴及相当小的头. 它的长度估计有3-6米, 臀部高度超过1.1米, 体重约为210-350公斤
+container.pad.infoHerrerasaur.page1=埃雷拉龙是最早的肉食性恐龙之一. 所有已知的标本都是被发现于阿根廷巴塔哥尼亚西北部的三叠纪中期地层,属于拉丁尼阶晚期,约在2亿3140万年前
+container.pad.infoHerrerasaur.page2=艾雷拉龙也是轻巧的肉食性恐龙,有长尾巴及相当小的头. 它的长度估计有3-6米,臀部高度超过1.1米,体重约为210-350公斤
 container.pad.infoParasaurolophus.page1=副栉龙
 container.pad.infoMeganeura.page1=巨脉蜻蜓
 container.pad.infoDilophosaurus.page1=双冠龙
