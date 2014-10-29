@@ -27,8 +27,11 @@ public class JsonEntityParser extends Util
                     addDinoEntity(creature);
             		break;
             	case 1:
-            		addDNA(creature.creatureName);
-                    addMammalEntity(creature);
+            		/** Temporary */
+            		if (creature.creatureID < 23) {
+                		addDNA(creature.creatureName);
+                        addMammalEntity(creature);
+            		}
             		break;
             }
         }

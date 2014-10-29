@@ -52,7 +52,6 @@ public class EntityJurassiCraftCreature extends EntityCreature implements IAnima
         }
         else
         {
-            System.out.print("Creature does not have a correct ID. ID set to 0.");
             this.creatureID = 0;
         }
         if (this.getGeneticQuality() < 0.6F || this.getGeneticQuality() >= 1.4F)

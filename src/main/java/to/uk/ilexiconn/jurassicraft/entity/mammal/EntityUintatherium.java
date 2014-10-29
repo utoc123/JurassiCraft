@@ -13,11 +13,11 @@ import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IMammal;
 
-public class EntityArsinoitherium extends EntityJurassiCraftLandProtective implements IMammal
+public class EntityUintatherium extends EntityJurassiCraftLandProtective implements IMammal
 {
-    public EntityArsinoitherium(World world)
+    public EntityUintatherium(World world)
     {
-        super(world, (byte) 20, 1);
+        super(world, (byte) 23, 1);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);

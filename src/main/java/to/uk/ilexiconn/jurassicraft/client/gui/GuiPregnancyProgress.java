@@ -1,9 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
@@ -15,14 +11,15 @@ import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantCow;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantHorse;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantPig;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantSheep;
-import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,43 +45,47 @@ public class GuiPregnancyProgress extends GuiScreen
 		{
 			if (this.creatureToAnalyze instanceof EntityCow) {
 				EntityPregnantCow cow = EntityPregnantCow.get(((EntityCow) this.creatureToAnalyze));
-				if (cow != null && !cow.getMammalName().equals("None") || !cow.getMammalName().equals("")) {
+				if (cow != null) 
+				{
 					this.creature = (EntityCow) this.creatureToAnalyze;
 				}
 			} else if (this.creatureToAnalyze instanceof EntityPig) {
 				EntityPregnantPig pig = EntityPregnantPig.get(((EntityPig) this.creatureToAnalyze));
-				if (pig != null && !pig.getMammalName().equals("None") || !pig.getMammalName().equals("")) {
+				if (pig != null) 
+				{
 					this.creature = (EntityPig) this.creatureToAnalyze;
 				}
 			} else if (this.creatureToAnalyze instanceof EntityHorse) {
 				EntityPregnantHorse horse = EntityPregnantHorse.get(((EntityHorse) this.creatureToAnalyze));
-				if (horse != null && !horse.getMammalName().equals("None") || !horse.getMammalName().equals("")) {
+				if (horse != null) 
+				{
 					this.creature = (EntityHorse) this.creatureToAnalyze;
 				}
 			} else if (this.creatureToAnalyze instanceof EntitySheep) {
 				EntityPregnantSheep sheep = EntityPregnantSheep.get(((EntitySheep) this.creatureToAnalyze));
-				if (sheep != null && !sheep.getMammalName().equals("None") || !sheep.getMammalName().equals("")) {
+				if (sheep != null) 
+				{
 					this.creature = (EntitySheep) this.creatureToAnalyze;
 				}
 			} else {
+		    	this.creature = (EntityAnimal) null;
 	            this.mc.thePlayer.closeScreen();
 			}
 		}
     }
-
-	@Override
-	public void updateScreen() 
-	{
-		this.renderRotation++;
-		if (!this.creature.isEntityAlive()) 
-		{
-			this.mc.thePlayer.closeScreen();
-		}
-	}
+    
+    @Override
+    public void initGui()
+    {
+        super.initGui();
+        this.guiLeft = (int) ((this.width - this.xSize) / 2);
+        this.guiTop = (int) ((this.height - this.ySize) / 2);
+    }
 	
     @Override
     public void onGuiClosed()
     {
+    	this.creature = (EntityAnimal) null;
         super.onGuiClosed();
     }
 
@@ -99,40 +100,51 @@ public class GuiPregnancyProgress extends GuiScreen
     {
         if (key == 1 || key == this.mc.gameSettings.keyBindInventory.getKeyCode())
         {
+        	this.creature = (EntityAnimal) null;
             this.mc.thePlayer.closeScreen();
         }
     }
-
-    @Override
-    public void initGui()
-    {
-        super.initGui();
-        this.guiLeft = (int) ((this.width - this.xSize) / 2);
-        this.guiTop = (int) ((this.height - this.ySize) / 2);
-    }
-
+    
+	@Override
+	public void updateScreen() 
+	{
+		if (this.creature != null) 
+		{
+			this.renderRotation++;
+			if (!this.creature.isEntityAlive()) 
+			{
+		    	this.creature = (EntityAnimal) null;
+				this.mc.thePlayer.closeScreen();
+			}
+		} else {
+	    	this.creature = (EntityAnimal) null;
+			this.mc.thePlayer.closeScreen();
+		}
+	}
+	
     @Override
     public void drawScreen(int x, int y, float f)
     {
-		drawDefaultBackground();
-		mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiPragnancyProgress.png"));
+    	this.drawDefaultBackground();
+		this.mc.renderEngine.bindTexture(new ResourceLocation(Util.getModId() + "textures/gui/guiDinoPadPregnancy.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-
-		if (this.creature.isEntityAlive()) 
+		if (this.creature != null && this.creature.isEntityAlive()) 
 		{
 			if (this.creature instanceof EntityCow) 
 			{
 				EntityPregnantCow cow = EntityPregnantCow.get(((EntityCow) this.creature));
 				if (cow.getPregnancyProgress() >= cow.getPregnancySpeed()) 
 				{
-					this.mc.thePlayer.closeScreen();
+					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.cow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.cow")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(cow.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(cow.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, cow.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.cow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.cow")) / 2, this.guiTop + 14, 14737632);
-					this.fontRendererObj.drawString(cow.getMammalName() + ": " + cow.getPregnancyProgressScaled(100) + "%", this.guiLeft + 146, this.guiTop + 70, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantCow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantCow")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(cow.getMammalName() + ": " + cow.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(cow.getMammalName() + ": " + cow.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
 			else if (this.creature instanceof EntityPig) 
@@ -140,14 +152,16 @@ public class GuiPregnancyProgress extends GuiScreen
 				EntityPregnantPig pig = EntityPregnantPig.get(((EntityPig) this.creature));
 				if (pig.getPregnancyProgress() >= pig.getPregnancySpeed()) 
 				{
-					this.mc.thePlayer.closeScreen();
+					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pig")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(pig.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(pig.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, pig.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pig")) / 2, this.guiTop + 14, 14737632);
-					this.fontRendererObj.drawString(pig.getMammalName() + ": " + pig.getPregnancyProgressScaled(100) + "%", this.guiLeft + 146, this.guiTop + 70, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantPig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantPig")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(pig.getMammalName() + ": " + pig.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(pig.getMammalName() + ": " + pig.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
 			else if (this.creature instanceof EntityHorse) 
@@ -155,14 +169,16 @@ public class GuiPregnancyProgress extends GuiScreen
 				EntityPregnantHorse horse = EntityPregnantHorse.get(((EntityHorse) this.creature));
 				if (horse.getPregnancyProgress() >= horse.getPregnancySpeed()) 
 				{
-					this.mc.thePlayer.closeScreen();
+					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.horse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.horse")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(horse.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(horse.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, horse.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.horse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.horse")) / 2, this.guiTop + 14, 14737632);
-					this.fontRendererObj.drawString(horse.getMammalName() + ": " + horse.getPregnancyProgressScaled(100) + "%", this.guiLeft + 146, this.guiTop + 70, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantHorse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantHorse")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(horse.getMammalName() + ": " + horse.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(horse.getMammalName() + ": " + horse.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
 			else if (this.creature instanceof EntitySheep) 
@@ -170,14 +186,16 @@ public class GuiPregnancyProgress extends GuiScreen
 				EntityPregnantSheep sheep = EntityPregnantSheep.get(((EntitySheep) this.creature));
 				if (sheep.getPregnancyProgress() >= sheep.getPregnancySpeed()) 
 				{
-					this.mc.thePlayer.closeScreen();
+					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.sheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.sheep")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(sheep.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(sheep.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, sheep.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.sheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.sheep")) / 2, this.guiTop + 14, 14737632);
-					this.fontRendererObj.drawString(sheep.getMammalName() + ": " + sheep.getPregnancyProgressScaled(100) + "%", this.guiLeft + 146, this.guiTop + 70, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantSheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantSheep")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(sheep.getMammalName() + ": " + sheep.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(sheep.getMammalName() + ": " + sheep.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			}
 			this.renderCreature((float) (this.guiLeft + 67), (float) (this.guiTop + 108), 30.0F);

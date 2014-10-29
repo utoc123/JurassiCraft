@@ -3,6 +3,7 @@ package to.uk.ilexiconn.jurassicraft.entity.mammal;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
@@ -25,7 +26,7 @@ public class EntityPregnantPig implements IExtendedEntityProperties
 	public EntityPregnantPig(EntityPig pig) 
 	{
 		this.pig = pig;
-		this.mammalName = "None";
+		this.mammalName = StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo");
 		this.dnaQuality = 0;
 		this.dnaSequence = "";
 		this.pregnancySpeed = 0;
@@ -46,13 +47,6 @@ public class EntityPregnantPig implements IExtendedEntityProperties
 	{
 		return (EntityPregnantPig) entity.getExtendedProperties(EntityPregnantPig.PREGNANT_PIG_PROPERTY);
 	}
-
-    @SideOnly(Side.CLIENT)
-    public void showStatus()
-    {
-    	GuiPregnancyProgress.creatureToAnalyze = (Object) this.pig;
-        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, this.pig.worldObj, 0, 0, 0);
-    }
     
 	public String getDnaSequence() 
 	{

@@ -7,26 +7,27 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIAvoidEntityIfNotTamed;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
-import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
-import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
-import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFoodCoward;
+import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandCoward;
 import to.uk.ilexiconn.jurassicraft.entity.IMammal;
 
-public class EntityArsinoitherium extends EntityJurassiCraftLandProtective implements IMammal
+public class EntityLeptictidium extends EntityJurassiCraftLandCoward implements IMammal
 {
-    public EntityArsinoitherium(World world)
+    public EntityLeptictidium(World world)
     {
-        super(world, (byte) 20, 1);
+        super(world, (byte) 22);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
+        this.tasks.addTask(3, new JurassiCraftEntityAIAvoidEntityIfNotTamed(this, EntityPlayer.class, 4.0F, 0.9D * this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
+        this.tasks.addTask(4, new JurassiCraftEntityAIFollowFoodCoward(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
+        this.tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new JurassiCraftEntityAIHerdBehavior(this, 96, 2000, 20, 0.7D * this.getCreatureSpeed()));
+        
         this.setCreatureExperiencePoints(1000);
     }
 

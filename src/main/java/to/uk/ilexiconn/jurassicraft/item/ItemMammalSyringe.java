@@ -1,5 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
@@ -25,6 +28,10 @@ import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantSheep;
 public class ItemMammalSyringe extends Item
 {
     public String mammalName;
+    public static final HashSet<String> creaturesFromCow = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium"));
+    public static final HashSet<String> creaturesFromPig = new HashSet<String>(Arrays.asList("Leptictidium"));
+    public static final HashSet<String> creaturesFromHorse = new HashSet<String>(Arrays.asList("NoCreaturesYet"));
+    public static final HashSet<String> creaturesFromSheep = new HashSet<String>(Arrays.asList("NoCreaturesYet"));
 
     public ItemMammalSyringe(String mammal)
     {
@@ -179,11 +186,11 @@ public class ItemMammalSyringe extends Item
 	private boolean setBaby(EntityLivingBase creature, ItemStack syringe) {
     	if (creature instanceof EntityCow)
         {
-        	if (!this.mammalName.equals("Mammoth") && !this.mammalName.equals("Arsinoitherium")) {
+        	if (!this.creaturesFromCow.contains(this.mammalName)) {
     			return false;
         	} else {
             	EntityPregnantCow cow = EntityPregnantCow.get(((EntityCow) creature));
-            	if (cow != null && (cow.getMammalName().equals("None") || cow.getMammalName().equals(""))) {
+            	if (cow != null && cow.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
                 	cow.setMammalName(this.mammalName);
                 	cow.setDnaQuality(this.getEggQuality(syringe));
                 	cow.setDnaSequence(this.getEggDNASequence(syringe));
@@ -194,11 +201,11 @@ public class ItemMammalSyringe extends Item
         }
     	else if (creature instanceof EntityPig)
         {
-        	if (!this.mammalName.equals("NoCreaturesYet")) {
+        	if (!this.creaturesFromPig.contains(this.mammalName)) {
     			return false;
         	} else {
             	EntityPregnantPig pig = EntityPregnantPig.get(((EntityPig) creature));
-                if (pig != null && (pig.getMammalName().equals("None") || pig.getMammalName().equals(""))) {
+                if (pig != null && pig.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
                 	pig.setMammalName(this.mammalName);
                 	pig.setDnaQuality(this.getEggQuality(syringe));
                 	pig.setDnaSequence(this.getEggDNASequence(syringe));
@@ -209,11 +216,11 @@ public class ItemMammalSyringe extends Item
         }
         else if (creature instanceof EntityHorse)
         {
-        	if (!this.mammalName.equals("NoCreaturesYet")) {
+        	if (!this.creaturesFromHorse.contains(this.mammalName)) {
     			return false;
         	} else {
             	EntityPregnantHorse horse = EntityPregnantHorse.get(((EntityHorse) creature));
-                if (horse != null && (horse.getMammalName().equals("None") || horse.getMammalName().equals(""))) {
+                if (horse != null && horse.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
                 	horse.setMammalName(this.mammalName);
                 	horse.setDnaQuality(this.getEggQuality(syringe));
                 	horse.setDnaSequence(this.getEggDNASequence(syringe));
@@ -224,11 +231,11 @@ public class ItemMammalSyringe extends Item
         }
         else if (creature instanceof EntitySheep)
         {
-        	if (!this.mammalName.equals("NoCreaturesYet")) {
+        	if (!this.creaturesFromSheep.contains(this.mammalName)) {
     			return false;
         	} else {
             	EntityPregnantSheep sheep = EntityPregnantSheep.get(((EntitySheep) creature));
-                if (sheep != null && (sheep.getMammalName().equals("None") || sheep.getMammalName().equals(""))) {
+                if (sheep != null && sheep.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
                 	sheep.setMammalName(this.mammalName);
                 	sheep.setDnaQuality(this.getEggQuality(syringe));
                 	sheep.setDnaSequence(this.getEggDNASequence(syringe));

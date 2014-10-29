@@ -7,8 +7,13 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import to.uk.ilexiconn.jurassicraft.JurassiCraft;
+import to.uk.ilexiconn.jurassicraft.client.gui.GuiPregnancyProgress;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class JurassiCraftInteractEvent 
 {
@@ -22,35 +27,30 @@ public class JurassiCraftInteractEvent
 			{
 				EntityPlayer player = (EntityPlayer) event.entity;
 				ItemStack heldItem = player.getHeldItem();
-				if (heldItem != (ItemStack) null && heldItem.getItem() instanceof ItemDinoPad) 
+				if (!event.target.worldObj.isRemote && heldItem != (ItemStack) null && heldItem.getItem() instanceof ItemDinoPad) 
 				{
-					if (event.target instanceof EntityCow) {
-						EntityPregnantCow cow = EntityPregnantCow.get((EntityCow) event.target);
-						if (cow != null && cow.getMammalName() != "None" && cow.getMammalName() != "" && cow.getMammalName() != null) {
-							cow.showStatus();
-						}
-					} else if (event.target instanceof EntityPig) {
-						EntityPregnantPig pig = EntityPregnantPig.get((EntityPig) event.target);
-						if (pig != null && pig.getMammalName() != "None" && pig.getMammalName() != "" && pig.getMammalName() != null) {
-							pig.showStatus();
-						}
-					} else if (event.target instanceof EntityHorse) {
-						EntityPregnantHorse horse = EntityPregnantHorse.get((EntityHorse) event.target);
-						if (horse != null && horse.getMammalName() != "None" && horse.getMammalName() != "" && horse.getMammalName() != null) {
-							horse.showStatus();
-						}
-					} else if (event.target instanceof EntitySheep) {
-						EntityPregnantSheep sheep = EntityPregnantSheep.get((EntitySheep) event.target);
-						if (sheep != null && sheep.getMammalName() != "None" && sheep.getMammalName() != "" && sheep.getMammalName() != null) {
-							sheep.showStatus();
-						}
-					}
+					this.showStatus(event);
 				}
 			}
 		}
 		
 	}
 	
-	
-	
+    @SideOnly(Side.CLIENT)
+    public void showStatus(EntityInteractEvent event)
+    {
+    	if (event.target instanceof EntityCow) {
+	    	GuiPregnancyProgress.creatureToAnalyze = (Object) event.target;
+	        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, event.target.worldObj, 0, 0, 0);
+		} else if (event.target instanceof EntityPig) {
+	    	GuiPregnancyProgress.creatureToAnalyze = (Object) event.target;
+	        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, event.target.worldObj, 0, 0, 0);
+		} else if (event.target instanceof EntityHorse) {
+	    	GuiPregnancyProgress.creatureToAnalyze = (Object) event.target;
+	        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, event.target.worldObj, 0, 0, 0);
+		} else if (event.target instanceof EntitySheep) {
+	    	GuiPregnancyProgress.creatureToAnalyze = (Object) event.target;
+	        FMLClientHandler.instance().getClient().thePlayer.openGui(JurassiCraft.instance, 13, event.target.worldObj, 0, 0, 0);
+		}
+	}
 }

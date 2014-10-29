@@ -17,7 +17,7 @@ public class EntityMammoth extends EntityJurassiCraftLandProtective implements I
 {
     public EntityMammoth(World world)
     {
-        super(world, (byte) 18, 1);
+        super(world, (byte) 19, 1);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);

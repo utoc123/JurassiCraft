@@ -14,7 +14,7 @@ public class RenderArsinoitherium extends RenderDinosaur
 {
     public RenderArsinoitherium(Dinosaur dino)
     {
-        super(new ModelArsinoitherium(), dino, 1.6F);
+        super(new ModelArsinoitherium(), dino, 1.0F);
     }
 
     @Override
