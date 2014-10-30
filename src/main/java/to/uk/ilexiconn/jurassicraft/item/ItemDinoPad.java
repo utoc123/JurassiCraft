@@ -60,9 +60,11 @@ public class ItemDinoPad extends Item
 		{
 			if (!world.isAirBlock(x, y - 1, z) && world.isAirBlock(x, y, z) && player.getHeldItem().getItem() instanceof ItemDinoPad) 
 			{
-				player.getHeldItem().stackSize--;
-				if (player.getHeldItem().stackSize <= 0) {
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
+				if (!player.capabilities.isCreativeMode) {
+					player.getHeldItem().stackSize--;
+					if (player.getHeldItem().stackSize <= 0) {
+						player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
+					}
 				}
 	        	world.setBlock(x, y, z, ModBlocks.dinoPad);
 	        	world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "step.stone", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);

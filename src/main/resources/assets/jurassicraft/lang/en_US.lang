@@ -54,8 +54,8 @@ item.Triceratops_Meat.name=Triceratops Meat
 item.Triceratops_DNA.name=Triceratops DNA
 item.Coelacanth_Meat.name=Raw Coelacanth
 item.Coelacanth_DNA.name=Coelacanth DNA
-item.Tyrannosaurus_DNA.name=Tyrannosaurus rex DNA
 item.Tyrannosaurus_Meat.name=Tyrannosaurus rex Meat
+item.Tyrannosaurus_DNA.name=Tyrannosaurus rex DNA
 item.Gallimimus_Meat.name=Gallimimus Meat
 item.Gallimimus_DNA.name=Gallimimus DNA
 item.Leaellynasaur_Meat.name=Leaellynasaura Meat
@@ -117,13 +117,13 @@ item.Paraceratherium_DNA.name=Paraceratherium DNA
 item.Deinotherium_Meat.name=Deinotherium Meat
 item.Deinotherium_DNA.name=Deinotherium DNA
 
-item.syringe_Mammoth.name=Syringe of Mammoth
-item.syringe_Arsinoitherium.name=Syringe of Arsinoitherium
-item.syringe_Basilosaurus.name=Syringe of Basilosaurus
-item.syringe_Leptictidium.name=Syringe of Leptictidium
-item.syringe_Uintatherium.name=Syringe of Uintatherium
-item.syringe_Paraceratherium.name=Syringe of Paraceratherium
-item.syringe_Deinotherium.name=Syringe of Deinotherium
+item.Mammoth_Syringe.name=Syringe of Mammoth
+item.Arsinoitherium_Syringe.name=Syringe of Arsinoitherium
+item.Basilosaurus_Syringe.name=Syringe of Basilosaurus
+item.Leptictidium_Syringe.name=Syringe of Leptictidium
+item.Uintatherium_Syringe.name=Syringe of Uintatherium
+item.Paraceratherium_Syringe.name=Syringe of Paraceratherium
+item.Deinotherium_Syringe.name=Syringe of Deinotherium
 
 
 //Blocks
