@@ -26,7 +26,7 @@ public class EntityPregnantPig implements IExtendedEntityProperties
 	public EntityPregnantPig(EntityPig pig) 
 	{
 		this.pig = pig;
-		this.mammalName = StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo");
+		this.mammalName = StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo");
 		this.dnaQuality = 0;
 		this.dnaSequence = "";
 		this.pregnancySpeed = 0;

@@ -1,15 +1,17 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import to.uk.ilexiconn.jurassicraft.Util;
-
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.Collection;
+
+import to.uk.ilexiconn.jurassicraft.Util;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class JsonEntityParser extends Util
 {
@@ -27,11 +29,8 @@ public class JsonEntityParser extends Util
                     addDinoEntity(creature);
             		break;
             	case 1:
-            		/** Temporary */
-            		if (creature.creatureID < 23) {
-                		addDNA(creature.creatureName);
-                        addMammalEntity(creature);
-            		}
+            		addDNA(creature.creatureName);
+                    addMammalEntity(creature);
             		break;
             }
         }

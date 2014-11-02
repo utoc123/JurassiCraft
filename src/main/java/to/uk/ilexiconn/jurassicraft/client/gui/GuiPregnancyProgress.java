@@ -136,14 +136,14 @@ public class GuiPregnancyProgress extends GuiScreen
 				if (cow.getPregnancyProgress() >= cow.getPregnancySpeed()) 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.cow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.cow")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.cow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.cow")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(cow.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(cow.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, cow.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantCow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantCow")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.pregnantCow"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.pregnantCow")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(cow.getMammalName() + ": " + cow.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(cow.getMammalName() + ": " + cow.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
@@ -153,14 +153,14 @@ public class GuiPregnancyProgress extends GuiScreen
 				if (pig.getPregnancyProgress() >= pig.getPregnancySpeed()) 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pig")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.pig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.pig")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(pig.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(pig.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, pig.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantPig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantPig")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.pregnantPig"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.pregnantPig")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(pig.getMammalName() + ": " + pig.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(pig.getMammalName() + ": " + pig.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
@@ -170,14 +170,14 @@ public class GuiPregnancyProgress extends GuiScreen
 				if (horse.getPregnancyProgress() >= horse.getPregnancySpeed()) 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.horse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.horse")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.horse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.horse")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(horse.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(horse.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, horse.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantHorse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantHorse")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.pregnantHorse"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.pregnantHorse")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(horse.getMammalName() + ": " + horse.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(horse.getMammalName() + ": " + horse.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			} 
@@ -187,14 +187,14 @@ public class GuiPregnancyProgress extends GuiScreen
 				if (sheep.getPregnancyProgress() >= sheep.getPregnancySpeed()) 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.sheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.sheep")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.sheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.sheep")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(sheep.getMammalName(), this.guiLeft + 189 - this.fontRendererObj.getStringWidth(sheep.getMammalName())/2, this.guiTop + 70, 14737632);
 				} 
 				else 
 				{
 					this.drawTexturedModalRect(this.guiLeft + 140, this.guiTop + 80, 0, 202, 98, 8);
 					this.drawTexturedModalRect(this.guiLeft + 141, this.guiTop + 81, 1, 182, sheep.getPregnancyProgressScaled(95), 5);
-					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pragnancy.pragnantSheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pragnancy.pragnantSheep")) / 2, this.guiTop + 14, 14737632);
+					this.fontRendererObj.drawString(StatCollector.translateToLocal("container.pad.pregnancy.pregnantSheep"), this.guiLeft + 127 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("container.pad.pregnancy.pregnantSheep")) / 2, this.guiTop + 14, 14737632);
 					this.fontRendererObj.drawString(sheep.getMammalName() + ": " + sheep.getPregnancyProgressScaled(100) + "%", this.guiLeft + 189 - this.fontRendererObj.getStringWidth(sheep.getMammalName() + ": " + sheep.getPregnancyProgressScaled(100) + "%")/2, this.guiTop + 70, 14737632);
 				}
 			}

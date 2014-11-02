@@ -2,6 +2,7 @@
 itemGroup.jc.blocks=JurassiCraft Blocks
 itemGroup.jc.items=JurassiCraft Items
 
+
 //Entities_Egg_Creatures
 entity.dino_egg.name=Dino Egg
 entity.Ankylosaur.name=Ankylosaurus
@@ -33,6 +34,7 @@ entity.Leptictidium.name=Leptictidium
 entity.Uintatherium.name=Uintatherium
 entity.Paraceratherium.name=Paraceratherium
 entity.Deinotherium.name=Deinotherium
+
 
 //Items
 item.dinoBone.name=Dinosaur Bone
@@ -116,6 +118,8 @@ item.Paraceratherium_Meat.name=Paraceratherium Meat
 item.Paraceratherium_DNA.name=Paraceratherium DNA
 item.Deinotherium_Meat.name=Deinotherium Meat
 item.Deinotherium_DNA.name=Deinotherium DNA
+item.Moeritherium_Meat.name=Moeritherium Meat
+item.Moeritherium_DNA.name=Moeritherium DNA
 
 item.Mammoth_Syringe.name=Syringe of Mammoth
 item.Arsinoitherium_Syringe.name=Syringe of Arsinoitherium
@@ -124,6 +128,7 @@ item.Leptictidium_Syringe.name=Syringe of Leptictidium
 item.Uintatherium_Syringe.name=Syringe of Uintatherium
 item.Paraceratherium_Syringe.name=Syringe of Paraceratherium
 item.Deinotherium_Syringe.name=Syringe of Deinotherium
+item.Moeritherium_Syringe.name=Syringe of Moeritherium
 
 
 //Blocks
@@ -186,27 +191,31 @@ container.pad.none=none
 container.pad.maxHealth=Maximum Health
 container.pad.maxLength=Maximum Length
 container.pad.maxHeight=Maximum Height
-container.pad.pragnancy.pragnantCow=Pragnant Cow
-container.pad.pragnancy.pragnantPig=Pragnant Pig
-container.pad.pragnancy.pragnantHorse=Pragnant Horse
-container.pad.pragnancy.pragnantSheep=Pragnant Sheep
-container.pad.pragnancy.cow=Cow
-container.pad.pragnancy.pig=Pig
-container.pad.pragnancy.horse=Horse
-container.pad.pragnancy.sheep=Sheep
-container.pad.pragnancy.noEmbryo=No embryo
+container.pad.pregnancy.pregnantCow=Pregnant Cow
+container.pad.pregnancy.pregnantPig=Pregnant Pig
+container.pad.pregnancy.pregnantHorse=Pregnant Horse
+container.pad.pregnancy.pregnantSheep=Pregnant Sheep
+container.pad.pregnancy.cow=Cow
+container.pad.pregnancy.pig=Pig
+container.pad.pregnancy.horse=Horse
+container.pad.pregnancy.sheep=Sheep
+container.pad.pregnancy.noEmbryo=No embryo
 
 
 //Creature_Dinopad_Info
-container.pad.infoAnkylosaur.page1=Ankylosaurus ("fused lizard") is a genus of ankylosaurid dinosaur. Fossils of Ankylosaurus are found in geologic formations dating to the very end of the Cretaceous period, between 66.5 and 66.0 million years ago, in western North America.
+container.pad.infoAnkylosaur.page1=Ankylosaurus, meaning "fused lizard", is a genus of ankylosaurid dinosaur. Fossils of Ankylosaurus are found in geologic formations dating to the very end of the Cretaceous period, between 66.5 and 66.0 million years ago, in western North America.
 container.pad.infoAnkylosaur.page2=Ankylosaurus was a large animal by modern standards, estimated at lengths of 9 m (30 ft) and weighing up to 6 tonnes (13,000 lb). The whole animal is estimated at 6.25 m (20.5 feet) long, 1.5 m (4.9 feet) wide and 1.7 m (5.6 feet) tall at the hip.
 container.pad.infoAnkylosaur.page3=The tail club of Ankylosaurus is composed of several large osteoderms, which are fused to the last few tail vertebrae. It was heavy and supported by the last seven tail vertebrae, which interlocked to form a stiff rod at the base of the club.
-container.pad.infoBrachiosaur.page1=Brachiosaur
+container.pad.infoBrachiosaur.page1=Brachiosaurus is a genus of sauropod dinosaur from the Jurassic Morrison Formation of North America. It was first described by Elmer S. Riggs in 1903 from fossils found in the Grand River Canyon (now Colorado River) of western Colorado, in the United States.
+container.pad.infoBrachiosaur.page2= The proportions of Brachiosaurus are unlike most sauropods. The forelimbs were longer than the hindlimbs, which resulted in a steeply inclined trunk, and its tail was shorter in proportion to its neck than other sauropods of the Jurassic.
 container.pad.infoVelociraptor.page1=Velociraptor
-container.pad.infoStegosaur.page1=Stegosaur
-container.pad.infoTriceratops.page1=Triceratops
-container.pad.infoCoelacanth.page1=Coelacanth
-container.pad.infoTyrannosaurus.page1=Tyrannosaurus
+container.pad.infoStegosaur.page1=Stegosaurus, meaning "roof lizard" in reference to its bony plates, is a genus of armored stegosaurid dinosaur. They lived during the Late Jurassic period (Kimmeridgian to early Tithonian), some 155 to 150 million years ago in what is now western North America.
+container.pad.infoStegosaur.page2=Its array of plates and spikes has been the subject of much speculation. The spikes were most likely used for defense, while the plates have also been proposed as a defensive mechanism, as well as having display and thermoregulatory functions.
+container.pad.infoTriceratops.page1=Triceratops, "three-horn face", is a genus of herbivorous ceratopsid dinosaur that first appeared during the late Maastrichtian stage of the late Cretaceous period, about 68 million years ago in what is now North America.
+container.pad.infoTriceratops.page2=Triceratops are estimated to have reached about 8.0 to 9.0 meters in length, 2.8 to 3.0 meters in height, and 6.0 to 12.0 tonnes in weight. It shared the landscape with and was probably preyed upon by the fearsome Tyrannosaurus.
+container.pad.infoCoelacanth.page1=Coelacanth constitutes a now rare order of fish that includes two extant species in the genus Latimeria: the West Indian Ocean coelacanth and the Indonesian coelacanth.
+container.pad.infoTyrannosaurus.page1=Tyrannosaurus, meaning "tyrant lizard", is a genus of coelurosaurian theropod dinosaur. Tyrannosaurus lived throughout what is now western North America, which then was an island continent named Laramidia. Tyrannosaurus had a much wider range than other tyrannosaurids. 
+container.pad.infoTyrannosaurus.page2=Fossils are found in a variety of rock formations dating to the Maastrichtian age of the upper Cretaceous Period, 67 to 66 million years ago. 
 container.pad.infoGallimimus.page1=Gallimimus
 container.pad.infoHypsilophodon.page1=Hypsilophodon
 container.pad.infoLeaellynasaur.page1=Leaellynasaur

@@ -14,7 +14,7 @@ public class RenderMammoth extends RenderDinosaur
 {
     public RenderMammoth(Dinosaur dino)
     {
-        super(new ModelMammoth(), dino, 1.6F);
+        super(new ModelMammoth(), dino, 1.4F);
     }
 
     @Override

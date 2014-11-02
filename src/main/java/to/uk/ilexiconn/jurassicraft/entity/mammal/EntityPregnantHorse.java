@@ -26,7 +26,7 @@ public class EntityPregnantHorse implements IExtendedEntityProperties
 	public EntityPregnantHorse(EntityHorse horse) 
 	{
 		this.horse = horse;
-		this.mammalName = StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo");
+		this.mammalName = StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo");
 		this.dnaQuality = 0;
 		this.dnaSequence = "";
 		this.pregnancySpeed = 0;

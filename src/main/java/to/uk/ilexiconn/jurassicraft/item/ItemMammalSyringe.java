@@ -28,10 +28,10 @@ import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantSheep;
 public class ItemMammalSyringe extends Item
 {
     public String mammalName;
-    public static final HashSet<String> creaturesFromCow = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium"));
-    public static final HashSet<String> creaturesFromPig = new HashSet<String>(Arrays.asList("Leptictidium"));
-    public static final HashSet<String> creaturesFromHorse = new HashSet<String>(Arrays.asList("NoCreaturesYet"));
-    public static final HashSet<String> creaturesFromSheep = new HashSet<String>(Arrays.asList("NoCreaturesYet"));
+    public static final HashSet<String> creaturesFromCow = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium", "Leptictidium"));
+    public static final HashSet<String> creaturesFromPig = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium", "Leptictidium"));
+    public static final HashSet<String> creaturesFromHorse = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium", "Leptictidium"));
+    public static final HashSet<String> creaturesFromSheep = new HashSet<String>(Arrays.asList("Mammoth", "Arsinoitherium", "Basilosaurus", "Uintatherium", "Paraceratherium", "Deinotherium", "Leptictidium"));
 
     public ItemMammalSyringe(String mammal)
     {
@@ -190,7 +190,7 @@ public class ItemMammalSyringe extends Item
     			return false;
         	} else {
             	EntityPregnantCow cow = EntityPregnantCow.get(((EntityCow) creature));
-            	if (cow != null && cow.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
+            	if (cow != null && cow.getMammalName().equals(StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo"))) {
                 	cow.setMammalName(this.mammalName);
                 	cow.setDnaQuality(this.getEggQuality(syringe));
                 	cow.setDnaSequence(this.getEggDNASequence(syringe));
@@ -205,7 +205,7 @@ public class ItemMammalSyringe extends Item
     			return false;
         	} else {
             	EntityPregnantPig pig = EntityPregnantPig.get(((EntityPig) creature));
-                if (pig != null && pig.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
+                if (pig != null && pig.getMammalName().equals(StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo"))) {
                 	pig.setMammalName(this.mammalName);
                 	pig.setDnaQuality(this.getEggQuality(syringe));
                 	pig.setDnaSequence(this.getEggDNASequence(syringe));
@@ -220,7 +220,7 @@ public class ItemMammalSyringe extends Item
     			return false;
         	} else {
             	EntityPregnantHorse horse = EntityPregnantHorse.get(((EntityHorse) creature));
-                if (horse != null && horse.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
+                if (horse != null && horse.getMammalName().equals(StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo"))) {
                 	horse.setMammalName(this.mammalName);
                 	horse.setDnaQuality(this.getEggQuality(syringe));
                 	horse.setDnaSequence(this.getEggDNASequence(syringe));
@@ -235,7 +235,7 @@ public class ItemMammalSyringe extends Item
     			return false;
         	} else {
             	EntityPregnantSheep sheep = EntityPregnantSheep.get(((EntitySheep) creature));
-                if (sheep != null && sheep.getMammalName().equals(StatCollector.translateToLocal("container.pad.pragnancy.noEmbryo"))) {
+                if (sheep != null && sheep.getMammalName().equals(StatCollector.translateToLocal("container.pad.pregnancy.noEmbryo"))) {
                 	sheep.setMammalName(this.mammalName);
                 	sheep.setDnaQuality(this.getEggQuality(syringe));
                 	sheep.setDnaSequence(this.getEggDNASequence(syringe));

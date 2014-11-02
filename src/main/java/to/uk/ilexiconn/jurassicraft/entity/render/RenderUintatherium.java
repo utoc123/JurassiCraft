@@ -14,7 +14,7 @@ public class RenderUintatherium extends RenderDinosaur
 {
     public RenderUintatherium(Dinosaur dino)
     {
-        super(new ModelUintatherium(), dino, 0.5F);
+        super(new ModelUintatherium(), dino, 0.8F);
     }
 
     @Override

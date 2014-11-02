@@ -17,7 +17,7 @@ public class EntityBasilosaurus extends NewEntitySwimming {
         super(world, (byte) 21);
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
-        this.swimSpeed = 0.6F;
+        this.swimSpeed = (float) this.getCreatureSpeed();
         this.jumpOnLand = false;
         this.attackInterval = 1;
         this.isAgressive = true;
