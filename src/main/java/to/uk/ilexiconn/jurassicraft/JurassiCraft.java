@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 Pre-4")
+@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 Pre-4", dependencies = "required-after:llib@[0.1.1,)")
 public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
