@@ -1,7 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
-import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +11,8 @@ import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
 
+import java.util.List;
+
 public class ItemDinoEgg extends Item
 {
     public String dinoName;
@@ -22,7 +22,7 @@ public class ItemDinoEgg extends Item
         super();
         this.setUnlocalizedName("egg_" + dinoName);
         this.setTextureName(Util.getModId() + "egg_" + dinoName);
-        this.setCreativeTab(ModCreativeTabs.ITEMS.getTab());
+        this.setCreativeTab(ModCreativeTabs.items);
         this.dinoName = dinoName;
     }
 

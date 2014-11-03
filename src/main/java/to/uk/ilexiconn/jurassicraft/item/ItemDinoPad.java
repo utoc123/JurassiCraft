@@ -16,7 +16,7 @@ public class ItemDinoPad extends Item
         super();
         setUnlocalizedName("dinopad");
         setTextureName(Util.getModId() + "dinopad");
-        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
+        setCreativeTab(ModCreativeTabs.items);
     }
 
 	@Override

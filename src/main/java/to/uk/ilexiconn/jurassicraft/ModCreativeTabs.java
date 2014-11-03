@@ -1,29 +1,34 @@
 package to.uk.ilexiconn.jurassicraft;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
 
-public enum ModCreativeTabs
+public class ModCreativeTabs implements IContentHandler
 {
-    ITEMS("items", Items.apple),
-    BLOCKS("blocks", Item.getItemFromBlock(Blocks.stone));
+    public static CreativeTabs items;
+    public static CreativeTabs blocks;
 
-    private CreativeTabs creativeTab;
-    private ModCreativeTabs(String n, final Item i)
+    public void init()
     {
-        creativeTab = new CreativeTabs("jc." + n)
-        {
-            public Item getTabIconItem()
-            {
-                return i;
-            }
-        };
+        items = new CreativeTab("jurassicraft.items", Items.apple);
+        blocks = new CreativeTab("jurassicraft.blocks", Items.arrow);
     }
 
-    public CreativeTabs getTab()
+    private static class CreativeTab extends CreativeTabs
     {
-        return creativeTab;
+        public Item item;
+
+        public CreativeTab(String n, Item i)
+        {
+            super(n);
+            item = i;
+        }
+
+        public Item getTabIconItem()
+        {
+            return item;
+        }
     }
 }

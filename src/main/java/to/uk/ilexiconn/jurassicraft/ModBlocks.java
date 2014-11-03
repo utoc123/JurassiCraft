@@ -1,44 +1,21 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import to.uk.ilexiconn.jurassicraft.block.BlockAmberOre;
-import to.uk.ilexiconn.jurassicraft.block.BlockCultivateBottom;
-import to.uk.ilexiconn.jurassicraft.block.BlockCultivateTop;
-import to.uk.ilexiconn.jurassicraft.block.BlockDNACombinator;
-import to.uk.ilexiconn.jurassicraft.block.BlockDNAExtractor;
-import to.uk.ilexiconn.jurassicraft.block.BlockDinoPad;
-import to.uk.ilexiconn.jurassicraft.block.BlockFossilClayOre;
-import to.uk.ilexiconn.jurassicraft.block.BlockFossilOre;
-import to.uk.ilexiconn.jurassicraft.block.BlockFossilSandstoneOre;
-import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBlock;
-import to.uk.ilexiconn.jurassicraft.block.BlockGypsumBrick;
-import to.uk.ilexiconn.jurassicraft.block.BlockGypsumCobblestone;
-import to.uk.ilexiconn.jurassicraft.block.BlockStuffFluid;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighBase;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighGrid;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceHighPole;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowBase;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowGrid;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceLowPole;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMain;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumBase;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumGrid;
-import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMediumPole;
+import to.uk.ilexiconn.jurassicraft.block.*;
+import to.uk.ilexiconn.jurassicraft.block.fence.*;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockCultivate;
 import to.uk.ilexiconn.jurassicraft.item.ItemBlockFossilClayOre;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
 import to.uk.ilexiconn.llib.content.OverrideRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.BLOCK, priority = EventPriority.HIGH)
-public class ModBlocks
+import java.lang.reflect.Field;
+
+public class ModBlocks implements IContentHandler
 {
-
     @OverrideRegistry
     public static Block clayFossilOre;
     @OverrideRegistry
@@ -111,5 +88,21 @@ public class ModBlocks
 
         cultivateLiquid = new BlockStuffFluid(cultivateFluid, Material.water).setBlockName("culivateFluid").setCreativeTab(null);
         GameRegistry.registerBlock(cultivateLiquid, "culivateFluid");
+
+        for (Field field : getClass().getFields())
+        {
+            try
+            {
+                if (field.getAnnotations().length == 0)
+                {
+                    Block block = (Block) field.get(this);
+                    GameRegistry.registerBlock(block, block.getUnlocalizedName());
+                }
+            }
+            catch (IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }

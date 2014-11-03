@@ -23,7 +23,7 @@ public class BlockSecurityFenceMain extends BlockContainer
 		this.setResistance(10.0F);
 		this.setBlockName("security_Fence_Main");
 		this.setBlockTextureName(Util.getModId() + "security_Fence_Main");
-        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
+        this.setCreativeTab(ModCreativeTabs.blocks);
 	}
 
 	@Override

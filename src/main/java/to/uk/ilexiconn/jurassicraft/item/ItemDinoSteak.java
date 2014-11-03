@@ -11,6 +11,6 @@ public class ItemDinoSteak extends ItemFood
         super(8, 0.2f, true);
         this.setUnlocalizedName("dinoSteak");
         this.setTextureName(Util.getModId() + "dinoSteak");
-        this.setCreativeTab(ModCreativeTabs.ITEMS.getTab());
+        this.setCreativeTab(ModCreativeTabs.items);
     }
 }

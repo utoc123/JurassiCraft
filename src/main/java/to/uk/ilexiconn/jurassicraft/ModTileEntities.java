@@ -1,26 +1,10 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
-import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
-import to.uk.ilexiconn.jurassicraft.tile.TileEgg;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighPole;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowPole;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumPole;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
 import cpw.mods.fml.common.registry.GameRegistry;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
+import to.uk.ilexiconn.jurassicraft.tile.*;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.TILEENTITY)
-public class ModTileEntities
+public class ModTileEntities implements IContentHandler
 {
     public void init()
     {

@@ -1,12 +1,10 @@
 package to.uk.ilexiconn.jurassicraft;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
 import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.ENTITY)
-public class ModEntities
+public class ModEntities implements IContentHandler
 {
     public void init()
     {

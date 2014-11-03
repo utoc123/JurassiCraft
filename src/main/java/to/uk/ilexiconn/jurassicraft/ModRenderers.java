@@ -1,51 +1,26 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import to.uk.ilexiconn.jurassicraft.client.render.item.ItemCultivateRenderer;
 import to.uk.ilexiconn.jurassicraft.client.render.item.ItemDNACombinatorRenderer;
 import to.uk.ilexiconn.jurassicraft.client.render.item.ItemDNAExtractorRenderer;
 import to.uk.ilexiconn.jurassicraft.client.render.item.ItemDinoPadRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileCultivateRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDNACombinatorRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDNAExtractorRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDinoPadRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceHighBaseRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceHighGridRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceHighPoleRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceLowBaseRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceLowGridRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceLowPoleRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceMediumBaseRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceMediumGridRenderer;
-import to.uk.ilexiconn.jurassicraft.client.render.tile.TileSecurityFenceMediumPoleRenderer;
+import to.uk.ilexiconn.jurassicraft.client.render.tile.*;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
 import to.uk.ilexiconn.jurassicraft.entity.EntityDinoEgg;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinoEgg;
-import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
-import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
-import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighPole;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowPole;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumBase;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumGrid;
-import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceMediumPole;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import to.uk.ilexiconn.jurassicraft.tile.*;
 
 @SideOnly(Side.CLIENT)
-@ContentHandler(modid = "jurassicraft", type = ContentType.UNDEFINED, priority = EventPriority.LOW)
-public class ModRenderers {
-	public void init() {
+public class ModRenderers implements IContentHandler
+{
+	public void init()
+    {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.cultivateBottomOff), new ItemCultivateRenderer());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dnaExtractor), new ItemDNAExtractorRenderer());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dnaCombinator), new ItemDNACombinatorRenderer());

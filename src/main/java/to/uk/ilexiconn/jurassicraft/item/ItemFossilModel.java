@@ -17,7 +17,7 @@ public class ItemFossilModel extends Item {
 		this.setMaxStackSize(8);
 		this.setUnlocalizedName(fossilName + "_Fossil");
 		this.setTextureName(Util.getModId() + fossilName + "_Fossil");
-		this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
+		this.setCreativeTab(ModCreativeTabs.blocks);
 	}
 
 	public int getFossil(ItemStack fossil) {

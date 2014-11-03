@@ -11,6 +11,6 @@ public class ItemFossil extends Item implements IDNASource
         super();
         setUnlocalizedName("fossil");
         setTextureName(Util.getModId() + "fossil");
-        setCreativeTab(ModCreativeTabs.ITEMS.getTab());
+        setCreativeTab(ModCreativeTabs.items);
     }
 }

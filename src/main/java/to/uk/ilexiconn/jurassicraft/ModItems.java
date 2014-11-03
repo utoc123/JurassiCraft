@@ -1,20 +1,13 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
-import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
-import to.uk.ilexiconn.jurassicraft.item.ItemDinoBone;
-import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
-import to.uk.ilexiconn.jurassicraft.item.ItemDinoSteak;
-import to.uk.ilexiconn.jurassicraft.item.ItemFossil;
-import to.uk.ilexiconn.jurassicraft.item.ItemGrowthSerum;
-import to.uk.ilexiconn.jurassicraft.item.ItemGypsumPowder;
-import to.uk.ilexiconn.jurassicraft.item.ItemOnAStick;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
-import cpw.mods.fml.common.eventhandler.EventPriority;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
+import to.uk.ilexiconn.jurassicraft.item.*;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.ITEM, priority = EventPriority.HIGH)
-public class ModItems
+import java.lang.reflect.Field;
+
+public class ModItems implements IContentHandler
 {
     public static Item amber;
     public static Item fossil;
@@ -45,5 +38,24 @@ public class ModItems
         fishOnAStick = new ItemOnAStick("Fish");
         porkOnAStick = new ItemOnAStick("Pork");
         wheatOnAStick = new ItemOnAStick("Wheat");
+
+        gameRegistry();
+    }
+
+    public void gameRegistry()
+    {
+        for (Field field : getClass().getFields())
+        {
+            try
+            {
+                Item item = (Item) field.get(this);
+                if (field.getAnnotations().length == 0)
+                    GameRegistry.registerItem(item, item.getUnlocalizedName());
+            }
+            catch (IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }

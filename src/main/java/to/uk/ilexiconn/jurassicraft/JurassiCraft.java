@@ -4,6 +4,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiHandler;
+import to.uk.ilexiconn.jurassicraft.content.ContentLoader;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityCoelacanth;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.JurassiCraftInteractEvent;
 import to.uk.ilexiconn.jurassicraft.entity.mammal.JurassiCraftLivingEvent;
@@ -25,13 +26,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 PRE-RELEASE", dependencies = "required-after:llib@[0.1.1,)")
+@Mod(modid = "jurassicraft", name = "JurassiCraft", version = "1.3.0 Pre-4")
 public class JurassiCraft extends Util
 {
     @Mod.Instance("jurassicraft")
     public static JurassiCraft instance;
     public boolean isServerInitialized;
 
+    public static ContentLoader contentLoader;
     public static SimpleNetworkWrapper network;
     
     public static boolean versionCheck;
@@ -40,6 +42,18 @@ public class JurassiCraft extends Util
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event)
     {
+        contentLoader = new ContentLoader();
+
+        contentLoader.addContentHandler(new ModCreativeTabs());
+        contentLoader.addContentHandler(new ModBlocks());
+        contentLoader.addContentHandler(new ModEntities());
+        contentLoader.addContentHandler(new ModItems());
+        contentLoader.addContentHandler(new ModRecipes());
+        contentLoader.addContentHandler(new ModRenderers());
+        contentLoader.addContentHandler(new ModTileEntities());
+
+        contentLoader.init();
+
         getEntityParser().parseServerEntities();
 
         isServerInitialized = true;

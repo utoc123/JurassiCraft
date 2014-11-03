@@ -38,7 +38,7 @@ public class ItemMammalSyringe extends Item
         super();
         this.setUnlocalizedName(mammal + "_Syringe");
         this.setTextureName(Util.getModId() + mammal + "_Syringe");
-        this.setCreativeTab(ModCreativeTabs.ITEMS.getTab());
+        this.setCreativeTab(ModCreativeTabs.items);
         this.mammalName = mammal;
     }
 

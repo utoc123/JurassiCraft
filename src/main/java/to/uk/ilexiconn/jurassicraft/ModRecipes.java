@@ -1,15 +1,13 @@
 package to.uk.ilexiconn.jurassicraft;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import to.uk.ilexiconn.jurassicraft.block.BlockCultivateBottom;
-import to.uk.ilexiconn.llib.content.ContentHandler;
-import to.uk.ilexiconn.llib.content.ContentType;
-import cpw.mods.fml.common.registry.GameRegistry;
+import to.uk.ilexiconn.jurassicraft.content.IContentHandler;
 
-@ContentHandler(modid = "jurassicraft", type = ContentType.UNDEFINED)
-public class ModRecipes 
+public class ModRecipes implements IContentHandler
 {
 	public void init() 
 	{

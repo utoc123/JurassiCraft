@@ -25,7 +25,7 @@ public class BlockDNACombinator extends BlockContainer
         this.setBlockName("dnaCombinator");
         this.setHardness(3.0f);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-        this.setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
+        this.setCreativeTab(ModCreativeTabs.blocks);
         this.setBlockTextureName(JurassiCraft.getModId() + "dnaCombinatorBreakingParticles");
     }
 

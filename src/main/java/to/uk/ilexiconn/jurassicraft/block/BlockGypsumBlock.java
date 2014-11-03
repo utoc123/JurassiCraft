@@ -18,7 +18,7 @@ public class BlockGypsumBlock extends Block {
         setBlockName("block_Gypsum_Block");
 		this.setStepSound(soundTypeStone);
 		this.setHarvestLevel("pickaxe", 1);
-        setCreativeTab(ModCreativeTabs.BLOCKS.getTab());
+        setCreativeTab(ModCreativeTabs.blocks);
         setBlockTextureName(Util.getModId() + "block_Gypsum_Block");
 	}
 
