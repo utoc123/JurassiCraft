@@ -9,6 +9,8 @@ package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityHerrerasaur;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityVelociraptor;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
@@ -284,6 +286,7 @@ public class ModelHerrerasaur extends MowzieModelBase
         //Corrections
         Head.rotationPointZ -= 12;
         Head.rotationPointY -= 1.2;
+        Head.rotateAngleX += 0.1;
         Body_2.setRotationPoint(0, -4.8F, -13);
         
         Hand_Left_Claw_Left.setRotationPoint(0, 0, 0);
@@ -414,8 +417,48 @@ public class ModelHerrerasaur extends MowzieModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        EntityHerrerasaur herrera = (EntityHerrerasaur) entity;
         resetPose();
-        walk(Right_Thigh, 1.0F, 0.7F, false, 0, 0, f, f1);
-        walk(Left_Thigh, 1.0F, 0.7F, true, 0, 0, f, f1);
+/*    f = herrera.frame;
+    f1 = 1F;*/
+        float scaleFactor = 0.77F;
+        float height = 2F * f1;
+        bob(Body_1, 1F * scaleFactor, height, false, f, f1);
+        bob(Left_Thigh, 1F * scaleFactor, height, false, f, f1);
+        bob(Right_Thigh, 1F * scaleFactor, height, false, f, f1);
+        bob(Neck, 1F * scaleFactor, height / 2, false, f, f1);
+
+        walk(Neck, 1F * scaleFactor, 0.25F, false, 1F, 0.1F, f, f1);
+        walk(Head, 1F * scaleFactor, 0.25F, true, 1F, -0.1F, f, f1);
+        walk(Body_1, 1F * scaleFactor, 0.1F, true, 0F, 0.07F, f, f1);
+        
+        walk(Left_Thigh, 0.5F * scaleFactor, 0.8F, false, 0F, 0.4F, f, f1);
+        walk(Left_Calf_1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
+        walk(Left_Upper_Foot, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
+        walk(Foot_Left, 0.5F * scaleFactor, 1.5F, true, 0.5F, 1F, f, f1);
+
+        walk(Right_Thigh, 0.5F * scaleFactor, 0.8F, true, 0F, 0.4F, f, f1);
+        walk(Right_Calf_1, 0.5F * scaleFactor, 0.5F, false, 1F, 0F, f, f1);
+        walk(Right_Upper_Foot, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
+        walk(Foot_Right, 0.5F * scaleFactor, 1.5F, false, 0.5F, 1F, f, f1);
+
+        faceTarget(Head, 2, f3, f4);
+        faceTarget(Neck, 2, f3, f4);
+
+        MowzieModelRenderer[] rightArmParts = {this.Hand_Right, this.Lower_Arm_Right, this.Upper_Arm_Right};
+        MowzieModelRenderer[] leftArmParts = {this.Hand_Left, this.Lower_Arm_Left, this.Upper_Arm_Left};
+        MowzieModelRenderer[] tailParts = {this.Tail_6, this.Tail_5, this.Tail_4, this.Tail_3, this.Tail_2, this.Tail_1};
+        tailSwing(tailParts, 0.5F * scaleFactor, -0.1F * f1, 2, f);
+        chainWave(tailParts, 1F * scaleFactor, -0.03F, 2, f, f1);
+        chainWave(rightArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+        chainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
+        
+        //Idling
+        chainWave(tailParts, 0.1F, -0.05F, 2, herrera.frame, 1F);
+        walk(Neck, 0.1F, 0.07F, false, -1F, 0F, herrera.frame, 1F);
+        walk(Head, 0.1F, 0.07F, true, 0F, 0F, herrera.frame, 1F);
+        walk(Body_1, 0.1F, 0.05F, false, 0F, 0F, herrera.frame, 1F);
+        chainWave(rightArmParts, 0.1F, -0.1F, 4, herrera.frame, 1F);
+        chainWave(leftArmParts, 0.1F, -0.1F, 4, herrera.frame, 1F);
     }
 }
