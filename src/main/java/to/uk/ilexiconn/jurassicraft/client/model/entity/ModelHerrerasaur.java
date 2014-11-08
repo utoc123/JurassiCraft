@@ -246,6 +246,34 @@ public class ModelHerrerasaur extends MowzieModelBase
         Foot_Right.mirror = true;
         setRotation(Foot_Right, 0F, 0F, 0F);
 
+        addChildTo(Upper_Jaw, Head);
+        addChildTo(Lower_Jaw, Head);
+        addChildTo(Head, Neck);
+        addChildTo(Head, Neck);
+        addChildTo(Neck, Body_2);
+        addChildTo(Body_2, Body_1);
+        
+        addChildTo(Hand_Left_Claw_Left, Hand_Left);
+        addChildTo(Hand_Left_Claw_Middle, Hand_Left);
+        addChildTo(Hand_Left_Claw_Right, Hand_Left);
+        addChildTo(Hand_Left, Lower_Arm_Left);
+        addChildTo(Lower_Arm_Left, Upper_Arm_Left);
+        addChildTo(Upper_Arm_Left, Body_1);
+        
+        addChildTo(Hand_Right_Claw_Left, Hand_Right);
+        addChildTo(Hand_Right_Claw_Middle, Hand_Right);
+        addChildTo(Hand_Right_Claw_Right, Hand_Right);
+        addChildTo(Hand_Right, Lower_Arm_Right);
+        addChildTo(Lower_Arm_Right, Upper_Arm_Right);
+        addChildTo(Upper_Arm_Right, Body_1);
+        
+        addChildTo(Tail_6, Tail_5);
+        addChildTo(Tail_5, Tail_4);
+        addChildTo(Tail_4, Tail_3);
+        addChildTo(Tail_3, Tail_2);
+        addChildTo(Tail_2, Tail_1);
+        addChildTo(Tail_1, Body_1);
+
         addChildTo(Foot_Left, Left_Upper_Foot);
         addChildTo(Left_Upper_Foot, Left_Calf_1);
         addChildTo(Left_Calf_1, Left_Thigh);
@@ -253,6 +281,21 @@ public class ModelHerrerasaur extends MowzieModelBase
         addChildTo(Right_Upper_Foot, Right_Calf_1);
         addChildTo(Right_Calf_1, Right_Thigh);
 
+        //Corrections
+        Head.rotationPointZ -= 12;
+        Head.rotationPointY -= 1.2;
+        Body_2.setRotationPoint(0, -4.8F, -13);
+        
+        Hand_Left_Claw_Left.setRotationPoint(0, 0, 0);
+        Hand_Left_Claw_Middle.setRotationPoint(0, 0, 0);
+        Hand_Left_Claw_Right.setRotationPoint(0, 0, 0);
+        
+        Hand_Right_Claw_Left.setRotationPoint(0, 0, 0);
+        Hand_Right_Claw_Middle.setRotationPoint(0, 0, 0);
+        Hand_Right_Claw_Right.setRotationPoint(0, 0, 0);
+        
+        Tail_1.setRotationPoint(0, -4.7F, 7);
+        
         Left_Upper_Foot.setInitValuesToCurrentPose();
         Right_Upper_Foot.setInitValuesToCurrentPose();
         Left_Calf_1.setInitValuesToCurrentPose();
@@ -290,7 +333,7 @@ public class ModelHerrerasaur extends MowzieModelBase
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5);
+        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 //    Left_Upper_Foot.render(f5);
 //    Right_Upper_Foot.render(f5);
 //    Left_Calf_1.render(f5);
@@ -298,18 +341,18 @@ public class ModelHerrerasaur extends MowzieModelBase
         Left_Thigh.render(f5);
         Right_Thigh.render(f5);
         Body_1.render(f5);
-        Body_2.render(f5);
-        Neck.render(f5);
-        Head.render(f5);
-        Upper_Jaw.render(f5);
-        Lower_Jaw.render(f5);
-        Tail_1.render(f5);
+ //       Body_2.render(f5);
+//        Neck.render(f5);
+ //       Head.render(f5);
+//        Upper_Jaw.render(f5);
+//        Lower_Jaw.render(f5);
+/*        Tail_1.render(f5);
         Tail_2.render(f5);
         Tail_3.render(f5);
         Tail_4.render(f5);
         Tail_5.render(f5);
-        Tail_6.render(f5);
-        Upper_Arm_Right.render(f5);
+        Tail_6.render(f5);*/
+/*        Upper_Arm_Right.render(f5);
         Upper_Arm_Left.render(f5);
         Lower_Arm_Left.render(f5);
         Lower_Arm_Right.render(f5);
@@ -320,7 +363,7 @@ public class ModelHerrerasaur extends MowzieModelBase
         Hand_Left_Claw_Middle.render(f5);
         Hand_Right_Claw_Right.render(f5);
         Hand_Right_Claw_Left.render(f5);
-        Hand_Right_Claw_Middle.render(f5);
+        Hand_Right_Claw_Middle.render(f5);*/
 //    Foot_Left.render(f5);
 //    Foot_Right.render(f5);
     }
@@ -368,9 +411,9 @@ public class ModelHerrerasaur extends MowzieModelBase
         Foot_Right.setCurrentPoseToInitValues();
     }
 
-    public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+    public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-        super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
+        super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         resetPose();
         walk(Right_Thigh, 1.0F, 0.7F, false, 0, 0, f, f1);
         walk(Left_Thigh, 1.0F, 0.7F, true, 0, 0, f, f1);
