@@ -25,6 +25,6 @@ public class AIHypsilophodonScratchHead extends AIAnimation {
 	public boolean shouldAnimate() {
 		EntityLiving living = getEntity();
 		IAnimatedEntity entity = (IAnimatedEntity)living;
-		return entity.getAnimID() == 0 && living.getRNG().nextInt(30) == 0;
+		return entity.getAnimID() == 0 && living.getRNG().nextInt(60) == 0;
 	}
 }
