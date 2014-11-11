@@ -7,11 +7,13 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import thehippomaster.AnimationAPI.AnimationAPI;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
+import to.uk.ilexiconn.jurassicraft.client.animation.AIParasaurolophusTrumpet;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 import to.uk.ilexiconn.jurassicraft.utility.ControlledParam;
@@ -26,7 +28,8 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
         super(world, (byte) 11, 1);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
+        this.tasks.addTask(2, new AIParasaurolophusTrumpet(this));
+        this.tasks.addTask(3, this.aiSit);
         this.tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
         this.tasks.addTask(5, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
@@ -51,13 +54,18 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
     @Override
     public String getLivingSound()
     {
-        if (this.rand.nextInt(2) == 0)
+    	int I = this.rand.nextInt(3);
+        if (I == 0)
         {
             return Util.getDinoByID(this.getCreatureID()).livingSound1;
         }
-        else
+        else if (I == 1)
         {
             return Util.getDinoByID(this.getCreatureID()).livingSound2;
+        }
+        else {
+        	AnimationAPI.sendAnimPacket(this, 1);
+        	return null;
         }
     }
 

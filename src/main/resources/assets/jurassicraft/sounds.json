@@ -45,5 +45,7 @@
        "ovi1": {"category": "master","sounds": [{"name": "ovi1","stream": false}]},
        "ovi2": {"category": "master","sounds": [{"name": "ovi2","stream": false}]},
        "ovi3": {"category": "master","sounds": [{"name": "ovi3","stream": false}]},
-       "Paratrumpet01": {"category": "master","sounds": [{"name": "Paratrumpet01","stream": false}]}
+       "ParaCall03": {"category": "master","sounds": [{"name": "ParaCall03","stream": false}]},
+       "ParaCall04": {"category": "master","sounds": [{"name": "ParaCall04","stream": false}]},
+       "ParaCall05": {"category": "master","sounds": [{"name": "ParaCall05","stream": false}]}
 }

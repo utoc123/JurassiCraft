@@ -9,6 +9,8 @@ package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityParasaurolophus;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
@@ -16,6 +18,8 @@ import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 public class ModelParasaurolophus extends MowzieModelBase
 {
     public boolean isAlarmed;
+    
+    private Animator animator;
 
     //fields
     MowzieModelRenderer Left_Lower_Foot;
@@ -57,6 +61,8 @@ public class ModelParasaurolophus extends MowzieModelBase
         textureWidth = 256;
         textureHeight = 256;
 
+        animator = new Animator(this);
+        
         Left_Lower_Foot = new MowzieModelRenderer(this, 98, 0);
         Left_Lower_Foot.addBox(-2F, 0F, 0F, 4, 2, 2);
         Left_Lower_Foot.setRotationPoint(7F, 20.8F, 7.7F);
@@ -357,7 +363,7 @@ public class ModelParasaurolophus extends MowzieModelBase
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 /*    Left_Lower_Foot.render(f5);
     Left_Upper_Foot.render(f5);
     Right_Lower_Foot.render(f5);
@@ -513,5 +519,44 @@ public class ModelParasaurolophus extends MowzieModelBase
         walk(Left_Hand, 0.1F, 0.1F, false, -2F, 0F, para.frame, 1F);
 
         chainWave(tailParts, 0.1F, -0.02F, 2, para.frame, 1F);
+    }
+    
+    public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    	animator.update(entity);
+        setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+        EntityParasaurolophus para = (EntityParasaurolophus) entity;
+        
+        animator.setAnim(1);
+        animator.startPhase(15);
+        animator.rotate(Body_3, 0.3F, 0, 0);
+        animator.rotate(Body_1, 0.1F, 0, 0);
+        animator.rotate(Body_2, 0.1F, 0, 0);
+        animator.rotate(Neck, -0.6F, 0, 0);
+        animator.move(Neck, 0, -2, 0);
+        animator.rotate(Head, 0.7F, 0, 0);
+        animator.rotate(Upper_Arm_Right, 0.4F, 0, 0);
+        animator.rotate(Upper_Arm_Left, 0.4F, 0, 0);
+        animator.rotate(Lower_Arm_Right, -0.6F, 0, 0);
+        animator.rotate(Lower_Arm_Left, -0.6F, 0, 0);
+        animator.rotate(Right_Hand, 0.4F, 0, 0);
+        animator.rotate(Left_Hand, 0.4F, 0, 0);
+        animator.endPhase();
+        animator.setStationaryPhase(5);
+        animator.startPhase(10);
+        animator.rotate(Body_3, -0.5F, 0, 0);
+        animator.rotate(Neck, 0.5F, 0, 0);
+        animator.rotate(Head, -0.5F, 0, 0);
+        animator.rotate(Jaw, 0.2F, 0, 0);
+        animator.move(Neck, 0, -2.3F, 0);
+        animator.rotate(Tail_1, 0.2F, 0, 0);
+        animator.rotate(Tail_2, 0.2F, 0, 0);
+        animator.rotate(Tail_3, 0.2F, 0, 0);
+        animator.rotate(Tail_4, 0.2F, 0, 0);
+        animator.rotate(Tail_5, 0.2F, 0, 0);
+        animator.rotate(Tail_6, 0.2F, 0, 0);
+        animator.endPhase();
+        animator.setStationaryPhase(20);
+        animator.resetPhase(10);
+
     }
 }

@@ -26,6 +26,6 @@ public class AITyrannosaurusRoar extends AIAnimation
 
     public int getDuration()
     {
-        return 80;
+        return 75;
     }
 }
