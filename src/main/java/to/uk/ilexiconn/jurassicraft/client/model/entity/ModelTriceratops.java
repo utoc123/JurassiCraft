@@ -296,12 +296,43 @@ public class ModelTriceratops extends MowzieModelBase
 
         addChildTo(Middle_Horn, Mouth);
         addChildTo(Mouth, Head);
+        addChildTo(Shield_thingy1, Head);
+        addChildTo(Shield_thingy2, Head);
+        addChildTo(Shield_thingy3, Head);
+        addChildTo(Shield_thingy4, Head);
+        addChildTo(Shield_thingy5, Head);
+        addChildTo(Shield_thingy6, Head);
+        addChildTo(Shield_thingy7, Head);
+        addChildTo(Shield_thingy8, Head);
+        addChildTo(Shield_thingy9, Head);
+        addChildTo(Shield_thingy9, Head);
+        addChildTo(Shield_thingy10, Head);
+        addChildTo(Shield_thingy11, Head);
+        addChildTo(Shield_thingy12, Head);
+        addChildTo(Shield_thingy13, Head);
+        addChildTo(Left_Horn, Head);
+        addChildTo(Right_Horn, Head);
 
         addChildTo(Left_Front_Foot, FrontLeg3);
         addChildTo(Right_Front_Foot, FrontLeg4);
 
         //Corrections
         Middle_Horn.setRotationPoint(0, 0, 0);
+        Shield_thingy1.setRotationPoint(0, 0, 0);
+        Shield_thingy2.setRotationPoint(0, 0, 0);
+        Shield_thingy3.setRotationPoint(0, 0, 0);
+        Shield_thingy4.setRotationPoint(0, 0, 0);
+        Shield_thingy5.setRotationPoint(0, 0, 0);
+        Shield_thingy6.setRotationPoint(0, 0, 0);
+        Shield_thingy7.setRotationPoint(0, 0, 0);
+        Shield_thingy8.setRotationPoint(0, 0, 0);
+        Shield_thingy9.setRotationPoint(0, 0, 0);
+        Shield_thingy10.setRotationPoint(0, 0, 0);
+        Shield_thingy11.setRotationPoint(0, 0, 0);
+        Shield_thingy12.setRotationPoint(0, 0, 0);
+        Shield_thingy13.setRotationPoint(0, 0, 0);
+        Left_Horn.setRotationPoint(0, 0, 0);
+        Right_Horn.setRotationPoint(0, 0, 0);
 
         BackLeg1.setInitValuesToCurrentPose();
         BackLeg2.setInitValuesToCurrentPose();
@@ -365,15 +396,15 @@ public class ModelTriceratops extends MowzieModelBase
         Neck.render(f5);
         Head.render(f5);
 //        Mouth.render(f5);
-        Shield_thingy1.render(f5);
+/*        Shield_thingy1.render(f5);
         Shield_thingy2.render(f5);
-        Shield_thingy3.render(f5);
+        Shield_thingy3.render(f5);*/
 //        Middle_Horn.render(f5);
-        Left_Horn.render(f5);
+//        Left_Horn.render(f5);
         Right_Back_Foot.render(f5);
         Left_Back_Foot.render(f5);
         Torso_2.render(f5);
-        Right_Horn.render(f5);
+/*        Right_Horn.render(f5);
         Shield_thingy4.render(f5);
         Shield_thingy5.render(f5);
         Shield_thingy6.render(f5);
@@ -383,7 +414,7 @@ public class ModelTriceratops extends MowzieModelBase
         Shield_thingy10.render(f5);
         Shield_thingy11.render(f5);
         Shield_thingy12.render(f5);
-        Shield_thingy13.render(f5);
+        Shield_thingy13.render(f5);*/
         Chest.render(f5);
 //        Left_Front_Foot.render(f5);
 //        Right_Front_Foot.render(f5);
@@ -444,19 +475,6 @@ public class ModelTriceratops extends MowzieModelBase
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         resetPose();
         faceTarget(Head, 1, f3, f4);
-        faceTarget(Shield_thingy1, 1, f3, f4);
-        faceTarget(Shield_thingy2, 1, f3, f4);
-        faceTarget(Shield_thingy3, 1, f3, f4);
-        faceTarget(Shield_thingy4, 1, f3, f4);
-        faceTarget(Shield_thingy5, 1, f3, f4);
-        faceTarget(Shield_thingy6, 1, f3, f4);
-        faceTarget(Shield_thingy7, 1, f3, f4);
-        faceTarget(Shield_thingy8, 1, f3, f4);
-        faceTarget(Shield_thingy9, 1, f3, f4);
-        faceTarget(Shield_thingy10, 1, f3, f4);
-        faceTarget(Shield_thingy11, 1, f3, f4);
-        faceTarget(Shield_thingy12, 1, f3, f4);
-        faceTarget(Shield_thingy13, 1, f3, f4);
         faceTarget(Left_Horn, 1, f3, f4);
         faceTarget(Right_Horn, 1, f3, f4);
         walk(BackLeg1, 0.5F, 0.3F, false, 0F, 0, f, f1);

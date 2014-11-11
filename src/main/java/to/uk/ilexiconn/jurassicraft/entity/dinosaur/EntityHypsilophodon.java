@@ -13,6 +13,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIAvoidEntityIfNotTamed;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFoodCoward;
+import to.uk.ilexiconn.jurassicraft.client.animation.AIHypsilophodonScratchHead;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandCoward;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -25,6 +26,7 @@ public class EntityHypsilophodon extends EntityJurassiCraftLandCoward implements
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
+    	this.tasks.addTask(2, new AIHypsilophodonScratchHead(this));
         this.tasks.addTask(3, new JurassiCraftEntityAIAvoidEntityIfNotTamed(this, EntityPlayer.class, 10.0F, 0.9D * this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
         this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityHerrerasaur.class, 16.0F, 1.0D * this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIFollowFoodCoward(this, 1.1D * this.getCreatureSpeed()));

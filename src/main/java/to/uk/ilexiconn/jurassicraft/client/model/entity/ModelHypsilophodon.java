@@ -8,6 +8,8 @@ package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import thehippomaster.AnimationAPI.IAnimatedEntity;
+import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityHypsilophodon;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
@@ -15,6 +17,8 @@ import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 public class ModelHypsilophodon extends MowzieModelBase
 {
     //fields
+	private Animator animator;
+	
     MowzieModelRenderer body1;
     MowzieModelRenderer neck;
     MowzieModelRenderer head;
@@ -42,6 +46,8 @@ public class ModelHypsilophodon extends MowzieModelBase
         textureWidth = 128;
         textureHeight = 64;
 
+		animator = new Animator(this);
+        
         body1 = new MowzieModelRenderer(this, 0, 32);
         body1.addBox(-2.5F, -2.5F, -5F, 5, 5, 5);
         body1.setRotationPoint(0F, 13.7F, -1F);
@@ -226,7 +232,7 @@ public class ModelHypsilophodon extends MowzieModelBase
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 //   body1.render(f5);
 //    neck.render(f5);
 //    head.render(f5);
@@ -280,7 +286,7 @@ public class ModelHypsilophodon extends MowzieModelBase
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
-
+ 
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
@@ -329,6 +335,80 @@ public class ModelHypsilophodon extends MowzieModelBase
         walk(armleft, 0.2F, 0.1F, false, 0F, 0F, hypster.frame, 1F);
 
         chainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
-
+    }
+    
+    public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    	animator.update(entity);
+    	setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+    	EntityHypsilophodon hysilophodon = (EntityHypsilophodon) entity;
+    	
+        animator.setAnim(1);
+        animator.startPhase(5);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(2);
+        animator.rotate(neck, 0.9F, -0.35F, 0);
+        animator.rotate(head, -0.8F, -0.15F, 0.7F);
+        animator.rotate(shoulderleft, -0.5F, 0, 0);
+        animator.rotate(armleft, -0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(3);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(2);
+        animator.rotate(neck, 0.9F, -0.35F, 0);
+        animator.rotate(head, -0.8F, -0.15F, 0.7F);
+        animator.rotate(shoulderleft, -0.5F, 0, 0);
+        animator.rotate(armleft, -0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(3);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(2);
+        animator.rotate(neck, 0.9F, -0.35F, 0);
+        animator.rotate(head, -0.8F, -0.15F, 0.7F);
+        animator.rotate(shoulderleft, -0.5F, 0, 0);
+        animator.rotate(armleft, -0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(3);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(2);
+        animator.rotate(neck, 0.9F, -0.35F, 0);
+        animator.rotate(head, -0.8F, -0.15F, 0.7F);
+        animator.rotate(shoulderleft, -0.5F, 0, 0);
+        animator.rotate(armleft, -0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(3);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(2);
+        animator.rotate(neck, 0.9F, -0.35F, 0);
+        animator.rotate(head, -0.8F, -0.15F, 0.7F);
+        animator.rotate(shoulderleft, -0.5F, 0, 0);
+        animator.rotate(armleft, -0.5F, 0, 0);
+        animator.endPhase();
+        animator.startPhase(3);
+        animator.rotate(neck, 0.9F, -0.4F, 0);
+        animator.rotate(head, -0.8F, -0.25F, 0.7F);
+        animator.rotate(shoulderleft, -2.6F, 0, 0);
+        animator.rotate(armleft, 0.5F, 0, 0);
+        animator.endPhase();
+        animator.resetPhase(5);
     }
 }
