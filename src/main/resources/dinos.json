@@ -1094,7 +1094,7 @@
     },
     {
         "creatureID":27,
-        "creatureType": 0,
+        "creatureType": 2,
         "creatureName":"Ammonite",
         "minHealth":22,
         "maxHealth":100,

@@ -170,6 +170,22 @@ public class Util
         }
     }
 
+    public void addCephalopodaEntity(Dinosaur cephalopoda)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopoda.Entity" + cephalopoda.creatureName);
+            dinos.put(cephalopoda, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, cephalopoda.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, cephalopoda.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public void addSyringe(final String mammalName)
     {
     	ItemMammalSyringe syringe = new ItemMammalSyringe(mammalName);
@@ -201,6 +217,21 @@ public class Util
         {
             RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + mammal.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(mammal);
             Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammal.Entity" + mammal.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addCephalopodaEntityRenderer(Dinosaur cephalopoda)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + cephalopoda.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(cephalopoda);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopoda.Entity" + cephalopoda.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)

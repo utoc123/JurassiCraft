@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.entity.dinosaur;
+package to.uk.ilexiconn.jurassicraft.entity.cephalopoda;
 
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;

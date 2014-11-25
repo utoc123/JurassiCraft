@@ -7,7 +7,7 @@ import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelAmmonite;
 import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityAmmonite;
+import to.uk.ilexiconn.jurassicraft.entity.cephalopoda.EntityAmmonite;
 
 @SideOnly(Side.CLIENT)
 public class RenderAmmonite extends RenderDinosaur

@@ -32,6 +32,9 @@ public class JsonEntityParser extends Util
             		addDNA(creature.creatureName);
                     addMammalEntity(creature);
             		break;
+                case 2:
+                    addCephalopodaEntity(creature);
+                    break;
             }
         }
     }
@@ -49,6 +52,9 @@ public class JsonEntityParser extends Util
             	case 1:
             		addMammalEntityRenderer(creature);
             		break;
+                case 2:
+                    addCephalopodaEntityRenderer(creature);
+                    break;
             }
         }
     }
