@@ -77,17 +77,17 @@ public class TileEntityFossil extends TileEntity {
 		this.yearOfExistence = year;
 	}
 
-	/** Sets the weight of the dinosaur fossil. */
+	/** Sets the weight of the dinosaurs fossil. */
 	public void setWeight(double dinoWeight) {
 		this.weight = dinoWeight;
 	}
 
-	/** Sets the length of the dinosaur fossil. */
+	/** Sets the length of the dinosaurs fossil. */
 	public void setLength(double dinoLength) {
 		this.length = dinoLength;
 	}
 
-	/** Sets the height of the dinosaur fossil. */
+	/** Sets the height of the dinosaurs fossil. */
 	public void setHeight(double dinoHeight) {
 		this.height = dinoHeight;
 	}
@@ -128,17 +128,17 @@ public class TileEntityFossil extends TileEntity {
 		return this.yearOfExistence;
 	}
 
-	/** Returns the weight of the dinosaur fossil. */
+	/** Returns the weight of the dinosaurs fossil. */
 	public double getWeight() {
 		return this.weight;
 	}
 
-	/** Returns the height of the dinosaur fossil. */
+	/** Returns the height of the dinosaurs fossil. */
 	public double getHeight() {
 		return this.height;
 	}
 
-	/** Returns the length of the dinosaur fossil. */
+	/** Returns the length of the dinosaurs fossil. */
 	public double getLength() {
 		return this.length;
 	}

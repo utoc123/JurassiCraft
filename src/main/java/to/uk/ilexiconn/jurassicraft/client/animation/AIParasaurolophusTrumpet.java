@@ -1,10 +1,8 @@
 package to.uk.ilexiconn.jurassicraft.client.animation;
 
-import net.minecraft.entity.EntityLiving;
 import thehippomaster.AnimationAPI.AIAnimation;
-import thehippomaster.AnimationAPI.AnimationAPI;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityParasaurolophus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityParasaurolophus;
 
 public class AIParasaurolophusTrumpet extends AIAnimation {
 

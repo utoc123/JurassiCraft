@@ -20,10 +20,10 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantCow;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantHorse;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantPig;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantSheep;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantCow;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantHorse;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantPig;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantSheep;
 
 public class ItemMammalSyringe extends Item
 {

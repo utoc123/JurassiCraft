@@ -162,12 +162,12 @@ public enum FossilInformation {
 		return fossilID;
 	}
 
-	/** Returns the diet of the dinosaur */
+	/** Returns the diet of the dinosaurs */
 	public String getDiet() {
 		return diet;
 	}
 
-	/** Returns the family of the dinosaur */
+	/** Returns the family of the dinosaurs */
 	public String getFamily() {
 		return family;
 	}
@@ -187,17 +187,17 @@ public enum FossilInformation {
 		return endOfExistence;
 	}
 
-	/** Returns the length of the dinosaur. */
+	/** Returns the length of the dinosaurs. */
 	public double getLength() {
 		return length;
 	}
 
-	/** Returns the length of the dinosaur. */
+	/** Returns the length of the dinosaurs. */
 	public double getHeight() {
 		return height;
 	}
 
-	/** Returns the length of the dinosaur. */
+	/** Returns the length of the dinosaurs. */
 	public double getWeight() {
 		return weight;
 	}
@@ -212,7 +212,7 @@ public enum FossilInformation {
 		return boundZ;
 	}
 
-	/** Returns the type of creature. Dinosaur, mammal, reptile. */
+	/** Returns the type of creature. Dinosaur, mammals, reptile. */
 	public String getTypeOfCreature() {
 		return typeOfCreature;
 	}

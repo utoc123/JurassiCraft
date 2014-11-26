@@ -16,10 +16,10 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantCow;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantHorse;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantPig;
-import to.uk.ilexiconn.jurassicraft.entity.mammal.EntityPregnantSheep;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantCow;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantHorse;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantPig;
+import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantSheep;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

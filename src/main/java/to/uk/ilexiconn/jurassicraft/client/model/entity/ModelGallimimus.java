@@ -9,7 +9,7 @@ package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityGallimimus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityGallimimus;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 

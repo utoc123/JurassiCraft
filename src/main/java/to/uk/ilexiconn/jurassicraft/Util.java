@@ -7,8 +7,7 @@ import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.item.Item;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
-import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
+import to.uk.ilexiconn.jurassicraft.entity.*;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.item.ItemMammalSyringe;
@@ -37,6 +36,11 @@ public class Util
     private static ArrayList<ItemDinoEgg> eggs = new ArrayList<ItemDinoEgg>();
     private static ArrayList<ItemMammalSyringe> syringes = new ArrayList<ItemMammalSyringe>();
     private static Map<Dinosaur, Class<?>> dinos = new HashMap<Dinosaur, Class<?>>();
+    private static Map<Mammal, Class<?>> mammals = new HashMap<Mammal, Class<?>>();
+    private static Map<Cephalopod, Class<?>> cephalopods = new HashMap<Cephalopod, Class<?>>();
+    private static Map<Arthropod, Class<?>> arthropods = new HashMap<Arthropod, Class<?>>();
+    private static Map<Fish, Class<?>> Fish = new HashMap<Fish, Class<?>>();
+    private static Map<Reptile, Class<?>> reptiles = new HashMap<Reptile, Class<?>>();
     private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
     public static int entityId;
@@ -52,6 +56,71 @@ public class Util
             if (dino.getKey().creatureName.equals(dinoName))
             {
                 return dino.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    public static Class<?> getMammalClass(String mammalName)
+    {
+        for (Map.Entry<Mammal, Class<?>> mammal : mammals.entrySet())
+        {
+            if (mammal.getKey().creatureName.equals(mammalName))
+            {
+                return mammal.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    public static Class<?> getCephalopodClass(String cephalopodName)
+    {
+        for (Map.Entry<Cephalopod, Class<?>> cephalopod : cephalopods.entrySet())
+        {
+            if (cephalopod.getKey().creatureName.equals(cephalopodName))
+            {
+                return cephalopod.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    public static Class<?> getArthropodClass(String arthropodName)
+    {
+        for (Map.Entry<Arthropod, Class<?>> arthropod : arthropods.entrySet())
+        {
+            if (arthropod.getKey().creatureName.equals(arthropodName))
+            {
+                return arthropod.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    public static Class<?> getFishClass(String fishName)
+    {
+        for (Map.Entry<Fish, Class<?>> fish : Fish.entrySet())
+        {
+            if (fish.getKey().creatureName.equals(fishName))
+            {
+                return fish.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    public static Class<?> getReptileClass(String reptileName)
+    {
+        for (Map.Entry<Reptile, Class<?>> reptile : reptiles.entrySet())
+        {
+            if (reptile.getKey().creatureName.equals(reptileName))
+            {
+                return reptile.getValue();
             }
         }
 
@@ -93,6 +162,27 @@ public class Util
         return dinos;
     }
 
+    public static Map<Mammal, Class<?>> getMammals()
+    {
+        return mammals;
+    }
+
+    public static Map<Cephalopod, Class<?>> getCephalopod() {
+        return cephalopods;
+    }
+
+    public static Map<Arthropod, Class<?>> getArthropod() {
+        return arthropods;
+    }
+
+    public static Map<Fish, Class<?>> getFish() {
+        return Fish;
+    }
+
+    public static Map<Reptile, Class<?>> getReptile() {
+        return reptiles;
+    }
+
     public static ArrayList<ItemMeat> getDinoMeats()
     {
         return meat;
@@ -131,7 +221,7 @@ public class Util
     {
         try
         {
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaur.Entity" + dino.creatureName);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaurs.Entity" + dino.creatureName);
             dinos.put(dino, entity);
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
@@ -153,12 +243,12 @@ public class Util
         addItem(-1, egg);
     }
 
-    public void addMammalEntity(Dinosaur mammal)
+    public void addMammalEntity(Mammal mammal)
     {
         try
         {
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammal.Entity" + mammal.creatureName);
-            dinos.put(mammal, entity);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammals.Entity" + mammal.creatureName);
+            mammals.put(mammal, entity);
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, mammal.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, mammal.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
@@ -170,15 +260,63 @@ public class Util
         }
     }
 
-    public void addCephalopodaEntity(Dinosaur cephalopoda)
+    public void addCephalopodaEntity(Cephalopod cephalopoda)
     {
         try
         {
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopoda.Entity" + cephalopoda.creatureName);
-            dinos.put(cephalopoda, entity);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopods.Entity" + cephalopoda.creatureName);
+            cephalopods.put(cephalopoda, entity);
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, cephalopoda.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, cephalopoda.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void addArthropodEntity(Arthropod arthropod)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.arthropods.Entity" + arthropod.creatureName);
+            arthropods.put(arthropod, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, arthropod.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, arthropod.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void addFishEntity(Fish fish)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.fish.Entity" + fish.creatureName);
+            Fish.put(fish, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, fish.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, fish.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void addReptileEntity(Reptile reptile)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.reptiles.Entity" + reptile.creatureName);
+            reptiles.put(reptile, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, reptile.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, reptile.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
         }
         catch (Exception e)
         {
@@ -200,8 +338,8 @@ public class Util
     {
         try
         {
-            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaur.Entity" + dino.creatureName);
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.dinosaurs.Render" + dino.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(dino);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.dinosaurs.Entity" + dino.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
@@ -211,12 +349,12 @@ public class Util
     }
 
     @SideOnly(Side.CLIENT)
-    public void addMammalEntityRenderer(Dinosaur mammal)
+    public void addMammalEntityRenderer(Mammal mammal)
     {
         try
         {
-            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + mammal.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(mammal);
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammal.Entity" + mammal.creatureName);
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.mammals.Render" + mammal.creatureName).getDeclaredConstructor(Mammal.class).newInstance(mammal);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.mammals.Entity" + mammal.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
@@ -226,12 +364,57 @@ public class Util
     }
 
     @SideOnly(Side.CLIENT)
-    public void addCephalopodaEntityRenderer(Dinosaur cephalopoda)
+    public void addCephalopodaEntityRenderer(Cephalopod cephalopoda)
     {
         try
         {
-            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.Render" + cephalopoda.creatureName).getDeclaredConstructor(Dinosaur.class).newInstance(cephalopoda);
-            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopoda.Entity" + cephalopoda.creatureName);
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.cephalopods.Render" + cephalopoda.creatureName).getDeclaredConstructor(Cephalopod.class).newInstance(cephalopoda);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.cephalopods.Entity" + cephalopoda.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addArthropodEntityRenderer(Arthropod arthropod)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.arthropods.Render" + arthropod.creatureName).getDeclaredConstructor(Arthropod.class).newInstance(arthropod);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.arthropods.Entity" + arthropod.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addFishEntityRenderer(Fish fish)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.fish.Render" + fish.creatureName).getDeclaredConstructor(Fish.class).newInstance(fish);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.fish.Entity" + fish.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addReptileEntityRenderer(Reptile reptile)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.reptiles.Render" + reptile.creatureName).getDeclaredConstructor(Reptile.class).newInstance(reptile);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.reptiles.Entity" + reptile.creatureName);
             proxy.renderEntity(entity, renderer);
         }
         catch (Exception e)
@@ -253,6 +436,71 @@ public class Util
         return null;
     }
 
+    public static Mammal getMammalByID(int id)
+    {
+        for (Entry<Mammal, Class<?>> mammal : mammals.entrySet())
+        {
+            if (mammal.getKey().creatureID == id)
+            {
+                return mammal.getKey();
+            }
+        }
+
+        return null;
+    }
+
+    public static Cephalopod getCephalopodById(int id)
+    {
+        for (Entry<Cephalopod, Class<?>> cephalopod : cephalopods.entrySet())
+        {
+            if (cephalopod.getKey().creatureID == id)
+            {
+                return cephalopod.getKey();
+            }
+        }
+
+        return null;
+    }
+
+    public static Arthropod getArthropodById(int id)
+    {
+        for (Entry<Arthropod, Class<?>> arthorpod : arthropods.entrySet())
+        {
+            if (arthorpod.getKey().creatureID == id)
+            {
+                return arthorpod.getKey();
+            }
+        }
+
+        return null;
+    }
+
+    public static Fish getFishById(int id)
+    {
+        for (Entry<Fish, Class<?>> fish : Fish.entrySet())
+        {
+            if (fish.getKey().creatureID == id)
+            {
+                return fish.getKey();
+            }
+        }
+
+        return null;
+    }
+
+    public static Reptile getReptileById(int id)
+    {
+        for (Entry<Reptile, Class<?>> reptile : reptiles.entrySet())
+        {
+            if (reptile.getKey().creatureID == id)
+            {
+                return reptile.getKey();
+            }
+        }
+
+        return null;
+    }
+
     public static int getDinoIDByName(String name)
     {
         for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet())
@@ -262,6 +510,71 @@ public class Util
                 return dino.getKey().creatureID;
             }
         }
+        return -1;
+    }
+
+    public static int getMammalIDByName(String name)
+    {
+        for (Entry<Mammal, Class<?>> mammal : mammals.entrySet())
+        {
+            if (mammal.getKey().creatureName.equals(name))
+            {
+                return mammal.getKey().creatureID;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getCephalopodIdByName(String name)
+    {
+        for (Entry<Cephalopod, Class<?>> cephalopod : cephalopods.entrySet())
+        {
+            if (cephalopod.getKey().creatureName.equals(name))
+            {
+                return cephalopod.getKey().creatureID;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getArthropodIdByName(String name)
+    {
+        for (Entry<Arthropod, Class<?>> arthropod : arthropods.entrySet())
+        {
+            if (arthropod.getKey().creatureName.equals(name))
+            {
+                return arthropod.getKey().creatureID;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getFishIdByName(String name)
+    {
+        for (Entry<Fish, Class<?>> fish : Fish.entrySet())
+        {
+            if (fish.getKey().creatureName.equals(name))
+            {
+                return fish.getKey().creatureID;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getReptileIdByName(String name)
+    {
+        for (Entry<Reptile, Class<?>> reptile : reptiles.entrySet())
+        {
+            if (reptile.getKey().creatureName.equals(name))
+            {
+                return reptile.getKey().creatureID;
+            }
+        }
+
         return -1;
     }
 

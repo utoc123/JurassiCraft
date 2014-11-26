@@ -11,7 +11,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityParasaurolophus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityParasaurolophus;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 

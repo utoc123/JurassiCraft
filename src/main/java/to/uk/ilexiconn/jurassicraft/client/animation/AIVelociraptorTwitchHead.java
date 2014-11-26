@@ -3,7 +3,7 @@ package to.uk.ilexiconn.jurassicraft.client.animation;
 import net.minecraft.entity.EntityLiving;
 import thehippomaster.AnimationAPI.AIAnimation;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityVelociraptor;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityVelociraptor;
 
 public class AIVelociraptorTwitchHead extends AIAnimation
 {

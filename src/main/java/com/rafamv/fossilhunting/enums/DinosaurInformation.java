@@ -14,37 +14,37 @@ public enum DinosaurInformation {
 		this.height = dinoHeight;
 	}
 
-	/** Returns the species of the dinosaur */
+	/** Returns the species of the dinosaurs */
 	public String getSpecies() {
 		return species;
 	}
 	
-	/** Returns the id of the dinosaur */
+	/** Returns the id of the dinosaurs */
 	public double getDinosaurID() {
 		return dinosaurID;
 	}
 
-	/** Returns the health of the dinosaur */
+	/** Returns the health of the dinosaurs */
 	public double getHealth() {
 		return health;
 	}
 
-	/** Returns the speed of the dinosaur */
+	/** Returns the speed of the dinosaurs */
 	public double getSpeed() {
 		return speed;
 	}
 
-	/** Returns the weight of the dinosaur */
+	/** Returns the weight of the dinosaurs */
 	public double getWeight() {
 		return weight;
 	}
 
-	/** Returns the length of the dinosaur */
+	/** Returns the length of the dinosaurs */
 	public float getLength() {
 		return length;
 	}
 
-	/** Returns the height of the dinosaur */
+	/** Returns the height of the dinosaurs */
 	public float getHeight() {
 		return height;
 	}

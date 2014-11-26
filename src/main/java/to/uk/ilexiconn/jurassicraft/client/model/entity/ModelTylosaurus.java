@@ -6,7 +6,7 @@
 package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityTylosaurus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityTylosaurus;
 import net.minecraft.entity.Entity;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;

@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityDilophosaurus;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityDilophosaurus;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
