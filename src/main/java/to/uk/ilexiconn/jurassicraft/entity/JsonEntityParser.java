@@ -22,6 +22,7 @@ public class JsonEntityParser extends Util
     private Collection<Arthropod> arthropods;
     private Collection<Fish> Fish;
     private Collection<Reptile> reptiles;
+    private Collection<Bird> birds;
 
     public void parseServerEntities()
     {
@@ -57,6 +58,12 @@ public class JsonEntityParser extends Util
         {
             addReptileEntity(creature);
         }
+
+        loadConfig(DinoConfig.loadBirdConfig());
+        for (Bird creature : birds)
+        {
+            addBirdEntity(creature);
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -90,6 +97,12 @@ public class JsonEntityParser extends Util
         for (Reptile creature : reptiles)
         {
             addReptileEntityRenderer(creature);
+        }
+
+        loadConfig(DinoConfig.loadBirdConfig());
+        for (Bird creature : birds)
+        {
+            addBirdEntityRenderer(creature);
         }
     }
 
@@ -144,6 +157,14 @@ public class JsonEntityParser extends Util
                 }.getType();
 
                 reptiles = new Gson().fromJson(new FileReader(config), collectionType);
+            }
+            if (config.toString().contains("bird"))
+            {
+                Type collectionType = new TypeToken<Collection<Bird>>()
+                {
+                }.getType();
+
+                birds = new Gson().fromJson(new FileReader(config), collectionType);
             }
         }
         catch (Exception e)

@@ -90,4 +90,21 @@ public class DinoConfig
             return null;
         }
     }
+
+    public static File loadBirdConfig()
+    {
+        try
+        {
+            File tempFile = File.createTempFile("birds", ".json");
+            tempFile.deleteOnExit();
+            InputStream in = DinoConfig.class.getResourceAsStream("/birds.json");
+            FileOutputStream out = new FileOutputStream(tempFile);
+            org.apache.commons.io.IOUtils.copy(in, out);
+            return tempFile;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
 }

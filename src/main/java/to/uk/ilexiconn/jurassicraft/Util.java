@@ -41,6 +41,7 @@ public class Util
     private static Map<Arthropod, Class<?>> arthropods = new HashMap<Arthropod, Class<?>>();
     private static Map<Fish, Class<?>> Fish = new HashMap<Fish, Class<?>>();
     private static Map<Reptile, Class<?>> reptiles = new HashMap<Reptile, Class<?>>();
+    private static Map<Bird, Class<?>> birds = new HashMap<Bird, Class<?>>();
     private static ArrayList<ItemMeat> meat = new ArrayList<ItemMeat>();
 
     public static int entityId;
@@ -127,6 +128,19 @@ public class Util
         return null;
     }
 
+    public static Class<?> getBirdClass(String birdName)
+    {
+        for (Map.Entry<Bird, Class<?>> bird : birds.entrySet())
+        {
+            if (bird.getKey().creatureName.equals(birdName))
+            {
+                return bird.getValue();
+            }
+        }
+
+        return null;
+    }
+
     public static Item getItem(int id)
     {
         return items[id];
@@ -181,6 +195,10 @@ public class Util
 
     public static Map<Reptile, Class<?>> getReptile() {
         return reptiles;
+    }
+
+    public static Map<Bird, Class<?>> getBird() {
+        return birds;
     }
 
     public static ArrayList<ItemMeat> getDinoMeats()
@@ -324,6 +342,22 @@ public class Util
         }
     }
 
+    public void addBirdEntity(Bird bird)
+    {
+        try
+        {
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.birds.Entity" + bird.creatureName);
+            birds.put(bird, entity);
+            entityId = EntityRegistry.findGlobalUniqueEntityId();
+            EntityRegistry.registerGlobalEntityID(entity, bird.creatureName, entityId, 0, 0);
+            EntityRegistry.registerModEntity(entity, bird.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public void addSyringe(final String mammalName)
     {
     	ItemMammalSyringe syringe = new ItemMammalSyringe(mammalName);
@@ -423,6 +457,21 @@ public class Util
         }
     }
 
+    @SideOnly(Side.CLIENT)
+    public void addBirdEntityRenderer(Bird bird)
+    {
+        try
+        {
+            RenderLiving renderer = (RenderLiving) Class.forName("to.uk.ilexiconn.jurassicraft.entity.render.birds.Render" + bird.creatureName).getDeclaredConstructor(Bird.class).newInstance(birds);
+            Class entity = Class.forName("to.uk.ilexiconn.jurassicraft.entity.birds.Entity" + bird.creatureName);
+            proxy.renderEntity(entity, renderer);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
     public static Dinosaur getDinoByID(int id)
     {
         for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet())
@@ -501,6 +550,19 @@ public class Util
         return null;
     }
 
+    public static Bird getBirdById(int id)
+    {
+        for (Entry<Bird, Class<?>> bird : birds.entrySet())
+        {
+            if (bird.getKey().creatureID == id)
+            {
+                return bird.getKey();
+            }
+        }
+
+        return null;
+    }
+
     public static int getDinoIDByName(String name)
     {
         for (Entry<Dinosaur, Class<?>> dino : dinos.entrySet())
@@ -572,6 +634,19 @@ public class Util
             if (reptile.getKey().creatureName.equals(name))
             {
                 return reptile.getKey().creatureID;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getBirdIdByName(String name)
+    {
+        for (Entry<Bird, Class<?>> bird : birds.entrySet())
+        {
+            if (bird.getKey().creatureName.equals(name))
+            {
+                return bird.getKey().creatureID;
             }
         }
 
