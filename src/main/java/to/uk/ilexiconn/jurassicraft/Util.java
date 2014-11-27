@@ -1,10 +1,10 @@
 package to.uk.ilexiconn.jurassicraft;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.item.Item;
 import to.uk.ilexiconn.jurassicraft.entity.*;
@@ -13,11 +13,11 @@ import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.item.ItemMammalSyringe;
 import to.uk.ilexiconn.jurassicraft.item.ItemMeat;
 import to.uk.ilexiconn.jurassicraft.proxy.ServerProxy;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * @deprecated Start using LLib's Content Handler System instead
@@ -665,34 +665,22 @@ public class Util
         return !itemList.isEmpty() && itemList.contains(heldItem.getUnlocalizedName());
     }
 
-    public static void getCreatureFromId(int id) {
+    public static <T> T getCreatureFromId(int id)
+    {
         if (id <= dinos.size())
-        {
-            getDinoByID(id);
-        }
+            return (T) getDinoByID(id);
         else if (id <= dinos.size() + mammals.size())
-        {
-            getMammalByID(dinos.size() - id);
-        }
+            return (T) getMammalByID(dinos.size() - id);
         else if (id <= dinos.size() + mammals.size() + arthropods.size())
-        {
-            getArthropodById(dinos.size() + mammals.size() - id);
-        }
+            return (T) getArthropodById(dinos.size() + mammals.size() - id);
         else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size())
-        {
-            getCephalopodById(dinos.size() + mammals.size() + arthropods.size() - id);
-        }
+            return (T) getCephalopodById(dinos.size() + mammals.size() + arthropods.size() - id);
         else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size())
-        {
-            getFishById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() - id);
-        }
+            return (T) getFishById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() - id);
         else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size())
-        {
-            getReptileById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() - id);
-        }
+            return (T) getReptileById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() - id);
         else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size() + birds.size())
-        {
-            getBirdById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size() - id);
-        }
+            return (T) getBirdById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size() - id);
+        else return null;
     }
 }
