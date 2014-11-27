@@ -12,6 +12,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
+import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 
@@ -443,7 +444,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
                     if (this.slots[2].getTagCompound().getInteger("Quality") >= 50)
                     {
                         this.creatureID = (byte) Util.getDNAArray().lastIndexOf(this.slots[2].getItem());
-                        if (this.getProximateValue() < Util.getDinoByID(this.getEmbryoID()).minProximate || this.getMineralValue() < Util.getDinoByID(this.getEmbryoID()).minMinerals || this.getVitaminValue() < Util.getDinoByID(this.getEmbryoID()).minVitamins || this.getLipidValue() < Util.getDinoByID(this.getEmbryoID()).minLipids)
+                        if (this.getProximateValue() < Util.getCreatureFromId(this.getEmbryoID()).minProximate || this.getMineralValue() < Util.getDinoByID(this.getEmbryoID()).minMinerals || this.getVitaminValue() < Util.getDinoByID(this.getEmbryoID()).minVitamins || this.getLipidValue() < Util.getDinoByID(this.getEmbryoID()).minLipids)
                         {
                             return false;
                         }
