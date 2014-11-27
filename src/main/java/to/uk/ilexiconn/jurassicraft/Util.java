@@ -664,4 +664,35 @@ public class Util
     	ArrayList itemList = getDinoByID(id).ridingItemList;
         return !itemList.isEmpty() && itemList.contains(heldItem.getUnlocalizedName());
     }
+
+    public static void getCreatureFromId(int id) {
+        if (id <= dinos.size())
+        {
+            getDinoByID(id);
+        }
+        else if (id <= dinos.size() + mammals.size())
+        {
+            getMammalByID(dinos.size() - id);
+        }
+        else if (id <= dinos.size() + mammals.size() + arthropods.size())
+        {
+            getArthropodById(dinos.size() + mammals.size() - id);
+        }
+        else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size())
+        {
+            getCephalopodById(dinos.size() + mammals.size() + arthropods.size() - id);
+        }
+        else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size())
+        {
+            getFishById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() - id);
+        }
+        else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size())
+        {
+            getReptileById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() - id);
+        }
+        else if (id <= dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size() + birds.size())
+        {
+            getBirdById(dinos.size() + mammals.size() + arthropods.size() + cephalopods.size() + Fish.size() + reptiles.size() - id);
+        }
+    }
 }
