@@ -746,19 +746,19 @@ public class Util
 
     public static Entities getCreatureFromId(int id)
     {
-        if (id <= dinos.size())
+        if (id < dinos.size() && dinos.size() != 0)
             return getDinoByID(id);
-        if (id <= dinos.size() + reptiles.size())
+        if (id < dinos.size() + reptiles.size() && reptiles.size() != 0)
             return getReptileById(id);
-        if (id <= dinos.size()  + mammals.size())
+        if (id < dinos.size() + reptiles.size() + mammals.size() && mammals.size() != 0)
             return getMammalByID(id);
-        if (id <= dinos.size() + mammals.size() + birds.size())
+        if (id < dinos.size() + reptiles.size() + mammals.size() + birds.size() && birds.size() != 0)
             return getBirdById(id);
-        if (id <= dinos.size() + mammals.size() + birds.size() + Fish.size())
-            return getBirdById(id);
-        if (id <= dinos.size() + mammals.size() + birds.size() + Fish.size() + cephalopods.size())
+        if (id < dinos.size() + reptiles.size() + mammals.size() + birds.size() + Fish.size() && Fish.size() != 0)
+            return getFishById(id);
+        if (id < dinos.size() + reptiles.size() + mammals.size() + birds.size() + Fish.size() + cephalopods.size() && cephalopods.size() != 0)
             return getCephalopodById(id);
-        if (id <= dinos.size() + mammals.size() + birds.size() + Fish.size() + cephalopods.size() + arthropods.size())
+        if (id < dinos.size() + reptiles.size() + mammals.size() + birds.size() + Fish.size() + cephalopods.size() + arthropods.size() && arthropods.size() != 0)
             return getArthropodById(id);
         else return null;
     }
