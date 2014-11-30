@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftRidable;
 
 public class EntityMeganeura extends EntityJurassiCraftRidable
@@ -17,7 +18,7 @@ public class EntityMeganeura extends EntityJurassiCraftRidable
 
     public EntityMeganeura(World world)
     {
-        super(world, (byte) 12);
+        super(world, (byte) Util.classToId(EntityMeganeura.class));
         this.setCreatureExperiencePoints(20);
     }
 

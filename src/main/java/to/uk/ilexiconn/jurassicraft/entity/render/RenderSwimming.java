@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 
 import org.lwjgl.opengl.GL11;
 
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -14,7 +14,7 @@ public abstract class RenderSwimming extends RenderDinosaur
 {
 	
     /** Inherithed from Animals+ by Click_Me */
-    public RenderSwimming(ModelBase modelbase, Dinosaur dino, float shadow)
+    public RenderSwimming(ModelBase modelbase, Entities dino, float shadow)
     {
         super(modelbase, dino, shadow);
     }

@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMammoth;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityMammoth;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderMammoth extends RenderMammal
 {
-    public RenderMammoth(Mammal mammal)
+    public RenderMammoth(Entities mammal)
     {
         super(new ModelMammoth(), mammal, 1.4F);
     }

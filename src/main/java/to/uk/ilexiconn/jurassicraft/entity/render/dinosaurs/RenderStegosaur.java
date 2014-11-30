@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelStegosaur;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityStegosaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,7 +13,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 @SideOnly(Side.CLIENT)
 public class RenderStegosaur extends RenderDinosaur
 {
-    public RenderStegosaur(Dinosaur dino)
+    public RenderStegosaur(Entities dino)
     {
         super(new ModelStegosaur(), dino, 1.0F);
     }

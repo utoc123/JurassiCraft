@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelAnkylosaur;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityAnkylosaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,7 +13,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 @SideOnly(Side.CLIENT)
 public class RenderAnkylosaur extends RenderDinosaur
 {
-    public RenderAnkylosaur(Dinosaur dino)
+    public RenderAnkylosaur(Entities dino)
     {
         super(new ModelAnkylosaur(), dino, 0.5F);
     }

@@ -20,7 +20,7 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
 
     public EntityTriceratops(World world)
     {
-        super(world, (byte) 4, 1);
+        super(world, (byte) Util.classToId(EntityTriceratops.class), 1);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
@@ -50,24 +50,24 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
     {
         if (this.rand.nextInt(2) == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     @Override

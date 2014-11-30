@@ -12,7 +12,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 
@@ -444,7 +444,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
                     if (this.slots[2].getTagCompound().getInteger("Quality") >= 50)
                     {
                         this.creatureID = (byte) Util.getDNAArray().lastIndexOf(this.slots[2].getItem());
-                        if (this.getProximateValue() < Util.getCreatureFromId(this.getEmbryoID()).minProximate || this.getMineralValue() < Util.getDinoByID(this.getEmbryoID()).minMinerals || this.getVitaminValue() < Util.getDinoByID(this.getEmbryoID()).minVitamins || this.getLipidValue() < Util.getDinoByID(this.getEmbryoID()).minLipids)
+                        if (this.getProximateValue() < Util.getCreatureFromId(this.getEmbryoID()).minProximate || this.getMineralValue() < Util.getCreatureFromId(this.getEmbryoID()).minMinerals || this.getVitaminValue() < Util.getCreatureFromId(this.getEmbryoID()).minVitamins || this.getLipidValue() < Util.getCreatureFromId(this.getEmbryoID()).minLipids)
                         {
                             return false;
                         }
@@ -472,7 +472,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
         {
             NBTTagCompound compound = new NBTTagCompound();
             ItemStack cultivateResult = new ItemStack(((ItemDNA) this.slots[2].getItem()).getCorrespondingEggOrSyringe(), 1, 0);
-            switch (Util.getDinoByID(this.creatureID).creatureType) {
+            switch (Util.getCreatureFromId(this.creatureID).creatureType) {
             	case 0:
                     compound.setInteger("EggQuality", this.slots[2].getTagCompound().getInteger("Quality"));
                     compound.setString("EggDNA", this.slots[2].getTagCompound().getString("DNA"));
@@ -487,10 +487,10 @@ public class TileCultivate extends TileEntity implements ISidedInventory
             this.slots[2] = cultivateResult;
             this.setCultivateTime((short) 0);
             this.setWaterStored((byte) 0);
-            this.proximateValue = (short) (proximateValue - Util.getDinoByID(this.getEmbryoID()).minProximate);
-            this.mineralValue = (short) (mineralValue - Util.getDinoByID(this.getEmbryoID()).minMinerals);
-            this.vitaminValue = (short) (vitaminValue - Util.getDinoByID(this.getEmbryoID()).minVitamins);
-            this.lipidValue = (short) (lipidValue - Util.getDinoByID(this.getEmbryoID()).minLipids);
+            this.proximateValue = (short) (proximateValue - Util.getCreatureFromId(this.getEmbryoID()).minProximate);
+            this.mineralValue = (short) (mineralValue - Util.getCreatureFromId(this.getEmbryoID()).minMinerals);
+            this.vitaminValue = (short) (vitaminValue - Util.getCreatureFromId(this.getEmbryoID()).minVitamins);
+            this.lipidValue = (short) (lipidValue - Util.getCreatureFromId(this.getEmbryoID()).minLipids);
         }
     }
 
@@ -501,7 +501,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
     {
         if (id >= 0)
         {
-            int speed = Util.getDinoByID(this.getEmbryoID()).cultivateSpeed;
+            int speed = Util.getCreatureFromId(this.getEmbryoID()).cultivateSpeed;
             for (Byte i = 0; i <= 10 - 1; i++)
             {
                 if (i > 0)
@@ -575,7 +575,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
                     {
                         if (this.canCultivate())
                         {
-                            this.cultivateSpeed = Util.getDinoByID(this.getEmbryoID()).cultivateSpeed;
+                            this.cultivateSpeed = Util.getCreatureFromId(this.getEmbryoID()).cultivateSpeed;
                             this.recalculateGrowthRate(this.creatureID);
                             this.setCultivateTime((short) 1);
                             this.creatureSize = 0.0F;
@@ -618,10 +618,10 @@ public class TileCultivate extends TileEntity implements ISidedInventory
     {
     	if (this.isHatching()) 
     	{
-            this.setProximateValue((short) (this.getProximateValue() - (int) (progress * Util.getDinoByID(this.getEmbryoID()).minProximate)));
-            this.setMineralValue((short) (this.getMineralValue() - (int) (progress * Util.getDinoByID(this.getEmbryoID()).minMinerals)));
-            this.setVitaminValue((short) (this.getVitaminValue() - (int) (progress * Util.getDinoByID(this.getEmbryoID()).minVitamins)));
-            this.setLipidValue((short) (this.getLipidValue() - (int) (progress * Util.getDinoByID(this.getEmbryoID()).minLipids)));
+            this.setProximateValue((short) (this.getProximateValue() - (int) (progress * Util.getCreatureFromId(this.getEmbryoID()).minProximate)));
+            this.setMineralValue((short) (this.getMineralValue() - (int) (progress * Util.getCreatureFromId(this.getEmbryoID()).minMinerals)));
+            this.setVitaminValue((short) (this.getVitaminValue() - (int) (progress * Util.getCreatureFromId(this.getEmbryoID()).minVitamins)));
+            this.setLipidValue((short) (this.getLipidValue() - (int) (progress * Util.getCreatureFromId(this.getEmbryoID()).minLipids)));
             if (progress >= 0.75F)
             {
                 this.setWaterStored((byte) 0);
@@ -822,7 +822,7 @@ public class TileCultivate extends TileEntity implements ISidedInventory
         rotation = nbt.getInteger("rotation");
         if (creatureID >= 0)
         {
-            this.setCultivateSpeed(Util.getDinoByID(this.getEmbryoID()).cultivateSpeed);
+            this.setCultivateSpeed(Util.getCreatureFromId(this.getEmbryoID()).cultivateSpeed);
             this.recalculateGrowthRate(creatureID);
         }
     }

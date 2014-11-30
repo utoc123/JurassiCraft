@@ -7,15 +7,16 @@ import net.minecraft.entity.EntityLivingBase;
 import org.lwjgl.opengl.GL11;
 
 import to.uk.ilexiconn.jurassicraft.entity.Cephalopod;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 
 public abstract class RenderCephalopod extends RenderLiving
 {
 
-    private Cephalopod cephalopod;
+    private Entities cephalopod;
     private float resizableShadow;
 
-    public RenderCephalopod(ModelBase model, Cephalopod cephalopod, float shadow)
+    public RenderCephalopod(ModelBase model, Entities cephalopod, float shadow)
     {
         super(model, 1.0F);
         this.setCephalopod(cephalopod);
@@ -32,12 +33,12 @@ public abstract class RenderCephalopod extends RenderLiving
         return this.resizableShadow;
     }
 
-    public void setCephalopod(Cephalopod cephalopod)
+    public void setCephalopod(Entities cephalopod)
     {
         this.cephalopod = cephalopod;
     }
 
-    public Cephalopod getCephalopod()
+    public Entities getCephalopod()
     {
         return this.cephalopod;
     }

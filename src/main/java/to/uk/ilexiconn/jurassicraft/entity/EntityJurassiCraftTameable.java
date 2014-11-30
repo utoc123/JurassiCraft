@@ -87,7 +87,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
                             this.playTameEffect(true);
                             this.worldObj.setEntityState(this, (byte) 7);
                             player.addChatMessage(new ChatComponentText("You tamed this creature!"));
-                            player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                            player.addChatMessage(new ChatComponentText(Util.getCreatureFromId(this.getCreatureID()).creatureName + " is sitting."));
                         }
                         else
                         {
@@ -107,13 +107,13 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
                     this.setAttackTarget((EntityLivingBase) null);
                     this.aiSit.setSitting(true);
                     this.setSitting(true);
-                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                    player.addChatMessage(new ChatComponentText(Util.getCreatureFromId(this.getCreatureID()).creatureName + " is sitting."));
                 }
                 else
                 {
                     this.aiSit.setSitting(false);
                     this.setSitting(false);
-                    player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is not sitting anymore."));
+                    player.addChatMessage(new ChatComponentText(Util.getCreatureFromId(this.getCreatureID()).creatureName + " is not sitting anymore."));
                 }
             }
             return super.interact(player);
@@ -128,13 +128,13 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
                 this.setAttackTarget((EntityLivingBase) null);
                 this.aiSit.setSitting(true);
                 this.setSitting(true);
-                player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is sitting."));
+                player.addChatMessage(new ChatComponentText(Util.getCreatureFromId(this.getCreatureID()).creatureName + " is sitting."));
             }
             else
             {
                 this.aiSit.setSitting(false);
                 this.setSitting(false);
-                player.addChatMessage(new ChatComponentText(Util.getDinoByID(this.getCreatureID()).creatureName + " is not sitting anymore."));
+                player.addChatMessage(new ChatComponentText(Util.getCreatureFromId(this.getCreatureID()).creatureName + " is not sitting anymore."));
             }
         }
         return super.interact(player);
@@ -176,7 +176,7 @@ public class EntityJurassiCraftTameable extends EntityJurassiCraftCreature imple
 
     public boolean canBeTamedUponSpawning()
     {
-        return Util.getDinoByID(this.getCreatureID()).canBeTamedUponSpawning;
+        return Util.getCreatureFromId(this.getCreatureID()).canBeTamedUponSpawning;
     }
     
     public boolean isTamed()

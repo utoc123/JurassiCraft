@@ -5,13 +5,14 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.NewEntitySwimming;
 
 public class EntityBasilosaurus extends NewEntitySwimming {
 
     public EntityBasilosaurus(World world)
     {
-        super(world, (byte) 21);
+        super(world, (byte) Util.classToId(EntityBasilosaurus.class));
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
         this.swimSpeed = (float) this.getCreatureSpeed();

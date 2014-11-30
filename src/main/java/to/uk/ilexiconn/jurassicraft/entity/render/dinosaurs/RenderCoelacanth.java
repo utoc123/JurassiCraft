@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCoelacanth;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderSwimming;
@@ -13,7 +13,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderSwimming;
 public class RenderCoelacanth extends RenderSwimming
 {
 
-    public RenderCoelacanth(Dinosaur dino)
+    public RenderCoelacanth(Entities dino)
     {
         super(new ModelCoelacanth(), dino, 0.5F);
     }

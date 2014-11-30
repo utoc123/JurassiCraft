@@ -23,6 +23,23 @@ public class DinoConfig
         }
     }
 
+    public static File loadReptileConfig()
+    {
+        try
+        {
+            File tempFile = File.createTempFile("reptiles", ".json");
+            tempFile.deleteOnExit();
+            InputStream in = DinoConfig.class.getResourceAsStream("/reptiles.json");
+            FileOutputStream out = new FileOutputStream(tempFile);
+            org.apache.commons.io.IOUtils.copy(in, out);
+            return tempFile;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
     public static File loadMammalConfig()
     {
         try
@@ -30,6 +47,42 @@ public class DinoConfig
             File tempFile = File.createTempFile("mammals", ".json");
             tempFile.deleteOnExit();
             InputStream in = DinoConfig.class.getResourceAsStream("/mammals.json");
+            FileOutputStream out = new FileOutputStream(tempFile);
+            org.apache.commons.io.IOUtils.copy(in, out);
+            return tempFile;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+
+    public static File loadBirdConfig()
+    {
+        try
+        {
+            File tempFile = File.createTempFile("birds", ".json");
+            tempFile.deleteOnExit();
+            InputStream in = DinoConfig.class.getResourceAsStream("/birds.json");
+            FileOutputStream out = new FileOutputStream(tempFile);
+            org.apache.commons.io.IOUtils.copy(in, out);
+            return tempFile;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+
+    public static File loadFishConfig()
+    {
+        try
+        {
+            File tempFile = File.createTempFile("fish", ".json");
+            tempFile.deleteOnExit();
+            InputStream in = DinoConfig.class.getResourceAsStream("/fish.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -57,47 +110,13 @@ public class DinoConfig
         }
     }
 
-    public static File loadFishConfig()
+    public static File loadArthropodConfig()
     {
         try
         {
-            File tempFile = File.createTempFile("fish", ".json");
+            File tempFile = File.createTempFile("arthropods", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/fish.json");
-            FileOutputStream out = new FileOutputStream(tempFile);
-            org.apache.commons.io.IOUtils.copy(in, out);
-            return tempFile;
-        }
-        catch (Exception e)
-        {
-            return null;
-        }
-    }
-
-    public static File loadReptileConfig()
-    {
-        try
-        {
-            File tempFile = File.createTempFile("reptiles", ".json");
-            tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/reptiles.json");
-            FileOutputStream out = new FileOutputStream(tempFile);
-            org.apache.commons.io.IOUtils.copy(in, out);
-            return tempFile;
-        }
-        catch (Exception e)
-        {
-            return null;
-        }
-    }
-
-    public static File loadBirdConfig()
-    {
-        try
-        {
-            File tempFile = File.createTempFile("birds", ".json");
-            tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/birds.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/arthropods.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;

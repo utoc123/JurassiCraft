@@ -1,6 +1,5 @@
 [
     {
-        "creatureID":20,
         "creatureType": 1,
         "creatureName":"Arsinoitherium",
         "minHealth":15,
@@ -42,7 +41,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":21,
         "creatureType": 1,
         "creatureName":"Basilosaurus",
         "minHealth":18,
@@ -84,7 +82,6 @@
         "waterCreature": true
     },
     {
-        "creatureID":22,
         "creatureType": 1,
         "creatureName":"Leptictidium",
         "minHealth":10,
@@ -126,7 +123,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":23,
         "creatureType": 1,
         "creatureName":"Uintatherium",
         "minHealth":16,
@@ -168,7 +164,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":25,
         "creatureType": 1,
         "creatureName":"Deinotherium",
         "minHealth":18,
@@ -210,7 +205,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":19,
         "creatureType": 1,
         "creatureName":"Mammoth",
         "minHealth":18,
@@ -252,7 +246,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":26,
         "creatureType": 1,
         "creatureName":"Moeritherium",
         "minHealth":12,
@@ -294,7 +287,6 @@
         "waterCreature": false
     },
     {
-        "creatureID":24,
         "creatureType": 1,
         "creatureName":"Paraceratherium",
         "minHealth":18,

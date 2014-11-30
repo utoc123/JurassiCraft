@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelParaceratherium;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityParaceratherium;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +15,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderParaceratherium extends RenderMammal
 {
-    public RenderParaceratherium(Mammal mammal)
+    public RenderParaceratherium(Entities mammal)
     {
         super(new ModelParaceratherium(), mammal, 1.6F);
     }

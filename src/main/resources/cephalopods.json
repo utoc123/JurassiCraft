@@ -1,6 +1,5 @@
 [
     {
-        "creatureID":27,
         "creatureType": 2,
         "creatureName":"Ammonite",
         "minHealth":22,

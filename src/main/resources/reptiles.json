@@ -1,6 +1,5 @@
 [
     {
-        "creatureID":16,
         "creatureType": 0,
         "creatureName":"Cearadactylus",
         "minHealth":15,

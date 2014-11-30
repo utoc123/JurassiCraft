@@ -25,7 +25,7 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
 
     public EntityParasaurolophus(World world)
     {
-        super(world, (byte) 11, 1);
+        super(world, (byte) Util.classToId(EntityParasaurolophus.class), 1);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new AIParasaurolophusTrumpet(this));
@@ -57,11 +57,11 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
     	int I = this.rand.nextInt(3);
         if (I == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else if (I == 1)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
         else {
         	AnimationAPI.sendAnimPacket(this, 1);
@@ -72,13 +72,13 @@ public class EntityParasaurolophus extends EntityJurassiCraftLandProtective impl
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     public void onUpdate()

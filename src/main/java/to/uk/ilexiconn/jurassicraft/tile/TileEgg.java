@@ -78,7 +78,7 @@ public class TileEgg extends TileEntity
         {
             if (hatchTime >= totalHatchTime)
             {
-                Class dinoToSpawnClass = Util.getDinoClass(dinoName);
+                Class dinoToSpawnClass = Util.getCreatureClass(dinoName);
                 try
                 {
                     Entity dinoToSpawn = (Entity) dinoToSpawnClass.getConstructor(World.class).newInstance(worldObj);

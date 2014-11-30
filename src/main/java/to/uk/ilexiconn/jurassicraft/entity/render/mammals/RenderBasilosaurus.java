@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelBasilosaurus;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityBasilosaurus;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderBasilosaurus extends RenderMammal
 {
-    public RenderBasilosaurus(Mammal mammal)
+    public RenderBasilosaurus(Entities mammal)
     {
         super(new ModelBasilosaurus(), mammal, 0.5F);
     }

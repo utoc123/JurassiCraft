@@ -22,7 +22,7 @@ public class EntityHypsilophodon extends EntityJurassiCraftLandCoward implements
 
     public EntityHypsilophodon(World world)
     {
-        super(world, (byte) 8);
+        super(world, (byte) Util.classToId(EntityHypsilophodon.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
@@ -49,24 +49,24 @@ public class EntityHypsilophodon extends EntityJurassiCraftLandCoward implements
     {
         if (this.rand.nextInt(2) == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     @Override

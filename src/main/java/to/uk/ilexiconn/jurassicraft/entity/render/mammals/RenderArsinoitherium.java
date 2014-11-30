@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelArsinoitherium;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityArsinoitherium;
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderArsinoitherium extends RenderMammal
 {
-    public RenderArsinoitherium(Mammal mammal)
+    public RenderArsinoitherium(Entities mammal)
     {
         super(new ModelArsinoitherium(), mammal, 0.8F);
     }

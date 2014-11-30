@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCearadactylus;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Reptile;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderReptile;
@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCearadactylus extends RenderReptile
 {
-    public RenderCearadactylus(Reptile reptile)
+    public RenderCearadactylus(Entities reptile)
     {
         super(new ModelCearadactylus(), reptile, 0.5F);
     }

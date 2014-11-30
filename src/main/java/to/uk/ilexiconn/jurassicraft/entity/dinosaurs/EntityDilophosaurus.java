@@ -20,7 +20,7 @@ public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive implem
 
     public EntityDilophosaurus(World par1World)
     {
-        super(par1World, (byte) 13);
+        super(par1World, (byte) Util.classToId(EntityDilophosaurus.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
@@ -45,24 +45,24 @@ public class EntityDilophosaurus extends EntityJurassiCraftLandAggressive implem
     {
         if (this.rand.nextInt(2) == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     @Override

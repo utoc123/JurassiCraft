@@ -173,8 +173,8 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
                 int amountToIncrease = 0;
 
                 List<EggEnviroment> enviroments = EggEnviroment.getEnviroments(this);
-                
-                Dinosaur dinosaur = Util.getDinoByID(Util.getDinoIDByName(dino));
+
+                Entities dinosaur = Util.getCreatureFromId(Util.getCreatureFromName(dino));
 
                 boolean wet = enviroments.contains(EggEnviroment.WET);
                 
@@ -237,7 +237,7 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 
                 if (currentSpawnTime >= spawnTime)
                 {
-                    Class dinoToSpawnClass = Util.getDinoClass(dino);
+                    Class dinoToSpawnClass = Util.getCreatureClass(dino);
 
                     try
                     {
@@ -365,12 +365,12 @@ public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
     @Override
     public void writeSpawnData(ByteBuf buffer)
     {
-        buffer.writeInt(Util.getDinoIDByName(dino));
+        buffer.writeInt(Util.getCreatureFromName(dino));
     }
 
     @Override
     public void readSpawnData(ByteBuf additionalData)
     {
-        dino = Util.getDinoByID(additionalData.readInt()).creatureName;
+        dino = Util.getCreatureFromId(additionalData.readInt()).creatureName;
     }
 }

@@ -38,13 +38,13 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     public NewEntitySwimming(World world, byte id)
     {
         super(world, id);
-        if (id >= 0 && id < Util.getDinos().size())
+        if (id >= 0 && id < Util.getCreatures().size())
         {
             this.creatureID = id;
         }
         else
         {
-            this.creatureID = 0;
+            this.creatureID = -1;
         }
     }
 

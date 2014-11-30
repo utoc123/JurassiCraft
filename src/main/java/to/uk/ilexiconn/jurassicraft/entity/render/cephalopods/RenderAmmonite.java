@@ -4,10 +4,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelAmmonite;
-import to.uk.ilexiconn.jurassicraft.entity.Cephalopod;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.cephalopods.EntityAmmonite;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderCephalopod;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
@@ -15,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 @SideOnly(Side.CLIENT)
 public class RenderAmmonite extends RenderCephalopod
 {
-    public RenderAmmonite(Cephalopod cephalopod)
+    public RenderAmmonite(Entities cephalopod)
     {
         super(new ModelAmmonite(), cephalopod, 0.5F);
     }

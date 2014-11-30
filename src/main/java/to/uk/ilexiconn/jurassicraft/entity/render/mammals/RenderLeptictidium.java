@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelLeptictidium;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityLeptictidium;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderLeptictidium extends RenderMammal
 {
-    public RenderLeptictidium(Mammal mammal)
+    public RenderLeptictidium(Entities mammal)
     {
         super(new ModelLeptictidium(), mammal, 0.5F);
     }

@@ -129,7 +129,7 @@ public class JurassiCraftLivingEvent
 
 	public void spawnMammalBaby(String mammalName, int quality, String dnaSequence, LivingUpdateEvent event) 
 	{
-		Class mammalToSpawnClass = Util.getDinoClass(mammalName);
+		Class mammalToSpawnClass = Util.getCreatureClass(mammalName);
 		try 
 		{
 			Entity mammalToSpawn = (Entity) mammalToSpawnClass.getConstructor(World.class).newInstance(event.entityLiving.worldObj);

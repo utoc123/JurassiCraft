@@ -6,16 +6,17 @@ import net.minecraft.entity.EntityLivingBase;
 
 import org.lwjgl.opengl.GL11;
 
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.Reptile;
 
 public abstract class RenderReptile extends RenderLiving
 {
 
-    private Reptile reptile;
+    private Entities reptile;
     private float resizableShadow;
 
-    public RenderReptile(ModelBase model, Reptile reptile, float shadow)
+    public RenderReptile(ModelBase model, Entities reptile, float shadow)
     {
         super(model, 1.0F);
         this.setReptile(reptile);
@@ -32,12 +33,12 @@ public abstract class RenderReptile extends RenderLiving
         return this.resizableShadow;
     }
 
-    public void setReptile(Reptile reptile)
+    public void setReptile(Entities reptile)
     {
         this.reptile = reptile;
     }
 
-    public Reptile getReptile()
+    public Entities getReptile()
     {
         return this.reptile;
     }

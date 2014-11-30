@@ -29,7 +29,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
 
     public boolean isCreatureRidable()
     {
-        return Util.getDinoByID(this.getCreatureID()).isRidable;
+        return Util.getCreatureFromId(this.getCreatureID()).isRidable;
     }
 
     @Override
@@ -191,7 +191,7 @@ public class EntityJurassiCraftRidable extends EntityJurassiCraftTameable
     {
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && ((EntityPlayer) this.riddenByEntity).getHeldItem() != (ItemStack) null && Util.isRidingItem(this.getCreatureID(), ((EntityPlayer) this.riddenByEntity).getHeldItem().getItem()))
         {
-            switch (Util.getDinoByID(this.getCreatureID()).ridingStyle)
+            switch (Util.getCreatureFromId(this.getCreatureID()).ridingStyle)
             {
                 case 0:
                     this.handleMouseControlledRiding();

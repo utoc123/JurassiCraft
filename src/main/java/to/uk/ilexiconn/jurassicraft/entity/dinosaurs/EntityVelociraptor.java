@@ -29,7 +29,7 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
 
     public EntityVelociraptor(World world)
     {
-        super(world, (byte) 2);
+        super(world, (byte) Util.classToId(EntityVelociraptor.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));

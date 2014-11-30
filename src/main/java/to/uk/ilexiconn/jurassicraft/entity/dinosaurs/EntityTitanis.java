@@ -18,7 +18,7 @@ public class EntityTitanis extends EntityJurassiCraftLandAggressive implements I
 
     public EntityTitanis(World par1World)
     {
-        super(par1World, (byte) 18);
+        super(par1World, (byte) Util.classToId(EntityTitanis.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIWander(this, 0.7D * this.getCreatureSpeed()));
@@ -43,23 +43,23 @@ public class EntityTitanis extends EntityJurassiCraftLandAggressive implements I
     {
         if (this.rand.nextInt(2) == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 }

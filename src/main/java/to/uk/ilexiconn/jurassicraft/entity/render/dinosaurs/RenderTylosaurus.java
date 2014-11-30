@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelTylosaurus;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityTylosaurus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,7 +13,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderSwimming;
 @SideOnly(Side.CLIENT)
 public class RenderTylosaurus extends RenderSwimming
 {
-    public RenderTylosaurus(Dinosaur dino)
+    public RenderTylosaurus(Entities dino)
     {
         super(new ModelTylosaurus(), dino, 0.5F);
     }

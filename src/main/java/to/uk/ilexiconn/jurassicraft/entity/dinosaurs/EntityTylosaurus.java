@@ -14,7 +14,7 @@ public class EntityTylosaurus extends NewEntitySwimming {
 
     public EntityTylosaurus(World world)
     {
-        super(world, (byte) 14);
+        super(world, (byte) Util.classToId(EntityTylosaurus.class));
         this.swimRadius = 16.0F;
         this.swimRadiusHeight = 10.0F;
         this.swimSpeed = 0.6F;

@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelUintatherium;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityUintatherium;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +15,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderUintatherium extends RenderMammal
 {
-    public RenderUintatherium(Mammal mammal)
+    public RenderUintatherium(Entities mammal)
     {
         super(new ModelUintatherium(), mammal, 0.8F);
     }

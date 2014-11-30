@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelHerrerasaur;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityHerrerasaur;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,7 +14,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 public class RenderHerrerasaur extends RenderDinosaur
 {
 
-    public RenderHerrerasaur(Dinosaur dino)
+    public RenderHerrerasaur(Entities dino)
     {
         super(new ModelHerrerasaur(), dino, 0.5F);
     }

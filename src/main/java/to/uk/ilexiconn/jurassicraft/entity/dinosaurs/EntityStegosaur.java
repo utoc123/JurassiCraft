@@ -20,7 +20,7 @@ public class EntityStegosaur extends EntityJurassiCraftLandProtective implements
 
     public EntityStegosaur(World world)
     {
-        super(world, (byte) 3, 1);
+        super(world, (byte) Util.classToId(EntityStegosaur.class), 1);
         this.getNavigator().setAvoidsWater(true);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -45,24 +45,24 @@ public class EntityStegosaur extends EntityJurassiCraftLandProtective implements
     {
         if (this.rand.nextInt(2) == 0)
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         }
         else
         {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     @Override
     public String getHurtSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     @Override
     public String getDeathSound()
     {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     @Override

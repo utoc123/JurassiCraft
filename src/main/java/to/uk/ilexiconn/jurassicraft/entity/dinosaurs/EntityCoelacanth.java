@@ -11,7 +11,7 @@ public class EntityCoelacanth extends EntitySwimming
 
     public EntityCoelacanth(World world)
     {
-        super(world, (byte) 5);
+        super(world, (byte) Util.classToId(EntityCoelacanth.class));
         this.swimRadius = 8.0F;
         this.swimRadiusHeight = 4.0F;
         this.swimSpeed = 0.4F;

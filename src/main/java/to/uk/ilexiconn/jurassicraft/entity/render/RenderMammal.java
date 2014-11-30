@@ -6,16 +6,17 @@ import net.minecraft.entity.EntityLivingBase;
 
 import org.lwjgl.opengl.GL11;
 
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 
 public abstract class RenderMammal extends RenderLiving
 {
 
-    private Mammal mammal;
+    private Entities mammal;
     private float resizableShadow;
 
-    public RenderMammal(ModelBase model, Mammal mammal, float shadow)
+    public RenderMammal(ModelBase model, Entities mammal, float shadow)
     {
         super(model, 1.0F);
         this.setMammal(mammal);
@@ -32,12 +33,12 @@ public abstract class RenderMammal extends RenderLiving
         return this.resizableShadow;
     }
 
-    public void setMammal(Mammal mammal)
+    public void setMammal(Entities mammal)
     {
         this.mammal = mammal;
     }
 
-    public Mammal getMammal()
+    public Entities getMammal()
     {
         return this.mammal;
     }

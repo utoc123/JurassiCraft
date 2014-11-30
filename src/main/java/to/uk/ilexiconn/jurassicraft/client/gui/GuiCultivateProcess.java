@@ -5,7 +5,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -88,7 +88,7 @@ public class GuiCultivateProcess extends GuiScreen
         byte embryoID = this.cultivator.getEmbryoID();
 		if (embryoID >= 0)
         {
-            Dinosaur dino = Util.getDinoByID(embryoID);
+            Entities dino = Util.getCreatureFromId(embryoID);
             
             if(dino != null)
             {

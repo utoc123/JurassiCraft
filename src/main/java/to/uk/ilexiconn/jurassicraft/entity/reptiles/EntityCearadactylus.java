@@ -33,7 +33,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
     private EntityAICearadactylus flyingAi = new EntityAICearadactylus(this);
 
     public EntityCearadactylus(World world) {
-        super(world, (byte) 16);
+        super(world, (byte) Util.classToId(EntityCearadactylus.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, this.flyingAi);
         this.tasks.addTask(1, new EntityAISwimming(this));
@@ -171,18 +171,18 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
 
     public String getLivingSound() {
         if (this.rand.nextInt(2) == 0) {
-            return Util.getDinoByID(this.getCreatureID()).livingSound1;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound1;
         } else {
-            return Util.getDinoByID(this.getCreatureID()).livingSound2;
+            return Util.getCreatureFromId(this.getCreatureID()).livingSound2;
         }
     }
 
     public String getHurtSound() {
-        return Util.getDinoByID(this.getCreatureID()).hurtSound;
+        return Util.getCreatureFromId(this.getCreatureID()).hurtSound;
     }
 
     public String getDeathSound() {
-        return Util.getDinoByID(this.getCreatureID()).deathSound;
+        return Util.getCreatureFromId(this.getCreatureID()).deathSound;
     }
 
     @Override

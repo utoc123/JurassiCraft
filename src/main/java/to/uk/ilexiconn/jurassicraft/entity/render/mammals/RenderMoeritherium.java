@@ -4,7 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMoeritherium;
-import to.uk.ilexiconn.jurassicraft.entity.Dinosaur;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityMoeritherium;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +15,7 @@ import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 @SideOnly(Side.CLIENT)
 public class RenderMoeritherium extends RenderMammal
 {
-    public RenderMoeritherium(Mammal mammal)
+    public RenderMoeritherium(Entities mammal)
     {
         super(new ModelMoeritherium(), mammal, 0.5F);
     }
