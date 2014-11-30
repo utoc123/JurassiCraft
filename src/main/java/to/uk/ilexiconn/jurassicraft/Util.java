@@ -311,7 +311,6 @@ public class Util
             EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, dino.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
             addEgg(dino.creatureName);
-            System.out.println(dino.creatureName + ";" + dino.creatureID);
         }
         catch (Exception e)
         {
@@ -339,7 +338,6 @@ public class Util
             EntityRegistry.registerGlobalEntityID(entity, mammal.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, mammal.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
             addSyringe(mammal.creatureName);
-            System.out.println(mammal.creatureName + ";" + mammal.creatureID);
         }
         catch (Exception e)
         {
@@ -357,7 +355,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, cephalopoda.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, cephalopoda.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            System.out.println(cephalopoda.creatureName + ";" + cephalopoda.creatureID);
         }
         catch (Exception e)
         {
@@ -375,7 +372,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, arthropod.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, arthropod.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            System.out.println(arthropod.creatureName + ";" + arthropod.creatureID);
         }
         catch (Exception e)
         {
@@ -393,7 +389,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, fish.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, fish.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            System.out.println(fish.creatureName + ";" + fish.creatureID);
         }
         catch (Exception e)
         {
@@ -411,7 +406,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, reptile.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, reptile.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            System.out.println(reptile.creatureName + ";" + reptile.creatureID);
         }
         catch (Exception e)
         {
@@ -429,7 +423,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, bird.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, bird.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            System.out.println(bird.creatureName + ";" + bird.creatureID);
         }
         catch (Exception e)
         {
