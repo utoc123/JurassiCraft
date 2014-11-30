@@ -1,13 +1,13 @@
-package to.uk.ilexiconn.jurassicraft.entity.render.dinosaurs;
+package to.uk.ilexiconn.jurassicraft.entity.render.arthropods;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMeganeura;
 import to.uk.ilexiconn.jurassicraft.entity.Entities;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityMeganeura;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import to.uk.ilexiconn.jurassicraft.entity.arthropods.EntityMeganeura;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 
 @SideOnly(Side.CLIENT)

@@ -1,6 +1,5 @@
 [
     {
-        "creatureType": 2,
         "creatureName":"Ammonite",
         "minHealth":22,
         "maxHealth":100,
@@ -38,6 +37,10 @@
         "ridingStyle":0,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": true
+        "waterCreature": true,
+        "addEgg": false,
+        "addSyringe": false,
+        "addMeat": false,
+        "addDNA": false
     }
 ]

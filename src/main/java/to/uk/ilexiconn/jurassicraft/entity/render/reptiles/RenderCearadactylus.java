@@ -1,16 +1,14 @@
 package to.uk.ilexiconn.jurassicraft.entity.render.reptiles;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCearadactylus;
 import to.uk.ilexiconn.jurassicraft.entity.Entities;
-import to.uk.ilexiconn.jurassicraft.entity.Reptile;
-import to.uk.ilexiconn.jurassicraft.entity.render.RenderDinosaur;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderReptile;
 import to.uk.ilexiconn.jurassicraft.entity.reptiles.EntityCearadactylus;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderCearadactylus extends RenderReptile

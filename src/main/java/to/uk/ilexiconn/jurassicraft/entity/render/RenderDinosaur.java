@@ -3,9 +3,7 @@ package to.uk.ilexiconn.jurassicraft.entity.render;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.EntityLivingBase;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 

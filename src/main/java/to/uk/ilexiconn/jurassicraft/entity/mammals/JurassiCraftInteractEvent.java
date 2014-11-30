@@ -1,5 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.entity.mammals;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityPig;
@@ -10,10 +14,6 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiPregnancyProgress;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class JurassiCraftInteractEvent 
 {

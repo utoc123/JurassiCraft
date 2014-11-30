@@ -1,8 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.tile;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,6 +17,9 @@ import to.uk.ilexiconn.jurassicraft.item.IDNASource;
 import to.uk.ilexiconn.jurassicraft.item.ItemAmber;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class TileDNAExtractor extends TileEntity implements ISidedInventory
 {

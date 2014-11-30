@@ -12,7 +12,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.Util;
-import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.enums.JurassiCraftFoodNutrients;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 

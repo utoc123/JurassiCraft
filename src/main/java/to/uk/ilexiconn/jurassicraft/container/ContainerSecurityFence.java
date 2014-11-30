@@ -3,14 +3,11 @@ package to.uk.ilexiconn.jurassicraft.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerSecurityFence extends Container
 {

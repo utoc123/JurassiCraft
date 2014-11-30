@@ -1,18 +1,15 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import to.uk.ilexiconn.jurassicraft.Util;
+
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.Collection;
-
-import org.apache.commons.io.IOUtils;
-import to.uk.ilexiconn.jurassicraft.Util;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class JsonEntityParser extends Util
 {
@@ -24,53 +21,104 @@ public class JsonEntityParser extends Util
     private Collection<Entities> reptiles;
     private Collection<Entities> birds;
 
-    private int id = 0;
-
     public void parseServerEntities()
     {
         loadConfig(DinoConfig.loadDinoConfig());
         for (Entities creature : dinos)
         {
-            addMeat(creature.creatureName);
-            addDNA(creature.creatureName);
             addDinoEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadReptileConfig());
         for (Entities creature : reptiles)
         {
             addReptileEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadMammalConfig());
         for (Entities creature : mammals)
         {
-            addDNA(creature.creatureName);
             addMammalEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadBirdConfig());
         for (Entities creature : birds)
         {
             addBirdEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadFishConfig());
         for (Entities creature : Fish)
         {
             addFishEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadCephalopodConfig());
         for (Entities creature : cephalopods)
         {
             addCephalopodaEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
 
         loadConfig(DinoConfig.loadArthropodConfig());
         for (Entities creature : arthropods)
         {
             addArthropodEntity(creature);
+            if (creature.addEgg)
+                addEgg(creature.creatureName);
+            if (creature.addSyringe)
+                addSyringe(creature.creatureName);
+            if (creature.addMeat)
+                addMeat(creature.creatureName);
+            if (creature.addDNA)
+                addDNA(creature.creatureName);
         }
     }
 

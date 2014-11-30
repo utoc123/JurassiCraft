@@ -10,14 +10,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDNAExtractorBase;
 import to.uk.ilexiconn.jurassicraft.client.model.block.ModelDNAExtractorGlass;
-import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
-import to.uk.ilexiconn.jurassicraft.item.ItemFossil;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 
 public class TileDNAExtractorRenderer extends TileEntitySpecialRenderer {

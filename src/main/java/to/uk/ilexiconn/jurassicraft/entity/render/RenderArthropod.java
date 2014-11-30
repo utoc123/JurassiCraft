@@ -3,19 +3,17 @@ package to.uk.ilexiconn.jurassicraft.entity.render;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.EntityLivingBase;
-
 import org.lwjgl.opengl.GL11;
-
-import to.uk.ilexiconn.jurassicraft.entity.Arthropod;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 
 public abstract class RenderArthropod extends RenderLiving
 {
 
-    private Arthropod arthropod;
+    private Entities arthropod;
     private float resizableShadow;
 
-    public RenderArthropod(ModelBase model, Arthropod arthropod, float shadow)
+    public RenderArthropod(ModelBase model, Entities arthropod, float shadow)
     {
         super(model, 1.0F);
         this.setArthropod(arthropod);
@@ -32,12 +30,12 @@ public abstract class RenderArthropod extends RenderLiving
         return this.resizableShadow;
     }
 
-    public void setArthropod(Arthropod arthropod)
+    public void setArthropod(Entities arthropod)
     {
         this.arthropod = arthropod;
     }
 
-    public Arthropod getArthropod()
+    public Entities getArthropod()
     {
         return this.arthropod;
     }

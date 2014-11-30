@@ -3,20 +3,17 @@ package to.uk.ilexiconn.jurassicraft.entity.render;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.EntityLivingBase;
-
 import org.lwjgl.opengl.GL11;
-
-import to.uk.ilexiconn.jurassicraft.entity.Arthropod;
-import to.uk.ilexiconn.jurassicraft.entity.Bird;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 
 public abstract class RenderBird extends RenderLiving
 {
 
-    private Bird bird;
+    private Entities bird;
     private float resizableShadow;
 
-    public RenderBird(ModelBase model, Bird bird, float shadow)
+    public RenderBird(ModelBase model, Entities bird, float shadow)
     {
         super(model, 1.0F);
         this.setBird(bird);
@@ -33,12 +30,12 @@ public abstract class RenderBird extends RenderLiving
         return this.resizableShadow;
     }
 
-    public void setBird(Bird bird)
+    public void setBird(Entities bird)
     {
         this.bird = bird;
     }
 
-    public Bird getBird()
+    public Entities getBird()
     {
         return this.bird;
     }

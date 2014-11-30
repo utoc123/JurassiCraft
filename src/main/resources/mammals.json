@@ -1,6 +1,5 @@
 [
     {
-        "creatureType": 1,
         "creatureName":"Arsinoitherium",
         "minHealth":15,
         "maxHealth":65,
@@ -38,10 +37,13 @@
         "ridingStyle":2,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Basilosaurus",
         "minHealth":18,
         "maxHealth":80,
@@ -79,10 +81,13 @@
         "ridingStyle":3,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": true
+        "waterCreature": true,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": true,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Leptictidium",
         "minHealth":10,
         "maxHealth":34,
@@ -120,10 +125,13 @@
         "ridingStyle":3,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Uintatherium",
         "minHealth":16,
         "maxHealth":68,
@@ -161,10 +169,13 @@
         "ridingStyle":2,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Deinotherium",
         "minHealth":18,
         "maxHealth":75,
@@ -202,10 +213,13 @@
         "ridingStyle":2,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Mammoth",
         "minHealth":18,
         "maxHealth":85,
@@ -243,10 +257,13 @@
         "ridingStyle":2,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Moeritherium",
         "minHealth":12,
         "maxHealth":36,
@@ -284,10 +301,13 @@
         "ridingStyle":3,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     },
     {
-        "creatureType": 1,
         "creatureName":"Paraceratherium",
         "minHealth":18,
         "maxHealth":95,
@@ -325,6 +345,10 @@
         "ridingStyle":2,
         "canBeTamedUponSpawning": true,
         "numberOfInfoPages": 1,
-        "waterCreature": false
+        "waterCreature": false,
+        "addEgg": false,
+        "addSyringe": true,
+        "addMeat": false,
+        "addDNA": true
     }
 ]

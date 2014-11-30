@@ -1,9 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
-
-import java.util.HashSet;
-
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,10 +20,8 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.client.gui.GuiDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoPad;
 import to.uk.ilexiconn.jurassicraft.item.JurassiCraftDNAHandler;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.HashSet;
 
 public class EntityJurassiCraftCreature extends EntityCreature implements IAnimatedEntity, IEntityAdditionalSpawnData
 {

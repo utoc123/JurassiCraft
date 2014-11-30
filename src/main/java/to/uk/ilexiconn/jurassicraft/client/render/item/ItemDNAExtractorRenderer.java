@@ -1,14 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.client.render.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDNAExtractorRenderer;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 

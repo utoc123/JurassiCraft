@@ -1,14 +1,13 @@
 package to.uk.ilexiconn.jurassicraft.entity.render.mammals;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelDeinotherium;
 import to.uk.ilexiconn.jurassicraft.entity.Entities;
-import to.uk.ilexiconn.jurassicraft.entity.Mammal;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityDeinotherium;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderMammal;
 
 @SideOnly(Side.CLIENT)

@@ -1,8 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -12,6 +9,9 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIOwnerHurtTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIPanicWhenOwnerHurtByTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftLandEntityAIPanicCoward;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntityJurassiCraftLandCoward extends EntityJurassiCraftRidable
 {

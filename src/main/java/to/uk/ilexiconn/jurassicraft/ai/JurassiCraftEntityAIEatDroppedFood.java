@@ -1,11 +1,11 @@
 package to.uk.ilexiconn.jurassicraft.ai;
 
-import java.util.List;
-
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
+
+import java.util.List;
 
 public class JurassiCraftEntityAIEatDroppedFood extends EntityAIBase {
 

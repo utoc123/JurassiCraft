@@ -1,12 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
-import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import to.uk.ilexiconn.jurassicraft.ModBlocks;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 
 /** Not working */
 public class JurassiCraftCraftingHandler 

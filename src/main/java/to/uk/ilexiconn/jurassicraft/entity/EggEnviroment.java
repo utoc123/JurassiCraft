@@ -1,9 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
+import net.minecraft.entity.Entity;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.minecraft.entity.Entity;
 
 public enum EggEnviroment 
 {

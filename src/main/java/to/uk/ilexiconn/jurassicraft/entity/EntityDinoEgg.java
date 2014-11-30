@@ -1,12 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import io.netty.buffer.ByteBuf;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -20,7 +15,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.Random;
 
 public class EntityDinoEgg extends Entity implements IEntityAdditionalSpawnData
 {

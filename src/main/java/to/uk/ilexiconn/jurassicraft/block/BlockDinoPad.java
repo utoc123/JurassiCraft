@@ -1,7 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.block;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -14,6 +12,8 @@ import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.ModItems;
 import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
+
+import java.util.Random;
 
 public class BlockDinoPad extends Block implements ITileEntityProvider
 {

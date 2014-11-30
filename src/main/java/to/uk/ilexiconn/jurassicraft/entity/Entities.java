@@ -52,4 +52,9 @@ public class Entities
     public boolean isRidable;
     public boolean canBeTamedUponSpawning;
     public boolean waterCreature;
+
+    public boolean addEgg;
+    public boolean addSyringe;
+    public boolean addMeat;
+    public boolean addDNA;
 }

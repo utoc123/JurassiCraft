@@ -1,7 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.tile;
 
-import java.util.HashMap;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -20,6 +18,8 @@ import to.uk.ilexiconn.jurassicraft.block.fence.BlockSecurityFenceMain;
 import to.uk.ilexiconn.jurassicraft.block.fence.IFenceBase;
 import to.uk.ilexiconn.jurassicraft.block.fence.IFenceGrid;
 import to.uk.ilexiconn.jurassicraft.block.fence.IFencePole;
+
+import java.util.HashMap;
 
 public class TileSecurityFence extends TileEntity implements ISidedInventory {
 

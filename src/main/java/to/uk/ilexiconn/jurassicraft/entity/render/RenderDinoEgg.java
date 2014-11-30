@@ -4,9 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.client.model.block.ModelEgg;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelCoelacanthEgg;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelMeganeuraEgg;

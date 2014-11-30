@@ -3,9 +3,7 @@ package to.uk.ilexiconn.jurassicraft.client.model.entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
 import thehippomaster.AnimationAPI.IAnimatedEntity;
 import thehippomaster.AnimationAPI.client.Animator;
 import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityTyrannosaurus;

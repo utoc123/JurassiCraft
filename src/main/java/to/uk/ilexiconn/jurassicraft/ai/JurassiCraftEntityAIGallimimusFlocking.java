@@ -1,12 +1,12 @@
 package to.uk.ilexiconn.jurassicraft.ai;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JurassiCraftEntityAIGallimimusFlocking extends EntityAIBase {
 

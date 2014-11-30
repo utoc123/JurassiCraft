@@ -1,15 +1,7 @@
 package to.uk.ilexiconn.jurassicraft.item;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +16,10 @@ import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantCow;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantHorse;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantPig;
 import to.uk.ilexiconn.jurassicraft.entity.mammals.EntityPregnantSheep;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class ItemMammalSyringe extends Item
 {

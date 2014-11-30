@@ -1,7 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.entity.mammals;
 
-import java.lang.reflect.InvocationTargetException;
-
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityHorse;
@@ -15,7 +14,8 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftTameable;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class JurassiCraftLivingEvent
 {

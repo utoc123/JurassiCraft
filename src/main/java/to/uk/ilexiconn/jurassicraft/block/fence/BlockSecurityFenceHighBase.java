@@ -2,7 +2,6 @@ package to.uk.ilexiconn.jurassicraft.block.fence;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import to.uk.ilexiconn.jurassicraft.ModCreativeTabs;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceHighBase;
 
 public class BlockSecurityFenceHighBase extends BlockSecurityFence implements IFenceBase

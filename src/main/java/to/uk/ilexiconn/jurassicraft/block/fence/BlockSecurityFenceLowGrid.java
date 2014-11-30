@@ -7,8 +7,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFenceLowGrid;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSecurityFenceLowGrid extends BlockSecurityFence implements IFenceGrid {
 	public BlockSecurityFenceLowGrid() 

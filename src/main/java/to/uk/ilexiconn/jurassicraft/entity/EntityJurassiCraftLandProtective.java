@@ -1,8 +1,5 @@
 package to.uk.ilexiconn.jurassicraft.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,6 +13,9 @@ import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIAngerProtective;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIOwnerHurtByTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIOwnerHurtTarget;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftLandEntityAIPanicIfNotAnger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
 {

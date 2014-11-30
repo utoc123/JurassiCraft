@@ -1,10 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
+import com.rafamv.bygoneage.client.renderer.ResettableModelRenderer;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
-import com.rafamv.bygoneage.client.renderer.ResettableModelRenderer;
 
 public class ModelMoeritherium extends ModelBase {
 

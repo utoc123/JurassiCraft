@@ -7,7 +7,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.item.Item;
-import to.uk.ilexiconn.jurassicraft.entity.*;
+import to.uk.ilexiconn.jurassicraft.entity.Entities;
+import to.uk.ilexiconn.jurassicraft.entity.JsonEntityParser;
 import to.uk.ilexiconn.jurassicraft.item.ItemDNA;
 import to.uk.ilexiconn.jurassicraft.item.ItemDinoEgg;
 import to.uk.ilexiconn.jurassicraft.item.ItemMammalSyringe;
@@ -310,7 +311,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, dino.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, dino.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            addEgg(dino.creatureName);
         }
         catch (Exception e)
         {
@@ -337,7 +337,6 @@ public class Util
             entityId = EntityRegistry.findGlobalUniqueEntityId();
             EntityRegistry.registerGlobalEntityID(entity, mammal.creatureName, entityId, 0, 0);
             EntityRegistry.registerModEntity(entity, mammal.creatureName, entityId, JurassiCraft.instance, 64, 1, true);
-            addSyringe(mammal.creatureName);
         }
         catch (Exception e)
         {

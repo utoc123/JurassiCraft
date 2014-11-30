@@ -1,4 +1,4 @@
-package to.uk.ilexiconn.jurassicraft.entity.dinosaurs;
+package to.uk.ilexiconn.jurassicraft.entity.reptiles;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;

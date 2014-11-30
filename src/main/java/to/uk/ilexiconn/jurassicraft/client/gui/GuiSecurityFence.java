@@ -1,15 +1,11 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
-import java.util.HashMap;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.container.ContainerSecurityFence;
@@ -17,6 +13,8 @@ import to.uk.ilexiconn.jurassicraft.packet.MessageFenceBuilding;
 import to.uk.ilexiconn.jurassicraft.packet.MessageFenceCrafting;
 import to.uk.ilexiconn.jurassicraft.packet.MessageFenceFixing;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
+
+import java.util.HashMap;
 
 public class GuiSecurityFence extends GuiContainer {
 

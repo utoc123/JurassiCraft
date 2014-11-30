@@ -1,14 +1,14 @@
-package to.uk.ilexiconn.jurassicraft.entity.render.dinosaurs;
+package to.uk.ilexiconn.jurassicraft.entity.render.reptiles;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import to.uk.ilexiconn.jurassicraft.JurassiCraft;
 import to.uk.ilexiconn.jurassicraft.client.model.entity.ModelTylosaurus;
 import to.uk.ilexiconn.jurassicraft.entity.Entities;
-import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityTylosaurus;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import to.uk.ilexiconn.jurassicraft.entity.render.RenderSwimming;
+import to.uk.ilexiconn.jurassicraft.entity.reptiles.EntityTylosaurus;
 
 @SideOnly(Side.CLIENT)
 public class RenderTylosaurus extends RenderSwimming

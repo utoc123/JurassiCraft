@@ -1,16 +1,14 @@
 package to.uk.ilexiconn.jurassicraft.client.render.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
 import to.uk.ilexiconn.jurassicraft.client.render.tile.TileDinoPadRenderer;
 import to.uk.ilexiconn.jurassicraft.tile.TileDinoPad;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ItemDinoPadRenderer implements IItemRenderer

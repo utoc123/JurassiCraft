@@ -1,5 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.client.gui;
 
+import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -11,7 +12,6 @@ import to.uk.ilexiconn.jurassicraft.tile.TileCultivate;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNACombinator;
 import to.uk.ilexiconn.jurassicraft.tile.TileDNAExtractor;
 import to.uk.ilexiconn.jurassicraft.tile.TileSecurityFence;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
 {
