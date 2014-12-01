@@ -471,16 +471,12 @@ public class TileCultivate extends TileEntity implements ISidedInventory
         {
             NBTTagCompound compound = new NBTTagCompound();
             ItemStack cultivateResult = new ItemStack(((ItemDNA) this.slots[2].getItem()).getCorrespondingEggOrSyringe(), 1, 0);
-            switch (Util.getCreatureFromId(this.creatureID).creatureType) {
-            	case 0:
-                    compound.setInteger("EggQuality", this.slots[2].getTagCompound().getInteger("Quality"));
-                    compound.setString("EggDNA", this.slots[2].getTagCompound().getString("DNA"));
-            		break;
-            	case 1:
-                    compound.setInteger("SyringeQuality", this.slots[2].getTagCompound().getInteger("Quality"));
-                    compound.setString("SyringeDNA", this.slots[2].getTagCompound().getString("DNA"));
-            		break;
-            }
+            if (Util.getCreatureFromId(this.creatureID).addEgg)
+                compound.setInteger("EggQuality", this.slots[2].getTagCompound().getInteger("Quality"));
+                compound.setString("EggDNA", this.slots[2].getTagCompound().getString("DNA"));
+            if (Util.getCreatureFromId(this.creatureID).addSyringe)
+                compound.setInteger("SyringeQuality", this.slots[2].getTagCompound().getInteger("Quality"));
+                compound.setString("SyringeDNA", this.slots[2].getTagCompound().getString("DNA"));
             cultivateResult.setTagCompound(compound);
             this.slots[2] = (ItemStack) null;
             this.slots[2] = cultivateResult;

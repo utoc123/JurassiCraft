@@ -39,7 +39,6 @@ public class Entities
     public float yBoxDelta;
     public float scaleAdjustment;
 
-    public int creatureType;
     public int ticksToAdulthood;
     public int cultivateSpeed;
     public int numberOfTextures;
