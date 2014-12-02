@@ -47,8 +47,8 @@ public class ModelOviraptor extends MowzieModelBase
 
     public ModelOviraptor()
     {
-        textureWidth = 64;
-        textureHeight = 64;
+        textureWidth = 256;
+        textureHeight = 256;
 
         Head = new MowzieModelRenderer(this, 0, 33);
         Head.addBox(0F, 0F, 0F, 5, 5, 7);
