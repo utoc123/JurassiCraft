@@ -1,6 +1,6 @@
 package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
-import to.uk.ilexiconn.jurassicraft.entity.dinosaur.EntityTitanis;
+import to.uk.ilexiconn.jurassicraft.entity.birds.EntityTitanis;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 import net.minecraft.client.model.ModelRenderer;
