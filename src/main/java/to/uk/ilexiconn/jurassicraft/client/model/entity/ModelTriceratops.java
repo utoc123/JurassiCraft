@@ -8,19 +8,20 @@
 package to.uk.ilexiconn.jurassicraft.client.model.entity;
 
 import net.minecraft.entity.Entity;
+import to.uk.ilexiconn.jurassicraft.entity.dinosaurs.EntityTriceratops;
 import to.uk.ilexiconn.llib.client.model.MowzieModelBase;
 import to.uk.ilexiconn.llib.client.model.MowzieModelRenderer;
 
 public class ModelTriceratops extends MowzieModelBase
 {
-	public MowzieModelRenderer BackLeg1;
-    public MowzieModelRenderer BackLeg2;
-    public MowzieModelRenderer BackLeg3;
-    public MowzieModelRenderer BackLeg4;
-    public MowzieModelRenderer FrontLeg1;
-    public MowzieModelRenderer FrontLeg2;
-    public MowzieModelRenderer FrontLeg3;
-    public MowzieModelRenderer FrontLeg4;
+	public MowzieModelRenderer BackCalfLeft;
+    public MowzieModelRenderer BackCalfRight;
+    public MowzieModelRenderer BackThighLeft;
+    public MowzieModelRenderer BackThighRight;
+    public MowzieModelRenderer FrontCalfLeft;
+    public MowzieModelRenderer FrontCalfRight;
+    public MowzieModelRenderer FrontThighLeft;
+    public MowzieModelRenderer FrontThighRight;
     public MowzieModelRenderer Tail1;
     public MowzieModelRenderer Tail2;
     public MowzieModelRenderer Tail3;
@@ -68,10 +69,10 @@ public class ModelTriceratops extends MowzieModelBase
         this.LeftHorn.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.LeftHorn.addBox(2.299999952316284F, -16.0F, -0.8999999761581421F, 2, 16, 2);
         this.setRotation(LeftHorn, 0.8901179432868958F, -0.0F, 0.0F);
-        this.FrontLeg3 = new MowzieModelRenderer(this, 182, 29);
-        this.FrontLeg3.setRotationPoint(8.0F, 1.0F, -10.0F);
-        this.FrontLeg3.addBox(-2.0F, 0.0F, -3.5F, 5, 15, 7);
-        this.setRotation(FrontLeg3, 0.303530216217041F, -0.01745329238474369F, 0.0F);
+        this.FrontThighLeft = new MowzieModelRenderer(this, 182, 29);
+        this.FrontThighLeft.setRotationPoint(8.0F, 1.0F, -10.0F);
+        this.FrontThighLeft.addBox(-2.0F, 0.0F, -3.5F, 5, 15, 7);
+        this.setRotation(FrontThighLeft, 0.303530216217041F, -0.01745329238474369F, 0.0F);
         this.Tail4 = new MowzieModelRenderer(this, 0, 147);
         this.Tail4.setRotationPoint(0.0F, 3.0F, 30.0F);
         this.Tail4.addBox(-3.0F, -2.0F, 0.0F, 6, 7, 11);
@@ -80,14 +81,14 @@ public class ModelTriceratops extends MowzieModelBase
         this.Mouth.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.Mouth.addBox(-3.0F, 1.7000000476837158F, -15.0F, 6, 7, 6);
         this.setRotation(Mouth, 0.30806612968444824F, -0.0F, 0.0F);
-        this.FrontLeg4 = new MowzieModelRenderer(this, 147, 29);
-        this.FrontLeg4.setRotationPoint(-8.0F, 1.0F, -10.0F);
-        this.FrontLeg4.addBox(-3.0F, 0.0F, -3.5F, 5, 15, 7);
-        this.setRotation(FrontLeg4, 0.303530216217041F, -0.0F, 0.0F);
-        this.BackLeg4 = new MowzieModelRenderer(this, 147, 0);
-        this.BackLeg4.setRotationPoint(-8.5F, -2.0F, 10.0F);
-        this.BackLeg4.addBox(-4.5F, 0.0F, -3.5F, 5, 16, 9);
-        this.setRotation(BackLeg4, -0.3262369334697723F, -0.0F, 0.0F);
+        this.FrontThighRight = new MowzieModelRenderer(this, 147, 29);
+        this.FrontThighRight.setRotationPoint(-8.0F, 1.0F, -10.0F);
+        this.FrontThighRight.addBox(-3.0F, 0.0F, -3.5F, 5, 15, 7);
+        this.setRotation(FrontThighRight, 0.303530216217041F, -0.0F, 0.0F);
+        this.BackThighRight = new MowzieModelRenderer(this, 147, 0);
+        this.BackThighRight.setRotationPoint(-8.5F, -2.0F, 10.0F);
+        this.BackThighRight.addBox(-4.5F, 0.0F, -3.5F, 5, 16, 9);
+        this.setRotation(BackThighRight, -0.3262369334697723F, -0.0F, 0.0F);
         this.RightHorn = new MowzieModelRenderer(this, 36, 52);
         this.RightHorn.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.RightHorn.addBox(-4.300000190734863F, -16.0F, -0.8999999761581421F, 2, 16, 2);
@@ -96,10 +97,10 @@ public class ModelTriceratops extends MowzieModelBase
         this.Tail1.setRotationPoint(0.0F, -5.800000190734863F, 15.0F);
         this.Tail1.addBox(-6.0F, 0.0F, 0.0F, 12, 14, 10);
         this.setRotation(Tail1, -0.2382529377937317F, -0.0F, 0.0F);
-        this.BackLeg1 = new MowzieModelRenderer(this, 236, 0);
-        this.BackLeg1.setRotationPoint(10.5F, 9.399999618530273F, 2.700000047683716F);
-        this.BackLeg1.addBox(-2.0F, 0.0F, 0.0F, 4, 13, 5);
-        this.setRotation(BackLeg1, 0.3436956107616424F, -0.0F, 0.0F);
+        this.BackCalfLeft = new MowzieModelRenderer(this, 236, 0);
+        this.BackCalfLeft.setRotationPoint(10.5F, 9.399999618530273F, 2.700000047683716F);
+        this.BackCalfLeft.addBox(-2.0F, 0.0F, 0.0F, 4, 13, 5);
+        this.setRotation(BackCalfLeft, 0.3436956107616424F, -0.0F, 0.0F);
         this.Shieldthingy12 = new MowzieModelRenderer(this, 26, 40);
         this.Shieldthingy12.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.Shieldthingy12.addBox(8.0F, -8.0F, 0.5F, 2, 3, 1);
@@ -132,10 +133,10 @@ public class ModelTriceratops extends MowzieModelBase
         this.Shieldthingy11.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.Shieldthingy11.addBox(8.0F, 0.0F, 0.5F, 2, 3, 1);
         this.setRotation(Shieldthingy11, -0.3171542286872864F, -0.0F, 0.01745329238474369F);
-        this.FrontLeg1 = new MowzieModelRenderer(this, 235, 23);
-        this.FrontLeg1.setRotationPoint(8.5F, 13.0F, -3.4000000953674316F);
-        this.FrontLeg1.addBox(-2.0F, 0.0F, -5.0F, 4, 9, 5);
-        this.setRotation(FrontLeg1, -0.32324737310409546F, -0.0F, 0.0F);
+        this.FrontCalfLeft = new MowzieModelRenderer(this, 235, 23);
+        this.FrontCalfLeft.setRotationPoint(8.5F, 13.0F, -3.4000000953674316F);
+        this.FrontCalfLeft.addBox(-2.0F, 0.0F, -5.0F, 4, 9, 5);
+        this.setRotation(FrontCalfLeft, -0.32324737310409546F, -0.0F, 0.0F);
         this.Shieldthingy9 = new MowzieModelRenderer(this, 26, 40);
         this.Shieldthingy9.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.Shieldthingy9.addBox(-10.0F, -4.0F, 0.5F, 2, 3, 1);
@@ -148,10 +149,10 @@ public class ModelTriceratops extends MowzieModelBase
         this.Tail2.setRotationPoint(0.0F, 0.0F, 22.0F);
         this.Tail2.addBox(-4.5F, -3.0F, 0.0F, 9, 12, 8);
         this.setRotation(Tail2, -0.1616174887346749F, -0.0F, 0.0F);
-        this.FrontLeg2 = new MowzieModelRenderer(this, 212, 24);
-        this.FrontLeg2.setRotationPoint(-8.5F, 13.0F, -3.4000000953674316F);
-        this.FrontLeg2.addBox(-2.0F, 0.0F, -5.0F, 4, 9, 5);
-        this.setRotation(FrontLeg2, -0.32325243949890137F, -0.0F, 0.0F);
+        this.FrontCalfRight = new MowzieModelRenderer(this, 212, 24);
+        this.FrontCalfRight.setRotationPoint(-8.5F, 13.0F, -3.4000000953674316F);
+        this.FrontCalfRight.addBox(-2.0F, 0.0F, -5.0F, 4, 9, 5);
+        this.setRotation(FrontCalfRight, -0.32325243949890137F, -0.0F, 0.0F);
         this.LeftFrontFoot = new MowzieModelRenderer(this, 0, 0);
         this.LeftFrontFoot.setRotationPoint(8.5F, 20.0F, -11.0F);
         this.LeftFrontFoot.addBox(-2.0F, 0.0F, 0.0F, 4, 4, 5);
@@ -180,14 +181,14 @@ public class ModelTriceratops extends MowzieModelBase
         this.Collar.setRotationPoint(0.0F, -2.8F, -8.0F);
         this.Collar.addBox(-6.0F, 0.0F, 0.0F, 12, 14, 7);
         this.setRotation(Collar, -0.8042477193189871F, -0.0F, 0.0F);
-        this.BackLeg3 = new MowzieModelRenderer(this, 180, 0);
-        this.BackLeg3.setRotationPoint(8.5F, -2.0F, 10.0F);
-        this.BackLeg3.addBox(-0.5F, 0.0F, -3.5F, 5, 16, 9);
-        this.setRotation(BackLeg3, -0.3284709652253328F, -0.0F, 0.0F);
-        this.BackLeg2 = new MowzieModelRenderer(this, 213, 0);
-        this.BackLeg2.setRotationPoint(-10.5F, 9.399999618530273F, 2.700000047683716F);
-        this.BackLeg2.addBox(-2.0F, 0.0F, 0.0F, 4, 13, 5);
-        this.setRotation(BackLeg2, 0.3436902165412903F, -0.0F, 0.0F);
+        this.BackThighLeft = new MowzieModelRenderer(this, 180, 0);
+        this.BackThighLeft.setRotationPoint(8.5F, -2.0F, 10.0F);
+        this.BackThighLeft.addBox(-0.5F, 0.0F, -3.5F, 5, 16, 9);
+        this.setRotation(BackThighLeft, -0.3284709652253328F, -0.0F, 0.0F);
+        this.BackCalfRight = new MowzieModelRenderer(this, 213, 0);
+        this.BackCalfRight.setRotationPoint(-10.5F, 9.399999618530273F, 2.700000047683716F);
+        this.BackCalfRight.addBox(-2.0F, 0.0F, 0.0F, 4, 13, 5);
+        this.setRotation(BackCalfRight, 0.3436902165412903F, -0.0F, 0.0F);
         this.Head = new MowzieModelRenderer(this, 37, 182);
         this.Head.setRotationPoint(0.0F, -2.9000000953674316F, -22.0F);
         this.Head.addBox(-5.0F, 0.0F, -10.0F, 10, 10, 10);
@@ -232,8 +233,28 @@ public class ModelTriceratops extends MowzieModelBase
         addChildTo(LeftHorn, Head);
         addChildTo(RightHorn, Head);
 
-        addChildTo(LeftFrontFoot, FrontLeg3);
-        addChildTo(RightFrontFoot, FrontLeg4);
+        addChildTo(LeftFrontFoot, FrontCalfLeft);
+        addChildTo(FrontCalfLeft, FrontThighLeft);
+        addChildTo(RightFrontFoot, FrontCalfRight);
+        addChildTo(FrontCalfRight, FrontThighRight);
+        addChildTo(FrontThighRight, Chest);
+        addChildTo(FrontThighLeft, Chest);
+        
+        addChildTo(LeftBackFoot, BackCalfLeft);
+        addChildTo(BackCalfLeft, BackThighLeft);
+        addChildTo(RightBackFoot, BackCalfRight);
+        addChildTo(BackCalfRight, BackThighRight);
+        
+        addChildTo(Head, Neck);
+        addChildTo(Neck, Chest);
+        addChildTo(Collar, Chest);
+        addChildTo(Chest, Waist);
+        
+        addChildTo(Tail5, Tail4);
+        addChildTo(Tail4, Tail3);
+        addChildTo(Tail3, Tail2);
+        addChildTo(Tail2, Tail1);
+        addChildTo(Tail1, Waist);
 
         //Corrections
         MiddleHorn.setRotationPoint(0, 0, 0);
@@ -253,15 +274,26 @@ public class ModelTriceratops extends MowzieModelBase
         LeftHorn.setRotationPoint(0, 0, 0);
         RightHorn.setRotationPoint(0, 0, 0);
         Mouth.setRotationPoint(0, 0, 0);
+        Chest.setRotationPoint(0, -5, -10);
+        Tail1.setRotationPoint(0, -4F, 5);
+        Tail1.rotateAngleX -= 0.02;
+        Tail2.rotateAngleX -= 0.05;
+        Tail3.rotateAngleX -= 0.1;
+        Tail4.rotateAngleX -= 0.2;
+        Tail5.rotateAngleX -= 0.35;
+        Waist.rotateAngleX += 0.07;
+        FrontThighLeft.rotateAngleX -= 0.07;
+        FrontThighRight.rotateAngleX -= 0.07;
+        Neck.rotateAngleX -= 0.07;
 
-        BackLeg1.setInitValuesToCurrentPose();
-        BackLeg2.setInitValuesToCurrentPose();
-        BackLeg3.setInitValuesToCurrentPose();
-        BackLeg4.setInitValuesToCurrentPose();
-        FrontLeg1.setInitValuesToCurrentPose();
-        FrontLeg2.setInitValuesToCurrentPose();
-        FrontLeg3.setInitValuesToCurrentPose();
-        FrontLeg4.setInitValuesToCurrentPose();
+        BackCalfLeft.setInitValuesToCurrentPose();
+        BackCalfRight.setInitValuesToCurrentPose();
+        BackThighLeft.setInitValuesToCurrentPose();
+        BackThighRight.setInitValuesToCurrentPose();
+        FrontCalfLeft.setInitValuesToCurrentPose();
+        FrontCalfRight.setInitValuesToCurrentPose();
+        FrontThighLeft.setInitValuesToCurrentPose();
+        FrontThighRight.setInitValuesToCurrentPose();
         Tail1.setInitValuesToCurrentPose();
         Tail2.setInitValuesToCurrentPose();
         Tail3.setInitValuesToCurrentPose();
@@ -299,15 +331,15 @@ public class ModelTriceratops extends MowzieModelBase
     {
         super.render(entity, f, f1, f2, f3, f4, f5);
         setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-        BackLeg1.render(f5);
-        BackLeg2.render(f5);
-        BackLeg3.render(f5);
-        BackLeg4.render(f5);
-        FrontLeg1.render(f5);
-        FrontLeg2.render(f5);
-        FrontLeg3.render(f5);
-        FrontLeg4.render(f5);
-        Tail1.render(f5);
+ //       BackCalfLeft.render(f5);
+ //       BackCalfRight.render(f5);
+        BackThighLeft.render(f5);
+        BackThighRight.render(f5);
+ /*       FrontCalfLeft.render(f5);
+        FrontCalfRight.render(f5);
+        FrontThighLeft.render(f5);
+        FrontThighRight.render(f5);*/
+/*        Tail1.render(f5);
         Tail2.render(f5);
         Tail3.render(f5);
         Tail4.render(f5);
@@ -315,14 +347,14 @@ public class ModelTriceratops extends MowzieModelBase
         Chest.render(f5);
         Neck.render(f5);
         Head.render(f5);
-//        Mouth.render(f5);
-/*        Shieldthingy1.render(f5);
+        Mouth.render(f5);
+        Shieldthingy1.render(f5);
         Shieldthingy2.render(f5);
-        Shieldthingy3.render(f5);*/
-//        MiddleHorn.render(f5);
-//        LeftHorn.render(f5);
+        Shieldthingy3.render(f5);
+        MiddleHorn.render(f5);
+        LeftHorn.render(f5);
         RightBackFoot.render(f5);
-        LeftBackFoot.render(f5);
+        LeftBackFoot.render(f5);*/
         Waist.render(f5);
 /*        RightHorn.render(f5);
         Shieldthingy4.render(f5);
@@ -334,10 +366,10 @@ public class ModelTriceratops extends MowzieModelBase
         Shieldthingy10.render(f5);
         Shieldthingy11.render(f5);
         Shieldthingy12.render(f5);
-        Shieldthingy13.render(f5);*/
+        Shieldthingy13.render(f5);
         Collar.render(f5);
-//        LeftFrontFoot.render(f5);
-//        RightFrontFoot.render(f5);
+        LeftFrontFoot.render(f5);
+        RightFrontFoot.render(f5);*/
     }
 
     private void setRotation(MowzieModelRenderer model, float x, float y, float z)
@@ -349,14 +381,14 @@ public class ModelTriceratops extends MowzieModelBase
 
     public void resetPose()
     {
-        BackLeg1.setCurrentPoseToInitValues();
-        BackLeg2.setCurrentPoseToInitValues();
-        BackLeg3.setCurrentPoseToInitValues();
-        BackLeg4.setCurrentPoseToInitValues();
-        FrontLeg1.setCurrentPoseToInitValues();
-        FrontLeg2.setCurrentPoseToInitValues();
-        FrontLeg3.setCurrentPoseToInitValues();
-        FrontLeg4.setCurrentPoseToInitValues();
+        BackCalfLeft.setCurrentPoseToInitValues();
+        BackCalfRight.setCurrentPoseToInitValues();
+        BackThighLeft.setCurrentPoseToInitValues();
+        BackThighRight.setCurrentPoseToInitValues();
+        FrontCalfLeft.setCurrentPoseToInitValues();
+        FrontCalfRight.setCurrentPoseToInitValues();
+        FrontThighLeft.setCurrentPoseToInitValues();
+        FrontThighRight.setCurrentPoseToInitValues();
         Tail1.setCurrentPoseToInitValues();
         Tail2.setCurrentPoseToInitValues();
         Tail3.setCurrentPoseToInitValues();
@@ -394,19 +426,42 @@ public class ModelTriceratops extends MowzieModelBase
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         resetPose();
-        faceTarget(Head, 1, f3, f4);
-        walk(BackLeg1, 0.5F, 0.3F, false, 0F, 0, f, f1);
-        walk(BackLeg2, 0.5F, 0.3F, true, 0F, 0, f, f1);
-        walk(BackLeg3, 0.5F, 0.3F, false, 0F, 0, f, f1);
-        walk(BackLeg4, 0.5F, 0.3F, true, 0F, 0, f, f1);
-        walk(RightBackFoot, 0.5F, 0.3F, true, 0F, 0, f, f1);
-        walk(LeftBackFoot, 0.5F, 0.3F, false, 0F, 0, f, f1);
-        walk(FrontLeg1, 0.5F, 0.5F, true, 0F, 0, f, f1);
-        walk(FrontLeg2, 0.5F, 0.5F, false, 0F, 0, f, f1);
-        walk(FrontLeg3, 0.5F, 0.5F, true, 0F, 0, f, f1);
-        walk(FrontLeg4, 0.5F, 0.5F, false, 0F, 0, f, f1);
-//        walk(LeftFrontFoot, 0.5F, 0.5F, false, 0F, 0, f, f1);
-//        walk(RightFrontFoot, 0.5F, 0.5F, true, 0F, 0, f, f1);
+        faceTarget(Head, 2, f3, f4);
+        faceTarget(Neck, 2, f3, f4);
+        EntityTriceratops tric = (EntityTriceratops) entity;
+        /*f = tric.frame;
+        f1 = 0.5F;*/
+        float scaleFactor = 0.45F;
+        float height = 0.5F;
+        float frontOffset = -2F;
+        float animationDegree = 2;
+        
+        faceTarget(Head, 3, f3, f4);
+        faceTarget(Neck, 3, f3, f4);
+        
+        bob(Waist, 2F * scaleFactor, height, false, f, f1);
+        bob(BackThighLeft, 2F * scaleFactor, height, false, f, f1);
+        bob(BackThighRight, 2F * scaleFactor, height, false, f, f1);
+        walk(Waist, 2F * scaleFactor, 0.1F * height, true, -1.5F, 0.1F, f, f1);
+        walk(Head, 2F * scaleFactor, 0.1F * height, false, -1.5F, -0.1F, f, f1);
+        
+        walk(BackThighLeft, 1F * scaleFactor, 0.3F * animationDegree, false, 0F, 0F, f, f1);
+        walk(BackCalfLeft, 1F * scaleFactor, 0.2F * animationDegree, true, 1F, 0F, f, f1);
+        walk(LeftBackFoot, 1F * scaleFactor, 0.2F * animationDegree, false, 1.5F, 0F, f, f1);
+        
+        walk(BackThighRight, 1F * scaleFactor, 0.3F * animationDegree, true, 0F, 0F, f, f1);
+        walk(BackCalfRight, 1F * scaleFactor, 0.2F * animationDegree, false, 1F, 0F, f, f1);
+        walk(RightBackFoot, 1F * scaleFactor, 0.2F * animationDegree, true, 1.5F, 0F, f, f1);
+        
+        walk(FrontThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 0F, -0.1F, f, f1);
+        walk(FrontCalfRight, 1F * scaleFactor, 0.1F * animationDegree, true, frontOffset + 1F, -0.2F, f, f1);
+        walk(RightFrontFoot, 1F * scaleFactor, 0.2F * animationDegree, false, frontOffset + 1.5F, 0F, f, f1);
+        
+        walk(FrontThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, frontOffset + 0F, -0.1F, f, f1);
+        walk(FrontCalfLeft, 1F * scaleFactor, 0.1F * animationDegree, false, frontOffset + 1F, -0.2F, f, f1);
+        walk(LeftFrontFoot, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 1.5F, 0F, f, f1);
+        
+        MowzieModelRenderer[] tailParts = {this.Tail5, this.Tail4, this.Tail3, this.Tail2, this.Tail1};
+        chainWave(tailParts, 2F * scaleFactor, 0.02F, 1F, f, f1);
     }
-
 }
