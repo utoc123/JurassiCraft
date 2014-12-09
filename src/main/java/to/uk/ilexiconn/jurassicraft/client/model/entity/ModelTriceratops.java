@@ -431,7 +431,7 @@ public class ModelTriceratops extends MowzieModelBase
         EntityTriceratops tric = (EntityTriceratops) entity;
         /*f = tric.frame;
         f1 = 0.5F;*/
-        float scaleFactor = 0.45F;
+        float scaleFactor = 0.5F;
         float height = 0.5F;
         float frontOffset = -2F;
         float animationDegree = 2;
@@ -445,11 +445,11 @@ public class ModelTriceratops extends MowzieModelBase
         walk(Waist, 2F * scaleFactor, 0.1F * height, true, -1.5F, 0.1F, f, f1);
         walk(Head, 2F * scaleFactor, 0.1F * height, false, -1.5F, -0.1F, f, f1);
         
-        walk(BackThighLeft, 1F * scaleFactor, 0.3F * animationDegree, false, 0F, 0F, f, f1);
+        walk(BackThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, 0F, 0F, f, f1);
         walk(BackCalfLeft, 1F * scaleFactor, 0.2F * animationDegree, true, 1F, 0F, f, f1);
         walk(LeftBackFoot, 1F * scaleFactor, 0.2F * animationDegree, false, 1.5F, 0F, f, f1);
         
-        walk(BackThighRight, 1F * scaleFactor, 0.3F * animationDegree, true, 0F, 0F, f, f1);
+        walk(BackThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, 0F, 0F, f, f1);
         walk(BackCalfRight, 1F * scaleFactor, 0.2F * animationDegree, false, 1F, 0F, f, f1);
         walk(RightBackFoot, 1F * scaleFactor, 0.2F * animationDegree, true, 1.5F, 0F, f, f1);
         
@@ -462,6 +462,24 @@ public class ModelTriceratops extends MowzieModelBase
         walk(LeftFrontFoot, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 1.5F, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail5, this.Tail4, this.Tail3, this.Tail2, this.Tail1};
-        chainWave(tailParts, 2F * scaleFactor, 0.02F, 1F, f, f1);
+        chainWave(tailParts, 2F * scaleFactor, 0.03F, 1F, f, f1);
+        
+      //Idling
+        walk(Neck, 0.1F, 0.07F, false, -1F, 0F, tric.frame, 1F);
+        walk(Head, 0.1F, 0.07F, true, 0F, 0F, tric.frame, 1F);
+        walk(Waist, 0.1F, 0.025F, false, 0F, 0F, tric.frame, 1F);
+        
+        float inverseKinematicsConstant = 0.3F;
+        walk(FrontThighRight, 0.1F, 0.1F*inverseKinematicsConstant, false, 0F, 0F, tric.frame, 1F);
+        walk(FrontCalfRight, 0.1F, 0.3F*inverseKinematicsConstant, true, 0F, 0F, tric.frame, 1F);
+        walk(RightFrontFoot, 0.1F, 0.175F*inverseKinematicsConstant, false, 0F, 0F, tric.frame, 1F);
+        walk(FrontThighLeft, 0.1F, 0.1F*inverseKinematicsConstant, false, 0F, 0F, tric.frame, 1F);
+        walk(FrontCalfLeft, 0.1F, 0.3F*inverseKinematicsConstant, true, 0F, 0F, tric.frame, 1F);
+        walk(LeftFrontFoot, 0.1F, 0.175F*inverseKinematicsConstant, false, 0F, 0F, tric.frame, 1F);
+        FrontThighRight.rotationPointZ -= 0.5*Math.cos(tric.frame*0.1F);
+        FrontThighLeft.rotationPointZ -= 0.5*Math.cos(tric.frame*0.1F);
+
+        tailSwing(tailParts, 0.1F, 0.05F, 2, tric.frame);
+        chainWave(tailParts, 0.1F, -0.05F, 1, tric.frame, 1F);
     }
 }
