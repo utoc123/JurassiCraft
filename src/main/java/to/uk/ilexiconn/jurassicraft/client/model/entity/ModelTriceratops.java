@@ -276,11 +276,11 @@ public class ModelTriceratops extends MowzieModelBase
         Mouth.setRotationPoint(0, 0, 0);
         Chest.setRotationPoint(0, -5, -10);
         Tail1.setRotationPoint(0, -4F, 5);
-        Tail1.rotateAngleX -= 0.02;
-        Tail2.rotateAngleX -= 0.05;
-        Tail3.rotateAngleX -= 0.1;
-        Tail4.rotateAngleX -= 0.2;
-        Tail5.rotateAngleX -= 0.35;
+        Tail1.rotateAngleX -= 0.2;
+        Tail2.rotateAngleX -= 0.3;
+        Tail3.rotateAngleX += 0.1;
+        Tail4.rotateAngleX += 0.1;
+        Tail5.rotateAngleX += 0.05;
         Waist.rotateAngleX += 0.07;
         FrontThighLeft.rotateAngleX -= 0.07;
         FrontThighRight.rotateAngleX -= 0.07;
@@ -442,8 +442,8 @@ public class ModelTriceratops extends MowzieModelBase
         bob(Waist, 2F * scaleFactor, height, false, f, f1);
         bob(BackThighLeft, 2F * scaleFactor, height, false, f, f1);
         bob(BackThighRight, 2F * scaleFactor, height, false, f, f1);
-        walk(Waist, 2F * scaleFactor, 0.1F * height, true, -1.5F, 0.1F, f, f1);
-        walk(Head, 2F * scaleFactor, 0.1F * height, false, -1.5F, -0.1F, f, f1);
+        walk(Waist, 2F * scaleFactor, 0.1F * height, true, -1.5F, 0F, f, f1);
+        walk(Head, 2F * scaleFactor, 0.1F * height, false, -1.5F, 0F, f, f1);
         
         walk(BackThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, 0F, 0F, f, f1);
         walk(BackCalfLeft, 1F * scaleFactor, 0.2F * animationDegree, true, 1F, 0F, f, f1);
