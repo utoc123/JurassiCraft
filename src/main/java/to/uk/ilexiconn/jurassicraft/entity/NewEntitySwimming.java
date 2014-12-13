@@ -72,7 +72,8 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
         super.onUpdate();
 
         if (this.isInWater())
-            this.motionY *= 0.1D;
+ //           this.motionY *= 0.1D; //THIS IS CAUSING PROBLEMS, BUT SEEMS TO BE NECESSARY
+        	this.motionY += 0.02D; //This will negate gravity instead
         frame++;
     }
 
@@ -140,6 +141,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
 
             this.renderYawOffset += (-((float) Math.atan2(this.motionX, this.motionZ)) * 180.0F / (float) Math.PI - this.renderYawOffset) * 0.5F;
             this.rotationYaw = this.renderYawOffset;
+            this.rotationYaw += MathHelper.wrapAngleTo180_float(this.angle  - this.rotationYaw - 90.0F);
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.rotationPitch += ((float) Math.atan2(this.motionY, (double) f) * 180.0F / (float) Math.PI - this.rotationPitch) * 0.5F;
         }
@@ -205,6 +207,7 @@ public abstract class NewEntitySwimming extends EntityJurassiCraftRidable
     {
         int air = this.getAir();
         super.onEntityUpdate();
+
 
         if (this.isEntityAlive() && !this.isInWater())
         {
