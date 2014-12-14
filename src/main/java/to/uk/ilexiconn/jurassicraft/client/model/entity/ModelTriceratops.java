@@ -429,40 +429,50 @@ public class ModelTriceratops extends MowzieModelBase
         faceTarget(Head, 2, f3, f4);
         faceTarget(Neck, 2, f3, f4);
         EntityTriceratops tric = (EntityTriceratops) entity;
-        /*f = tric.frame;
-        f1 = 0.5F;*/
+        
+/*        f = tric.frame;
+        f1 = (float) Math.cos(f/20)*0.5F + 1F;
+        f1 = 1.5F;*/
+        
+        //Sprinting funtionality parameters
+        float sprintModifier = (float) (1/(1+Math.exp(-40*f1+50)));
+        float legOffsetModifier = 2.5F;
+        float bobBase = 2F; if(sprintModifier >= 0.9)bobBase = 1F;
+        
         float scaleFactor = 0.5F;
         float height = 0.5F;
         float frontOffset = -2F;
-        float animationDegree = 2;
-        
+        float animationDegree = 2 - sprintModifier*0.2F;
+                
         faceTarget(Head, 3, f3, f4);
         faceTarget(Neck, 3, f3, f4);
         
-        bob(Waist, 2F * scaleFactor, height, false, f, f1);
-        bob(BackThighLeft, 2F * scaleFactor, height, false, f, f1);
-        bob(BackThighRight, 2F * scaleFactor, height, false, f, f1);
-        walk(Waist, 2F * scaleFactor, 0.1F * height, true, -1.5F, 0F, f, f1);
-        walk(Head, 2F * scaleFactor, 0.1F * height, false, -1.5F, 0F, f, f1);
+        bob(Waist, bobBase * scaleFactor, height, false, f, f1);
+        bob(BackThighLeft, bobBase * scaleFactor, height, false, f, f1);
+        bob(BackThighRight, bobBase * scaleFactor, height, false, f, f1);
+        walk(Waist, bobBase * scaleFactor, 0.1F * height, true, -1.5F, 0F, f, f1);
+        walk(Head, bobBase * scaleFactor, 0.1F * height, false, -1.5F, 0F, f, f1);
+        Waist.rotateAngleX += 0.1*sprintModifier;
+        Head.rotateAngleX += 0.6*sprintModifier;
         
-        walk(BackThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, 0F, 0F, f, f1);
-        walk(BackCalfLeft, 1F * scaleFactor, 0.2F * animationDegree, true, 1F, 0F, f, f1);
-        walk(LeftBackFoot, 1F * scaleFactor, 0.2F * animationDegree, false, 1.5F, 0F, f, f1);
+        walk(BackThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, 0F + sprintModifier*legOffsetModifier, 0F + sprintModifier*0.2F, f, f1);
+        walk(BackCalfLeft, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, true, 1F + sprintModifier*legOffsetModifier, 0F, f, f1);
+        walk(LeftBackFoot, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, false, 1.5F + sprintModifier*legOffsetModifier, 0F, f, f1);
         
-        walk(BackThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, 0F, 0F, f, f1);
-        walk(BackCalfRight, 1F * scaleFactor, 0.2F * animationDegree, false, 1F, 0F, f, f1);
-        walk(RightBackFoot, 1F * scaleFactor, 0.2F * animationDegree, true, 1.5F, 0F, f, f1);
+        walk(BackThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, 0F, 0F + sprintModifier*0.2F, f, f1);
+        walk(BackCalfRight, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, false, 1F, 0F, f, f1);
+        walk(RightBackFoot, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, true, 1.5F, 0F, f, f1);
         
-        walk(FrontThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 0F, -0.1F, f, f1);
+        walk(FrontThighRight, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 0F, -0.1F + sprintModifier*0.2F, f, f1);
         walk(FrontCalfRight, 1F * scaleFactor, 0.1F * animationDegree, true, frontOffset + 1F, -0.2F, f, f1);
-        walk(RightFrontFoot, 1F * scaleFactor, 0.2F * animationDegree, false, frontOffset + 1.5F, 0F, f, f1);
+        walk(RightFrontFoot, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, false, frontOffset + 1.5F, 0F, f, f1);
         
-        walk(FrontThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, frontOffset + 0F, -0.1F, f, f1);
-        walk(FrontCalfLeft, 1F * scaleFactor, 0.1F * animationDegree, false, frontOffset + 1F, -0.2F, f, f1);
-        walk(LeftFrontFoot, 1F * scaleFactor, 0.2F * animationDegree, true, frontOffset + 1.5F, 0F, f, f1);
+        walk(FrontThighLeft, 1F * scaleFactor, 0.2F * animationDegree, false, frontOffset + 0F + sprintModifier*legOffsetModifier, -0.1F + sprintModifier*0.2F, f, f1);
+        walk(FrontCalfLeft, 1F * scaleFactor, 0.1F * animationDegree, false, frontOffset + 1F + sprintModifier*legOffsetModifier, -0.2F, f, f1);
+        walk(LeftFrontFoot, 1F * scaleFactor, 0.2F * animationDegree - sprintModifier*0.1F, true, frontOffset + 1.5F + sprintModifier*legOffsetModifier, 0F, f, f1);
         
         MowzieModelRenderer[] tailParts = {this.Tail5, this.Tail4, this.Tail3, this.Tail2, this.Tail1};
-        chainWave(tailParts, 2F * scaleFactor, 0.03F, 1F, f, f1);
+        chainWave(tailParts, bobBase * scaleFactor, 0.03F, 1F, f, f1);
         
       //Idling
         walk(Neck, 0.1F, 0.07F, false, -1F, 0F, tric.frame, 1F);
