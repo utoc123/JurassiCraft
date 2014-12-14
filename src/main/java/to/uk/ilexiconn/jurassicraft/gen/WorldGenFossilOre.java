@@ -3,7 +3,6 @@ package to.uk.ilexiconn.jurassicraft.gen;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -80,16 +79,21 @@ public class WorldGenFossilOre implements IWorldGenerator
                                     if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D)
                                     {
                                         Block toGenerate = ModBlocks.fossilOre;
-                                        int metadataToGenerate = 0;
+                                        int metadataToGenerate = random.nextInt(6);
 
                                         if (block == Blocks.hardened_clay)
+                                        {
                                             toGenerate = ModBlocks.clayFossilOre;
-                                        else if (block == Blocks.stained_hardened_clay)
+                                            metadataToGenerate = 0;
+                                        } else if (block == Blocks.stained_hardened_clay)
                                         {
                                             toGenerate = ModBlocks.clayFossilOre;
                                             metadataToGenerate = convertVanillaMetadataToOre(blockMetadata);
                                         } else if (block == Blocks.sandstone)
+                                        {
                                             toGenerate = ModBlocks.sandstoneFossilOre;
+                                            metadataToGenerate = 0;
+                                        }
 
                                         world.setBlock(k2, l2, i3, toGenerate, metadataToGenerate, 2);
                                     }
