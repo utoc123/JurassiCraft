@@ -1,6 +1,10 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaurs;
 
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -29,6 +33,10 @@ public class EntityHerrerasaur extends EntityJurassiCraftLandAggressive implemen
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityHypsilophodon.class, 0, 0.4F));
         this.targetTasks.addTask(5, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityLeaellynasaur.class, 0, 0.4F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityChicken.class, 0, 0.9F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityCow.class, 0, 0.9F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntityPig.class, 0, 0.9F));
+        this.targetTasks.addTask(3, new JurassiCraftEntityAITargetIfHasAgeAndNonTamed(this, EntitySheep.class, 0, 0.9F));
 
         this.setCreatureExperiencePoints(2500);
     }
