@@ -35,11 +35,6 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-	}
-
-	@Override
 	public double getMountedYOffset() {
 		return (double) this.getYBouningBox() * 1.05D;
 	}

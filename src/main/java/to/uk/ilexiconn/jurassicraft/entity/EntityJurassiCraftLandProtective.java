@@ -3,6 +3,7 @@ package to.uk.ilexiconn.jurassicraft.entity;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,6 +35,12 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new JurassiCraftEntityAIAngerProtective(this));
     }
+    
+    @Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
+	}
 
     @Override
     protected boolean canDespawn()
