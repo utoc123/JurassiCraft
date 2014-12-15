@@ -430,15 +430,16 @@ public class ModelTriceratops extends MowzieModelBase
         faceTarget(Neck, 2, f3, f4);
         EntityTriceratops tric = (EntityTriceratops) entity;
         
-/*        f = tric.frame;
-        f1 = (float) Math.cos(f/20)*0.5F + 1F;
-        f1 = 1.5F;*/
+ /*       f = tric.frame;
+        f1 = (float) Math.cos(f/50)*0.5F + 1F;
+ //       f1 = 1.5F;*/
         
-        //Sprinting funtionality parameters
-        float sprintModifier = (float) (1/(1+Math.exp(-40*f1+50)));
+        //Sprinting functionality parameters
+        float sprintModifier = (float) (1/(1+Math.exp(30*(-f1+0.8))));
+//        System.out.println(f1);
         float legOffsetModifier = 2.5F;
         float bobBase = 2F; if(sprintModifier >= 0.9)bobBase = 1F;
-        
+                
         float scaleFactor = 0.5F;
         float height = 0.5F;
         float frontOffset = -2F;
