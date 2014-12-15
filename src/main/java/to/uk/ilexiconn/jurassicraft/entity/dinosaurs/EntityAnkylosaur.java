@@ -27,8 +27,7 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective
 				1.1D * this.getCreatureSpeed()));
 		this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this,
 				16.0D));
-		this.tasks.addTask(5, new JurassiCraftEntityAIWander(this, 16, 6,
-				0.7D * this.getCreatureSpeed()));
+		this.tasks.addTask(5, new JurassiCraftEntityAIWander(this, 0.7D * this.getCreatureSpeed()));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this,
 				EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
@@ -38,8 +37,6 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
-		// this followRange attribute limits max movement range. this is the reason i(oortcloud) expand this value.
 	}
 
 	@Override

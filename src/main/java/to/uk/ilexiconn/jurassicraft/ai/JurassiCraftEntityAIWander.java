@@ -25,13 +25,21 @@ public class JurassiCraftEntityAIWander extends EntityAIBase {
 		this.setMutexBits(1);
 	}
 
+	public JurassiCraftEntityAIWander(EntityJurassiCraftCreature creature, double velocity) {
+		this.entity = creature;
+		this.speed = velocity;
+		this.maxDistance = 16;
+		this.maxHeight = 6;
+		this.setMutexBits(1);
+	}
+	
 	public boolean shouldExecute() {
 		if (this.entity.getRNG().nextInt(120) != 0) {
 			return false;
 		} else {
 			Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity,
 					(int) (this.maxDistance * Math.sqrt(this.entity
-							.getGrowthStage())), 2);
+							.getGrowthStage())), (int) this.maxHeight);
 			//Now searching range is increased as growth stage increase.
 			if (vec3 == null) {
 				return false;

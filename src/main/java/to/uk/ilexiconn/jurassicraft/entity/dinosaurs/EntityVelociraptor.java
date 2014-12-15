@@ -19,6 +19,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfHasAgeAndNonTamed;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorLeap;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorRoar;
 import to.uk.ilexiconn.jurassicraft.client.animation.AIVelociraptorTwitchHead;
@@ -43,7 +44,7 @@ public class EntityVelociraptor extends EntityJurassiCraftLandAggressive impleme
         this.tasks.addTask(2, new AIVelociraptorLeap(this));
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(5, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
-        this.tasks.addTask(6, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
+        this.tasks.addTask(6, new JurassiCraftEntityAIWander(this, 0.8D * this.getCreatureSpeed()));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
