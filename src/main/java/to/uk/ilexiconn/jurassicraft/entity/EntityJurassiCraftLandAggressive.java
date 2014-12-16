@@ -30,12 +30,6 @@ public class EntityJurassiCraftLandAggressive extends EntityJurassiCraftRidable
     }
 
     @Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
-	}
-    
-    @Override
     public boolean canBreatheUnderwater()
     {
         return false;

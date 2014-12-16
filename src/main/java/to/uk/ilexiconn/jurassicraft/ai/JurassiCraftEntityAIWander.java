@@ -9,9 +9,12 @@ import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftCreature;
 
 public class JurassiCraftEntityAIWander extends EntityAIBase {
 	private EntityJurassiCraftCreature entity;
+	private int leftWalk;
 	private double xPosition;
+	private double xDirection;
 	private double yPosition;
 	private double zPosition;
+	private double zDirection;
 	private double speed;
 	private double maxDistance;
 	private double maxHeight;
@@ -34,13 +37,12 @@ public class JurassiCraftEntityAIWander extends EntityAIBase {
 	}
 	
 	public boolean shouldExecute() {
-		if (this.entity.getRNG().nextInt(120) != 0) {
-			return false;
-		} else {
-			Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity,
-					(int) (this.maxDistance * Math.sqrt(this.entity
-							.getGrowthStage())), (int) this.maxHeight);
-			//Now searching range is increased as growth stage increase.
+		
+		if (leftWalk>0) {
+			this.leftWalk--;
+			Vec3 toward = Vec3.createVectorHelper(this.xPosition+this.xDirection,0, this.zPosition +this.zDirection);
+			Vec3 vec3 = RandomPositionGenerator.findRandomTargetBlockTowards(this.entity,
+					(int) (this.maxDistance), (int) this.maxHeight,toward);
 			if (vec3 == null) {
 				return false;
 			} else {
@@ -48,6 +50,15 @@ public class JurassiCraftEntityAIWander extends EntityAIBase {
 				this.yPosition = vec3.yCoord;
 				this.zPosition = vec3.zCoord;
 				return true;
+			}
+		} else {
+			if (this.entity.getRNG().nextInt(120) == 0) {
+				this.leftWalk = (int) Math.sqrt(this.entity.getGrowthStage());
+				this.xDirection = this.entity.getRNG().nextInt((int) (this.maxDistance*2)+1)-this.maxDistance;
+				this.zDirection = this.entity.getRNG().nextInt((int) (this.maxDistance*2)+1)-this.maxDistance;
+				return false;
+			} else {
+				return false;
 			}
 		}
 	}
@@ -59,7 +70,6 @@ public class JurassiCraftEntityAIWander extends EntityAIBase {
 
 	public boolean continueExecuting() {
 		return !this.entity.getNavigator().noPath();
-
 	}
 
 }

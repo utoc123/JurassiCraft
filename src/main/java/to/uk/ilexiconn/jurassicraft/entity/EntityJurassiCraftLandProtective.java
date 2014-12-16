@@ -35,12 +35,6 @@ public class EntityJurassiCraftLandProtective extends EntityJurassiCraftRidable
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new JurassiCraftEntityAIAngerProtective(this));
     }
-    
-    @Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
-	}
 
     @Override
     protected boolean canDespawn()

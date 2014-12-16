@@ -29,12 +29,6 @@ public class EntityJurassiCraftLandCoward extends EntityJurassiCraftRidable
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
     }
     
-    @Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
-	}
-
     /** Sets the fleeing tick value of the creature. When it is positive, it is reduced each tick until zero (done in the JurassiCraftLandEntityAIPanicIfNotAnger AI class). */
     public void setFleeingTick(int value)
     {
