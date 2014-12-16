@@ -23,6 +23,8 @@ public class ModItems implements IContentHandler
     public static Item porkOnAStick;
     public static Item wheatOnAStick;
 
+    public static Item net;
+
     public void init()
     {
         amber = new ItemAmber();
@@ -38,6 +40,8 @@ public class ModItems implements IContentHandler
         fishOnAStick = new ItemOnAStick("Fish");
         porkOnAStick = new ItemOnAStick("Pork");
         wheatOnAStick = new ItemOnAStick("Wheat");
+
+        net = new ItemNet();
 
         gameRegistry();
     }
