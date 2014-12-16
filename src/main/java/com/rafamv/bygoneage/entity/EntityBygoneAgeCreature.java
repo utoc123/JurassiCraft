@@ -15,6 +15,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 import com.rafamv.bygoneage.BygoneAge;
+import com.rafamv.bygoneage.ai.stats.FlyingParameters;
 import com.rafamv.bygoneage.enums.BygoneAgeGuiInformation;
 import com.rafamv.bygoneage.enums.BygoneAgeMobsInformation;
 import com.rafamv.bygoneage.handler.BygoneAgeDNAHandler;
@@ -34,7 +35,8 @@ public class EntityBygoneAgeCreature extends EntityCreature implements IEntityAd
 	public float attackGeneticQuality;
 	public float speedGeneticQuality;
 	public float sizeGeneticQuality;
-	public boolean gender;
+	public FlyingParameters flyingParameters;
+	public boolean gender, isFlying;
 	public String geneticCode;
 	public float height;
 	public float length;
@@ -46,6 +48,9 @@ public class EntityBygoneAgeCreature extends EntityCreature implements IEntityAd
 
 	public EntityBygoneAgeCreature(World world, byte id, float maxChildAge) {
 		super(world);
+		if(this != null) {
+			flyingParameters = new FlyingParameters(63, 80, 10, 10, 10, 10, 10, 10, 10, "grassandleaves");
+		}
 		if (id >= 0) {
 			this.creatureID = id;
 		} else {
@@ -101,6 +106,15 @@ public class EntityBygoneAgeCreature extends EntityCreature implements IEntityAd
 				this.setCreatureSize();
 			}
 		}
+		
+		if(riddenByEntity == null) {
+			motionY += 0.04f + 0.06f * flyingParameters.flySpeedModifier / 500f;
+			isFlying = true;
+		}
+		
+		if(onGround && isFlying)
+			isFlying = false;
+		
 		super.onLivingUpdate();
 	}
 
