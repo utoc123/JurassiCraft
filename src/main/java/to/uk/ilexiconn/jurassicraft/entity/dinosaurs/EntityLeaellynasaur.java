@@ -1,6 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaurs;
 
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -9,6 +12,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIAvoidEntityIfNotTamed;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFoodCoward;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandCoward;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -25,7 +29,7 @@ public class EntityLeaellynasaur extends EntityJurassiCraftLandCoward implements
         this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityHerrerasaur.class, 16.0F, 1.0D * this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIFollowFoodCoward(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.8D * this.getCreatureSpeed()));
+        this.tasks.addTask(5, new JurassiCraftEntityAIWander(this, 0.8D * this.getCreatureSpeed()));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
 

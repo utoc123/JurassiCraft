@@ -1,6 +1,9 @@
 package to.uk.ilexiconn.jurassicraft.entity.dinosaurs;
 
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -9,6 +12,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIHerdBehavior;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -24,7 +28,7 @@ public class EntityGallimimus extends EntityJurassiCraftLandProtective implement
         this.tasks.addTask(4, new JurassiCraftEntityAIFollowFood(this, 1.1D * this.getCreatureSpeed()));
         this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this, 16.0D));
         this.tasks.addTask(5, new EntityAIAvoidEntity(this, EntityTyrannosaurus.class, 12.0F, this.getCreatureSpeed(), 1.2D * this.getCreatureSpeed()));
-        this.tasks.addTask(6, new EntityAIWander(this, 0.6D * this.getCreatureSpeed()));
+        this.tasks.addTask(6, new JurassiCraftEntityAIWander(this, 0.6D * this.getCreatureSpeed()));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(8, new JurassiCraftEntityAIHerdBehavior(this, 96, 1500, 16, 0.6D * this.getCreatureSpeed()));

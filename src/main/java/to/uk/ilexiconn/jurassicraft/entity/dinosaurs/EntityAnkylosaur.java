@@ -3,6 +3,7 @@ package to.uk.ilexiconn.jurassicraft.entity.dinosaurs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -27,21 +28,13 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective
 				1.1D * this.getCreatureSpeed()));
 		this.tasks.addTask(4, new JurassiCraftEntityAIEatDroppedFood(this,
 				16.0D));
-		this.tasks.addTask(5, new JurassiCraftEntityAIWander(this, 16, 6,
-				0.7D * this.getCreatureSpeed()));
+		this.tasks.addTask(5, new JurassiCraftEntityAIWander(this, 0.7D * this.getCreatureSpeed()));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this,
 				EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.setCreatureExperiencePoints(5000);
 	}
-
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.followRange).setBaseValue(256.0D);
-		// this followRange attribute limits max movement range. this is the reason i(oortcloud) expand this value.
-	}
-
+	
 	@Override
 	public double getMountedYOffset() {
 		return (double) this.getYBouningBox() * 1.05D;
@@ -89,10 +82,4 @@ public class EntityAnkylosaur extends EntityJurassiCraftLandProtective
 		}
 	}
 	
-	@Override
-	public float getBlockPathWeight(int x, int y,
-			int z) {
-		// This make searching target position efficient.
-		return this.worldObj.isAirBlock(x, y-1, z) ? 0.0F : 1.0F;
-	}
 }

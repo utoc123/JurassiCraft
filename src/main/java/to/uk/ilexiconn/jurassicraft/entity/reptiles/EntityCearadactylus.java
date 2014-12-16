@@ -2,7 +2,10 @@ package to.uk.ilexiconn.jurassicraft.entity.reptiles;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,6 +17,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.EntityAICearadactylus;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
 
@@ -33,7 +37,7 @@ public class EntityCearadactylus extends EntityJurassiCraftLandAggressive implem
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, this.flyingAi);
         this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
+        this.tasks.addTask(1, new JurassiCraftEntityAIWander(this, this.getCreatureSpeed()));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));
         this.tasks.addTask(5, new JurassiCraftEntityAIFollowFood(this, 1.2D * this.getCreatureSpeed()));

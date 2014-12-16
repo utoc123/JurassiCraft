@@ -14,6 +14,7 @@ import to.uk.ilexiconn.jurassicraft.Util;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIEatDroppedFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIFollowFood;
 import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAITargetIfHasAgeAndNonTamed;
+import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.client.animation.AITyrannosaurusRoar;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandAggressive;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
@@ -32,7 +33,7 @@ public class EntityTyrannosaurus extends EntityJurassiCraftLandAggressive implem
         super(world, (byte) Util.classToId(EntityTyrannosaurus.class));
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIWander(this, this.getCreatureSpeed()));
+        this.tasks.addTask(1, new JurassiCraftEntityAIWander(this, this.getCreatureSpeed()));
         this.tasks.addTask(4, this.aiSit);
         this.tasks.addTask(2, new AITyrannosaurusRoar(this));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, this.getCreatureSpeed()));

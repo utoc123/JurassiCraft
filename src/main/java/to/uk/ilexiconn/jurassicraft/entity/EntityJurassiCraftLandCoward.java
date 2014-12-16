@@ -2,6 +2,7 @@ package to.uk.ilexiconn.jurassicraft.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -27,7 +28,7 @@ public class EntityJurassiCraftLandCoward extends EntityJurassiCraftRidable
         this.targetTasks.addTask(2, new JurassiCraftEntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
     }
-
+    
     /** Sets the fleeing tick value of the creature. When it is positive, it is reduced each tick until zero (done in the JurassiCraftLandEntityAIPanicIfNotAnger AI class). */
     public void setFleeingTick(int value)
     {
