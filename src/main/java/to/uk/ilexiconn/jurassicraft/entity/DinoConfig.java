@@ -10,9 +10,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("dinos", ".json");
+            File tempFile = File.createTempFile("json/dinos", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/dinos.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/dinos.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -27,9 +27,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("reptiles", ".json");
+            File tempFile = File.createTempFile("json/reptiles", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/reptiles.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/reptiles.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -44,9 +44,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("mammals", ".json");
+            File tempFile = File.createTempFile("json/mammals", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/mammals.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/mammals.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -62,9 +62,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("birds", ".json");
+            File tempFile = File.createTempFile("json/birds", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/birds.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/birds.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -80,9 +80,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("fish", ".json");
+            File tempFile = File.createTempFile("json/fish", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/fish.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/fish.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -97,9 +97,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("cephalopods", ".json");
+            File tempFile = File.createTempFile("json/cephalopods", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/cephalopods.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/cephalopods.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
@@ -114,9 +114,9 @@ public class DinoConfig
     {
         try
         {
-            File tempFile = File.createTempFile("arthropods", ".json");
+            File tempFile = File.createTempFile("json/arthropods", ".json");
             tempFile.deleteOnExit();
-            InputStream in = DinoConfig.class.getResourceAsStream("/arthropods.json");
+            InputStream in = DinoConfig.class.getResourceAsStream("/json/arthropods.json");
             FileOutputStream out = new FileOutputStream(tempFile);
             org.apache.commons.io.IOUtils.copy(in, out);
             return tempFile;
