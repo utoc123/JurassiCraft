@@ -44,7 +44,7 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
         include 'changelog.info'
-        include 'dinos.json'
+        include 'json/*.json'
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
 
