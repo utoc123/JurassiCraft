@@ -18,11 +18,13 @@ import to.uk.ilexiconn.jurassicraft.ai.JurassiCraftEntityAIWander;
 import to.uk.ilexiconn.jurassicraft.client.animation.AITriceratopsCharge;
 import to.uk.ilexiconn.jurassicraft.entity.EntityJurassiCraftLandProtective;
 import to.uk.ilexiconn.jurassicraft.entity.IDinosaur;
+import to.uk.ilexiconn.jurassicraft.utility.ControlledParam;
 
 public class EntityTriceratops extends EntityJurassiCraftLandProtective implements IDinosaur
 {
 	public int timeSinceCharge = 0;
 	public boolean charging = false;
+    public ControlledParam flailDegree = new ControlledParam(0F, 0F, 1F, 0F);
 	
     public EntityTriceratops(World world)
     {
@@ -124,5 +126,12 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
 			victim.motionZ += Math.sin(angleYaw);
 			victim.motionY += 0.3;
 		}
+	}
+	
+	public void onUpdate() {
+		super.onUpdate();
+		flailDegree.update();
+        if (animID == 1 && animTick == 1)
+            this.flailDegree.thereAndBack(0F, 0.1F, 1F, 5);
 	}
 }

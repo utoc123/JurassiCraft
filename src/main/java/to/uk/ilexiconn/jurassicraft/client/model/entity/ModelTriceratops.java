@@ -497,6 +497,15 @@ public class ModelTriceratops extends MowzieModelBase
 
         tailSwing(tailParts, 0.1F, 0.05F, 2, tric.frame);
         chainWave(tailParts, 0.1F, -0.05F, 1, tric.frame, 1F);
+        
+        //Specialized animations
+        Head.rotateAngleZ += Math.cos(tric.frame) * tric.flailDegree.value / 3;
+        FrontThighRight.rotateAngleX += Math.cos(tric.frame/3) * tric.flailDegree.value * 0.3;
+        FrontCalfRight.rotateAngleX += Math.cos((tric.frame + 1.5)/3) * tric.flailDegree.value * 0.4;
+        RightFrontFoot.rotateAngleX += Math.cos((-tric.frame + 3)/3) * tric.flailDegree.value * 0.3;
+        FrontThighLeft.rotateAngleX += Math.cos(tric.frame/3) * tric.flailDegree.value * -0.3;
+        FrontCalfLeft.rotateAngleX += Math.cos((tric.frame + 1.5)/3) * tric.flailDegree.value * -0.4;
+        LeftFrontFoot.rotateAngleX += Math.cos((tric.frame - 3)/3) * tric.flailDegree.value * -0.3;
     }
     
     public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5)
