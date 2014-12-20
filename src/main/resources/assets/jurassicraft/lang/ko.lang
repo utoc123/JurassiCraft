@@ -1,0 +1,238 @@
+// CreativeTab
+itemGroup.jc.blocks = JurassiCraft 블록
+itemGroup.jc.items = JurassiCraft 항목
+
+
+// Entities_Egg_Creatures
+entity.dino_egg.name = 공룡 알
+entity.Ankylosaur.name = 안킬로 사우루스
+entity.Brachiosaur.name = 브라키오 사우루스
+entity.Velociraptor.name = 벨로시랩터 (Velociraptor)
+entity.Leaellynasaur.name = 레아엘리나사우라
+entity.Herrerasaur.name = 헤레라 사우루스
+entity.Parasaurolophus.name = 파라사우롤로푸스
+entity.Meganeura.name = 거대 잠자리
+entity.Dilophosaurus.name = 딜로포 사우루스
+entity.Tylosaurus.name = 틸로 사우루스
+entity.Oviraptor.name = 오비 랍 토르
+entity.Tyrannosaurus.name = 티라노 사우루스
+entity.Gallimimus.name = 갈리미무스
+entity.Hy​​의 psilophodon.name = 힙실리포돈
+entity.Coelacanth.name = 실러캔스
+entity.Triceratops.name = 트리케라톱스
+entity.Stegosaur.name = 스테고 사우루스
+entity.Dilophosaurus.name = 딜로포 사우루스
+entity.Cearadactylus.name = 케아라닥틸루스
+entity.Sarcosuchus.name = 살코스쿠스
+entity.Titanis.name = 티타 니스
+
+// Entities_Syringe_Creatures
+entity.Mammoth.name = 매머드
+entity.Arsinoitherium.name = 아르시노이테리움
+entity.Basilosaurus.name = 바실로 사우루스
+entity.Leptictidium.name = 렙틱티디움
+entity.Uintatherium.name = 윈타테륨
+entity.Paraceratherium.name = 인드리코티어
+entity.Deinotherium.name = 데이노테리움
+
+
+//Items
+item.dinoBone.name=공룡의 뼈
+item.dinoSteak.name=공룡 고기
+item.growthSerum.name=성장 촉진제
+item.gypsumPowder.name=석고 가루
+item.dinopad.name=디노 패드
+
+//Items_Egg_Creatures
+item.Ankylosaur_Meat.name=안킬로사우루스의 고기
+item.Ankylosaur_DNA.name=안킬로사우루스의 DNA
+item.Brachiosaur_Meat.name=브라키오사우루스의 고기
+item.Brachiosaur_DNA.name=브라키오사우루스의 DNA
+item.Velociraptor_Meat.name=벨로시랩터의 고기
+item.Velociraptor_DNA.name=벨로시랩터의 DNA
+item.Stegosaur_Meat.name=스테고사우루스의 고기
+item.Stegosaur_DNA.name=스테고사우루스의 DNA
+item.Triceratops_Meat.name=트리케라톱스의 고기
+item.Triceratops_DNA.name=트리케라톱스의 DNA
+item.Coelacanth_Meat.name=날 실러캔스
+item.Coelacanth_DNA.name=실러캔스의 DNA
+item.Tyrannosaurus_Meat.name=티라노사우루스의 고기
+item.Tyrannosaurus_DNA.name=티라노사우루스의 DNA
+item.Gallimimus_Meat.name=갈리미무스의 고기
+item.Gallimimus_DNA.name=갈리미무스의 DNA
+item.Leaellynasaur_Meat.name=레아엘리나사우라의 고기
+item.Leaellynasaur_DNA.name=레아엘리나사우라의 DNA
+item.Hypsilophodon_Meat.name=힙실로포돈의 고기
+item.Hypsilophodon_DNA.name=힙실로포돈의 DNA
+item.Tylosaurus_Meat.name=틸로사우루스의 고기
+item.Tylosaurus_DNA.name=틸로사우루스의 DNA
+item.Meganeura_Meat.name=생 거대잠자리
+item.Meganeura_DNA.name=거대잠자리의 DNA
+item.Herrerasaur_Meat.name=헤레라사우루스의 고기
+item.Herrerasaur_DNA.name=헤레라사우루스의 DNA
+item.Parasaurolophus_Meat.name=파라사우롤로푸스의 고기
+item.Parasaurolophus_DNA.name=파라사우롤로푸스의 DNA
+item.Dilophosaurus_Meat.name=딜로포사우루스의 고기
+item.Dilophosaurus_DNA.name=딜로포사우루스의 DNA
+item.Oviraptor_Meat.name=오비랍토르의 고기
+item.Oviraptor_DNA.name=오비랍토르의 DNA
+item.Cearadactylus_Meat.name=케아라닥틸루스의 고기
+item.Cearadactylus_DNA.name=케아라닥틸루스의 DNA
+item.Sarcosuchus_Meat.name=살코수쿠스의 고기
+item.Sarcosuchus_DNA.name=살코수쿠스의 DNA
+item.Titanis_Meat.name=티타니스의 고기
+item.Titanis_DNA.name=티타니스의 DNA
+
+item.egg_Brachiosaur.name=브라키오사우루스의 알
+item.egg_Velociraptor.name=벨로시랩터의 알
+item.egg_Ankylosaur.name=안킬로사우루스의 알
+item.egg_Stegosaur.name=스테고사우루스의 알
+item.egg_Triceratops.name=트리케라톱스의 알
+item.egg_Coelacanth.name=실러캔스의 알
+item.egg_Tyrannosaurus.name=티라노사우루스의 알
+item.egg_Oviraptor.name=오비랍토르의 알
+item.egg_Dilophosaurus.name=딜로포사우루스의 알
+item.egg_Parasaurolophus.name=파라사우롤로푸스의 알
+item.egg_Herrerasaur.name=헤레라사우루스의 알
+item.egg_Meganeura.name=거대잠자리의 알
+item.egg_Tylosaurus.name=틸로사우루스의 알
+item.egg_Hypsilophodon.name=힙실로포돈의 알
+item.egg_Leaellynasaur.name=레아엘리나사우루의 알
+item.egg_Gallimimus.name=갈리미무스의 알
+item.egg_Cearadactylus.name=케아라닥틸루스의 알
+item.egg_Sarcosuchus.name=살코스쿠스의 알
+item.egg_Titanis.name=티타니스의 알
+
+//Items_Syringe_Creatures
+item.Mammoth_Meat.name=메머드의 고기
+item.Mammoth_DNA.name=메머드의 DNA
+item.Arsinoitherium_Meat.name=아르시노이테리움의 고기
+item.Arsinoitherium_DNA.name=아르시노이테리움의 DNA
+item.Basilosaurus_Meat.name=바실로사우루스의 고기
+item.Basilosaurus_DNA.name=바실로사우루스의 DNA
+item.Leptictidium_Meat.name=렙틱티디움의 고기
+item.Leptictidium_DNA.name=렙틱티디움의 DNA
+item.Uintatherium_Meat.name=원타테륨의 고기
+item.Uintatherium_DNA.name=원타테륨의 DNA
+item.Paraceratherium_Meat.name=인드리코티어의 고기
+item.Paraceratherium_DNA.name=인드리코티어의 DNA
+item.Deinotherium_Meat.name=데이노테리움의 고기
+item.Deinotherium_DNA.name=데이노테리움의 DNA
+item.Moeritherium_Meat.name=메리테리움의 고기
+item.Moeritherium_DNA.name=메리테리움의 DNA
+
+item.Mammoth_Syringe.name=메머드의 정보가 담긴 주사기
+item.Arsinoitherium_Syringe.name=아르시노이테리움의 정보가 담긴 주사기
+item.Basilosaurus_Syringe.name=바실로사우루스의 정보가 담긴 주사기
+item.Leptictidium_Syringe.name=렙틱티디움의 정보가 담긴 주사기
+item.Uintatherium_Syringe.name=원타테륨의 정보가 담긴 주사기
+item.Paraceratherium_Syringe.name=인드리코티어의 정보가 담긴 주사기
+item.Deinotherium_Syringe.name=데이노테리움의 정보가 담긴 주사기
+item.Moeritherium_Syringe.name=메리테리움의 정보가 담긴 주사기
+
+
+//Blocks
+tile.cultivate_idle.name=배양기
+tile.dnaExtractor.name=DNA 추출기
+tile.dnaCombinator.name=DNA 결합자
+tile.security_Fence_Main.name=보안 울타리
+tile.fossil_sandstone_ore.name=화석이 박힌 사암
+tile.fossil_clay_ore.name=화석이 박힌 진흙
+tile.fossil_clay_ore_stained_brown.name= 화석이 박힌 갈색 진흙
+tile.fossil_clay_ore_stained_orange.name=화석이 박힌 주황색 진흙
+tile.fossil_clay_ore_stained_red.name=화석이 박힌 붉은색 진흙
+tile.fossil_clay_ore_stained_silver.name=화석이 박힌 밝은 회색 진흙
+tile.fossil_clay_ore_stained_white.name=화석이 박힌 흰색 진흙
+tile.fossil_clay_ore_stained_yellow.name=화석이 박힌 노란색 진흙
+tile.block_Gypsum_Block.name=석고 블럭
+tile.block_Gypsum_Brick.name=석고 벽돌
+tile.block_Gypsum_CobbleStone.name=석고로 만든 조약돌
+
+
+//Entity_Interaction
+entity.Interaction.isSitting=앉아 있는중.
+entity.Interaction.isNotSitting=이제 앉아있지 않습니다.
+
+
+//Containers
+container.cultivator.stopCultivating=배양 중지
+container.cultivator.cultivating=배양
+container.cultivator.progress=진행
+container.dnaExtractor=DNA 추출기
+container.dnaCombinator=DNA 결합자
+container.securityFenceInexistent=아직 아무것도 만들어 지지 않았습니다.
+container.securityFenceLow=느슨한 경비의 보안 울타리
+container.securityFenceMedium=보통 경비의 보안 울타리
+container.securityFenceHigh=철저한 경비의 보안 울타리
+container.directionSouth=남쪽
+container.directionWest=서쪽
+container.directionNorth=북쪽
+container.directionEast=동쪽
+container.directionInexistent=아직 없음
+container.fixFence=울타리 수리중
+container.fencebasesblocks=블록
+container.fencegridsblocks=격자 무늬
+container.fencepolesblocks=기둥 블록
+container.pad.creature=생물
+container.pad.years=년,
+container.pad.months=월,
+container.pad.days=일,
+container.pad.year=년, 
+container.pad.month=월, 
+container.pad.day=일
+container.pad.health=체력
+container.pad.attack=공격
+container.pad.speed=속도
+container.pad.height=높이
+container.pad.length=길이
+container.pad.owner=주인
+container.pad.ridable=승차 가능
+container.pad.none=없음
+container.pad.maxHealth=최대 체력
+container.pad.maxLength=최대 길이
+container.pad.maxHeight=최대 높이
+container.pad.pregnancy.pregnantCow=임신한 소
+container.pad.pregnancy.pregnantPig=임신한 돼지
+container.pad.pregnancy.pregnantHorse=임신한 말
+container.pad.pregnancy.pregnantSheep=임신한 양
+container.pad.pregnancy.cow=소
+container.pad.pregnancy.pig=돼지
+container.pad.pregnancy.horse=말
+container.pad.pregnancy.sheep=양
+container.pad.pregnancy.noEmbryo=없음
+
+
+//Creature_Dinopad_Info
+container.pad.infoAnkylosaur.page1=안킬로 사우루스는 "연결된 도마뱀"을 의미한다 안킬로사우루스과 속의 공룡입니다. 안킬로 사우루스의 화석은 북아메리카 서부에 66.5과 66.0 만 년 전 사이에, 백악기의 끝날때까지 살았던것으로 보이며 백악기 후기의 지질에서 발견된다.
+container.pad.infoAnkylosaur.page2=안킬로 사우루스는 9m (30피트) 그리고 6 톤 (13,000파운드)까지 였던것으로 추정된다 현대적인 기준에 의하면 큰 동물이었다. 엉덩이에서 1.5 넓은 m (4.9 피트)와 1.7 m (5.6 피트) 높이, 길이 6.25 m (20.5 피트)로 추정된다.
+container.pad.infoAnkylosaur.page3=안킬로 사우루스의 꼬리 부분은 몇개의 꼬리 척추가 연결된 큰 뭉치로 구성되어있다. 그것은 무거운 클럽의 기지에서 뻣뻣한로드를 형성하기 위해 연동 지난 7 꼬리 척추에 의해 지원되었다.
+container.pad.infoBrachiosaur.page1=브라키오사우루스는 북미의 쥬라기 모리슨 지층에서 용각류 공룡의 속입니다. 그것은 처음으로 미국 서부 콜로라도의 그랜드 리버 캐년 (현재 콜로라도 강)에서 발견 된 화석에서 1903 년 엘머 S. 릭스에 의해 설명되었다.
+container.pad.infoBrachiosaur.page2= 브라키오사우루스의 비율은 가장 사우로 포드는 달리 있습니다. 앞다리는 큰 각도 트렁크 결과 뒷다리, 이상이었고, 꼬리는 쥬라기의 다른 용각류보다 목에 비례 짧았다.
+container.pad.infoVelociraptor.page1=벨로시랩터
+container.pad.infoStegosaur.page1=스테고 사우루스는 그 등뼈에 의해 참조되어 "지붕 도마뱀"을 의미한다. 조반목의 검룡류 공룡의 속입니다. 그들은 지금 북아메리카 서부에서부 155~150,000,000년 전, 쥐라기 시대에 살았습니다.
+container.pad.infoStegosaur.page2=등뼈와 꼬리뼈, 그것의 배열은 많은 추측의 대상이되어왔다.등뼈도 방어 메커니즘뿐만 아니라 체온 유지에 제안되었지만 대부분 수비에 사용하였다고 한다..
+container.pad.infoTriceratops.page1=트리케라톱스, "세 개의 뿔이있는 얼굴"먼저 지금의 북미에 약 68 만 년 전 백악기 공룡 시대의 후반 단계에 살았던, 등장하는 동안 초식 조반목 각룡류 공룡의 속입니다.
+container.pad.infoTriceratops.page2=트리케라톱스는 길이가 약 8.0-9.0 미터, 높이 2.8-3.0 미터, 무게는 6.0-12.0 톤에 도달 할 것으로 추정된다. 그것은 주위 풍경처럼 일반적이었고, 티라노의 맛있는 먹이가 되었다
+container.pad.infoCoelacanth.page1=서쪽 인도양 실러캔스와 인도네시아 실러캔스 : 실러캔스는 아직까지 살아있는 고대의 물고기중 하나이다
+container.pad.infoTyrannosaurus.page1=티라노 사우루스는 "폭군 도마뱀"을 의미 용반목 수각류 공룡의 속입니다. 티라노사우루스는 Laramidia라는 섬 대륙이었다는 지금 북미 서부에 걸쳐 살았다. 티라노사우루스는 넓은 범위를 가지고 있었다.
+container.pad.infoTyrannosaurus.page2=화석은 67-6천6백만년 전 상부 백악기의 시대의 다양한 바위에서 발견된다 
+container.pad.infoGallimimus.page1=갈리미무스
+container.pad.infoHypsilophodon.page1=힙실로포돈
+container.pad.infoLeaellynasaur.page1=레아엘리나사우라
+container.pad.infoHerrerasaur.page1=헤레라 사우루스는 초기 공룡 중 하나였다. 그 이름은 첫 번째 표본을 발견 한 목장주 후, "헤레라의 도마뱀"를 의미한다. 이 육식공룡에대해 알려진 것은 화석은 북서부 아르헨티나 2억3천1백40만년 전 카르 니아 시절의 바위에서 발견되었다.
+container.pad.infoHerrerasaur.page2=헤레라 사우루스는 긴 꼬리와 상대적으로 작은 머리를 가볍게 이족 보행 육식 동물이었다. 그것의 길이는 3-6m (10-20피트), 이상 1.1 미터 (3.3 피트)에서 자사의 엉덩이 높이로 추정된다. 이러면 210~350kg (463~772파운드) 주위에 무게가 나갔다.
+container.pad.infoParasaurolophus.page1=파라사우롤로푸스
+container.pad.infoMeganeura.page1=거대 잠자리
+container.pad.infoDilophosaurus.page1=딜로포사우루스
+container.pad.infoTylosaurus.page1=틸로사우루스
+container.pad.infoOviraptor.page1=오비랍토르
+container.pad.infoCearadactylus.page1=케아라닥틸루스
+container.pad.infoSarcosuchus.page1=살코수쿠스
+container.pad.infoMammoth.page1=메머드
+container.pad.infoArsinoitherium.page1=아르시노이테리움
+container.pad.infoBasilosaurus.page1=바실로사우루스
+container.pad.infoLeptictidium.page1=렙틱티디움
+container.pad.infoTitanis.page1=티타니스
+container.pad.infoUintatherium.page1=윈타테륨
+container.pad.infoParaceratherium.page1=인드리코티어
+container.pad.infoDeinotherium.page1=데이노테리움
