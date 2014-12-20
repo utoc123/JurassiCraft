@@ -45,7 +45,7 @@ public class AITriceratopsCharge extends AIAnimation
 		super.resetTask();
 		entityTric.timeSinceCharge = 150;
 		entityTric.charging = false;
-		entityTric.setAttackTarget(null);
+		attackTarget = null;
 	}
 
 	public void updateTask()

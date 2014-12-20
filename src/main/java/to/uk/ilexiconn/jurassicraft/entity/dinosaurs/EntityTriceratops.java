@@ -106,7 +106,7 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
             distanceFromTarget = (float) Math.sqrt(Math.pow((posX - getAttackTarget().posX), 2) + Math.pow((posZ - getAttackTarget().posZ), 2));
         else
             distanceFromTarget = -1;
-        if (this.getAttackTarget() != null && onGround && timeSinceCharge == 0 && !this.isPanicking())
+        if (this.getAttackTarget() != null && onGround && timeSinceCharge == 0 && !this.isPanicking() && this.getCreatureAgeInDays() >= 17)
             AnimationAPI.sendAnimPacket(this, 1);
         if (timeSinceCharge != 0) 
         	timeSinceCharge--;
@@ -115,8 +115,14 @@ public class EntityTriceratops extends EntityJurassiCraftLandProtective implemen
 	@Override
 	public void collideWithEntity(Entity victim) {
 		super.collideWithEntity(victim);
-		if (this.charging) {
+		if (this.charging && !(victim instanceof EntityTriceratops)) {
 			victim.attackEntityFrom(DamageSource.causeMobDamage(this), 20);
+			double deltaX = victim.posX - victim.posX;
+			double deltaZ = victim.posZ - victim.posZ;
+			double angleYaw = (float) Math.atan2(deltaZ, deltaX);
+			victim.motionX += Math.cos(angleYaw);
+			victim.motionZ += Math.sin(angleYaw);
+			victim.motionY += 0.3;
 		}
 	}
 }
